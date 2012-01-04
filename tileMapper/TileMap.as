@@ -5,8 +5,7 @@
 	import flash.geom.Matrix;
 	import flash.geom.Point;
 	import flash.utils.getDefinitionByName;
-	import com.*;
-	import util.*;
+	
 	public class TileMap {
 
 		public static var map:Array;

@@ -1,15 +1,17 @@
-﻿
+﻿import db.*;
 import flash.display.MovieClip;
 
 faceIcon1.gotoAndStop(1);
 faceIcon2.gotoAndStop(1);			
 
-entries = new Array();
+var entries = new Array();
 var chosenTeam = 0;
 
 showEntries();
 scrollPane.source = playerList;
 
+var glowDisplay=new GlowFilter(0xFF9900, 100, 20, 20, 1, 5, true, false);
+var glowEntry = new GlowFilter(0xFFFFFF, 100, 20, 20, 1, 10, true, false);
 var glowBegin = new GlowFilter(0x666666, 100, 30, 30, 3, 10, true, false);
 beginButton.buttonText.text = "Start!";
 beginButton.addEventListener(MouseEvent.MOUSE_OVER, overHandler);
@@ -22,8 +24,16 @@ playerDisplay1.visible = false;
 playerDisplay2.visible = false;
 
 for (a = 1; a <= 4; a++) {
-	playerDisplay1["button" + a].addEventListener(MouseEvent.CLICK, pageHandler);
-	playerDisplay2["button" + a].addEventListener(MouseEvent.CLICK, pageHandler);
+	var b1 = playerDisplay1["button" + a];
+	var b2 = playerDisplay2["button" + a];
+	
+	b1.mouseChildren = false;
+	b2.mouseChildren = false;
+	b1.id = a - 1;
+	b2.id = a - 1;
+	
+	b1.addEventListener(MouseEvent.CLICK, pageHandler);
+	b2.addEventListener(MouseEvent.CLICK, pageHandler);
 }
 
 // show available teams in middle
@@ -40,6 +50,9 @@ function chooseTeam(team) {
 	
 	faceIcon1.gotoAndStop(chosenTeam + 1);
 	faceIcon2.gotoAndStop(chosenTeam + 2);
+	
+	update(playerDisplay1, 1, chosenTeam);
+	update(playerDisplay2, 1, chosenTeam + 1);
 }
 function showEntries() {
 	var names	= ActorDatabase.names;
@@ -66,6 +79,33 @@ function showEntries() {
 	}
 }
 
+function startLevel(e) {
+	// pressed the start button
+	var sound = new se_chargeup();
+	sound.play();
+	
+	clearCharSelect();
+	gotoAndStop(1, "game");
+}
+
+function clearCharSelect() {
+	
+	beginButton.removeEventListener(MouseEvent.MOUSE_OVER, overHandler);
+	beginButton.removeEventListener(MouseEvent.MOUSE_OUT, outHandler);
+	beginButton.removeEventListener(MouseEvent.CLICK, startLevel);
+	
+	for (var entry in entries) {
+		entry.removeEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
+		entry.removeEventListener(MouseEvent.MOUSE_OUT, entryOutHandler);
+		entry.removeEventListener(MouseEvent.CLICK, clickHandler);
+	}
+	
+	// page buttons
+	for (a = 1; a <= 4; a++) {
+		playerDisplay1["button" + a].removeEventListener(MouseEvent.CLICK, pageHandler);
+		playerDisplay2["button" + a].removeEventListener(MouseEvent.CLICK, pageHandler);
+	}
+}
 
 function update(display:MovieClip, page:Number, index:Number) {
 	gotoAndStop(page);
@@ -91,7 +131,7 @@ function update(display:MovieClip, page:Number, index:Number) {
 			display.page2.wIcon.gotoAndStop(index + 1);
 			break;
 		case 3 :
-			// show abilities
+			// show AVAILABLE abilities
 			// edit this later
 			var basicAbilities = AbilityDatabase.getBasicAbilities(ActorDatabase.getName(index));
 
@@ -128,5 +168,30 @@ function update(display:MovieClip, page:Number, index:Number) {
 			page4.ffIcon.gotoAndStop(1);
 			break;
 	}
-
+}
+function pageHandler(e) {
+	// change pages
+	var id = e.target.id;
+	
+	playerDisplay1.gotoPage(id);
+	playerDisplay2.gotoPage(id);
+	
+	for (var a = 0; a < 4; a++) {
+		playerDisplay1["button" + a].filters = (id == a) ? [glowDisplay] : [];
+		playerDisplay2["button" + a].filters = (id == a) ? [glowDisplay] : [];
+	}
+}
+function clickHandler(e) {
+	// choose entry
+	
+	var sound = new se_timeout();
+	sound.play();
+	
+	chooseTeam(e.target.id);
+}
+function entryOverHandler(e) {
+	e.target.filters = [glowEntry];
+}
+function entryOutHandler(e) {
+	e.target.filters = [];
 }

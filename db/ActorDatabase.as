@@ -1,7 +1,7 @@
-﻿package actors{
+﻿package db{
 
-	import abilities.*;
-	import xml.*;
+	/*import abilities.*;
+	import xml.*;*/
 
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
@@ -34,9 +34,9 @@
 		public static var weapons	= new Array();
 		public static var ffNames	= new Array("Angelic Finale","Angelic Finale","WHAT YOU WANT","WHAT YOU WANT");
 		public static var ffDescriptions = new Array("Shower the field with celestial forces and holy lasers.",
-		 "Shower the field with celestial forces and holy lasers.",
-		 "MAGICAL SHIT HAPPENS",
-		 "MAGICAL SHIT HAPPENS");
+													 "Shower the field with celestial forces and holy lasers.",
+													 "MAGICAL SHIT HAPPENS",
+													 "MAGICAL SHIT HAPPENS");
 		//this whole Current Unit Bonus thing is also optional. I don't know. 
 		//I want additional bonuses though besides just the attack. 
 		//It could also apply to both units instead of the one you're controlling (current).
@@ -76,7 +76,7 @@
 			parseActorData(xmlData);
 		}
 		public function parseActorData(input:XML):void {
-			for each (var actorElement:XML in input.Actor) {
+			/*for each (var actorElement:XML in input.Actor) {
 				var actor = new Unit();
 
 				var health=separate(actorElement.Health);
@@ -117,8 +117,7 @@
 			}
 			for each (var weaponElement:XML in input.Actor.Weapon) {
 				weapons.push(weaponElement);
-			}
-
+			}*/
 		}
 
 		public function separate(statChange) {
