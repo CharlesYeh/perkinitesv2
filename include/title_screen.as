@@ -22,14 +22,14 @@ for (var a = 0; a < btnLabels.length; a++) {
 }
 
 function newGame(e:Event):void {
-	var sound = new se_timeout();
+	var sound = new se_chargeup();
 	sound.play();
 	
 	clearTitleScreen();
 	gotoAndStop("stage_select");
 }
 function continueGame(e:Event):void {
-	var sound = new se_timeout();
+	var sound = new se_chargeup();
 	sound.play();
 	
 	clearTitleScreen();

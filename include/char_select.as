@@ -7,21 +7,18 @@ faceIcon2.gotoAndStop(1);
 var entries = new Array();
 var chosenTeam = 0;
 
-showEntries();
 scrollPane.source = playerList;
 
 var glowDisplay=new GlowFilter(0xFF9900, 100, 20, 20, 1, 5, true, false);
 var glowEntry = new GlowFilter(0xFFFFFF, 100, 20, 20, 1, 10, true, false);
-var glowBegin = new GlowFilter(0x666666, 100, 30, 30, 3, 10, true, false);
-beginButton.buttonText.text = "Start!";
-beginButton.addEventListener(MouseEvent.MOUSE_OVER, overHandler);
-beginButton.addEventListener(MouseEvent.MOUSE_OUT, outHandler);
-beginButton.addEventListener(MouseEvent.CLICK, startLevel);
+var glowBegin = new GlowFilter(0xFF9900, 100, 20, 20, 1, 10, true, false);
 
-unitName1.text = "";
-unitName2.text = "";
-playerDisplay1.visible = false;
-playerDisplay2.visible = false;
+beginButton.buttonText.text = "Start!";
+beginButton.mouseChildren = false;
+beginButton.glowF = glowBegin;
+beginButton.addEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
+beginButton.addEventListener(MouseEvent.MOUSE_OUT, entryOutHandler);
+beginButton.addEventListener(MouseEvent.CLICK, startLevel);
 
 for (a = 1; a <= 4; a++) {
 	var b1 = playerDisplay1["button" + a];
@@ -40,6 +37,31 @@ for (a = 1; a <= 4; a++) {
 showEntries();
 chooseTeam(0);
 
+function showEntries() {
+	var names	= ActorDatabase.getUnlockedNames();
+	
+	// Must only show available Units, not all Units!
+	for (var i = 0; i < names.length; i += 2) {
+		var entry = new Entry();
+		entry.playerName1.text = names[i];
+		entry.playerName2.text = names[i + 1];
+		entry.id = i;
+		entry.gotoAndStop(1);
+		entry.glowF = glowEntry;
+		
+		// GOTTA ADD LISTENERS TO ENTRIES AND GOTTA FIX THEM
+		entry.addEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
+		entry.addEventListener(MouseEvent.MOUSE_OUT, entryOutHandler);
+		entry.addEventListener(MouseEvent.CLICK, clickHandler);
+
+		// GOTTA ADD
+		playerList.addChild(entry);
+		entry.mouseChildren = false;
+		entry.x = 0;
+		entry.y = 8 * i;
+		entries.push(entry);
+	}
+}
 function chooseTeam(team) {
 	chosenTeam = team;
 	// activate entry in middle
@@ -54,30 +76,6 @@ function chooseTeam(team) {
 	update(playerDisplay1, 1, chosenTeam);
 	update(playerDisplay2, 1, chosenTeam + 1);
 }
-function showEntries() {
-	var names	= ActorDatabase.names;
-	
-	// Must only show available Units, not all Units!
-	for (var i = 0; i < names.length; i += 2) {
-		var entry = new Entry();
-		entry.playerName1.text = names[i];
-		entry.playerName2.text = names[i + 1];
-		entry.id = i;
-		entry.gotoAndStop(1);
-		
-		// GOTTA ADD LISTENERS TO ENTRIES AND GOTTA FIX THEM
-		entry.addEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
-		entry.addEventListener(MouseEvent.MOUSE_OUT, entryOutHandler);
-		entry.addEventListener(MouseEvent.CLICK, clickHandler);
-
-		// GOTTA ADD
-		playerList.addChild(entry);
-		entry.mouseChildren = false;
-		entry.x = 0;
-		entry.y = 16 * i;
-		entries.push(entry);
-	}
-}
 
 function startLevel(e) {
 	// pressed the start button
@@ -90,11 +88,12 @@ function startLevel(e) {
 
 function clearCharSelect() {
 	
-	beginButton.removeEventListener(MouseEvent.MOUSE_OVER, overHandler);
-	beginButton.removeEventListener(MouseEvent.MOUSE_OUT, outHandler);
+	beginButton.removeEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
+	beginButton.removeEventListener(MouseEvent.MOUSE_OUT, entryOutHandler);
 	beginButton.removeEventListener(MouseEvent.CLICK, startLevel);
 	
-	for (var entry in entries) {
+	for (var e in entries) {
+		var entry = entries[e];
 		entry.removeEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
 		entry.removeEventListener(MouseEvent.MOUSE_OUT, entryOutHandler);
 		entry.removeEventListener(MouseEvent.CLICK, clickHandler);
@@ -107,8 +106,9 @@ function clearCharSelect() {
 	}
 }
 
+// update display
 function update(display:MovieClip, page:Number, index:Number) {
-	gotoAndStop(page);
+	display.gotoAndStop(page);
 	
 	// show correct page
 	display.portrait.visible = page == 1;
@@ -132,8 +132,7 @@ function update(display:MovieClip, page:Number, index:Number) {
 			break;
 		case 3 :
 			// show AVAILABLE abilities
-			// edit this later
-			var basicAbilities = AbilityDatabase.getBasicAbilities(ActorDatabase.getName(index));
+			/*var basicAbilities = AbilityDatabase.getBasicAbilities(ActorDatabase.getName(index));
 
 			for (var i = 0; i < icons.length; i++) {
 				if (i < basicAbilities.length) {
@@ -157,7 +156,7 @@ function update(display:MovieClip, page:Number, index:Number) {
 				icons[i].visible = false;
 				names[i].visible = false;
 				descriptions[i].visible = false;
-			}
+			}*/
 			break;
 		case 4 :
 			/*page4.ffName.text=ActorDatabase.getFFName(index);
@@ -165,7 +164,7 @@ function update(display:MovieClip, page:Number, index:Number) {
 			page4.ffBonus.text=ActorDatabase.getFFBonus(index);
 
 			page4.ffIcon.gotoAndStop(Math.ceil((index+1)/2));*/
-			page4.ffIcon.gotoAndStop(1);
+			display.page4.ffIcon.gotoAndStop(1);
 			break;
 	}
 }
@@ -183,6 +182,7 @@ function pageHandler(e) {
 }
 function clickHandler(e) {
 	// choose entry
+	entries[(chosenTeam >> 1)].gotoAndStop(1);
 	
 	var sound = new se_timeout();
 	sound.play();
@@ -190,7 +190,7 @@ function clickHandler(e) {
 	chooseTeam(e.target.id);
 }
 function entryOverHandler(e) {
-	e.target.filters = [glowEntry];
+	e.target.filters = [e.target.glowF];
 }
 function entryOutHandler(e) {
 	e.target.filters = [];
