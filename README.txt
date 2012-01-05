@@ -20,7 +20,6 @@ abilities
 	Attack
 	AttackConditionChecker
 	Buff
-	DrunkBullet
 	Item
 actors
 	ActorDatabase
