@@ -1,7 +1,7 @@
 ﻿/*
 Abilities are the special commands Perkinites can use. :)
 */
-package abilities{
+package game {
 
 	import flash.events.*;
 	import flash.display.MovieClip;
