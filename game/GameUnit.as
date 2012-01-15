@@ -1,151 +1,56 @@
-﻿/*
-*/
-package game{
-
-
-	import actors.*;
-	import abilities.*;
-	import maps.*;
-	import tileMapper.*;
-	import ui.*;
-	import ui.hud.HUDManager;
-	import ui.screens.ShopScreen;
-	import util.*;
-
-	import flash.display.FrameLabel;
+﻿package game{
 	import flash.display.MovieClip;
-	import flash.geom.*;
-	import flash.events.*;
-
-
-	import flash.ui.Keyboard;
-
+	import flash.events.Event;
+	import flash.geom.Point;
+	import flash.geom.Rectangle;
+	import tileMapper.TileMap;
+	
 	/**
 	  * The basic unit in the game. Can be a Unit, Enemy, NPC, Event, etc.
 	  */
 	public class GameUnit extends MovieClip {
-
-		public var xTile:int;
-		public var yTile:int;
+		
 		public var objectWidth:Number;
 		public var objectHeight:Number;
 
-		public var range:int;
+		public var range:Number;
 
-		/**
-		 * Animation.
-		 */
-		public var requiredLabels:Array = new Array();
-		public var lengths:Array = new Array();
-		public var currentAnimLabel:String = "_walkDown";
-
-
-		/**
-		 * Move route of the GameUnit
-		 * prevMoveCount - helps track when a new move has begun
-		 * moveCount - current index of move
-		 * waitCount - current time after a move has finished
-		 * wait - time between commands
-		 * moveWait - time between actual movement
-		 * moveWaitCount - current time after finishing one movement of a tile
-		 * pauseAction - pause the movement of the GameUnit
-		 * overridePause - used for cutscenes and shit
-		 * superPause - pauses everything for like, special custcene attacks or something - doesn't conflict with pauseAction
-		 * menuPause - pauses everything for like menus and stuff
-		 */
-		public var commands:Array;
-		public var prevMoveCount:int;
-		public var moveCount:int;
-		public var waitCount:int;
-		public var wait:int;
+		/*** Animation ***/
+		public var currentAnimLabel:String;
 		
-		public var moveWait:int;
-		public var moveWaitCount:int;
-		public var pauseAction:Boolean;
-		public var overridePause:Boolean;//don't know if this needs to be used
-		static public var superPause:Boolean;
-		static public var menuPause:Boolean=false;
-		static public var objectPause:Boolean=false;
-
-		/**
-		 * Potential movement area
-		 */
-		public var mxpos:Number;
-		public var mypos:Number;
+		/*** Cutscenes ***/
+		public var commands:Array;			// queue of Command's for cutscene commands
+		public var pauseAction:Boolean;		// pause the movement of the GameUnit
+		
+		/*** Movement ***/
 		public var speed:Number;
-		public var path = new Array();
-		public var radian;		
-		public var moving:Boolean = false;
-
-		var rad;
-		public static var allAreas = new Array();
+		public var path:Array = new Array();
+		public var moveRadians:Number;
+		
 		/**
-		 *
 		 * dir - direction of GameUnit
 		 * moveDir - direction of GameUnit when moving
 		 */
 		public var dir:int;
 		public var moveDir:int;
-
-		/**
-		 * Dialogue system
-		 * names - Dialogue yo
-		 * messages - Dialogue yo
-		 * messageMode 
-		 * 0 - Normal
-		 * 1 - Cellphone
-		 * 2 - Speakers
-		 * messageBox - thing to display
-		 * fastForward - skip the letter-by-letter system
-		 * dialogueIndex - position in arrays
-		 * charIndex - letter position in message
-		 */
-		public var names:Array;
-		public var messages:Array;
-		public var messageModes:Array;
-		public var mbx;
-		public var mby;
-		public var messagebox;
-		public var fastforward:Boolean;
-		public var dialogueIndex:int;
-		public var charIndex:int;
-
-		public var aTrigger:String;
-
+		
+		/*** Dialogue ***/
+		public var dialogueName:String;
+		public var dialogueMsg:Array;
+		public var dialogueTrigger:String;		// how to trigger dialogue
 
 		public function GameUnit() {
-			commands=[];
-			prevMoveCount=-1;
-			moveCount=0;
-			waitCount=0;
-			wait = 0;
-			moveWaitCount = 0;
-			moveWait = 0;
-
-			mxpos=0;
-			mypos=0;
-			speed=8;
-
-			dir = 0;
-			moveDir = 0;
-
-			names=[];
-			messages=[];
-			messageModes=[];
-			mbx=34;
-			mby = 302;//302-64;
-			messagebox = new MessageBox();
-			fastforward=false;
-			dialogueIndex=0;
-			charIndex=0;
-
-			aTrigger="None";
-			pauseAction=false;
-
-			allAreas.push(this);
-			rad = Math.pow(width >> 1, 2);
+			commands = new Array;
+			pauseAction	= false;
 			
-			setLengths();
+			speed	= 5;
+			path 	= new Array();
+			moveRadians	= 0;
+			
+			dialogueName	= "";
+			dialogueMsg		= new Array();
+			dialogueTrigger = "None";
+			
 			addEventListener(Event.ENTER_FRAME, moveHandler);
 		}
 
@@ -169,19 +74,17 @@ package game{
 		 */
 		 public function moveTo(targetX:Number, targetY:Number):void {
 			var p = new Array();
-			//startAnimation(dir);
-			mxpos = targetX;
-			mypos = targetY;			
+			//startAnimation(dir)
 			
 			//really big bug to fix - hitting nonpassable tiles causes crappy movement.
 			//hackhackhack
 			if (TileMap.hitNonpass(targetX, targetY)) {
 				//teleportObject(object, targetX, targetY);
 			} else{
-				p = TileMap.findPath(TileMap.map, new Point(Math.floor(x/32), Math.floor(y/32)),
-				  new Point(Math.floor(mxpos/32), Math.floor(mypos/32)), 
-				  false, true);
-				p = smoothPath(path);
+				var startTile:Point	= new Point(Math.floor(x / 32), Math.floor(y / 32));
+				var destTile:Point	= new Point(Math.floor(targetX / 32), Math.floor(targetY / 32));
+				
+				p = smoothPath(TileMap.findPath(TileMap.map, startTile, destTile, false, true));
 				
 				path = p;
 				//object.addEventListener(Event.ENTER_FRAME, moveHandler);
@@ -241,7 +144,11 @@ package game{
 		 */
 		public function moveHandler(e:Event):void {
 			if (path.length > 0) {
-				var dist=Math.sqrt(Math.pow(mxpos-x,2)+Math.pow(mypos-y,2));
+				// ################ GET FIRST COORD
+				/*var targetX = path.shift();
+				
+				
+				var dist = Math.sqrt(Math.pow(targetX - x, 2) + Math.pow(targetY - y, 2));
 				checkLoop();
 				
 				if (dist>0&&dist>range) {
@@ -258,31 +165,21 @@ package game{
 						}
 					}
 					if (path.length>0) {
-						moving=true;
-						//var speed;
-						/*if (this is Unit || this is Enemy) {
-							speed = getSpeed();
-						}
-						else {
-							speed = speed;
-						}*/
-						//speed = getSpeed();
+						moving=true;=
 						x+=speed*Math.cos(radian)/24;
 						y+=speed*Math.sin(radian)/24;
 
 					} else {
 						moving=false;
 					}
-				}				
-			} else {
-				moving=false;
+				}*/
 			}
-			if (! moving && range == 0) {
-				x=mxpos;
-				y=mypos;
+			//if (range == 0) {
+				// move to first point in path
+				
 				//object.stopAnimation();
 				//object.removeEventListener(Event.ENTER_FRAME, moveHandler);
-			}
+			//}
 		}
 
 		/**
@@ -303,10 +200,6 @@ package game{
 		 * teleportToTile
 		 * displayMessage
 		 *
-		 *
-		 *
-		 *
-		 *
 		 */
 
 		public function detectHandler(e:Event):void {
@@ -323,84 +216,26 @@ package game{
 
 			x=nx;
 			y=ny;
-			if (TileMap.hitWall(nx,ny)||hitAreas()) {
-				trace(TileMap.hitWall(nx, ny) + " " + hitAreas());
-				x=ox;
-				y=oy;
+			if (TileMap.hitWall(nx,ny)/* || hitAreas()*/) {
+				//trace(TileMap.hitWall(nx, ny) + " " + hitAreas());
+				x = ox;
+				y = oy;
 			}
-		}
-		//creates units in a circle around the original unit (u)
-		public function spaceAround(u:GameUnit) {
-			var radRoot=Math.sqrt(u.rad)+20;
-			var addPi=Math.PI/4;
-
-			for (var a = 0; a < 2 * Math.PI; a += addPi) {
-				x=radRoot*Math.cos(a)+u.x;
-				y=radRoot*Math.sin(a)+u.y;
-				if (! hitAreas()&&! TileMap.hitWall(x,y)) {
-					return;
-				}
-			}
-			trace("couldn't find space");
 		}
 		public function getMyRect() {
 			return new Rectangle(x, y, width, height);
 		}
-		public function pointHitAreas(ox, oy):GameUnit {
-			var p=new Point(ox,oy);
-
-			for (var a in allAreas) {
-				var mc=allAreas[a];
-				if (mc==this) {
-					continue;
-				}
-
-				if ((mc.getRect()).containsPoint(p)) {
-					return mc;
-				}
-			}
-			return null;
-		}
-		public function hitAreas() {
-			for (var a in allAreas) {
-				var mc=allAreas[a];
-				if (mc==this) {
-					continue;
-				}
-
-				var dist=Math.pow(mc.x-x,2)+Math.pow(mc.y-y,2);
-				if (dist<rad+mc.rad) {
-					return true;
-				}
-			}
-			return false;
-		}
-		public function hitWhat() {
-			var arr = new Array();
-			for (var a in allAreas.length) {
-				var mc=allAreas[a];
-				if (mc==this) {
-					continue;
-				}
-
-				var dist=Math.pow(mc.x-x,2)+Math.pow(mc.y-y,2);
-				if (dist<rad+mc.rad) {
-					arr.push(mc);
-				}
-			}
-			return arr;
-		}
-
-		public function getFrameNumber(label:String):int {
+		
+		/*public function getFrameNumber(label:String):int {
 			for each (var frameLabel:FrameLabel in this.currentLabels) {
 				if (frameLabel.name==label) {
 					return frameLabel.frame;
 				}
 			}
 			return -1;
-		}
+		}*/
 
-		public function setLengths():void {
+		/*public function setLengths():void {
 			for (var i = 0; i < this.currentLabels.length; i++) {
 				if (this.currentLabels[i+1]) {
 					lengths[this.currentLabels[i].name] = this.currentLabels[i + 1].frame-this.currentLabels[i].frame;
@@ -408,9 +243,9 @@ package game{
 					lengths[this.currentLabels[i].name]=this.totalFrames-this.currentLabels[i].frame;
 				}
 			}
-		}
+		}*/
 
-		public function checkLoop():void {
+		/*public function checkLoop():void {
 			gotoAndStop(currentFrame + 1);
             var labelFrame:int = getFrameNumber(currentAnimLabel);
 			if(labelFrame != -1){
@@ -421,7 +256,7 @@ package game{
 					gotoAndStop(labelFrame);
 				}
 			}
-        }		
+        }
 		public function checkStop():void {	
             var labelFrame:int = getFrameNumber(currentAnimLabel);
 			if (labelFrame != -1) {
@@ -429,7 +264,7 @@ package game{
 					gotoAndStop(currentFrame+1);
 				}
 			}
-		}
+		}*/
 		/**
 		 * Gets the animation label for the direction and action.
 		 */
@@ -461,7 +296,7 @@ package game{
          * Starts the animation based on direction.
 		 * 
          */
-		public function startAnimation(moveDir:int, auto:Boolean = false, KO:Boolean = false):void {
+		/*public function startAnimation(moveDir:int, auto:Boolean = false, KO:Boolean = false):void {
 			if(this.moveDir != moveDir || auto || KO){
 				var animLabel:String = this.getAnimLabel(moveDir, KO);
 				this.currentAnimLabel = animLabel;
@@ -469,28 +304,28 @@ package game{
 				this.dir = moveDir;
 				this.moveDir = moveDir;
 			}
-		}
+		}*/
         /**
          * Stops the current animation. It's pretty simple enough. :|
          */		
-		public function stopAnimation():void {
+		/*public function stopAnimation():void {
             this.gotoAndStop(getFrameNumber(currentAnimLabel));
 			moveDir = 0;
-		}
+		}*/
 
 		
-		public function swapActions(prevMoveCount:int, moveCount:int, commands:Array) {
+		/*public function swapActions(prevMoveCount:int, moveCount:int, commands:Array) {
 			this.prevMoveCount = prevMoveCount;
 			this.moveCount = moveCount;
 			this.commands = commands;
 			addEventListener(Event.ENTER_FRAME, gameHandler);
 			
-		}
-		public static function forceAction(action, f) {
+		}*/
+		/*public static function forceAction(action, f) {
 			action.prevMoveCount--;
 			action[f]();
 			action.moveCount--;
-		}
+		}*/
 		//All possible sequential moves
 
 		public function teleportToMap(mapID:int, xTile:int, yTile:int, dir:int, transition:String) {
@@ -910,11 +745,9 @@ package game{
 					prevMoveCount=-1;
 					moveCount = 0;
 					if (aTrigger == "Click" || aTrigger == "Collide" || aTrigger == "None") {
-						GameUnit.objectPause=false;
-						removeEventListener(Event.ENTER_FRAME, detectHandler);
-						removeEventListener(Event.ENTER_FRAME, gameHandler);
-						Unit.currentUnit.range = 0;
-						Unit.partnerUnit.range = 0;
+						GameUnit.pauseAction = false;
+						//removeEventListener(Event.ENTER_FRAME, detectHandler);
+						//removeEventListener(Event.ENTER_FRAME, gameHandler);
 					}
 				}
 			}
