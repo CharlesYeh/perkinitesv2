@@ -25,12 +25,6 @@
 		/*** Movement ***/
 		public var speed:Number;
 		public var path:Array = new Array();
-		public var moveRadians:Number;
-
-		/**
-		 * dir - direction of GameUnit
-		 * moveDir - direction of GameUnit when moving
-		 */
 		public var moveDir:int;
 
 		/*** Dialogue ***/
@@ -44,7 +38,7 @@
 
 			speed = 5;
 			path = new Array();
-			moveRadians = 0;
+			moveDir = 0;	// right
 
 			dialogueName = "";
 			dialogueMsg= new Array();
@@ -60,16 +54,16 @@
 			var label = "";
 			switch (moveDir) {
 				case 0:
-					label = "_walkDown";
-					break;
-				case 1:
-					label = "_walkLeft";
-					break;
-				case 2:
 					label = "_walkRight";
 					break;
-				case 3:
+				case 1:
 					label = "_walkUp";
+					break;
+				case 2:
+					label = "_walkLeft";
+					break;
+				case 3:
+					label = "_walkDown";
 					break;
 			}
 			return label;
@@ -77,28 +71,34 @@
 		//----------------------------------MOVEMENT----------------------------------
 		
 		/**
-		 * 
-		 * Moves the passed GameUnit to its destination.
+		 * Start movement to new destination
 		 * 
 		 * @paramobject
 		 * @paramtargetX
 		 * @paramtargetY
 		 */
 		public function moveTo(targetX:Number, targetY:Number):void {
-			var p = new Array();
-			//startAnimation(dir)
-			//really big bug to fix - hitting nonpassable tiles causes crappy movement.
-			//hackhackhack
-			if (TileMap.hitNonpass(targetX,targetY)) {
-				//teleportObject(object, targetX, targetY);
+			path = new Array();
+			
+			// show animation#############################
+			
+			if (TileMap.hitNonpass(targetX, targetY)) {
+				// pressed on non-moveable place
 			} else {
 				var startTile:Point= new Point(Math.floor(x / 32), Math.floor(y / 32));
-				var destTile:Point= new Point(Math.floor(targetX / 32), Math.floor(targetY / 32));
+				var destTile:Point = new Point(Math.floor(targetX / 32), Math.floor(targetY / 32));
 
-				p = smoothPath(TileMap.findPath(TileMap.map,startTile,destTile,false,true));
-
-				path = p;
-				//object.addEventListener(Event.ENTER_FRAME, moveHandler);
+				path = smoothPath(TileMap.findPath(TileMap.map, startTile, destTile, false, true));
+				
+				// convert tiles to pixels
+				for (var a = 0; a < path.length; a++) {
+					path[a].x = (path[a].x + .5) * TileMap.TILE_SIZE;
+					path[a].y = (path[a].y + .5) * TileMap.TILE_SIZE;
+				}
+				
+				// replace last point with actual destination
+				path.pop();
+				path.push(targetX, targetY);
 			}
 		}
 
@@ -153,76 +153,34 @@
 		 * @parame - Event.ENTER_FRAME
 		 */
 		public function moveHandler(e:Event):void {
-			if (path.length > 0) {
-				// ################ GET FIRST COORD
-				var targetX = path[0].x;
-				var targetY = path[0].y;
+			if (path.length == 0)
+				return;
+			
+			var targetX = path[0].x;
+			var targetY = path[0].y;
+			
+			var dist = Math.pow(targetX - x, 2) + Math.pow(targetY - y, 2);
 
-				var dist = Math.sqrt(Math.pow(targetX - x, 2) + Math.pow(targetY - y, 2));
-
-				if (dist > 0 && dist > range) {
-					var xtile = Math.floor(x / 32);
-					var ytile = Math.floor(y / 32);
-					if (xtile == path[0].x && ytile == path[0].y) {
-						path.splice(0, 1);
-
-						if (path.length > 0) {
-							var xdest = path[0].x * 32 + 16;
-							var ydest = path[0].y * 32 + 16;
-							radian = Math.atan2(ydest - y, xdest - x);
-							faceDir(radian);
-						}
-					}
-					if (path.length > 0) {
-						moving = true;
-						x += speed * Math.cos(radian) / 24;
-						y += speed * Math.sin(radian) / 24;
-
-					} else {
-						moving = false;
-					}
-				}
+			if (dist < 100) {
+				// close enough, move onto next point
+				path.shift();
+			}
+			else {
+				// keep moving towards path[0]
+				var radian = Math.atan2(path[0].y - y, path[0].x - x);
+				
+				//############# show animation
+				x += speed * Math.cos(radian) / 24;
+				y += speed * Math.sin(radian) / 24;
 			}
 		}
 		public function turnLeft() {
-			switch (dir) {
-				case 2 :
-					dir = 6;
-					break;
-				case 4 :
-					dir = 2;
-					break;
-				case 6 :
-					dir = 8;
-					break;
-				case 8 :
-					dir = 4;
-					break;
-			}
-
-			dir = dir / 2;
+			moveDir = ++moveDir % 4;
+			//####### SHOW ANIMATION
 		}
 		public function turnRight() {
-			switch (dir) {
-				case 2 :
-					dir = 4;
-					break;
-				case 4 :
-					dir = 8;
-					break;
-				case 6 :
-					dir = 2;
-					break;
-				case 8 :
-					dir = 6;
-					break;
-			}
-
-			dir = dir / 2;
-		}
-		public function faceRandom() {
-			dir = 2 * Math.floor(Math.random() * 4 + 1);
-			dir = dir / 2;
+			moveDir = (moveDir == 0) ? 3 : (moveDir - 1);
+			//####### SHOW ANIMATION
 		}
 
 		public function eraseObject() {

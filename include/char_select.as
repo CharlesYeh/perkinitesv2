@@ -16,18 +16,19 @@ var glowBegin = new GlowFilter(0xFF9900, 100, 20, 20, 1, 10, true, false);
 beginButton.buttonText.text = "Start!";
 beginButton.mouseChildren = false;
 beginButton.glowF = glowBegin;
+
 beginButton.addEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
 beginButton.addEventListener(MouseEvent.MOUSE_OUT, entryOutHandler);
 beginButton.addEventListener(MouseEvent.CLICK, startLevel);
 
-for (a = 1; a <= 4; a++) {
+for (a = 0; a <= 3; a++) {
 	var b1 = playerDisplay1["button" + a];
 	var b2 = playerDisplay2["button" + a];
 	
 	b1.mouseChildren = false;
 	b2.mouseChildren = false;
-	b1.id = a - 1;
-	b2.id = a - 1;
+	b1.id = a;
+	b2.id = a;
 	
 	b1.addEventListener(MouseEvent.CLICK, pageHandler);
 	b2.addEventListener(MouseEvent.CLICK, pageHandler);
@@ -73,8 +74,8 @@ function chooseTeam(team) {
 	faceIcon1.gotoAndStop(chosenTeam + 1);
 	faceIcon2.gotoAndStop(chosenTeam + 2);
 	
-	update(playerDisplay1, 1, chosenTeam);
-	update(playerDisplay2, 1, chosenTeam + 1);
+	update(playerDisplay1, 0, chosenTeam);
+	update(playerDisplay2, 0, chosenTeam + 1);
 }
 
 function startLevel(e) {
@@ -100,7 +101,7 @@ function clearCharSelect() {
 	}
 	
 	// page buttons
-	for (a = 1; a <= 4; a++) {
+	for (a = 0; a < 4; a++) {
 		playerDisplay1["button" + a].removeEventListener(MouseEvent.CLICK, pageHandler);
 		playerDisplay2["button" + a].removeEventListener(MouseEvent.CLICK, pageHandler);
 	}
@@ -110,18 +111,27 @@ function clearCharSelect() {
 function update(display:MovieClip, page:Number, index:Number) {
 	display.gotoAndStop(page);
 	
+	// update tabs
+	for (var a = 0; a < 4; a++) {
+		trace(a == page);
+		display["button" + a].filters = (page == a) ? [glowDisplay] : [];
+		trace(display["button" + a].filters);
+	}
+	
+	//display.setChildIndex(display["button" + page], display.numChildren - 1);
+	
 	// show correct page
-	display.portrait.visible = page == 1;
-	display.page2.visible = page == 2;
-	display.page3.visible = page == 3;
-	display.page4.visible = page == 4;
+	display.portrait.visible = (page == 0);
+	display.page2.visible = (page == 1);
+	display.page3.visible = (page == 2);
+	display.page4.visible = (page == 3);
 	
 	// update data inside page
 	switch (currentFrame) {
-		case 1 :
+		case 0 :
 			display.portrait.gotoAndStop(index + 1);
 			break;
-		case 2 :
+		case 1 :
 			// show stats
 			display.page2.HPCount.text = ActorDatabase.getHP(index) + "";
 			display.page2.APCount.text = ActorDatabase.getDmg(index) + "";
@@ -130,7 +140,7 @@ function update(display:MovieClip, page:Number, index:Number) {
 
 			display.page2.wIcon.gotoAndStop(index + 1);
 			break;
-		case 3 :
+		case 2 :
 			// show AVAILABLE abilities
 			/*var basicAbilities = AbilityDatabase.getBasicAbilities(ActorDatabase.getName(index));
 
@@ -158,7 +168,7 @@ function update(display:MovieClip, page:Number, index:Number) {
 				descriptions[i].visible = false;
 			}*/
 			break;
-		case 4 :
+		case 3 :
 			/*page4.ffName.text=ActorDatabase.getFFName(index);
 			page4.ffDescription.text=ActorDatabase.getFFDescription(index);
 			page4.ffBonus.text=ActorDatabase.getFFBonus(index);
@@ -172,13 +182,8 @@ function pageHandler(e) {
 	// change pages
 	var id = e.target.id;
 	
-	playerDisplay1.gotoPage(id);
-	playerDisplay2.gotoPage(id);
-	
-	for (var a = 0; a < 4; a++) {
-		playerDisplay1["button" + a].filters = (id == a) ? [glowDisplay] : [];
-		playerDisplay2["button" + a].filters = (id == a) ? [glowDisplay] : [];
-	}
+	update(playerDisplay1, id, chosenTeam);
+	update(playerDisplay2, id, chosenTeam + 1);
 }
 function clickHandler(e) {
 	// choose entry
