@@ -2,7 +2,6 @@
 	import flash.geom.*;
 	import flash.events.*;
 	import flash.ui.*;
-	import com.*;
 	import util.*;
 	import flash.display.MovieClip;
 	public class InteractiveTile extends MovieClip{
