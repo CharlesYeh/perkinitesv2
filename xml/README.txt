@@ -1,0 +1,1 @@
+Maps contain cutscene information
