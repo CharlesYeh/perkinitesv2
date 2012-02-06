@@ -20,6 +20,7 @@ beginButton.glowF = glowBegin;
 beginButton.addEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
 beginButton.addEventListener(MouseEvent.MOUSE_OUT, entryOutHandler);
 beginButton.addEventListener(MouseEvent.CLICK, startLevel);
+stage.addEventListener(KeyboardEvent.KEY_DOWN, charKeyHandler);
 
 for (a = 0; a <= 3; a++) {
 	var b1 = playerDisplay1["button" + a];
@@ -86,12 +87,18 @@ function startLevel(e) {
 	clearCharSelect();
 	gotoAndStop(1, "game");
 }
+function charKeyHandler(e) {
+	if (e.keyCode == Keyboard.SPACE) {
+		startLevel(e);
+	}
+}
 
 function clearCharSelect() {
 	
 	beginButton.removeEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
 	beginButton.removeEventListener(MouseEvent.MOUSE_OUT, entryOutHandler);
 	beginButton.removeEventListener(MouseEvent.CLICK, startLevel);
+	stage.addEventListener(KeyboardEvent.KEY_DOWN, charKeyHandler);
 	
 	for (var e in entries) {
 		var entry = entries[e];
@@ -113,9 +120,7 @@ function update(display:MovieClip, page:Number, index:Number) {
 	
 	// update tabs
 	for (var a = 0; a < 4; a++) {
-		trace(a == page);
 		display["button" + a].filters = (page == a) ? [glowDisplay] : [];
-		trace(display["button" + a].filters);
 	}
 	
 	//display.setChildIndex(display["button" + page], display.numChildren - 1);

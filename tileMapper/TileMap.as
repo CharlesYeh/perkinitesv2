@@ -317,7 +317,6 @@
 			while (ts != te) {
 				for (i=ts+1; i<te; i += 2) {
 					if (tiles[i]==endy&&tiles[i-1]==endx) {
-						trace("HI");
 						found=true;
 						break;
 					}
@@ -385,22 +384,23 @@
 					}
 				}
 				ts=te;
-				if (found!=true) {
+				if (!found) {
 					te=tiles.length;
 				}
 			}
+			
+			if (!found)
+				return new Array();
+			
 			var path:Array=[new Point(endx,endy)];
 			var px:Number=endx;
 			var py:Number=endy;
-			if (TileMap.getTile(endx*32,endy*32)=="p") {
-				while (px != startx || py != starty) {
-					path.unshift(new Point(map[py][px].x, map[py][px].y));
-					//path.unshift(new Point(px, py));
-					px=path[0].x;
-					py=path[0].y;
-				}
-			} else {
-				path = new Array();
+			
+			while (px != startx || py != starty) {
+				path.unshift(new Point(map[py][px].x, map[py][px].y));
+				//path.unshift(new Point(px, py));
+				px=path[0].x;
+				py=path[0].y;
 			}
 			return path;
 		}

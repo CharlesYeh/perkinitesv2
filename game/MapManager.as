@@ -3,12 +3,14 @@
 	import tileMapper.*;
 	import game.GameUnit;
 
+	import flash.geom.Point;
 	import flash.display.MovieClip;
 	import flash.display.Stage;
 	import flash.events.*;
 	import flash.ui.*;
 	import flash.utils.Timer;
 	import flash.events.TimerEvent;
+	import flashx.textLayout.operations.MoveChildrenOperation;
 
 	public class MapManager {
 		public static var mapClip = new MovieClip();
@@ -21,7 +23,7 @@
 		public static var startX:Number;
 		public static var startY:Number;
 
-		public static var trackUnit:GameUnit;
+		public static var trackUnit1:GameUnit, trackUnit2:GameUnit;
 
 		// for cutscene scrolling
 		public static var scrollDir = 0;
@@ -32,7 +34,7 @@
 
 		public static var tileClings = new Array(false, false, false, true, true, false);
 
-		public static function loadMap(mapNumber:int, unit:GameUnit) {
+		public static function loadMap(mapNumber:int, unit1:GameUnit, unit2:GameUnit) {
 			InteractiveTile.resetTiles();
 			
 			loadMapData(mapNumber);
@@ -42,9 +44,13 @@
 			ScreenRect.createScreenRect(new Array(mapClip), 640, 480);
 			mapClip.addEventListener(Event.ENTER_FRAME, scrollHandler);
 			
-			trackUnit = unit;
+			trackUnit1 = unit1;
+			trackUnit2 = unit2;
 			
 			return mapClip;
+		}
+		public static function addToMapClip(mc:MovieClip) {
+			mapClip.addChild(mc);
 		}
 		public static function depthSortHandler(e) {
 			var depthArray:Array = new Array();
@@ -77,6 +83,7 @@
 			TileMap.removeTiles(mapClip);
 			
 			var tileset:Tileset = MapDatabase.getTileset(map.tilesetID);
+			//-------------------------------######################
 			var tileTypes = tileset.tileTypes;
 			
 			TileMap.createTileMap(mapCode, 32, tileTypes, tileClings, "Tile");
@@ -87,20 +94,25 @@
 			mapWidth = parseInt(mapCode.substring(firstSep + 1, secSep));
 			mapHeight = parseInt(mapCode.substring(0, firstSep));
 			
-			if (startX == -1 && startY == -1) {
-				var ind1 = mapCode.indexOf("(") + 1;
-				var ind2 = mapCode.indexOf(",", ind1);
-				startX	= parseInt(mapCode.substring(ind1, ind2));
-				
-				ind1	= ind2 + 1;
-				ind2	= mapCode.indexOf(")");
-				startY	= parseInt(mapCode.substring(ind1, ind2));
-			}
+			var ind1 = mapCode.indexOf("(") + 1;
+			var ind2 = mapCode.indexOf(",", ind1);
+			startX	= parseInt(mapCode.substring(ind1, ind2));
+			
+			ind1	= ind2 + 1;
+			ind2	= mapCode.indexOf(")");
+			startY	= parseInt(mapCode.substring(ind1, ind2));
+			
 			startX = (startX + .5) * TileMap.TILE_SIZE;
 			startY = (startY + .5) * TileMap.TILE_SIZE;
 		}
-		public static function setHeroPosition(hero:GameUnit) {
+		public static function setHeroPosition(hero:GameUnit, partner:GameUnit) {
+			ScreenRect.setX(startX - ScreenRect.STAGE_WIDTH / 2);
+			ScreenRect.setY(startY - ScreenRect.STAGE_HEIGHT / 2);
 			
+			hero.x = startX - TileMap.TILE_SIZE / 2;
+			hero.y = startY;
+			partner.x = startX + TileMap.TILE_SIZE / 2;
+			partner.y = startY;
 		}
 
 		public static function setMapObjects(mapNumber:int) {
@@ -147,9 +159,11 @@
 		public static function scrollHandler(e) {
 			// follow player
 			if (!scrolling) {
-				ScreenRect.setX(trackUnit.x - 640 / 2);
-				ScreenRect.setY(Math.max(trackUnit.y - 480 / 2,0));
-				//ScreenRect.easeScreen(new Point(Unit.xpos - WIDTH / 2, Unit.ypos - HEIGHT));
+				//ScreenRect.setX(trackUnit.x - 640 / 2);
+				//ScreenRect.setY(Math.max(trackUnit.y - 480 / 2,0));
+				var sx = (trackUnit1.x + trackUnit2.x - 640) / 2;
+				var sy = (trackUnit1.y + trackUnit2.y - 480) / 2;
+				ScreenRect.easeScreen(new Point(sx, sy));
 				
 				checkScreenRect();
 			}
@@ -173,8 +187,8 @@
 							break;
 					}
 					
-					ScreenRect.setX(ScreenRect.getX() + xdist - 640 / 2);
-					ScreenRect.setY(Math.max(ScreenRect.getY() + xdist - 480 / 2, 0));
+					ScreenRect.setX(ScreenRect.getX() + xdist - ScreenRect.STAGE_WIDTH / 2);
+					ScreenRect.setY(Math.max(ScreenRect.getY() + xdist - ScreenRect.STAGE_HEIGHT / 2, 0));
 					
 					checkScreenRect();
 					

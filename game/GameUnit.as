@@ -36,7 +36,7 @@
 			commands = new Array  ;
 			pauseAction = false;
 
-			speed = 5;
+			speed = 150;
 			path = new Array();
 			moveDir = 0;	// right
 
@@ -78,17 +78,20 @@
 		 * @paramtargetY
 		 */
 		public function moveTo(targetX:Number, targetY:Number):void {
-			path = new Array();
 			
 			// show animation#############################
 			
 			if (TileMap.hitNonpass(targetX, targetY)) {
 				// pressed on non-moveable place
 			} else {
-				var startTile:Point= new Point(Math.floor(x / 32), Math.floor(y / 32));
-				var destTile:Point = new Point(Math.floor(targetX / 32), Math.floor(targetY / 32));
+				var startTile:Point= new Point(Math.floor(x / TileMap.TILE_SIZE), Math.floor(y / TileMap.TILE_SIZE));
+				var destTile:Point = new Point(Math.floor(targetX / TileMap.TILE_SIZE), Math.floor(targetY / TileMap.TILE_SIZE));
 
-				path = smoothPath(TileMap.findPath(TileMap.map, startTile, destTile, false, true));
+				var npath = smoothPath(TileMap.findPath(TileMap.map, startTile, destTile, false, true));
+				if (npath.length == 0)
+					return;
+				
+				path = npath;
 				
 				// convert tiles to pixels
 				for (var a = 0; a < path.length; a++) {
@@ -96,9 +99,12 @@
 					path[a].y = (path[a].y + .5) * TileMap.TILE_SIZE;
 				}
 				
+				path[0].x = x;
+				path[0].y = y;
+				
 				// replace last point with actual destination
 				path.pop();
-				path.push(targetX, targetY);
+				path.push(new Point(targetX, targetY));
 			}
 		}
 

@@ -39,14 +39,18 @@
 		//----------------TILES-----------------
 		public static function getTileTypes(i:Number) {
 			switch (i) {
-			case 0: return new Array("w", "f");
-			case 1: return new Array("w", "f");
-			case 2: return new Array("w", "f");
-			case 3: return new Array("w", "f");
+			case 0: return new Array("s", "f", "w", "w", "w", "w");
+			case 1: return new Array("s", "f", "w", "w", "w", "w");
+			case 2: return new Array("s", "f", "w", "w", "w", "w");
+			case 3: return new Array("s", "f", "w", "w", "w", "w");
 			}
 		}
 		public static function getTileset(id:int):Tileset {
-			return tilesetInfo[id];
+			var s = new Tileset();
+			s.ID = id;
+			s.tileTypes = getTileTypes(id);
+			return s
+			//return tilesetInfo[id];
 		}
 		/*public function loadData() {
 			this.loadObject(tilesetsURL, handleLoadedTilesets);
