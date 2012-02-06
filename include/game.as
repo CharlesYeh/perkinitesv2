@@ -1,13 +1,17 @@
 ﻿import util.KeyDown;
 import game.MapManager;
 import game.GameUnit;
+import game.Perkinite;
 import tileMapper.ScreenRect;
 import flash.ui.Keyboard;
 
 KeyDown.init(stage);
 
-var player = new GameUnit();
-var partner= new GameUnit();
+/*var player = new GameUnit();
+var partner= new GameUnit();*/
+
+var player = new Perkinite(0);
+var partner= new Perkinite(1);
 
 // setup map
 addChild(MapManager.mapClip);
