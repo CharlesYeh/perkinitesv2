@@ -20,6 +20,7 @@ MapManager.addToMapClip(player);
 MapManager.addToMapClip(partner);
 
 addEventListener(MouseEvent.CLICK, gameMoverHandler);
+addEventListener(Event.ENTER_FRAME, gameRunnerHandler);
 
 init();
 
@@ -29,4 +30,19 @@ function init() {
 function gameMoverHandler(e) {
 	player.moveTo(mouseX + ScreenRect.getX(), mouseY + ScreenRect.getY());
 	partner.moveTo(mouseX + ScreenRect.getX(), mouseY + ScreenRect.getY());
+}
+function gameRunnerHandler(e) {
+	if (KeyDown.keyIsDown(Keyboard.A)) {
+		player.castAbility(0);
+	}
+	if (KeyDown.keyIsDown(Keyboard.S)) {
+		player.castAbility(1);
+	}
+	if (KeyDown.keyIsDown(Keyboard.D)) {
+		partner.castAbility(0);
+	}
+	if (KeyDown.keyIsDown(Keyboard.F)) {
+		partner.castAbility(1);
+	}
+	
 }

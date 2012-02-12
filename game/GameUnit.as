@@ -25,7 +25,7 @@
 		/*** Movement ***/
 		public var speed:Number;
 		public var path:Array = new Array();
-		public var moveDir:int;
+		public var moveDir:int;	// 0=right, 1=up, 2=left, 3=down
 
 		/*** Dialogue ***/
 		public var dialogueName:String;
@@ -46,28 +46,7 @@
 
 			addEventListener(Event.ENTER_FRAME, moveHandler);
 		}
-
-		/**
-		 * Gets the animation label for the direction and action.
-		 */
-		public function getAnimLabel(moveDir:int, KO:Boolean):String {
-			var label = "";
-			switch (moveDir) {
-				case 0:
-					label = "_walkRight";
-					break;
-				case 1:
-					label = "_walkUp";
-					break;
-				case 2:
-					label = "_walkLeft";
-					break;
-				case 3:
-					label = "_walkDown";
-					break;
-			}
-			return label;
-		}
+		
 		//----------------------------------MOVEMENT----------------------------------
 		
 		/**
@@ -174,6 +153,7 @@
 			else {
 				// keep moving towards path[0]
 				var radian = Math.atan2(path[0].y - y, path[0].x - x);
+				moveDir = (-Math.floor(radian / (Math.PI / 2) + .5) + 4) % 4;
 				
 				//############# show animation
 				x += speed * Math.cos(radian) / 24;
@@ -182,11 +162,9 @@
 		}
 		public function turnLeft() {
 			moveDir = ++moveDir % 4;
-			//####### SHOW ANIMATION
 		}
 		public function turnRight() {
 			moveDir = (moveDir == 0) ? 3 : (moveDir - 1);
-			//####### SHOW ANIMATION
 		}
 
 		public function eraseObject() {
