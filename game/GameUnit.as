@@ -78,8 +78,7 @@
 					path[a].y = (path[a].y + .5) * TileMap.TILE_SIZE;
 				}
 				
-				path[0].x = x;
-				path[0].y = y;
+				path.shift();
 				
 				// replace last point with actual destination
 				path.pop();

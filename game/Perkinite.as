@@ -3,6 +3,7 @@
 	import flash.net.URLRequest;
 	import flash.events.Event;
 	import flash.display.MovieClip;
+	import flash.geom.Point;
 
 	public class Perkinite extends GameUnit {
 		static const DIRECTIONS:Array = new Array("east", "north", "west", "south");
@@ -20,6 +21,12 @@
 		var animClip:MovieClip;
 		var loaded = false;
 		
+		var ID:int;
+		//---------ABILITY VARS---------
+		var castAbilityID:int;
+		var castMousePoint:Point;
+		//-------END ABILITY VARS-------
+		
 		//----------FRAME VARS----------
 		var prevLabel:String;
 		var usingAbility:Boolean	= false;
@@ -32,11 +39,13 @@
 			// constructor code
 			super();
 			
+			ID = id;
+			
 			animLabel = ANIM_WALKING;
 			
 			// load swf
 			swf = new Loader();
-			swf.load(new URLRequest("_sprites/JT.swf"));
+			swf.load(new URLRequest(CharacterDatabase.getSprite(id)));
 			addChild(swf);
 			
 			swf.contentLoaderInfo.addEventListener(Event.COMPLETE, comp);
@@ -51,20 +60,18 @@
 			setAnimLabel(ANIM_WALKING);
 			updateDirection(0);
 			
-			swf.content.char.beginAbility		= beginAbility;
 			swf.content.char.endAbility			= endAbility;
 			swf.content.char.disableMovement	= disableMovement;
 			swf.content.char.enableMovement		= enableMovement;
 			swf.content.char.beginForwardMovement	= beginForwardMovement;
 			swf.content.char.stopForwardMovement	= stopForwardMovement;
 			swf.content.char.dealDamage			= dealDamage;
+			swf.content.char.applyBuffs			= applyBuffs;
+			swf.content.char.shootSkillshot		= shootSkillshot;
+			swf.content.char.teleport			= teleport;
 		}
 		
 		//--------------FRAME FUNCTIONS--------------
-		public function beginAbility() {
-			usingAbility = true;
-			prevLabel = animLabel;
-		}
 		public function endAbility() {
 			usingAbility = false;
 			setAnimLabel(prevLabel);
@@ -84,10 +91,43 @@
 		public function dealDamage() {
 			
 		}
+		public function applyBuffs() {
+			
+		}
+		public function shootSkillshot() {
+			
+		}
+		public function teleport() {
+			
+		}
 		//------------END FRAME FUNCTIONS------------
-		
-		public function castAbility(id:int) {
-			switch (id) {
+		public function setTarget(unit:GameUnit) {
+			startCastAnimation(castAbilityID);
+		}
+		public function castAbility(abID:int, mousePos:Point) {
+			if (usingAbility)
+				return;
+			
+			switch (AbilityDatabase.getTargetType(ID, abID)) {
+			case AbilityDatabase.ATKTYPE_TARGET:
+				// wait for click on target
+				//castAbilityID = abID;
+				startCastAnimation(abID);
+				break;
+			case AbilityDatabase.ATKTYPE_POINT:
+			case AbilityDatabase.ATKTYPE_AOE:
+			case AbilityDatabase.ATKTYPE_SSHOT:
+				// attack right away
+				castMousePoint = mousePos;
+				startCastAnimation(abID);
+				break;
+			}
+		}
+		function startCastAnimation(abID:int) {
+			usingAbility = true;
+			prevLabel = animLabel;
+			
+			switch (abID) {
 			case 0:
 				setAnimLabel(ANIM_ABILITY1);
 				break;
