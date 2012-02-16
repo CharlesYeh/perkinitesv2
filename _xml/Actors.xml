@@ -2,66 +2,81 @@
 <Actors xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Actor>
 		<Name>Charles Y.</Name>
-		<Health>75+8</Health>
-		<Attack>3+1</Attack>
+		<Sprite>CY</Sprite>
+		<Health Value="75" Increase="8" />
+		<Attack Value="3" Increase="1" />
 		<Defense>0</Defense>
-		<Speed>360+5</Speed>
+		<Speed Value="360" Increase="5" />
 		<Weapon>Shinai</Weapon>
+		<Ability>
+			<Type>Point</Type>
+			<Cooldown Value="30" />
+			<Cast>1:0:Line:40:32:80:Invis</Cast>
+			<ForwardSpeed>500</MoveForward>
+			<Damage>5+3</Damage>
+		</Ability>
 	</Actor>
 	<Actor>
 		<Name>Nate M.</Name>
-		<Health>100+9</Health>
-		<Attack>5+1</Attack>
+		<Sprite>NM</Sprite>
+		<Health Value="100" Increase="9" />
+		<Attack Value="5" Increase="1" />
 		<Defense>0</Defense>
-		<Speed>264+5</Speed>
+		<Speed Value="264" Increase="5" />
 		<Weapon>Claws</Weapon>
 	</Actor>
 	<Actor>
 		<Name>C. Kata</Name>
-		<Health>75+7</Health>
-		<Attack>4+1</Attack>
+		<Sprite>CK</Sprite>
+		<Health Value="75" Increase="7" />
+		<Attack Value="4" Increase="1" />
 		<Defense>0</Defense>
-		<Speed>288+5</Speed>
+		<Speed Value="288" Increase="5" />
 		<Weapon>Railgun</Weapon>
 	</Actor>
 	<Actor>
 		<Name>Cia M.</Name>
-		<Health>60+6</Health>
-		<Attack>2+1</Attack>
+		<Sprite>CM</Sprite>
+		<Health Value="60" Increase="6" />
+		<Attack Value="2" Increase="1" />
 		<Defense>0</Defense>
-		<Speed>312+5</Speed>
+		<Speed Value="312" Increase="5" />
 		<Weapon>Magic Wand</Weapon>
 	</Actor>
 	<Actor>
 		<Name>Eric H.</Name>
-		<Health>110+6</Health>
-		<Attack>5+1.5</Attack>
+		<Sprite>EH</Sprite>
+		<Health Value="110" Increase="6" />
+		<Attack Value="5" Increase="1.5" />
 		<Defense>0</Defense>
-		<Speed>360+5</Speed>
+		<Speed Value="360" Increase="5" />
 		<Weapon>Tentacles</Weapon>
 	</Actor>
 	<Actor>
 		<Name>John T.</Name>
-		<Health>65+5</Health>
-		<Attack>3+1</Attack>
+		<Sprite>JT</Sprite>
+		<Health Value="65" Increase="6" />
+		<Attack Value="3" Increase="1" />
 		<Defense>0</Defense>
-		<Speed>432+5</Speed>
+		<Speed Value="432" Increase="5" />
 		<Weapon>Hoverpad</Weapon>
 	</Actor>
 	<Actor>
 		<Name>Huong V.</Name>
-		<Health>70+6</Health>
-		<Attack>3+1.5</Attack>
+		<Sprite>HV</Sprite>
+		<Health Value="70" Increase="6" />
+		<Attack Value="3" Increase="1.5" />
 		<Defense>0</Defense>
-		<Speed>312+5</Speed>
+		<Speed Value="312" Increase="5" />
 		<Weapon>Megaphone</Weapon>
 	</Actor>
 	<Actor>
 		<Name>Huilian Q.</Name>
-		<Health>70+5.5</Health>
-		<Attack>3+1</Attack>
+		<Sprite>HQ</Sprite>
+		<Health Value="70" Increase="5.5" />
+		<Attack Value="3" Increase="1" />
 		<Defense>0</Defense>
-		<Speed>336+5</Speed>
+		<Speed Value="336" Increase="5" />
 		<Weapon>Microphone</Weapon>
 	</Actor>
 </Actors>

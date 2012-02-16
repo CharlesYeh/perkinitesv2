@@ -133,7 +133,7 @@ function update(display:MovieClip, page:Number, index:Number) {
 	display.page4.visible = (page == 3);
 	
 	// update data inside page
-	switch (currentFrame) {
+	switch (page) {
 		case 0 :
 			display.portrait.gotoAndStop(index + 1);
 			break;
