@@ -1,15 +1,18 @@
 ﻿package game {
+	import flash.net.URLRequest;
+	import db.ActorDatabase;
 	
 	public class Perkinite extends StatUnit {
-		
 		public function Perkinite(id) {
-			// constructor code
 			super();
 			
 			ID = id;
+			
+			// load swf
+			loadSwf();
 		}
 		override protected function getSprite() {
-			return new URLRequest(CharacterDatabase.getCharSprite(id));
+			return new URLRequest(ActorDatabase.getCharSprite(ID));
 		}
 	}
 	

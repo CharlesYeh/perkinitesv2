@@ -75,8 +75,9 @@ function chooseTeam(team) {
 	faceIcon1.gotoAndStop(chosenTeam + 1);
 	faceIcon2.gotoAndStop(chosenTeam + 2);
 	
-	update(playerDisplay1, 0, chosenTeam);
-	update(playerDisplay2, 0, chosenTeam + 1);
+	var frame = playerDisplay1.currentFrame - 1;
+	update(playerDisplay1, frame, chosenTeam);
+	update(playerDisplay2, frame, chosenTeam + 1);
 }
 
 function startLevel(e) {
@@ -98,7 +99,7 @@ function clearCharSelect() {
 	beginButton.removeEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
 	beginButton.removeEventListener(MouseEvent.MOUSE_OUT, entryOutHandler);
 	beginButton.removeEventListener(MouseEvent.CLICK, startLevel);
-	stage.addEventListener(KeyboardEvent.KEY_DOWN, charKeyHandler);
+	stage.removeEventListener(KeyboardEvent.KEY_DOWN, charKeyHandler);
 	
 	for (var e in entries) {
 		var entry = entries[e];
@@ -116,7 +117,7 @@ function clearCharSelect() {
 
 // update display
 function update(display:MovieClip, page:Number, index:Number) {
-	display.gotoAndStop(page);
+	display.gotoAndStop(page + 1);
 	
 	// update tabs
 	for (var a = 0; a < 4; a++) {

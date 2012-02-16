@@ -4,8 +4,10 @@
 	import flash.events.Event;
 	import flash.display.MovieClip;
 	import flash.geom.Point;
+	
+	import db.AbilityDatabase;
 
-	public class Perkinite extends GameUnit {
+	public class StatUnit extends GameUnit {
 		
 		static const DIRECTIONS:Array = new Array("east", "north", "west", "south");
 
@@ -41,14 +43,12 @@
 		
 		//--------END FRAME VARS--------
 		
-		public function Perkinite() {
+		public function StatUnit() {
 			// constructor code
 			super();
 			
 			animLabel = ANIM_WALKING;
-			
-			// load swf
-			loadSwf();
+			ID = 0;
 		}
 		protected function loadSwf() {
 			swf = new Loader();
@@ -58,7 +58,7 @@
 			swf.contentLoaderInfo.addEventListener(Event.COMPLETE, completeLoad);
 		}
 		protected function getSprite() {
-			return new URLRequest(CharacterDatabase.getSprite(id));
+			//return new URLRequest(CharacterDatabase.getSprite(ID));
 		}
 		function completeLoad(e) {
 			loaded = true;

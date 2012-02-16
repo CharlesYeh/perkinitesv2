@@ -1,5 +1,6 @@
 ﻿package game {
 	import flash.events.Event;
+	import db.EnemyDatabase;
 	
 	public class AIUnit extends StatUnit{
 		public function AIUnit(id) {
@@ -7,11 +8,14 @@
 			
 			ID = id;
 			
+			// load swf
+			loadSwf();
+			
 			// TODO: remove event listener
 			addEventListener(Event.ENTER_FRAME, runnerAI);
 		}
 		override protected function getSprite() {
-			return new URLRequest(CharacterDatabase.getCharSprite(id));
+			return new URLRequest(EnemyDatabase.getEnemySprite(ID));
 		}
 		function runnerAI(e:Event) {
 			

@@ -1,5 +1,1 @@
-----------Actors----------
-
-
-
----------Abilities---------
+Maps contain cutscene information

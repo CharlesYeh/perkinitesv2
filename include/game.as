@@ -11,8 +11,8 @@ KeyDown.init(stage);
 /*var player = new GameUnit();
 var partner= new GameUnit();*/
 
-var player = new Perkinite(0);
-var partner= new Perkinite(1);
+var player = new Perkinite(chosenTeam);
+var partner= new Perkinite(chosenTeam + 1);
 
 // setup map
 addChild(MapManager.mapClip);
