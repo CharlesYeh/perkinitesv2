@@ -12,7 +12,7 @@
 			<Type>Point</Type>
 			<Cooldown Value="30" />
 			<Cast>1:0:Line:40:32:80:Invis</Cast>
-			<ForwardSpeed>500</MoveForward>
+			<ForwardSpeed>500</ForwardSpeed>
 			<Damage>5+3</Damage>
 		</Ability>
 	</Actor>

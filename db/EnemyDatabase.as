@@ -6,7 +6,7 @@
 			// constructor code
 		}
 		public static function getEnemySprite(id:int) {
-			return "_sprites/enemy.swf";
+			return "_sprites/JT.swf";
 		}
 	}
 	

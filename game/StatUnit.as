@@ -125,7 +125,6 @@
 				startCastAnimation(abID);
 				break;
 			case AbilityDatabase.ATKTYPE_POINT:
-			case AbilityDatabase.ATKTYPE_AOE:
 			case AbilityDatabase.ATKTYPE_SSHOT:
 				// attack right away
 				castMousePoint = mousePos;

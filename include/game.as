@@ -1,6 +1,7 @@
 ﻿import util.KeyDown;
 import game.MapManager;
 import game.GameUnit;
+import game.AIUnit;
 import game.Perkinite;
 import tileMapper.ScreenRect;
 import flash.ui.Keyboard;
@@ -15,6 +16,8 @@ var partner= new GameUnit();*/
 var player = new Perkinite(chosenTeam);
 var partner= new Perkinite(chosenTeam + 1);
 
+AIUnit.setTargets(new Array(player, partner));
+
 // setup map
 addChild(MapManager.mapClip);
 MapManager.loadMap(0, player, partner);
@@ -27,6 +30,15 @@ init();
 
 function init() {
 	MapManager.setHeroPosition(player, partner);
+	
+	// create enemies?
+	createEnemy(0);
+}
+function createEnemy(id:int) {
+	var u = new AIUnit(id);
+	u.x = 1500;
+	u.y = 400;
+	MapManager.addToMapClip(u);
 }
 function gameRunnerHandler(e) {
 	if (KeyDown.keyIsDown(KeyDown.MOUSE)) {

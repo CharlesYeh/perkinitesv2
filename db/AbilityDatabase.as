@@ -1,4 +1,5 @@
 ﻿package db {
+	import flash.events.Event;
 	
 	public class AbilityDatabase {
 		
@@ -25,7 +26,7 @@
 		}
 		static function completeLoad(e:Event) {
 			var dat = new XML(e.target.data);
-			
+			/*
 			names	= new Array();
 			sprites	= new Array();
 			hp		= new Array();
@@ -46,7 +47,7 @@
 				speed.push(	parseInt(node.Speed.attribute("Value")));
 				speedup.push(parseInt(node.Speed.attribute("Increase")));
 				wpn.push(	node.Weapon);
-			}
+			}*/
 		}
 	}
 	
