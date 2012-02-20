@@ -50,56 +50,6 @@
 		</Ability>
 	</Actor>
 	<Actor>
-		<Name>C. Kata</Name>
-		<Sprite>CK</Sprite>
-		<Health Value="75" Increase="7" />
-		<Attack Value="4" Increase="1" />
-		<Defense>0</Defense>
-		<Speed Value="288" Increase="5" />
-		<Weapon>Railgun</Weapon>
-		<Ability>
-			<Name>Kendo Strike</Name>
-			<Type>Point</Type>
-			<Icon>_icons/Icon - Ninjitsu.png</Icon>
-			<MovementSpeed>500</MovementSpeed>
-			<Cooldown Value="30" />
-			<Damage Value="5" Increase="3"/>
-		</Ability>
-		<Ability>
-			<Name>Kendo Strike</Name>
-			<Type>Point</Type>
-			<Icon>_icons/Icon - Ninjitsu.png</Icon>
-			<MovementSpeed>500</MovementSpeed>
-			<Cooldown Value="30" />
-			<Damage Value="5" Increase="3"/>
-		</Ability>
-	</Actor>
-	<Actor>
-		<Name>Cia M.</Name>
-		<Sprite>CM</Sprite>
-		<Health Value="60" Increase="6" />
-		<Attack Value="2" Increase="1" />
-		<Defense>0</Defense>
-		<Speed Value="312" Increase="5" />
-		<Weapon>Magic Wand</Weapon>
-		<Ability>
-			<Name>Kendo Strike</Name>
-			<Type>Point</Type>
-			<Icon>_icons/Icon - Ninjitsu.png</Icon>
-			<MovementSpeed>500</MovementSpeed>
-			<Cooldown Value="30" />
-			<Damage Value="5" Increase="3"/>
-		</Ability>
-		<Ability>
-			<Name>Kendo Strike</Name>
-			<Type>Point</Type>
-			<Icon>_icons/Icon - Ninjitsu.png</Icon>
-			<MovementSpeed>500</MovementSpeed>
-			<Cooldown Value="30" />
-			<Damage Value="5" Increase="3"/>
-		</Ability>
-	</Actor>
-	<Actor>
 		<Name>Eric H.</Name>
 		<Sprite>EH</Sprite>
 		<Health Value="110" Increase="6" />
@@ -132,6 +82,56 @@
 		<Defense>0</Defense>
 		<Speed Value="432" Increase="5" />
 		<Weapon>Hoverpad</Weapon>
+		<Ability>
+			<Name>Kendo Strike</Name>
+			<Type>Point</Type>
+			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<MovementSpeed>500</MovementSpeed>
+			<Cooldown Value="30" />
+			<Damage Value="5" Increase="3"/>
+		</Ability>
+		<Ability>
+			<Name>Kendo Strike</Name>
+			<Type>Point</Type>
+			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<MovementSpeed>500</MovementSpeed>
+			<Cooldown Value="30" />
+			<Damage Value="5" Increase="3"/>
+		</Ability>
+	</Actor>
+	<Actor>
+		<Name>C. Kata</Name>
+		<Sprite>CK</Sprite>
+		<Health Value="75" Increase="7" />
+		<Attack Value="4" Increase="1" />
+		<Defense>0</Defense>
+		<Speed Value="288" Increase="5" />
+		<Weapon>Railgun</Weapon>
+		<Ability>
+			<Name>Kendo Strike</Name>
+			<Type>Point</Type>
+			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<MovementSpeed>500</MovementSpeed>
+			<Cooldown Value="30" />
+			<Damage Value="5" Increase="3"/>
+		</Ability>
+		<Ability>
+			<Name>Kendo Strike</Name>
+			<Type>Point</Type>
+			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<MovementSpeed>500</MovementSpeed>
+			<Cooldown Value="30" />
+			<Damage Value="5" Increase="3"/>
+		</Ability>
+	</Actor>
+	<Actor>
+		<Name>Cia M.</Name>
+		<Sprite>CM</Sprite>
+		<Health Value="60" Increase="6" />
+		<Attack Value="2" Increase="1" />
+		<Defense>0</Defense>
+		<Speed Value="312" Increase="5" />
+		<Weapon>Magic Wand</Weapon>
 		<Ability>
 			<Name>Kendo Strike</Name>
 			<Type>Point</Type>
