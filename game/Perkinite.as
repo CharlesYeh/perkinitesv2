@@ -7,6 +7,7 @@
 			super();
 			
 			ID = id;
+			setSpeed(ActorDatabase.getSpeed(ID));
 			
 			// load swf
 			loadSwf();

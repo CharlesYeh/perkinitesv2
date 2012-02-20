@@ -140,7 +140,6 @@ function update(display:MovieClip, page:Number, index:Number) {
 		case 1 :
 			// show stats
 			display.page2.HPCount.text = ActorDatabase.getHP(index) + "";
-			display.page2.APCount.text = ActorDatabase.getDmg(index) + "";
 			display.page2.SPCount.text = ActorDatabase.getSpeed(index) + "";
 			display.page2.weaponName.text = ActorDatabase.getWeapon(index);
 
@@ -148,25 +147,31 @@ function update(display:MovieClip, page:Number, index:Number) {
 			break;
 		case 2 :
 			// show AVAILABLE abilities
-			/*var basicAbilities = AbilityDatabase.getBasicAbilities(ActorDatabase.getName(index));
+			//var basicAbilities = AbilityDatabase.getBasicAbilities(ActorDatabase.getName(index));
 
-			for (var i = 0; i < icons.length; i++) {
-				if (i < basicAbilities.length) {
-					icons[i].useCount.visible = false;
-					icons[i].visible = true;
-					names[i].visible = true;
-					descriptions[i].visible = true;
-					icons[i].gotoAndStop(basicAbilities[i].index);
-					names[i].text = basicAbilities[i].Name;
-					descriptions[i].text = basicAbilities[i].getSpecInfo();
-					icons[i].gotoAndStop(basicAbilities[i].index);
-				} else {
-					break;
+			for (var i = 0; i < 4; i++) {
+				var r = display.page3["row" + i];
+				
+				if (i >= 2) {
+					r.visible = false;
+					continue;
 				}
+				
+				r.abilityName.text = AbilityDatabase.getName(index, i);
+				r.description.text = AbilityDatabase.getDescription(index, i);
+				r.icon.addChild(AbilityDatabase.getIcon(index, i));
+				
+				/*icons[i].useCount.visible = false;
+				names[i].visible = true;
+				descriptions[i].visible = true;
+				icons[i].gotoAndStop(basicAbilities[i].index);
+				names[i].text = basicAbilities[i].Name;
+				descriptions[i].text = basicAbilities[i].getSpecInfo();
+				icons[i].gotoAndStop(basicAbilities[i].index);*/
 			}
 
 			// hide advanced abilities
-			for (i; i < icons.length; i++) {
+			/*for (i; i < icons.length; i++) {
 				icons[i].gotoAndStop(1);
 				icons[i].useCount.visible = false;
 				icons[i].visible = false;

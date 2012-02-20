@@ -1,7 +1,12 @@
 ﻿package db {
 	import flash.events.Event;
+	import flash.xml.XMLNode;
+	import flash.display.Loader;
+	import flash.net.URLRequest;
 	
 	public class AbilityDatabase {
+		
+		public static var abilities:Object = new Object();
 		
 		public static const ATKTYPE_TARGET:int = 0;
 		public static const ATKTYPE_POINT:int	= 1;
@@ -21,33 +26,31 @@
 		public static function getTargetType(char:int, ability:int) {
 			return targetTypes[char][ability];
 		}
-		public static function loadXML(url:String) {
-			Database.loadXML(url, completeLoad);
-		}
-		static function completeLoad(e:Event) {
-			var dat = new XML(e.target.data);
-			/*
-			names	= new Array();
-			sprites	= new Array();
-			hp		= new Array();
-			hpup		= new Array();
-			dmg		= new Array();
-			dmgup	= new Array();
-			speed	= new Array();
-			speedup	= new Array();
-			wpn		= new Array();
+		
+		public static function addAbility(unitID:int, node) {
+			abilities[unitID] = new Array();
 			
-			for each (var node:XML in dat.Actor) {
-				names.push(	node.Name);
-				sprites.push(node.Sprite);
-				hp.push(	parseInt(node.Health.attribute("Value")));
-				hpup.push(	parseInt(node.Health.attribute("Increase")));
-				dmg.push(	parseInt(node.Attack.attribute("Value")));
-				dmgup.push(	parseInt(node.Attack.attribute("Increase")));
-				speed.push(	parseInt(node.Speed.attribute("Value")));
-				speedup.push(parseInt(node.Speed.attribute("Increase")));
-				wpn.push(	node.Weapon);
-			}*/
+			for (var d in node) {
+				var data = new Object();
+				var nodeData = node[d];
+				
+				var ic:Loader = new Loader();
+				ic.load(new URLRequest(nodeData.Icon));
+				
+				data.icon = ic;
+				data.name = nodeData.name;
+				data.description = "some description goes here";
+				abilities[unitID].push(data);
+			}
+		}
+		public static function getName(index:int, id:int) {
+			return abilities[index][id].name;
+		}
+		public static function getDescription(index:int, id:int) {
+			return "some description goes here";
+		}
+		public static function getIcon(index:int, id:int) {
+			return abilities[index][id].icon;
 		}
 	}
 	

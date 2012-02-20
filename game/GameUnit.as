@@ -165,6 +165,9 @@
 		public function turnRight() {
 			moveDir = (moveDir == 0) ? 3 : (moveDir - 1);
 		}
+		protected function setSpeed(s) {
+			speed = s;
+		}
 
 		public function eraseObject() {
 			if (dialogueTrigger == "Auto") {

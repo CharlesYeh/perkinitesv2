@@ -9,11 +9,20 @@
 		<Speed Value="360" Increase="5" />
 		<Weapon>Shinai</Weapon>
 		<Ability>
+			<Name>Kendo Strike</Name>
 			<Type>Point</Type>
+			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
-			<Cast>1:0:Line:40:32:80:Invis</Cast>
-			<ForwardSpeed>500</ForwardSpeed>
-			<Damage>5+3</Damage>
+			<Damage Value="5" Increase="3"/>
+		</Ability>
+		<Ability>
+			<Name>Ninjitsu</Name>
+			<Type>Point</Type>
+			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<MovementSpeed>500</MovementSpeed>
+			<Cooldown Value="30" />
+			<Damage Value="5" Increase="3"/>
 		</Ability>
 	</Actor>
 	<Actor>
@@ -24,6 +33,21 @@
 		<Defense>0</Defense>
 		<Speed Value="264" Increase="5" />
 		<Weapon>Claws</Weapon>
+		<Ability>
+			<Name>Claw Attack</Name>
+			<Type>Point</Type>
+			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<MovementSpeed>500</MovementSpeed>
+			<Cooldown Value="30" />
+			<Damage Value="5" Increase="3"/>
+		</Ability>
+		<Ability>
+			<Type>Hulk Rage</Type>
+			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<MovementSpeed>500</MovementSpeed>
+			<Cooldown Value="30" />
+			<Damage Value="5" Increase="3"/>
+		</Ability>
 	</Actor>
 	<Actor>
 		<Name>C. Kata</Name>
@@ -33,6 +57,22 @@
 		<Defense>0</Defense>
 		<Speed Value="288" Increase="5" />
 		<Weapon>Railgun</Weapon>
+		<Ability>
+			<Name>Kendo Strike</Name>
+			<Type>Point</Type>
+			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<MovementSpeed>500</MovementSpeed>
+			<Cooldown Value="30" />
+			<Damage Value="5" Increase="3"/>
+		</Ability>
+		<Ability>
+			<Name>Kendo Strike</Name>
+			<Type>Point</Type>
+			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<MovementSpeed>500</MovementSpeed>
+			<Cooldown Value="30" />
+			<Damage Value="5" Increase="3"/>
+		</Ability>
 	</Actor>
 	<Actor>
 		<Name>Cia M.</Name>
@@ -42,6 +82,22 @@
 		<Defense>0</Defense>
 		<Speed Value="312" Increase="5" />
 		<Weapon>Magic Wand</Weapon>
+		<Ability>
+			<Name>Kendo Strike</Name>
+			<Type>Point</Type>
+			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<MovementSpeed>500</MovementSpeed>
+			<Cooldown Value="30" />
+			<Damage Value="5" Increase="3"/>
+		</Ability>
+		<Ability>
+			<Name>Kendo Strike</Name>
+			<Type>Point</Type>
+			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<MovementSpeed>500</MovementSpeed>
+			<Cooldown Value="30" />
+			<Damage Value="5" Increase="3"/>
+		</Ability>
 	</Actor>
 	<Actor>
 		<Name>Eric H.</Name>
@@ -51,6 +107,22 @@
 		<Defense>0</Defense>
 		<Speed Value="360" Increase="5" />
 		<Weapon>Tentacles</Weapon>
+		<Ability>
+			<Name>Kendo Strike</Name>
+			<Type>Point</Type>
+			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<MovementSpeed>500</MovementSpeed>
+			<Cooldown Value="30" />
+			<Damage Value="5" Increase="3"/>
+		</Ability>
+		<Ability>
+			<Name>Kendo Strike</Name>
+			<Type>Point</Type>
+			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<MovementSpeed>500</MovementSpeed>
+			<Cooldown Value="30" />
+			<Damage Value="5" Increase="3"/>
+		</Ability>
 	</Actor>
 	<Actor>
 		<Name>John T.</Name>
@@ -60,6 +132,22 @@
 		<Defense>0</Defense>
 		<Speed Value="432" Increase="5" />
 		<Weapon>Hoverpad</Weapon>
+		<Ability>
+			<Name>Kendo Strike</Name>
+			<Type>Point</Type>
+			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<MovementSpeed>500</MovementSpeed>
+			<Cooldown Value="30" />
+			<Damage Value="5" Increase="3"/>
+		</Ability>
+		<Ability>
+			<Name>Kendo Strike</Name>
+			<Type>Point</Type>
+			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<MovementSpeed>500</MovementSpeed>
+			<Cooldown Value="30" />
+			<Damage Value="5" Increase="3"/>
+		</Ability>
 	</Actor>
 	<Actor>
 		<Name>Huong V.</Name>
@@ -69,6 +157,22 @@
 		<Defense>0</Defense>
 		<Speed Value="312" Increase="5" />
 		<Weapon>Megaphone</Weapon>
+		<Ability>
+			<Name>Kendo Strike</Name>
+			<Type>Point</Type>
+			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<MovementSpeed>500</MovementSpeed>
+			<Cooldown Value="30" />
+			<Damage Value="5" Increase="3"/>
+		</Ability>
+		<Ability>
+			<Name>Kendo Strike</Name>
+			<Type>Point</Type>
+			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<MovementSpeed>500</MovementSpeed>
+			<Cooldown Value="30" />
+			<Damage Value="5" Increase="3"/>
+		</Ability>
 	</Actor>
 	<Actor>
 		<Name>Huilian Q.</Name>
@@ -78,5 +182,21 @@
 		<Defense>0</Defense>
 		<Speed Value="336" Increase="5" />
 		<Weapon>Microphone</Weapon>
+		<Ability>
+			<Name>Kendo Strike</Name>
+			<Type>Point</Type>
+			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<MovementSpeed>500</MovementSpeed>
+			<Cooldown Value="30" />
+			<Damage Value="5" Increase="3"/>
+		</Ability>
+		<Ability>
+			<Name>Kendo Strike</Name>
+			<Type>Point</Type>
+			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<MovementSpeed>500</MovementSpeed>
+			<Cooldown Value="30" />
+			<Damage Value="5" Increase="3"/>
+		</Ability>
 	</Actor>
 </Actors>
