@@ -11,6 +11,9 @@
 			
 			ID = id;
 			
+			healthPoints = healthMax = EnemyDatabase.getHP(ID);
+			setSpeed(EnemyDatabase.getSpeed(ID));
+			
 			// load swf
 			loadSwf();
 			
@@ -21,7 +24,7 @@
 			targets = t;
 		}
 		override protected function getSprite() {
-			return new URLRequest(EnemyDatabase.getEnemySprite(ID));
+			return new URLRequest(EnemyDatabase.getSprite(ID));
 		}
 		
 		// just moves to player if player is in range

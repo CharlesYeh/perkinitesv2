@@ -7,6 +7,8 @@
 			super();
 			
 			ID = id;
+			
+			healthPoints = healthMax = ActorDatabase.getHP(ID);
 			setSpeed(ActorDatabase.getSpeed(ID));
 			
 			// load swf

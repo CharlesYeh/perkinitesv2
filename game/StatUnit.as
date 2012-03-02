@@ -28,6 +28,7 @@
 		var ID:int;
 		var healthMax:Number;
 		var healthPoints:Number;
+		var healthbar:MovieClip;
 		//--------END STATS VARS-------
 		
 		//---------ABILITY VARS---------
@@ -49,6 +50,26 @@
 			
 			animLabel = ANIM_WALKING;
 			ID = 0;
+			
+			// THESE SHOULD BE OVERRIDEN IN SUBCLASSES
+			healthPoints = healthMax = 100;
+			
+			// draw health bar
+			healthbar = new MovieClip();
+			addChild(healthbar);
+			drawHealthbar();
+		}
+		function drawHealthbar() {
+			var WIDTH = 50;
+			var sx = -WIDTH/2;
+			
+			healthbar.graphics.clear();
+			healthbar.graphics.lineStyle(1, 0);
+			healthbar.graphics.drawRect(sx, 30, WIDTH, 5);
+			
+			healthbar.graphics.beginFill(0x33FF33, .7);
+			healthbar.graphics.drawRect(sx, 30, WIDTH * healthPoints / healthMax, 5);
+			healthbar.graphics.endFill();
 		}
 		protected function loadSwf() {
 			swf = new Loader();
