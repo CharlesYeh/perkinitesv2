@@ -11,7 +11,7 @@
 		<Ability>
 			<Name>Kendo Strike</Name>
 			<Type>Point</Type>
-			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<Icon>_icons/Icon - Kendo Strike.png</Icon>
 			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
@@ -36,14 +36,14 @@
 		<Ability>
 			<Name>Claw Attack</Name>
 			<Type>Point</Type>
-			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<Icon>_icons/Icon - Claw Attack.png</Icon>
 			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
 		</Ability>
 		<Ability>
 			<Type>Hulk Rage</Type>
-			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<Icon>_icons/Icon - Shopping Spree.png</Icon>
 			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
@@ -60,7 +60,7 @@
 		<Ability>
 			<Name>Kendo Strike</Name>
 			<Type>Point</Type>
-			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<Icon>_icons/Icon - Perk-kulate.png</Icon>
 			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
@@ -68,7 +68,7 @@
 		<Ability>
 			<Name>Kendo Strike</Name>
 			<Type>Point</Type>
-			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<Icon>_icons/Icon - Awkward Stare.png</Icon>
 			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
@@ -85,7 +85,7 @@
 		<Ability>
 			<Name>Kendo Strike</Name>
 			<Type>Point</Type>
-			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<Icon>_icons/Icon - Arrow Control.png</Icon>
 			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
@@ -93,7 +93,7 @@
 		<Ability>
 			<Name>Kendo Strike</Name>
 			<Type>Point</Type>
-			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<Icon>_icons/Icon - D4X.png</Icon>
 			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
@@ -110,7 +110,7 @@
 		<Ability>
 			<Name>Kendo Strike</Name>
 			<Type>Point</Type>
-			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<Icon>_icons/Icon - Railgun Attack.png</Icon>
 			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
@@ -118,7 +118,7 @@
 		<Ability>
 			<Name>Kendo Strike</Name>
 			<Type>Point</Type>
-			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<Icon>_icons/Icon - Eyelash Batting.png</Icon>
 			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
@@ -135,7 +135,7 @@
 		<Ability>
 			<Name>Kendo Strike</Name>
 			<Type>Point</Type>
-			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<Icon>_icons/Icon - Sedated Needles.png</Icon>
 			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
@@ -143,7 +143,7 @@
 		<Ability>
 			<Name>Kendo Strike</Name>
 			<Type>Point</Type>
-			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<Icon>_icons/Icon - Graceful Dodge.png</Icon>
 			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
@@ -160,7 +160,7 @@
 		<Ability>
 			<Name>Kendo Strike</Name>
 			<Type>Point</Type>
-			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<Icon>_icons/Icon - Frying Pan Smash.png</Icon>
 			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
@@ -168,7 +168,7 @@
 		<Ability>
 			<Name>Kendo Strike</Name>
 			<Type>Point</Type>
-			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<Icon>_icons/Icon - Ramen Boost.png</Icon>
 			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
@@ -193,7 +193,7 @@
 		<Ability>
 			<Name>Kendo Strike</Name>
 			<Type>Point</Type>
-			<Icon>_icons/Icon - Ninjitsu.png</Icon>
+			<Icon>_icons/Icon - Astral Arts.png</Icon>
 			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>

@@ -159,7 +159,11 @@ function update(display:MovieClip, page:Number, index:Number) {
 				
 				r.abilityName.text = AbilityDatabase.getName(index, i);
 				r.description.text = AbilityDatabase.getDescription(index, i);
-				r.icon.addChild(AbilityDatabase.getIcon(index, i));
+				var ic = AbilityDatabase.getIcon(index, i);
+				ic.x = 0.25;
+				ic.width = 32;
+				ic.height = 32;
+				r.icon.addChild(ic);
 				
 				/*icons[i].useCount.visible = false;
 				names[i].visible = true;
