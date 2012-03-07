@@ -17,7 +17,7 @@
 			return 100;
 		}
 		public static function getSprite(id:int) {
-			return "_sprites/enemy_Ira.swf";
+			return "_sprites/enemy_Drunk-Guy.swf";
 		}
 		static function completeLoad(e:Event) {
 			var dat = new XML(e.target.data);
