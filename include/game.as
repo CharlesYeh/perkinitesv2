@@ -46,7 +46,7 @@ function gameRunnerHandler(e) {
 		partner.moveTo(mouseX + ScreenRect.getX(), mouseY + ScreenRect.getY());
 	}
 	
-	var mpos:Point = new Point(mouseX, mouseY);
+	var mpos:Point = new Point(mouseX + ScreenRect.getX(), mouseY + ScreenRect.getY());
 	
 	if (KeyDown.keyIsDown(Keyboard.A)) {
 		player.castAbility(0, mpos);

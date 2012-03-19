@@ -119,7 +119,7 @@
 		public function stopForwardMovement() {
 			forwardMovement = false;
 		}
-		public function dealDamage() {
+		public function dealDamage(unit:StatUnit) {
 			
 		}
 		public function applyBuffs() {
@@ -144,6 +144,7 @@
 				// wait for click on target
 				//castAbilityID = abID;
 				startCastAnimation(abID);
+				castMousePoint = mousePos;
 				break;
 			case AbilityDatabase.ATKTYPE_POINT:
 			case AbilityDatabase.ATKTYPE_SSHOT:
@@ -173,9 +174,22 @@
 		/**
 		 * 
 		 * the movement handler
-		 * @parame - Event.ENTER_FRAME
+		 * @param e - Event.ENTER_FRAME
 		 */
 		override public function moveHandler(e:Event):void {
+			if (forwardMovement) {
+				// move forward!!
+				// TODO: USE ABILITY MOVEMENT SPEED
+				var mspeed = 30;
+				
+				var dx = castMousePoint.x - x;
+				var dy = castMousePoint.y - y;
+				trace(dx, dy);
+				var d = Math.sqrt(dx * dx + dy * dy) / mspeed;
+				dx = dx / d;
+				dy = dy / d;
+				teleportTo(x + dx, y + dy);
+			}
 			if (disabledMovement)
 				return;
 			

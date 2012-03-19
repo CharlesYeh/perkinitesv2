@@ -85,6 +85,15 @@
 				path.push(new Point(targetX, targetY));
 			}
 		}
+		public function teleportTo(targetX:int, targetY:int) {
+			if (TileMap.hitNonpass(targetX, targetY)) {
+				// invalid destination
+			}
+			else {
+				x = targetX;
+				y = targetY;
+			}
+		}
 
 		/**
 		 * 
