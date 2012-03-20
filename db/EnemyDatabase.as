@@ -3,6 +3,7 @@
 	
 	public class EnemyDatabase extends Database {
 		static var names:Array, sprites:Array, hp:Array, speed:Array;
+		static const ENEMY_ID_START = 10000;
 		
 		public static function loadXML(url:String) {
 			Database.loadXML(url, completeLoad);
@@ -24,7 +25,7 @@
 			hp		= new Array();
 			speed	= new Array();
 			
-			var id = 0;
+			var id = ENEMY_ID_START;
 			for each (var node:XML in dat.Enemy) {
 				names.push(	node.Name);
 				sprites.push(node.Sprite);
