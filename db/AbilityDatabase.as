@@ -44,6 +44,7 @@
 			}
 		}
 		public static function getName(index:int, id:int) {
+			trace(abilities[index][id].name);
 			return abilities[index][id].name;
 		}
 		public static function getDescription(index:int, id:int) {
