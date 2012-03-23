@@ -119,7 +119,7 @@
 		public function stopForwardMovement() {
 			forwardMovement = false;
 		}
-		public function dealDamage(unit:StatUnit) {
+		public function dealDamage() {
 			
 		}
 		public function applyBuffs() {

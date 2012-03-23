@@ -28,4 +28,18 @@
 			<Damage Value="5" />
 		</Ability>
 	</Enemy>
+	<Enemy>
+		<Name>Problem Set</Name>
+		<Sprite>enemy_Problem-Set</Sprite>
+		<Health Value="40" />
+		<Attack Value="5" />
+		<Defense>0</Defense>
+		<Speed Value="50" />
+		<Ability>
+			<Name>Math Problem</Name>
+			<Type>Projectile</Type>
+			<Cooldown Value="20" />
+			<Damage Value="5" />
+		</Ability>
+	</Enemy>
 </Enemies>
