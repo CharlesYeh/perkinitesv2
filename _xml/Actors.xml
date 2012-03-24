@@ -10,8 +10,9 @@
 		<Weapon>Shinai</Weapon>
 		<Ability>
 			<Name>Kendo Strike</Name>
-			<Type>Point</Type>
+			<Type>Skillshot</Type>
 			<Icon>_icons/Icon - Kendo Strike.png</Icon>
+			<Description>Dash forward, dealing damage to the first enemy contact.</Description>
 			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
@@ -20,7 +21,7 @@
 			<Name>Ninjitsu</Name>
 			<Type>Point</Type>
 			<Icon>_icons/Icon - Ninjitsu.png</Icon>
-			<MovementSpeed>500</MovementSpeed>
+			<Description>Teleport self and roommate to a target location.</Description>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
 		</Ability>
@@ -35,15 +36,17 @@
 		<Weapon>Claws</Weapon>
 		<Ability>
 			<Name>Claw Attack</Name>
-			<Type>Point</Type>
+			<Type>Target</Type>
 			<Icon>_icons/Icon - Claw Attack.png</Icon>
-			<MovementSpeed>500</MovementSpeed>
+			<Description>Deal heavy damage to a single targeted enemy.</Description>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
 		</Ability>
 		<Ability>
-			<Type>Hulk Rage</Type>
+			<Name>Shopping Spree</Name>
+			<Type>Skillshot</Type>
 			<Icon>_icons/Icon - Shopping Spree.png</Icon>
+			<Description>Dash forward, dealing damage to all enemies with which the shopping cart comes into contact.</Description>
 			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
@@ -58,18 +61,19 @@
 		<Speed Value="360" Increase="5" />
 		<Weapon>Tentacles</Weapon>
 		<Ability>
-			<Name>Kendo Strike</Name>
+			<Name>Perk-ulate</Name>
 			<Type>Point</Type>
 			<Icon>_icons/Icon - Perk-kulate.png</Icon>
+			<Description>Dash forward, dealing damage to all enemies at the target location.</Description>
 			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
 		</Ability>
 		<Ability>
-			<Name>Kendo Strike</Name>
-			<Type>Point</Type>
+			<Name>Awkward Stare</Name>
+			<Type>Skillshot</Type>
 			<Icon>_icons/Icon - Awkward Stare.png</Icon>
-			<MovementSpeed>500</MovementSpeed>
+			<Description>Stun all enemies by giving them an awkward Eric stare.</Description>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
 		</Ability>
@@ -83,17 +87,18 @@
 		<Speed Value="432" Increase="5" />
 		<Weapon>Hoverpad</Weapon>
 		<Ability>
-			<Name>Kendo Strike</Name>
-			<Type>Point</Type>
+			<Name>Arrow Control</Name>
+			<Type>Smartcast</Type>
 			<Icon>_icons/Icon - Arrow Control.png</Icon>
-			<MovementSpeed>500</MovementSpeed>
+			<Description>Four arrows appear that home towards the closest enemy.</Description>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
 		</Ability>
 		<Ability>
-			<Name>Kendo Strike</Name>
+			<Name>D4X</Name>
 			<Type>Point</Type>
 			<Icon>_icons/Icon - D4X.png</Icon>
+			<Description>Dash a distance, dealing damage to enemies you dash through.</Description>
 			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
@@ -108,17 +113,18 @@
 		<Speed Value="288" Increase="5" />
 		<Weapon>Railgun</Weapon>
 		<Ability>
-			<Name>Kendo Strike</Name>
-			<Type>Point</Type>
-			<Icon>_icons/Icon - Railgun Attack.png</Icon>
-			<MovementSpeed>500</MovementSpeed>
+			<Name>Railgun Striker</Name>
+			<Type>Target</Type>
+			<Icon>_icons/Icon - Railgun Striker.png</Icon>
+			<Description>Fire a railgun at a single target.</Description>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
 		</Ability>
 		<Ability>
-			<Name>Kendo Strike</Name>
-			<Type>Point</Type>
-			<Icon>_icons/Icon - Eyelash Batting.png</Icon>
+			<Name>Coffee Boost</Name>
+			<Type>Smartcast</Type>
+			<Icon>_icons/Icon - Coffee Boost.png</Icon>
+			<Description>Drink coffee, gaining a small boost.</Description>
 			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
@@ -133,18 +139,18 @@
 		<Speed Value="312" Increase="5" />
 		<Weapon>Magic Wand</Weapon>
 		<Ability>
-			<Name>Kendo Strike</Name>
-			<Type>Point</Type>
+			<Name>Sedated Needles</Name>
+			<Type>Target</Type>
 			<Icon>_icons/Icon - Sedated Needles.png</Icon>
-			<MovementSpeed>500</MovementSpeed>
+			<Description>Sedates target enemy.</Description>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
 		</Ability>
 		<Ability>
-			<Name>Kendo Strike</Name>
+			<Name>Graceful Dodge</Name>
 			<Type>Point</Type>
 			<Icon>_icons/Icon - Graceful Dodge.png</Icon>
-			<MovementSpeed>500</MovementSpeed>
+			<Description>Teleport self to a point.</Description>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
 		</Ability>
@@ -158,18 +164,18 @@
 		<Speed Value="312" Increase="5" />
 		<Weapon>Megaphone</Weapon>
 		<Ability>
-			<Name>Kendo Strike</Name>
-			<Type>Point</Type>
+			<Name>Frying Pan Smash</Name>
+			<Type>Target</Type>
 			<Icon>_icons/Icon - Frying Pan Smash.png</Icon>
-			<MovementSpeed>500</MovementSpeed>
+			<Description>Smack that enemy with yo' fryin' pan.</Description>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
 		</Ability>
 		<Ability>
-			<Name>Kendo Strike</Name>
-			<Type>Point</Type>
+			<Name>Ramen Boost</Name>
+			<Type>Smartcast</Type>
 			<Icon>_icons/Icon - Ramen Boost.png</Icon>
-			<MovementSpeed>500</MovementSpeed>
+			<Description>Eat dat delicious ramen.</Description>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
 		</Ability>
@@ -183,18 +189,18 @@
 		<Speed Value="336" Increase="5" />
 		<Weapon>Microphone</Weapon>
 		<Ability>
-			<Name>Kendo Strike</Name>
-			<Type>Point</Type>
-			<Icon>_icons/Icon - Ninjitsu.png</Icon>
-			<MovementSpeed>500</MovementSpeed>
+			<Name>Jade Attack</Name>
+			<Type>Target</Type>
+			<Icon>_icons/Icon - Jade Attack.png</Icon>
+			<Description>Throw two daggers at a target.</Description>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
 		</Ability>
 		<Ability>
-			<Name>Kendo Strike</Name>
+			<Name>Astral Arts</Name>
 			<Type>Point</Type>
 			<Icon>_icons/Icon - Astral Arts.png</Icon>
-			<MovementSpeed>500</MovementSpeed>
+			<Description>Gain temporary invincibility and speed for a longer time period.</Description>
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
 		</Ability>

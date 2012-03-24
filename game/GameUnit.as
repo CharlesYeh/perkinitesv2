@@ -13,8 +13,6 @@
 		public var objectWidth:Number;
 		public var objectHeight:Number;
 
-		public var range:Number;
-
 		/*** Animation ***/
 		public var currentAnimLabel:String;
 
@@ -46,7 +44,13 @@
 
 			addEventListener(Event.ENTER_FRAME, moveHandler);
 		}
-		
+		public function inRadius(r:int, mp:Point) {
+			var dx = mp.x - x;
+			var dy = mp.y - y;
+			var d = dx * dx + dy * dy;
+			
+			return r * r > d;
+		}
 		//----------------------------------MOVEMENT----------------------------------
 		
 		/**
@@ -95,6 +99,10 @@
 			}
 		}
 
+		public function clearPath():void {
+			path = new Array();
+		}
+		
 		/**
 		 * 
 		 * Ignores some of the intermediate tile destinations for more realistic movement.
@@ -177,7 +185,6 @@
 		protected function setSpeed(s) {
 			speed = s;
 		}
-
 		public function eraseObject() {
 			if (dialogueTrigger == "Auto") {
 				//GameUnit.pauseAction = false;
