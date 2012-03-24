@@ -125,7 +125,7 @@
 		public function applyBuffs() {
 			
 		}
-		public function shootSkillshot() {
+		public function shootSkillshot(array:Array) {
 			
 		}
 		public function teleport() {
