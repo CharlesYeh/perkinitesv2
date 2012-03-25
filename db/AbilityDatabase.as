@@ -8,28 +8,15 @@
 		
 		public static var abilities:Object = new Object();
 		
-		public static const ATKTYPE_TARGET:int = 0;
-		public static const ATKTYPE_POINT:int	= 1;
-		public static const ATKTYPE_SSHOT:int	= 2;
-		
-		static const targetTypes = {0: [ATKTYPE_TARGET, ATKTYPE_TARGET],
-									1: [ATKTYPE_TARGET, ATKTYPE_TARGET],
-									2: [ATKTYPE_TARGET, ATKTYPE_TARGET],
-									3: [ATKTYPE_TARGET, ATKTYPE_TARGET],
-									4: [ATKTYPE_TARGET, ATKTYPE_TARGET],
-									5: [ATKTYPE_TARGET, ATKTYPE_TARGET],
-									6: [ATKTYPE_TARGET, ATKTYPE_TARGET],
-									7: [ATKTYPE_TARGET, ATKTYPE_TARGET],
-									8: [ATKTYPE_TARGET, ATKTYPE_TARGET],
-									9: [ATKTYPE_TARGET, ATKTYPE_TARGET]}
-		
-		public static function getTargetType(char:int, ability:int) {
-			return targetTypes[char][ability];
-		}
+		public static const ATKTYPE_TARGET:String	= "Target";	// single target click
+		public static const ATKTYPE_POINT:String	= "Point";	// show aoe point
+		public static const ATKTYPE_SSHOT:String	= "Skillshot";	// show arrow
+		public static const ATKTYPE_SCAST:String	= "Smartcast";	// smart cast
 		
 		public static function addAbility(unitID:int, node) {
 			abilities[unitID] = new Array();
 			
+			// add all abilities for this character (unitID)
 			for (var d in node) {
 				var data = new Object();
 				var nodeData = node[d];
@@ -38,17 +25,21 @@
 				ic.load(new URLRequest(nodeData.Icon));
 				
 				data.icon = ic;
-				data.name = nodeData.name;
-				data.description = "some description goes here";
+				data.name = nodeData.Name;
+				data.description = nodeData.Description;
+				data.type = nodeData.Type;
+				
 				abilities[unitID].push(data);
 			}
 		}
 		public static function getName(index:int, id:int) {
-			trace(abilities[index][id].name);
 			return abilities[index][id].name;
 		}
+		public static function getTargetType(char:int, ability:int) {
+			return abilities[char][ability].type;
+		}
 		public static function getDescription(index:int, id:int) {
-			return "some description goes here";
+			return abilities[index][id].description;
 		}
 		public static function getIcon(index:int, id:int) {
 			return abilities[index][id].icon;

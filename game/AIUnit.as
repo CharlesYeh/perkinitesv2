@@ -4,6 +4,7 @@
 	import db.EnemyDatabase;
 	
 	public class AIUnit extends StatUnit {
+		var range:Number;
 		static var targets:Array;
 		
 		public function AIUnit(id) {

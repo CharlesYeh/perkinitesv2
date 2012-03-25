@@ -33,7 +33,9 @@
 		
 		//---------ABILITY VARS---------
 		var castAbilityID:int;
+		var castAbilityType:String;
 		var castMousePoint:Point;
+		var castMouseTarget:StatUnit;
 		//-------END ABILITY VARS-------
 		
 		//----------FRAME VARS----------
@@ -42,6 +44,7 @@
 		var disabledMovement:Boolean= false;
 		var forwardMovement:Boolean = false;
 		
+		var guide:MovieClip;
 		//--------END FRAME VARS--------
 		
 		public function StatUnit() {
@@ -58,6 +61,14 @@
 			healthbar = new MovieClip();
 			addChild(healthbar);
 			drawHealthbar();
+			
+			// attach aim guides
+			guide = new AimGuide();
+			addChild(guide);
+			guide.visible = false;
+			
+			castAbilityID = -1;
+			castMouseTarget = null;
 		}
 		function drawHealthbar() {
 			var WIDTH = 50;
@@ -70,6 +81,10 @@
 			healthbar.graphics.beginFill(0x33FF33, .7);
 			healthbar.graphics.drawRect(sx, 30, WIDTH * healthPoints / healthMax, 5);
 			healthbar.graphics.endFill();
+		}
+		function takeDamage(dmg:Number) {
+			healthPoints = Math.max(0, healthPoints - dmg);
+			drawHealthbar();
 		}
 		protected function loadSwf() {
 			swf = new Loader();
@@ -120,7 +135,7 @@
 			forwardMovement = false;
 		}
 		public function dealDamage() {
-			
+			castMouseTarget.takeDamage(5);
 		}
 		public function applyBuffs() {
 			
@@ -129,36 +144,73 @@
 			
 		}
 		public function teleport() {
+			x = castMousePoint.x;
+			y = castMousePoint.y;
 			
+			teleportTo(x, y);
+			clearPath();
 		}
 		//------------END FRAME FUNCTIONS------------
-		public function setTarget(unit:GameUnit) {
-			startCastAnimation(castAbilityID);
-		}
 		public function castAbility(abID:int, mousePos:Point) {
 			if (usingAbility)
 				return;
 			
-			switch (AbilityDatabase.getTargetType(ID, abID)) {
+			castAbilityID = abID;
+			castAbilityType = AbilityDatabase.getTargetType(ID, abID);
+			
+			switch (castAbilityType) {
 			case AbilityDatabase.ATKTYPE_TARGET:
 				// wait for click on target
-				//castAbilityID = abID;
-				startCastAnimation(abID);
-				castMousePoint = mousePos;
 				break;
 			case AbilityDatabase.ATKTYPE_POINT:
 			case AbilityDatabase.ATKTYPE_SSHOT:
-				// attack right away
-				castMousePoint = mousePos;
-				startCastAnimation(abID);
+				// wait for click
+				break;
+			case AbilityDatabase.ATKTYPE_SCAST:
+				startCastAnimation();
 				break;
 			}
 		}
-		function startCastAnimation(abID:int) {
+		public function clickHandler(pos:Point, target:StatUnit) {
+			castMousePoint	= pos;
+			castMouseTarget	= target;
+			
+			startCastAnimation();
+		}
+		public function mouseHandler(pos:Point) {
+			if (castAbilityID == -1) {
+				guide.visible = false;
+			}
+			else {
+				var horizmult:int = (scaleX > 0) ? 1 : -1;
+				guide.visible = true;
+				
+				switch (castAbilityType) {
+					case AbilityDatabase.ATKTYPE_POINT:
+						guide.gotoAndStop("point");
+						guide.guide_target.x = horizmult * (pos.x - x);
+						guide.guide_target.y = pos.y - y;
+						break;
+					case AbilityDatabase.ATKTYPE_TARGET:
+						guide.gotoAndStop("target");
+						guide.guide_target.x = horizmult * (pos.x - x);
+						guide.guide_target.y = pos.y - y;
+						break;
+					case AbilityDatabase.ATKTYPE_SSHOT:
+						guide.gotoAndStop("skillshot");
+						guide.guide_skillshot.rotation = Math.atan2(y - pos.y, horizmult * (x - pos.x)) * 180 / Math.PI + 180;
+						break;
+				}
+			}
+		}
+		function startCastAnimation() {
+			if (castAbilityID == -1 || castAbilityType == AbilityDatabase.ATKTYPE_TARGET && castMouseTarget == null)
+				return;
+			
 			usingAbility = true;
 			prevLabel = animLabel;
 			
-			switch (abID) {
+			switch (castAbilityID) {
 			case 0:
 				setAnimLabel(ANIM_ABILITY1);
 				break;
@@ -169,6 +221,8 @@
 				setAnimLabel(ANIM_ABILITY3);
 				break;
 			}
+			
+			castAbilityID = -1;
 		}
 		
 		/**
@@ -194,6 +248,11 @@
 				return;
 			
 			super.moveHandler(e);
+			
+			// set frame?
+			if (usingAbility)
+				return
+			
 			if (path.length == 0) {
 				// not moving
 				setAnimLabel(ANIM_STANDING);
@@ -225,10 +284,12 @@
 			if (dir == 2) {
 				frame = "east";
 				scaleX = -1;
+				healthbar.scaleX = -1;
 			}
 			else {
 				frame = DIRECTIONS[dir];
 				scaleX = 1;
+				healthbar.scaleX = 1;
 			}
 			
 			if (swf.content.char.currentLabel == frame) {

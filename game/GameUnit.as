@@ -13,8 +13,6 @@
 		public var objectWidth:Number;
 		public var objectHeight:Number;
 
-		public var range:Number;
-
 		/*** Animation ***/
 		public var currentAnimLabel:String;
 
@@ -46,7 +44,13 @@
 
 			addEventListener(Event.ENTER_FRAME, moveHandler);
 		}
-		
+		public function inRadius(r:int, mp:Point) {
+			var dx = mp.x - x;
+			var dy = mp.y - y;
+			var d = dx * dx + dy * dy;
+			
+			return r * r > d;
+		}
 		//----------------------------------MOVEMENT----------------------------------
 		
 		/**
@@ -95,6 +99,10 @@
 			}
 		}
 
+		public function clearPath():void {
+			path = new Array();
+		}
+		
 		/**
 		 * 
 		 * Ignores some of the intermediate tile destinations for more realistic movement.
@@ -164,8 +172,10 @@
 				moveDir = (-Math.floor(radian / (Math.PI / 2) + .5) + 4) % 4;
 				
 				//############# show animation
-				x += speed * Math.cos(radian) / 24;
-				y += speed * Math.sin(radian) / 24;
+				var nx = nx + speed * Math.cos(radian) / 24;
+				var ny = ny + speed * Math.sin(radian) / 24;
+				
+				teleportTo(nx, ny);
 			}
 		}
 		public function turnLeft() {
@@ -177,7 +187,6 @@
 		protected function setSpeed(s) {
 			speed = s;
 		}
-
 		public function eraseObject() {
 			if (dialogueTrigger == "Auto") {
 				//GameUnit.pauseAction = false;

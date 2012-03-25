@@ -1,3 +1,13 @@
+char->dir->abilities
+char->projectiles
+
+
+Target: click on one enemy
+Smartcast: cast right away
+Skillshot: arrow in one direction
+Point: click on location, AOE on one point
+
+
 ---------Style---------
 
 public function loadObject(url:String, handleFunction:Function):void {
