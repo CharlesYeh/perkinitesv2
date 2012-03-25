@@ -172,8 +172,10 @@
 				moveDir = (-Math.floor(radian / (Math.PI / 2) + .5) + 4) % 4;
 				
 				//############# show animation
-				x += speed * Math.cos(radian) / 24;
-				y += speed * Math.sin(radian) / 24;
+				var nx = nx + speed * Math.cos(radian) / 24;
+				var ny = ny + speed * Math.sin(radian) / 24;
+				
+				teleportTo(nx, ny);
 			}
 		}
 		public function turnLeft() {

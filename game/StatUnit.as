@@ -135,7 +135,7 @@
 			forwardMovement = false;
 		}
 		public function dealDamage() {
-			castMouseTarget.takeDamage(50);
+			castMouseTarget.takeDamage(5);
 		}
 		public function applyBuffs() {
 			
@@ -284,10 +284,12 @@
 			if (dir == 2) {
 				frame = "east";
 				scaleX = -1;
+				healthbar.scaleX = -1;
 			}
 			else {
 				frame = DIRECTIONS[dir];
 				scaleX = 1;
+				healthbar.scaleX = 1;
 			}
 			
 			if (swf.content.char.currentLabel == frame) {
