@@ -21,8 +21,9 @@
 				var data = new Object();
 				var nodeData = node[d];
 				
+				var iconURL:URLRequest = new URLRequest(nodeData.Icon);
 				var ic:Loader = new Loader();
-				ic.load(new URLRequest(nodeData.Icon));
+				ic.load(iconURL);
 				
 				data.icon = ic;
 				data.name = nodeData.Name;

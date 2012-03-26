@@ -4,26 +4,29 @@
 		<Name>Charles Y.</Name>
 		<Sprite>CY</Sprite>
 		<Health Value="75" Increase="8" />
-		<Attack Value="3" Increase="1" />
+		<Attack Value="5" Increase="1" />
 		<Defense>0</Defense>
-		<Speed Value="360" Increase="5" />
+		<Speed Value="300" Increase="5" />
 		<Weapon>Shinai</Weapon>
 		<Ability>
 			<Name>Kendo Strike</Name>
 			<Type>Skillshot</Type>
 			<Icon>_icons/Icon - Kendo Strike.png</Icon>
 			<Description>Dash forward, dealing damage to the first enemy contact.</Description>
-			<MovementSpeed>500</MovementSpeed>
-			<Cooldown Value="30" />
-			<Damage Value="5" Increase="3"/>
+
+			<Range Value="200" />
+			<MovementSpeed>430</MovementSpeed>
+			<Cooldown Value="80" />
+			<Damage Value="25" Increase="3"/>
 		</Ability>
 		<Ability>
 			<Name>Ninjitsu</Name>
 			<Type>Point</Type>
 			<Icon>_icons/Icon - Ninjitsu.png</Icon>
 			<Description>Teleport self and roommate to a target location.</Description>
-			<Cooldown Value="30" />
-			<Damage Value="5" Increase="3"/>
+
+			<Range Value="250" />
+			<Cooldown Value="110" />
 		</Ability>
 	</Actor>
 	<Actor>
@@ -32,24 +35,28 @@
 		<Health Value="100" Increase="9" />
 		<Attack Value="5" Increase="1" />
 		<Defense>0</Defense>
-		<Speed Value="264" Increase="5" />
+		<Speed Value="250" Increase="5" />
 		<Weapon>Claws</Weapon>
 		<Ability>
 			<Name>Claw Attack</Name>
 			<Type>Target</Type>
 			<Icon>_icons/Icon - Claw Attack.png</Icon>
 			<Description>Deal heavy damage to a single targeted enemy.</Description>
+
+			<Range Value="50" />
 			<Cooldown Value="30" />
-			<Damage Value="5" Increase="3"/>
+			<Damage Value="30" Increase="3"/>
 		</Ability>
 		<Ability>
 			<Name>Shopping Spree</Name>
 			<Type>Skillshot</Type>
 			<Icon>_icons/Icon - Shopping Spree.png</Icon>
 			<Description>Dash forward, dealing damage to all enemies with which the shopping cart comes into contact.</Description>
-			<MovementSpeed>500</MovementSpeed>
-			<Cooldown Value="30" />
-			<Damage Value="5" Increase="3"/>
+
+			<Range Value="270" />
+			<MovementSpeed>450</MovementSpeed>
+			<Cooldown Value="100" />
+			<Damage Value="20" Increase="3"/>
 		</Ability>
 	</Actor>
 	<Actor>
@@ -58,24 +65,28 @@
 		<Health Value="110" Increase="6" />
 		<Attack Value="5" Increase="1.5" />
 		<Defense>0</Defense>
-		<Speed Value="360" Increase="5" />
+		<Speed Value="300" Increase="5" />
 		<Weapon>Tentacles</Weapon>
 		<Ability>
 			<Name>Perk-ulate</Name>
 			<Type>Point</Type>
 			<Icon>_icons/Icon - Perk-kulate.png</Icon>
 			<Description>Dash forward, dealing damage to all enemies at the target location.</Description>
+
+			<Range Value="340" />
 			<MovementSpeed>500</MovementSpeed>
 			<Cooldown Value="30" />
-			<Damage Value="5" Increase="3"/>
+			<Damage Value="30" Increase="3"/>
 		</Ability>
 		<Ability>
 			<Name>Awkward Stare</Name>
 			<Type>Skillshot</Type>
 			<Icon>_icons/Icon - Awkward Stare.png</Icon>
 			<Description>Stun all enemies by giving them an awkward Eric stare.</Description>
-			<Cooldown Value="30" />
-			<Damage Value="5" Increase="3"/>
+
+			<Range Value="80" />
+			<Cooldown Value="80" />
+			<Damage Value="10" Increase="3"/>
 		</Ability>
 	</Actor>
 	<Actor>
@@ -84,14 +95,16 @@
 		<Health Value="65" Increase="6" />
 		<Attack Value="3" Increase="1" />
 		<Defense>0</Defense>
-		<Speed Value="432" Increase="5" />
+		<Speed Value="320" Increase="5" />
 		<Weapon>Hoverpad</Weapon>
 		<Ability>
 			<Name>Arrow Control</Name>
 			<Type>Smartcast</Type>
 			<Icon>_icons/Icon - Arrow Control.png</Icon>
 			<Description>Four arrows appear that home towards the closest enemy.</Description>
-			<Cooldown Value="30" />
+
+			<Range Value="200" />
+			<Cooldown Value="60" />
 			<Damage Value="5" Increase="3"/>
 		</Ability>
 		<Ability>
@@ -99,9 +112,11 @@
 			<Type>Point</Type>
 			<Icon>_icons/Icon - D4X.png</Icon>
 			<Description>Dash a distance, dealing damage to enemies you dash through.</Description>
-			<MovementSpeed>500</MovementSpeed>
-			<Cooldown Value="30" />
-			<Damage Value="5" Increase="3"/>
+
+			<Range Value="200" />
+			<MovementSpeed>600</MovementSpeed>
+			<Cooldown Value="70" />
+			<Damage Value="20" Increase="3"/>
 		</Ability>
 	</Actor>
 	<Actor>
@@ -110,24 +125,26 @@
 		<Health Value="75" Increase="7" />
 		<Attack Value="4" Increase="1" />
 		<Defense>0</Defense>
-		<Speed Value="288" Increase="5" />
+		<Speed Value="270" Increase="5" />
 		<Weapon>Railgun</Weapon>
 		<Ability>
 			<Name>Railgun Striker</Name>
 			<Type>Target</Type>
 			<Icon>_icons/Icon - Railgun Striker.png</Icon>
 			<Description>Fire a railgun at a single target.</Description>
-			<Cooldown Value="30" />
-			<Damage Value="5" Increase="3"/>
+
+			<Range Value="400" />
+			<Cooldown Value="40" />
+			<Damage Value="20" Increase="3"/>
 		</Ability>
 		<Ability>
 			<Name>Coffee Boost</Name>
 			<Type>Smartcast</Type>
 			<Icon>_icons/Icon - Coffee Boost.png</Icon>
 			<Description>Drink coffee, gaining a small boost.</Description>
+
 			<MovementSpeed>500</MovementSpeed>
-			<Cooldown Value="30" />
-			<Damage Value="5" Increase="3"/>
+			<Cooldown Value="140" />
 		</Ability>
 	</Actor>
 	<Actor>
@@ -136,23 +153,26 @@
 		<Health Value="60" Increase="6" />
 		<Attack Value="2" Increase="1" />
 		<Defense>0</Defense>
-		<Speed Value="312" Increase="5" />
+		<Speed Value="310" Increase="5" />
 		<Weapon>Magic Wand</Weapon>
 		<Ability>
 			<Name>Sedated Needles</Name>
 			<Type>Target</Type>
 			<Icon>_icons/Icon - Sedated Needles.png</Icon>
 			<Description>Sedates target enemy.</Description>
+
+			<Range Value="50" />
 			<Cooldown Value="30" />
-			<Damage Value="5" Increase="3"/>
+			<Damage Value="15" Increase="3"/>
 		</Ability>
 		<Ability>
 			<Name>Graceful Dodge</Name>
 			<Type>Point</Type>
 			<Icon>_icons/Icon - Graceful Dodge.png</Icon>
 			<Description>Teleport self to a point.</Description>
-			<Cooldown Value="30" />
-			<Damage Value="5" Increase="3"/>
+
+			<Range Value="100" />
+			<Cooldown Value="50" />
 		</Ability>
 	</Actor>
 	<Actor>
@@ -161,7 +181,7 @@
 		<Health Value="70" Increase="6" />
 		<Attack Value="3" Increase="1.5" />
 		<Defense>0</Defense>
-		<Speed Value="312" Increase="5" />
+		<Speed Value="320" Increase="5" />
 		<Weapon>Megaphone</Weapon>
 		<Ability>
 			<Name>Frying Pan Smash</Name>
@@ -186,7 +206,7 @@
 		<Health Value="70" Increase="5.5" />
 		<Attack Value="3" Increase="1" />
 		<Defense>0</Defense>
-		<Speed Value="336" Increase="5" />
+		<Speed Value="320" Increase="5" />
 		<Weapon>Microphone</Weapon>
 		<Ability>
 			<Name>Jade Attack</Name>

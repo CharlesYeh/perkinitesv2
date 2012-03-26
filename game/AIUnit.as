@@ -4,7 +4,7 @@
 	import db.EnemyDatabase;
 	
 	public class AIUnit extends StatUnit {
-		var range:Number;
+		var chaserange:Number;
 		static var targets:Array;
 		
 		public function AIUnit(id) {
@@ -30,7 +30,7 @@
 		
 		// just moves to player if player is in range
 		function runnerAI(e:Event) {
-			range = 250;
+			chaserange = 250;
 			
 			// if close to player
 			var min:GameUnit;
@@ -48,7 +48,7 @@
 				}
 			}
 			
-			if (minDist < range * range) {
+			if (minDist < chaserange * chaserange) {
 				moveTo(min.x, min.y);
 			}
 		}
