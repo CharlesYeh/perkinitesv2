@@ -3,7 +3,8 @@
 	<Enemy>
 		<Name>Drunk Enemy</Name>
 		<Sprite>enemy_Drunk-Guy</Sprite>
-		<Health Value="30" />
+		<AIClass>BasicAIUnit</AIClass>
+		<Health Value="80" />
 		<Attack Value="3" />
 		<Defense>0</Defense>
 		<Speed Value="80" />
@@ -12,34 +13,39 @@
 			<Type>Point</Type>
 			<Cooldown Value="10" />
 			<Damage Value="5" />
+			<Range Value="50" />
 		</Ability>
 	</Enemy>
 	<Enemy>
 		<Name>Problem Set</Name>
 		<Sprite>enemy_Problem-Set</Sprite>
-		<Health Value="40" />
+		<AIClass>BasicAIUnit</AIClass>
+		<Health Value="70" />
 		<Attack Value="5" />
 		<Defense>0</Defense>
 		<Speed Value="50" />
 		<Ability>
 			<Name>Math Problem</Name>
-			<Type>Projectile</Type>
+			<Type>Skillshot</Type>
 			<Cooldown Value="20" />
-			<Damage Value="5" />
+			<Damage Value="10" />
+			<Range Value="50" />
 		</Ability>
 	</Enemy>
 	<Enemy>
-		<Name>Problem Set</Name>
-		<Sprite>enemy_Problem-Set</Sprite>
-		<Health Value="40" />
+		<Name>Essay</Name>
+		<Sprite>enemy_Essay</Sprite>
+		<AIClass>BasicAIUnit</AIClass>
+		<Health Value="70" />
 		<Attack Value="5" />
 		<Defense>0</Defense>
 		<Speed Value="50" />
 		<Ability>
-			<Name>Math Problem</Name>
-			<Type>Projectile</Type>
+			<Name>Scribble</Name>
+			<Type>Skillshot</Type>
 			<Cooldown Value="20" />
-			<Damage Value="5" />
+			<Damage Value="10" />
+			<Range Value="50" />
 		</Ability>
 	</Enemy>
 </Enemies>

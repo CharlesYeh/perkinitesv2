@@ -5,6 +5,7 @@
 	import flash.display.MovieClip;
 	import flash.geom.Point;
 	
+	import tileMapper.TileMap;
 	import db.AbilityDatabase;
 
 	public class StatUnit extends GameUnit {
@@ -25,7 +26,7 @@
 		var loaded = false;
 		
 		//----------STATS VARS---------
-		var ID:int;
+		protected var ID:int;
 		var healthMax:Number;
 		var healthPoints:Number;
 		var healthbar:MovieClip;
@@ -34,8 +35,8 @@
 		//---------ABILITY VARS---------
 		var castAbilityID:int;
 		var castAbilityType:String;
-		var castMousePoint:Point;
-		var castMouseTarget:StatUnit;
+		protected var castMousePoint:Point;
+		protected var castMouseTarget:StatUnit;
 		//-------END ABILITY VARS-------
 		
 		//----------FRAME VARS----------
@@ -43,6 +44,7 @@
 		var usingAbility:Boolean	= false;
 		var disabledMovement:Boolean= false;
 		var forwardMovement:Boolean = false;
+		var forwardVector:Point = null;
 		
 		var guide:MovieClip;
 		//--------END FRAME VARS--------
@@ -130,24 +132,35 @@
 		}
 		public function beginForwardMovement() {
 			forwardMovement = true;
+			
+			// TODO: USE ABILITY MOVEMENT SPEED
+			var mspeed = 30;
+			
+			var dx = castMousePoint.x - x;
+			var dy = castMousePoint.y - y;
+			var d = Math.sqrt(dx * dx + dy * dy) / mspeed;
+			dx = dx / d;
+			dy = dy / d;
+			
+			forwardVector = new Point(dx, dy);
 		}
 		public function stopForwardMovement() {
 			forwardMovement = false;
 		}
-		public function dealDamage() {
-			castMouseTarget.takeDamage(5);
+		public function dealDamage(abilityID:int) {
+			castMouseTarget.takeDamage(AbilityDatabase.getAttribute(ID, abilityID, "damage"));
 		}
-		public function applyBuffs() {
+		public function applyDebuffs(abilityID:int) {
+			
+		}
+		public function applyBuffs(abilityID:int) {
 			
 		}
 		public function shootSkillshot(array:Array) {
 			
 		}
 		public function teleport() {
-			x = castMousePoint.x;
-			y = castMousePoint.y;
-			
-			teleportTo(x, y);
+			teleportTo(castMousePoint.x, castMousePoint.y);
 			clearPath();
 		}
 		//------------END FRAME FUNCTIONS------------
@@ -203,8 +216,9 @@
 				}
 			}
 		}
-		function startCastAnimation() {
-			if (castAbilityID == -1 || castAbilityType == AbilityDatabase.ATKTYPE_TARGET && castMouseTarget == null)
+		protected function startCastAnimation() {
+			if (usingAbility || castAbilityID == -1 ||
+				castAbilityType == AbilityDatabase.ATKTYPE_TARGET && castMouseTarget == null)
 				return;
 			
 			usingAbility = true;
@@ -233,16 +247,7 @@
 		override public function moveHandler(e:Event):void {
 			if (forwardMovement) {
 				// move forward!!
-				// TODO: USE ABILITY MOVEMENT SPEED
-				var mspeed = 30;
-				
-				var dx = castMousePoint.x - x;
-				var dy = castMousePoint.y - y;
-				trace(dx, dy);
-				var d = Math.sqrt(dx * dx + dy * dy) / mspeed;
-				dx = dx / d;
-				dy = dy / d;
-				teleportTo(x + dx, y + dy);
+				teleportTo(x + forwardVector.x, y + forwardVector.y);
 			}
 			if (disabledMovement)
 				return;

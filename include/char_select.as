@@ -26,6 +26,9 @@ for (a = 0; a <= 3; a++) {
 	var b1 = playerDisplay1["button" + a];
 	var b2 = playerDisplay2["button" + a];
 	
+	b1.text = "Page " + (a + 1);
+	b2.text = "Page " + (a + 1);
+	
 	b1.mouseChildren = false;
 	b2.mouseChildren = false;
 	b1.id = a;

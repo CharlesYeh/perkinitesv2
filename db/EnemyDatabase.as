@@ -2,11 +2,14 @@
 	import flash.events.Event;
 	
 	public class EnemyDatabase extends Database {
-		static var names:Array, sprites:Array, hp:Array, speed:Array;
+		static var ai:Array, names:Array, sprites:Array, hp:Array, speed:Array;
 		static const ENEMY_ID_START = 10000;
 		
 		public static function loadXML(url:String) {
 			Database.loadXML(url, completeLoad);
+		}
+		public static function getAI(id:int):String {
+			return ai[id]
 		}
 		public static function getHP(id:int) {
 			return hp[id];
@@ -20,6 +23,7 @@
 		static function completeLoad(e:Event) {
 			var dat = new XML(e.target.data);
 			
+			ai		= new Array();
 			names	= new Array();
 			sprites	= new Array();
 			hp		= new Array();
@@ -27,6 +31,7 @@
 			
 			var id = ENEMY_ID_START;
 			for each (var node:XML in dat.Enemy) {
+				ai.push(	node.AIClass);
 				names.push(	node.Name);
 				sprites.push(node.Sprite);
 				hp.push(	parseInt(node.Health.attribute("Value")));

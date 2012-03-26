@@ -27,8 +27,12 @@
 				
 				data.icon = ic;
 				data.name = nodeData.Name;
-				data.description = nodeData.Description;
 				data.type = nodeData.Type;
+				data.description = nodeData.Description;
+				
+				data.range		= nodeData.Range.attribute("Value");
+				data.cooldown	= nodeData.Cooldown.attribute("Value");
+				data.damage		= nodeData.Damage.attribute("Value");
 				
 				abilities[unitID].push(data);
 			}
@@ -44,6 +48,9 @@
 		}
 		public static function getIcon(index:int, id:int) {
 			return abilities[index][id].icon;
+		}
+		public static function getAttribute(index:int, id:int, attr:String) {
+			return abilities[index][id][attr];
 		}
 	}
 	

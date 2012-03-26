@@ -38,7 +38,7 @@ function init() {
 	createEnemy(0, 1500, 400);
 }
 function createEnemy(id:int, ox, oy) {
-	var u = new AIUnit(id);
+	var u = AIUnit.createAIUnit(id);
 	u.x = ox;
 	u.y = oy;
 	MapManager.addToMapClip(u);

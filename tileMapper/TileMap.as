@@ -211,7 +211,7 @@
 		public static function getTile(ox, oy) {
 			var xPos=Math.floor(ox/TILE_SIZE);
 			var yPos=Math.floor(oy/TILE_SIZE);
-			if (xPos<0||yPos<0||xPos>=COLS||yPos>=ROWS) {
+			if (xPos < 0 || yPos < 0 || xPos >= COLS || yPos >= ROWS) {
 				return "a";
 			}
 
