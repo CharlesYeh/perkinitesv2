@@ -37,6 +37,8 @@
 		var castAbilityType:String;
 		protected var castMousePoint:Point;
 		protected var castMouseTarget:StatUnit;
+		
+		var cooldowns:Array;
 		//-------END ABILITY VARS-------
 		
 		//----------FRAME VARS----------
@@ -71,7 +73,9 @@
 			
 			castAbilityID = -1;
 			castMouseTarget = null;
+			cooldowns = new Array(10);
 		}
+		
 		function drawHealthbar() {
 			var WIDTH = 50;
 			var sx = -WIDTH/2;
@@ -146,6 +150,7 @@
 		}
 		public function stopForwardMovement() {
 			forwardMovement = false;
+			clearPath();
 		}
 		public function dealDamage(abilityID:int) {
 			castMouseTarget.takeDamage(AbilityDatabase.getAttribute(ID, abilityID, "damage"));
@@ -165,7 +170,7 @@
 		}
 		//------------END FRAME FUNCTIONS------------
 		public function castAbility(abID:int, mousePos:Point) {
-			if (usingAbility)
+			if (usingAbility || cooldowns[abID] > 0)
 				return;
 			
 			castAbilityID = abID;
@@ -198,6 +203,10 @@
 				var horizmult:int = (scaleX > 0) ? 1 : -1;
 				guide.visible = true;
 				
+				// set range guide
+				guide.range_circle.width = guide.range_circle.height =
+							AbilityDatabase.getAttribute(ID, castAbilityID, "range");
+				
 				switch (castAbilityType) {
 					case AbilityDatabase.ATKTYPE_POINT:
 						guide.gotoAndStop("point");
@@ -217,9 +226,12 @@
 			}
 		}
 		protected function startCastAnimation() {
-			if (usingAbility || castAbilityID == -1 ||
+			if (usingAbility || castAbilityID == -1 || 
+				cooldowns[castAbilityID] > 0 || 
 				castAbilityType == AbilityDatabase.ATKTYPE_TARGET && castMouseTarget == null)
 				return;
+			
+			cooldowns[castAbilityID] = AbilityDatabase.getAttribute(ID, castAbilityID, "cooldown");
 			
 			usingAbility = true;
 			prevLabel = animLabel;
@@ -245,6 +257,12 @@
 		 * @param e - Event.ENTER_FRAME
 		 */
 		override public function moveHandler(e:Event):void {
+			// adjust cooldowns
+			for (var a = 0; a < cooldowns.length; a++) {
+				if (cooldowns[a] > 0)
+					cooldowns[a]--;
+			}
+			
 			if (forwardMovement) {
 				// move forward!!
 				teleportTo(x + forwardVector.x, y + forwardVector.y);

@@ -10,13 +10,10 @@ import db.*;
 
 KeyDown.init(stage);
 
-/*var player = new GameUnit();
-var partner= new GameUnit();*/
-
 var player = new Perkinite(chosenTeam);
 var partner= new Perkinite(chosenTeam + 1);
-
 var aiUnits = new Array();
+var gamePause = false;
 
 AIUnit.setTargets(new Array(player, partner));
 
@@ -28,6 +25,19 @@ MapManager.addToMapClip(partner);
 
 addEventListener(Event.ENTER_FRAME, gameRunnerHandler);
 addEventListener(MouseEvent.CLICK, gameClickHandler);
+stage.addEventListener(Event.DEACTIVATE, loseFocus);
+pauseScreen.addEventListener(MouseEvent.CLICK, regainFocus);
+
+pauseScreen.y = 999;
+
+function loseFocus(e) {
+	gamePause = true;
+	pauseScreen.y = 0;
+}
+function regainFocus(e) {
+	gamePause = false;
+	pauseScreen.y = 999;
+}
 
 init();
 
@@ -72,12 +82,8 @@ function gameRunnerHandler(e) {
 		partner.moveTo(getMouseX(), getMouseY());
 	}
 }
-function getMouseX() {
-	return mouseX + ScreenRect.getX();
-}
-function getMouseY() {
-	return mouseY + ScreenRect.getY();
-}
+function getMouseX() {	return mouseX + ScreenRect.getX();	}
+function getMouseY() {	return mouseY + ScreenRect.getY();	}
 function gameClickHandler(e) {
 	var mPoint = new Point(getMouseX(), getMouseY());
 	
