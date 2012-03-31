@@ -14,6 +14,7 @@ var player = new Perkinite(chosenTeam);
 var partner= new Perkinite(chosenTeam + 1);
 var aiUnits = new Array();
 var gamePause = false;
+var mouseCasting = false;
 
 AIUnit.setTargets(new Array(player, partner));
 
@@ -23,8 +24,11 @@ MapManager.loadMap(0, player, partner);
 MapManager.addToMapClip(player);
 MapManager.addToMapClip(partner);
 
+this.setChildIndex(hud, numChildren - 1);
+hud.updateIcons(chosenTeam, chosenTeam + 1);
+
 addEventListener(Event.ENTER_FRAME, gameRunnerHandler);
-addEventListener(MouseEvent.CLICK, gameClickHandler);
+addEventListener(MouseEvent.MOUSE_DOWN, gameClickHandler);
 stage.addEventListener(Event.DEACTIVATE, loseFocus);
 pauseScreen.addEventListener(MouseEvent.CLICK, regainFocus);
 
@@ -55,6 +59,11 @@ function createEnemy(id:int, ox, oy) {
 	aiUnits.push(u);
 }
 function gameRunnerHandler(e) {
+	
+	// update hud
+	hud.showCooldowns(player, partner);
+	
+	// handle casting
 	var mpos:Point = new Point(getMouseX(), getMouseY());
 	
 	if (KeyDown.keyIsDown(Keyboard.A)) {
@@ -77,7 +86,7 @@ function gameRunnerHandler(e) {
 	partner.mouseHandler(mPoint);
 	
 	// movement
-	if (KeyDown.keyIsDown(KeyDown.MOUSE)) {
+	if (KeyDown.keyIsDown(KeyDown.MOUSE) && !mouseCasting) {
 		player.moveTo(getMouseX(), getMouseY());
 		partner.moveTo(getMouseX(), getMouseY());
 	}
@@ -95,6 +104,12 @@ function gameClickHandler(e) {
 		}
 	}
 	
-	player.clickHandler(mPoint, target);
-	partner.clickHandler(mPoint, target);
+	// make sure both are run, don't short circuit
+	if (player.clickHandler(mPoint, target) | partner.clickHandler(mPoint, target)) {
+		// this mouse down was for cast
+		mouseCasting = true;
+	}
+	else {
+		mouseCasting = false;
+	}
 }

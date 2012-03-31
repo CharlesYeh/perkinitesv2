@@ -168,15 +168,20 @@
 			}
 			else {
 				// keep moving towards path[0]
-				var radian = Math.atan2(path[0].y - y, path[0].x - x);
-				moveDir = (-Math.floor(radian / (Math.PI / 2) + .5) + 4) % 4;
+				var radian = turnTo(path[0]);
 				
-				//############# show animation
 				var nx = x + speed * Math.cos(radian) / 24;
 				var ny = y + speed * Math.sin(radian) / 24;
 				
 				teleportTo(nx, ny);
 			}
+		}
+		// set moveDir and return direction in radians
+		public function turnTo(point) {
+			var radian = Math.atan2(point.y - y, point.x - x);
+			moveDir = (-Math.floor(radian / (Math.PI / 2) + .5) + 4) % 4;
+			
+			return radian;
 		}
 		public function turnLeft() {
 			moveDir = ++moveDir % 4;

@@ -38,7 +38,7 @@
 		protected var castMousePoint:Point;
 		protected var castMouseTarget:StatUnit;
 		
-		var cooldowns:Array;
+		public var cooldowns:Array;
 		//-------END ABILITY VARS-------
 		
 		//----------FRAME VARS----------
@@ -189,11 +189,11 @@
 				break;
 			}
 		}
-		public function clickHandler(pos:Point, target:StatUnit) {
+		public function clickHandler(pos:Point, target:StatUnit):Boolean {
 			castMousePoint	= pos;
 			castMouseTarget	= target;
 			
-			startCastAnimation();
+			return startCastAnimation();
 		}
 		public function mouseHandler(pos:Point) {
 			if (castAbilityID == -1) {
@@ -229,8 +229,13 @@
 			if (usingAbility || castAbilityID == -1 || 
 				cooldowns[castAbilityID] > 0 || 
 				castAbilityType == AbilityDatabase.ATKTYPE_TARGET && castMouseTarget == null)
-				return;
+				return false;
 			
+			// look at direction of ability
+			turnTo(castMousePoint);
+			updateDirection(moveDir);
+			
+			// set cooldown
 			cooldowns[castAbilityID] = AbilityDatabase.getAttribute(ID, castAbilityID, "cooldown");
 			
 			usingAbility = true;
@@ -249,6 +254,7 @@
 			}
 			
 			castAbilityID = -1;
+			return true;
 		}
 		
 		/**
