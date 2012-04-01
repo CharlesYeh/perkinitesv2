@@ -1,4 +1,9 @@
-Ability:
+Maps.xml:
+Map Code: width:height:code(tele-point 1,dstMap,dstPoint)(tele-point 2,dstMap,dstPoint)
+[enemyspawn,type][enemyspawn,type]
+
+
+-------------------------------------------
 <Ability>
 	<Name>Kendo Strike</Name>
 	<Description>Some short description.</Description>
@@ -26,5 +31,3 @@ Ability:
 		<Attack Sprite="splash" />
 	</Point>
 </Ability>
-
-Maps contain cutscene information

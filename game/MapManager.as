@@ -1,6 +1,7 @@
 ﻿package game {
 	import util.*;
 	import tileMapper.*;
+	import db.MapDatabase;
 	import game.GameUnit;
 
 	import flash.geom.Point;
@@ -82,9 +83,9 @@
 			
 			TileMap.removeTiles(mapClip);
 			
-			var tileset:Tileset = MapDatabase.getTileset(map.tilesetID);
+			var tileset:String = MapDatabase.getTilesetName(map.tilesetID);
 			//-------------------------------######################
-			var tileTypes = tileset.tileTypes;
+			var tileTypes:Array = MapDatabase.getTileTypes(map.tilesetID);
 			
 			TileMap.createTileMap(mapCode, 32, tileTypes, tileClings, "Tile");
 			TileMap.addTiles(mapClip);

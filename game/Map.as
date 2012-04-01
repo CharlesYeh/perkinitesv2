@@ -6,6 +6,7 @@
 		public var mapCode:String;
         public var mapName:String;
 		public var tilesetID:int;
+		
 		public var BGM:String;
 		public var BGS:String;
 
