@@ -182,24 +182,24 @@
 		<Attack Value="3" Increase="1.5" />
 		<Defense>0</Defense>
 		<Speed Value="320" Increase="5" />
-		<Weapon>Megaphone</Weapon>
+		<Weapon>Frying Pan</Weapon>
+		<Ability>
+			<Name>Ramen Boost</Name>
+			<Type>Smartcast</Type>
+			<Icon>_icons/Icon - Ramen Boost.png</Icon>
+			<Description>Eat dat delicious ramen.</Description>
+			
+			<Cooldown Value="110" />
+		</Ability>
 		<Ability>
 			<Name>Frying Pan Smash</Name>
 			<Type>Target</Type>
 			<Icon>_icons/Icon - Frying Pan Smash.png</Icon>
 			<Description>Smack that enemy with yo' fryin' pan.</Description>
 
-			<Range Value="50" />
+			<Range Value="70" />
 			<Cooldown Value="30" />
-			<Damage Value="5" Increase="3"/>
-		</Ability>
-		<Ability>
-			<Name>Ramen Boost</Name>
-			<Type>Smartcast</Type>
-			<Icon>_icons/Icon - Ramen Boost.png</Icon>
-			<Description>Eat dat delicious ramen.</Description>
-			<Cooldown Value="30" />
-			<Damage Value="5" Increase="3"/>
+			<Damage Value="20" Increase="3"/>
 		</Ability>
 	</Actor>
 	<Actor>
@@ -209,25 +209,79 @@
 		<Attack Value="3" Increase="1" />
 		<Defense>0</Defense>
 		<Speed Value="320" Increase="5" />
-		<Weapon>Microphone</Weapon>
+		<Weapon>Jade Daggers</Weapon>
 		<Ability>
 			<Name>Jade Attack</Name>
 			<Type>Target</Type>
 			<Icon>_icons/Icon - Jade Attack.png</Icon>
 			<Description>Throw two daggers at a target.</Description>
-
-
-			<Range Value="200" />
+			
+			<Range Value="80" />
 			<Cooldown Value="30" />
-			<Damage Value="5" Increase="3"/>
+			<Damage Value="20" Increase="3"/>
 		</Ability>
 		<Ability>
 			<Name>Astral Arts</Name>
 			<Type>Point</Type>
 			<Icon>_icons/Icon - Astral Arts.png</Icon>
 			<Description>Gain temporary invincibility and speed for a longer time period.</Description>
+			
+			<Cooldown Value="130" />
+		</Ability>
+	</Actor>
+	<Actor>
+		<Name>Tevin J.</Name>
+		<Sprite>TJ</Sprite>
+		<Health Value="70" Increase="5.5" />
+		<Attack Value="3" Increase="1" />
+		<Defense>0</Defense>
+		<Speed Value="320" Increase="5" />
+		<Weapon>Self</Weapon>
+		<Ability>
+			<Name>Lung Crusher</Name>
+			<Type>Target</Type>
+			<Icon>_icons/Icon - Lung Crusher.png</Icon>
+			<Description>Crushes the enemy through the power of hugging at close-range.</Description>
+			
+			<Range Value="50" />
+			<Cooldown Value="50" />
+			<Damage Value="30" Increase="3"/>
+		</Ability>
+		<Ability>
+			<Name>Deep Sleep</Name>
+			<Type>Smartcast</Type>
+			<Icon>_icons/Icon - Deep Sleep.png</Icon>
+			<Description>Restores Health over time. Tevin cannot move nor use abilities during this time.</Description>
+			
+			<Cooldown Value="230" />
+		</Ability>
+	</Actor>
+	<Actor>
+		<Name>Chris P.</Name>
+		<Sprite>CP</Sprite>
+		<Health Value="70" Increase="5.5" />
+		<Attack Value="3" Increase="1" />
+		<Defense>0</Defense>
+		<Speed Value="320" Increase="5" />
+		<Weapon>Fake Beards</Weapon>
+		<Ability>
+			<Name>Charm Attack</Name>
+			<Type>Target</Type>
+			<Icon>_icons/Icon - Jade Attack.png</Icon>
+			<Description>Weaken an enemy with lust.</Description>
+			
+			<Range Value="250" />
 			<Cooldown Value="30" />
-			<Damage Value="5" Increase="3"/>
+		</Ability>
+		<Ability>
+			<Name>Sideburnt</Name>
+			<Type>Target</Type>
+			<Icon>_icons/Icon - Sideburnt.png</Icon>
+			<Description>Place a booby-trapped fake beard on an enemy, which explodes for massive damage.</Description>
+			
+			<Range Value="200" />
+			<Cooldown Value="40" />
+			<Damage Value="40" Increase="3"/>
 		</Ability>
 	</Actor>
 </Actors>

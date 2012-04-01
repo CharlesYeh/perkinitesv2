@@ -153,7 +153,15 @@
 			clearPath();
 		}
 		public function dealDamage(abilityID:int) {
+			if (castMouseTarget == null)
+				return;
+			
 			castMouseTarget.takeDamage(AbilityDatabase.getAttribute(ID, abilityID, "damage"));
+			
+			// if point damage
+			if (castAbilityType == AbilityDatabase.ATKTYPE_POINT) {
+				
+			}
 		}
 		public function applyDebuffs(abilityID:int) {
 			

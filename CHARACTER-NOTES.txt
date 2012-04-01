@@ -1,0 +1,47 @@
+CY NM
+Hit-and-run attackers.
+
+All abilities deal a lot of damage, but most cooldowns are rather long.
+(AFDS)
+
+NM can take more damage, so NM dashes in and enemies start attacking NM.
+Then CY dashes in, and NM can use his close range claw attack before CY
+teleports both to safety while cooldowns refresh.
+------------------------------
+EH JT
+Distract and eliminate attackers
+
+EH has local area abilities, and JT excels in high damage ranged abilities.
+(ASD)
+
+EH can charge and temporarily incapacitate all enemies while JT eliminates
+enemies one by one from afar.
+------------------------------
+CK CM
+Kiters
+
+High damage dealers who can always stay out of enemy range
+(ADSF)
+
+Both have one ranged ability and one ability to increase range between
+themselves and the enemy so they only need to stay out of enemy range.
+------------------------------
+HV HQ
+Daredevil close-range bursts
+
+High damage dealers with little health but temporary invincibility.
+(FADS)
+
+HQ can grant both invincibility long enough for them to use close range abilities,
+then running away.
+------------------------------
+TJ CP
+Damage absorption and delayed damager
+
+TJ can take great damage, and CP helps this by reducing enemy attack power.
+(ASDF)
+
+TJ can take damage, then sleep. While sleeping, enemies will continue to attack
+TJ but CP can reduce the damage with charm. CP can then eliminate enemies
+while TJ is sleeping
+------------------------------
