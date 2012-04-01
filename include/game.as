@@ -25,7 +25,7 @@ MapManager.addToMapClip(player);
 MapManager.addToMapClip(partner);
 
 this.setChildIndex(hud, numChildren - 1);
-hud.updateIcons(chosenTeam, chosenTeam + 1);
+//hud.updateIcons(chosenTeam, chosenTeam + 1);
 
 addEventListener(Event.ENTER_FRAME, gameRunnerHandler);
 addEventListener(MouseEvent.MOUSE_DOWN, gameClickHandler);
@@ -61,7 +61,7 @@ function createEnemy(id:int, ox, oy) {
 function gameRunnerHandler(e) {
 	
 	// update hud
-	hud.showCooldowns(player, partner);
+	//hud.showCooldowns(player, partner);
 	
 	// handle casting
 	var mpos:Point = new Point(getMouseX(), getMouseY());

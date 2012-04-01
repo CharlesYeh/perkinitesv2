@@ -48,4 +48,36 @@
 			<Range Value="50" />
 		</Ability>
 	</Enemy>
+	<Enemy>
+		<Name>DHC Spark</Name>
+		<Sprite>enemy_DHC-Spark</Sprite>
+		<AIClass>BasicAIUnit</AIClass>
+		<Health Value="70" />
+		<Attack Value="5" />
+		<Defense>0</Defense>
+		<Speed Value="50" />
+		<Ability>
+			<Name>Psychosy Shot</Name>
+			<Type>Smartcast</Type>
+			<Cooldown Value="40" />
+			<Damage Value="10" />
+			<Range Value="300" />
+		</Ability>
+	</Enemy>
+	<Enemy>
+		<Name>Perkinite Shade</Name>
+		<Sprite>enemy_Perkinite-Shade</Sprite>
+		<AIClass>BasicAIUnit</AIClass>
+		<Health Value="100" />
+		<Attack Value="7" />
+		<Defense>0</Defense>
+		<Speed Value="50" />
+		<Ability>
+			<Name>Hatred Slash</Name>
+			<Type>Point</Type>
+			<Cooldown Value="20" />
+			<Damage Value="15" />
+			<Range Value="50" />
+		</Ability>
+	</Enemy>
 </Enemies>
