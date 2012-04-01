@@ -162,7 +162,15 @@
 			
 		}
 		public function shootSkillshot(array:Array) {
-			
+			for(var i = 0; i < array.length; i++){
+				this.parent.addChild(array[i]);
+				if(moveDir == 2){
+					array[i].x *= -1;
+					array[i].rotation = 180;
+				}
+					array[i].x +=this.x;
+					array[i].y +=this.y;
+			}
 		}
 		public function teleport() {
 			teleportTo(castMousePoint.x, castMousePoint.y);
@@ -185,6 +193,7 @@
 				// wait for click
 				break;
 			case AbilityDatabase.ATKTYPE_SCAST:
+				castMousePoint = mousePos;
 				startCastAnimation();
 				break;
 			}
