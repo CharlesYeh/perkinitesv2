@@ -205,7 +205,7 @@
 				
 				// set range guide
 				guide.range_circle.width = guide.range_circle.height =
-							AbilityDatabase.getAttribute(ID, castAbilityID, "range");
+							2 * AbilityDatabase.getAttribute(ID, castAbilityID, "range");
 				
 				switch (castAbilityType) {
 					case AbilityDatabase.ATKTYPE_POINT:
@@ -227,8 +227,20 @@
 		}
 		protected function startCastAnimation() {
 			if (usingAbility || castAbilityID == -1 || 
-				cooldowns[castAbilityID] > 0 || 
-				castAbilityType == AbilityDatabase.ATKTYPE_TARGET && castMouseTarget == null)
+				cooldowns[castAbilityID] > 0)
+				return false;
+			
+			// test for range and target
+			var dx = x - castMousePoint.x;
+			var dy = y - castMousePoint.y;
+			var dd = Math.sqrt(dx * dx + dy * dy);
+			var range = AbilityDatabase.getAttribute(ID, castAbilityID, "range");
+			if (castAbilityType == AbilityDatabase.ATKTYPE_POINT &&
+				dd > range)
+				return false;
+			
+			if (castAbilityType == AbilityDatabase.ATKTYPE_TARGET &&
+				(castMouseTarget == null || dd > range))
 				return false;
 			
 			// look at direction of ability
