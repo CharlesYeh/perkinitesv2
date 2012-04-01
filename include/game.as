@@ -25,7 +25,7 @@ MapManager.addToMapClip(player);
 MapManager.addToMapClip(partner);
 
 this.setChildIndex(hud, numChildren - 1);
-//hud.updateIcons(chosenTeam, chosenTeam + 1);
+hud.updateIcons(chosenTeam, chosenTeam + 1);
 
 addEventListener(Event.ENTER_FRAME, gameRunnerHandler);
 addEventListener(MouseEvent.MOUSE_DOWN, gameClickHandler);
