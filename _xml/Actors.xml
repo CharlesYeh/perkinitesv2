@@ -114,7 +114,7 @@
 			<Description>Dash a distance, dealing damage to enemies you dash through.</Description>
 
 			<Range Value="200" />
-			<MovementSpeed>600</MovementSpeed>
+			<MovementSpeed>800</MovementSpeed>
 			<Cooldown Value="70" />
 			<Damage Value="20" Increase="3"/>
 		</Ability>

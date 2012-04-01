@@ -26,7 +26,7 @@
 		var loaded = false;
 		
 		//----------STATS VARS---------
-		protected var ID:int;
+		public var ID:int;
 		var healthMax:Number;
 		var healthPoints:Number;
 		var healthbar:MovieClip;
