@@ -188,6 +188,8 @@
 			<Type>Target</Type>
 			<Icon>_icons/Icon - Frying Pan Smash.png</Icon>
 			<Description>Smack that enemy with yo' fryin' pan.</Description>
+
+			<Range Value="50" />
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
 		</Ability>
@@ -213,6 +215,9 @@
 			<Type>Target</Type>
 			<Icon>_icons/Icon - Jade Attack.png</Icon>
 			<Description>Throw two daggers at a target.</Description>
+
+
+			<Range Value="200" />
 			<Cooldown Value="30" />
 			<Damage Value="5" Increase="3"/>
 		</Ability>

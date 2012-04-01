@@ -162,7 +162,11 @@
 			
 		}
 		public function shootSkillshot(array:Array) {
-			
+			for(var i = 0; i < array.length; i++){
+				this.parent.addChild(array[i]);
+				array[i].x +=this.x;
+				array[i].y +=this.y;
+			}
 		}
 		public function teleport() {
 			teleportTo(castMousePoint.x, castMousePoint.y);
