@@ -35,6 +35,43 @@ High damage dealers with little health but temporary invincibility.
 HQ can grant both invincibility long enough for them to use close range abilities,
 then running away.
 ------------------------------
+CC VC
+Friendship finale nukers
+
+
+------------------------------
+CY AG
+DPS and peeler.
+
+CY deals great damage but is rather slow. AG can keep enemies away from CY.
+(ASDF)
+
+Basically CY uses abilities and when enemies get in dangerous range, AG keeps
+them under control and from getting too close.
+------------------------------
+
+------------------------------
+Smartcast team
+
+------------------------------
+Pull team
+
+------------------------------
+Push team
+
+------------------------------
+Trap team
+
+------------------------------
+Artillery team
+
+------------------------------
+DOT and stunner
+
+------------------------------
+Debuffer(for double damage) and damager
+
+------------------------------
 TJ CP
 Damage absorption and delayed damager
 

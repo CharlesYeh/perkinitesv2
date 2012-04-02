@@ -284,4 +284,59 @@
 			<Damage Value="40" Increase="3"/>
 		</Ability>
 	</Actor>
+	<Actor>
+		<Name>Clauding Y.</Name>
+		<Sprite>CY2</Sprite>
+		<Health Value="70" Increase="5.5" />
+		<Attack Value="3" Increase="1" />
+		<Defense>0</Defense>
+		<Speed Value="320" Increase="5" />
+		<Weapon>Orgo 2 Textbook</Weapon>
+		<Ability>
+			<Name>Cupcake Launcher</Name>
+			<Type>Target</Type>
+			<Icon>_icons/Icon - Cupcake Launcher.png</Icon>
+			<Description>Create a barrage of hot cupcakes.</Description>
+			
+			<Range Value="50" />
+			<Cooldown Value="50" />
+			<Damage Value="30" Increase="3"/>
+		</Ability>
+		<Ability>
+			<Name>You're Dead</Name>
+			<Type>Target</Type>
+			<Icon>_icons/Icon - Youre Dead.png</Icon>
+			<Description>Points at an enemy and says "you're dead". Deals massive emotional damage.</Description>
+			
+			<Cooldown Value="230" />
+		</Ability>
+	</Actor>
+	<Actor>
+		<Name>Ariana G.</Name>
+		<Sprite>AG</Sprite>
+		<Health Value="70" Increase="5.5" />
+		<Attack Value="3" Increase="1" />
+		<Defense>0</Defense>
+		<Speed Value="320" Increase="5" />
+		<Weapon>Opera Piercing</Weapon>
+		<Ability>
+			<Name>Swap Attire</Name>
+			<Type>Smartcast</Type>
+			<Icon>_icons/Icon - Swap Attire.png</Icon>
+			<Description>Modify Movement Speed with new clothes, and also dazzle nearby enemies.</Description>
+			
+			<Range Value="250" />
+			<Cooldown Value="30" />
+		</Ability>
+		<Ability>
+			<Name>Foreign Languages</Name>
+			<Type>Target</Type>
+			<Icon>_icons/Icon - Foreign Languages.png</Icon>
+			<Description>Confuse a target enemy by having a conversation with it.</Description>
+			
+			<Range Value="200" />
+			<Cooldown Value="40" />
+			<Damage Value="40" Increase="3"/>
+		</Ability>
+	</Actor>
 </Actors>

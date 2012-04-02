@@ -24,15 +24,6 @@
 		static function completeLoad(e:Event) {
 			var dat = new XML(e.target.data);
 			
-			names	= new Array();
-			sprites	= new Array();
-			hp		= new Array();
-			hpup	= new Array();
-			speed	= new Array();
-			speedup	= new Array();
-			wpn		= new Array();
-			
-			
 			var id = 0;
 			tilesets = new Array(dat.Tileset.length);
 			for (var node:XML in dat.Tileset) {
@@ -58,12 +49,10 @@
 		}
 		//----------------TILES-----------------
 		public static function getTileTypes(i:Number) {
-			switch (i) {
-			case 0: return new Array("s", "f", "w", "w", "w", "w");
-			case 1: return new Array("s", "f", "w", "w", "w", "w");
-			case 2: return new Array("s", "f", "w", "w", "w", "w");
-			case 3: return new Array("s", "f", "w", "w", "w", "w");
-			}
+			return tilesets[i];
+		}
+		public static function getTilesetName(i:Number):String {
+			return setnames[i];
 		}
 		/*
 		public function parseMapObjectData(input:XML):void {
