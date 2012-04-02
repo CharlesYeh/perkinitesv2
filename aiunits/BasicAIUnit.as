@@ -12,22 +12,29 @@
 	 */
 	public class BasicAIUnit extends AIUnit {
 		public function BasicAIUnit(id) {
-			super(id);
+			super(EnemyDatabase.ENEMY_ID_START + id);
 		}
 		
 		// just moves to player if player is in range then attack
 		override protected function runnerAI(e:Event) {
+			if (healthPoints <= 0)
+				deleteSelf();
+			
 			var atkRange = AbilityDatabase.getAttribute(ID, 0, "range");
 			
 			var target:StatUnit = getCloserPlayer();
-			var dist:Number = getDistance(target);
+			var tp:Point = new Point(target.x, target.y);
 			
+			var dist:Number = getDistance(target);
 			if (dist < atkRange) {
 				// attack
 				castMousePoint	= new Point(target.x, target.y);
 				castMouseTarget	= target;
 				
-				startCastAnimation();
+				castAbility(0, tp);
+				if (AbilityDatabase.getTargetType(ID, 0) != AbilityDatabase.ATKTYPE_SCAST) {
+					clickHandler(tp, target)
+				}
 			}
 			else {
 				chaseTarget(target, 250);

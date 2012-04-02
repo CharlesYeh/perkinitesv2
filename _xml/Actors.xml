@@ -285,7 +285,7 @@
 		</Ability>
 	</Actor>
 	<Actor>
-		<Name>Clauding Y.</Name>
+		<Name>Claudine Y.</Name>
 		<Sprite>CY2</Sprite>
 		<Health Value="70" Increase="5.5" />
 		<Attack Value="3" Increase="1" />

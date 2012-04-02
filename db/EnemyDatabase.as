@@ -3,22 +3,22 @@
 	
 	public class EnemyDatabase extends Database {
 		static var ai:Array, names:Array, sprites:Array, hp:Array, speed:Array;
-		static const ENEMY_ID_START = 10000;
+		public static const ENEMY_ID_START = 10000;
 		
 		public static function loadXML(url:String) {
 			Database.loadXML(url, completeLoad);
 		}
 		public static function getAI(id:int):String {
-			return ai[id]
+			return ai[id - ENEMY_ID_START]
 		}
 		public static function getHP(id:int) {
-			return hp[id];
+			return hp[id - ENEMY_ID_START];
 		}
 		public static function getSpeed(id:int) {
-			return speed[id];
+			return speed[id - ENEMY_ID_START];
 		}
 		public static function getSprite(id:int) {
-			return "_sprites/" + sprites[id] + ".swf";
+			return "_sprites/" + sprites[id - ENEMY_ID_START] + ".swf";
 		}
 		static function completeLoad(e:Event) {
 			var dat = new XML(e.target.data);

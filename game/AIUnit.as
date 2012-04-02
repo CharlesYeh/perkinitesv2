@@ -9,6 +9,8 @@
 		var chaserange:Number;
 		static var targets:Array;
 		
+		var deleteFunc:Function = null;
+		
 		public function AIUnit(id) {
 			super();
 			
@@ -31,12 +33,24 @@
 		public static function setTargets(t:Array) {
 			targets = t;
 		}
+		public function setDeleteFunction(func:Function) {
+			deleteFunc = func;
+		}
+		protected function deleteSelf() {
+			if (deleteFunc != null)
+				deleteFunc(this);
+			
+			removeEventListener(Event.ENTER_FRAME, runnerAI);
+		}
 		override protected function getSprite() {
 			return new URLRequest(EnemyDatabase.getSprite(ID));
 		}
 		
 		// just moves to player if player is in range
 		protected function runnerAI(e:Event) {
+			if (healthPoints < 0)
+				deleteSelf();
+			
 			chaserange = 250;
 			chasePlayer(chaserange);
 		}

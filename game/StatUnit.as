@@ -27,8 +27,8 @@
 		
 		//----------STATS VARS---------
 		public var ID:int;
-		var healthMax:Number;
-		var healthPoints:Number;
+		protected var healthMax:Number;
+		protected var healthPoints:Number;
 		var healthbar:MovieClip;
 		//--------END STATS VARS-------
 		

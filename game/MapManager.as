@@ -53,6 +53,9 @@
 		public static function addToMapClip(mc:MovieClip) {
 			mapClip.addChild(mc);
 		}
+		public static function removeFromMapClip(mc:MovieClip) {
+			mapClip.removeChild(mc);
+		}
 		public static function depthSortHandler(e) {
 			var depthArray:Array = new Array();
 			for (var i:int = 0; i < mapClip.numChildren; i++) {

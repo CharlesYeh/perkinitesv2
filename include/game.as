@@ -50,13 +50,21 @@ function init() {
 	
 	// create enemies?
 	createEnemy(0, 1500, 400);
+	createEnemy(1, 1500, 400);
+	createEnemy(2, 1500, 400);
 }
 function createEnemy(id:int, ox, oy) {
 	var u = AIUnit.createAIUnit(id);
 	u.x = ox;
 	u.y = oy;
+	u.setDeleteFunction(deleteEnemy);
+	
 	MapManager.addToMapClip(u);
 	aiUnits.push(u);
+}
+function deleteEnemy(u:AIUnit) {
+	aiUnits.splice(aiUnits.indexOf(u), 1);
+	MapManager.removeFromMapClip(u);
 }
 function gameRunnerHandler(e) {
 	
