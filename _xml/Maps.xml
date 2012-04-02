@@ -1,9 +1,3 @@
-﻿<Tilesets>
-  <Tileset>
-    <Name>Perkins</Name>
-    <Types>s;f;w;w;w;w</Types>
-  </Tileset>	// tile set for perkins
-</Tilesets>
 <Maps>
   <Map>
     <ID>0</ID>

@@ -1,8 +1,11 @@
 ﻿import db.*;
 import flash.display.MovieClip;
+import flashx.textLayout.operations.MoveChildrenOperation;
 
-faceIcon1.gotoAndStop(1);
-faceIcon2.gotoAndStop(1);			
+var fIcon1:Loader = ActorDatabase.getIcon(0);
+var fIcon2:Loader = ActorDatabase.getIcon(1);
+faceIcon1.addChild(fIcon1);
+faceIcon2.addChild(fIcon2);
 
 var entries = new Array();
 var chosenTeam = 0;
@@ -75,8 +78,14 @@ function chooseTeam(team) {
 	unitName1.text = ActorDatabase.getName(chosenTeam);
 	unitName2.text = ActorDatabase.getName(chosenTeam + 1);
 	
-	faceIcon1.gotoAndStop(chosenTeam + 1);
-	faceIcon2.gotoAndStop(chosenTeam + 2);
+	faceIcon1.removeChild(fIcon1);
+	faceIcon2.removeChild(fIcon2);
+	
+	fIcon1 = ActorDatabase.getIcon(chosenTeam);
+	fIcon2 = ActorDatabase.getIcon(chosenTeam + 1);
+	
+	faceIcon1.addChild(fIcon1);
+	faceIcon2.addChild(fIcon2);
 	
 	var frame = playerDisplay1.currentFrame - 1;
 	update(playerDisplay1, frame, chosenTeam);

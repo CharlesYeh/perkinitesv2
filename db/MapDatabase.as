@@ -18,21 +18,31 @@
 		/**
 		 * Loads the tilesets, maps, and objects.
 		 */
-		public static function loadXML(url:String) {
-			Database.loadXML(url, completeLoad);
+		public static function loadXML(urlsets:String, urlmaps:String) {
+			Database.loadXML(urlsets, completeTilesetLoad);
+			Database.loadXML(urlmaps, completeMapLoad);
 		}
-		static function completeLoad(e:Event) {
-			var dat = new XML(e.target.data);
+		static function completeTilesetLoad(e:Event) {
+			var dat:XML = new XML(e.target.data);
 			
-			var id = 0;
-			tilesets = new Array(dat.Tileset.length);
-			for (var node:XML in dat.Tileset) {
-				tilesets[id++] = node.split(";");
+			setnames = new Array();
+			tilesets = new Array();
+			
+			for (var nn in dat.Tileset) {
+				var node = dat.Tileset[nn];
+				
+				setnames.push(node.Name);
+				tilesets.push(node.Types.split(";"));
 			}
+		}
+		static function completeMapLoad(e:Event) {
+			var dat:XML = new XML(e.target.data);
 			
-			id = 0;
-			maps = new Array(dat.Map.length);
-			for (var node:XML in dat.Map) {
+			maps = new Array();
+			
+			for (var nn in dat.Map) {
+				var node = dat.Map[nn];
+				
 				var mapid	= node.ID;
 				var mapcode	= node.MapCode;
 				var mapname	= node.MapName;
@@ -40,7 +50,7 @@
 				var bgm		= node.BGM;
 				var bgs		= node.BGS;
 				
-				maps[id++] = new Map(mapid, mapcode, mapname, tileset, bgm, bgs);
+				maps.push(new Map(mapid, mapcode, mapname, tileset, bgm, bgs));
 			}
 		}
 		

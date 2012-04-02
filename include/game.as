@@ -61,7 +61,7 @@ function createEnemy(id:int, ox, oy) {
 function gameRunnerHandler(e) {
 	
 	// update hud
-	//hud.showCooldowns(player, partner);
+	hud.showCooldowns(player, partner);
 	
 	// handle casting
 	var mpos:Point = new Point(getMouseX(), getMouseY());

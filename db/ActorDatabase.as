@@ -1,4 +1,6 @@
 ﻿package db{
+	import flash.net.URLRequest;
+	import flash.display.*;
 	import flash.events.Event;
 	/**
 	 * Holds Actor information and maybe dispatches events to signal when loading is complete.
@@ -12,10 +14,13 @@
 		static var speedup:Array;
 		static var wpn:Array;
 		
+		static var icons:Array;
+		
 		public static function getName(i:Number):String		{ return names[i];	}
 		public static function getHP(i:Number):Number 		{ return hp[i];		}
 		public static function getSpeed(i:Number):Number 	{ return speed[i];	}
 		public static function getWeapon(i:Number):String	{ return wpn[i];	}
+		public static function getIcon(i:Number):Loader		{ return icons[i];	}
 		
 		public static function getUnlockedNames():Array {
 			// CHANGE TO GIVE ONLY UNLOCKED TEAMS
@@ -38,6 +43,8 @@
 			speedup	= new Array();
 			wpn		= new Array();
 			
+			icons	= new Array();
+			
 			var id = 0;
 			for each (var node:XML in dat.Actor) {
 				names.push(	node.Name);
@@ -47,6 +54,13 @@
 				speed.push(	parseInt(node.Speed.attribute("Value")));
 				speedup.push(parseInt(node.Speed.attribute("Increase")));
 				wpn.push(	node.Weapon);
+				
+				// load icon
+				var iconURL:URLRequest = new URLRequest("_icons/Face Icon - " + node.Sprite + ".png");
+				var ic:Loader = new Loader();
+				ic.load(iconURL);
+				
+				icons.push(ic);
 				
 				AbilityDatabase.addAbility(id++, node.Ability);
 			}
