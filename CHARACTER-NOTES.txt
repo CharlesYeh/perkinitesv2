@@ -35,6 +35,15 @@ High damage dealers with little health but temporary invincibility.
 HQ can grant both invincibility long enough for them to use close range abilities,
 then running away.
 ------------------------------
+KH PG
+Enemy positioning controller
+
+Enemy position control and local damager.
+(FDSA)
+
+PG can control how many enemies are around the team, and KH can
+damage nearby enemies.
+------------------------------
 CC VC
 Friendship finale nukers
 
