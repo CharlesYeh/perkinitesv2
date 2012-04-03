@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Actors xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Actor>
 		<Name>Charles Y.</Name>
@@ -184,14 +184,6 @@
 		<Speed Value="320" Increase="5" />
 		<Weapon>Frying Pan</Weapon>
 		<Ability>
-			<Name>Ramen Boost</Name>
-			<Type>Smartcast</Type>
-			<Icon>_icons/Icon - Ramen Boost.png</Icon>
-			<Description>Eat dat delicious ramen.</Description>
-			
-			<Cooldown Value="110" />
-		</Ability>
-		<Ability>
 			<Name>Frying Pan Smash</Name>
 			<Type>Target</Type>
 			<Icon>_icons/Icon - Frying Pan Smash.png</Icon>
@@ -200,6 +192,14 @@
 			<Range Value="70" />
 			<Cooldown Value="30" />
 			<Damage Value="20" Increase="3"/>
+		</Ability>
+		<Ability>
+			<Name>Ramen Boost</Name>
+			<Type>Smartcast</Type>
+			<Icon>_icons/Icon - Ramen Boost.png</Icon>
+			<Description>Eat dat delicious ramen.</Description>
+			
+			<Cooldown Value="110" />
 		</Ability>
 	</Actor>
 	<Actor>
