@@ -11,6 +11,8 @@ Map Code: width:height:code(tele-point 1,dstMap,dstPoint)(tele-point 2,dstMap,ds
 	
 	<Damage Value="50" />
 	<MovementSpeed Value="500" />
+	<StopAtEnemy>True</StopAtEnemy>
+	<StopAOE Range="50" Damage="10" />
 	
 	<BuffOnDamage>							// buffs set when damage is dealt
 		<Self>

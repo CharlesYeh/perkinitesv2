@@ -227,6 +227,7 @@
 				switch (castAbilityType) {
 					case AbilityDatabase.ATKTYPE_POINT:
 						guide.gotoAndStop("point");
+						// set point radius
 						guide.guide_target.x = horizmult * (pos.x - x);
 						guide.guide_target.y = pos.y - y;
 						break;
@@ -237,7 +238,13 @@
 						break;
 					case AbilityDatabase.ATKTYPE_SSHOT:
 						guide.gotoAndStop("skillshot");
+						// set skillshot width/length
 						guide.guide_skillshot.rotation = Math.atan2(y - pos.y, horizmult * (x - pos.x)) * 180 / Math.PI + 180;
+						break;
+					case AbilityDatabase.ATKTYPE_CONE:
+						guide.gotoAndStop("cone");
+						// set cone width/length
+						guide.guide_cone.rotation = Math.atan2(y - pos.y, horizmult * (x - pos.x)) * 180 / Math.PI + 180;
 						break;
 				}
 			}

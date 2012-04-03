@@ -6,7 +6,7 @@ Target: click on one enemy
 Smartcast: cast right away
 Skillshot: arrow in one direction
 Point: click on location, AOE on one point
-
+Cone: cone in one direction
 
 ---------Style---------
 

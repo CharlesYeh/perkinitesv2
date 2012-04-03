@@ -7,6 +7,7 @@ import tileMapper.ScreenRect;
 import flash.ui.Keyboard;
 import flash.geom.Point;
 import db.*;
+import flash.display.MovieClip;
 
 KeyDown.init(stage);
 
@@ -46,7 +47,7 @@ function regainFocus(e) {
 init();
 
 function init() {
-	MapManager.setHeroPosition(player, partner);
+	MapManager.setHeroPosition(player, partner, new Point(10, 10));
 	
 	// create enemies?
 	createEnemy(0, 1500, 400);
@@ -97,6 +98,13 @@ function gameRunnerHandler(e) {
 	if (KeyDown.keyIsDown(KeyDown.MOUSE) && !mouseCasting) {
 		player.moveTo(getMouseX(), getMouseY());
 		partner.moveTo(getMouseX(), getMouseY());
+		
+		// test inter-map movement
+		var tp:MovieClip = MapManager.testTeleportPoints(player);
+		if (tp != null) {
+			trace(tp.destMap);
+			trace(tp.destPoint);
+		}
 	}
 }
 function getMouseX() {	return mouseX + ScreenRect.getX();	}

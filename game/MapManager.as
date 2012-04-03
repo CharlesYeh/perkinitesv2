@@ -21,8 +21,7 @@
 		public static var mapWidth:Number;
 		public static var mapHeight:Number;
 		
-		public static var startX:Number;
-		public static var startY:Number;
+		static var telePoints:Array;
 
 		public static var trackUnit1:GameUnit, trackUnit2:GameUnit;
 
@@ -39,7 +38,6 @@
 			InteractiveTile.resetTiles();
 			
 			loadMapData(mapNumber);
-			setMapObjects(mapNumber);
 			//setEnemies();
 
 			ScreenRect.createScreenRect(new Array(mapClip), 640, 480);
@@ -76,6 +74,20 @@
 				}
 			}
 		}
+		public static function testTeleportPoints(su:StatUnit):MovieClip {
+			var sx = Math.floor(su.x / TileMap.TILE_SIZE);
+			var sy = Math.floor(su.y / TileMap.TILE_SIZE);
+			
+			for (var a in telePoints) {
+				var t = telePoints[a];
+				if (sx == t.tx && sy == t.ty) {
+					// change map!
+					return t;
+				}
+			}
+			
+			return null;
+		}
 		public static function loadMapData(mapNumber:int) {
 			stopScrolling();
 			TileMap.removeTiles(mapClip);
@@ -83,8 +95,6 @@
 			var map:Map = MapDatabase.getMap(mapNumber);
 			mapCode = map.mapCode;
 			mapName = map.mapName;
-			
-			TileMap.removeTiles(mapClip);
 			
 			var tileset:String = MapDatabase.getTilesetName(map.tilesetID);
 			//-------------------------------######################
@@ -98,45 +108,62 @@
 			mapWidth = parseInt(mapCode.substring(firstSep + 1, secSep));
 			mapHeight = parseInt(mapCode.substring(0, firstSep));
 			
-			var ind1 = mapCode.indexOf("(") + 1;
-			var ind2 = mapCode.indexOf(",", ind1);
-			startX	= parseInt(mapCode.substring(ind1, ind2));
-			
-			ind1	= ind2 + 1;
-			ind2	= mapCode.indexOf(")");
-			startY	= parseInt(mapCode.substring(ind1, ind2));
-			
-			startX = (startX + .5) * TileMap.TILE_SIZE;
-			startY = (startY + .5) * TileMap.TILE_SIZE;
-		}
-		public static function setHeroPosition(hero:GameUnit, partner:GameUnit) {
-			ScreenRect.setX(startX - ScreenRect.STAGE_WIDTH / 2);
-			ScreenRect.setY(startY - ScreenRect.STAGE_HEIGHT / 2);
-			
-			hero.x = startX - TileMap.TILE_SIZE / 2;
-			hero.y = startY;
-			partner.x = startX + TileMap.TILE_SIZE / 2;
-			partner.y = startY;
-		}
-
-		public static function setMapObjects(mapNumber:int) {
-			/*var mapObjects = MapDatabase.getMapObjects(mapNumber);
-			var auto = -1;
-			for (var i = 0; i < mapObjects.length; i++) {
-				if(mapObjects[i].parent == mapClip){
-					mapClip.removeChild(mapObjects[i]);
+			// get teleport points
+			if (telePoints != null) {
+				for (var a in telePoints) {
+					var t = telePoints[a];
+					removeFromMapClip(t);
 				}
-				if (MapObjectConditionChecker.checkCondition(mapObjects[i], mapObjects[i].conditions)) {
-					mapClip.addChild(mapObjects[i]);
-					mapObjects[i].determineActivation();
-					if (mapObjects[i].aTrigger == "Auto" && auto == -1) {
-						mapObjects[i].addEventListener(Event.ENTER_FRAME, mapObjects[i].gameHandler);
-						auto = i;
-						GameUnit.objectPause = true;
-					}
-				}
-			}*/
+			}
+			telePoints = new Array();
+			
+			var ind1 = 0;
+			while (true) {
+				ind1 = mapCode.indexOf("(", ind1) + 1;
+				if (ind1 == 0)
+					break;
+				
+				var ind2 = mapCode.indexOf(",", ind1);
+				var ind3 = mapCode.indexOf(";", ind2 + 1);
+				var ind4 = mapCode.indexOf(",", ind3 + 1);
+				var ind5 = mapCode.indexOf(",", ind4 + 1);
+				var ind6 = mapCode.indexOf(")", ind1);
+				
+				var teleX = parseInt(mapCode.substring(ind1, ind2));
+				var teleY = parseInt(mapCode.substring(ind2 + 1, ind3));
+				
+				var destMap = parseInt(mapCode.substring(ind3 + 1, ind4));
+				var destX = parseInt(mapCode.substring(ind4 + 1, ind5));
+				var destY = parseInt(mapCode.substring(ind5 + 1, ind6));
+				
+				var mapX = (teleX + .5) * TileMap.TILE_SIZE;
+				var mapY = (teleY + .5) * TileMap.TILE_SIZE;
+				
+				var tele = new TeleportPoint();
+				tele.x = mapX;
+				tele.y = mapY;
+				tele.tx = teleX;
+				tele.ty = teleY;
+				tele.destMap = destMap;
+				tele.destPoint = new Point(destX, destY);
+				
+				addToMapClip(tele);
+				telePoints.push(tele);
+			}
 		}
+		public static function setHeroPosition(hero:GameUnit, partner:GameUnit, startPoint:Point) {
+			var sx = startPoint.x * TileMap.TILE_SIZE;
+			var sy = startPoint.y * TileMap.TILE_SIZE;
+			
+			ScreenRect.setX(sx - ScreenRect.STAGE_WIDTH / 2);
+			ScreenRect.setY(sy - ScreenRect.STAGE_HEIGHT / 2);
+			
+			hero.x = sx - TileMap.TILE_SIZE / 2;
+			hero.y = sy;
+			partner.x = sx + TileMap.TILE_SIZE / 2;
+			partner.y = sy;
+		}
+		
 		public static function setEnemies() {
 			/*var e = new Enemy(5);
 			mapClip.addChild(e);

@@ -12,6 +12,7 @@
 		public static const ATKTYPE_POINT:String	= "Point";	// show aoe point
 		public static const ATKTYPE_SSHOT:String	= "Skillshot";	// show arrow
 		public static const ATKTYPE_SCAST:String	= "Smartcast";	// smart cast
+		public static const ATKTYPE_CONE:String		= "Cone";	// show cone
 		
 		public static function addAbility(unitID:int, node) {
 			abilities[unitID] = new Array();
