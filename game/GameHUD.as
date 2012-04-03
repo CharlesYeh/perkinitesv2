@@ -29,6 +29,8 @@
 				}
 				
 				icons[a] = AbilityDatabase.getIcon((a < 2) ? id1 : id2, a % 2);
+				icons[a].width = 64;
+				icons[a].height = 64;
 				c.addChild(icons[a]);
 				c.setChildIndex(c.icon_cd, c.numChildren - 1);
 			}
