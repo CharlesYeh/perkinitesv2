@@ -80,7 +80,7 @@
 		</Ability>
 		<Ability>
 			<Name>Awkward Stare</Name>
-			<Type>Skillshot</Type>
+			<Type>Cone</Type>
 			<Icon>_icons/Icon - Awkward Stare.png</Icon>
 			<Description>Stun all enemies by giving them an awkward Eric stare.</Description>
 
@@ -109,7 +109,7 @@
 		</Ability>
 		<Ability>
 			<Name>D4X</Name>
-			<Type>Point</Type>
+			<Type>Skillshot</Type>
 			<Icon>_icons/Icon - D4X.png</Icon>
 			<Description>Dash a distance, dealing damage to enemies you dash through.</Description>
 
@@ -211,9 +211,9 @@
 		<Speed Value="320" Increase="5" />
 		<Weapon>Jade Daggers</Weapon>
 		<Ability>
-			<Name>Jade Attack</Name>
+			<Name>Jade Fang</Name>
 			<Type>Target</Type>
-			<Icon>_icons/Icon - Jade Attack.png</Icon>
+			<Icon>_icons/Icon - Jade Fang.png</Icon>
 			<Description>Throw two daggers at a target.</Description>
 			
 			<Range Value="80" />
@@ -222,7 +222,7 @@
 		</Ability>
 		<Ability>
 			<Name>Astral Arts</Name>
-			<Type>Point</Type>
+			<Type>Smartcast</Type>
 			<Icon>_icons/Icon - Astral Arts.png</Icon>
 			<Description>Gain temporary invincibility and speed for a longer time period.</Description>
 			

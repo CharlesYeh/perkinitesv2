@@ -118,6 +118,7 @@
 			swf.content.char.beginForwardMovement	= beginForwardMovement;
 			swf.content.char.stopForwardMovement	= stopForwardMovement;
 			swf.content.char.dealDamage			= dealDamage;
+			swf.content.char.applyDebuffs       = applyDebuffs;
 			swf.content.char.applyBuffs			= applyBuffs;
 			swf.content.char.shootSkillshot		= shootSkillshot;
 			swf.content.char.teleport			= teleport;
