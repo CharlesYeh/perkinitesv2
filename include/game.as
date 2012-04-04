@@ -13,19 +13,12 @@ KeyDown.init(stage);
 
 var player = new Perkinite(chosenTeam);
 var partner= new Perkinite(chosenTeam + 1);
+
 var aiUnits = new Array();
 var gamePause = false;
 var mouseCasting = false;
 
 AIUnit.setTargets(new Array(player, partner));
-
-// setup map
-addChild(MapManager.mapClip);
-MapManager.loadMap(0, player, partner);
-MapManager.addToMapClip(player);
-MapManager.addToMapClip(partner);
-
-this.setChildIndex(hud, numChildren - 1);
 hud.updateIcons(chosenTeam, chosenTeam + 1);
 
 addEventListener(Event.ENTER_FRAME, gameRunnerHandler);
@@ -44,15 +37,32 @@ function regainFocus(e) {
 	pauseScreen.y = 999;
 }
 
-init();
+init(0, new Point(15, 10));
 
-function init() {
-	MapManager.setHeroPosition(player, partner, new Point(10, 10));
+function init(map:int, startPoint:Point) {
+	// setup map
+	addChild(MapManager.mapClip);
+	this.setChildIndex(hud, numChildren - 1);
+	MapManager.loadMap(map, player, partner);
+	MapManager.addToMapClip(player);
+	MapManager.addToMapClip(partner);
 	
 	// create enemies?
 	createEnemy(0, 1500, 400);
 	createEnemy(1, 1500, 400);
 	createEnemy(2, 1500, 400);
+	
+	MapManager.setHeroPosition(player, partner, startPoint);
+}
+function clearMap() {
+	for (var a in aiUnits) {
+		var u = aiUnits[a];
+		MapManager.removeFromMapClip(u);
+	}
+	
+	aiUnits = new Array();
+	MapManager.removeFromMapClip(player);
+	MapManager.removeFromMapClip(partner);
 }
 function createEnemy(id:int, ox, oy) {
 	var u = AIUnit.createAIUnit(id);
@@ -98,13 +108,13 @@ function gameRunnerHandler(e) {
 	if (KeyDown.keyIsDown(KeyDown.MOUSE) && !mouseCasting) {
 		player.moveTo(getMouseX(), getMouseY());
 		partner.moveTo(getMouseX(), getMouseY());
-		
-		// test inter-map movement
-		var tp:MovieClip = MapManager.testTeleportPoints(player);
-		if (tp != null) {
-			trace(tp.destMap);
-			trace(tp.destPoint);
-		}
+	}
+	
+	// test inter-map movement
+	var tp:MovieClip = MapManager.testTeleportPoints(player);
+	if (tp != null) {
+		clearMap();
+		init(tp.destMap, tp.destPoint);
 	}
 }
 function getMouseX() {	return mouseX + ScreenRect.getX();	}
