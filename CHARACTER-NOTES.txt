@@ -44,6 +44,15 @@ Enemy position control and local damager.
 PG can control how many enemies are around the team, and KH can
 damage nearby enemies.
 ------------------------------
+MF RB2
+Heavyweight melee fighters
+
+Close-ranged fighters who survive through armor and stealth.
+(ADFS)
+
+Both characters have strong melee attacks. MF can also take damage
+with his armor ability, while RB2 can avoid attacks altogether with stealth.
+------------------------------
 CC VC
 Friendship finale nukers
 
@@ -61,12 +70,6 @@ them under control and from getting too close.
 
 ------------------------------
 Smartcast team
-
-------------------------------
-Pull team
-
-------------------------------
-Push team
 
 ------------------------------
 Trap team
