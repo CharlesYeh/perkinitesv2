@@ -10,10 +10,11 @@
 		<Speed Value="80" />
 		<Ability>
 			<Name>Puke</Name>
-			<Type>Point</Type>
+			<Type>Cone</Type>
+
+			<Range Value="60" />
 			<Cooldown Value="10" />
 			<Damage Value="5" />
-			<Range Value="50" />
 		</Ability>
 	</Enemy>
 	<Enemy>
@@ -27,9 +28,11 @@
 		<Ability>
 			<Name>Math Problem</Name>
 			<Type>Skillshot</Type>
+
+			<Range Value="100" />
+			<Skillshot Width="10" Speed="10" />
 			<Cooldown Value="20" />
 			<Damage Value="10" />
-			<Range Value="50" />
 		</Ability>
 	</Enemy>
 	<Enemy>
@@ -43,9 +46,11 @@
 		<Ability>
 			<Name>Scribble</Name>
 			<Type>Skillshot</Type>
+
+			<Range Value="50" />
+			<Skillshot Width="30" Speed="50" />
 			<Cooldown Value="20" />
 			<Damage Value="10" />
-			<Range Value="50" />
 		</Ability>
 	</Enemy>
 	<Enemy>
@@ -59,9 +64,10 @@
 		<Ability>
 			<Name>Psychosy Shot</Name>
 			<Type>Smartcast</Type>
+
+			<Range Value="300" />
 			<Cooldown Value="40" />
 			<Damage Value="10" />
-			<Range Value="300" />
 		</Ability>
 	</Enemy>
 	<Enemy>
@@ -75,9 +81,10 @@
 		<Ability>
 			<Name>Hatred Slash</Name>
 			<Type>Point</Type>
+
+			<Range Value="50" />
 			<Cooldown Value="20" />
 			<Damage Value="15" />
-			<Range Value="50" />
 		</Ability>
 	</Enemy>
 </Enemies>

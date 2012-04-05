@@ -23,6 +23,7 @@
 		var swf;
 		var partner:MovieClip;
 		var deleteFunc:Function = null;
+		var isPlayer:Boolean;
 		
 		var animLabel:String;
 		var animClip:MovieClip;
@@ -61,6 +62,7 @@
 			
 			animLabel = ANIM_WALKING;
 			ID = 0;
+			isPlayer = false;
 			
 			// THESE SHOULD BE OVERRIDEN IN SUBCLASSES
 			healthPoints = healthMax = 100;
@@ -183,14 +185,48 @@
 			
 		}
 		public function shootSkillshot(array:Array) {
+			if (this.parent == null)
+				return;
+			
 			for(var i = 0; i < array.length; i++){
-				this.parent.addChild(array[i]);
+				
+				var ss = array[i];
+				ss.parent.removeChild(ss);
+				this.parent.addChild(ss);
+				
 				if(moveDir == 2){
-					array[i].x *= -1;
-					array[i].rotation = 180;
+					ss.x *= -1;
+					ss.rotation = 180;
 				}
-					array[i].x +=this.x;
-					array[i].y +=this.y;
+				
+				// move relative to shooter
+				ss.x += this.x;
+				ss.y += this.y;
+				
+				var rad = Math.atan2(castMouseTarget.y - ss.y, castMouseTarget.x - ss.x);
+				ss.range = AbilityDatabase.getAttribute(ID, castAbilityID, "Range");
+				ss.ms = int(AbilityDatabase.getAttribute(ID, castAbilityID, "SkillshotSpeed"));
+				ss.vx = ss.ms * Math.cos(rad);
+				ss.vy = ss.ms * Math.sin(rad);
+				ss.dist = 0;
+				
+				ss.abilityWidth	= AbilityDatabase.getAttribute(ID, castAbilityID, "SkillshotWidth");
+				ss.damage		= AbilityDatabase.getAttribute(ID, castAbilityID, "Damage");
+				ss.stopAtFirst	= true;
+				ss.addEventListener(Event.ENTER_FRAME, skillshotMover);
+			}
+		}
+		function skillshotMover(e:Event) {
+			var ss = e.target;
+			
+			ss.x += ss.vx;
+			ss.y += ss.vy;
+			ss.dist += ss.ms;
+			
+			// test collisions
+			if (testSkillshotCollision(ss, ss.abilityWidth, ss.damage, ss.stopAtFirst) || ss.dist > ss.range) {
+				ss.parent.removeChild(ss);
+				ss.removeEventListener(Event.ENTER_FRAME, skillshotMover);
 			}
 		}
 		public function teleport() {
@@ -310,7 +346,26 @@
 			castInputWait = false;
 			return true;
 		}
-		
+		function testSkillshotCollision(skillshot:MovieClip, abilityWidth:Number, damage:Number, stopAtFirst:Boolean):Boolean {
+			var enemies = (isPlayer) ? MapManager.getAIUnits() : AIUnit.getTargets();
+			
+			for (var a in enemies) {
+				var en:StatUnit = enemies[a];
+				var dx = en.x - skillshot.x;
+				var dy = en.y - skillshot.y;
+				var dist = dx * dx + dy * dy;
+				
+				if (dist < abilityWidth) {
+					en.takeDamage(damage);
+					
+					if (stopAtFirst) {
+						return true;
+					}
+				}
+			}
+			
+			return false;
+		}
 		/**
 		 * 
 		 * the movement handler
@@ -333,25 +388,13 @@
 				var stopAtEnemy	= AbilityDatabase.getAttribute(ID, castAbilityID, "StopAtEnemy");
 				var damage		= AbilityDatabase.getAttribute(ID, castAbilityID, "Damage");
 				
-				var enemies = MapManager.getAIUnits();
-				for (a in enemies) {
-					var en:StatUnit = enemies[a];
-					var dx = en.x - x;
-					var dy = en.y - y;
-					var dist = dx * dx + dy * dy;
-					
-					if (dist < abilityWidth) {
-						en.takeDamage(damage);
-						
-						if (stopAtEnemy) {
-							// stop dashing and ability
-							stopForwardMovement();
-							enableMovement();
-							endAbility();
-							break;
-						}
-					}
+				if (testSkillshotCollision(this, abilityWidth, damage, stopAtEnemy)) {
+					// stop dashing and ability
+					stopForwardMovement();
+					enableMovement();
+					endAbility();
 				}
+				
 			}
 			if (disabledMovement)
 				return;

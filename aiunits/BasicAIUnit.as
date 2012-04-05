@@ -20,7 +20,7 @@
 			if (healthPoints <= 0)
 				deleteSelf();
 			
-			var atkRange = AbilityDatabase.getAttribute(ID, 0, "range");
+			var atkRange = AbilityDatabase.getAttribute(ID, 0, "Range");
 			
 			var target:StatUnit = getCloserPlayer();
 			var tp:Point = new Point(target.x, target.y);
@@ -33,7 +33,7 @@
 				
 				castAbility(0, tp);
 				if (AbilityDatabase.getTargetType(ID, 0) != AbilityDatabase.ATKTYPE_SCAST) {
-					clickHandler(tp, target)
+					clickHandler(tp, target);
 				}
 			}
 			else {

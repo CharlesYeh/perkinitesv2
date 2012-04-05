@@ -31,6 +31,9 @@
 		public static function setTargets(t:Array) {
 			targets = t;
 		}
+		public static function getTargets():Array {
+			return targets;
+		}
 		override protected function deleteSelf() {
 			super.deleteSelf();
 			

@@ -37,6 +37,9 @@
 				
 				data.AOEDamage	= nodeData.AOE.attribute("Damage");
 				data.AOERange	= nodeData.AOE.attribute("Range");
+				data.SkillshotWidth	= nodeData.Skillshot.attribute("Width");
+				data.SkillshotSpeed	= nodeData.Skillshot.attribute("Speed");
+				
 				data.Cooldown	= nodeData.Cooldown.attribute("Value");
 				data.Damage		= nodeData.Damage.attribute("Value");
 				

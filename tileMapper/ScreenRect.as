@@ -18,7 +18,7 @@
 			if(screen == null)
 				screen = new Rectangle(p.x, p.y, STAGE_WIDTH, STAGE_HEIGHT);
 			else
-				screen = new Rectangle(p.x * .2 + screen.x * .8, p.y * .2 + screen.y * .8, STAGE_WIDTH, STAGE_HEIGHT);
+				screen = new Rectangle(p.x * .1 + screen.x * .9, p.y * .1 + screen.y * .9, STAGE_WIDTH, STAGE_HEIGHT);
 			for(var a in clips){
 				clips[a].scrollRect = screen;
 			}

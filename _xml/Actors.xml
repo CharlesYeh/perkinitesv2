@@ -346,56 +346,111 @@
 		</Ability>
 	</Actor>
 	<Actor>
-		<Name>Patrick G.</Name>
-		<Sprite>PG</Sprite>
+		<Name>Michael F.</Name>
+		<Sprite>MF</Sprite>
 		<Health Value="70" Increase="5.5" />
 		<Attack Value="3" Increase="1" />
 		<Defense>0</Defense>
 		<Speed Value="320" Increase="5" />
-		<Weapon>Opera Piercing</Weapon>
+		<Weapon>Self</Weapon>
 		<Ability>
-			<Name>Sword Slap</Name>
+			<Name>Bull Horns</Name>
 			<Type>Target</Type>
 			<Icon>_icons/Icon - Access Denied.png</Icon>
-			<Description>Slap an enemy away with the flat side of the sword.</Description>
+			<Description>Shame enemies by breaking their ankles a la Derrick Rose.</Description>
 			
 			<Range Value="50" />
-			<Cooldown Value="45" />
-			<Damage Value="20" Increase="3"/>
+			<Cooldown Value="50" />
+			<Damage Value="40" Increase="3"/>
 		</Ability>
 		<Ability>
-			<Name>Hookshot</Name>
-			<Type>Skillshot</Type>
+			<Name>Stealth Mode</Name>
+			<Type>Smartcast</Type>
 			<Icon>_icons/Icon - Access Denied.png</Icon>
-			<Description>Pulls an enemy towards PG.</Description>
+			<Description>Evade all enemy attacks, then strike!</Description>
 			
-			<Range Value="200" />
-			<Cooldown Value="50" />
+			<Cooldown Value="100" />
 		</Ability>
 	</Actor>
 	<Actor>
-		<Name>Patrick G.</Name>
-		<Sprite>PG</Sprite>
+		<Name>Richard B.</Name>
+		<Sprite>RB2</Sprite>
 		<Health Value="70" Increase="5.5" />
 		<Attack Value="3" Increase="1" />
 		<Defense>0</Defense>
 		<Speed Value="320" Increase="5" />
-		<Weapon>Opera Piercing</Weapon>
+		<Weapon>Armor</Weapon>
 		<Ability>
-			<Name>Sword Slap</Name>
+			<Name>Punch</Name>
 			<Type>Target</Type>
 			<Icon>_icons/Icon - Access Denied.png</Icon>
-			<Description>Slap an enemy away with the flat side of the sword.</Description>
+			<Description>Because sometimes simpler is better.</Description>
 			
 			<Range Value="50" />
-			<Cooldown Value="45" />
-			<Damage Value="20" Increase="3"/>
+			<Cooldown Value="30" />
+			<Damage Value="40" Increase="3"/>
 		</Ability>
 		<Ability>
-			<Name>Hookshot</Name>
+			<Name>Perkinknight Armor</Name>
 			<Type>Skillshot</Type>
 			<Icon>_icons/Icon - Access Denied.png</Icon>
-			<Description>Pulls an enemy towards PG.</Description>
+			<Description>Shiny gold armor which reduces incoming damage.</Description>
+			
+			<Cooldown Value="100" />
+		</Ability>
+	</Actor>
+	<Actor>
+		<Name>Beatrice C.</Name>
+		<Sprite>BC</Sprite>
+		<Health Value="70" Increase="5.5" />
+		<Attack Value="3" Increase="1" />
+		<Defense>0</Defense>
+		<Speed Value="320" Increase="5" />
+		<Weapon>Happiness</Weapon>
+		<Ability>
+			<Name>Sunshine</Name>
+			<Type>Point</Type>
+			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Description>Sends forth bursts of solar energy.</Description>
+			
+			<Range Value="500" />
+			<Cooldown Value="25" />
+			<Damage Value="10" Increase="3"/>
+		</Ability>
+		<Ability>
+			<Name>Happiness</Name>
+			<Type>Cone</Type>
+			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Description>Creates a ray of solar energy.</Description>
+			
+			<Range Value="150" />
+			<Cooldown Value="64" />
+			<Damage Value="15" Increase="3"/>
+		</Ability>
+	</Actor>
+	<Actor>
+		<Name>Jen K.</Name>
+		<Sprite>JK</Sprite>
+		<Health Value="70" Increase="5.5" />
+		<Attack Value="3" Increase="1" />
+		<Defense>0</Defense>
+		<Speed Value="320" Increase="5" />
+		<Weapon>Pranks</Weapon>
+		<Ability>
+			<Name>Lightning Strike</Name>
+			<Type>Cone</Type>
+			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Description>Strike enemies in a cone shape, stunning them.</Description>
+			
+			<Range Value="130" />
+			<Cooldown Value="40" />
+			<Damage Value="15" Increase="3"/>
+		</Ability>
+		<Ability>
+			<Name>Prank</Name>
+			<Type>Cone</Type>
+			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Description></Description>
 			
 			<Range Value="200" />
 			<Cooldown Value="50" />

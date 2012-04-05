@@ -7,6 +7,7 @@
 			super();
 			
 			ID = id;
+			isPlayer = true;
 			
 			healthPoints = healthMax = ActorDatabase.getHP(ID);
 			setSpeed(ActorDatabase.getSpeed(ID));
