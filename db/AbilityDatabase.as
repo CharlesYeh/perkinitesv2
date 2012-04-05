@@ -31,23 +31,25 @@
 				data.type = nodeData.Type;
 				data.description = nodeData.Description;
 				
-				data.range		= nodeData.Range.attribute("Value");
-				data.cooldown	= nodeData.Cooldown.attribute("Value");
-				data.damage		= nodeData.Damage.attribute("Value");
+				data.Range		= nodeData.Range.attribute("Value");
+				data.Cooldown	= nodeData.Cooldown.attribute("Value");
+				data.Damage		= nodeData.Damage.attribute("Value");
+				data.StopAtEnemy= (nodeData.StopAtEnemy == "True") ? true : false;
+				data.MovementRadius	= nodeData.MovementRadius;
 				
 				abilities[unitID].push(data);
 			}
 		}
-		public static function getName(index:int, id:int) {
+		public static function getName(index:int, id:int):String {
 			return abilities[index][id].name;
 		}
-		public static function getTargetType(char:int, ability:int) {
+		public static function getTargetType(char:int, ability:int):String {
 			return abilities[char][ability].type;
 		}
-		public static function getDescription(index:int, id:int) {
+		public static function getDescription(index:int, id:int):String {
 			return abilities[index][id].description;
 		}
-		public static function getIcon(index:int, id:int) {
+		public static function getIcon(index:int, id:int):Loader {
 			return abilities[index][id].icon;
 		}
 		public static function getAttribute(index:int, id:int, attr:String) {

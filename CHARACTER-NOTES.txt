@@ -41,7 +41,7 @@ DPS and peeler.
 CY2 deals great damage but is rather slow. AG can keep enemies away from CY.
 (ASDF)
 
-Basically CY2 uses abilities and when enemies get in dangerous range, AG keeps
+Basically CY2s uses abilities and when enemies get in dangerous range, AG keeps
 them under control and from getting too close.
 ------------------------------
 KH PG

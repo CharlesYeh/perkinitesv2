@@ -14,7 +14,9 @@ KeyDown.init(stage);
 var player = new Perkinite(chosenTeam);
 var partner= new Perkinite(chosenTeam + 1);
 
-var aiUnits = new Array();
+player.setPartner(partner);
+partner.setPartner(player);
+
 var gamePause = false;
 var mouseCasting = false;
 
@@ -48,34 +50,16 @@ function init(map:int, startPoint:Point) {
 	MapManager.addToMapClip(partner);
 	
 	// create enemies?
-	createEnemy(0, 1500, 400);
-	createEnemy(1, 1500, 400);
-	createEnemy(2, 1500, 400);
+	MapManager.createEnemy(0, 1500, 400);
+	MapManager.createEnemy(1, 1500, 400);
+	MapManager.createEnemy(2, 1500, 400);
 	
 	MapManager.setHeroPosition(player, partner, startPoint);
 }
 function clearMap() {
-	for (var a in aiUnits) {
-		var u = aiUnits[a];
-		MapManager.removeFromMapClip(u);
-	}
-	
-	aiUnits = new Array();
+	MapManager.clearAIUnits();
 	MapManager.removeFromMapClip(player);
 	MapManager.removeFromMapClip(partner);
-}
-function createEnemy(id:int, ox, oy) {
-	var u = AIUnit.createAIUnit(id);
-	u.x = ox;
-	u.y = oy;
-	u.setDeleteFunction(deleteEnemy);
-	
-	MapManager.addToMapClip(u);
-	aiUnits.push(u);
-}
-function deleteEnemy(u:AIUnit) {
-	aiUnits.splice(aiUnits.indexOf(u), 1);
-	MapManager.removeFromMapClip(u);
 }
 function gameRunnerHandler(e) {
 	
@@ -123,6 +107,7 @@ function gameClickHandler(e) {
 	var mPoint = new Point(getMouseX(), getMouseY());
 	
 	var target = null;
+	var aiUnits = MapManager.getAIUnits();
 	for (var a in aiUnits) {
 		if (aiUnits[a].inRadius(100, mPoint)) {
 			target = aiUnits[a];

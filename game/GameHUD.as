@@ -45,7 +45,7 @@
 			if (isNaN(cd))
 				cd = 0;
 			
-			var maxcd = AbilityDatabase.getAttribute(id, abid, "cooldown");
+			var maxcd = AbilityDatabase.getAttribute(id, abid, "Cooldown");
 			var c = icon_conts[char * 2 + abid].icon_cd;
 			
 			c.graphics.clear();

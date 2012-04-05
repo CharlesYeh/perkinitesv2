@@ -16,6 +16,8 @@
 
 			<Range Value="200" />
 			<MovementSpeed>430</MovementSpeed>
+			<MovementRadius>50</MovementRadius>
+			<StopAtEnemy>True</StopAtEnemy>
 			<Cooldown Value="80" />
 			<Damage Value="25" Increase="3"/>
 		</Ability>
@@ -55,6 +57,8 @@
 
 			<Range Value="270" />
 			<MovementSpeed>450</MovementSpeed>
+			<MovementRadius>60</MovementRadius>
+			<StopAtEnemy>True</StopAtEnemy>
 			<Cooldown Value="100" />
 			<Damage Value="20" Increase="3"/>
 		</Ability>
@@ -230,61 +234,6 @@
 		</Ability>
 	</Actor>
 	<Actor>
-		<Name>Tevin J.</Name>
-		<Sprite>TJ</Sprite>
-		<Health Value="70" Increase="5.5" />
-		<Attack Value="3" Increase="1" />
-		<Defense>0</Defense>
-		<Speed Value="320" Increase="5" />
-		<Weapon>Self</Weapon>
-		<Ability>
-			<Name>Lung Crusher</Name>
-			<Type>Target</Type>
-			<Icon>_icons/Icon - Lung Crusher.png</Icon>
-			<Description>Crushes the enemy through the power of hugging at close-range.</Description>
-			
-			<Range Value="50" />
-			<Cooldown Value="50" />
-			<Damage Value="30" Increase="3"/>
-		</Ability>
-		<Ability>
-			<Name>Deep Sleep</Name>
-			<Type>Smartcast</Type>
-			<Icon>_icons/Icon - Deep Sleep.png</Icon>
-			<Description>Restores Health over time. Tevin cannot move nor use abilities during this time.</Description>
-			
-			<Cooldown Value="230" />
-		</Ability>
-	</Actor>
-	<Actor>
-		<Name>Chris P.</Name>
-		<Sprite>CP</Sprite>
-		<Health Value="70" Increase="5.5" />
-		<Attack Value="3" Increase="1" />
-		<Defense>0</Defense>
-		<Speed Value="320" Increase="5" />
-		<Weapon>Fake Beards</Weapon>
-		<Ability>
-			<Name>Charm Attack</Name>
-			<Type>Target</Type>
-			<Icon>_icons/Icon - Access Denied.png</Icon>
-			<Description>Weaken an enemy with lust.</Description>
-			
-			<Range Value="250" />
-			<Cooldown Value="30" />
-		</Ability>
-		<Ability>
-			<Name>Sideburnt</Name>
-			<Type>Target</Type>
-			<Icon>_icons/Icon - Sideburnt.png</Icon>
-			<Description>Place a booby-trapped fake beard on an enemy, which explodes for massive damage.</Description>
-			
-			<Range Value="200" />
-			<Cooldown Value="40" />
-			<Damage Value="40" Increase="3"/>
-		</Ability>
-	</Actor>
-	<Actor>
 		<Name>Claudine Y.</Name>
 		<Sprite>CY2</Sprite>
 		<Health Value="70" Increase="5.5" />
@@ -449,6 +398,61 @@
 			
 			<Range Value="200" />
 			<Cooldown Value="50" />
+		</Ability>
+	</Actor>
+	<Actor>
+		<Name>Tevin J.</Name>
+		<Sprite>TJ</Sprite>
+		<Health Value="70" Increase="5.5" />
+		<Attack Value="3" Increase="1" />
+		<Defense>0</Defense>
+		<Speed Value="320" Increase="5" />
+		<Weapon>Self</Weapon>
+		<Ability>
+			<Name>Lung Crusher</Name>
+			<Type>Target</Type>
+			<Icon>_icons/Icon - Lung Crusher.png</Icon>
+			<Description>Crushes the enemy through the power of hugging at close-range.</Description>
+			
+			<Range Value="50" />
+			<Cooldown Value="50" />
+			<Damage Value="30" Increase="3"/>
+		</Ability>
+		<Ability>
+			<Name>Deep Sleep</Name>
+			<Type>Smartcast</Type>
+			<Icon>_icons/Icon - Deep Sleep.png</Icon>
+			<Description>Restores Health over time. Tevin cannot move nor use abilities during this time.</Description>
+			
+			<Cooldown Value="230" />
+		</Ability>
+	</Actor>
+	<Actor>
+		<Name>Chris P.</Name>
+		<Sprite>CP</Sprite>
+		<Health Value="70" Increase="5.5" />
+		<Attack Value="3" Increase="1" />
+		<Defense>0</Defense>
+		<Speed Value="320" Increase="5" />
+		<Weapon>Fake Beards</Weapon>
+		<Ability>
+			<Name>Charm Attack</Name>
+			<Type>Target</Type>
+			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Description>Weaken an enemy with lust.</Description>
+			
+			<Range Value="250" />
+			<Cooldown Value="30" />
+		</Ability>
+		<Ability>
+			<Name>Sideburnt</Name>
+			<Type>Target</Type>
+			<Icon>_icons/Icon - Sideburnt.png</Icon>
+			<Description>Place a booby-trapped fake beard on an enemy, which explodes for massive damage.</Description>
+			
+			<Range Value="200" />
+			<Cooldown Value="40" />
+			<Damage Value="40" Increase="3"/>
 		</Ability>
 	</Actor>
 </Actors>

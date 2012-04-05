@@ -12,6 +12,7 @@
 	import flash.utils.Timer;
 	import flash.events.TimerEvent;
 	import flashx.textLayout.operations.MoveChildrenOperation;
+	import aiunits.AISpawnPoint;
 
 	public class MapManager {
 		public static var mapClip = new MovieClip();
@@ -22,6 +23,7 @@
 		public static var mapHeight:Number;
 		
 		static var telePoints:Array;
+		static var aiUnits:Array;
 
 		public static var trackUnit1:GameUnit, trackUnit2:GameUnit;
 
@@ -48,6 +50,32 @@
 			
 			return mapClip;
 		}
+		//-------------AI UNITS-------------
+		public static function clearAIUnits() {
+			for (var a in aiUnits) {
+				var u = aiUnits[a];
+				removeFromMapClip(u);
+			}
+			
+			aiUnits = new Array();
+		}
+		public static function createEnemy(id:int, ox, oy) {
+			var u = AIUnit.createAIUnit(id);
+			u.x = ox;
+			u.y = oy;
+			u.setDeleteFunction(deleteEnemy);
+			
+			addToMapClip(u);
+			aiUnits.push(u);
+		}
+		static function deleteEnemy(u:AIUnit) {
+			aiUnits.splice(aiUnits.indexOf(u), 1);
+			removeFromMapClip(u);
+		}
+		public static function getAIUnits():Array {
+			return aiUnits;
+		}
+		//-----------END AI UNITS-----------
 		public static function addToMapClip(mc:MovieClip) {
 			mapClip.addChild(mc);
 		}
@@ -108,15 +136,11 @@
 			mapWidth = parseInt(mapCode.substring(firstSep + 1, secSep));
 			mapHeight = parseInt(mapCode.substring(0, firstSep));
 			
-			// get teleport points
-			if (telePoints != null) {
-				for (var a in telePoints) {
-					var t = telePoints[a];
-					removeFromMapClip(t);
-				}
-			}
-			telePoints = new Array();
+			// get map points
+			clearAIUnits();
+			preparePointArrays();
 			
+			// get teleport points
 			var ind1 = 0;
 			while (true) {
 				ind1 = mapCode.indexOf("(", ind1) + 1;
@@ -139,17 +163,55 @@
 				var mapX = (teleX + .5) * TileMap.TILE_SIZE;
 				var mapY = (teleY + .5) * TileMap.TILE_SIZE;
 				
-				var tele = new TeleportPoint();
-				tele.x = mapX;
-				tele.y = mapY;
-				tele.tx = teleX;
-				tele.ty = teleY;
-				tele.destMap = destMap;
-				tele.destPoint = new Point(destX, destY);
-				
-				addToMapClip(tele);
-				telePoints.push(tele);
+				addTelePoint(mapX, mapY, teleX, teleY, destMap, new Point(destX, destY));
 			}
+			
+			// get spawn points
+			ind1 = 0;
+			while (true) {
+				ind1 = mapCode.indexOf("[", ind1) + 1;
+				if (ind1 == 0)
+					break;
+				
+				ind2 = mapCode.indexOf(",", ind1);
+				ind3 = mapCode.indexOf(",", ind2 + 1);
+				ind4 = mapCode.indexOf("]", ind3 + 1);
+				
+				var spawnx	= parseInt(mapCode.substring(ind1, ind2));
+				var spawny	= parseInt(mapCode.substring(ind2 + 1, ind3));
+				var spawnid	= parseInt(mapCode.substring(ind3 + 1, ind4));
+				
+				addSpawnPoint(spawnid, (spawnx + .5) * TileMap.TILE_SIZE, (spawny + .5) * TileMap.TILE_SIZE);
+			}
+		}
+		static function preparePointArrays() {
+			if (telePoints != null) {
+				for (var a in telePoints) {
+					var t = telePoints[a];
+					removeFromMapClip(t);
+				}
+			}
+			telePoints = new Array();
+		}
+		static function addTelePoint(mapX:Number, mapY:Number, teleX:int, teleY:int, destMap:int, destPoint:Point) {
+			var tele = new TeleportPoint();
+			tele.x = mapX;
+			tele.y = mapY;
+			tele.tx = teleX;
+			tele.ty = teleY;
+			tele.destMap = destMap;
+			tele.destPoint = destPoint;
+			
+			addToMapClip(tele);
+			telePoints.push(tele);
+		}
+		static function addSpawnPoint(spawnid:int, mapX:Number, mapY:Number) {
+			var spawn = new AISpawnPoint(spawnid);
+			spawn.x = mapX;
+			spawn.y = mapY;
+			
+			addToMapClip(spawn);
+			aiUnits.push(spawn);
 		}
 		public static function setHeroPosition(hero:GameUnit, partner:GameUnit, startPoint:Point) {
 			var sx = startPoint.x * TileMap.TILE_SIZE;

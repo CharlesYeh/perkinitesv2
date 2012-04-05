@@ -7,6 +7,7 @@
 	
 	import tileMapper.TileMap;
 	import db.AbilityDatabase;
+	import flashx.textLayout.operations.MoveChildrenOperation;
 
 	public class StatUnit extends GameUnit {
 		
@@ -20,6 +21,7 @@
 		static const ANIM_ABILITY3	= "ability3";
 		
 		var swf;
+		var partner:MovieClip;
 		
 		var animLabel:String;
 		var animClip:MovieClip;
@@ -33,6 +35,7 @@
 		//--------END STATS VARS-------
 		
 		//---------ABILITY VARS---------
+		var castInputWait:Boolean;
 		var castAbilityID:int;
 		var castAbilityType:String;
 		protected var castMousePoint:Point;
@@ -72,11 +75,15 @@
 			guide.visible = false;
 			
 			castAbilityID = -1;
+			castInputWait = false;
 			castMouseTarget = null;
 			cooldowns = new Array(10);
 		}
-		
-		function drawHealthbar() {
+		public function setPartner(p:StatUnit):void {
+			// for partner teleport/friendly buffs
+			partner = p;
+		}
+		protected function drawHealthbar() {
 			var WIDTH = 50;
 			var sx = -WIDTH/2;
 			
@@ -122,6 +129,7 @@
 			swf.content.char.applyBuffs			= applyBuffs;
 			swf.content.char.shootSkillshot		= shootSkillshot;
 			swf.content.char.teleport			= teleport;
+			swf.content.char.teleportPartner	= teleportPartner;
 		}
 		
 		//--------------FRAME FUNCTIONS--------------
@@ -157,7 +165,7 @@
 			if (castMouseTarget == null)
 				return;
 			
-			castMouseTarget.takeDamage(AbilityDatabase.getAttribute(ID, abilityID, "damage"));
+			castMouseTarget.takeDamage(AbilityDatabase.getAttribute(ID, abilityID, "Damage"));
 			
 			// if point damage
 			if (castAbilityType == AbilityDatabase.ATKTYPE_POINT) {
@@ -185,6 +193,10 @@
 			teleportTo(castMousePoint.x, castMousePoint.y);
 			clearPath();
 		}
+		public function teleportPartner() {
+			partner.teleportTo(castMousePoint.x, castMousePoint.y);
+			partner.clearPath();
+		}
 		//------------END FRAME FUNCTIONS------------
 		public function castAbility(abID:int, mousePos:Point) {
 			if (usingAbility || cooldowns[abID] > 0)
@@ -192,6 +204,7 @@
 			
 			castAbilityID = abID;
 			castAbilityType = AbilityDatabase.getTargetType(ID, abID);
+			castInputWait = true;
 			
 			switch (castAbilityType) {
 			case AbilityDatabase.ATKTYPE_TARGET:
@@ -214,7 +227,7 @@
 			return startCastAnimation();
 		}
 		public function mouseHandler(pos:Point) {
-			if (castAbilityID == -1) {
+			if (!castInputWait) {
 				guide.visible = false;
 			}
 			else {
@@ -223,7 +236,7 @@
 				
 				// set range guide
 				guide.range_circle.width = guide.range_circle.height =
-							2 * AbilityDatabase.getAttribute(ID, castAbilityID, "range");
+							2 * AbilityDatabase.getAttribute(ID, castAbilityID, "Range");
 				
 				switch (castAbilityType) {
 					case AbilityDatabase.ATKTYPE_POINT:
@@ -251,7 +264,7 @@
 			}
 		}
 		protected function startCastAnimation() {
-			if (usingAbility || castAbilityID == -1 || 
+			if (usingAbility || !castInputWait || 
 				cooldowns[castAbilityID] > 0)
 				return false;
 			
@@ -259,7 +272,7 @@
 			var dx = x - castMousePoint.x;
 			var dy = y - castMousePoint.y;
 			var dd = Math.sqrt(dx * dx + dy * dy);
-			var range = AbilityDatabase.getAttribute(ID, castAbilityID, "range");
+			var range = AbilityDatabase.getAttribute(ID, castAbilityID, "Range");
 			if (castAbilityType == AbilityDatabase.ATKTYPE_POINT &&
 				dd > range)
 				return false;
@@ -273,7 +286,7 @@
 			updateDirection(moveDir);
 			
 			// set cooldown
-			cooldowns[castAbilityID] = AbilityDatabase.getAttribute(ID, castAbilityID, "cooldown");
+			cooldowns[castAbilityID] = AbilityDatabase.getAttribute(ID, castAbilityID, "Cooldown");
 			
 			usingAbility = true;
 			prevLabel = animLabel;
@@ -290,7 +303,7 @@
 				break;
 			}
 			
-			castAbilityID = -1;
+			castInputWait = false;
 			return true;
 		}
 		
@@ -309,6 +322,32 @@
 			if (forwardMovement) {
 				// move forward!!
 				teleportTo(x + forwardVector.x, y + forwardVector.y);
+				
+				// do damage!! if did damage and stop at enemy, then end ability
+				var abilityWidth= AbilityDatabase.getAttribute(ID, castAbilityID, "MovementRadius");
+				abilityWidth 	= abilityWidth * abilityWidth;
+				var stopAtEnemy	= AbilityDatabase.getAttribute(ID, castAbilityID, "StopAtEnemy");
+				var damage		= AbilityDatabase.getAttribute(ID, castAbilityID, "Damage");
+				
+				var enemies = MapManager.getAIUnits();
+				for (a in enemies) {
+					var en:StatUnit = enemies[a];
+					var dx = en.x - x;
+					var dy = en.y - y;
+					var dist = dx * dx + dy * dy;
+					
+					if (dist < abilityWidth) {
+						en.takeDamage(damage);
+						
+						if (stopAtEnemy) {
+							// stop dashing and ability
+							stopForwardMovement();
+							enableMovement();
+							endAbility();
+							break;
+						}
+					}
+				}
 			}
 			if (disabledMovement)
 				return;
