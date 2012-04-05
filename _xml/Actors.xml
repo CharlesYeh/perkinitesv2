@@ -79,6 +79,7 @@
 
 			<Range Value="340" />
 			<MovementSpeed>500</MovementSpeed>
+			<AOE Range="70" Damage="30" />
 			<Cooldown Value="30" />
 			<Damage Value="30" Increase="3"/>
 		</Ability>

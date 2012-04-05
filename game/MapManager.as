@@ -70,7 +70,7 @@
 			
 			return u;
 		}
-		public static function deleteEnemy(u:AIUnit) {
+		public static function deleteEnemy(u:StatUnit) {
 			aiUnits.splice(aiUnits.indexOf(u), 1);
 			removeFromMapClip(u);
 		}
@@ -211,6 +211,7 @@
 			var spawn = new AISpawnPoint(spawnid);
 			spawn.x = mapX;
 			spawn.y = mapY;
+			spawn.setDeleteFunction(deleteEnemy);
 			
 			addToMapClip(spawn);
 			aiUnits.push(spawn);

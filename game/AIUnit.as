@@ -9,8 +9,6 @@
 		var chaserange:Number;
 		static var targets:Array;
 		
-		var deleteFunc:Function = null;
-		
 		public function AIUnit(id) {
 			super();
 			
@@ -33,12 +31,8 @@
 		public static function setTargets(t:Array) {
 			targets = t;
 		}
-		public function setDeleteFunction(func:Function) {
-			deleteFunc = func;
-		}
-		protected function deleteSelf() {
-			if (deleteFunc != null)
-				deleteFunc(this);
+		override protected function deleteSelf() {
+			super.deleteSelf();
 			
 			removeEventListener(Event.ENTER_FRAME, runnerAI);
 		}

@@ -22,6 +22,7 @@
 		
 		var swf;
 		var partner:MovieClip;
+		var deleteFunc:Function = null;
 		
 		var animLabel:String;
 		var animClip:MovieClip;
@@ -426,6 +427,13 @@
 				
 				animClip.gotoAndStop(animLabel);
 			}
+		}
+		public function setDeleteFunction(func:Function) {
+			deleteFunc = func;
+		}
+		protected function deleteSelf() {
+			if (deleteFunc != null)
+				deleteFunc(this);
 		}
 	}
 }

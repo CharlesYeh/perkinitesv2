@@ -32,10 +32,13 @@
 				data.description = nodeData.Description;
 				
 				data.Range		= nodeData.Range.attribute("Value");
+				data.MovementRadius	= nodeData.MovementRadius;
+				data.StopAtEnemy= (nodeData.StopAtEnemy == "True") ? true : false;
+				
+				data.AOEDamage	= nodeData.AOE.attribute("Damage");
+				data.AOERange	= nodeData.AOE.attribute("Range");
 				data.Cooldown	= nodeData.Cooldown.attribute("Value");
 				data.Damage		= nodeData.Damage.attribute("Value");
-				data.StopAtEnemy= (nodeData.StopAtEnemy == "True") ? true : false;
-				data.MovementRadius	= nodeData.MovementRadius;
 				
 				abilities[unitID].push(data);
 			}
