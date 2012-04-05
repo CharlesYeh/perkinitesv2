@@ -109,6 +109,7 @@
 			<Description>Four arrows appear that home towards the closest enemy.</Description>
 
 			<Range Value="200" />
+			<Skillshot Width="10" Speed="10" />
 			<Cooldown Value="60" />
 			<Damage Value="5" Increase="3"/>
 		</Ability>
@@ -139,6 +140,7 @@
 			<Description>Fire a railgun at a single target.</Description>
 
 			<Range Value="400" />
+			<Skillshot Width="15" Speed="15" />
 			<Cooldown Value="40" />
 			<Damage Value="20" Increase="3"/>
 		</Ability>
@@ -159,7 +161,7 @@
 		<Attack Value="2" Increase="1" />
 		<Defense>0</Defense>
 		<Speed Value="310" Increase="5" />
-		<Weapon>Magic Wand</Weapon>
+		<Weapon>Knitting Needles</Weapon>
 		<Ability>
 			<Name>Sedated Needles</Name>
 			<Type>Target</Type>
@@ -221,7 +223,8 @@
 			<Icon>_icons/Icon - Jade Fang.png</Icon>
 			<Description>Throw two daggers at a target.</Description>
 			
-			<Range Value="80" />
+			<Range Value="160" />
+			<Skillshot Width="10" Speed="10" />
 			<Cooldown Value="30" />
 			<Damage Value="20" Increase="3"/>
 		</Ability>
@@ -270,16 +273,7 @@
 		<Speed Value="320" Increase="5" />
 		<Weapon>Opera Piercing</Weapon>
 		<Ability>
-			<Name>Swap Attire</Name>
-			<Type>Smartcast</Type>
-			<Icon>_icons/Icon - Access Denied.png</Icon>
-			<Description>Modify Movement Speed with new clothes, and also dazzle nearby enemies.</Description>
-			
-			<Range Value="250" />
-			<Cooldown Value="30" />
-		</Ability>
-		<Ability>
-			<Name>Foreign Languages</Name>
+			<Name>Mummy Curse</Name>
 			<Type>Target</Type>
 			<Icon>_icons/Icon - Access Denied.png</Icon>
 			<Description>Curse an enemy, damaging and slowing it.</Description>
@@ -287,6 +281,15 @@
 			<Range Value="200" />
 			<Cooldown Value="40" />
 			<Damage Value="30" Increase="3"/>
+		</Ability>
+		<Ability>
+			<Name>Swap Attire</Name>
+			<Type>Smartcast</Type>
+			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Description>Modify Movement Speed with new clothes, and also dazzle nearby enemies.</Description>
+			
+			<Range Value="250" />
+			<Cooldown Value="30" />
 		</Ability>
 	</Actor>
 	<Actor>
@@ -410,7 +413,7 @@
 		<Ability>
 			<Name>Sunshine</Name>
 			<Type>Point</Type>
-			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Icon>_icons/Icon - Sunshine.png</Icon>
 			<Description>Sends forth bursts of solar energy.</Description>
 			
 			<Range Value="500" />
@@ -420,7 +423,7 @@
 		<Ability>
 			<Name>Happiness</Name>
 			<Type>Cone</Type>
-			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Icon>_icons/Icon - Happiness.png</Icon>
 			<Description>Creates a ray of solar energy.</Description>
 			
 			<Range Value="150" />
