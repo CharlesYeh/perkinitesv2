@@ -95,6 +95,9 @@
 			healthbar.graphics.drawRect(sx, 30, WIDTH * healthPoints / healthMax, 5);
 			healthbar.graphics.endFill();
 		}
+		public function getMaxCooldown(abid:int):Number {
+			return AbilityDatabase.getAttribute(ID, abid, "Cooldown");
+		}
 		function takeDamage(dmg:Number) {
 			healthPoints = Math.max(0, healthPoints - dmg);
 			drawHealthbar();

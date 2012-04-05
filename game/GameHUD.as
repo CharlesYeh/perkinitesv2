@@ -36,17 +36,18 @@
 			}
 		}
 		public function showCooldowns(p1:StatUnit, p2:StatUnit) {
-			drawCooldown(p1.ID, 0, 0, p1.cooldowns[0]);
-			drawCooldown(p1.ID, 0, 1, p1.cooldowns[1]);
-			drawCooldown(p2.ID, 1, 0, p2.cooldowns[0]);
-			drawCooldown(p2.ID, 1, 1, p2.cooldowns[1]);
+			drawCooldown(p1, 0, 0);
+			drawCooldown(p1, 0, 1);
+			drawCooldown(p2, 1, 0);
+			drawCooldown(p2, 1, 1);
 		}
-		function drawCooldown(id:int, char:int, abid:int, cd:Number) {
+		function drawCooldown(char:StatUnit, charindex:int, abid:int) {
+			var cd:int = char.cooldowns[abid];
 			if (isNaN(cd))
 				cd = 0;
 			
-			var maxcd = AbilityDatabase.getAttribute(id, abid, "Cooldown");
-			var c = icon_conts[char * 2 + abid].icon_cd;
+			var maxcd = char.getMaxCooldown(abid);
+			var c = icon_conts[charindex * 2 + abid].icon_cd;
 			
 			c.graphics.clear();
 			c.graphics.beginFill(0x000000, .5);

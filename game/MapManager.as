@@ -59,7 +59,7 @@
 			
 			aiUnits = new Array();
 		}
-		public static function createEnemy(id:int, ox, oy) {
+		public static function createEnemy(id:int, ox, oy):StatUnit {
 			var u = AIUnit.createAIUnit(id);
 			u.x = ox;
 			u.y = oy;
@@ -67,8 +67,10 @@
 			
 			addToMapClip(u);
 			aiUnits.push(u);
+			
+			return u;
 		}
-		static function deleteEnemy(u:AIUnit) {
+		public static function deleteEnemy(u:AIUnit) {
 			aiUnits.splice(aiUnits.indexOf(u), 1);
 			removeFromMapClip(u);
 		}
