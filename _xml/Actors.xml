@@ -275,7 +275,7 @@
 		<Ability>
 			<Name>Mummy Curse</Name>
 			<Type>Target</Type>
-			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Icon>_icons/Icon - Mummy Curse.png</Icon>
 			<Description>Curse an enemy, damaging and slowing it.</Description>
 			
 			<Range Value="200" />
@@ -285,7 +285,7 @@
 		<Ability>
 			<Name>Swap Attire</Name>
 			<Type>Smartcast</Type>
-			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Icon>_icons/Icon - Swap Attire.png</Icon>
 			<Description>Modify Movement Speed with new clothes, and also dazzle nearby enemies.</Description>
 			
 			<Range Value="250" />
