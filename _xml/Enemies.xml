@@ -63,9 +63,10 @@
 		<Speed Value="50" />
 		<Ability>
 			<Name>Psychosy Shot</Name>
-			<Type>Smartcast</Type>
+			<Type>Skillshot</Type>
 
 			<Range Value="300" />
+			<Skillshot Width="10" Speed="10" />
 			<Cooldown Value="40" />
 			<Damage Value="10" />
 		</Ability>

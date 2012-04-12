@@ -248,7 +248,7 @@
 		<Ability>
 			<Name>Cupcake Launcher</Name>
 			<Type>Target</Type>
-			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Icon>_icons/Icon - Cupcake Launcher.png</Icon>
 			<Description>Create a barrage of hot cupcakes.</Description>
 			
 			<Range Value="50" />
@@ -258,7 +258,7 @@
 		<Ability>
 			<Name>You're Dead</Name>
 			<Type>Target</Type>
-			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Icon>_icons/Icon - You're Dead.png</Icon>
 			<Description>Points at an enemy and says "you're dead". Deals massive emotional damage.</Description>
 			
 			<Cooldown Value="230" />

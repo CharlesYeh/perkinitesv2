@@ -40,7 +40,7 @@
 			if (nextSpawn <= 0 && myUnits.length < 3) {
 				// spawn enemy!
 				
-				var u = MapManager.createEnemy(1, x, y);
+				var u = MapManager.createEnemy(Math.floor(Math.random()*5), x, y);
 				// replace delete function
 				u.setDeleteFunction(deleteEnemy);
 				myUnits.push(u);
