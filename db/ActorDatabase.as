@@ -10,6 +10,8 @@
 		static var sprites:Array;
 		static var hp:Array;
 		static var hpup:Array;
+		static var atk:Array;
+		static var atkup:Array;
 		static var speed:Array;
 		static var speedup:Array;
 		static var wpn:Array;
@@ -18,6 +20,7 @@
 		
 		public static function getName(i:Number):String		{ return names[i];	}
 		public static function getHP(i:Number):Number 		{ return hp[i];		}
+		public static function getAttack(i:Number):Number   { return atk[i];    }
 		public static function getSpeed(i:Number):Number 	{ return speed[i];	}
 		public static function getWeapon(i:Number):String	{ return wpn[i];	}
 		public static function getIcon(i:Number):Loader		{ return icons[i];	}
@@ -39,6 +42,8 @@
 			sprites	= new Array();
 			hp		= new Array();
 			hpup	= new Array();
+			atk     = new Array();
+			atkup   = new Array();
 			speed	= new Array();
 			speedup	= new Array();
 			wpn		= new Array();
@@ -51,6 +56,8 @@
 				sprites.push(node.Sprite);
 				hp.push(	parseInt(node.Health.attribute("Value")));
 				hpup.push(	parseInt(node.Health.attribute("Increase")));
+				atk.push(	parseInt(node.Attack.attribute("Value")));
+				atkup.push(	parseInt(node.Attack.attribute("Increase")));				
 				speed.push(	parseInt(node.Speed.attribute("Value")));
 				speedup.push(parseInt(node.Speed.attribute("Increase")));
 				wpn.push(	node.Weapon);

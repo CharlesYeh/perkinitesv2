@@ -152,6 +152,7 @@ function update(display:MovieClip, page:Number, index:Number) {
 		case 1 :
 			// show stats
 			display.page2.HPCount.text = ActorDatabase.getHP(index) + "";
+			display.page2.APCount.text = ActorDatabase.getAttack(index) + "";
 			display.page2.SPCount.text = ActorDatabase.getSpeed(index) + "";
 			display.page2.weaponName.text = ActorDatabase.getWeapon(index);
 
@@ -161,13 +162,13 @@ function update(display:MovieClip, page:Number, index:Number) {
 			// show AVAILABLE abilities
 			//var basicAbilities = AbilityDatabase.getBasicAbilities(ActorDatabase.getName(index));
 
-			for (var i = 0; i < 4; i++) {
+			for (var i = 0; i < 2; i++) {
 				var r = display.page3["row" + i];
 				
-				if (i >= 2) {
+/*				if (i >= 2) {
 					r.visible = false;
 					continue;
-				}
+				}*/
 				
 				r.abilityName.text = AbilityDatabase.getName(index, i);
 				r.description.text = AbilityDatabase.getDescription(index, i);

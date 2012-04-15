@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Actors xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Actor>
 		<Name>Charles Y.</Name>
@@ -134,10 +134,10 @@
 		<Speed Value="270" Increase="5" />
 		<Weapon>Railgun</Weapon>
 		<Ability>
-			<Name>Railgun Striker</Name>
+			<Name>Shoe Throwing</Name>
 			<Type>Target</Type>
-			<Icon>_icons/Icon - Railgun Striker.png</Icon>
-			<Description>Fire a railgun at a single target.</Description>
+			<Icon>_icons/Icon - Shoe Throwing.png</Icon>
+			<Description>Fire a shoe at a single target.</Description>
 
 			<Range Value="400" />
 			<Skillshot Width="15" Speed="15" />
@@ -251,9 +251,10 @@
 			<Icon>_icons/Icon - Cupcake Launcher.png</Icon>
 			<Description>Create a barrage of hot cupcakes.</Description>
 			
-			<Range Value="50" />
-			<Cooldown Value="50" />
-			<Damage Value="30" Increase="3"/>
+			<Range Value="250" />
+			<Skillshot Width="15" Speed="15" />
+			<Cooldown Value="70" />
+			<Damage Value="10" Increase="3"/>
 		</Ability>
 		<Ability>
 			<Name>You're Dead</Name>
