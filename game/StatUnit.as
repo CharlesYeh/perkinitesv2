@@ -203,7 +203,23 @@
 				ss.x += this.x;
 				ss.y += this.y;
 				
-				var rad = Math.atan2(castMouseTarget.y - ss.y, castMouseTarget.x - ss.x);
+				// direction to shoot skillshot
+				var rad;
+				
+				switch (AbilityDatabase.getTargetType(ID, castAbilityID)) {
+				case AbilityDatabase.ATKTYPE_TARGET:
+					rad = Math.atan2(castMouseTarget.y - ss.y, castMouseTarget.x - ss.x);
+					ss.target = castMouseTarget;
+					ss.addEventListener(Event.ENTER_FRAME, skillshotHoming);
+					break;
+				case AbilityDatabase.ATKTYPE_SCAST:
+					
+					//break;
+				default:
+					rad = Math.atan2(castMousePoint.y - ss.y, castMousePoint.x - ss.x);
+					ss.addEventListener(Event.ENTER_FRAME, skillshotMover);
+				}
+				
 				ss.range = AbilityDatabase.getAttribute(ID, castAbilityID, "Range");
 				ss.ms = int(AbilityDatabase.getAttribute(ID, castAbilityID, "SkillshotSpeed"));
 				ss.vx = ss.ms * Math.cos(rad);
@@ -213,7 +229,7 @@
 				ss.abilityWidth	= AbilityDatabase.getAttribute(ID, castAbilityID, "SkillshotWidth");
 				ss.damage		= AbilityDatabase.getAttribute(ID, castAbilityID, "Damage");
 				ss.stopAtFirst	= true;
-				ss.addEventListener(Event.ENTER_FRAME, skillshotMover);
+				
 			}
 		}
 		function skillshotMover(e:Event) {
@@ -228,6 +244,27 @@
 				ss.parent.removeChild(ss);
 				ss.removeEventListener(Event.ENTER_FRAME, skillshotMover);
 			}
+		}
+		function skillshotHoming(e:Event) {
+			var ss = e.target;
+			
+			// test collision with target
+			var dx = ss.target.x - ss.x;
+			var dy = ss.target.y - ss.y;
+			var dist = dx * dx + dy * dy;
+			
+			if (dist < ss.abilityWidth) {
+				ss.target.takeDamage(ss.damage);
+				
+				ss.parent.removeChild(ss);
+				ss.removeEventListener(Event.ENTER_FRAME, skillshotHoming);
+				return;
+			}
+			
+			// movement
+			var rad = Math.atan2(ss.target.y - ss.y, ss.target.x - ss.x);
+			ss.x += Math.cos(rad) * ss.ms;
+			ss.y += Math.sin(rad) * ss.ms;
 		}
 		public function teleport() {
 			teleportTo(castMousePoint.x, castMousePoint.y);
@@ -357,6 +394,8 @@
 				
 				if (dist < abilityWidth) {
 					en.takeDamage(damage);
+					
+					// find actual closest to old position?#########################
 					
 					if (stopAtFirst) {
 						return true;
