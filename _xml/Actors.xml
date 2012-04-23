@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Actors xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Actor>
 		<Name>Charles Y.</Name>
@@ -81,7 +81,7 @@
 			<MovementSpeed>500</MovementSpeed>
 			<AOE Range="70" Damage="30" />
 			<Cooldown Value="30" />
-			<Damage Value="30" Increase="3"/>
+			<Damage Value="10" Increase="3"/>
 		</Ability>
 		<Ability>
 			<Name>Awkward Stare</Name>
@@ -132,12 +132,12 @@
 		<Attack Value="4" Increase="1" />
 		<Defense>0</Defense>
 		<Speed Value="270" Increase="5" />
-		<Weapon>Railgun</Weapon>
+		<Weapon>Shoes and Shanking</Weapon>
 		<Ability>
-			<Name>Railgun Striker</Name>
+			<Name>Shoe Throwing</Name>
 			<Type>Target</Type>
-			<Icon>_icons/Icon - Railgun Striker.png</Icon>
-			<Description>Fire a railgun at a single target.</Description>
+			<Icon>_icons/Icon - Shoe Throwing.png</Icon>
+			<Description>Fire a shoe at a single target. If close enough, shank the target as well.</Description>
 
 			<Range Value="400" />
 			<Skillshot Width="15" Speed="15" />
@@ -166,7 +166,7 @@
 			<Name>Sedated Needles</Name>
 			<Type>Target</Type>
 			<Icon>_icons/Icon - Sedated Needles.png</Icon>
-			<Description>Sedates target enemy.</Description>
+			<Description>Throws a sedated knitting needle at an enemy. If close enough, sedate more.</Description>
 
 			<Range Value="50" />
 			<Cooldown Value="30" />
@@ -216,7 +216,7 @@
 		<Attack Value="3" Increase="1" />
 		<Defense>0</Defense>
 		<Speed Value="320" Increase="5" />
-		<Weapon>Jade Daggers</Weapon>
+		<Weapon>Chinese Magic</Weapon>
 		<Ability>
 			<Name>Jade Fang</Name>
 			<Type>Target</Type>
@@ -251,9 +251,10 @@
 			<Icon>_icons/Icon - Cupcake Launcher.png</Icon>
 			<Description>Create a barrage of hot cupcakes.</Description>
 			
-			<Range Value="50" />
-			<Cooldown Value="50" />
-			<Damage Value="30" Increase="3"/>
+			<Range Value="250" />
+			<Skillshot Width="15" Speed="15" />
+			<Cooldown Value="70" />
+			<Damage Value="10" Increase="3"/>
 		</Ability>
 		<Ability>
 			<Name>You're Dead</Name>
@@ -261,7 +262,9 @@
 			<Icon>_icons/Icon - You're Dead.png</Icon>
 			<Description>Points at an enemy and says "you're dead". Deals massive emotional damage.</Description>
 			
+			<Range Value="80" />
 			<Cooldown Value="230" />
+			<Damage Value="60" Increase="3"/>
 		</Ability>
 	</Actor>
 	<Actor>
@@ -327,7 +330,7 @@
 		<Attack Value="3" Increase="1" />
 		<Defense>0</Defense>
 		<Speed Value="320" Increase="5" />
-		<Weapon>Opera Piercing</Weapon>
+		<Weapon>Hook Sword</Weapon>
 		<Ability>
 			<Name>Sword Slap</Name>
 			<Type>Target</Type>
@@ -342,7 +345,7 @@
 			<Name>Hookshot</Name>
 			<Type>Skillshot</Type>
 			<Icon>_icons/Icon - Access Denied.png</Icon>
-			<Description>Pulls an enemy towards PG.</Description>
+			<Description>Pulls an enemy towards Patrick and slows it.</Description>
 			
 			<Range Value="200" />
 			<Cooldown Value="50" />
@@ -459,6 +462,61 @@
 			<Cooldown Value="50" />
 		</Ability>
 	</Actor>
+	<Actor>
+		<Name>Kade W.</Name>
+		<Sprite>KW</Sprite>
+		<Health Value="70" Increase="5.5" />
+		<Attack Value="3" Increase="1" />
+		<Defense>0</Defense>
+		<Speed Value="320" Increase="5" />
+		<Weapon>PB+J</Weapon>
+		<Ability>
+			<Name>Tummy Poking</Name>
+			<Type>Target</Type>
+			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Description>Poke people in the stomach until they have a hole.</Description>
+			
+			<Range Value="50" />
+			<Cooldown Value="50" />
+			<Damage Value="30" Increase="3"/>
+		</Ability>
+		<Ability>
+			<Name>Hibernate</Name>
+			<Type>Smartcast</Type>
+			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Description>Immobilizes Kade for 5 seconds, but creates a toxic saliva aura around her.</Description>
+			
+			<Cooldown Value="230" />
+		</Ability>
+	</Actor>
+	<Actor>
+		<Name>Aoife M.</Name>
+		<Sprite>AM</Sprite>
+		<Health Value="70" Increase="5.5" />
+		<Attack Value="3" Increase="1" />
+		<Defense>0</Defense>
+		<Speed Value="320" Increase="5" />
+		<Weapon>Katana</Weapon>
+		<Ability>
+			<Name>Decapitation</Name>
+			<Type>Target</Type>
+			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Description>Teleports to an enemy and deals heavy damage.</Description>
+			
+			<Range Value="250" />
+			<Cooldown Value="30" />
+		</Ability>
+		<Ability>
+			<Name>Invincibility</Name>
+			<Type>Smartcast</Type>
+			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Description>Heals Aoife and Kade. Gives Aoife increased stats for 5 seconds.</Description>
+			
+			<Range Value="200" />
+			<Cooldown Value="40" />
+			<Damage Value="40" Increase="3"/>
+		</Ability>
+	</Actor>	
 	<Actor>
 		<Name>Tevin J.</Name>
 		<Sprite>TJ</Sprite>
