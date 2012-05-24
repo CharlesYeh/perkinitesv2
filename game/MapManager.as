@@ -2,6 +2,7 @@
 	import util.*;
 	import tileMapper.*;
 	import db.MapDatabase;
+	import db.NPCDatabase;
 	import game.GameUnit;
 
 	import flash.geom.Point;
@@ -24,6 +25,7 @@
 		
 		static var telePoints:Array;
 		static var aiUnits:Array;
+		static var npcUnits:Array;
 
 		public static var trackUnit1:GameUnit, trackUnit2:GameUnit;
 
@@ -59,6 +61,15 @@
 			
 			aiUnits = new Array();
 		}
+		public static function clearNPCUnits(){
+			for (var n in npcUnits){
+				var npc = npcUnits[n];
+				removeFromMapClip(npc);
+				npc.destroy();
+			}
+			
+			npcUnits = new Array();
+		}
 		public static function createEnemy(id:int, ox, oy):StatUnit {
 			var u = AIUnit.createAIUnit(id);
 			u.x = ox;
@@ -84,7 +95,7 @@
 		public static function removeFromMapClip(mc:MovieClip) {
 			mapClip.removeChild(mc);
 		}
-		public static function depthSortHandler(e) {
+/*		public static function depthSortHandler(e) {
 			var depthArray:Array = new Array();
 			for (var i:int = 0; i < mapClip.numChildren; i++) {
 				var child = mapClip.getChildAt(i);
@@ -103,7 +114,7 @@
 					mapClip.setChildIndex(depthArray[i], t);
 				}
 			}
-		}
+		}*/
 		public static function testTeleportPoints(su:StatUnit):MovieClip {
 			var sx = Math.floor(su.x / TileMap.TILE_SIZE);
 			var sy = Math.floor(su.y / TileMap.TILE_SIZE);
@@ -140,6 +151,7 @@
 			
 			// get map points
 			clearAIUnits();
+			clearNPCUnits();
 			preparePointArrays();
 			
 			// get teleport points
@@ -185,6 +197,15 @@
 				
 				addSpawnPoint(spawnid, (spawnx + .5) * TileMap.TILE_SIZE, (spawny + .5) * TileMap.TILE_SIZE);
 			}
+			
+			//get NPCs
+			var npcMap = NPCDatabase.getNPCMap(mapNumber);
+			for(var n in npcMap){
+				var npc = npcMap[n];
+				var npcx	= parseInt(npc.xpos);
+				var npcy	= parseInt(npc.ypos);
+				addNPC(npc, (npcx + .5) * TileMap.TILE_SIZE, (npcy + .5) * TileMap.TILE_SIZE);
+			}
 		}
 		static function preparePointArrays() {
 			if (telePoints != null) {
@@ -215,6 +236,12 @@
 			
 			addToMapClip(spawn);
 			aiUnits.push(spawn);
+		}
+		static function addNPC(npc:NPCUnit, mapX:Number, mapY:Number){
+			npc.x = mapX;
+			npc.y = mapY;
+			addToMapClip(npc);
+			npcUnits.push(npc);
 		}
 		public static function setHeroPosition(hero:GameUnit, partner:GameUnit, startPoint:Point) {
 			var sx = startPoint.x * TileMap.TILE_SIZE;

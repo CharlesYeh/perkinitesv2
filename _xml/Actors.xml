@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Actors xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Actor>
 		<Name>Charles Y.</Name>
@@ -306,7 +306,7 @@
 		<Ability>
 			<Name>Acidic Sarcasm</Name>
 			<Type>Smartcast</Type>
-			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Icon>_icons/Icon - Acidic Sarcasm.png</Icon>
 			<Description>Damages all nearby enemies.</Description>
 			
 			<Range Value="80" />
@@ -316,7 +316,7 @@
 		<Ability>
 			<Name>Rapid Hair Growth</Name>
 			<Type>Smartcast</Type>
-			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Icon>_icons/Icon - Rapid Hair Growth.png</Icon>
 			<Description>Stuns nearby enemies.</Description>
 			
 			<Range Value="70" />
@@ -334,7 +334,7 @@
 		<Ability>
 			<Name>Sword Slap</Name>
 			<Type>Target</Type>
-			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Icon>_icons/Icon - Sword Slap.png</Icon>
 			<Description>Slap an enemy away with the flat side of the sword.</Description>
 			
 			<Range Value="50" />
@@ -344,7 +344,7 @@
 		<Ability>
 			<Name>Hookshot</Name>
 			<Type>Skillshot</Type>
-			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Icon>_icons/Icon - Hookshot.png</Icon>
 			<Description>Pulls an enemy towards Patrick and slows it.</Description>
 			
 			<Range Value="200" />
@@ -372,7 +372,7 @@
 		<Ability>
 			<Name>Stealth Mode</Name>
 			<Type>Smartcast</Type>
-			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Icon>_icons/Icon - Stealth Mode.png</Icon>
 			<Description>Evade all enemy attacks, then strike!</Description>
 			
 			<Cooldown Value="100" />
@@ -500,7 +500,7 @@
 		<Ability>
 			<Name>Decapitation</Name>
 			<Type>Target</Type>
-			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Icon>_icons/Icon - Decapitation.png</Icon>
 			<Description>Teleports to an enemy and deals heavy damage.</Description>
 			
 			<Range Value="250" />

@@ -27,5 +27,9 @@
             this.BGM = BGM;
 			this.BGS = BGS;
         }
+		
+		public function setNPCs(npcArray:Array){
+			
+		}
     }
 }

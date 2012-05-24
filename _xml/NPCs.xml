@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<NPCs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<NPCMap>
+		<ID>0</ID>
+	</NPCMap>
+	<NPCMap>
+		<NPC>
+			<Sprite>_sprites/JT.swf</Sprite>
+			<Direction>3</Direction>
+			<XPos>16</XPos>
+			<YPos>9</YPos>
+			<Conditions>
+			</Conditions>
+			<Commands>
+				<Message>
+					<Name>John T.</Name>
+					<FaceIcon>_icons/JT</FaceIcon>
+					<Text>Harro frands :D</Text>
+				</Message>
+				<Message>
+					<Name>John T.</Name>
+					<FaceIcon>_icons/JT</FaceIcon>
+					<Text>How are you doing today?</Text>
+				</Message>								
+			</Commands>
+		</NPC>
+		<NPC>
+			<Sprite>_sprites/CK.swf</Sprite>
+			<Direction>0</Direction>
+			<XPos>20</XPos>
+			<YPos>9</YPos>
+			<Conditions>
+			</Conditions>
+			<Commands>
+				<Message>
+					<Name>C. Kata</Name>
+					<FaceIcon>_icons/CK</FaceIcon>
+					<Text>Gurrrllllll this faceicon doesn't work but that's k.</Text>
+				</Message>
+				<Message>
+					<Name></Name>
+					<FaceIcon></FaceIcon>
+					<Text>Mission 1!&#xA;Get some shoes at the mall!&#xA;:)</Text>
+				</Message>								
+			</Commands>
+		</NPC>	
+	</NPCMap>
+</NPCs>

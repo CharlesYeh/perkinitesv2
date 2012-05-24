@@ -517,5 +517,9 @@
 			if (deleteFunc != null)
 				deleteFunc(this);
 		}
+		//make it stop running when transferring to a new map
+		public function destroy(){
+			deleteSelf();
+		}
 	}
 }
