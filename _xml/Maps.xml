@@ -6,6 +6,13 @@
     <TilesetID>1</TilesetID>
     <BGM>None</BGM>
     <BGS>None</BGS>
+    <NPCs>
+      <NPC>
+        <Name></Name>
+        <ID>0</ID>
+        <Position x="10" y="10" />
+      </NPC>
+    </NPCs>
   </Map>
   <Map>
     <ID>1</ID>
