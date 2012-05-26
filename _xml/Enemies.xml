@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Enemies xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Enemy>
 		<Name>Drunk Enemy</Name>
@@ -88,4 +88,23 @@
 			<Damage Value="15" />
 		</Ability>
 	</Enemy>
+	<Enemy>
+		<Name>Ira</Name>
+		<Sprite>enemy_Ira</Sprite>
+		<AIClass>BasicAIUnit</AIClass>
+		<Health Value="500" />
+		<Attack Value="10" />
+		<Defense>0</Defense>
+		<Speed Value="125" />
+		<Ability>
+			<Name>Hate Haze</Name>
+			<Type>Skillshot</Type>
+
+			<Range Value="96" />
+			<Skillshot Width="48" Speed="32" />
+			<Cooldown Value="60" />
+			<Damage Value="20" />
+		</Ability>
+	</Enemy>
+	
 </Enemies>

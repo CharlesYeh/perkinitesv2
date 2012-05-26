@@ -51,7 +51,7 @@ function init(map:int, startPoint:Point) {
 	
 	// create enemies?
 	//MapManager.createEnemy(0, 1500, 400);
-	MapManager.createEnemy(1, 1500, 400);
+	MapManager.createEnemy(5, 1500, 400);
 	//MapManager.createEnemy(2, 1500, 400);
 	
 	MapManager.setHeroPosition(player, partner, startPoint);
