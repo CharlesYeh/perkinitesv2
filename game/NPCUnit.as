@@ -135,7 +135,10 @@
 			}
 		}
 		function commandHandler(e:Event):void{
-			removeEventListener(MouseEvent.CLICK, commandHandler);
+			for(var n in MapManager.npcUnits){
+				var npc = MapManager.npcUnits[n];
+				npc.removeEventListener(MouseEvent.CLICK, npc.commandHandler);
+			}
 			activateCommand();
 		}
 		
@@ -145,7 +148,10 @@
 			}
 			else{
 				current = 0;
-				addEventListener(MouseEvent.CLICK, commandHandler);
+				for(var n in MapManager.npcUnits){
+					var npc = MapManager.npcUnits[n];
+					npc.addEventListener(MouseEvent.CLICK, npc.commandHandler);
+				}
 			}
 		}
 		protected function translateCommand(xml:XML){
@@ -159,6 +165,8 @@
 			if(xml.FaceIcon == ""){
 				m.messageDisplay.x = 12;
 				m.messageDisplay.width = 566;
+				m.nameDisplay.x = 12;
+				
 			}
 			else{
 				//fix this part
@@ -171,14 +179,11 @@
 				
 				m.addChild(ic);
 			}
-			
-			if(xml.name == ""){
+			if(xml.Name == ""){
 				m.messageDisplay.y = 12;
 				m.messageDisplay.height = 106.05;			
 			}
-			else{
-				m.nameDisplay.text = xml.Name;				
-			}
+			m.nameDisplay.text = xml.Name;					
 			
 			m.messageDisplay.text = xml.Text;
 			
