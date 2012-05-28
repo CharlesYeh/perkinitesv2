@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Actors xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Actor>
 		<Name>Charles Y.</Name>
@@ -139,10 +139,10 @@
 			<Icon>_icons/Icon - Shoe Throwing.png</Icon>
 			<Description>Fire a shoe at a single target. If close enough, shank the target as well.</Description>
 
-			<Range Value="400" />
+			<Range Value="300" />
 			<Skillshot Width="15" Speed="15" />
 			<Cooldown Value="40" />
-			<Damage Value="20" Increase="3"/>
+			<Damage Value="15" Increase="3"/>
 		</Ability>
 		<Ability>
 			<Name>Coffee Boost</Name>
@@ -168,9 +168,10 @@
 			<Icon>_icons/Icon - Sedated Needles.png</Icon>
 			<Description>Throws a sedated knitting needle at an enemy. If close enough, sedate more.</Description>
 
-			<Range Value="50" />
-			<Cooldown Value="30" />
-			<Damage Value="15" Increase="3"/>
+			<Range Value="250" />
+			<Skillshot Width="15" Speed="15" />
+			<Cooldown Value="40" />
+			<Damage Value="20" Increase="3"/>
 		</Ability>
 		<Ability>
 			<Name>Graceful Dodge</Name>
@@ -178,7 +179,7 @@
 			<Icon>_icons/Icon - Graceful Dodge.png</Icon>
 			<Description>Teleport self to a point.</Description>
 
-			<Range Value="100" />
+			<Range Value="250" />
 			<Cooldown Value="50" />
 		</Ability>
 	</Actor>
@@ -351,6 +352,61 @@
 			<Cooldown Value="50" />
 		</Ability>
 	</Actor>
+	<Actor>
+		<Name>Raymon B.</Name>
+		<Sprite>RB</Sprite>
+		<Health Value="70" Increase="5.5" />
+		<Attack Value="3" Increase="1" />
+		<Defense>0</Defense>
+		<Speed Value="320" Increase="5" />
+		<Weapon>Machine Gun</Weapon>
+		<Ability>
+			<Name>Rampage</Name>
+			<Type>Target</Type>
+			<Icon>_icons/Icon - Railgun Striker.png</Icon>
+			<Description>Guns down enemies in a cone.</Description>
+			
+			<Range Value="50" />
+			<Cooldown Value="50" />
+			<Damage Value="30" Increase="3"/>
+		</Ability>
+		<Ability>
+			<Name>Overload</Name>
+			<Type>Smartcast</Type>
+			<Icon>_icons/Icon - Overload.png</Icon>
+			<Description>Causes insanity.</Description>
+			
+			<Cooldown Value="230" />
+		</Ability>
+	</Actor>
+	<Actor>
+		<Name>Ryan J.</Name>
+		<Sprite>RJ</Sprite>
+		<Health Value="70" Increase="5.5" />
+		<Attack Value="3" Increase="1" />
+		<Defense>0</Defense>
+		<Speed Value="320" Increase="5" />
+		<Weapon>Rugby</Weapon>
+		<Ability>
+			<Name>Crash Tackle</Name>
+			<Type>Target</Type>
+			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Description>Dashes a fixed distance in the direction of the enemy.</Description>
+			
+			<Range Value="250" />
+			<Cooldown Value="30" />
+		</Ability>
+		<Ability>
+			<Name>Golden Point</Name>
+			<Type>Target</Type>
+			<Icon>_icons/Icon - Access Denied.png</Icon>
+			<Description>Throws a supercharged rugby ball towards an area.</Description>
+			
+			<Range Value="200" />
+			<Cooldown Value="40" />
+			<Damage Value="40" Increase="3"/>
+		</Ability>
+	</Actor>		
 	<Actor>
 		<Name>Michael F.</Name>
 		<Sprite>MF</Sprite>
