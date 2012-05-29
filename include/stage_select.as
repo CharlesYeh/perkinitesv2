@@ -6,7 +6,7 @@ var diff = 0;
 var Ananya = false;
 
 // set up stage data
-var stageArray = new Array("Perkins Hall", "Josiah's", "Sharpe Refectory", "Watson Center (CIT)", "Sciences Library", "???", "???");
+var stageArray = new Array("Perkins Hall", "Josiah's", "Sharpe Refectory", "Watson Center (CIT)", "Sciences Library", "Faunce House", "???");
 var difficultyArray = new Array([1, 4, 7, 9],
 								[2, 5, 8, 11],
 								[3, 6, 9, 12],
