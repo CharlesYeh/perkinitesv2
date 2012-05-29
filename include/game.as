@@ -57,7 +57,9 @@ function init(map:int, startPoint:Point) {
 	MapManager.setHeroPosition(player, partner, startPoint);
 }
 function clearMap() {
+	MapManager.clearTelePoints();
 	MapManager.clearAIUnits();
+	MapManager.clearNPCUnits();
 	MapManager.removeFromMapClip(player);
 	MapManager.removeFromMapClip(partner);
 }

@@ -53,10 +53,19 @@
 			return mapClip;
 		}
 		//-------------AI UNITS-------------
+		public static function clearTelePoints() {
+			for (var a in telePoints) {
+				var t = telePoints[a];
+				removeFromMapClip(t);
+			}
+			
+			telePoints = new Array();
+		}
 		public static function clearAIUnits() {
 			for (var a in aiUnits) {
 				var u = aiUnits[a];
 				removeFromMapClip(u);
+				u.destroy();
 			}
 			
 			aiUnits = new Array();

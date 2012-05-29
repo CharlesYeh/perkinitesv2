@@ -299,7 +299,8 @@
 		}
 		public function clickHandler(pos:Point, target:StatUnit):Boolean {
 			castMousePoint	= pos;
-			castMouseTarget	= target;
+			if (!usingAbility)
+				castMouseTarget	= target;
 			
 			return startCastAnimation();
 		}
