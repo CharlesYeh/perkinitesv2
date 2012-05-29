@@ -4,7 +4,7 @@ var rFilter = new GlowFilter(0xFF0000, 100, 20, 20, 1, 10, true, false);
 var gFilter = new GlowFilter(0x00FF00, 100, 20, 20, 1, 10, true, false);
 var bFilter = new GlowFilter(0x0000FF, 100, 20, 20, 1, 10, true, false);
 
-var btnFilters	= new Array(rFilter, gFilter, bFilter);
+var btnFilters	= new Array(bFilter, gFilter, rFilter);
 var btnLabels	= new Array("New Game", "Continue", "Settings");
 var btnObjects	= new Array(newGameButton, continueButton, configButton);
 var btnFuncs	= new Array(newGame, continueGame, config);
@@ -15,6 +15,7 @@ for (var a = 0; a < btnLabels.length; a++) {
 	b.buttonText.text = btnLabels[a];
 	b.mouseChildren = false;
 	b.colorFilter	= btnFilters[a];
+	b.gotoAndStop(1);
 	
 	b.addEventListener(MouseEvent.CLICK, btnFuncs[a]);
 	b.addEventListener(MouseEvent.MOUSE_OVER, overHandler);
