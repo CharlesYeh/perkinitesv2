@@ -58,6 +58,11 @@
 		override protected function deleteSelf() {
 			super.deleteSelf();
 			
+			for (var i in myUnits) {
+				var u = myUnits[i];
+				MapManager.deleteEnemy(u);
+			}
+			
 			removeEventListener(Event.ENTER_FRAME, aiSpawner);
 		}
 		public static function getSprite(id:int) {

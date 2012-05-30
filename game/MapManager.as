@@ -64,7 +64,6 @@
 		public static function clearAIUnits() {
 			for (var a in aiUnits) {
 				var u = aiUnits[a];
-				removeFromMapClip(u);
 				u.destroy();
 			}
 			
