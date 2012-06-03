@@ -37,14 +37,14 @@
 			if (healthPoints <= 0)
 				deleteSelf();
 			
-			if (nextSpawn <= 0 && myUnits.length < 3) {
+			//fixing instance in which enemies instantly spawn right after killing AISpawnPoint by adding elseif
+			else if (nextSpawn <= 0 && myUnits.length < 3) {
 				// spawn enemy!
 				
 				var u = MapManager.createEnemy(Math.floor(Math.random()*5), x, y);
 				// replace delete function
 				u.setDeleteFunction(deleteEnemy);
 				myUnits.push(u);
-				
 				nextSpawn = spawnRandBase[ID] + Math.floor(Math.random() * spawnRandRange[ID]);
 			}
 			else {
@@ -58,10 +58,14 @@
 		override protected function deleteSelf() {
 			super.deleteSelf();
 			
+			//fixing undead enemies who still have runnerAI running
 			for (var i in myUnits) {
 				var u = myUnits[i];
 				MapManager.deleteEnemy(u);
+				u.setDeleteFunction(null);
+				u.destroy();
 			}
+			myUnits = new Array();
 			
 			removeEventListener(Event.ENTER_FRAME, aiSpawner);
 		}

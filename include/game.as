@@ -51,10 +51,13 @@ function init(map:int, startPoint:Point) {
 	
 	// create enemies?
 	//MapManager.createEnemy(0, 1500, 400);
-	MapManager.createEnemy(5, 1500, 400);
+	//MapManager.createEnemy(5, 1500, 400);
 	//MapManager.createEnemy(2, 1500, 400);
 	
 	MapManager.setHeroPosition(player, partner, startPoint);
+	//fixing to make sure they don't infinite run into teleport point
+	player.path = new Array();
+	partner.path = new Array();
 }
 function clearMap() {
 	MapManager.clearTelePoints();

@@ -81,7 +81,7 @@
 			<MovementSpeed>500</MovementSpeed>
 			<AOE Range="70" Damage="30" />
 			<Cooldown Value="30" />
-			<Damage Value="10" Increase="3"/>
+			<Damage Value="100" Increase="3"/>
 		</Ability>
 		<Ability>
 			<Name>Awkward Stare</Name>
