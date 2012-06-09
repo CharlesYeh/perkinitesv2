@@ -18,7 +18,10 @@
 		static const spawnRandRange = new Array(90, 150, 230);
 		
 		var nextSpawn:int;
-		var myUnits:Array;
+		private var myUnits:Array;
+		
+		// for permenantly destroying
+		public var destroyable:Boolean, map:int, ptID:int;
 		
 		public function AISpawnPoint(id:int) {
 			super();
@@ -59,12 +62,15 @@
 			super.deleteSelf();
 			
 			//fixing undead enemies who still have runnerAI running
-			for (var i in myUnits) {
+			/*var l = myUnits.length;
+			for (var i = 0; i < l; i++) {
+				
 				var u = myUnits[i];
 				MapManager.deleteEnemy(u);
 				u.setDeleteFunction(null);
 				u.destroy();
-			}
+			}*/
+			
 			myUnits = new Array();
 			
 			removeEventListener(Event.ENTER_FRAME, aiSpawner);

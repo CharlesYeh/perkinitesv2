@@ -14,12 +14,17 @@
 	import flash.events.TimerEvent;
 	import flashx.textLayout.operations.MoveChildrenOperation;
 	import aiunits.AISpawnPoint;
+	
+	import flash.net.SharedObject;
 
 	public class MapManager {
+		static const FINISH_SPAWN = "FINISH_SPAWN ";
+		
 		public static var mapClip = new MovieClip();
 		public static var mapCode:String;
 		public static var mapName:String;
 
+		public static var mapNumber:int;
 		public static var mapWidth:Number;
 		public static var mapHeight:Number;
 		
@@ -37,10 +42,14 @@
 		public static var scrolling:Boolean = false;
 
 		public static var tileClings = new Array(false, false, false, true, true, false);
+		public static var sObject:SharedObject;
 
-		public static function loadMap(mapNumber:int, unit1:GameUnit, unit2:GameUnit) {
+		public static function loadMap(mapNum:int, unit1:GameUnit, unit2:GameUnit) {
+			sObject = SharedObject.getLocal("PERKINITES_MAPS");
+			
 			InteractiveTile.resetTiles();
 			
+			mapNumber = mapNum;
 			loadMapData(mapNumber);
 			//setEnemies();
 
@@ -62,9 +71,11 @@
 			telePoints = new Array();
 		}
 		public static function clearAIUnits() {
-			for (var a in aiUnits) {
-				var u = aiUnits[a];
-				u.destroy();
+			if (aiUnits != null) {
+				while (aiUnits.length > 0) {
+					var u = aiUnits[0];
+					u.destroy();
+				}
 			}
 			
 			aiUnits = new Array();
@@ -89,6 +100,14 @@
 			
 			return u;
 		}
+		public static function deleteSpawn(u:AISpawnPoint) {
+			deleteEnemy(u);
+			if (u.healthPoints <= 0 && u.destroyable) {
+				// was destroyed, remove permanently?
+				sObject.data[FINISH_SPAWN + u.map + "_" + u.ptID] = true;
+			}
+		}
+		// remove self from public array of units
 		public static function deleteEnemy(u:StatUnit) {
 			aiUnits.splice(aiUnits.indexOf(u), 1);
 			removeFromMapClip(u);
@@ -189,6 +208,7 @@
 			}
 			
 			// get spawn points
+			var ptID = 0;
 			ind1 = 0;
 			while (true) {
 				ind1 = mapCode.indexOf("[", ind1) + 1;
@@ -199,11 +219,17 @@
 				ind3 = mapCode.indexOf(",", ind2 + 1);
 				ind4 = mapCode.indexOf("]", ind3 + 1);
 				
+				// is destroyable (permanently)?
+				var destroy = mapCode.indexOf("!", ind1) < ind4;
+				
 				var spawnx	= parseInt(mapCode.substring(ind1, ind2));
 				var spawny	= parseInt(mapCode.substring(ind2 + 1, ind3));
 				var spawnid	= parseInt(mapCode.substring(ind3 + 1, ind4));
 				
-				addSpawnPoint(spawnid, (spawnx + .5) * TileMap.TILE_SIZE, (spawny + .5) * TileMap.TILE_SIZE);
+				if (!sObject.data[FINISH_SPAWN + mapNumber + "_" + ptID]) {
+					addSpawnPoint(spawnid, (spawnx + .5) * TileMap.TILE_SIZE, (spawny + .5) * TileMap.TILE_SIZE, ptID, destroy);
+					ptID++;
+				}
 			}
 			
 			//get NPCs
@@ -236,11 +262,17 @@
 			addToMapClip(tele);
 			telePoints.push(tele);
 		}
-		static function addSpawnPoint(spawnid:int, mapX:Number, mapY:Number) {
+		static function addSpawnPoint(spawnid:int, mapX:Number, mapY:Number, ptID:int, destroy:Boolean) {
 			var spawn = new AISpawnPoint(spawnid);
 			spawn.x = mapX;
 			spawn.y = mapY;
-			spawn.setDeleteFunction(deleteEnemy);
+			
+			// for permanent destroying
+			spawn.destroyable = destroy;
+			spawn.map = mapNumber;
+			spawn.ptID = ptID;
+			
+			spawn.setDeleteFunction(deleteSpawn);
 			
 			addToMapClip(spawn);
 			aiUnits.push(spawn);

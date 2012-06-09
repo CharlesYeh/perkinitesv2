@@ -39,7 +39,7 @@ function regainFocus(e) {
 	pauseScreen.y = 999;
 }
 
-init(0, new Point(15, 10));
+init(0, new Point(62, 10));
 
 function init(map:int, startPoint:Point) {
 	// setup map

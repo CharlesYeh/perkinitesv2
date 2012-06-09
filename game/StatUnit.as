@@ -31,8 +31,8 @@
 		
 		//----------STATS VARS---------
 		public var ID:int;
-		protected var healthMax:Number;
-		protected var healthPoints:Number;
+		public var healthMax:Number;
+		public var healthPoints:Number;
 		var healthbar:MovieClip;
 		//--------END STATS VARS-------
 		
@@ -515,8 +515,9 @@
 			deleteFunc = func;
 		}
 		protected function deleteSelf() {
-			if (deleteFunc != null)
+			if (deleteFunc != null) {
 				deleteFunc(this);
+			}
 		}
 		//make it stop running when transferring to a new map
 		public function destroy(){
