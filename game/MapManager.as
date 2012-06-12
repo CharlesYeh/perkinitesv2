@@ -220,9 +220,10 @@
 				ind4 = mapCode.indexOf("]", ind3 + 1);
 				
 				// is destroyable (permanently)?
-				var destroy = mapCode.indexOf("!", ind1) < ind4;
+				var indd = mapCode.indexOf("!", ind1) + 1;
+				var destroy = indd <= ind4;
 				
-				var spawnx	= parseInt(mapCode.substring(ind1, ind2));
+				var spawnx	= parseInt(mapCode.substring(Math.max(ind1, indd), ind2));
 				var spawny	= parseInt(mapCode.substring(ind2 + 1, ind3));
 				var spawnid	= parseInt(mapCode.substring(ind3 + 1, ind4));
 				
