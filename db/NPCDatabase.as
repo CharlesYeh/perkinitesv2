@@ -1,6 +1,6 @@
 ﻿package db
 {
-
+	import flash.display.Loader;
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.geom.Point;
@@ -10,10 +10,11 @@
 	import game.Map;
 	import game.NPCUnit;
 
-	public class NPCDatabase
+	public class NPCDatabase extends Database
 	{
 
 		public static var npcMaps:Array;// NPCs on a map
+		public static var icons:Array;// faceicons for messages
 
 		/**
 		 * Loads the NPCs.
@@ -25,8 +26,19 @@
 			var dat:XML = new XML(e.target.data);
 			
 			npcMaps = new Array();
+			icons = new Array();
 			
-			/*** First deal with entire maps that contain NPCs ***/
+			/*** First deal with face icons ***/
+			for (var n in dat.Icons.children()){
+				var fnode = dat.Icons.children()[n];
+				var iconURL:URLRequest = new URLRequest("_icons/Face Icon - " + fnode + ".png");
+				var ic:Loader = new Loader();
+				ic.load(iconURL);
+				
+				icons[fnode] = ic;
+			}
+			
+			/*** Then deal with entire maps that contain NPCs ***/
 			for (var nn in dat.NPCMap){
 				var node = dat.NPCMap[nn];
 				
@@ -61,6 +73,9 @@
 				return [];
 			}
 		}
+		public static function getFaceIcon(unit:String):Loader {
+			return icons[unit];
+		}		
 	}
 
 }

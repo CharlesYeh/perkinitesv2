@@ -9,6 +9,7 @@
 	import flashx.textLayout.operations.MoveChildrenOperation;
 	
 	import db.ActorDatabase;
+	import db.NPCDatabase;
 
 	public class NPCUnit extends GameUnit {
 		
@@ -158,6 +159,12 @@
 			if(xml.name()=="Message"){
 				showMessage(xml);
 			}
+			else if (xml.name()=="Move"){
+				moveNPC(xml);
+			}
+			else if (xml.name()=="SpriteAnimation"){
+				showSpriteAnimation(xml);
+			}
 		}
 		function showMessage(xml:XML){
 			var m = new MessageBox();
@@ -170,7 +177,7 @@
 			}
 			else{
 				//fix this part
-				var ic = ActorDatabase.getIcon(3);
+				var ic = NPCDatabase.getFaceIcon(xml.FaceIcon);
 			
 				ic.x = 12.25;
 				ic.y = 12.25;
@@ -194,12 +201,46 @@
 			m.addEventListener(MouseEvent.CLICK, endMessageHandler);
 			
 		}
-		
+		function moveNPC(xml:XML){
+			updateDirection(int(xml));
+			if(xml == "0"){
+				moveTo(x+32, y);
+			}
+			else if (xml == "1"){
+				moveTo(x, y-32);
+			}
+			else if (xml == "2"){
+				moveTo(x-32, y);
+			}
+			else if (xml == "3"){
+				moveTo(x, y+32);
+			}
+			current++;
+			activateCommand();			
+		}
+		function showSpriteAnimation(xml:XML){
+/*			if(xml.NextAnimLabel == "previous"){
+				prevLabel = xml.NextAnimLabel;
+			}
+			else{
+				prevLabel = animLabel;
+			}
+			setAnimLabel(xml.AnimLabel);
+			addEventListener(Event.ENTER_FRAME, endSpriteAnimationHandler);*/
+		}
 		function endMessageHandler(e):void{
 			stage.removeChild(e.target);
 			e.target.removeEventListener(MouseEvent.CLICK, endMessageHandler);
 			current++;
 			activateCommand();
+		}
+		function endSpriteAnimationHandler(e):void{
+			trace(this.currentFrame);
+			if(animLabel == prevLabel){
+				removeEventListener(Event.ENTER_FRAME, endSpriteAnimationHandler);
+				current++;
+				activateCommand();	
+			}
 		}
 		
 		//I'm a bit confused as how to incorporate the delete function more accurately.

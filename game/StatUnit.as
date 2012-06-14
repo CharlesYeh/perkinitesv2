@@ -25,7 +25,7 @@
 		var deleteFunc:Function = null;
 		var isPlayer:Boolean;
 		
-		var animLabel:String;
+		var animLabel:String = ANIM_STANDING;
 		var animClip:MovieClip;
 		var loaded = false;
 		
