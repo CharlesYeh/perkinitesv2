@@ -10,6 +10,7 @@
 	
 	import db.ActorDatabase;
 	import db.NPCDatabase;
+	import tileMapper.TileMap;
 
 	public class NPCUnit extends GameUnit {
 		
@@ -25,7 +26,7 @@
 		var swf;
 		var deleteFunc:Function = null;
 		
-		var animLabel:String;
+		var animLabel:String = ANIM_STANDING;
 		var animClip:MovieClip;
 		var loaded = false;
 		
@@ -33,6 +34,7 @@
 		public var sprite;
 		public var xpos;
 		public var ypos;
+		public var initDir; //original direction of sprite when loaded onto map
 		//--------END MAP VARS-------
 		
 		//----------COMMAND VARS---------
@@ -45,7 +47,7 @@
 		
 		//----------FRAME VARS----------
 		var prevLabel:String;
-		var usingAbility:Boolean	= false;
+		var usingAnimation:Boolean	= false;
 		var disabledMovement:Boolean= false;
 		var forwardMovement:Boolean = false;
 		var forwardVector:Point = null;
@@ -86,7 +88,7 @@
 			swf.content.char.dirn.gotoAndStop(ANIM_STANDING);
 			swf.content.char.dirs.gotoAndStop(ANIM_STANDING);
 			setAnimLabel(ANIM_STANDING);
-			updateDirection(moveDir);
+			updateDirection(initDir);
 		}	
 		function setAnimLabel(l:String) {
 			// standing, walking, friend_finale, ability1, ability2, ability3
@@ -159,8 +161,11 @@
 			if(xml.name()=="Message"){
 				showMessage(xml);
 			}
-			else if (xml.name()=="Move"){
-				moveNPC(xml);
+			else if (xml.name()=="MoveDir"){
+				moveNPCDir(xml);
+			}
+			else if (xml.name()=="MoveTo"){
+				moveNPCTo(xml);
 			}
 			else if (xml.name()=="SpriteAnimation"){
 				showSpriteAnimation(xml);
@@ -201,8 +206,7 @@
 			m.addEventListener(MouseEvent.CLICK, endMessageHandler);
 			
 		}
-		function moveNPC(xml:XML){
-			updateDirection(int(xml));
+		function moveNPCDir(xml:XML){
 			if(xml == "0"){
 				moveTo(x+32, y);
 			}
@@ -218,6 +222,17 @@
 			current++;
 			activateCommand();			
 		}
+		function moveNPCTo(xml:XML){
+			moveTo((int(xml.xPos)+0.5)*TileMap.TILE_SIZE, (int(xml.yPos)+0.5)*TileMap.TILE_SIZE);
+			trace(xml.WaitForCompletion == "true");
+			if(xml.WaitForCompletion == "true"){
+				addEventListener(Event.ENTER_FRAME, endMovementHandler);
+			}		
+			else{
+				current++;
+				activateCommand();			
+			}
+		}		
 		function showSpriteAnimation(xml:XML){
 /*			if(xml.NextAnimLabel == "previous"){
 				prevLabel = xml.NextAnimLabel;
@@ -226,7 +241,14 @@
 				prevLabel = animLabel;
 			}
 			setAnimLabel(xml.AnimLabel);
+			for(var i = 0; i < animClip.numChildren; i++){
+				trace(animClip.getChildAt(i));
+				var asd = animClip.getChildAt(i);
+				trace("okay");
+			}
 			addEventListener(Event.ENTER_FRAME, endSpriteAnimationHandler);*/
+			current++;
+			activateCommand();			
 		}
 		function endMessageHandler(e):void{
 			stage.removeChild(e.target);
@@ -234,15 +256,36 @@
 			current++;
 			activateCommand();
 		}
+		function endMovementHandler(e):void{
+			if (path.length == 0) {			
+				removeEventListener(Event.ENTER_FRAME, endMovementHandler);			
+				current++;
+				activateCommand();
+			}
+		}
 		function endSpriteAnimationHandler(e):void{
 			trace(this.currentFrame);
 			if(animLabel == prevLabel){
+				usingAnimation = false;
+				setAnimLabel(prevLabel);
 				removeEventListener(Event.ENTER_FRAME, endSpriteAnimationHandler);
 				current++;
 				activateCommand();	
 			}
 		}
-		
+		override public function moveHandler(e:Event):void {
+			super.moveHandler(e);			
+			if (usingAnimation)
+				return
+			if (path.length == 0) {
+				// not moving
+				setAnimLabel(ANIM_STANDING);
+			}
+			else {
+				updateDirection(moveDir);
+				setAnimLabel(ANIM_WALKING);
+			}
+		}		
 		//I'm a bit confused as how to incorporate the delete function more accurately.
 		public function setDeleteFunction(func:Function) {
 			deleteFunc = func;

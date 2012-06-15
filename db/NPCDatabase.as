@@ -49,6 +49,7 @@
 					var npcNode = node.NPC[np];
 					
 					var npc = new NPCUnit(npcNode.Sprite);
+					npc.initDir = npcNode.Direction;
 					npc.moveDir = npcNode.Direction;
 					npc.xpos = npcNode.XPos;
 					npc.ypos = npcNode.YPos;

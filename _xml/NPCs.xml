@@ -20,6 +20,7 @@
 			<Conditions>
 			</Conditions>
 			<Commands>
+				<MoveDir>0</MoveDir>			
 				<Message>
 					<Name>John T.</Name>
 					<FaceIcon>JT</FaceIcon>
@@ -30,7 +31,6 @@
 					<FaceIcon>JT</FaceIcon>
 					<Text>How are you doing today?</Text>
 				</Message>
-				<Move>0</Move>
 			</Commands>
 		</NPC>
 		<NPC>
@@ -46,15 +46,20 @@
 					<FaceIcon>CK</FaceIcon>
 					<Text>Gurrrllllll this faceicon doesn't work but that's k.</Text>
 				</Message>
-				<Message>
-					<Name></Name>
-					<FaceIcon></FaceIcon>
-					<Text>Mission 1!&#xA;Get some shoes at the mall!&#xA;:)</Text>
-				</Message>
 				<SpriteAnimation>
 					<AnimLabel>walking</AnimLabel>
 					<NextAnimLabel>previous</NextAnimLabel>
 				</SpriteAnimation>
+				<MoveTo>
+					<xPos>55</xPos>
+					<yPos>9</yPos>
+					<WaitForCompletion>true</WaitForCompletion>
+				</MoveTo>	
+				<Message>
+					<Name></Name>
+					<FaceIcon></FaceIcon>
+					<Text>Mission 1!&#xA;Get some shoes at the mall!&#xA;:)</Text>
+				</Message>				
 			</Commands>
 		</NPC>	
 	</NPCMap>
