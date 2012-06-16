@@ -51,6 +51,7 @@
 		var disabledMovement:Boolean= false;
 		var forwardMovement:Boolean = false;
 		var forwardVector:Point = null;
+		var frameCount:int = 0;
 
 		//--------END FRAME VARS--------
 		
@@ -219,36 +220,34 @@
 			else if (xml == "3"){
 				moveTo(x, y+32);
 			}
-			current++;
-			activateCommand();			
+			addEventListener(Event.ENTER_FRAME, endMovementHandler);			
 		}
 		function moveNPCTo(xml:XML){
 			moveTo((int(xml.xPos)+0.5)*TileMap.TILE_SIZE, (int(xml.yPos)+0.5)*TileMap.TILE_SIZE);
-			trace(xml.WaitForCompletion == "true");
-			if(xml.WaitForCompletion == "true"){
-				addEventListener(Event.ENTER_FRAME, endMovementHandler);
-			}		
-			else{
-				current++;
-				activateCommand();			
-			}
+			addEventListener(Event.ENTER_FRAME, endMovementHandler);			
 		}		
 		function showSpriteAnimation(xml:XML){
-/*			if(xml.NextAnimLabel == "previous"){
-				prevLabel = xml.NextAnimLabel;
-			}
-			else{
+			if(xml.NextAnimLabel == "previous"){
 				prevLabel = animLabel;
 			}
-			setAnimLabel(xml.AnimLabel);
-			for(var i = 0; i < animClip.numChildren; i++){
-				trace(animClip.getChildAt(i));
-				var asd = animClip.getChildAt(i);
-				trace("okay");
+			else{
+				prevLabel = xml.NextAnimLabel;
 			}
-			addEventListener(Event.ENTER_FRAME, endSpriteAnimationHandler);*/
-			current++;
-			activateCommand();			
+			usingAnimation = true;
+			setAnimLabel(xml.AnimLabel);
+			for(var i in animClip.currentLabels){
+				var l = animClip.currentLabels[i];
+				if(l.name == xml.AnimLabel){
+					if(i+1 >= animClip.currentLabels.length){
+						frameCount = animClip.totalFrames - animClip.currentLabels[i].frame;
+					}
+					else{
+						frameCount = animClip.currentLabels[i+1].frame - animClip.currentLabels[i].frame;
+					}
+					break;
+				}
+			}
+			addEventListener(Event.ENTER_FRAME, endSpriteAnimationHandler);
 		}
 		function endMessageHandler(e):void{
 			stage.removeChild(e.target);
@@ -264,14 +263,14 @@
 			}
 		}
 		function endSpriteAnimationHandler(e):void{
-			trace(this.currentFrame);
-			if(animLabel == prevLabel){
+			if(frameCount == 0){
 				usingAnimation = false;
 				setAnimLabel(prevLabel);
 				removeEventListener(Event.ENTER_FRAME, endSpriteAnimationHandler);
 				current++;
 				activateCommand();	
 			}
+			frameCount--;
 		}
 		override public function moveHandler(e:Event):void {
 			super.moveHandler(e);			
