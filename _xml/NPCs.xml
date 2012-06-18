@@ -23,6 +23,7 @@
 					<Text>Gurrrllllll this faceicon doesn't work but that's k.</Text>
 				</Message>
 				<SpriteAnimation>
+					<NPC>0</NPC>
 					<AnimLabel>walking</AnimLabel>
 					<NextAnimLabel>previous</NextAnimLabel>
 				</SpriteAnimation>
@@ -32,22 +33,24 @@
 					<Text>Mission 1!&#xA;Get some shoes at the mall!&#xA;:)</Text>
 				</Message>				
 				<MoveTo>
+					<NPC>1</NPC>
 					<xPos>55</xPos>
 					<yPos>9</yPos>
 				</MoveTo>	
 			</Commands>
 		</NPC>	
-	</NPCMap>
-	<NPCMap>
-		<NPC>
+	<NPC>
 			<Sprite>_sprites/JT.swf</Sprite>
 			<Direction>3</Direction>
-			<XPos>16</XPos>
+			<XPos>62</XPos>
 			<YPos>9</YPos>
 			<Conditions>
 			</Conditions>
 			<Commands>
-				<MoveDir>0</MoveDir>			
+				<MoveDir>
+					<NPC>0</NPC>
+					<Dir>0</Dir>
+				</MoveDir>			
 				<Message>
 					<Name>John T.</Name>
 					<FaceIcon>JT</FaceIcon>
@@ -59,6 +62,8 @@
 					<Text>How are you doing today?</Text>
 				</Message>
 			</Commands>
-		</NPC>
+		</NPC>		
+	</NPCMap>
+	<NPCMap>
 	</NPCMap>
 </NPCs>

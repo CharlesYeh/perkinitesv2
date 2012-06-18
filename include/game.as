@@ -3,6 +3,7 @@ import game.MapManager;
 import game.GameUnit;
 import game.AIUnit;
 import game.Perkinite;
+import game.NPCUnit;
 import tileMapper.ScreenRect;
 import flash.ui.Keyboard;
 import flash.geom.Point;
@@ -70,7 +71,10 @@ function gameRunnerHandler(e) {
 	
 	// update hud
 	hud.showCooldowns(player, partner);
-	
+
+	if(NPCUnit.pauseActions)
+		return;
+		
 	// handle casting
 	var mpos:Point = new Point(getMouseX(), getMouseY());
 	

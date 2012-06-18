@@ -19,5 +19,4 @@
 			return new URLRequest(ActorDatabase.getCharSprite(ID));
 		}
 	}
-	
 }
