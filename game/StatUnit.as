@@ -47,7 +47,7 @@
 		//-------END ABILITY VARS-------
 		
 		//----------FRAME VARS----------
-		var prevLabel:String;
+		var prevLabel:String = ANIM_STANDING;
 		var usingAbility:Boolean	= false;
 		var disabledMovement:Boolean= false;
 		var forwardMovement:Boolean = false;
