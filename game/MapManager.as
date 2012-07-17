@@ -234,9 +234,9 @@
 			}
 			
 			//get NPCs
-			var npcMap = NPCDatabase.getNPCMap(mapNumber);
-			for(var n in npcMap){
-				var npc = npcMap[n];
+			var npcArray = map.NPCs;
+			for(var n in npcArray){
+				var npc = npcArray[n];
 				var npcx	= parseInt(npc.xpos);
 				var npcy	= parseInt(npc.ypos);
 				addNPC(npc, (npcx + .5) * TileMap.TILE_SIZE, (npcy + .5) * TileMap.TILE_SIZE);

@@ -7,11 +7,62 @@
     <BGM>None</BGM>
     <BGS>None</BGS>
     <NPCs>
-      <NPC>
-        <Name></Name>
-        <ID>0</ID>
-        <Position x="10" y="10" />
-      </NPC>
+		<NPC>
+			<Name></Name>
+			<ID></ID>
+			<Sprite>_sprites/CK.swf</Sprite>
+			<Direction>0</Direction>
+        	<Position x="60" y="9" />		
+			<Conditions>
+			</Conditions>
+			<Commands>
+				<Message>
+					<Name>C. Kata</Name>
+					<FaceIcon>CK</FaceIcon>
+					<Text>Gurrrllllll this faceicon doesn't work but that's k.</Text>
+				</Message>
+				<SpriteAnimation>
+					<NPC>0</NPC>
+					<AnimLabel>walking</AnimLabel>
+					<NextAnimLabel>previous</NextAnimLabel>
+				</SpriteAnimation>
+				<Message>
+					<Name></Name>
+					<FaceIcon></FaceIcon>
+					<Text>Mission 1!&#xA;Get some shoes at the mall!&#xA;:)</Text>
+				</Message>				
+				<MoveTo>
+					<NPC>1</NPC>
+					<xPos>55</xPos>
+					<yPos>9</yPos>
+				</MoveTo>	
+			</Commands>
+		</NPC>	
+	<NPC>
+			<Name></Name>
+			<ID></ID>
+			<Sprite>_sprites/JT.swf</Sprite>
+			<Direction>3</Direction>
+        	<Position x="62" y="9" />			
+			<Conditions>
+			</Conditions>
+			<Commands>
+				<MoveDir>
+					<NPC>0</NPC>
+					<Dir>0</Dir>
+				</MoveDir>			
+				<Message>
+					<Name>John T.</Name>
+					<FaceIcon>JT</FaceIcon>
+					<Text>Harro frands :D</Text>
+				</Message>
+				<Message>
+					<Name>John T.</Name>
+					<FaceIcon>JT</FaceIcon>
+					<Text>How are you doing today?</Text>
+				</Message>
+			</Commands>
+		</NPC>			  
     </NPCs>
   </Map>
   <Map>
@@ -47,6 +98,29 @@
     <TilesetID>0</TilesetID>
     <BGM>None</BGM>
     <BGS>None</BGS>
+	<NPCs>
+	<NPC>
+			<Name></Name>
+			<ID></ID>
+			<Sprite>_sprites/npc_Peace-Bear.swf</Sprite>
+			<Direction>0</Direction>
+        	<Position x="9" y="4" />			
+			<Conditions>
+			</Conditions>
+			<Commands>
+				<Message>
+					<Name></Name>
+					<FaceIcon></FaceIcon>
+					<Text>You find Peace Bear randomly in the middle of the lounge.</Text>
+				</Message>
+				<Message>
+					<Name>Masked Figure</Name>
+					<FaceIcon>Ira</FaceIcon>
+					<Text>Hyuk hyuk hyuk hyuk...</Text>
+				</Message>				
+			</Commands>
+		</NPC>		
+	</NPCs>
   </Map>  
   <Map>
     <ID>5</ID>

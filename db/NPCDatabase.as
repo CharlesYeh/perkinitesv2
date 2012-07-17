@@ -38,13 +38,11 @@
 				icons[fnode] = ic;
 			}
 			
-			/*** Then deal with entire maps that contain NPCs ***/
-			for (var nn in dat.NPCMap){
+			/*for (var nn in dat.NPCMap){
 				var node = dat.NPCMap[nn];
 				
 				var npcs = new Array();
 				
-				/*** Deal with NPCs in the maps ***/
 				for (var np in node.NPC){
 					var npcNode = node.NPC[np];
 					
@@ -53,9 +51,7 @@
 					npc.moveDir = npcNode.Direction;
 					npc.xpos = npcNode.XPos;
 					npc.ypos = npcNode.YPos;
-					/*** Deal with their conditions ***/
 					
-					/*** Deal with their commands ****/
 					for (var com in npcNode.Commands.children()){
 						npc.commands.push(npcNode.Commands.children()[com]);
 					}
@@ -63,7 +59,7 @@
 					npcs.push(npc);
 				}
 				npcMaps.push(npcs); 			//npcMaps[int(node.ID)] = npcs;
-			}			
+			}			*/
 		}
 
 		public static function getNPCMap(i:Number):Array {

@@ -7,6 +7,7 @@
 	import flash.net.URLRequest;
 	import flash.xml.*;
 	import game.Map;
+	import game.NPCUnit;
 	
 	public class MapDatabase {
 		
@@ -49,11 +50,33 @@
 				var tileset	= node.TilesetID;
 				var bgm		= node.BGM;
 				var bgs		= node.BGS;
-				
-				maps.push(new Map(mapid, mapcode, mapname, tileset, bgm, bgs));
+				var map = new Map(mapid, mapcode, mapname, tileset, bgm, bgs);
+				map.setNPCs(loadNPCs(node.NPCs));
+				maps.push(map);
 			}
 		}
-		
+		public static function loadNPCs(node):Array{
+			var npcs = new Array();
+			for (var np in node.NPC){
+					var npcNode = node.NPC[np];
+					
+					var npc = new NPCUnit(npcNode.Sprite);
+					npc.initDir = npcNode.Direction;
+					npc.moveDir = npcNode.Direction;
+					npc.xpos = npcNode.Position.attribute("x");
+					npc.ypos = npcNode.Position.attribute("y");
+					/*** Deal with their conditions ***/
+					
+					/*** Deal with their commands ****/
+					for (var com in npcNode.Commands.children()){
+						npc.commands.push(npcNode.Commands.children()[com]);
+					}
+					
+					npcs.push(npc);
+					trace(npc);
+				}			
+			return npcs;
+		}
 		public static function getMap(i:Number):Map {
 			return maps[i];
 		}

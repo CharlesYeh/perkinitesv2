@@ -29,6 +29,9 @@
       public static ArrayList<Map> mapArray = new ArrayList<Map>();
       public static ArrayList<JLabel> tileArray = new ArrayList<JLabel>();
       
+      public static Stack<Change> undoStack = new Stack<Change>();
+      public static Stack<Change> redoStack = new Stack<Change>();
+   	
       public static JFrame frame;
       public static JPanel listPanel;
       public static JPanel mapPanel;
@@ -243,6 +246,10 @@
             return;
          
          currentMapIndex = index;
+         repaintMap(index);
+      	
+      }
+      public static void repaintMap(int index){
          mapPanel.removeAll();
          mapPanel.setLayout(new GridBagLayout());
          GridBagConstraints c = new GridBagConstraints();
@@ -267,10 +274,7 @@
          }
          
          mapPanel.getRootPane().revalidate();
-         
-      	
       }
-      
       protected static ImageIcon createImageIcon(String path){
          java.net.URL imgURL = Editor.class.getResource(path);
          if(imgURL != null){
@@ -379,13 +383,34 @@
             i.put(KeyStroke.getKeyStroke(KeyEvent.VK_Y, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()), REDO);
          }
       }  
-   	
       public static void undo(){
          System.out.println("UNDO");
+         if(undoStack.empty())
+            return;
+         MapChange c = (MapChange)undoStack.pop();
+         
+         redoStack.push(new MapChange(currentMapIndex, mapArray.get(currentMapIndex).getMapCode()));
+         Map map = mapArray.get(c.getIndex());
+         map.setMapCode(c.getMapCode());
+         mapArray.set(c.getIndex(), map);
+         if(currentMapIndex == c.getIndex()){
+            repaintMap(currentMapIndex);
+         }
       
       }
       public static void redo(){
          System.out.println("REDO");
+         if(redoStack.empty())
+            return;
+         MapChange c = (MapChange)redoStack.pop();
+         undoStack.push(c);
+         Map map = mapArray.get(c.getIndex());
+         System.out.println(c.getIndex() + " " + c.getMapCode());
+         map.setMapCode(c.getMapCode());
+         mapArray.set(c.getIndex(), map);
+         if(currentMapIndex == c.getIndex()){
+            repaintMap(currentMapIndex);
+         }
       }
    	
    	
@@ -404,13 +429,7 @@
             MapXMLWriter.writeMapXML(mapArray);
             frame.setFocusable(true);
          }
-      }      
-      
-      public static class ExitListener extends MouseAdapter{
-         public void mouseExited(MouseEvent e){
-            mouseDown = false;
-         }
-      }
+      }     
       
       public static class DrawListener implements ActionListener{
          private String _mode;
@@ -437,7 +456,7 @@
          public void mousePressed(MouseEvent e) {
          
             System.out.println(e);
-         
+            undoStack.push(new MapChange(currentMapIndex, mapArray.get(currentMapIndex).getMapCode()));
             mouseDown = true;
             
             if(_tileType != shortcutChar){
@@ -473,6 +492,7 @@
                   mapPanel.add(_tile, c);
                   mapPanel.revalidate();
                   replaceTile();
+                  
                }
             }
          }
@@ -495,6 +515,9 @@
             mapCode = mapCode.substring(0, index3) + shortcutChar + mapCode.substring(index3+1, mapCode.length());
             map.setMapCode(mapCode);
             mapArray.set(currentMapIndex, map);
+            
+            _tile.addMouseListener(new TileListener(_x, _y, _tile, mapCode.charAt(index3) ));
+         
          }
          
       }     
@@ -513,22 +536,38 @@
             JTextField nameField = new JTextField(map.getMapName(), 20);
             JTextField bgmField = new JTextField(map.getBGM(), 20);
             JTextField bgsField = new JTextField(map.getBGS(), 20);
+            JTextField widthField = new JTextField(""+map.getWidth(), 3);
+            JTextField heightField = new JTextField(""+map.getHeight(), 3);
             JPanel myPanel = new JPanel();  
-            myPanel.setLayout(new GridLayout(6, 0));
+            myPanel.setLayout(new GridLayout(10, 1));
             myPanel.add(new JLabel("Map Name:"));
             myPanel.add(nameField);
             myPanel.add(new JLabel("BGM:"));
             myPanel.add(bgmField);
             myPanel.add(new JLabel("BGS: "));
             myPanel.add(bgsField);
-         	
+            myPanel.add(new JLabel("Width: "));
+            myPanel.add(widthField);				
+            myPanel.add(new JLabel("Height: "));
+            myPanel.add(heightField);		
+         	         	
             int result = JOptionPane.showConfirmDialog(null, myPanel, 
                "Map Properties - ID: " + _index, JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
                System.out.println("yeah");
                map.setMapName(nameField.getText());
                map.setBGM(bgmField.getText());  
-               map.setBGS(bgsField.getText());  
+               map.setBGS(bgsField.getText()); 
+               int w = map.getWidth();
+               int h = map.getHeight();
+               int nw = Integer.parseInt(widthField.getText());
+               int nh = Integer.parseInt(heightField.getText());
+               if(w != nw){
+               }
+               if(h != nh){
+               }
+               map.setWidth(nw);
+               map.setHeight(nh); 
             	
             	
                mapArray.set(_index, map);

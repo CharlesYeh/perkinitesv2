@@ -9,6 +9,8 @@
 		
 		public var BGM:String;
 		public var BGS:String;
+		
+		public var NPCs:Array;
 
         /**
 		 * @param ID The ID of the map
@@ -29,7 +31,7 @@
         }
 		
 		public function setNPCs(npcArray:Array){
-			
+			NPCs = npcArray;
 		}
     }
 }
