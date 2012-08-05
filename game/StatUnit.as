@@ -60,7 +60,7 @@
 			// constructor code
 			super();
 			
-			setAnimLabel(ANIM_STANDING);
+			animLabel = ANIM_STANDING;
 			ID = 0;
 			isPlayer = false;
 			
