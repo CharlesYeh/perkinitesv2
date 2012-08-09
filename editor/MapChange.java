@@ -2,17 +2,17 @@
 
    public class MapChange extends Change{
    
-      private int index;
-      private String mapCode;
-      public MapChange(int i, String mc){
+      private int _index;
+      private int[][] _mapMatrix;
+      public MapChange(int i, int[][] mapMatrix){
          super();
-         index = i;
-         mapCode = mc;
+         _index = i;
+         _mapMatrix = mapMatrix;
       }
       public int getIndex(){
-         return index;
+         return _index;
       }
-      public String getMapCode(){
-         return mapCode;
+      public int[][] getMapMatrix(){
+         return _mapMatrix;
       }
    }

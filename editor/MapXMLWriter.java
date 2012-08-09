@@ -39,11 +39,12 @@
             
             // ID element
                Element idE = doc.createElement("ID");
-               //idE.appendChild(doc.createTextNode(i));
+               idE.appendChild(doc.createTextNode(""+map.getMapID()));
                mapE.appendChild(idE);
                
             // map code element
                Element mapCodeE = doc.createElement("MapCode");
+					map.updateMapCode();
                mapCodeE.appendChild(doc.createTextNode(map.getMapCode()));
                mapE.appendChild(mapCodeE);
             	

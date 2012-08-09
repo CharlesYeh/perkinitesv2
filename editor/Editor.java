@@ -21,10 +21,12 @@
    import org.xml.sax.SAXException;
    import org.xml.sax.helpers.DefaultHandler;
 	
+   import java.io.File;
    import java.util.*;
-	
+
    public class Editor{
-   
+      public static final String homeDir = "C:\\Projects\\Games\\Flash Games\\Perkinites v2\\editor";
+      public static final String xmlDir = "C:\\Projects\\Games\\Flash Games\\Perkinites v2\\_xml";
       public static ArrayList<String> mapNameArray = new ArrayList<String>();
       public static ArrayList<Map> mapArray = new ArrayList<Map>();
       public static ArrayList<JLabel> tileArray = new ArrayList<JLabel>();
@@ -35,20 +37,46 @@
       public static JFrame frame;
       public static JPanel listPanel;
       public static JPanel mapPanel;
+      public static JPanel tilePanel;
+      
+      public static JButton saveButton = new JButton("Save");
+      public static JButton mapModeButton = new JButton("Map Mode");
+      public static JButton NPCModeButton = new JButton("NPC Mode");
+      public static JButton pencilButton = new JButton("Pencil");
+      public static JButton rectangleButton = new JButton("Rectangle");
+      public static JButton fillButton = new JButton("Fill");
+      public static JButton selectButton = new JButton("Select");
+      
+      public static JButton[] buttons = {saveButton, mapModeButton, NPCModeButton, pencilButton, rectangleButton, fillButton, selectButton};
+       
+      public static int currentTilesetIndex = 0;
       public static int currentMapIndex = -1;
       
       public static boolean mouseDown = false;
-      public static char shortcutChar = '0';
+      public static int selectedTileID = 0;
       
+      public static boolean mapMode = true;
       public static String drawMode = "Pencil";
       
-      
+      //Properties stuff
+   	
+      public static String[] BGMs = {"None", "Stop", "Exceed the Sky.mp3", "Fight Back!.mp3", "P.S.F.mp3", "perkinite panic!!.mp3"};
+      public static String[] BGSs = {"None", "Stop"};
+      public static String[] tilesets = { "0: Perkins", "1: Power Street" };
+   	
+   	
+   	
+   	
       public static Border whiteline = BorderFactory.createCompoundBorder(
       BorderFactory.createLineBorder(Color.black),
       BorderFactory.createLineBorder(Color.white, 2));
       
+      public enum Properties{
+         CHANGE, CREATE
+      }
+   	
       private static void createAndShowGUI(){
-         frame = new JFrame("Perkinites Map/NPC Editor! :)");
+         frame = new JFrame("Perkinites Editor! :)");
          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       	
          readMapXML();
@@ -57,7 +85,7 @@
       
          JPanel toolPanel = new JPanel();
          JPanel leftPanel = new JPanel();
-         JPanel tilePanel = new JPanel();
+         tilePanel = new JPanel();
          listPanel = new JPanel();
          mapPanel = new JPanel();
       
@@ -103,25 +131,6 @@
          addListComps(listPanel);
          addMapComps(mapPanel);	
          
-      
-      
-         // Action escapeAction = 
-            // new AbstractAction() {
-               // public void actionPerformed(ActionEvent e) {
-               // //close the frame
-               // System.out.println("okay");
-               // }
-            // };
-         // frame.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("F2"),
-            //                 "doSomething");
-         // frame.getRootPane().getActionMap().put("doSomething",
-            //                  escapeAction);
-         //frame.addKeyListener(new ShortcutListener());
-         // toolPanel.addKeyListener(new ShortcutListener());
-         // leftPanel.addKeyListener(new ShortcutListener());
-         // listPanel.addKeyListener(new ShortcutListener());
-         // mapPanel.addKeyListener(new ShortcutListener());
-         
       	
          setupUndoHotkeys();
          
@@ -132,14 +141,6 @@
       }
       
       public static void addToolComps(JPanel pane){
-         JButton saveButton = new JButton("Save");
-         JButton mapModeButton = new JButton("Map Mode");
-         JButton NPCModeButton = new JButton("NPC Mode");
-         JButton pencilButton = new JButton("Pencil");
-         JButton rectangleButton = new JButton("Rectangle");
-         JButton fillButton = new JButton("Fill");
-         JButton selectButton = new JButton("Select");
-      
          pane.add(saveButton);
          pane.add(mapModeButton);
          pane.add(NPCModeButton);
@@ -150,6 +151,30 @@
          
          saveButton.addActionListener(new SaveListener());
          
+         mapModeButton.setEnabled(false);
+         mapModeButton.addActionListener(
+               new ActionListener() {
+                  public void actionPerformed(ActionEvent e) {
+                     mapModeButton.setEnabled(false);
+                     NPCModeButton.setEnabled(true);
+                     mapMode = true;
+                     repaintMap(currentMapIndex);
+                  }
+               });   
+         NPCModeButton.addActionListener(
+               new ActionListener() {
+                  public void actionPerformed(ActionEvent e) {
+                     mapModeButton.setEnabled(true);
+                     NPCModeButton.setEnabled(false);
+                     mapMode = false;
+                     if(currentMapIndex > -1){
+                        repaintMap(currentMapIndex);
+                        }
+                     
+                  }
+               });   
+      	     	
+      	
          pencilButton.addActionListener(new DrawListener("Pencil"));
          pencilButton.setEnabled(false);
          rectangleButton.addActionListener(new DrawListener("Rectangle"));
@@ -157,15 +182,16 @@
          selectButton.addActionListener(new DrawListener("Select"));
       }
       public static void addTileComps(JPanel pane){
+         pane.removeAll();
          tileArray = new ArrayList<JLabel>();
          pane.setLayout(new GridBagLayout());
          GridBagConstraints c = new GridBagConstraints();
-      
-         for(int i = 0; i < 7; i++){
+         int numTiles = new File(homeDir+"\\Tileset"+currentTilesetIndex+"\\").listFiles().length;
+         for(int i = 0; i < numTiles; i++){
          
-            c.gridx = i;
+            c.gridx = i%8;
             c.gridy = (int)(i/8);
-            JLabel tile = new JLabel(createImageIcon("\\Tileset0\\Tile"+i+".png"));
+            JLabel tile = new JLabel(createImageIcon("\\Tileset"+currentTilesetIndex+"\\Tile"+i+".png"));
             tileArray.add(tile);
             tile.addMouseListener(new TileSelectListener(i));
             pane.add(tile, c);
@@ -173,6 +199,9 @@
                tile.setBorder(whiteline);
             }
          }
+         
+         pane.revalidate();
+         pane.repaint();
       }
       static protected JComponent makeTextPanel(String text) {
          JPanel panel = new JPanel(false);
@@ -183,6 +212,7 @@
          return panel;
       }
       public static void addListComps(JPanel pane){
+         pane.removeAll();
          pane.setLayout(new BorderLayout());
          
          JLabel label = new JLabel("List of Maps :)");
@@ -205,13 +235,14 @@
                      JMenuItem menuItem;
                   	
                      menuItem = new JMenuItem("Map Properties");
-                     menuItem.addActionListener(new PropertiesListener(index));
+                     menuItem.addActionListener(new PropertiesListener(index, Properties.CHANGE));
                      rcMenu.add(menuItem);
                      menuItem = new JMenuItem("Create New Map");
-                     //menuItem.addActionListener(this);
+                     menuItem.addActionListener(new PropertiesListener(mapArray.size(), Properties.CREATE));
                      rcMenu.add(menuItem);
                      menuItem = new JMenuItem("Duplicate");
                      rcMenu.add(menuItem);  
+                     menuItem.addActionListener(new DuplicateListener(index));
                      menuItem = new JMenuItem("Delete");
                      //menuItem.addActionListener(this);
                      rcMenu.add(menuItem);  
@@ -231,7 +262,10 @@
          pane.add(label, BorderLayout.PAGE_START);
          pane.add(list, BorderLayout.CENTER);
          
+         list.setSelectedIndex(currentMapIndex);
+         
          pane.revalidate();
+         pane.repaint();
          
       
       }
@@ -255,26 +289,35 @@
          GridBagConstraints c = new GridBagConstraints();
          
          Map map = mapArray.get(index);
-         String mapCode = map.getMapCode();
-         System.out.println(mapArray.get(index).getMapName());
-         int index1 = mapCode.indexOf(":");
-         int index2 = mapCode.indexOf(":", index1+1);
-         int index3 = index2 + 1;
-         int row = Integer.parseInt(mapCode.substring(0, index1));
-         int col = Integer.parseInt(mapCode.substring(index1+1, index2));
+         
+         currentTilesetIndex = map.getTilesetID();
+         addTileComps(tilePanel);
+         int[][] mapMatrix = map.getMapMatrix();
+         
+         int row = mapMatrix.length;
+         int col = mapMatrix[0].length;
          for(int i = 0; i < row; i++){
             for(int j = 0; j < col; j++){
                c.gridx = j;
                c.gridy = i;
-               JLabel tile = new JLabel(createImageIcon("\\Tileset0\\Tile"+mapCode.substring(index3, index3+1)+".png")); 
-               tile.addMouseListener(new TileListener(j, i, tile, mapCode.charAt(index3) ));
+               JLabel tile = new JLabel(createImageIcon("\\Tileset"+currentTilesetIndex+"\\Tile"+mapMatrix[i][j]+".png")); 
+               if(mapMode){
+                  tile.addMouseListener(new TileListener(j, i, tile, mapMatrix[i][j] ));
+               }
+               else{
+                  tile.addMouseListener(new TileNPCListener(j, i, tile, mapMatrix[i][j] ));
+               }
                mapPanel.add(tile, c);
-               index3++;
+            
             }
-         }
          
+         }
          mapPanel.getRootPane().revalidate();
+         mapPanel.revalidate();
+         mapPanel.repaint();
       }
+      
+   	
       protected static ImageIcon createImageIcon(String path){
          java.net.URL imgURL = Editor.class.getResource(path);
          if(imgURL != null){
@@ -298,6 +341,9 @@
                   boolean mapCode = false;
                   boolean bgm = false;
                   boolean bgs = false;
+                  boolean tilesetID = false;
+                  boolean mapID = false;
+                  
                   Map map;
                   public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
                      if(qName.equalsIgnoreCase("Map")){
@@ -315,11 +361,19 @@
                      if(qName.equalsIgnoreCase("BGS")){
                         bgs = true;
                      }
+                     if(qName.equalsIgnoreCase("MapID")){
+                        mapID = true;
+                     }
+                     if(qName.equalsIgnoreCase("TilesetID")){
+                        tilesetID = true;
+                     }
                   }
                   public void endElement(String uri, String localName, String qName) throws SAXException {
                      //System.out.println("End Element :" + qName);
                      if(qName.equalsIgnoreCase("Map")){
+                        map.createMap();
                         mapArray.add(map);
+                      
                      }
                   }
                   public void characters(char ch[], int start, int length) throws SAXException {
@@ -340,10 +394,18 @@
                         map.setBGS(new String(ch, start, length));
                         bgs = false;
                      }
+                     if(mapID){
+                        map.setMapID(Integer.parseInt(new String(ch, start, length)));
+                        mapID = false;
+                     }
+                     if(tilesetID){
+                        map.setTilesetID(Integer.parseInt(new String(ch, start, length)));
+                        tilesetID = false;
+                     }
                   }
                };
          
-            saxParser.parse("C:\\Projects\\Games\\Flash Games\\Perkinites v2\\_xml\\Maps.xml", handler);
+            saxParser.parse(xmlDir+"\\Maps.xml", handler);
          }
             catch (Exception e){
                e.printStackTrace();
@@ -384,14 +446,14 @@
          }
       }  
       public static void undo(){
-         System.out.println("UNDO");
          if(undoStack.empty())
             return;
+         System.out.println("UNDO");
+      
          MapChange c = (MapChange)undoStack.pop();
-         
-         redoStack.push(new MapChange(currentMapIndex, mapArray.get(currentMapIndex).getMapCode()));
+         redoStack.push(new MapChange(currentMapIndex, mapArray.get(currentMapIndex).getMapMatrix()));
          Map map = mapArray.get(c.getIndex());
-         map.setMapCode(c.getMapCode());
+         map.setMapMatrix(c.getMapMatrix());
          mapArray.set(c.getIndex(), map);
          if(currentMapIndex == c.getIndex()){
             repaintMap(currentMapIndex);
@@ -399,14 +461,15 @@
       
       }
       public static void redo(){
-         System.out.println("REDO");
+      
          if(redoStack.empty())
             return;
+         System.out.println("REDO");
          MapChange c = (MapChange)redoStack.pop();
          undoStack.push(c);
          Map map = mapArray.get(c.getIndex());
-         System.out.println(c.getIndex() + " " + c.getMapCode());
-         map.setMapCode(c.getMapCode());
+         //System.out.println(c.getIndex() + " " + c.getMapCode());
+         map.setMapMatrix(c.getMapMatrix());
          mapArray.set(c.getIndex(), map);
          if(currentMapIndex == c.getIndex()){
             repaintMap(currentMapIndex);
@@ -445,9 +508,9 @@
          private int _x;
          private int _y;
          private JLabel _tile;
-         private char _tileType;
+         private int _tileType;
       
-         public TileListener(int xPos, int yPos, JLabel tile, char tileType){
+         public TileListener(int xPos, int yPos, JLabel tile, int tileType){
             _x = xPos;
             _y = yPos;
             _tile = tile;
@@ -455,15 +518,15 @@
          }
          public void mousePressed(MouseEvent e) {
          
-            System.out.println(e);
-            undoStack.push(new MapChange(currentMapIndex, mapArray.get(currentMapIndex).getMapCode()));
+            //System.out.println(e);
+            undoStack.push(new MapChange(currentMapIndex, mapArray.get(currentMapIndex).getMapMatrix()));
             mouseDown = true;
             
-            if(_tileType != shortcutChar){
+            if(_tileType != selectedTileID){
             
                mapPanel.remove(_tile);
             
-               _tile = new JLabel(createImageIcon("\\Tileset0\\Tile"+shortcutChar+".png"));
+               _tile = new JLabel(createImageIcon("\\Tileset"+currentTilesetIndex+"\\Tile"+selectedTileID+".png"));
                GridBagConstraints c = new GridBagConstraints();
                c.gridx = _x;
                c.gridy = _y;
@@ -473,7 +536,7 @@
             }
          }
          public void mouseReleased(MouseEvent e){
-            System.out.println(e);
+            //System.out.println(e);
             mouseDown = false;
          }
          public void mouseEntered(MouseEvent e){
@@ -481,11 +544,11 @@
                mouseDown = false;
             }
             if(mouseDown){
-               if(_tileType != shortcutChar){
+               if(_tileType != selectedTileID){
                
                   mapPanel.remove(_tile);
                
-                  _tile = new JLabel(createImageIcon("\\Tileset0\\Tile"+shortcutChar+".png"));
+                  _tile = new JLabel(createImageIcon("\\Tileset"+currentTilesetIndex+"\\Tile"+selectedTileID+".png"));
                   GridBagConstraints c = new GridBagConstraints();
                   c.gridx = _x;
                   c.gridy = _y;
@@ -497,55 +560,111 @@
             }
          }
          public void mouseDragged(MouseEvent e){
-            System.out.println("whee");
          }
          public void mouseMoved(MouseEvent e){
          }
          
          public void replaceTile(){
             Map map = mapArray.get(currentMapIndex);
-            String mapCode = map.getMapCode();
-            int index1 = mapCode.indexOf(":");
-            int index2 = mapCode.indexOf(":", index1+1);
-            int index3 = index2+1;
-            int row = Integer.parseInt(mapCode.substring(0, index1));
-            int col = Integer.parseInt(mapCode.substring(index1+1, index2));
-            
-            index3 = index3 + col*_y + _x; 
-            mapCode = mapCode.substring(0, index3) + shortcutChar + mapCode.substring(index3+1, mapCode.length());
-            map.setMapCode(mapCode);
+            map.changeTile(_y, _x, selectedTileID);
             mapArray.set(currentMapIndex, map);
-            
-            _tile.addMouseListener(new TileListener(_x, _y, _tile, mapCode.charAt(index3) ));
-         
+            _tile.addMouseListener(new TileListener(_x, _y, _tile, selectedTileID ));
          }
          
       }     
+      
+      public static class TileNPCListener extends MouseAdapter implements MouseMotionListener{
+         private int _x;
+         private int _y;
+         private JLabel _tile;
+         private int _tileType;
+      
+         public TileNPCListener(int xPos, int yPos, JLabel tile, int tileType){
+            _x = xPos;
+            _y = yPos;
+            _tile = tile;
+            _tileType = tileType;
+         }
+         public void mousePressed(MouseEvent e) {
+            mouseDown = true;
+         }
+         public void mouseReleased(MouseEvent e){
+            //System.out.println(e);
+            mouseDown = false;
+         }
+         public void mouseEntered(MouseEvent e){
+            if(e.getModifiersEx() != 1024){
+               mouseDown = false;
+            }
+            if(mouseDown){
+               _tile.setBorder(whiteline);
+            }
+         }
+         public void mouseExited(MouseEvent e){
+            _tile.setBorder(null);
+         
+         }
+         public void mouseDragged(MouseEvent e){
+         }
+         public void mouseMoved(MouseEvent e){
+         }
+      }     
+   
+   	
+   	
+   	
       public static void trace(String s){
          System.out.println(s);
       }
       public static class PropertiesListener implements ActionListener{
          private int _index;
+         private Properties _property;
       
-         public PropertiesListener(int index){
+         public PropertiesListener(int index, Properties p){
             _index = index;
+            _property = p;
          }
          public void actionPerformed(ActionEvent e){
-            Map map = mapArray.get(_index);
+            Map map;
             
+            if(_property == Properties.CHANGE){
+               map = mapArray.get(_index);
+            }   
+            else{
+               map = new Map();
+            }
+         
             JTextField nameField = new JTextField(map.getMapName(), 20);
-            JTextField bgmField = new JTextField(map.getBGM(), 20);
-            JTextField bgsField = new JTextField(map.getBGS(), 20);
+            JComboBox tilesetList = new JComboBox(tilesets);
+            tilesetList.setSelectedIndex(map.getTilesetID());
+            JComboBox bgmList = new JComboBox(BGMs);
+            JComboBox bgsList = new JComboBox(BGSs);
+            
+            bgmList.setSelectedIndex(0);
+            bgsList.setSelectedIndex(0);
+            for(int i = 0; i < BGMs.length; i++){
+               if(map.getBGM().equals(BGMs[i])){
+                  bgmList.setSelectedIndex(i);
+               }
+            }
+            for(int i = 0; i < BGSs.length; i++){
+               if(map.getBGS().equals(BGSs[i])){
+                  bgsList.setSelectedIndex(i);
+               }
+            }
+         	
             JTextField widthField = new JTextField(""+map.getWidth(), 3);
             JTextField heightField = new JTextField(""+map.getHeight(), 3);
             JPanel myPanel = new JPanel();  
-            myPanel.setLayout(new GridLayout(10, 1));
+            myPanel.setLayout(new GridLayout(12, 1));
             myPanel.add(new JLabel("Map Name:"));
             myPanel.add(nameField);
+            myPanel.add(new JLabel("Tileset ID:"));
+            myPanel.add(tilesetList);   
             myPanel.add(new JLabel("BGM:"));
-            myPanel.add(bgmField);
+            myPanel.add(bgmList);
             myPanel.add(new JLabel("BGS: "));
-            myPanel.add(bgsField);
+            myPanel.add(bgsList);
             myPanel.add(new JLabel("Width: "));
             myPanel.add(widthField);				
             myPanel.add(new JLabel("Height: "));
@@ -554,28 +673,89 @@
             int result = JOptionPane.showConfirmDialog(null, myPanel, 
                "Map Properties - ID: " + _index, JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
-               System.out.println("yeah");
+               if(!nameField.getText().matches(".*\\w.*")){
+                  nameField.setText("BLANK");
+               }
                map.setMapName(nameField.getText());
-               map.setBGM(bgmField.getText());  
-               map.setBGS(bgsField.getText()); 
+               map.setTilesetID(tilesetList.getSelectedIndex());
+               map.setBGM(BGMs[bgmList.getSelectedIndex()]);  
+               map.setBGS(BGSs[bgsList.getSelectedIndex()]); 
                int w = map.getWidth();
                int h = map.getHeight();
+               if (!widthField.getText().matches("^\\d*$")) {
+                  widthField.setText(w+"");
+               }  
+               if (!heightField.getText().matches("^\\d*$")) {
+                  heightField.setText(h+"");
+               }  
+            	
                int nw = Integer.parseInt(widthField.getText());
                int nh = Integer.parseInt(heightField.getText());
-               if(w != nw){
+               if(nw < 1){
+                  nw = w;
                }
-               if(h != nh){
+               if(nh < 1){
+                  nh = h;
                }
                map.setWidth(nw);
                map.setHeight(nh); 
-            	
-            	
-               mapArray.set(_index, map);
-               mapNameArray.set(_index, nameField.getText());
+              
+               if(_property == Properties.CHANGE){
+                  map.updateMap(h, w);
+                  mapArray.set(_index, map);
+                  mapNameArray.set(_index, nameField.getText());
+               }
+               else{
+                  map.setMapCode(nh + ":" + nw + ":");
+                  map.setMapMatrix(new int[nh][nw]);
+                  map.setMapID(_index);
+                  mapArray.add(map);
+                  mapNameArray.add(nameField.getText());
+               }
+            
+               currentMapIndex = _index;
+               currentTilesetIndex = map.getTilesetID();
+               addTileComps(tilePanel);
                addListComps(listPanel);
+               repaintMap(_index);
             }
          
          }
+      }
+      
+      public static class DuplicateListener implements ActionListener{
+         private int _index;
+      
+         public DuplicateListener(int index){
+            _index = index;
+         }
+         public void actionPerformed(ActionEvent e){
+            Map map = new Map();
+            Map copiedMap = mapArray.get(_index);
+            map.setMapName(copiedMap.getMapName() + " copy");
+            map.setMapCode(copiedMap.getMapCode());
+            map.setBGM(copiedMap.getBGM());
+            map.setBGS(copiedMap.getBGS());
+            map.setTilesetID(copiedMap.getTilesetID());
+            map.setWidth(copiedMap.getWidth());
+            map.setHeight(copiedMap.getHeight());
+            int[][] mapMatrix = copiedMap.getMapMatrix();
+            int [][] copiedMapMatrix = new int[mapMatrix.length][];
+            for(int i = 0; i < mapMatrix.length; i++)
+               copiedMapMatrix[i] = mapMatrix[i].clone();
+         	
+            map.setMapMatrix(copiedMapMatrix);
+            
+            currentMapIndex = mapArray.size();
+            map.setMapID(currentMapIndex);
+            mapArray.add(map);
+            mapNameArray.add(map.getMapName());
+            currentTilesetIndex = map.getTilesetID();
+            addTileComps(tilePanel);
+            addListComps(listPanel);
+            repaintMap(_index);
+         }
+      
       }
       public static class TileSelectListener extends MouseAdapter {
          private int _index;
@@ -588,7 +768,7 @@
                tileArray.get(i).setBorder(null);
             }
             tileArray.get(_index).setBorder(whiteline);
-            shortcutChar = Integer.toString(_index).charAt(0);
+            selectedTileID = _index;
          	
          }
          public void mouseEntered(MouseEvent e){
@@ -599,7 +779,7 @@
                tileArray.get(i).setBorder(null);
             }
             tileArray.get(_index).setBorder(whiteline);
-            shortcutChar = Integer.toString(_index).charAt(0);
+            selectedTileID = _index;
          }
       
          public void mouseReleased(MouseEvent e){
