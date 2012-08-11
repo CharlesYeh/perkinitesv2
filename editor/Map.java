@@ -82,7 +82,7 @@
          // _mapCode = _height + _mapCode.substring(index1);
       }
       public void setMapID(int mID){
-      _mapID = mID;
+         _mapID = mID;
       }
    	/*
    	 * Creates the initial map before any edits. Everything besides mapMatrix should be filled in already.
@@ -109,10 +109,38 @@
                index3++;
             }
          }
+         
+      	/*
+      			// get teleport points
+      	var ind1 = 0;
+      	while (true) {
+      		ind1 = mapCode.indexOf("(", ind1) + 1;
+      		if (ind1 == 0)
+      			break;
+      		
+      		var ind2 = mapCode.indexOf(",", ind1);
+      		var ind3 = mapCode.indexOf(";", ind2 + 1);
+      		var ind4 = mapCode.indexOf(",", ind3 + 1);
+      		var ind5 = mapCode.indexOf(",", ind4 + 1);
+      		var ind6 = mapCode.indexOf(")", ind1);
+      		
+      		var teleX = parseInt(mapCode.substring(ind1, ind2));
+      		var teleY = parseInt(mapCode.substring(ind2 + 1, ind3));
+      		
+      		var destMap = parseInt(mapCode.substring(ind3 + 1, ind4));
+      		var destX = parseInt(mapCode.substring(ind4 + 1, ind5));
+      		var destY = parseInt(mapCode.substring(ind5 + 1, ind6));
+      		
+      		var mapX = (teleX + .5) * TileMap.TILE_SIZE;
+      		var mapY = (teleY + .5) * TileMap.TILE_SIZE;
+      		
+      		addTelePoint(mapX, mapY, teleX, teleY, destMap, new Point(destX, destY));
+      	}
+      	*/
       }
       
       /*
-   	 * Changes the map to account for width/height changes.
+   	 * Changes the map to account for width/height changes. This is mostly used from the MapProperties window.
    	 */  
       public void updateMap(int oldHeight, int oldWidth){
          int[][] temp = new int[_height][_width];
@@ -179,6 +207,9 @@
       
       public void changeTile(int r, int c, int tileID){
          _mapMatrix[r][c] = tileID;
+      }
+      public int getTile(int r, int c){
+         return _mapMatrix[r][c];
       }
       
       public void printMap(){

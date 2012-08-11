@@ -31,6 +31,8 @@
       public static ArrayList<Map> mapArray = new ArrayList<Map>();
       public static ArrayList<JLabel> tileArray = new ArrayList<JLabel>();
       
+      public static JLabel[][] tileMap;
+      
       public static Stack<Change> undoStack = new Stack<Change>();
       public static Stack<Change> redoStack = new Stack<Change>();
    	
@@ -58,18 +60,22 @@
       public static boolean mapMode = true;
       public static String drawMode = "Pencil";
       
+      public static Point rs = new Point(0,0);
+      public static Point re = new Point(0,0);
+      public static JLabel rsTile;
+      public static JLabel reTile;
+      
       //Properties stuff
    	
       public static String[] BGMs = {"None", "Stop", "Exceed the Sky.mp3", "Fight Back!.mp3", "P.S.F.mp3", "perkinite panic!!.mp3"};
       public static String[] BGSs = {"None", "Stop"};
       public static String[] tilesets = { "0: Perkins", "1: Power Street" };
    	
-   	
-   	
-   	
       public static Border whiteline = BorderFactory.createCompoundBorder(
       BorderFactory.createLineBorder(Color.black),
       BorderFactory.createLineBorder(Color.white, 2));
+      
+      public static Border staticwhiteline = BorderFactory.createLineBorder(Color.white, 1);
       
       public enum Properties{
          CHANGE, CREATE
@@ -157,6 +163,25 @@
                   public void actionPerformed(ActionEvent e) {
                      mapModeButton.setEnabled(false);
                      NPCModeButton.setEnabled(true);
+                     pencilButton.setEnabled(false);
+                     rectangleButton.setEnabled(false);
+                     fillButton.setEnabled(false);
+                     selectButton.setEnabled(false);
+                     switch(drawMode){
+                        case "Pencil":
+                           pencilButton.setEnabled(true);
+                     break;
+                        case "Rectangle":
+                           rectangleButton.setEnabled(true);
+                     break;
+                        case "Fill":
+                           fillButton.setEnabled(true);
+                     break;
+                        case "Select":
+                           selectButton.setEnabled(true);
+                     break;
+                     
+                     }
                      mapMode = true;
                      repaintMap(currentMapIndex);
                   }
@@ -166,10 +191,14 @@
                   public void actionPerformed(ActionEvent e) {
                      mapModeButton.setEnabled(true);
                      NPCModeButton.setEnabled(false);
+                     pencilButton.setEnabled(false);
+                     rectangleButton.setEnabled(false);
+                     fillButton.setEnabled(false);
+                     selectButton.setEnabled(false);
                      mapMode = false;
                      if(currentMapIndex > -1){
                         repaintMap(currentMapIndex);
-                        }
+                     }
                      
                   }
                });   
@@ -195,7 +224,10 @@
             tileArray.add(tile);
             tile.addMouseListener(new TileSelectListener(i));
             pane.add(tile, c);
-            if(i == 0){
+            if(i == selectedTileID){
+               tile.setBorder(whiteline);
+            }
+            else if(i == 0 && selectedTileID >= numTiles){
                tile.setBorder(whiteline);
             }
          }
@@ -296,16 +328,23 @@
          
          int row = mapMatrix.length;
          int col = mapMatrix[0].length;
+         
+      	
+         tileMap = new JLabel[row][col];
+      
+      	
          for(int i = 0; i < row; i++){
             for(int j = 0; j < col; j++){
                c.gridx = j;
                c.gridy = i;
                JLabel tile = new JLabel(createImageIcon("\\Tileset"+currentTilesetIndex+"\\Tile"+mapMatrix[i][j]+".png")); 
+               tileMap[i][j] = tile;
                if(mapMode){
                   tile.addMouseListener(new TileListener(j, i, tile, mapMatrix[i][j] ));
+                  tile.setBorder(null);
                }
                else{
-                  tile.addMouseListener(new TileNPCListener(j, i, tile, mapMatrix[i][j] ));
+                  tile.addMouseListener(new TileNPCListener(j, i, tile, mapMatrix[i][j] ));	
                }
                mapPanel.add(tile, c);
             
@@ -501,7 +540,27 @@
             _mode = mode;
          }
          public void actionPerformed(ActionEvent e){
+            pencilButton.setEnabled(true);
+            rectangleButton.setEnabled(true);
+            fillButton.setEnabled(true);
+            selectButton.setEnabled(true);
+            
             drawMode = _mode;
+            switch(drawMode){
+               case "Pencil": 
+                  pencilButton.setEnabled(false);
+                  break;
+               case "Rectangle":
+                  rectangleButton.setEnabled(false);
+                  break;
+               case "Fill":
+                  fillButton.setEnabled(false);
+                  break;
+               case "Select":
+                  selectButton.setEnabled(false);
+                  break;
+            
+            }
          }
       }
       public static class TileListener extends MouseAdapter implements MouseMotionListener{
@@ -517,33 +576,10 @@
             _tileType = tileType;
          }
          public void mousePressed(MouseEvent e) {
-         
-            //System.out.println(e);
-            undoStack.push(new MapChange(currentMapIndex, mapArray.get(currentMapIndex).getMapMatrix()));
             mouseDown = true;
+            undoStack.push(new MapChange(currentMapIndex, mapArray.get(currentMapIndex).getMapMatrix()));
             
-            if(_tileType != selectedTileID){
-            
-               mapPanel.remove(_tile);
-            
-               _tile = new JLabel(createImageIcon("\\Tileset"+currentTilesetIndex+"\\Tile"+selectedTileID+".png"));
-               GridBagConstraints c = new GridBagConstraints();
-               c.gridx = _x;
-               c.gridy = _y;
-               mapPanel.add(_tile, c);
-               mapPanel.getRootPane().revalidate();
-               replaceTile();
-            }
-         }
-         public void mouseReleased(MouseEvent e){
-            //System.out.println(e);
-            mouseDown = false;
-         }
-         public void mouseEntered(MouseEvent e){
-            if(e.getModifiersEx() != 1024){
-               mouseDown = false;
-            }
-            if(mouseDown){
+            if(drawMode.equals("Pencil")){
                if(_tileType != selectedTileID){
                
                   mapPanel.remove(_tile);
@@ -553,9 +589,169 @@
                   c.gridx = _x;
                   c.gridy = _y;
                   mapPanel.add(_tile, c);
-                  mapPanel.revalidate();
+                  mapPanel.getRootPane().revalidate();
                   replaceTile();
                   
+               }
+            } 
+            else if(drawMode.equals("Rectangle")){
+               rs = new Point(_x, _y);
+               re = new Point(_x, _y);
+               rsTile = _tile;
+               reTile = _tile;
+               _tile.setBorder(whiteline);
+               // mapPanel.remove(_tile);
+            //    
+               // _tile = new JLabel(createImageIcon("\\Tileset"+currentTilesetIndex+"\\Tile"+selectedTileID+".png"));
+               // GridBagConstraints c = new GridBagConstraints();
+               // c.gridx = _x;
+               // c.gridy = _y;
+               // mapPanel.add(_tile, c);
+               // mapPanel.getRootPane().revalidate();
+                  
+            }
+            else if(drawMode.equals("Fill")){
+               if(_tileType != selectedTileID){
+                  floodfill(_y, _x, mapArray.get(currentMapIndex));
+                  repaintMap(currentMapIndex);
+               }
+            }
+            
+         }
+      
+         public void mouseReleased(MouseEvent e){
+            if(drawMode.equals("Rectangle")){
+               if(rsTile != null && reTile != null){
+                  Map map = mapArray.get(currentMapIndex);
+                  rsTile.setBorder(null);
+                  reTile.setBorder(null);
+                  rsTile = null;
+                  reTile = null;
+                  int sx; int sy; int ex; int ey;
+                  if(rs.x < re.x){
+                     sx = rs.x;
+                     ex = re.x;
+                  }
+                  else{
+                     sx = re.x;
+                     ex = rs.x;
+                  }
+                  if(rs.y < re.y){
+                     sy = rs.y;
+                     ey = re.y;
+                  }
+                  else{
+                     sy = re.y;
+                     ey = rs.y;
+                  }
+                     
+                  for(int i = sy; i <= ey; i++){
+                     for(int j = sx; j <= ex; j++){
+                        mapPanel.remove(tileMap[i][j]);
+                        GridBagConstraints c = new GridBagConstraints();
+                        
+                        c.gridx = j;
+                        c.gridy = i;
+                        JLabel tile = new JLabel(createImageIcon("\\Tileset"+currentTilesetIndex+"\\Tile"+selectedTileID+".png")); 
+                        tileMap[i][j] = tile;
+                        tile.addMouseListener(new TileListener(j, i, tile, selectedTileID ));
+                        tile.setBorder(null);
+                        
+                        mapPanel.add(tile, c);
+                        
+                        map.changeTile(i, j, selectedTileID);
+                     }
+                  }
+                  mapArray.set(currentMapIndex, map);
+                  mapPanel.revalidate();
+                  mapPanel.repaint();
+               }
+            }
+         
+            mouseDown = false;
+         }
+         public void mouseEntered(MouseEvent e){
+            if(e.getModifiersEx() != 1024){
+               mouseDown = false;
+            }
+            if(drawMode.equals("Pencil")){
+               if(mouseDown){
+                  if(_tileType != selectedTileID){
+                  
+                     mapPanel.remove(_tile);
+                  
+                     _tile = new JLabel(createImageIcon("\\Tileset"+currentTilesetIndex+"\\Tile"+selectedTileID+".png"));
+                     GridBagConstraints c = new GridBagConstraints();
+                     c.gridx = _x;
+                     c.gridy = _y;
+                     mapPanel.add(_tile, c);
+                     mapPanel.revalidate();
+                     replaceTile();
+                  }
+               }
+            } 
+            else if(drawMode.equals("Rectangle")){
+               if(mouseDown){
+               //create rectangle matrix
+                  re = new Point(_x, _y);
+                  reTile = _tile;   
+                  _tile.setBorder(whiteline);
+               
+               }
+               else{
+                  if(rsTile != null && reTile != null){
+                     Map map = mapArray.get(currentMapIndex);
+                     rsTile.setBorder(null);
+                     reTile.setBorder(null);
+                     rsTile = null;
+                     reTile = null;
+                     int sx; int sy; int ex; int ey;
+                     if(rs.x < re.x){
+                        sx = rs.x;
+                        ex = re.x;
+                     }
+                     else{
+                        sx = re.x;
+                        ex = rs.x;
+                     }
+                     if(rs.y < re.y){
+                        sy = rs.y;
+                        ey = re.y;
+                     }
+                     else{
+                        sy = re.y;
+                        ey = rs.y;
+                     }
+                     
+                     for(int i = sy; i <= ey; i++){
+                        for(int j = sx; j <= ex; j++){
+                           mapPanel.remove(tileMap[i][j]);
+                           GridBagConstraints c = new GridBagConstraints();
+                        
+                           c.gridx = j;
+                           c.gridy = i;
+                           JLabel tile = new JLabel(createImageIcon("\\Tileset"+currentTilesetIndex+"\\Tile"+selectedTileID+".png")); 
+                           tileMap[i][j] = tile;
+                           tile.addMouseListener(new TileListener(j, i, tile, selectedTileID ));
+                           tile.setBorder(null);
+                        
+                           mapPanel.add(tile, c);
+                        
+                           map.changeTile(i, j, selectedTileID);
+                        }
+                     }
+                     mapArray.set(currentMapIndex, map);
+                     mapPanel.revalidate();
+                     mapPanel.repaint();
+                  }
+                  
+               }
+            }
+         }
+         public void mouseExited(MouseEvent e){
+            if(drawMode.equals("Rectangle")){
+               if(rs.y != _y || rs.x != _x){
+                  _tile.setBorder(null);
                }
             }
          }
@@ -569,6 +765,20 @@
             map.changeTile(_y, _x, selectedTileID);
             mapArray.set(currentMapIndex, map);
             _tile.addMouseListener(new TileListener(_x, _y, _tile, selectedTileID ));
+            tileMap[_y][_x] = _tile;
+         }
+         public void floodfill(int r, int c, Map map){
+         	
+            if(r < 0 || c < 0 || r >= tileMap.length || c >= tileMap[0].length)
+               return;
+            if(map.getTile(r, c) == selectedTileID || map.getTile(r, c) != _tileType)
+               return;
+              	
+            map.changeTile(r, c, selectedTileID);
+            floodfill(r-1, c, map);
+            floodfill(r+1, c, map);
+            floodfill(r, c-1, map);
+            floodfill(r, c+1, map);
          }
          
       }     
@@ -587,6 +797,7 @@
          }
          public void mousePressed(MouseEvent e) {
             mouseDown = true;
+            _tile.setBorder(whiteline);
          }
          public void mouseReleased(MouseEvent e){
             //System.out.println(e);
@@ -610,9 +821,6 @@
          }
       }     
    
-   	
-   	
-   	
       public static void trace(String s){
          System.out.println(s);
       }
@@ -784,6 +992,7 @@
       
          public void mouseReleased(MouseEvent e){
          }
-      }     
+      }    
+      
    
    }
