@@ -1,0 +1,19 @@
+{
+	name: "Drunk Enemy",
+	id: "drunkguy",
+	sprite: "enemy_Drunk-Guy",
+	ai: "BasicAIUnit",
+	
+	health: 80,
+	defense: 0,
+	speed: 80,
+	abilities: [
+		{
+			type: "AttackCone"
+			name: "Puke",
+			range: 60,
+			cd: 10,
+			damage: 5
+		}
+	]
+}
