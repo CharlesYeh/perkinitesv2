@@ -25,8 +25,6 @@
    import java.util.*;
 
    public class Editor{
-      public static final String homeDir = "C:\\Projects\\Games\\Flash Games\\Perkinites v2\\editor";
-      public static final String xmlDir = "C:\\Projects\\Games\\Flash Games\\Perkinites v2\\_xml";
       public static ArrayList<String> mapNameArray = new ArrayList<String>();
       public static ArrayList<Map> mapArray = new ArrayList<Map>();
       public static ArrayList<JLabel> tileArray = new ArrayList<JLabel>();
@@ -163,23 +161,23 @@
                   public void actionPerformed(ActionEvent e) {
                      mapModeButton.setEnabled(false);
                      NPCModeButton.setEnabled(true);
-                     pencilButton.setEnabled(false);
-                     rectangleButton.setEnabled(false);
-                     fillButton.setEnabled(false);
-                     selectButton.setEnabled(false);
+                     pencilButton.setEnabled(true);
+                     rectangleButton.setEnabled(true);
+                     fillButton.setEnabled(true);
+                     selectButton.setEnabled(true);
                      switch(drawMode){
                         case "Pencil":
-                           pencilButton.setEnabled(true);
-                     break;
+                           pencilButton.setEnabled(false);
+                           break;
                         case "Rectangle":
-                           rectangleButton.setEnabled(true);
-                     break;
+                           rectangleButton.setEnabled(false);
+                           break;
                         case "Fill":
-                           fillButton.setEnabled(true);
-                     break;
+                           fillButton.setEnabled(false);
+                           break;
                         case "Select":
-                           selectButton.setEnabled(true);
-                     break;
+                           selectButton.setEnabled(false);
+                           break;
                      
                      }
                      mapMode = true;
@@ -196,9 +194,6 @@
                      fillButton.setEnabled(false);
                      selectButton.setEnabled(false);
                      mapMode = false;
-                     if(currentMapIndex > -1){
-                        repaintMap(currentMapIndex);
-                     }
                      
                   }
                });   
@@ -215,7 +210,16 @@
          tileArray = new ArrayList<JLabel>();
          pane.setLayout(new GridBagLayout());
          GridBagConstraints c = new GridBagConstraints();
-         int numTiles = new File(homeDir+"\\Tileset"+currentTilesetIndex+"\\").listFiles().length;
+         int numTiles = 0;
+         File dir1 = new File(".");
+         try {
+            numTiles = new File(dir1.getCanonicalPath() + "\\editor\\Tileset"+currentTilesetIndex+"\\").listFiles().length;
+         
+         } 
+            catch (Exception e) {
+               e.printStackTrace();
+            }
+            
          for(int i = 0; i < numTiles; i++){
          
             c.gridx = i%8;
@@ -274,10 +278,7 @@
                      rcMenu.add(menuItem);
                      menuItem = new JMenuItem("Duplicate");
                      rcMenu.add(menuItem);  
-                     menuItem.addActionListener(new DuplicateListener(index));
-                     menuItem = new JMenuItem("Delete");
-                     //menuItem.addActionListener(this);
-                     rcMenu.add(menuItem);  
+                     menuItem.addActionListener(new DuplicateListener(index));  
                   	
                   
                      rcMenu.show(e.getComponent(),e.getX(), e.getY());
@@ -316,44 +317,47 @@
       	
       }
       public static void repaintMap(int index){
-         mapPanel.removeAll();
-         mapPanel.setLayout(new GridBagLayout());
-         GridBagConstraints c = new GridBagConstraints();
+         if(currentMapIndex > -1){
+            mapPanel.removeAll();
+            mapPanel.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
          
-         Map map = mapArray.get(index);
+            Map map = mapArray.get(index);
          
-         currentTilesetIndex = map.getTilesetID();
-         addTileComps(tilePanel);
-         int[][] mapMatrix = map.getMapMatrix();
+            currentTilesetIndex = map.getTilesetID();
+            addTileComps(tilePanel);
+            int[][] mapMatrix = map.getMapMatrix();
          
-         int row = mapMatrix.length;
-         int col = mapMatrix[0].length;
+            int row = mapMatrix.length;
+            int col = mapMatrix[0].length;
          
-      	
-         tileMap = new JLabel[row][col];
-      
-      	
-         for(int i = 0; i < row; i++){
-            for(int j = 0; j < col; j++){
-               c.gridx = j;
-               c.gridy = i;
-               JLabel tile = new JLabel(createImageIcon("\\Tileset"+currentTilesetIndex+"\\Tile"+mapMatrix[i][j]+".png")); 
-               tileMap[i][j] = tile;
-               if(mapMode){
-                  tile.addMouseListener(new TileListener(j, i, tile, mapMatrix[i][j] ));
-                  tile.setBorder(null);
+         
+            tileMap = new JLabel[row][col];
+         
+         
+            for(int i = 0; i < row; i++){
+               for(int j = 0; j < col; j++){
+                  c.gridx = j;
+                  c.gridy = i;
+                  JLabel tile = new JLabel(createImageIcon("\\Tileset"+currentTilesetIndex+"\\Tile"+mapMatrix[i][j]+".png")); 
+                  tileMap[i][j] = tile;
+                  if(mapMode){
+                     tile.addMouseListener(new TileListener(j, i, tile, mapMatrix[i][j] ));
+                     tile.setBorder(null);
+                  }
+                  else{
+                     tile.addMouseListener(new TileNPCListener(j, i, tile, mapMatrix[i][j] ));	
+                  }
+                  mapPanel.add(tile, c);
+               
                }
-               else{
-                  tile.addMouseListener(new TileNPCListener(j, i, tile, mapMatrix[i][j] ));	
-               }
-               mapPanel.add(tile, c);
             
             }
+            mapPanel.getRootPane().revalidate();
+            mapPanel.revalidate();
+            mapPanel.repaint();
          
          }
-         mapPanel.getRootPane().revalidate();
-         mapPanel.revalidate();
-         mapPanel.repaint();
       }
       
    	
@@ -444,7 +448,15 @@
                   }
                };
          
-            saxParser.parse(xmlDir+"\\Maps.xml", handler);
+            File dir1 = new File(".");
+            try {
+               saxParser.parse(dir1.getCanonicalPath() + "\\_xml\\Maps.xml", handler);
+            } 
+               catch (Exception e) {
+                  e.printStackTrace();
+               }
+               
+         		
          }
             catch (Exception e){
                e.printStackTrace();
