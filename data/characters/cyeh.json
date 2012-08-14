@@ -19,6 +19,9 @@
 			"icon": "Icon - Kendo Strike.png",
 			"description": "Dash forward, dealing damage to the first enemy contact."
 			
+			"dmgBase": 50,
+			"dmgRatio": 50,
+			
 			"range": 200,
 			"cd": 10
 			
