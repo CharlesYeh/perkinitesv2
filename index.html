@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<script type="text/javascript" language="javascript" src="scripts/jquery-1.7.2.min.js"></script>
+		<script>
+		$(document).ready(function() {
+			$("#flashContainer").mousedown(function(e) {
+				// pass right clicks on through external interface
+				if (e.which === 3) {
+					e.preventDefault();
+					console.debug($("#flashGame"));
+					$("#flashGame").rightClicked(e.offsetX, e.offsetY);
+				}
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<div id="flashContainer">
+			<object width="640" height="480">
+				<param name="allowScriptAccess" value="always" />
+				<param name="movie" value="perkinites.swf" />
+				<param name="wmode" value="transparent" />
+				<embed id="flashGame"
+					src="perkinites.swf" width="640" height="480"
+					wmode="transparent"
+					type="application/x-shockwave-flash"
+					pluginspage="http://www.macromedia.com/go/getflashplayer"
+					allowScriptAccess="always">
+				</embed>
+			</object>
+		</div>
+	</body>
+</html>
