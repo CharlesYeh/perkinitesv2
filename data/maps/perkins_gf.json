@@ -8,7 +8,7 @@
 	teleports: [
 		{
 			entry: {x: 60, y: 16},
-			exit: {map: 1"perkins_1f", x: 62, y: 16}
+			exit: {map: "perkins_1f", x: 62, y: 16}
 		},
 		{
 			entry: {x: 10, y: 16},
