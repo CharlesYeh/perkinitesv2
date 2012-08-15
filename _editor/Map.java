@@ -1,215 +1,198 @@
-   package editor;
-
+   package _editor;
+   
+   import java.util.*;
+   
    public class Map{
    
-      private int[][] _mapMatrix;
+   
+      private String name;
+      private String id;
+      private String tileset;
+      private int height;
+      private int width;
+      private String code;
       
-      private String _mapName;
+      private ArrayList<Teleport> teleports;
+      private ArrayList<NPC> npcs;
+      private ArrayList<Enemy> enemies;
+   
+      private int[][] mapMatrix;
+      
       private String _mapCode;
-      private String _BGM;
-      private String _BGS;
-      private int _mapID;
-      private int _tilesetID;
-      private int _width;
-      private int _height;
+      private String BGM;
+      private String BGS;
       public Map(){
-         _BGM = "None";
-         _BGS = "None";
-         _tilesetID = 0;
-         _width = 20;
-         _height = 15;
+         name = "";
+         id = "";
+         tileset = "";
+         height = 15;
+         width = 20;
+         code = "";
+         
+         teleports  = new ArrayList<Teleport>();
+         npcs = new ArrayList<NPC>();
+         enemies = new ArrayList<Enemy>();
+      
+         BGM = "";
+         BGS = "";
+           
       }
-      public String getMapName(){
-         return _mapName;
+      public String getName(){
+         return name;
       }
-      public String getMapCode(){
-         return _mapCode;
+      public String getCode(){
+         return code;
       }
       public String getBGM(){
-         return _BGM;
+         return BGM;
       }
       public String getBGS(){
-         return _BGS;
+         return BGS;
       }
       public int getWidth(){
-         return _width;
+         return width;
       }
       public int getHeight(){
-         return _height;
+         return height;
       }
-      public int getTilesetID(){
-         return _tilesetID;
+      public String getID(){
+         return id;
       }
-      public int getMapID(){
-         return _mapID;
+      public String getTileset(){
+         return tileset;
       }
       public int[][] getMapMatrix(){
-         return _mapMatrix;
+         return mapMatrix;
       }
-      public void setMapName(String mn){
-         _mapName = mn;
+      public ArrayList<Teleport> getTeleports(){
+         return teleports;
       }
-      public void setMapCode(String mc){
-         _mapCode = mc;
-         int index1 = _mapCode.indexOf(":");
-         int index2 = _mapCode.indexOf(":", index1+1);
-         _height = Integer.parseInt(_mapCode.substring(0, index1));
-         _width = Integer.parseInt(_mapCode.substring(index1+1, index2));
+      public ArrayList<Enemy> getEnemies(){
+         return enemies;
+      }
+      public ArrayList<NPC> getNPCs(){
+         return npcs;
+      }
+      public void setName(String n){
+         name = n;
+      }
+      public void setID(String i){
+         id = i;
+      }
+      public void setTileset(String t){
+         tileset = t;
+      }
+      public void setCode(String c){
+         code = c;
       }
       public void setMapMatrix(int[][] mm){
-         _mapMatrix = mm;
-         
+         mapMatrix = mm;
       }
       public void setBGM(String bgm){
-         _BGM = bgm;
+         BGM = bgm;
       }
       public void setBGS(String bgs){
-         _BGS = bgs;
-      }
-      public void setTilesetID(int tID){
-         _tilesetID = tID;
+         BGS = bgs;
       }
       public void setWidth(int w){
-         _width = w;
-         // int index1 = _mapCode.indexOf(":");
-         // int index2 = _mapCode.indexOf(":", index1+1);
-         // _mapCode = _mapCode.substring(0, index1+1) + _width + _mapCode.substring(index2);
+         width = w;   
       }
       public void setHeight(int h){
-         _height = h;
-         // int index1 = _mapCode.indexOf(":");
-         // int index2 = _mapCode.indexOf(":", index1+1);
-         // _mapCode = _height + _mapCode.substring(index1);
+         height = h;
       }
-      public void setMapID(int mID){
-         _mapID = mID;
+   
+      public void setTeleports(ArrayList<Teleport> ts){
+         teleports = ts;
+      }
+      public void addTeleport(Teleport teleport){
+         teleports.add(teleport);
+      }
+      public void addNPC(NPC npc){
+         npcs.add(npc);
+      }
+      public void addEnemy(Enemy enemy){
+         enemies.add(enemy);
       }
    	/*
    	 * Creates the initial map before any edits. Everything besides mapMatrix should be filled in already.
    	 */
       public void createMap(){
-         _mapMatrix = new int[_height][_width];
+         mapMatrix = new int[height][width];
       
-         int index1 = _mapCode.indexOf(":");
-         int index2 = _mapCode.indexOf(":", index1+1);
-         int index3 = index2 + 1;
-         int row = Integer.parseInt(_mapCode.substring(0, index1));
-         int col = Integer.parseInt(_mapCode.substring(index1+1, index2));
-         for(int i = 0; i < row; i++){
-            for(int j = 0; j < col; j++){
-               String tileID = _mapCode.substring(index3, index3+1);
+         int index = 0;
+         for(int i = 0; i < height; i++){
+            for(int j = 0; j < width; j++){
+               String tileID = code.substring(index, index+1);
             //check if substring is a letter or not
                if(Character.isLetter(tileID.charAt(0))){
-                  _mapMatrix[i][j] = tileID.charAt(0) - 55;
+                  mapMatrix[i][j] = tileID.charAt(0) - 55;
                }
                else{
                //if not
-                  _mapMatrix[i][j] = Integer.parseInt(tileID);
+                  mapMatrix[i][j] = Integer.parseInt(tileID);
                }
-               index3++;
+               index++;
             }
          }
          
-      	/*
-      			// get teleport points
-      	var ind1 = 0;
-      	while (true) {
-      		ind1 = mapCode.indexOf("(", ind1) + 1;
-      		if (ind1 == 0)
-      			break;
-      		
-      		var ind2 = mapCode.indexOf(",", ind1);
-      		var ind3 = mapCode.indexOf(";", ind2 + 1);
-      		var ind4 = mapCode.indexOf(",", ind3 + 1);
-      		var ind5 = mapCode.indexOf(",", ind4 + 1);
-      		var ind6 = mapCode.indexOf(")", ind1);
-      		
-      		var teleX = parseInt(mapCode.substring(ind1, ind2));
-      		var teleY = parseInt(mapCode.substring(ind2 + 1, ind3));
-      		
-      		var destMap = parseInt(mapCode.substring(ind3 + 1, ind4));
-      		var destX = parseInt(mapCode.substring(ind4 + 1, ind5));
-      		var destY = parseInt(mapCode.substring(ind5 + 1, ind6));
-      		
-      		var mapX = (teleX + .5) * TileMap.TILE_SIZE;
-      		var mapY = (teleY + .5) * TileMap.TILE_SIZE;
-      		
-      		addTelePoint(mapX, mapY, teleX, teleY, destMap, new Point(destX, destY));
-      	}
-      	*/
       }
       
+   
       /*
    	 * Changes the map to account for width/height changes. This is mostly used from the MapProperties window.
    	 */  
       public void updateMap(int oldHeight, int oldWidth){
-         int[][] temp = new int[_height][_width];
+         int[][] temp = new int[height][width];
          int row;
          int col;
-         if(_height < oldHeight){
-            row = _height;
+         if(height < oldHeight){
+            row = height;
          }
          else{
             row = oldHeight;
          }
-         if(_width < oldWidth){
-            col = _width;
+         if(width < oldWidth){
+            col = width;
          }
          else{
             col = oldWidth;
          }
          
-         for(int i = 0; i < _height; i++){
-            for(int j = 0; j < _width; j++){
+         for(int i = 0; i < height; i++){
+            for(int j = 0; j < width; j++){
                temp[i][j] = 0;
             }
          }
          for(int i = 0; i < row; i++){
             for(int j = 0; j < col; j++){
-               temp[i][j] = _mapMatrix[i][j];
+               temp[i][j] = mapMatrix[i][j];
             }
          }
          
-         _mapMatrix = temp;
+         mapMatrix = temp;
       }
       
       public void updateMapCode(){
-         int index1 = _mapCode.indexOf(":");
-         int index2 = _mapCode.indexOf(":", index1+1);
-         int index3 = index2 + 1;
-         int row = Integer.parseInt(_mapCode.substring(0, index1));
-         int col = Integer.parseInt(_mapCode.substring(index1+1, index2));
-         for(int i = 0; i < row; i++){
-            for(int j = 0; j < col; j++){
-               index3++;
-            }
-         }
-         
-         String addOn = _mapCode.substring(index3);
-      
-      	
-      	
-         _mapCode = _height + ":" + _width + ":";
-         for(int i = 0; i < _height; i++){
-            for(int j = 0; j < _width; j++){
-               if(_mapMatrix[i][j] >= 10){
-                  _mapCode+= (char)(_mapMatrix[i][j]+55);
+         code = "";
+         for(int i = 0; i < height; i++){
+            for(int j = 0; j < width; j++){
+               if(mapMatrix[i][j] >= 10){
+                  code+= (char)(mapMatrix[i][j]+55);
                }
                else{
-                  _mapCode += _mapMatrix[i][j];
+                  code += mapMatrix[i][j];
                }
                
             }
          }
-         _mapCode+=addOn;
       
       }
       
       public void changeTile(int r, int c, int tileID){
-         _mapMatrix[r][c] = tileID;
+         mapMatrix[r][c] = tileID;
       }
       public int getTile(int r, int c){
-         return _mapMatrix[r][c];
+         return mapMatrix[r][c];
       }
       
       public void printMap(){
@@ -220,11 +203,10 @@
          int col = Integer.parseInt(_mapCode.substring(index1+1, index2));
          for(int i = 0; i < row; i++){
             for(int j = 0; j < col; j++){
-               System.out.print(_mapMatrix[i][j]);
+               System.out.print(mapMatrix[i][j]);
             }
             System.out.println();
          }
       
       }
-   	
    }

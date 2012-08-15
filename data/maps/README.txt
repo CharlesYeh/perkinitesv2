@@ -1,3 +1,0 @@
-tilesets:
-
-"perkins"

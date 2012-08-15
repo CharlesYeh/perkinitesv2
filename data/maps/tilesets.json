@@ -9,8 +9,8 @@
 			types: ["s", "s", "s", "w", "w", "w", "w"]
 		},
 		{
-			name: "gradcenter",
+			id: "gradcenter",
 			types: ["s", "s", "s", "w", "w", "w", "w"]
-		},
+		}
 	]
 }

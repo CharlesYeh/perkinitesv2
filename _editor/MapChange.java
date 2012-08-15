@@ -1,4 +1,4 @@
-   package editor;
+   package _editor;
 
    public class MapChange extends Change{
    

@@ -33,8 +33,8 @@
 	npcs: [
 		{
 			sprite: "CK",
-			direction: "down"
-			position: {x: 60, y: 9}
+			direction: "down",
+			position: {x: 60, y: 9},
 			actions: [
 				{
 					type: "ActionTalk",
@@ -51,6 +51,6 @@
 					text: "Mission 1!&#xA;Get some shoes at the mall!&#xA;:)"
 				}
 			]
-		},
+		}
 	]
 }
