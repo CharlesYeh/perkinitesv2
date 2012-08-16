@@ -243,7 +243,7 @@
             catch (Exception e) {
                e.printStackTrace();
             }
-            
+          
          for(int i = 0; i < numTiles; i++){
          
             c.gridx = i%8;
@@ -421,14 +421,18 @@
       
    	
       protected static ImageIcon createImageIcon(String path){
-         java.net.URL imgURL = Editor.class.getResource(path);
-         if(imgURL != null){
-            return new ImageIcon(imgURL);
-         } 
-         else{
-            System.err.println("Coudn't find: " + path);
-            return null;
+      
+         String filename = "";  
+         File dir1 = new File(".");
+         try{
+            filename= dir1.getCanonicalPath() + "\\_editor";
          }
+            catch (Exception e){
+               e.printStackTrace();
+            }
+         return new ImageIcon(filename+path);
+      
+      
       }
       public static void setupDeleteHotkeys(){
          String DEL = "Delete action key";
@@ -641,6 +645,7 @@
          }
       
          public void mouseReleased(MouseEvent e){
+         
             if(drawMode.equals("Rectangle")){
                if(rsTile != null && reTile != null){
                   Map map = mapArray.get(currentMapIndex);
@@ -869,6 +874,9 @@
          }
          public void mouseReleased(MouseEvent e){
             //System.out.println(e);
+            if(rs.y == re.y && rs.x == re.x){
+               superlabel.setText("(" + _x + ", " + _y + ")");
+            }
             if(selectedTileObject != null && !(tileMap[re.y][re.x].getIcon() instanceof CompoundIcon)){
                Map map = mapArray.get(currentMapIndex);
                int index = -1;
@@ -902,6 +910,9 @@
                tileMap[rs.y][rs.x].setBorder(null);
                tileMap[re.y][re.x].setBorder(whiteline);
                repaintMap(currentMapIndex);
+            }
+            else{
+               superlabel.setText("(" + _x + ", " + _y + ")");
             }
             mouseDown = false;
          }
