@@ -22,6 +22,43 @@
    import java.io.IOException;
    public class MapJSONReader{
    
+      public static String[] readEnemyJSON(){
+         ArrayList<String> enemies = new ArrayList<String>();
+         Gson gson = new Gson();
+         
+         File dir1 = new File(".");
+         try {
+            String path = dir1.getCanonicalPath() + "\\data\\enemies\\";
+           
+            try {
+            
+               JsonReader reader = new JsonReader(new FileReader(path + "enemies.json"));
+               
+               reader.beginObject();
+               reader.setLenient(true);
+               String name = reader.nextName();
+               reader.beginArray();
+               while (reader.hasNext()) {
+                  enemies.add(reader.nextString());
+               }
+               reader.endArray();
+               reader.endObject();
+               reader.close();
+            }
+               catch(FileNotFoundException e){
+                  e.printStackTrace();
+               }
+         }
+            catch(IOException e){
+               e.printStackTrace();
+            }
+            
+         return enemies.toArray(new String[enemies.size()]);
+      }
+      
+   
+   
+   
       public static String[] readTilesetJSON(){
          ArrayList<String> tilesets = new ArrayList<String>();
          Gson gson = new Gson();

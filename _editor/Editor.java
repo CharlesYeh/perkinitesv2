@@ -76,11 +76,14 @@
       
       public static Object selectedTileObject = null;
       
+      public static JLabel superlabel = new JLabel("I tell you stuff!");
+      
       //Properties stuff
    	
       public static String[] BGMs = {"", "Exceed the Sky.mp3", "Fight Back!.mp3", "P.S.F.mp3", "perkinite panic!!.mp3"};
       public static String[] BGSs = {""};
-      public static String[] tilesets = { "perkins", "outdoor" };
+      public static String[] tilesets;
+      public static String[] enemies;
    	
       public static Border whiteline = BorderFactory.createCompoundBorder(
       BorderFactory.createLineBorder(Color.black),
@@ -101,6 +104,7 @@
          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       	
          //readMapXML();
+         enemies = MapJSONReader.readEnemyJSON();
          tilesets = MapJSONReader.readTilesetJSON();
          mapArray = MapJSONReader.readMapJSON();
          for(int i = 0; i < mapArray.size(); i++){
@@ -317,6 +321,8 @@
          
          list.setSelectedIndex(currentMapIndex);
          
+         pane.add(superlabel, BorderLayout.PAGE_END);
+         
          pane.revalidate();
          pane.repaint();
          
@@ -333,6 +339,7 @@
       public static void repaintMap(int index){
          rs = new Point(-1, -1);
          re = new Point(-1, -1);
+         superlabel.setText("I tell you stuff!");
          if(currentMapIndex > -1){
             mapPanel.removeAll();
             mapPanel.setLayout(new GridBagLayout());
@@ -384,6 +391,24 @@
                   mapPanel.add(tile, c);
                   tileMap[y][x] = tile;
                   tile.addMouseListener(new TileNPCListener(x, y, tile, mapMatrix[y][x], teleport));	
+               }
+            
+               ArrayList<Enemy> enemies = map.getEnemies();
+               for(int i = 0; i < enemies.size(); i++){
+                  Enemy enemy = enemies.get(i);
+                  int y = enemy.getPosition().y;
+                  int x = enemy.getPosition().x;
+                  JLabel tile = tileMap[y][x];
+                  mapPanel.remove(tile);
+                  Icon enemyIcon = createImageIcon("\\Objects\\enemy.png");
+                  Icon tileIcon = createImageIcon("\\Tileset_"+tilesets[currentTilesetIndex]+"\\Tile"+mapMatrix[y][x]+".png");
+                
+                  tile = new JLabel(new CompoundIcon(CompoundIcon.Axis.Z_AXIS, 0, CompoundIcon.CENTER, CompoundIcon.CENTER, tileIcon, enemyIcon));
+                  c.gridx = x;
+                  c.gridy = y;
+                  mapPanel.add(tile, c);
+                  tileMap[y][x] = tile;
+                  tile.addMouseListener(new TileNPCListener(x, y, tile, mapMatrix[y][x], enemy));	
                }
             
             }
@@ -441,7 +466,12 @@
                   repaintMap(currentMapIndex);
                } 
                else if(object instanceof Enemy){
-               
+                  ArrayList<Enemy> es = map.getEnemies();
+                  index = es.indexOf((Enemy)object);
+                  es.remove(index);
+                  map.setEnemies(es);
+                  mapArray.set(currentMapIndex, map);
+                  repaintMap(currentMapIndex);
                }
                else if(object instanceof NPC){
                
@@ -577,7 +607,7 @@
          public void mousePressed(MouseEvent e) {
             mouseDown = true;
             undoStack.push(new MapChange(currentMapIndex, mapArray.get(currentMapIndex).getMapMatrix()));
-            
+            superlabel.setText("(" + _x + ", " + _y + ")");
             if(drawMode.equals("Pencil")){
                if(_tileType != selectedTileID){
                
@@ -664,6 +694,9 @@
          public void mouseEntered(MouseEvent e){
             if(e.getModifiersEx() != 1024){
                mouseDown = false;
+            }
+            if(mouseDown){
+               superlabel.setText("(" + _x + ", " + _y + ")");
             }
             if(drawMode.equals("Pencil")){
                if(mouseDown){
@@ -801,7 +834,7 @@
                   teleportPopup(Properties.CHANGE);
                }
                else if(_object instanceof Enemy){
-               
+                  enemyPopup(Properties.CHANGE);
                }
                else if(_object instanceof NPC){
                
@@ -816,6 +849,22 @@
             _tile.setBorder(whiteline);
             rs = new Point(_x, _y);
             re = new Point(_x, _y);
+            if(_object == null){
+               superlabel.setText("(" + _x + ", " + _y + ")");
+            }
+            else if(_object instanceof Teleport){
+               superlabel.setText("(" + _x + ", " + _y + "): Teleport to " 
+                  + ((Teleport)(_object)).getMap() + " (" 
+                  + ((Teleport)(_object)).getExit().x + ", "
+                  + ((Teleport)(_object)).getExit().y +")" );
+            }
+            else if(_object instanceof Enemy){
+               superlabel.setText("(" + _x + ", " + _y + "): Enemy Type: " 
+                  + ((Enemy)(_object)).getID());
+            }
+            else if(_object instanceof NPC){
+               
+            }
             selectedTileObject = _object;
          }
          public void mouseReleased(MouseEvent e){
@@ -823,8 +872,6 @@
             if(selectedTileObject != null && !(tileMap[re.y][re.x].getIcon() instanceof CompoundIcon)){
                Map map = mapArray.get(currentMapIndex);
                int index = -1;
-               int oy = -1;
-               int ox = -1;
                if(selectedTileObject instanceof Teleport){
                   ArrayList<Teleport> teleports = map.getTeleports();
                   for(int i = 0; i < teleports.size(); i++){
@@ -833,14 +880,26 @@
                         break;
                      }
                   }
-                  ox = ((Teleport)selectedTileObject).getEntry().x;
-                  oy = ((Teleport)selectedTileObject).getEntry().y;
                   
                   ((Teleport)selectedTileObject).setEntry(new Point(re.x, re.y));
                   teleports.set(index, (Teleport)selectedTileObject);
                   map.setTeleports(teleports);
                }
-               tileMap[oy][ox].setBorder(null);
+               else if(selectedTileObject instanceof Enemy){
+                  ArrayList<Enemy> es = map.getEnemies();
+                  for(int i = 0; i < es.size(); i++){
+                     if(selectedTileObject == es.get(i)){
+                        index = i;
+                        break;
+                     }
+                  }
+                  
+                  ((Enemy)selectedTileObject).setPosition(new Point(re.x, re.y));
+                  es.set(index, (Enemy)selectedTileObject);
+                  map.setEnemies(es);
+               
+               }
+               tileMap[rs.y][rs.x].setBorder(null);
                tileMap[re.y][re.x].setBorder(whiteline);
                repaintMap(currentMapIndex);
             }
@@ -853,6 +912,7 @@
             if(mouseDown && selectedTileObject != null){
                if(!(_tile.getIcon() instanceof CompoundIcon))
                   _tile.setBorder(whiteline);
+               superlabel.setText("Moving to (" + _x + ", " + _y + ")");
                re = new Point(_x, _y);
             }
          }
@@ -883,6 +943,7 @@
                   teleportPopup(Properties.CREATE); 
                   break;
                case "Enemy": 
+                  enemyPopup(Properties.CREATE);
                   break;
                case "NPC": 
                   break;
@@ -992,6 +1053,76 @@
                ((Teleport)_object).setExit(new Point(eX2, eY2));
                teleports.set(index, (Teleport)_object);
                map.setTeleports(teleports);
+               
+               repaintMap(currentMapIndex);
+            }
+         }
+         public void enemyPopup(Properties p){
+            int x = _x;
+            int y = _y;
+            Map map = mapArray.get(currentMapIndex);
+            
+            JComboBox enemyList = new JComboBox(enemies);
+            if(p == Properties.CHANGE){
+               enemyList.setSelectedIndex( Arrays.asList(enemies).indexOf( ((Enemy)_object).getID()));
+            }
+            else if(p == Properties.CREATE){
+               enemyList.setSelectedIndex(0);
+            }
+            
+            JTextField xField = new JTextField(x+"", 20);
+            JTextField yField = new JTextField(y+"", 20);
+            
+         	
+            JPanel myPanel = new JPanel();  
+            myPanel.setLayout(new GridLayout(6, 1));
+            myPanel.add(new JLabel("Enemy ID:"));
+            myPanel.add(enemyList);   
+            myPanel.add(new JLabel("X:"));
+            myPanel.add(xField);
+            myPanel.add(new JLabel("Y:"));
+            myPanel.add(yField);
+                    	         	
+            int result = JOptionPane.showConfirmDialog(null, myPanel, 
+               "Enemy Properties", JOptionPane.OK_CANCEL_OPTION);
+            if (result == JOptionPane.OK_OPTION) {
+             
+               if (!xField.getText().matches("^\\d*$") || xField.getText().length() == 0) {
+                  xField.setText(x+"");
+               }  
+               if (!yField.getText().matches("^\\d*$") || yField.getText().length() == 0) {
+                  yField.setText(y+"");
+               }  
+            	
+               int x1 = Integer.parseInt(xField.getText());
+               int y1 = Integer.parseInt(yField.getText());
+               if(x1 < 0 || x1 >= tileMap[0].length){
+                  x1 = x;
+               }
+               if(y1 < 0 || y1 >= tileMap.length){
+                  y1 = y;
+               }
+               
+            
+               ArrayList<Enemy> es= map.getEnemies();   
+               int index = -1;
+               if(p == Properties.CHANGE){
+                  for(int i = 0; i < es.size(); i++){
+                     if(_object == es.get(i)){
+                        index = i;
+                        break;
+                     }
+                  }
+               }
+               else if(p == Properties.CREATE){
+                  index = es.size();
+                  _object = new Enemy(null, null);
+                  es.add((Enemy)_object);
+               }
+               ((Enemy)_object).setID(enemies[(enemyList.getSelectedIndex())]);
+               ((Enemy)_object).setPosition(new Point(x1, y1));
+               es.set(index, (Enemy)_object);
+               map.setEnemies(es);
                
                repaintMap(currentMapIndex);
             }

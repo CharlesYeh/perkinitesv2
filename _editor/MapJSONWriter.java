@@ -110,8 +110,19 @@
                   if(enemies.size() != 0){
                      writer.name("enemies");
                      writer.beginArray();
+                     
+                     for(int j = 0; j < enemies.size(); j++){
+                        Enemy enemy = enemies.get(j);
+                        writer.beginObject();
+                     
+                        writer.name("id").value(enemy.getID());
+                        writer.name("x").value(enemy.getPosition().x);
+                        writer.name("y").value(enemy.getPosition().y);
+                        writer.endObject();
+                     }
                   	
                      writer.endArray();
+                  
                   }
                 
                   ArrayList<NPC> npcs = map.getNPCs();

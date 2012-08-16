@@ -110,6 +110,12 @@
       public void addNPC(NPC npc){
          npcs.add(npc);
       }
+      public void setNPCs(ArrayList<NPC> NPCs){
+         npcs = NPCs;
+      }
+      public void setEnemies(ArrayList<Enemy> es){
+         enemies = es;
+      }
       public void addEnemy(Enemy enemy){
          enemies.add(enemy);
       }

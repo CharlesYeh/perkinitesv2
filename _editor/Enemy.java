@@ -9,6 +9,12 @@
          id = i;
          position = p;
       }
+      public String getID(){
+         return id;
+      }
+      public Point getPosition(){
+         return position;
+      }
       public void setID(String i){
          id = i;
       }
