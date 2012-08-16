@@ -30,7 +30,7 @@
 			return names;
 		}
 		public static function getCharSprite(id:int) {
-			return "_sprites/" + sprites[id] + ".swf";
+			return "data/sprites/" + sprites[id] + ".swf";
 		}
 		public static function loadXML(url:String) {
 			Database.loadXML(url, completeLoad);

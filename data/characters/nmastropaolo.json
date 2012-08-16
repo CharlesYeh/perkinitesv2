@@ -20,31 +20,23 @@
 			"description": "Deal heavy damage to a single targeted enemy."
 			
 			"range": 50,
+			"damage": 20,
 			"cd": 5
 		},
 		{
-			"name": "Ninjutsu",
-			"type": "AttackPoint",
-			"icon": "Icon - Ninjitsu.png",
-			"description": "Teleport self and roommate to a target location.",
+			"name": "Shopping Spree",
+			"type": "AttackSkillshot",
+			"icon": "Icon - Shopping Spree.png",
+			"description": "Dash forward, dealing damage to all enemies with which the shopping cart comes into contact.",
 			
-			"range": 250,
-			"cd": 20
+			"range": 270,
+			"damage": 20,
+			"cd": 20,
+			
+			"width": 60,
+			"speed": 450,
+			
+			"stopAtEnemy": true
 		}
 	]
 }
-			<Damage Value="30" Increase="3"/>
-		</Ability>
-		<Ability>
-			<Name>Shopping Spree</Name>
-			<Type>Skillshot</Type>
-			<Icon>_icons/Icon - Shopping Spree.png</Icon>
-			<Description>Dash forward, dealing damage to all enemies with which the shopping cart comes into contact.</Description>
-
-			<Range Value="270" />
-			<MovementSpeed>450</MovementSpeed>
-			<MovementRadius>60</MovementRadius>
-			<StopAtEnemy>True</StopAtEnemy>
-			<Cooldown Value="100" />
-			<Damage Value="20" Increase="3"/>
-		</Ability>
