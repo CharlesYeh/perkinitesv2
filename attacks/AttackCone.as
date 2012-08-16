@@ -5,6 +5,6 @@
 	 */
 	public class AttackCone extends Attack {
 		/** the width of the cone in radians */
-		protected var rad:Number;
+		public var rad:Number;
 	}
 }

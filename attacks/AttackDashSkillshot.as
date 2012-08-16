@@ -5,6 +5,6 @@
 	 */
 	public class AttackDashSkillshot extends Attack {
 		/** whether to stop movement at the first enemy hit */
-		protected var stopAtEnemy:Boolean;
+		public var stopAtEnemy:Boolean;
 	}
 }

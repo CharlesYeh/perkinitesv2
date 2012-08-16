@@ -5,13 +5,13 @@
 	 */
 	public class AttackSkillshot extends Attack {
 		/** the width of the projectile */
-		protected var width:int;
+		public var width:int;
 		
 		/** # of enemies this attack will penetrate */
 		/** 0 means the projectile is discarded after a single hit */
-		protected var penetrates:int;
+		public var penetrates:int;
 		
 		/** travel speed of projectile */
-		protected var speed:int;
+		public var speed:int;
 	}
 }
