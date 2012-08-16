@@ -23,7 +23,8 @@
 			"dmgRatio": 50,
 			
 			"range": 200,
-			"cd": 10
+			"damage": 20,
+			"cd": 10,
 			
 			"width": 50,
 			"speed": 430,
@@ -37,6 +38,7 @@
 			"description": "Teleport self and roommate to a target location.",
 			
 			"range": 250,
+			"damage": 20,
 			"cd": 20
 		}
 	]
