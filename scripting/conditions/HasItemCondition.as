@@ -1,5 +1,5 @@
 ﻿package scripting.conditions {
-	public class HasItemCondition {
+	public class HasItemCondition extends Condition {
 		
 		/*
 		 * Returns true if condition is passed
