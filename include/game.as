@@ -18,10 +18,11 @@ var partner= new Perkinite(chosenTeam + 1);
 player.setPartner(partner);
 partner.setPartner(player);
 
+AIUnit.setTargets(new Array(player, partner));
+
 var gamePause = false;
 var mouseCasting = false;
 
-AIUnit.setTargets(new Array(player, partner));
 hud.updateIcons(chosenTeam, chosenTeam + 1);
 
 addEventListener(Event.ENTER_FRAME, gameRunnerHandler);
@@ -49,11 +50,6 @@ function init(map:int, startPoint:Point) {
 	MapManager.loadMap(map, player, partner);
 	MapManager.addToMapClip(player);
 	MapManager.addToMapClip(partner);
-	
-	// create enemies?
-	//MapManager.createEnemy(0, 1500, 400);
-	//MapManager.createEnemy(5, 1500, 400);
-	//MapManager.createEnemy(2, 1500, 400);
 	
 	MapManager.setHeroPosition(player, partner, startPoint);
 	//fixing to make sure they don't infinite run into teleport point
@@ -132,4 +128,6 @@ function gameClickHandler(e) {
 	else {
 		mouseCasting = false;
 	}
+	
+	Controls.handleKeyboard(new Array(player, partner));
 }
