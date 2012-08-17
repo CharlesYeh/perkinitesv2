@@ -76,6 +76,8 @@
       
       public static Object selectedTileObject = null;
       
+      public static Object copiedObject = null;
+      
       public static JLabel superlabel = new JLabel("I tell you stuff!");
       
       //Properties stuff
@@ -160,6 +162,7 @@
          addListComps(listPanel);
       	
          //setupUndoHotkeys();
+         setupCopyHotkeys();
          setupDeleteHotkeys();
          
          frame.setFocusable(true);
@@ -410,6 +413,25 @@
                   tileMap[y][x] = tile;
                   tile.addMouseListener(new TileNPCListener(x, y, tile, mapMatrix[y][x], enemy));	
                }
+               
+               ArrayList<NPC> npcs = map.getNPCs();
+               for(int i = 0; i < npcs.size(); i++){
+                  NPC npc = npcs.get(i);
+                  int y = npc.getPosition().y;
+                  int x = npc.getPosition().x;
+                  JLabel tile = tileMap[y][x];
+                  mapPanel.remove(tile);
+                  Icon enemyIcon = createImageIcon("\\Objects\\npc.png");
+                  Icon tileIcon = createImageIcon("\\Tileset_"+tilesets[currentTilesetIndex]+"\\Tile"+mapMatrix[y][x]+".png");
+                
+                  tile = new JLabel(new CompoundIcon(CompoundIcon.Axis.Z_AXIS, 0, CompoundIcon.CENTER, CompoundIcon.CENTER, tileIcon, enemyIcon));
+                  c.gridx = x;
+                  c.gridy = y;
+                  mapPanel.add(tile, c);
+                  tileMap[y][x] = tile;
+                  tile.addMouseListener(new TileNPCListener(x, y, tile, mapMatrix[y][x], npc));	
+               }
+            
             
             }
             mapPanel.getRootPane().revalidate();
@@ -433,6 +455,132 @@
          return new ImageIcon(filename+path);
       
       
+      }
+      public static void setupCopyHotkeys(){
+         String CUT 	= "Cut action key";
+         String COPY = "Copy action key";
+         String PASTE = "Paste action key";
+         
+         Action cutAction = 
+            new AbstractAction() {
+               public void actionPerformed(ActionEvent e) {
+                  cutObject();
+               }
+            };
+      
+         Action copyAction = 
+            new AbstractAction() {
+               public void actionPerformed(ActionEvent e) {
+                  copyObject();
+               }
+            };
+      
+         Action pasteAction = 
+            new AbstractAction() {
+               public void actionPerformed(ActionEvent e) {
+                  pasteObject();
+               }
+            };
+      
+         frame.getRootPane().getActionMap().put(CUT, cutAction);
+         frame.getRootPane().getActionMap().put(COPY, copyAction);
+         frame.getRootPane().getActionMap().put(PASTE, pasteAction);
+      
+         InputMap[] inputMaps = new InputMap[] {
+               frame.getRootPane().getInputMap(JComponent.WHEN_FOCUSED),
+               frame.getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT),
+               frame.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW),
+               };
+         for(InputMap i : inputMaps) {
+            i.put(KeyStroke.getKeyStroke(KeyEvent.VK_X, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()), CUT);
+            i.put(KeyStroke.getKeyStroke(KeyEvent.VK_C, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()), COPY);
+            i.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()), PASTE);
+         }
+      
+      }
+      public static void cutObject(){
+         if(rs.x != -1 && rs.y != -1 && !mapMode){
+            Map map = mapArray.get(currentMapIndex);
+            int index = -1;
+            if(tileMap[rs.y][rs.x].getIcon() instanceof CompoundIcon){
+               TileNPCListener ml = (TileNPCListener)tileMap[rs.y][rs.x].getMouseListeners()[0];
+               Object object = ml.getObject();
+               copiedObject = object;
+               if(object instanceof Teleport){
+                  ArrayList<Teleport> teleports = map.getTeleports();
+                  index = teleports.indexOf((Teleport)object);
+                  teleports.remove(index);
+                  map.setTeleports(teleports);
+                  mapArray.set(currentMapIndex, map);
+                  repaintMap(currentMapIndex);
+               } 
+               else if(object instanceof Enemy){
+                  ArrayList<Enemy> es = map.getEnemies();
+                  index = es.indexOf((Enemy)object);
+                  es.remove(index);
+                  map.setEnemies(es);
+                  mapArray.set(currentMapIndex, map);
+                  repaintMap(currentMapIndex);
+               }
+               else if(object instanceof NPC){
+               
+               
+               }
+            }
+         }
+      
+      }
+      public static void copyObject(){
+         if(rs.x != -1 && rs.y != -1 && !mapMode){
+            Map map = mapArray.get(currentMapIndex);
+            int index = -1;
+            if(tileMap[rs.y][rs.x].getIcon() instanceof CompoundIcon){
+               TileNPCListener ml = (TileNPCListener)tileMap[rs.y][rs.x].getMouseListeners()[0];
+               Object object = ml.getObject();
+               copiedObject = object;
+            }
+         }
+      
+      }
+      public static void pasteObject(){
+         if(rs.x != -1 && rs.y != -1 && !mapMode){
+            Map map = mapArray.get(currentMapIndex);
+            int index = -1;
+            if(!(tileMap[rs.y][rs.x].getIcon() instanceof CompoundIcon)){
+               if(copiedObject instanceof Teleport){
+                  ArrayList<Teleport> teleports = map.getTeleports();
+                  try{
+                     Teleport teleport = (Teleport)((Teleport)copiedObject).clone();
+                     teleports.add(teleport);
+                     teleport.setEntry(rs);
+                     map.setTeleports(teleports);
+                     mapArray.set(currentMapIndex, map);
+                     repaintMap(currentMapIndex);
+                  }
+                     catch (CloneNotSupportedException e){
+                        e.printStackTrace();
+                     }
+               } 
+               else if(copiedObject instanceof Enemy){
+                  ArrayList<Enemy> es = map.getEnemies();
+                  try{
+                     Enemy enemy = (Enemy)((Enemy)copiedObject).clone();
+                     enemy.setPosition(rs);
+                     es.add(enemy);
+                     map.setEnemies(es);
+                     mapArray.set(currentMapIndex, map);
+                     repaintMap(currentMapIndex);
+                  }
+                     catch (CloneNotSupportedException e){
+                        e.printStackTrace();
+                     }
+               }
+               else if(copiedObject instanceof NPC){
+               
+               
+               }
+            }
+         }
       }
       public static void setupDeleteHotkeys(){
          String DEL = "Delete action key";
@@ -875,7 +1023,22 @@
          public void mouseReleased(MouseEvent e){
             //System.out.println(e);
             if(rs.y == re.y && rs.x == re.x){
-               superlabel.setText("(" + _x + ", " + _y + ")");
+               if(_object == null){
+                  superlabel.setText("(" + _x + ", " + _y + ")");
+               }
+               else if(_object instanceof Teleport){
+                  superlabel.setText("(" + _x + ", " + _y + "): Teleport to " 
+                     + ((Teleport)(_object)).getMap() + " (" 
+                     + ((Teleport)(_object)).getExit().x + ", "
+                     + ((Teleport)(_object)).getExit().y +")" );
+               }
+               else if(_object instanceof Enemy){
+                  superlabel.setText("(" + _x + ", " + _y + "): Enemy Type: " 
+                     + ((Enemy)(_object)).getID());
+               }
+               else if(_object instanceof NPC){
+               
+               }
             }
             if(selectedTileObject != null && !(tileMap[re.y][re.x].getIcon() instanceof CompoundIcon)){
                Map map = mapArray.get(currentMapIndex);
@@ -912,7 +1075,22 @@
                repaintMap(currentMapIndex);
             }
             else{
-               superlabel.setText("(" + _x + ", " + _y + ")");
+               if(_object == null){
+                  superlabel.setText("(" + _x + ", " + _y + ")");
+               }
+               else if(_object instanceof Teleport){
+                  superlabel.setText("(" + _x + ", " + _y + "): Teleport to " 
+                     + ((Teleport)(_object)).getMap() + " (" 
+                     + ((Teleport)(_object)).getExit().x + ", "
+                     + ((Teleport)(_object)).getExit().y +")" );
+               }
+               else if(_object instanceof Enemy){
+                  superlabel.setText("(" + _x + ", " + _y + "): Enemy Type: " 
+                     + ((Enemy)(_object)).getID());
+               }
+               else if(_object instanceof NPC){
+               
+               }
             }
             mouseDown = false;
          }
