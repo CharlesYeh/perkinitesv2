@@ -130,6 +130,60 @@
                   if(npcs.size() != 0){
                      writer.name("npcs");
                      writer.beginArray();
+                     for(int j = 0; j < npcs.size(); j++){
+                        NPC npc = npcs.get(j);
+                        writer.beginObject();
+                     
+                        if(npc.getID().length() != 0){
+                           writer.name("id").value(npc.getID());
+                        }
+                        writer.name("sprite").value(npc.getSprite());
+                        writer.name("direction").value(npc.getDirection());
+                        writer.name("position");
+                        writer.beginObject();
+                        writer.setIndent("");
+                        writer.name("x").value(npc.getPosition().x);
+                        writer.name("y").value(npc.getPosition().y);
+                        writer.endObject();  
+                        writer.setIndent("\t");
+                        
+                        ArrayList<NPCAction> actions = npc.getActions();
+                        if(actions.size() != 0){
+                           writer.name("actions");
+                           writer.beginArray();
+                           for(int k = 0; k < actions.size(); k++){
+                              NPCAction action = actions.get(k);
+                              writer.beginObject();
+                              
+                              writer.name("type").value(action.getType());
+                              if(action.getName() != null){
+                                 writer.name("name").value(action.getName());
+                              }
+                              if(action.getFaceIcon() != null){
+                                 writer.name("faceIcon").value(action.getFaceIcon());
+                              }
+                              if(action.getText() != null){
+                                 writer.name("text").value(action.getText());
+                              }
+                              if(action.getDelta() != null){
+                                 writer.name("delta");
+                                 writer.beginObject();
+                                 writer.setIndent("");
+                                 writer.name("x").value(action.getDelta().x);
+                                 writer.name("y").value(action.getDelta().y);
+                                 writer.endObject();  
+                                 writer.setIndent("\t");
+                              
+                              }
+                           	
+                              writer.endObject();
+                           }
+                           writer.endArray();
+                        
+                        }
+                        
+                        writer.endObject();
+                     }
                   
                      writer.endArray();
                   }

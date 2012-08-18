@@ -2,7 +2,7 @@
    import java.awt.*;
    
    
-   public class Teleport{
+   public class Teleport implements Cloneable{
       private Point entry;
       private String map;
       private Point exit;
@@ -28,5 +28,13 @@
       }
       public void setExit(Point ex){
          exit = ex;
+      }
+      @Override public Object clone() throws CloneNotSupportedException {
+      //get initial bit-by-bit copy, which handles all immutable fields
+         Teleport result = (Teleport)super.clone();
+      
+      
+      
+         return result;
       }
    }
