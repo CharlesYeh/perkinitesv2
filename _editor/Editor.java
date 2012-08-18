@@ -523,8 +523,12 @@
                   repaintMap(currentMapIndex);
                }
                else if(object instanceof NPC){
-               
-               
+                  ArrayList<NPC> npcs = map.getNPCs();
+                  index = npcs.indexOf((NPC)object);
+                  npcs.remove(index);
+                  map.setNPCs(npcs);
+                  mapArray.set(currentMapIndex, map);
+                  repaintMap(currentMapIndex);
                }
             }
          }
@@ -576,7 +580,18 @@
                      }
                }
                else if(copiedObject instanceof NPC){
-               
+                  ArrayList<NPC> npcs = map.getNPCs();
+                  try{
+                     NPC npc = (NPC)((Enemy)copiedObject).clone();
+                     npc.setPosition(rs);
+                     npcs.add(npc);
+                     map.setNPCs(npcs);
+                     mapArray.set(currentMapIndex, map);
+                     repaintMap(currentMapIndex);
+                  }
+                     catch (CloneNotSupportedException e){
+                        e.printStackTrace();
+                     }
                
                }
             }
@@ -626,8 +641,12 @@
                   repaintMap(currentMapIndex);
                }
                else if(object instanceof NPC){
-               
-               
+                  ArrayList<NPC> npcs = map.getNPCs();
+                  index = npcs.indexOf((NPC)object);
+                  npcs.remove(index);
+                  map.setNPCs(npcs);
+                  mapArray.set(currentMapIndex, map);
+                  repaintMap(currentMapIndex);
                }
             }
          }
@@ -990,7 +1009,7 @@
                   enemyPopup(Properties.CHANGE);
                }
                else if(_object instanceof NPC){
-               
+                  npcPopup(Properties.CHANGE);
                }
             }
             mouseDown = true;
@@ -1016,7 +1035,8 @@
                   + ((Enemy)(_object)).getID());
             }
             else if(_object instanceof NPC){
-               
+               superlabel.setText("(" + _x + ", " + _y + "): NPC: " 
+                  + ((NPC)(_object)).getID()); 
             }
             selectedTileObject = _object;
          }
@@ -1037,7 +1057,8 @@
                      + ((Enemy)(_object)).getID());
                }
                else if(_object instanceof NPC){
-               
+                  superlabel.setText("(" + _x + ", " + _y + "): NPC: " 
+                     + ((NPC)(_object)).getID());               
                }
             }
             if(selectedTileObject != null && !(tileMap[re.y][re.x].getIcon() instanceof CompoundIcon)){
@@ -1070,6 +1091,19 @@
                   map.setEnemies(es);
                
                }
+               else if(selectedTileObject instanceof NPC){
+                  ArrayList<NPC> npcs = map.getNPCs();
+                  for(int i = 0; i < npcs.size(); i++){
+                     if(selectedTileObject == npcs.get(i)){
+                        index = i;
+                        break;
+                     }
+                  }
+                  
+                  ((NPC)selectedTileObject).setPosition(new Point(re.x, re.y));
+                  npcs.set(index, (NPC)selectedTileObject);
+                  map.setNPCs(npcs);       
+               }
                tileMap[rs.y][rs.x].setBorder(null);
                tileMap[re.y][re.x].setBorder(whiteline);
                repaintMap(currentMapIndex);
@@ -1089,7 +1123,8 @@
                      + ((Enemy)(_object)).getID());
                }
                else if(_object instanceof NPC){
-               
+                  superlabel.setText("(" + _x + ", " + _y + "): NPC: " 
+                     + ((NPC)(_object)).getID());   
                }
             }
             mouseDown = false;
@@ -1135,6 +1170,7 @@
                   enemyPopup(Properties.CREATE);
                   break;
                case "NPC": 
+                  npcPopup(Properties.CREATE);
                   break;
             }
             if ((s != null) && (s.length() > 0)) {
@@ -1315,6 +1351,36 @@
                
                repaintMap(currentMapIndex);
             }
+         }
+         
+         public void npcPopup(Properties p){
+            int x = _x;
+            int y = _y;
+            Map map = mapArray.get(currentMapIndex);
+            
+            JComboBox enemyList = new JComboBox(enemies);
+            if(p == Properties.CHANGE){
+               enemyList.setSelectedIndex( Arrays.asList(enemies).indexOf( ((Enemy)_object).getID()));
+            }
+            else if(p == Properties.CREATE){
+               enemyList.setSelectedIndex(0);
+            }
+            
+            JPanel myPanel = new JPanel();  
+            
+            
+            // DefaultListModel model = new DefaultListModel();
+            // final JList list = new JList(model);
+         // 
+            // for(int i = 0; i < mapNameArray.size(); i++){
+               // model.add(i, mapNameArray.get(i));
+            // }
+         
+         
+                              	         	
+            int result = JOptionPane.showConfirmDialog(null, myPanel, 
+               "Enemy Properties", JOptionPane.OK_CANCEL_OPTION);      
+         
          }
       }     
    

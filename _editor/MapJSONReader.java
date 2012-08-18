@@ -193,6 +193,7 @@
                            reader.endArray();
                         }
                         else if(name.equals("npcs")){
+                           String id = "";
                            String sprite = "";
                            String direction = "";
                            Point position = new Point(0,0);
@@ -208,6 +209,8 @@
                               while(reader.hasNext()){
                                  name = reader.nextName();
                                  switch(name){
+                                    case "id":
+                                       id = reader.nextString();
                                     case "sprite":
                                        sprite = reader.nextString();
                                        break;
@@ -235,6 +238,24 @@
                                                 case "type":
                                                    a.setType(reader.nextString());
                                                    break;
+                                                case "name":
+                                                   a.setName(reader.nextString());
+                                                   break;
+                                                case "faceIcon":
+                                                   a.setFaceIcon(reader.nextString());
+                                                   break;
+                                                case "text":
+                                                   a.setText(reader.nextString());
+                                                   break;
+                                                case "delta":
+                                                   reader.beginObject();
+                                                   reader.nextName();
+                                                   x = reader.nextInt();
+                                                   reader.nextName();
+                                                   y = reader.nextInt();
+                                                   a.setDelta(new Point(x, y));
+                                                   reader.endObject();
+                                                   break;
                                                 default:
                                                    reader.skipValue();
                                                    break;
@@ -250,7 +271,7 @@
                                        break;
                                  }
                               }
-                              map.addNPC(new NPC(sprite, direction, position, null));
+                              map.addNPC(new NPC(id, sprite, direction, position, actions));
                               reader.endObject();
                              
                            }
