@@ -1,0 +1,16 @@
+{
+	tilesets: [
+		{
+			id: "perkins",
+			types: ["s", "s", "s", "w", "w", "w", "w"]
+		},
+		{
+			id: "outdoors",
+			types: ["s", "s", "s", "w", "w", "w", "w"]
+		},
+		{
+			id: "gradcenter",
+			types: ["s", "s", "s", "w", "w", "w", "w"]
+		}
+	]
+}

@@ -1,0 +1,45 @@
+{
+	"name": "Charles Y.",
+	"sprite": "CY",
+	"health": 75,
+	"defense": 0,
+	"speed": 300,
+	
+	"levelBonuses": {
+		"health": 8,
+		"attack": 1,
+		"speed": 5
+	},
+	
+	"weapon": "Shinai",
+	"abilities": [
+		{
+			"name": "Kendo Strike",
+			"type": "AttackDashSkillshot",
+			"icon": "Icon - Kendo Strike.png",
+			"description": "Dash forward, dealing damage to the first enemy contact."
+			
+			"dmgBase": 50,
+			"dmgRatio": 50,
+			
+			"range": 200,
+			"damage": 20,
+			"cd": 10,
+			
+			"width": 50,
+			"speed": 430,
+			
+			"stopAtEnemy": true
+		},
+		{
+			"name": "Ninjutsu",
+			"type": "AttackPoint",
+			"icon": "Icon - Ninjitsu.png",
+			"description": "Teleport self and roommate to a target location.",
+			
+			"range": 250,
+			"damage": 20,
+			"cd": 20
+		}
+	]
+}
