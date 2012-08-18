@@ -1,9 +1,11 @@
 ﻿package attacks {
+	import db.dbData.AttackData;
+	
 	/**
 	 * A skillshot attack which is cast in a line
 	 * Range is used as the end destination of projectiles
 	 */
-	public class AttackSkillshot extends Attack {
+	public class AttackSkillshot extends AttackData implements Attack {
 		/** the width of the projectile */
 		public var width:int;
 		
@@ -13,5 +15,18 @@
 		
 		/** travel speed of projectile */
 		public var speed:int;
+		
+		public static function parseData(obj:Object):DatabaseData {
+			var atk:DatabaseData = new AttackSkillshot();
+			
+			return atk;
+		}
+		
+		override public function populateData(dbData:DatabaseData, obj:Object):void {
+			super.populateData(dbData, obj);
+			
+			var atk:AttackCone = (dbData as AttackCone);
+			atk.radius = obj.radius;
+		}
 	}
 }

@@ -1,5 +1,3 @@
-char->dir->abilities
-char->projectiles
 
 
 Target: click on one enemy
@@ -11,94 +9,12 @@ Cone: cone in one direction
 ---------Style---------
 
 public function loadObject(url:String, handleFunction:Function):void {
-	for(var i = 0; i < arr.length; i++) {
-		if(1 == 0) {
+	for (var i = 0; i < arr.length; i++) {
+		if (1 == 0) {
 			
 		}
 	}
 }
-
-
-
---------Classes--------
-
-abilities
-	Ability
-	AbilityConditionChecker
-	AbilityDatabase
-	AbilityDataEvent
-	Attack
-	AttackConditionChecker
-	Buff
-	Item
-actors
-	ActorDatabase
-	Controls
-	Unit
-collects
-	Gem
-	HappyOrb
-	PrizeDrop
-com
-	EnemySetup
-enemies
-	Enemy
-	EnemyDatabase
-game
-	BGMDatabase
-	CheatCodeDatabase
-	Game
-	GameClient
-	GameConditionChecker
-	GameDataEvent
-	GameUnit
-	GameVariables
-	MovementManager
-maps
-	Map
-	MapDatabase
-	MapDataEvent
-	MapManager
-	MapObject
-	MapObjectConditionChecker
-	MapObjectParser
-	Tileset
-tileMapper
-	InteractiveTile
-	ScreenRect
-	TileMap
-	Unit
-ui
-	CheatCodeDisplay
-	Cursor
-	DecisionDisplay
-	GetDisplay
-	PlayerDisplay
-	RangeInfo
-	Target
-	hud
-		HealthBar
-		HUD_Enemy
-		HUD_Unit
-		HUDManager
-	screens
-		BaseScreen
-		ConfigScreen
-		FileScreen
-		GameOverScreen
-		Menu
-		PlayerSelect
-		ShopScreen
-		StageSelect
-		TitleScreen
-util
-	ArgPathElement
-	AttackTExt
-	FPSDisplay
-	FunctionUtils
-	KeyDown
-	PopUp
-
 
 
 -----------How to use the editor-----------

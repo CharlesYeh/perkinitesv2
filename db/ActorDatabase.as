@@ -5,7 +5,14 @@
 	/**
 	 * Holds Actor information and maybe dispatches events to signal when loading is complete.
 	 */
-	public class ActorDatabase extends Database {
+	public class ActorDatabase implements DatabaseLoader  {
+		
+		/** path relative to game of enemy jsons */
+		public static const PATH:String = "assets/data/characters/";
+		
+		/** filename of file containing character json names */
+		public static const BASE:String = "characters.json";
+		
 		static var names:Array;
 		static var sprites:Array;
 		static var hp:Array;
@@ -32,8 +39,8 @@
 		public static function getCharSprite(id:int) {
 			return "data/sprites/" + sprites[id] + ".swf";
 		}
-		public static function loadXML(url:String) {
-			Database.loadXML(url, completeLoad);
+		public static function loadData():void {
+			Database.loadData(url, completeLoad);
 		}
 		static function completeLoad(e:Event) {
 			var dat = new XML(e.target.data);

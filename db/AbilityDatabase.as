@@ -8,11 +8,10 @@
 		
 		public static var abilities:Object = new Object();
 		
-		public static const ATKTYPE_TARGET:String	= "Target";	// single target click
-		public static const ATKTYPE_POINT:String	= "Point";	// show aoe point
-		public static const ATKTYPE_SSHOT:String	= "Skillshot";	// show arrow
-		public static const ATKTYPE_SCAST:String	= "Smartcast";	// smart cast
-		public static const ATKTYPE_CONE:String		= "Cone";	// show cone
+		public static const ATKTYPE_TARGET:String	= "target";	// single target click
+		public static const ATKTYPE_POINT:String	= "point";	// show aoe point
+		public static const ATKTYPE_SSHOT:String	= "skillshot";	// show arrow
+		public static const ATKTYPE_CONE:String		= "cone";	// show cone
 		
 		public static function addAbility(unitID:int, node) {
 			abilities[unitID] = new Array();

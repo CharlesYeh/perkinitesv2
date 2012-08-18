@@ -1,27 +1,39 @@
 ﻿package db {
 	import flash.events.Event;
 	
-	public class EnemyDatabase extends Database {
+	import com.adobe.serialization.json.*;
+	
+	public class EnemyDatabase implements DatabaseLoader {
+		
+		/** path relative to game of enemy jsons */
+		public static const PATH:String = "assets/data/enemies/";
+		
+		/** filename of file containing enemy json names */
+		public static const BASE:String = "enemies.json";
+		
 		static var ai:Array, names:Array, sprites:Array, hp:Array, speed:Array;
 		public static const ENEMY_ID_START = 10000;
 		
-		public static function loadXML(url:String) {
-			Database.loadXML(url, completeLoad);
+		/**
+		 * Load base data file to get references to detailed data
+		 */
+		public static function loadData():void {
+			Database.loadData(PATH + BASE, completeLoad);
 		}
-		public static function getAI(id:int):String {
-			return ai[id - ENEMY_ID_START]
-		}
-		public static function getHP(id:int) {
-			return hp[id - ENEMY_ID_START];
-		}
-		public static function getSpeed(id:int) {
-			return speed[id - ENEMY_ID_START];
-		}
+		
 		public static function getSprite(id:int) {
-			return "_sprites/" + sprites[id - ENEMY_ID_START] + ".swf";
+			return "assets/sprites/" + sprites[id - ENEMY_ID_START] + ".swf";
 		}
 		static function completeLoad(e:Event) {
-			var dat = new XML(e.target.data);
+			var dat = JSON.decode(e.target.data);
+			
+			for (var enemyName:String in dat.enemies) {
+				Database.loadData(PATH + dat.enemies[enemyName], completeLoadEnemy);
+			}
+		}
+		
+		static function completeLoadEnemy(e:Event) {
+			var dat = JSON.decode(e.target.data);
 			
 			ai		= new Array();
 			names	= new Array();

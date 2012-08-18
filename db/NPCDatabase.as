@@ -12,18 +12,17 @@
 
 	public class NPCDatabase extends Database
 	{
-
 		public static var npcMaps:Array;// NPCs on a map
 		public static var icons:Array;// faceicons for messages
 
 		/**
 		 * Loads the NPCs.
 		 */
-		public static function loadXML(url:String) {
-			Database.loadXML(url, completeLoad);
+		public static function loadData(url:String) {
+			Database.loadData(url, completeLoad);
 		}
 		static function completeLoad(e:Event) {
-			var dat:XML = new XML(e.target.data);
+			var dat:XML = new JSON(e.target.data);
 			
 			npcMaps = new Array();
 			icons = new Array();

@@ -9,7 +9,13 @@
 	import game.Map;
 	import game.NPCUnit;
 	
-	public class MapDatabase {
+	public class MapDatabase implements DatabaseLoader {
+		
+		/** path relative to game of enemy jsons */
+		public static const PATH:String = "assets/data/maps/";
+		
+		/** filename of file containing character json names */
+		public static const BASE:String = "maps.json";
 		
 		public static var maps:Array;		// map objects
 		
@@ -19,9 +25,9 @@
 		/**
 		 * Loads the tilesets, maps, and objects.
 		 */
-		public static function loadXML(urlsets:String, urlmaps:String) {
-			Database.loadXML(urlsets, completeTilesetLoad);
-			Database.loadXML(urlmaps, completeMapLoad);
+		public static function loadData():void {
+			Database.loadData(urlsets, completeTilesetLoad);
+			Database.loadData(urlmaps, completeMapLoad);
 		}
 		static function completeTilesetLoad(e:Event) {
 			var dat:XML = new XML(e.target.data);

@@ -7,10 +7,10 @@
 		public function Database() {
 			// constructor code
 		}
-		public static function loadXML(url:String, completeLoad:Function) {
-			var xmlLoader:URLLoader = new URLLoader();
-			xmlLoader.addEventListener(Event.COMPLETE, completeLoad);
-			xmlLoader.load(new URLRequest(url));
+		public static function loadData(url:String, completeLoad:Function) {
+			var loader:URLLoader = new URLLoader();
+			loader.addEventListener(Event.COMPLETE, completeLoad);
+			loader.load(new URLRequest(url));
 		}
 	}
 }
