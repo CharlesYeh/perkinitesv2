@@ -1,7 +1,5 @@
 ﻿package db.dbData {
-	import flash.utils.getDefinitionByName;
-	
-	import attacks.*;
+	import db.AbilityDatabase;
 	
 	public class AttackData implements DatabaseData{
 		public var name:String, type:String;
@@ -22,18 +20,21 @@
 		/** # of consecutive uses before the cooldown is applied */
 		public var uses:int;
 		
-		public static function parseData(obj:Object):void {
-			var AttackClass:Class = getDefinitionByName(obj.type);
-			var attack:AttackData = AttackClass.parseData(obj);
+		public static function createAttack(obj:Object):AttackData {
+			var AttackClass:Class = AbilityDatabase.getAbilityClass(obj.type);
+			
+			var atk:AttackData = new AttackClass();
+			atk.parseData(obj);
+			
+			return atk;
 		}
 		
-		public function populateData(dbData:DatabaseData, obj:Object):void {
-			var atk:AttackData = dbData as AttackData;
-			atk.name = obj.name;
-			atk.type = obj.type;
+		public function parseData(obj:Object):void {
+			name = obj.name;
+			type = obj.type;
 			
-			atk.icon = obj.icon;
-			atk.description = obj.description;
+			icon = obj.icon;
+			description = obj.description;
 		}
 	}
 }

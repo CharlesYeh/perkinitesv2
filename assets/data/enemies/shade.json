@@ -1,19 +1,19 @@
 {
-	name: "Perkinite Shade",
-	id: "shade",
-	sprite: "enemy_Perkinite-Shade",
-	ai: "BasicAIUnit",
+	"name": "Perkinite Shade",
+	"id": "shade",
+	"sprite": "enemy_Perkinite-Shade",
+	"ai": "BasicAIUnit",
 	
-	health: 100,
-	defense: 0,
-	speed: 50,
-	abilities: [
+	"health": 100,
+	"defense": 0,
+	"speed": 50,
+	"abilities": [
 		{
-			type: "AttackPoint"
-			name: "Hatred Slash",
-			range: 50,
-			cd: 20,
-			damage: 15
+			"type": "AttackPoint",
+			"name": "Hatred Slash",
+			"range": 50,
+			"cd": 20,
+			"damage": 15
 		}
 	]
 }

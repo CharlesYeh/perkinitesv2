@@ -1,6 +1,7 @@
 ﻿package events {
-	import fl.events.EventDispatcher;
-	public function GameEventDispatcher extends EventDispatcher {
+	import flash.events.EventDispatcher;
+	
+	public class GameEventDispatcher extends EventDispatcher {
 		
 		public static const BEAT_ENEMY:String	= "BEAT_ENEMY";
 		public static const CLEARED_AREA:String	= "CLEARED_AREA";

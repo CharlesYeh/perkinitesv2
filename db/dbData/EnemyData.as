@@ -1,4 +1,6 @@
 ﻿package db.dbData {
+	import db.AbilityDatabase;
+	
 	import attacks.Attack;
 	
 	public class EnemyData implements DatabaseData {
@@ -13,23 +15,21 @@
 		public var speed:int;
 		public var abilities:Array;
 		
-		public static function parseData(obj:Object):DatabaseData {
-			var enemy:EnemyData = new EnemyData();
-			enemy.name		= obj.name;
-			enemy.id		= obj.id;
-			enemy.sprite	= obj.sprite;
-			enemy.ai		= obj.ai;
+		public function parseData(obj:Object):void {
+			name	= obj.name;
+			id		= obj.id;
+			sprite	= obj.sprite;
+			ai		= obj.ai;
 			
-			enemy.health	= obj.health;
-			enemy.defense	= obj.defense;
-			enemy.speed		= obj.speed;
+			health	= obj.health;
+			defense	= obj.defense;
+			speed	= obj.speed;
 			
-			enemy.abilities = new Array();
-			for (var abilityName:String in obj.abilities) {
-				enemy.abilities.push(AttackData.parseData(obj.abilities[abilityName]));
+			abilities = new Array();
+			for (var index:String in obj.abilities) {
+				var abilityName:Object = obj.abilities[index];
+				abilities.push(AbilityDatabase.getAbility(abilityName));
 			}
-			
-			return EnemyData
 		}
 	}
 }

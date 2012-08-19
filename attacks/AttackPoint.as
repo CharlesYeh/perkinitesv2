@@ -8,18 +8,10 @@
 		/** radius of the attack area */
 		public var radius:int;
 		
-		public static function parseData(obj:Object):DatabaseData {
-			var atk:DatabaseData = new AttackDashSkillshot();
-			populateDate(atk, obj);
+		override public function parseData(obj:Object):void {
+			super.parseData(obj);
 			
-			return atk;
-		}
-		
-		override public function populateData(dbData:DatabaseData, obj:Object):void {
-			super.populateData(dbData, obj);
-			
-			var atk:AttackPoint = (dbData as AttackPoint);
-			atk.radius = obj.radius;
+			radius = obj.radius;
 		}
 	}
 }

@@ -1,8 +1,14 @@
 ﻿import flash.external.ExternalInterface;
 
-/*ActorDatabase.loadXML("_xml/Actors.xml");
-EnemyDatabase.loadXML("_xml/Enemies.xml");
-MapDatabase.loadXML("_xml/Tilesets.xml", "_xml/Maps.xml");*/
+import game.Game;
+
+import db.AbilityDatabase;
+
+trace(AbilityDatabase.abilityClasses);
+Game.init();
+
+Security.allowDomain("eactiv.com");
+Security.allowDomain("localhost");
 
 if (ExternalInterface.available) {
 	ExternalInterface.addCallback("rightClicked", rightClicked);

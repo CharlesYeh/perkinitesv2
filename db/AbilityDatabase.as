@@ -1,65 +1,41 @@
 ﻿package db {
-	import flash.events.Event;
-	import flash.xml.XMLNode;
-	import flash.display.Loader;
-	import flash.net.URLRequest;
+	import flash.utils.getDefinitionByName;
+	import flash.utils.Dictionary;
+	
+	import db.dbData.AttackData;
+	import attacks.*;
 	
 	public class AbilityDatabase {
+		/** package where all the attack definitions are */
+		public static const ABILITY_PACKAGE:String = "attacks.";
 		
-		public static var abilities:Object = new Object();
+		/** compile these classes for attack types */
+		public static const abilityClasses:Array = new Array(AttackSkillshot, AttackPoint, AttackDashSkillshot, AttackCone);
 		
-		public static const ATKTYPE_TARGET:String	= "target";	// single target click
-		public static const ATKTYPE_POINT:String	= "point";	// show aoe point
-		public static const ATKTYPE_SSHOT:String	= "skillshot";	// show arrow
-		public static const ATKTYPE_CONE:String		= "cone";	// show cone
+		/** dictionary of "name" -> "class definition" */
+		public static var abilityByName:Dictionary = new Dictionary();
 		
-		public static function addAbility(unitID:int, node) {
-			abilities[unitID] = new Array();
+		/** dictionary of "name" -> "instance" */
+		public static var abilities:Dictionary = new Dictionary();
+		
+		/**
+		 * Returns the AttackData instance for this ability
+		 */
+		public static function getAbility(abilityData:Object):AttackData {
+			var abilityName = abilityData.name;
 			
-			// add all abilities for this character (unitID)
-			for (var d in node) {
-				var data = new Object();
-				var nodeData = node[d];
-				
-				var iconURL:URLRequest = new URLRequest(nodeData.Icon);
-				var ic:Loader = new Loader();
-				ic.load(iconURL);
-				
-				data.icon = ic;
-				data.name = nodeData.Name;
-				data.type = nodeData.Type;
-				data.description = nodeData.Description;
-				
-				data.Range		= nodeData.Range.attribute("Value");
-				data.MovementRadius	= nodeData.MovementRadius;
-				data.StopAtEnemy= (nodeData.StopAtEnemy == "True") ? true : false;
-				
-				data.AOEDamage	= nodeData.AOE.attribute("Damage");
-				data.AOERange	= nodeData.AOE.attribute("Range");
-				data.SkillshotWidth	= nodeData.Skillshot.attribute("Width");
-				data.SkillshotSpeed	= nodeData.Skillshot.attribute("Speed");
-				
-				data.Cooldown	= nodeData.Cooldown.attribute("Value");
-				data.Damage		= nodeData.Damage.attribute("Value");
-				
-				abilities[unitID].push(data);
+			if (!abilities.hasOwnProperty(abilityData)) {
+				abilities[abilityName] = AttackData.createAttack(abilityData);
 			}
+			
+			return abilities[abilityName];
 		}
-		public static function getName(index:int, id:int):String {
-			return abilities[index][id].name;
-		}
-		public static function getTargetType(char:int, ability:int):String {
-			return abilities[char][ability].type;
-		}
-		public static function getDescription(index:int, id:int):String {
-			return abilities[index][id].description;
-		}
-		public static function getIcon(index:int, id:int):Loader {
-			return abilities[index][id].icon;
-		}
-		public static function getAttribute(index:int, id:int, attr:String) {
-			return abilities[index][id][attr];
+		
+		/**
+		 * Returns the definition for an attack type
+		 */
+		public static function getAbilityClass(abilityName:String) {
+			return getDefinitionByName(ABILITY_PACKAGE + abilityName);
 		}
 	}
-	
 }

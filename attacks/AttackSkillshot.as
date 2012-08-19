@@ -16,17 +16,12 @@
 		/** travel speed of projectile */
 		public var speed:int;
 		
-		public static function parseData(obj:Object):DatabaseData {
-			var atk:DatabaseData = new AttackSkillshot();
+		override public function parseData(obj:Object):void {
+			super.parseData(obj);
 			
-			return atk;
-		}
-		
-		override public function populateData(dbData:DatabaseData, obj:Object):void {
-			super.populateData(dbData, obj);
-			
-			var atk:AttackCone = (dbData as AttackCone);
-			atk.radius = obj.radius;
+			width	= obj.width;
+			penetrates	= obj.penetrates;
+			speed	= obj.speed;
 		}
 	}
 }

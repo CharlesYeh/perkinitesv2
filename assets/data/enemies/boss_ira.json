@@ -1,22 +1,22 @@
 {
-	name: "Boss Ira",
-	id: "boss_ira",
-	sprite: "enemy_Ira",
-	ai: "BasicAIUnit",
+	"name": "Boss Ira",
+	"id": "boss_ira",
+	"sprite": "enemy_Ira",
+	"ai": "BasicAIUnit",
 	
-	health: 500,
-	defense: 0,
-	speed: 125,
-	abilities: [
+	"health": 500,
+	"defense": 0,
+	"speed": 125,
+	"abilities": [
 		{
-			type: "AttackSkillshot"
-			name: "Hate Haze",
-			range: 96,
-			cd: 60,
-			damage: 20,
+			"type": "AttackSkillshot",
+			"name": "Hate Haze",
+			"range": 96,
+			"cd": 60,
+			"damage": 20,
 			
-			width: 48,
-			speed: 32
+			"width": 48,
+			"speed": 32
 		}
 	]
 }

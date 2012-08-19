@@ -2,6 +2,8 @@
 	import flash.events.Event;
 	
 	import com.adobe.serialization.json.*;
+	import flash.utils.Dictionary;
+	import db.dbData.EnemyData;
 	
 	public class EnemyDatabase implements DatabaseLoader {
 		
@@ -9,48 +11,45 @@
 		public static const PATH:String = "assets/data/enemies/";
 		
 		/** filename of file containing enemy json names */
-		public static const BASE:String = "enemies.json";
+		public static const BASE:String = "enemies";
 		
-		static var ai:Array, names:Array, sprites:Array, hp:Array, speed:Array;
-		public static const ENEMY_ID_START = 10000;
+		/** extension of all data files */
+		public static const EXTENSION:String = ".json";
+		
+		public var enemies:Dictionary;
+		
+		public function EnemyDatabase() {
+			enemies = new Dictionary();
+			
+			loadData();
+		}
 		
 		/**
 		 * Load base data file to get references to detailed data
 		 */
-		public static function loadData():void {
-			Database.loadData(PATH + BASE, completeLoad);
+		public function loadData():void {
+			Database.loadData(PATH + BASE + EXTENSION, completeLoad);
 		}
 		
-		public static function getSprite(id:int) {
-			return "assets/sprites/" + sprites[id - ENEMY_ID_START] + ".swf";
+		public function getSprite(id:String) {
+			var edat:EnemyData = enemies[id];
+			return "assets/sprites/" + edat.sprite + ".swf";
 		}
-		static function completeLoad(e:Event) {
+		function completeLoad(e:Event) {
 			var dat = JSON.decode(e.target.data);
 			
 			for (var enemyName:String in dat.enemies) {
-				Database.loadData(PATH + dat.enemies[enemyName], completeLoadEnemy);
+				Database.loadData(PATH + dat.enemies[enemyName] + EXTENSION, completeLoadEnemy);
 			}
 		}
 		
-		static function completeLoadEnemy(e:Event) {
+		function completeLoadEnemy(e:Event) {
 			var dat = JSON.decode(e.target.data);
 			
-			ai		= new Array();
-			names	= new Array();
-			sprites	= new Array();
-			hp		= new Array();
-			speed	= new Array();
+			var edat = new EnemyData();
+			edat.parseData(dat);
 			
-			var id = ENEMY_ID_START;
-			for each (var node:XML in dat.Enemy) {
-				ai.push(	node.AIClass);
-				names.push(	node.Name);
-				sprites.push(node.Sprite);
-				hp.push(	parseInt(node.Health.attribute("Value")));
-				speed.push(	parseInt(node.Speed.attribute("Value")));
-				
-				AbilityDatabase.addAbility(id++, node.Ability);
-			}
+			enemies[dat.name] = edat;
 		}
 	}
 	

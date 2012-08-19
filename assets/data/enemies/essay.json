@@ -1,22 +1,22 @@
 {
-	name: "Essay",
-	id: "essay",
-	sprite: "enemy_Essay",
-	ai: "BasicAIUnit",
+	"name": "Essay",
+	"id": "essay",
+	"sprite": "enemy_Essay",
+	"ai": "BasicAIUnit",
 	
-	health: 70,
-	defense: 0,
-	speed: 50,
-	abilities: [
+	"health": 70,
+	"defense": 0,
+	"speed": 50,
+	"abilities": [
 		{
-			type: "AttackSkillshot"
-			name: "Scribble",
-			range: 50,
-			cd: 20,
-			damage: 10,
+			"type": "AttackSkillshot",
+			"name": "Scribble",
+			"range": 50,
+			"cd": 20,
+			"damage": 10,
 			
-			width: 30,
-			speed: 50
+			"width": 30,
+			"speed": 50
 		}
 	]
 }
