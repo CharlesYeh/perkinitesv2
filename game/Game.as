@@ -12,7 +12,7 @@
 		public static var dbMap:MapDatabase;
 		public static var dbChar:CharacterDatabase;
 		
-		// TODO: add in world/map
+		public static var playerProgress:PlayerProgress;
 		
 		/** player variables are stored here */
 		public static var player:Player
@@ -27,6 +27,7 @@
 			dbMap	= new MapDatabase();
 			dbChar	= new CharacterDatabase();
 			
+			playerProgress = new PlayerProgress();
 		}
 	}
 }

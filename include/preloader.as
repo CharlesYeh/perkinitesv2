@@ -14,3 +14,5 @@ if (ExternalInterface.available) {
 function rightClicked(x:int, y:int) {
 	trace(x, y);
 }
+
+// TODO: preloader
