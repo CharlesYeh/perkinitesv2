@@ -45,9 +45,9 @@
 		 * Callback for loading data for one enemy
 		 */
 		function completeLoadEnemy(e:Event) {
-			var dat = JSON.decode(e.target.data);
+			var dat:Object = JSON.decode(e.target.data);
 			
-			var edat = new EnemyData();
+			var edat:EnemyData = new EnemyData();
 			edat.parseData(dat);
 			
 			enemies[dat.name] = edat;

@@ -23,23 +23,89 @@
 			"exit": {"map": "perkins_gf", "x": 38, "y": 22}
 		}
 	]
-	"npcs": [
+	"enemies": [
 		{
-			"sprite": "npc_Peace-Bear",
+			"id": "peacebear",
 			"direction": "down"
 			"position": {"x": 9, "y": 4}
-			"actions": [
-				{
-					"type": "ActionNarrator",
-					"text": "You find Peace Bear randomly in the middle of the lounge."
-				},
-				{
-					"type": "ActionTalk",
-					"name": "Masked Figure",
-					"faceIcon": "Ira",
-					"text": "Hyuk hyuk hyuk hyuk..."
-				}
-			]
+			"actions": {
+				"default": [
+					[
+						{
+							"type": "ConditionNearPoint",
+							"action": {
+								"type": "ActionChangeState",
+								"state": "activated"
+							}
+						},
+						{
+							"type": "ActionMove",
+							"deltaX": 3,
+						}
+					],
+					[
+						{
+							"type": "ConditionNearPoint",
+							"action": {
+								"type": "ActionChangeState",
+								"state": "activated"
+							}
+						},
+						{
+							"type": "ActionMove",
+							"deltaX": -3,
+						}
+					],
+					[
+						{
+							"type": "ActionChangeState",
+							"state": "default"
+						}
+					]
+				],
+				"activated": [
+					[
+						{
+							"type": "ActionNarrator",
+							"text": "You find Peace Bear randomly in the middle of the lounge."
+						},
+					],
+					[
+						{
+							"type": "ActionTalk",
+							"name": "Masked Figure",
+							"faceIcon": "boss_ira",
+							"text": "Hyuk hyuk hyuk hyuk..."
+						}
+					]
+				]
+			}
 		},
+	],
+	"npcs": [
+		{
+			"id": "CK",
+			"direction": "down"
+			"position": {"x": 4, "y": 4}
+			"actions": {
+				"default": [
+					[
+						{
+							"type": "ConditionKeyboard",
+							"keyType": "action",
+							"block": true
+						}
+					],
+					[
+						{
+							"type": "ActionTalk",
+							"faceIcon": "CK",
+							"text": "Hyuk hyuk hyuk hyuk..."
+						}
+					]
+				]
+			}
+			
+		}
 	]
 }

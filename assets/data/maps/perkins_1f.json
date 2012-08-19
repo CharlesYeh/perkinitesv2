@@ -23,13 +23,8 @@
 			"exit": {"map": "perkins_2f", "x": 9, "y": 16}
 		}
 	],
-	enemies: [
-		{
-			"id": "drunkguy",
-			"x": 7,
-			"y": 10
-		}
+	"enemies": [
 	],
-	npcs: [
+	"npcs": [
 	]
 }
