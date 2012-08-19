@@ -7,19 +7,19 @@
 	"code": "333333333333333333333666666666666666666336666666666666666663300000000000000000033000000000000000000330000000000000000003333333000000000000033666631666660026666336666616666666266663366666000000662000033000060000000000000330000000000000000003300003000000000030033333333300000033333333333333333333333333",
 	"teleports": [
 		{
-			"entry": {x: 8, y: 13},
+			"entry": {"x": 8, "y": 13},
 			"exit": {"map": "perkins_gf", "x": 33, "y": 33}
 		},
 		{
-			"entry": {x: 1, y: 5},
+			"entry": {"x": 1, "y": 5},
 			"exit": {"map": "perkins_gf", "x": 23, "y": 9}
 		},
 		{
-			"entry": {x: 8, y: 13},
-			"exit": {"map": "perkins_gf", x: 33, "y": 22}
+			"entry": {"x": 8, "y": 13},
+			"exit": {"map": "perkins_gf", "x": 33, "y": 22}
 		},
 		{
-			"entry": {x: 13, y: 13},
+			"entry": {"x": 13, "y": 13},
 			"exit": {"map": "perkins_gf", "x": 38, "y": 22}
 		}
 	]
@@ -29,56 +29,60 @@
 			"direction": "down"
 			"position": {"x": 9, "y": 4}
 			"actions": {
-				"default": [
-					[
-						{
-							"type": "ConditionNearPoint",
-							"action": {
-								"type": "ActionChangeState",
-								"state": "activated"
+				"default": {
+					"actions": [
+						[
+							{
+								"type": "ConditionNearPoint",
+								"action": {
+									"type": "ActionChangeState",
+									"state": "activated"
+								}
+							},
+							{
+								"type": "ActionMove",
+								"deltaX": 3,
 							}
-						},
-						{
-							"type": "ActionMove",
-							"deltaX": 3,
-						}
-					],
-					[
-						{
-							"type": "ConditionNearPoint",
-							"action": {
-								"type": "ActionChangeState",
-								"state": "activated"
+						],
+						[
+							{
+								"type": "ConditionNearPoint",
+								"action": {
+									"type": "ActionChangeState",
+									"state": "activated"
+								}
+							},
+							{
+								"type": "ActionMove",
+								"deltaX": -3,
 							}
-						},
-						{
-							"type": "ActionMove",
-							"deltaX": -3,
-						}
-					],
-					[
-						{
-							"type": "ActionChangeState",
-							"state": "default"
-						}
+						],
+						[
+							{
+								"type": "ActionChangeState",
+								"state": "default"
+							}
+						]
 					]
-				],
-				"activated": [
-					[
-						{
-							"type": "ActionNarrator",
-							"text": "You find Peace Bear randomly in the middle of the lounge."
-						},
-					],
-					[
-						{
-							"type": "ActionTalk",
-							"name": "Masked Figure",
-							"faceIcon": "boss_ira",
-							"text": "Hyuk hyuk hyuk hyuk..."
-						}
+				},
+				"activated": {
+					"name": "lv1_find_peacebear",
+					"actions": [
+							{
+								"type": "ActionNarrator",
+								"text": "You find Peace Bear randomly in the middle of the lounge."
+							},
+						],
+						[
+							{
+								"type": "ActionTalk",
+								"name": "Masked Figure",
+								"faceIcon": "boss_ira",
+								"text": "Hyuk hyuk hyuk hyuk..."
+							}
+						]
 					]
-				]
+				}
 			}
 		},
 	],
@@ -88,22 +92,24 @@
 			"direction": "down"
 			"position": {"x": 4, "y": 4}
 			"actions": {
-				"default": [
-					[
-						{
-							"type": "ConditionKeyboard",
-							"keyType": "action",
-							"block": true
-						}
-					],
-					[
-						{
-							"type": "ActionTalk",
-							"faceIcon": "CK",
-							"text": "Hyuk hyuk hyuk hyuk..."
-						}
+				"default": {
+					"actions": [
+						[
+							{
+								"type": "ConditionKeyboard",
+								"keyType": "action",
+								"block": true
+							}
+						],
+						[
+							{
+								"type": "ActionTalk",
+								"faceIcon": "CK",
+								"text": "Hyuk hyuk hyuk hyuk..."
+							}
+						]
 					]
-				]
+				}
 			}
 			
 		}

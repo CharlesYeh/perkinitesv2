@@ -11,7 +11,7 @@
 			"exit": {"map": "perkins_1f", "x": 62, "y": 16}
 		},
 		{
-			"entry": {x: 10, y: 16},
+		"entry": {"x": 10, "y": 16},
 			"exit": {"map": "perkins_1f", "x": 9, "y": 16}
 		}
 	]
