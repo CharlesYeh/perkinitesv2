@@ -1,10 +1,7 @@
 ﻿import flash.external.ExternalInterface;
-
 import game.Game;
-
 import db.AbilityDatabase;
 
-trace(AbilityDatabase.abilityClasses);
 Game.init();
 
 Security.allowDomain("eactiv.com");

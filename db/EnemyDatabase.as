@@ -1,8 +1,8 @@
 ﻿package db {
 	import flash.events.Event;
+	import flash.utils.Dictionary;
 	
 	import com.adobe.serialization.json.*;
-	import flash.utils.Dictionary;
 	import db.dbData.EnemyData;
 	
 	public class EnemyDatabase implements DatabaseLoader {
@@ -16,11 +16,10 @@
 		/** extension of all data files */
 		public static const EXTENSION:String = ".json";
 		
-		public var enemies:Dictionary;
+		/** dictionary of "enemy name" -> "EnemyData" */
+		public var enemies:Dictionary = new Dictionary();
 		
 		public function EnemyDatabase() {
-			enemies = new Dictionary();
-			
 			loadData();
 		}
 		
@@ -31,10 +30,9 @@
 			Database.loadData(PATH + BASE + EXTENSION, completeLoad);
 		}
 		
-		public function getSprite(id:String) {
-			var edat:EnemyData = enemies[id];
-			return "assets/sprites/" + edat.sprite + ".swf";
-		}
+		/**
+		 * Callback from loading base file with enemy names
+		 */
 		function completeLoad(e:Event) {
 			var dat = JSON.decode(e.target.data);
 			
@@ -43,6 +41,9 @@
 			}
 		}
 		
+		/**
+		 * Callback for loading data for one enemy
+		 */
 		function completeLoadEnemy(e:Event) {
 			var dat = JSON.decode(e.target.data);
 			
@@ -50,6 +51,11 @@
 			edat.parseData(dat);
 			
 			enemies[dat.name] = edat;
+		}
+		
+		public function getSprite(id:String):String {
+			var edat:EnemyData = enemies[id];
+			return "assets/sprites/" + edat.sprite + ".swf";
 		}
 	}
 	
