@@ -36,7 +36,7 @@
 		/**
 		 * Parse tileset data, then load maps
 		 */
-		function completeTilesetLoad(e:Event) {
+		function completeTilesetLoad(e:Event):void {
 			var tdat:Object = JSON.decode(e.target.data);
 			for (var i:String in tdat.tilesets) {
 				var tset:TilesetData = new TilesetData();
@@ -48,7 +48,7 @@
 			Database.loadData(PATH + BASE + EXTENSION, completeBaseLoad);
 		}
 		
-		function completeBaseLoad(e:Event) {
+		function completeBaseLoad(e:Event):void {
 			var dat = JSON.decode(e.target.data);
 			
 			for (var mapName:String in dat.maps) {
@@ -56,7 +56,7 @@
 			}
 		}
 		
-		function completeLoadMap(e:Event) {
+		function completeLoadMap(e:Event):void {
 			var dat:Object = JSON.decode(e.target.data);
 			
 			var mdat:MapData = new MapData();

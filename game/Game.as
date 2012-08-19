@@ -1,6 +1,7 @@
 ﻿package game {
 	import db.EnemyDatabase;
 	import db.MapDatabase;
+	import db.CharacterDatabase;
 	
 	import events.GameEventDispatcher;
 
@@ -9,6 +10,7 @@
 		
 		public static var dbEnemy:EnemyDatabase;
 		public static var dbMap:MapDatabase;
+		public static var dbChar:CharacterDatabase;
 		
 		// TODO: add in world/map
 		
@@ -23,7 +25,7 @@
 			
 			dbEnemy	= new EnemyDatabase();
 			dbMap	= new MapDatabase();
-			
+			dbChar	= new CharacterDatabase();
 			
 		}
 	}

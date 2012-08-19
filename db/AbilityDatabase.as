@@ -34,8 +34,8 @@
 		/**
 		 * Returns the definition for an attack type
 		 */
-		public static function getAbilityClass(abilityName:String) {
-			return getDefinitionByName(ABILITY_PACKAGE + abilityName);
+		public static function getAbilityClass(abilityName:String):Class {
+			return getDefinitionByName(ABILITY_PACKAGE + abilityName) as Class;
 		}
 	}
 }
