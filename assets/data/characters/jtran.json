@@ -24,7 +24,7 @@
 			"dmgRatio": 50,
 			
 			"range": 200,
-			"cd": 10,
+			"cd": 10
 		},
 		{
 			"name": "D4X",

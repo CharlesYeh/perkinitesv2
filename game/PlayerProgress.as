@@ -30,6 +30,12 @@
 			return completedSequences.indexOf(id) != -1;
 		}
 		
+		public function reset():void {
+			id = "";
+			completedSequences = new Array();
+			items = new Dictionary();
+		}
+		
 		public function load(soId:String):void {
 			var prog:PlayerProgress = sharedObj.data[soId];
 			

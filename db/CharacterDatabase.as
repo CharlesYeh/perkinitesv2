@@ -48,5 +48,18 @@
 			var cdat:CharacterData = new CharacterData();
 			cdat.parseData(obj);
 		}
+		
+		public function getUnlockedNames():Array {
+			var keys:Array = new Array();
+			for (var k:String in characters) {
+				keys.push(k);
+			}
+			
+			return keys;
+		}
+		
+		public function getCharacterData(id:String) {
+			return characters[id];
+		}
 	}
 }

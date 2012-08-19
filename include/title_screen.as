@@ -27,23 +27,24 @@ function newGame(e:Event):void {
 	sound.play();
 	
 	clearTitleScreen();
-	gotoAndStop("stage_select");
+	Game.playerProgress.reset();
+	gotoAndStop("char_select");
 }
 
 function continueGame(e:Event):void {
-	var sound = new se_chargeup();
+	var sound:Sound = new se_chargeup();
 	sound.play();
 	
 	clearTitleScreen();
-	gotoAndStop("stage_select");
+	gotoAndStop("char_select");
 }
 
 function config(e:Event):void {
-	var sound = new se_timeout();
+	var sound:Sound = new se_timeout();
 	sound.play();
 	
 	clearTitleScreen();
-	gotoAndStop("stage_select");
+	gotoAndStop("char_select");
 }
 
 function clearTitleScreen() {

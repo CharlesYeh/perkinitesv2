@@ -1,0 +1,24 @@
+{
+	"music": [
+		{
+			"name": "Exceed the Sky",
+			"src": "Exceed the Sky.mp3"
+		},
+		{
+			"name": "Junk Stereo Concept",
+			"src": "Junk Stereo Concept.mp3"
+		},
+		{
+			"name": "P.S.F. -Perkinite Strike Force-",
+			"src": "P.S.F. -Perkinite Strike Force-.mp3"
+		},
+		{
+			"name": "Perk Step",
+			"src": "Perk Step.mp3"
+		},
+		{
+			"name": "Perkinite Panic!!",
+			"src": "perkinite panic!!.mp3"
+		}
+	]
+}
