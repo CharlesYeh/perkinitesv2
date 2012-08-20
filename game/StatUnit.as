@@ -6,8 +6,9 @@
 	import flash.geom.Point;
 	
 	import tileMapper.TileMap;
+	
 	import db.AbilityDatabase;
-	import flashx.textLayout.operations.MoveChildrenOperation;
+	import db.dbData.UnitData;
 
 	public class StatUnit extends GameUnit {
 		
@@ -30,19 +31,13 @@
 		var loaded = false;
 		
 		//----------STATS VARS---------
-		public var ID:int;
-		public var healthMax:Number;
-		public var healthPoints:Number;
+		public var unitData:UnitData;
+		
+		public var healthPoints:int;
 		var healthbar:MovieClip;
 		//--------END STATS VARS-------
 		
 		//---------ABILITY VARS---------
-		var castInputWait:Boolean;
-		var castAbilityID:int;
-		var castAbilityType:String;
-		protected var castMousePoint:Point;
-		protected var castMouseTarget:StatUnit;
-		
 		public var cooldowns:Array;
 		//-------END ABILITY VARS-------
 		
@@ -52,40 +47,25 @@
 		var disabledMovement:Boolean= false;
 		var forwardMovement:Boolean = false;
 		var forwardVector:Point = null;
-		
-		var guide:MovieClip;
 		//--------END FRAME VARS--------
 		
-		public function StatUnit() {
-			// constructor code
+		public function StatUnit(udat:UnitData) {
 			super();
 			
-			animLabel = ANIM_STANDING;
-			ID = 0;
-			isPlayer = false;
+			unitData = udat;
 			
-			// THESE SHOULD BE OVERRIDEN IN SUBCLASSES
-			healthPoints = healthMax = 100;
+			animLabel = ANIM_STANDING;
+			
+			healthPoints = unitData.health;
 			
 			// draw health bar
 			healthbar = new MovieClip();
 			addChild(healthbar);
 			drawHealthbar();
 			
-			// attach aim guides
-			guide = new AimGuide();
-			addChild(guide);
-			guide.visible = false;
-			
-			castAbilityID = -1;
-			castInputWait = false;
-			castMouseTarget = null;
 			cooldowns = new Array(10);
 		}
-		public function setPartner(p:StatUnit):void {
-			// for partner teleport/friendly buffs
-			partner = p;
-		}
+		
 		protected function drawHealthbar() {
 			var WIDTH = 50;
 			var sx = -WIDTH/2;
@@ -98,13 +78,16 @@
 			healthbar.graphics.drawRect(sx, 30, WIDTH * healthPoints / healthMax, 5);
 			healthbar.graphics.endFill();
 		}
+		
 		public function getMaxCooldown(abid:int):Number {
 			return AbilityDatabase.getAttribute(ID, abid, "Cooldown");
 		}
-		function takeDamage(dmg:Number) {
+		
+		function takeDamage(dmg:int) {
 			healthPoints = Math.max(0, healthPoints - dmg);
 			drawHealthbar();
 		}
+		
 		protected function loadSwf() {
 			swf = new Loader();
 			swf.load(getSprite());

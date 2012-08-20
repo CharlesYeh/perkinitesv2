@@ -1,29 +1,48 @@
 ﻿package game {
+	import game.Game;
+	
 	import util.KeyDown;
 	
 	import events.GameEventDispatcher;
+	import events.RightClickEvent;
+	
+	import flash.events.Event;
 	
 	import flash.ui.Keyboard;
 	
 	import flash.external.ExternalInterface;
-	import events.RightClickEvent;
 	
 	public class Controls {
+		
+		public static var secondaryClick:Boolean = false;
 		
 		public static function setupRightClick():void {
 			if (ExternalInterface.available) {
 				ExternalInterface.addCallback("rightClicked", rightClicked);
 			}
+			
+			secondaryClick = ExternalInterface.available;
 		}
 		
 		public static function rightClicked(x:int, y:int) {
-			GameEventDispatcher.dispatchEvent(new RightClickEvent());
+			Game.eventDispatcher.dispatchEvent(new RightClickEvent());
+		}
+		
+		public static function startGameInputs() {
+			Game.eventDispatcher.addEventListener(GameEventDispatcher.RIGHT_CLICK, gameRightClick);
+		}
+		
+		public static function gameRightClick(e:Event) {
+			for (var i:String in Game.team) {
+				// TODO: attack with:
+				Game.team[i];
+			}
 		}
 		
 		/*
 		 * Move the leader, and have all other characters follow
 		 */
-		public static function handleKeyboard(arr:Array, lead:StatUnit) {
+		public static function handleGameInputs() {
 			if (KeyDown.keyIsDown(Keyboard.W) || KeyDown.keyIsDown(Keyboard.UP)) {
 				
 			}
@@ -37,17 +56,6 @@
 				
 			}
 			
-			for (var i:String in arr) {
-				var unit:StatUnit = arr[i];
-				
-				if (unit == lead) {
-					continue;
-				}
-				else {
-					// follow leader
-					
-				}
-			}
 		}
 		
 	}
