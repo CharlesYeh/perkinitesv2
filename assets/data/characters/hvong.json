@@ -1,0 +1,42 @@
+{
+	"name": "Huong V.",
+	"id": "HV",
+	"sprite": "HV",
+	"health": 75,
+	"defense": 0,
+	"speed": 300,
+	
+	"levelBonuses": {
+		"health": 8,
+		"attack": 1,
+		"speed": 5
+	},
+	
+	"weapon": "Frying Pan",
+	"abilities": [
+		{
+			"name": "Frying Pan Smash",
+			"type": "AttackPoint",
+			"icon": "Icon - Frying Pan Smash.png",
+			"description": "Smack that enemy with yo' fryin' pan.",
+			
+			"dmgBase": 50,
+			"dmgRatio": 50,
+			
+			"range": 50,
+			"cd": 10
+		},
+		{
+			"name": "Ramen Boost",
+			"type": "AttackPoint",
+			"icon": "Icon - Ramen Boost.png",
+			"description": "Eat dat delicious ramen.",
+			
+			"dmgBase": 50,
+			"dmgRatio": 50,
+			
+			"range": 250,
+			"cd": 20
+		}
+	]
+}

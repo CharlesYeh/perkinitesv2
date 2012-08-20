@@ -10,15 +10,11 @@ import flash.geom.Point;
 import db.*;
 import flash.display.MovieClip;
 
-KeyDown.init(stage);
-
 var player = new Perkinite(chosenTeam);
 var partner= new Perkinite(chosenTeam + 1);
 
 player.setPartner(partner);
 partner.setPartner(player);
-
-AIUnit.setTargets(new Array(player, partner));
 
 var gamePause = false;
 var mouseCasting = false;
@@ -27,19 +23,8 @@ hud.updateIcons(chosenTeam, chosenTeam + 1);
 
 addEventListener(Event.ENTER_FRAME, gameRunnerHandler);
 addEventListener(MouseEvent.MOUSE_DOWN, gameClickHandler);
-stage.addEventListener(Event.DEACTIVATE, loseFocus);
-pauseScreen.addEventListener(MouseEvent.CLICK, regainFocus);
 
-pauseScreen.y = 999;
 
-function loseFocus(e) {
-	gamePause = true;
-	pauseScreen.y = 0;
-}
-function regainFocus(e) {
-	gamePause = false;
-	pauseScreen.y = 999;
-}
 
 init(0, new Point(62, 10));
 

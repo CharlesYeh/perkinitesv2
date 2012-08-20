@@ -1,0 +1,44 @@
+{
+	"name": "Christina K.",
+	"id": "CK",
+	"sprite": "CK",
+	"health": 75,
+	"defense": 0,
+	"speed": 300,
+	
+	"levelBonuses": {
+		"health": 8,
+		"attack": 1,
+		"speed": 5
+	},
+	
+	"weapon": "Shoes and Shanking",
+	"abilities": [
+		{
+			"name": "Shoe Throwing",
+			"type": "AttackSkillshot",
+			"icon": "Icon - Shoe Throwing.png",
+			"description": "Fire a shoe at a single target. If close enough, shank the target as well.",
+			
+			"dmgBase": 50,
+			"dmgRatio": 50,
+			
+			"range": 200,
+			"cd": 10,
+			
+			"width": 50,
+			"speed": 430,
+			
+			"stopAtEnemy": true
+		},
+		{
+			"name": "Coffee Boost",
+			"type": "AttackPoint",
+			"icon": "Icon - Coffee Boost.png",
+			"description": "Drink coffee, gaining a small boost.",
+			
+			"range": 250,
+			"cd": 20
+		}
+	]
+}

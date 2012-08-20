@@ -1,0 +1,47 @@
+{
+	"name": "Sophie Q.",
+	"id": "HQ",
+	"sprite": "HQ",
+	"health": 75,
+	"defense": 0,
+	"speed": 300,
+	
+	"levelBonuses": {
+		"health": 8,
+		"attack": 1,
+		"speed": 5
+	},
+	
+	"weapon": "Chinese Magic",
+	"abilities": [
+		{
+			"name": "Jade Fang",
+			"type": "AttackSkillshot",
+			"icon": "Icon - Jade Fang.png",
+			"description": "Throw two daggers at a target.",
+			
+			"dmgBase": 50,
+			"dmgRatio": 50,
+			
+			"range": 200,
+			"cd": 10,
+			
+			"width": 50,
+			"speed": 430,
+			
+			"stopAtEnemy": true
+		},
+		{
+			"name": "Astral Arts",
+			"type": "AttackPoint",
+			"icon": "Icon - Astral Arts.png",
+			"description": "Gain temporary invincibility and speed for a longer time period.",
+			
+			"dmgBase": 50,
+			"dmgRatio": 50,
+			
+			"range": 250,
+			"cd": 20
+		}
+	]
+}
