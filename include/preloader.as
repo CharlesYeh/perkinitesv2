@@ -2,17 +2,10 @@
 import game.Game;
 import db.AbilityDatabase;
 
+KeyDown.init(stage);
 Game.init();
 
 Security.allowDomain("eactiv.com");
 Security.allowDomain("localhost");
-
-if (ExternalInterface.available) {
-	ExternalInterface.addCallback("rightClicked", rightClicked);
-}
-
-function rightClicked(x:int, y:int) {
-	trace(x, y);
-}
 
 // TODO: preloader

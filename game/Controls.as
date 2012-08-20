@@ -1,9 +1,24 @@
 ﻿package game {
 	import util.KeyDown;
 	
+	import events.GameEventDispatcher;
+	
 	import flash.ui.Keyboard;
 	
+	import flash.external.ExternalInterface;
+	import events.RightClickEvent;
+	
 	public class Controls {
+		
+		public static function setupRightClick():void {
+			if (ExternalInterface.available) {
+				ExternalInterface.addCallback("rightClicked", rightClicked);
+			}
+		}
+		
+		public static function rightClicked(x:int, y:int) {
+			GameEventDispatcher.dispatchEvent(new RightClickEvent());
+		}
 		
 		/*
 		 * Move the leader, and have all other characters follow
