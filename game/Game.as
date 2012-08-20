@@ -3,6 +3,8 @@
 	import db.MapDatabase;
 	import db.CharacterDatabase;
 	
+	import game.progress.PlayerProgress;
+	
 	import events.GameEventDispatcher;
 
 	public class Game {

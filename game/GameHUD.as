@@ -1,16 +1,13 @@
 ﻿package game {
 	import flash.display.MovieClip;
-	import db.AbilityDatabase;
-	import game.StatUnit;
 	
 	public class GameHUD extends MovieClip {
 		
 		var pid1:int, pid2:int;
 		var icons:Array;
 		var icon_conts:Array;
-		
+		/*
 		public function GameHUD() {
-			// constructor code
 			icons = new Array(4);
 			icon_conts = new Array(4);
 			for (var a = 0; a < 4; a++) {
@@ -62,6 +59,6 @@
 			}
 			
 			c.graphics.endFill();
-		}
+		}*/
 	}
 }

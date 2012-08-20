@@ -1,4 +1,4 @@
-﻿package game {
+﻿package game.progress {
 	import flash.net.SharedObject;
 	import flash.utils.Dictionary;
 	
