@@ -1,2 +1,5 @@
 *.TMP
 *.swf
+.dropbox
+desktop.ini
+
