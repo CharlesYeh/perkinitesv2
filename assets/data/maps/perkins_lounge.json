@@ -26,8 +26,8 @@
 	"enemies": [
 		{
 			"id": "peacebear",
-			"direction": "down"
-			"position": {"x": 9, "y": 4}
+			"direction": "down",
+			"position": {"x": 9, "y": 4},
 			"actions": {
 				"default": {
 					"actions": [
@@ -41,7 +41,7 @@
 							},
 							{
 								"type": "ActionMove",
-								"deltaX": 3,
+								"deltaX": 3
 							}
 						],
 						[
@@ -54,7 +54,7 @@
 							},
 							{
 								"type": "ActionMove",
-								"deltaX": -3,
+								"deltaX": -3
 							}
 						],
 						[
@@ -67,11 +67,11 @@
 				},
 				"activated": {
 					"name": "lv1_find_peacebear",
-					"actions": [
+					"actions": [[
 							{
 								"type": "ActionNarrator",
 								"text": "You find Peace Bear randomly in the middle of the lounge."
-							},
+							}
 						],
 						[
 							{
@@ -83,8 +83,8 @@
 						]
 					]
 				}
-			}
-		},
+			}		
+				},
 	],
 	"npcs": [
 		{

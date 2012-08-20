@@ -8,13 +8,13 @@
       private String sprite;
       private String direction;
       private Point position;
-      private ArrayList<NPCAction> actions;
-      public NPC(String ID, String s, String d, Point p, ArrayList<NPCAction> a){
+      private ArrayList<NPCSequence> sequences;
+      public NPC(String ID, String s, String d, Point p, ArrayList<NPCSequence> seq){
          id = ID;
          sprite = s;
          direction = d;
          position = p;
-         actions = a;
+         sequences = seq;
       }
       public String getID(){
          return id;
@@ -28,8 +28,8 @@
       public Point getPosition(){
          return position;
       }
-      public ArrayList<NPCAction> getActions(){
-         return actions;
+      public ArrayList<NPCSequence> getSequences(){
+         return sequences;
       }
       public void setID(String ID){
          id = ID;
@@ -43,8 +43,8 @@
       public void setPosition(Point p){
          position = p;
       }
-      public void setActions(ArrayList<NPCAction> a){
-         actions = a;
+      public void setSequences(ArrayList<NPCSequence> seq){
+         sequences = seq;
       }
       //MODIFY ACTIONS
    	

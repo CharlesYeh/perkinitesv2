@@ -9,6 +9,8 @@
       private String faceIcon;
       private String text;
       private Point delta;
+      private String state;
+      private NPCAction action;
       public NPCAction(){
       }
       public String getType(){
@@ -26,6 +28,12 @@
       public Point getDelta(){
          return delta;
       }
+      public String getState(){
+         return state;
+      }
+      public NPCAction getAction(){
+         return action;
+      }
       public void setType(String t){
          type = t;
       }
@@ -40,5 +48,15 @@
       }
       public void setDelta(Point d){
          delta = d;
+      }
+      public void setState(String s){
+         state = s;
+      }
+      public void setAction(NPCAction a){
+         action = a;
+      }
+      
+      public String getDisplay(){
+         return "Yay";
       }
    }
