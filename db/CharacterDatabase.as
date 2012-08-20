@@ -8,17 +8,28 @@
 	
 	public class CharacterDatabase implements DatabaseLoader {
 		
+		public static const CHAR_ICONS:String = "assets/icons/";
+		
 		/** path relative to game of enemy jsons */
 		public static const PATH:String = "assets/data/characters/";
 		
 		/** filename of file containing enemy json names */
 		public static const BASE:String = "characters";
 		
+		/** filename of file containing teams */
+		public static const TEAMS_BASE:String = "teams";
+		
 		/** extension of all data files */
 		public static const EXTENSION:String = ".json";
 		
 		/** dictionary of name -> CharacterData */
 		public var characters:Dictionary = new Dictionary();
+		
+		/** array -> array (team) -> strings (characters within team) */
+		public var teams:Array = new Array();
+		
+		/** cache of team id -> array of CharacterData */
+		public var teamData:Dictionary = new Dictionary();
 		
 		public function CharacterDatabase() {
 			loadData();
@@ -29,6 +40,34 @@
 		 */
 		public function loadData():void {
 			Database.loadData(PATH + BASE + EXTENSION, completeLoad);
+			Database.loadData(PATH + TEAMS_BASE + EXTENSION, completeTeamsLoad);
+		}
+		
+		function completeTeamsLoad(e:Event):void {
+			var dat = JSON.decode(e.target.data);
+			
+			teams = new Array();
+			for (var i:String in dat.teams) {
+				teams.push(dat.teams[i]);
+			}
+		}
+		
+		public function getUnlockedTeams():Array {
+			return teams;
+		}
+		
+		public function getTeamCharacterData(id:int):Array {
+			if (!teamData.hasOwnProperty(id)) {
+				var team:Array = new Array();
+				
+				for (var i:String in teams[id]) {
+					team.push(getCharacterData(teams[id][i]));
+				}
+				
+				teamData[id] = team;
+			}
+			
+			return teamData[id];
 		}
 		
 		/**
@@ -47,18 +86,15 @@
 			
 			var cdat:CharacterData = new CharacterData();
 			cdat.parseData(obj);
-		}
-		
-		public function getUnlockedNames():Array {
-			var keys:Array = new Array();
-			for (var k:String in characters) {
-				keys.push(k);
-			}
 			
-			return keys;
+			characters[cdat.id] = cdat;
 		}
 		
-		public function getCharacterData(id:String) {
+		public function getAllCharacterData():Dictionary {
+			return characters;
+		}
+		
+		public function getCharacterData(id:String):CharacterData {
 			return characters[id];
 		}
 	}

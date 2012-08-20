@@ -1,9 +1,11 @@
 ﻿package db.dbData {
 	import db.AbilityDatabase;
+	import flash.display.Loader;
+	import flash.net.URLRequest;
 	
 	public class AttackData implements DatabaseData{
 		public var name:String, type:String;
-		public var icon:String, description:String;
+		public var icon:Loader, description:String;
 		
 		/** the range to which the player can cast this attack */
 		public var range:int;
@@ -33,7 +35,10 @@
 			name = obj.name;
 			type = obj.type;
 			
-			icon = obj.icon;
+			var iconURL:URLRequest = new URLRequest(AbilityDatabase.ABILITY_ICONS + obj.icon);
+			icon = new Loader();
+			icon.load(iconURL);
+			
 			description = obj.description;
 		}
 	}

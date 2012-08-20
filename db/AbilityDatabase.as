@@ -6,6 +6,8 @@
 	import attacks.*;
 	
 	public class AbilityDatabase {
+		public static const ABILITY_ICONS:String = "assets/icons/";
+		
 		/** package where all the attack definitions are */
 		public static const ABILITY_PACKAGE:String = "attacks.";
 		

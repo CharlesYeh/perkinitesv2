@@ -1,14 +1,20 @@
 ﻿import db.*;
-import flash.display.MovieClip;
-import flashx.textLayout.operations.MoveChildrenOperation;
 
-var fIcon1:Loader = ActorDatabase.getIcon(0);
-var fIcon2:Loader = ActorDatabase.getIcon(1);
+import db.dbData.CharacterData;
+import db.dbData.AttackData;
+
+import game.Game;
+
+import flash.display.MovieClip;
+import flash.display.Loader;
+
+var fIcon1:Loader = new Loader();
+var fIcon2:Loader = new Loader();
 faceIcon1.addChild(fIcon1);
 faceIcon2.addChild(fIcon2);
 
-var entries = new Array();
-var chosenTeam = 0;
+var entries:Array = new Array();
+var chosenTeam:int = 0;
 
 scrollPane.source = playerList;
 
@@ -46,13 +52,22 @@ showEntries();
 chooseTeam(0);
 
 function showEntries() {
-	var names:Array	= Game.dbChar.getUnlockedNames();
+	var allTeams:Array	= Game.dbChar.getUnlockedTeams();
 	
-	// Must only show available Units, not all Units!
-	for (var i = 0; i < names.length; i += 2) {
+	// must only show available Units, not all Units!
+	for (var i = 0; i < allTeams.length; i++) {
+		var team:Array = allTeams[i];
+		
+		// skip locked teams
+		if (!Game.playerProgress.hasUnlockedTeam(team)) {
+			continue;
+		}
+		
+		var dat:Array = Game.dbChar.getTeamCharacterData(i);
+		
 		var entry = new Entry();
-		entry.playerName1.text = names[i];
-		entry.playerName2.text = names[i + 1];
+		entry.playerName1.text = dat[0].name;
+		entry.playerName2.text = dat[1].name;
 		entry.id = i;
 		entry.gotoAndStop(1);
 		entry.glowF = glowEntry;
@@ -66,30 +81,32 @@ function showEntries() {
 		playerList.addChild(entry);
 		entry.mouseChildren = false;
 		entry.x = 0;
-		entry.y = 8 * i;
+		entry.y = 16 * i;
 		entries.push(entry);
 	}
 }
 function chooseTeam(team) {
 	chosenTeam = team;
-	// activate entry in middle
-	entries[(chosenTeam >> 1)].gotoAndStop(2);
+	var dat:Array = Game.dbChar.getTeamCharacterData(chosenTeam);
 	
-	unitName1.text = ActorDatabase.getName(chosenTeam);
-	unitName2.text = ActorDatabase.getName(chosenTeam + 1);
+	// activate entry in middle
+	entries[chosenTeam].gotoAndStop(2);
+	
+	unitName1.text = dat[0].name;
+	unitName2.text = dat[1].name;
 	
 	faceIcon1.removeChild(fIcon1);
 	faceIcon2.removeChild(fIcon2);
 	
-	fIcon1 = ActorDatabase.getIcon(chosenTeam);
-	fIcon2 = ActorDatabase.getIcon(chosenTeam + 1);
+	fIcon1 = dat[0].icon;
+	fIcon2 = dat[1].icon;
 	
 	faceIcon1.addChild(fIcon1);
 	faceIcon2.addChild(fIcon2);
 	
 	var frame = playerDisplay1.currentFrame - 1;
-	update(playerDisplay1, frame, chosenTeam);
-	update(playerDisplay2, frame, chosenTeam + 1);
+	update(playerDisplay1, frame, dat[0]);
+	update(playerDisplay2, frame, dat[1]);
 }
 
 function startLevel(e) {
@@ -128,7 +145,8 @@ function clearCharSelect() {
 }
 
 // update display
-function update(display:MovieClip, page:Number, index:Number) {
+function update(display:MovieClip, page:Number, char:CharacterData) {
+	
 	display.gotoAndStop(page + 1);
 	
 	// update tabs
@@ -147,30 +165,32 @@ function update(display:MovieClip, page:Number, index:Number) {
 	// update data inside page
 	switch (page) {
 		case 0 :
-			display.portrait.gotoAndStop(index + 1);
+			//display.portrait.gotoAndStop(index + 1);
 			break;
 		case 1 :
 			// show stats
-			display.page2.HPCount.text = ActorDatabase.getHP(index) + "";
-			display.page2.APCount.text = ActorDatabase.getAttack(index) + "";
-			display.page2.SPCount.text = ActorDatabase.getSpeed(index) + "";
-			display.page2.weaponName.text = ActorDatabase.getWeapon(index);
+			display.page2.HPCount.text = char.health;
+			display.page2.APCount.text = 0;				// TODO: ability power?
+			display.page2.SPCount.text = char.speed;
+			display.page2.weaponName.text = char.weapon;
 
-			display.page2.wIcon.gotoAndStop(index + 1);
+			//display.page2.wIcon.gotoAndStop(index + 1);
 			break;
 		case 2 :
 			// show AVAILABLE abilities
 			//var basicAbilities = AbilityDatabase.getBasicAbilities(ActorDatabase.getName(index));
-
-			for (var i = 0; i < 2; i++) {
+			
+			char.abilities;
+			for (var i:int = 0; i < char.abilities.length; i++) {
+				var ability:AttackData = char.abilities[i];
 				var r = display.page3["row" + i];
 				
-				r.abilityName.text = AbilityDatabase.getName(index, i);
-				r.description.text = AbilityDatabase.getDescription(index, i);
-				var ic = AbilityDatabase.getIcon(index, i);
-				ic.x = 0.25;
-				ic.width = 32;
-				ic.height = 32;
+				r.abilityName.text = ability.name;
+				r.description.text = ability.description;
+				var ic	= ability.icon;
+				ic.x	= 0.25;
+				ic.width	= 32;
+				ic.height	= 32;
 				r.icon.addChild(ic);
 			}
 			break;
@@ -188,12 +208,14 @@ function pageHandler(e) {
 	// change pages
 	var id = e.target.id;
 	
-	update(playerDisplay1, id, chosenTeam);
-	update(playerDisplay2, id, chosenTeam + 1);
+	var team:Array = Game.dbChar.getTeamCharacterData(chosenTeam);
+	
+	update(playerDisplay1, id, team[0]);
+	update(playerDisplay2, id, team[1]);
 }
 function clickHandler(e) {
 	// choose entry
-	entries[(chosenTeam >> 1)].gotoAndStop(1);
+	entries[chosenTeam].gotoAndStop(1);
 	
 	var sound = new se_timeout();
 	sound.play();
