@@ -75,12 +75,8 @@
 			healthbar.graphics.drawRect(sx, 30, WIDTH, 5);
 			
 			healthbar.graphics.beginFill(0x33FF33, .7);
-			healthbar.graphics.drawRect(sx, 30, WIDTH * healthPoints / healthMax, 5);
+			healthbar.graphics.drawRect(sx, 30, WIDTH * healthPoints / unitData.health, 5);
 			healthbar.graphics.endFill();
-		}
-		
-		public function getMaxCooldown(abid:int):Number {
-			return AbilityDatabase.getAttribute(ID, abid, "Cooldown");
 		}
 		
 		function takeDamage(dmg:int) {
@@ -95,9 +91,12 @@
 			
 			swf.contentLoaderInfo.addEventListener(Event.COMPLETE, completeLoad);
 		}
-		protected function getSprite() {
-			//return new URLRequest(CharacterDatabase.getSprite(ID));
-		}
+		
+		/**
+		 * load the sprite swf for this unit
+		 */
+		protected function getSprite() {}
+		
 		function completeLoad(e) {
 			loaded = true;
 			
@@ -135,9 +134,6 @@
 		public function beginForwardMovement() {
 			forwardMovement = true;
 			
-			// TODO: USE ABILITY MOVEMENT SPEED
-			var mspeed = 30;
-			
 			var dx = castMousePoint.x - x;
 			var dy = castMousePoint.y - y;
 			var d = Math.sqrt(dx * dx + dy * dy) / mspeed;
@@ -161,14 +157,8 @@
 				
 			}
 		}
-		public function applyDebuffs(abilityID:int) {
-			
-		}
-		public function applyBuffs(abilityID:int) {
-			
-		}
 		public function shootSkillshot(array:Array) {
-			if (this.parent == null)
+			/*if (this.parent == null)
 				return;
 			
 			for(var i = 0; i < array.length; i++){
@@ -213,7 +203,7 @@
 				ss.damage		= AbilityDatabase.getAttribute(ID, castAbilityID, "Damage");
 				ss.stopAtFirst	= true;
 				
-			}
+			}*/
 		}
 		function skillshotMover(e:Event) {
 			var ss = e.target;
@@ -262,7 +252,8 @@
 			if (usingAbility || cooldowns[abID] > 0)
 				return;
 			
-			castAbilityID = abID;
+			
+			
 			castAbilityType = AbilityDatabase.getTargetType(ID, abID);
 			castInputWait = true;
 			
@@ -288,7 +279,7 @@
 			return startCastAnimation();
 		}
 		public function mouseHandler(pos:Point) {
-			if (!castInputWait) {
+			/*if (!castInputWait) {
 				guide.visible = false;
 			}
 			else {
@@ -322,7 +313,7 @@
 						guide.guide_cone.rotation = Math.atan2(y - pos.y, horizmult * (x - pos.x)) * 180 / Math.PI + 180;
 						break;
 				}
-			}
+			}*/
 		}
 		protected function startCastAnimation() {
 			if (usingAbility || !castInputWait || 

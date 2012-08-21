@@ -51,11 +51,12 @@
 			
 			// create players
 			var teamDat:Array = dbChar.getTeamCharacterData(teamIndex);
+			Controls.startGameInputs();
 			for (var i:String in teamDat) {
 				var cdat:CharacterData = teamDat[i];
 				
-				var char:Perkinite = new Perkinite(cdat);
-				team.push(char);
+				//var char:Perkinite = new Perkinite(cdat);
+				//team.push(char);
 			}
 			
 			// create map/world

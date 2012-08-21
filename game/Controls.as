@@ -4,35 +4,100 @@
 	import util.KeyDown;
 	
 	import events.GameEventDispatcher;
-	import events.RightClickEvent;
 	
+	import flash.events.MouseEvent;
+	import flash.events.KeyboardEvent;
 	import flash.events.Event;
 	
 	import flash.ui.Keyboard;
 	
 	import flash.external.ExternalInterface;
 	
+	import flash.geom.Point;
+	
 	public class Controls {
-		
+		public static var acceptRightClicks:Boolean = false;
 		public static var secondaryClick:Boolean = false;
 		
 		public static function setupRightClick():void {
 			if (ExternalInterface.available) {
-				ExternalInterface.addCallback("rightClicked", rightClicked);
+				ExternalInterface.addCallback("rightClickDown", rightClickDown);
 			}
 			
 			secondaryClick = ExternalInterface.available;
 		}
 		
-		public static function rightClicked(x:int, y:int) {
-			Game.eventDispatcher.dispatchEvent(new RightClickEvent());
+		/**
+		 * use either right click or space bar (if right click not possible) for ability #2
+		 */
+		public static function rightClickDown(x:int, y:int):void {
+			if (acceptRightClicks) {
+				showGuides(1, new Point(x, y));
+			}
 		}
 		
-		public static function startGameInputs() {
-			Game.eventDispatcher.addEventListener(GameEventDispatcher.RIGHT_CLICK, gameRightClick);
+		public static function rightClickUp(x:int, y:int):void {
+			if (acceptRightClicks) {
+				castAbilities(1, new Point(x, y));
+			}
 		}
 		
-		public static function gameRightClick(e:Event) {
+		public static function mouseDownHandler(e:Event):void {
+			showGuides(0, KeyDown.mousePoint);
+		}
+		
+		public static function mouseUpHandler(e:Event):void {
+			castAbilities(0, KeyDown.mousePoint);
+		}
+		
+		public static function keyDownHandler(e:Event):void {
+			if ((e as KeyboardEvent).keyCode == Keyboard.SPACE && !acceptRightClicks) {
+				showGuides(1, KeyDown.mousePoint);
+			}
+		}
+		
+		public static function keyUpHandler(e:Event):void {
+			if ((e as KeyboardEvent).keyCode == Keyboard.SPACE && !acceptRightClicks) {
+				castAbilities(1, KeyDown.mousePoint);
+			}
+		}
+		
+		public static function startGameInputs():void {
+			if (secondaryClick) {
+				acceptRightClicks = true;
+			}
+			
+			KeyDown.subscribe(MouseEvent.MOUSE_DOWN, mouseDownHandler);
+			KeyDown.subscribe(MouseEvent.MOUSE_UP, mouseUpHandler);
+			KeyDown.subscribe(KeyboardEvent.KEY_DOWN, keyDownHandler);
+			KeyDown.subscribe(KeyboardEvent.KEY_UP, keyUpHandler);
+		}
+		
+		public static function endGameInputs():void {
+			if (secondaryClick) {
+				acceptRightClicks = false;
+			}
+			
+			KeyDown.unsubscribe(MouseEvent.MOUSE_DOWN, mouseDownHandler);
+			KeyDown.unsubscribe(MouseEvent.MOUSE_UP, mouseUpHandler);
+			KeyDown.unsubscribe(KeyboardEvent.KEY_DOWN, keyDownHandler);
+			KeyDown.unsubscribe(KeyboardEvent.KEY_UP, keyUpHandler);
+		}
+		
+		/**
+		 * show aim guides for whole team
+		 */
+		public static function showGuides(abilityId:int, pt:Point):void {
+			for (var i:String in Game.team) {
+				// TODO: attack with:
+				Game.team[i];
+			}
+		}
+		
+		/**
+		 * cast abilities for team
+		 */
+		public static function castAbilities(abilityId:int, pt:Point):void {
 			for (var i:String in Game.team) {
 				// TODO: attack with:
 				Game.team[i];

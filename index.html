@@ -7,10 +7,17 @@
 				// pass right clicks on through external interface
 				if (e.which === 3) {
 					e.preventDefault();
-					console.debug($("#flashGame"));
-					$("#flashGame").rightClicked(e.offsetX, e.offsetY);
+					$("#flashGame").rightClickDown(e.offsetX, e.offsetY);
 				}
 			});
+			$("#flashContainer").mouseup(function(e) {
+				// pass right clicks on through external interface
+				if (e.which === 3) {
+					e.preventDefault();
+					$("#flashGame").rightClickUp(e.offsetX, e.offsetY);
+				}
+			});
+
 		});
 		</script>
 	</head>
