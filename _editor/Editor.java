@@ -58,7 +58,7 @@
       public static JButton fillButton = new JButton("Fill");
       public static JButton selectButton = new JButton("Select");
       
-      public static JButton[] buttons = {saveButton, mapModeButton, NPCModeButton, pencilButton, rectangleButton, fillButton, selectButton};
+      public static JButton[] buttons = {saveButton, mapModeButton, NPCModeButton, pencilButton, rectangleButton, fillButton};
        
       public static int currentTilesetIndex = 0;
       public static int currentMapIndex = -1;
@@ -108,9 +108,10 @@
          //readMapXML();
          enemies = MapJSONReader.readEnemyJSON();
          tilesets = MapJSONReader.readTilesetJSON();
-         mapArray = MapJSONReader.readMapJSON();
+         mapArray = MapJSONReader.readMapArrayJSON();
          for(int i = 0; i < mapArray.size(); i++){
             mapNameArray.add(mapArray.get(i).getName());
+            mapArray.get(i).createMap();
          }
          Border blackline = BorderFactory.createLineBorder(Color.black);
       
@@ -178,7 +179,7 @@
          pane.add(pencilButton);
          pane.add(rectangleButton);
          pane.add(fillButton);
-         pane.add(selectButton);
+         //pane.add(selectButton);
          
          saveButton.addActionListener(new SaveListener());
          
@@ -1021,45 +1022,13 @@
             _tile.setBorder(whiteline);
             rs = new Point(_x, _y);
             re = new Point(_x, _y);
-            if(_object == null){
-               superlabel.setText("(" + _x + ", " + _y + ")");
-            }
-            else if(_object instanceof Teleport){
-               superlabel.setText("(" + _x + ", " + _y + "): Teleport to " 
-                  + ((Teleport)(_object)).getMap() + " (" 
-                  + ((Teleport)(_object)).getExit().x + ", "
-                  + ((Teleport)(_object)).getExit().y +")" );
-            }
-            else if(_object instanceof Enemy){
-               superlabel.setText("(" + _x + ", " + _y + "): Enemy Type: " 
-                  + ((Enemy)(_object)).getID());
-            }
-            else if(_object instanceof NPC){
-               superlabel.setText("(" + _x + ", " + _y + "): NPC: " 
-                  + ((NPC)(_object)).getID()); 
-            }
+            updateSuperlabel();       
             selectedTileObject = _object;
          }
          public void mouseReleased(MouseEvent e){
             //System.out.println(e);
             if(rs.y == re.y && rs.x == re.x){
-               if(_object == null){
-                  superlabel.setText("(" + _x + ", " + _y + ")");
-               }
-               else if(_object instanceof Teleport){
-                  superlabel.setText("(" + _x + ", " + _y + "): Teleport to " 
-                     + ((Teleport)(_object)).getMap() + " (" 
-                     + ((Teleport)(_object)).getExit().x + ", "
-                     + ((Teleport)(_object)).getExit().y +")" );
-               }
-               else if(_object instanceof Enemy){
-                  superlabel.setText("(" + _x + ", " + _y + "): Enemy Type: " 
-                     + ((Enemy)(_object)).getID());
-               }
-               else if(_object instanceof NPC){
-                  superlabel.setText("(" + _x + ", " + _y + "): NPC: " 
-                     + ((NPC)(_object)).getID());               
-               }
+               updateSuperlabel();
             }
             if(selectedTileObject != null && !(tileMap[re.y][re.x].getIcon() instanceof CompoundIcon)){
                Map map = mapArray.get(currentMapIndex);
@@ -1105,27 +1074,16 @@
                   map.setNPCs(npcs);       
                }
                tileMap[rs.y][rs.x].setBorder(null);
-               tileMap[re.y][re.x].setBorder(whiteline);
+               int newX = re.x;
+               int newY = re.y;
                repaintMap(currentMapIndex);
+               rs.x = newX;
+               rs.y = newY;
+               tileMap[rs.y][rs.x].setBorder(whiteline);
+               updateSuperlabel();
             }
             else{
-               if(_object == null){
-                  superlabel.setText("(" + _x + ", " + _y + ")");
-               }
-               else if(_object instanceof Teleport){
-                  superlabel.setText("(" + _x + ", " + _y + "): Teleport to " 
-                     + ((Teleport)(_object)).getMap() + " (" 
-                     + ((Teleport)(_object)).getExit().x + ", "
-                     + ((Teleport)(_object)).getExit().y +")" );
-               }
-               else if(_object instanceof Enemy){
-                  superlabel.setText("(" + _x + ", " + _y + "): Enemy Type: " 
-                     + ((Enemy)(_object)).getID());
-               }
-               else if(_object instanceof NPC){
-                  superlabel.setText("(" + _x + ", " + _y + "): NPC: " 
-                     + ((NPC)(_object)).getID());   
-               }
+               updateSuperlabel();
             }
             mouseDown = false;
          }
@@ -1149,6 +1107,29 @@
          }
          public void mouseMoved(MouseEvent e){
          }
+         public void updateSuperlabel(){
+            if(_object == null){
+               superlabel.setText("(" + _x + ", " + _y + ")");
+            }
+            else if(_object instanceof Teleport){
+               superlabel.setText("(" + ((Teleport)(_object)).getEntry().x 
+                  + ", " + ((Teleport)(_object)).getEntry().y + "): Teleport to " 
+                  + ((Teleport)(_object)).getMap() + " (" 
+                  + ((Teleport)(_object)).getExit().x + ", "
+                  + ((Teleport)(_object)).getExit().y +")" );
+            }
+            else if(_object instanceof Enemy){
+               superlabel.setText("(" + ((Enemy)(_object)).getPosition().x 
+                  + ", " + ((Enemy)(_object)).getPosition().y + "): Enemy Type: " 
+                  + ((Enemy)(_object)).getID());
+            }
+            else if(_object instanceof NPC){
+               superlabel.setText("(" + ((NPC)(_object)).getPosition().x 
+                  + ", " + ((NPC)(_object)).getPosition().y + "): NPC: " 
+                  + ((NPC)(_object)).getID()); 
+            }
+         
+         }
          public void choicePopup(){
          
             Object[] possibilities = {"Teleport", "Enemy", "NPC"};
@@ -1162,19 +1143,20 @@
                     "Teleport");
          
          //If a string was returned, say so.
-            switch(s){
-               case "Teleport":
-                  teleportPopup(Properties.CREATE); 
-                  break;
-               case "Enemy": 
-                  enemyPopup(Properties.CREATE);
-                  break;
-               case "NPC": 
-                  npcPopup(Properties.CREATE);
-                  break;
-            }
             if ((s != null) && (s.length() > 0)) {
-               return;
+               switch(s){
+                  case "Teleport":
+                     teleportPopup(Properties.CREATE); 
+                     break;
+                  case "Enemy": 
+                     enemyPopup(Properties.CREATE);
+                     break;
+                  case "NPC": 
+                     npcPopup(Properties.CREATE);
+                     break;
+                  default:
+                     break;
+               }
             }
          }
          public void teleportPopup(Properties p){
@@ -1288,11 +1270,17 @@
             Map map = mapArray.get(currentMapIndex);
             
             JComboBox enemyList = new JComboBox(enemies);
+            String[] dirArray = {"down", "right", "up", "left"};
+            JComboBox dirList = new JComboBox(dirArray);
+            
+         
             if(p == Properties.CHANGE){
+               dirList.setSelectedIndex( Arrays.asList(dirArray).indexOf( ((Enemy)_object).getDirection()));
                enemyList.setSelectedIndex( Arrays.asList(enemies).indexOf( ((Enemy)_object).getID()));
             }
             else if(p == Properties.CREATE){
                enemyList.setSelectedIndex(0);
+               dirList.setSelectedIndex(0);
             }
             
             JTextField xField = new JTextField(x+"", 20);
@@ -1300,9 +1288,11 @@
             
          	
             JPanel myPanel = new JPanel();  
-            myPanel.setLayout(new GridLayout(6, 1));
+            myPanel.setLayout(new GridLayout(8, 1));
             myPanel.add(new JLabel("Enemy ID:"));
             myPanel.add(enemyList);   
+            myPanel.add(new JLabel("Direction:"));
+            myPanel.add(dirList);
             myPanel.add(new JLabel("X:"));
             myPanel.add(xField);
             myPanel.add(new JLabel("Y:"));
@@ -1341,10 +1331,11 @@
                }
                else if(p == Properties.CREATE){
                   index = es.size();
-                  _object = new Enemy(null, null);
+                  _object = new Enemy(null, null, null);
                   es.add((Enemy)_object);
                }
                ((Enemy)_object).setID(enemies[(enemyList.getSelectedIndex())]);
+               ((Enemy)_object).setDirection(dirArray[(dirList.getSelectedIndex())]);
                ((Enemy)_object).setPosition(new Point(x1, y1));
                es.set(index, (Enemy)_object);
                map.setEnemies(es);
@@ -1358,28 +1349,70 @@
             int y = _y;
             Map map = mapArray.get(currentMapIndex);
             
-            JComboBox enemyList = new JComboBox(enemies);
-            if(p == Properties.CHANGE){
-               enemyList.setSelectedIndex( Arrays.asList(enemies).indexOf( ((Enemy)_object).getID()));
-            }
-            else if(p == Properties.CREATE){
-               enemyList.setSelectedIndex(0);
-            }
+                   
+            Border blackline = BorderFactory.createLineBorder(Color.black);
             
             JPanel myPanel = new JPanel();  
+            myPanel.setLayout(new BorderLayout());
             
+            JPanel statPanel = new JPanel();
+            statPanel.setBorder(blackline);
             
-            // DefaultListModel model = new DefaultListModel();
-            // final JList list = new JList(model);
-         // 
-            // for(int i = 0; i < mapNameArray.size(); i++){
-               // model.add(i, mapNameArray.get(i));
-            // }
+            JTextField spriteField = new JTextField("", 20);
+            String[] dirArray = {"down", "right", "up", "left"};
+            JComboBox dirList = new JComboBox(dirArray);
+            
+            if(p == Properties.CHANGE){
+               spriteField.setText( ((NPC)_object).getSprite());
+               dirList.setSelectedIndex( Arrays.asList(dirArray).indexOf( ((NPC)_object).getDirection()));
+            }
+            else if(p == Properties.CREATE){
+               dirList.setSelectedIndex(0);
+            }
+            
+            JTextField xField = new JTextField(x+"", 20);
+            JTextField yField = new JTextField(y+"", 20);
+            
+         	
          
+            statPanel.setLayout(new GridLayout(8, 1));
+            statPanel.add(new JLabel("Sprite:"));
+            statPanel.add(spriteField);
+            statPanel.add(new JLabel("Direction:"));
+            statPanel.add(dirList);   
+            statPanel.add(new JLabel("X:"));
+            statPanel.add(xField);
+            statPanel.add(new JLabel("Y:"));
+            statPanel.add(yField);
+            
+            myPanel.add(statPanel, BorderLayout.LINE_START);
+            
+            JPanel actionsPanel = new JPanel();
+            actionsPanel.setBorder(blackline);
+            actionsPanel.setLayout(new BorderLayout());
+            
+            DefaultListModel model = new DefaultListModel();
+            final JList list = new JList(model);
          
+            if(p == Properties.CHANGE){
+               // ArrayList<NPCAction> actions = ((NPC)(_object)).getActions();
+               // for(int i = 0; i < actions.size(); i++){
+                  // model.add(i, actions.get(i).getDisplay());
+               // }
+            }
+            else if(p == Properties.CREATE){
+               model.add(0, "\t\t\t\t");
+            }
+            actionsPanel.add(new JLabel("List of Actions :)"), BorderLayout.PAGE_START);
+            actionsPanel.add(list, BorderLayout.CENTER);
+            myPanel.add(actionsPanel, BorderLayout.LINE_END);
                               	         	
             int result = JOptionPane.showConfirmDialog(null, myPanel, 
-               "Enemy Properties", JOptionPane.OK_CANCEL_OPTION);      
+               "NPC Properties", JOptionPane.OK_CANCEL_OPTION);  
+               
+            if (result == JOptionPane.OK_OPTION) {
+            	
+            }    
          
          }
       }     

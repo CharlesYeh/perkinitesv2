@@ -13,12 +13,11 @@
       private String code;
       
       private ArrayList<Teleport> teleports;
-      private ArrayList<NPC> npcs;
       private ArrayList<Enemy> enemies;
-   
+      private ArrayList<NPC> npcs;
+      
       private int[][] mapMatrix;
       
-      private String _mapCode;
       private String BGM;
       private String BGS;
       public Map(){
@@ -30,8 +29,8 @@
          code = "";
          
          teleports  = new ArrayList<Teleport>();
-         npcs = new ArrayList<NPC>();
          enemies = new ArrayList<Enemy>();
+         npcs = new ArrayList<NPC>();
       
          BGM = "";
          BGS = "";
@@ -176,6 +175,31 @@
          }
          
          mapMatrix = temp;
+         
+      	//Delete any objects lost in the transformation.
+         for(int i = 0; i < teleports.size(); i++){
+            Teleport teleport = teleports.get(i);
+            if(teleport.getEntry().x >= width || teleport.getEntry().y >= height){
+               teleports.remove(i);
+               i--;
+            }
+         }
+         for(int i = 0; i < enemies.size(); i++){
+            Enemy enemy = enemies.get(i);
+            if(enemy.getPosition().x >= width || enemy.getPosition().y >= height){
+               enemies.remove(i);
+               i--;
+            }
+         
+         }
+         for(int i = 0; i < npcs.size(); i++){
+            NPC npc = npcs.get(i);
+            if(npc.getPosition().x >= width || npc.getPosition().y >= height){
+               npcs.remove(i);
+               i--;
+            }
+         
+         }
       }
       
       public void updateMapCode(){
@@ -201,18 +225,4 @@
          return mapMatrix[r][c];
       }
       
-      public void printMap(){
-         int index1 = _mapCode.indexOf(":");
-         int index2 = _mapCode.indexOf(":", index1+1);
-         int index3 = index2 + 1;
-         int row = Integer.parseInt(_mapCode.substring(0, index1));
-         int col = Integer.parseInt(_mapCode.substring(index1+1, index2));
-         for(int i = 0; i < row; i++){
-            for(int j = 0; j < col; j++){
-               System.out.print(mapMatrix[i][j]);
-            }
-            System.out.println();
-         }
-      
-      }
    }
