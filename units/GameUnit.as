@@ -1,4 +1,4 @@
-﻿package game {
+﻿package units {
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.geom.Point;

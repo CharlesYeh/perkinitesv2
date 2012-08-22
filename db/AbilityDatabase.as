@@ -26,7 +26,7 @@
 		public static function getAbility(abilityData:Object):AttackData {
 			var abilityName = abilityData.name;
 			
-			if (!abilities.hasOwnProperty(abilityData)) {
+			if (!abilities.hasOwnProperty(abilityName)) {
 				abilities[abilityName] = AttackData.createAttack(abilityData);
 			}
 			

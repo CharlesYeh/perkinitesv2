@@ -1,4 +1,4 @@
-﻿package game {
+﻿package units {
 	import flash.utils.getDefinitionByName;
 	import flash.net.URLRequest;
 	import flash.events.Event;

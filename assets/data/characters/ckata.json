@@ -38,7 +38,17 @@
 			"description": "Drink coffee, gaining a small boost.",
 			
 			"range": 250,
-			"cd": 20
+			"cd": 20,
+			
+			"buffs": {
+				"self": {
+					"movementMult": 1.25,
+					"attackAdd": -30
+				},
+				"allies": {
+					"movementAdd": 50
+				}
+			}
 		}
 	]
 }

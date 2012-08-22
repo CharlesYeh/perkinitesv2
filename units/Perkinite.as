@@ -1,7 +1,5 @@
-﻿package game {
+﻿package units {
 	import flash.net.URLRequest;
-	
-	import db.ActorDatabase;
 	
 	import db.dbData.CharacterData;
 	
@@ -9,14 +7,14 @@
 		public function Perkinite(charData:CharacterData) {
 			super(charData);
 			
-			healthPoints = healthMax = ActorDatabase.getHP(ID);
-			setSpeed(ActorDatabase.getSpeed(ID));
+			healthPoints = unitData.health;
+			setSpeed(unitData.speed);
 			
 			// load swf
 			loadSwf();
 		}
 		override protected function getSprite() {
-			return new URLRequest(ActorDatabase.getCharSprite(ID));
+			return new URLRequest(unitData.sprite);
 		}
 	}
 }

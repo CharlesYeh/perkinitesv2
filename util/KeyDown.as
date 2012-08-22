@@ -11,7 +11,6 @@
 		
 		private static var listeners:Object = new Object();
 		
-		private static var stg:Stage;
 		public static var mousePoint:Point;
 		
 		public static function init(stage){
@@ -21,7 +20,7 @@
 			stage.addEventListener(MouseEvent.MOUSE_UP, mouseUpHandler);
 			stage.addEventListener(MouseEvent.MOUSE_MOVE, mouseTracker);
 			
-			stg = stage;
+			mousePoint = new Point();
 		}
 		
 		public static function subscribe(evtType:String, func:Function):void {
@@ -63,7 +62,8 @@
 		}
 		
 		public static function mouseTracker(e:MouseEvent) {
-			mousePoint = new Point(e.stageX, e.stageX);
+			mousePoint.x = e.stageX;
+			mousePoint.y = e.stageX;
 		}
 		
 		private static function broadcast(e:Event):void {

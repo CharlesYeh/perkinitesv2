@@ -5,7 +5,7 @@
 	 * A skillshot attack which is cast in a line
 	 * Range is used as the end destination of projectiles
 	 */
-	public class AttackSkillshot extends AttackData implements Attack {
+	public class AttackSkillshot extends Attack {
 		/** the width of the projectile */
 		public var width:int;
 		

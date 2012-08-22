@@ -1,4 +1,4 @@
-﻿package game {
+﻿package units {
 	import flash.display.Loader;
 	import flash.net.URLRequest;
 	import flash.events.Event;
@@ -9,10 +9,11 @@
 	
 	import db.AbilityDatabase;
 	import db.dbData.UnitData;
+	import attacks.Attack;
 
 	public class StatUnit extends GameUnit {
 		
-		static const DIRECTIONS:Array = new Array("east", "north", "west", "south");
+		static const DIRECTIONS:Array = new Array("left", "up", "right", "down");
 
 		static const ANIM_STANDING	= "standing";
 		static const ANIM_FF		= "friend_finale";
@@ -22,9 +23,7 @@
 		static const ANIM_ABILITY3	= "ability3";
 		
 		var swf;
-		var partner:MovieClip;
 		var deleteFunc:Function = null;
-		var isPlayer:Boolean;
 		
 		var animLabel:String = ANIM_STANDING;
 		var animClip:MovieClip;
@@ -33,13 +32,13 @@
 		//----------STATS VARS---------
 		public var unitData:UnitData;
 		
+		public var cooldowns:Array;
 		public var healthPoints:int;
 		var healthbar:MovieClip;
 		//--------END STATS VARS-------
 		
-		//---------ABILITY VARS---------
-		public var cooldowns:Array;
-		//-------END ABILITY VARS-------
+		var abilityId:int;
+		var castPoint:Point;
 		
 		//----------FRAME VARS----------
 		var prevLabel:String = ANIM_STANDING;
@@ -56,6 +55,8 @@
 			
 			animLabel = ANIM_STANDING;
 			
+			cooldowns = new Array(10);
+			
 			healthPoints = unitData.health;
 			
 			// draw health bar
@@ -63,7 +64,6 @@
 			addChild(healthbar);
 			drawHealthbar();
 			
-			cooldowns = new Array(10);
 		}
 		
 		protected function drawHealthbar() {
@@ -134,9 +134,9 @@
 		public function beginForwardMovement() {
 			forwardMovement = true;
 			
-			var dx = castMousePoint.x - x;
-			var dy = castMousePoint.y - y;
-			var d = Math.sqrt(dx * dx + dy * dy) / mspeed;
+			var dx = castPoint.x - x;
+			var dy = castPoint.y - y;
+			var d = Math.sqrt(dx * dx + dy * dy);
 			dx = dx / d;
 			dy = dy / d;
 			
@@ -147,15 +147,7 @@
 			clearPath();
 		}
 		public function dealDamage(abilityID:int) {
-			if (castMouseTarget == null)
-				return;
-			
-			castMouseTarget.takeDamage(AbilityDatabase.getAttribute(ID, abilityID, "Damage"));
-			
-			// if point damage
-			if (castAbilityType == AbilityDatabase.ATKTYPE_POINT) {
-				
-			}
+			//castMouseTarget.takeDamage(AbilityDatabase.getAttribute(ID, abilityID, "Damage"));
 		}
 		public function shootSkillshot(array:Array) {
 			/*if (this.parent == null)
@@ -205,8 +197,17 @@
 				
 			}*/
 		}
+		
+		function applyBuffs() {
+			
+		}
+		
+		function applyDebuffs() {
+			
+		}
+		
 		function skillshotMover(e:Event) {
-			var ss = e.target;
+			/*var ss = e.target;
 			
 			ss.x += ss.vx;
 			ss.y += ss.vy;
@@ -216,10 +217,10 @@
 			if (testSkillshotCollision(ss, ss.abilityWidth, ss.damage, ss.stopAtFirst) || ss.dist > ss.range) {
 				ss.parent.removeChild(ss);
 				ss.removeEventListener(Event.ENTER_FRAME, skillshotMover);
-			}
+			}*/
 		}
 		function skillshotHoming(e:Event) {
-			var ss = e.target;
+			/*var ss = e.target;
 			
 			// test collision with target
 			var dx = ss.target.x - ss.x;
@@ -237,113 +238,44 @@
 			// movement
 			var rad = Math.atan2(ss.target.y - ss.y, ss.target.x - ss.x);
 			ss.x += Math.cos(rad) * ss.ms;
-			ss.y += Math.sin(rad) * ss.ms;
+			ss.y += Math.sin(rad) * ss.ms;*/
 		}
-		public function teleport() {
-			teleportTo(castMousePoint.x, castMousePoint.y);
-			clearPath();
+		function teleport() {
+			/*teleportTo(castPoint.x, castPoint.y);
+			clearPath();*/
 		}
-		public function teleportPartner() {
-			partner.teleportTo(castMousePoint.x, castMousePoint.y);
-			partner.clearPath();
+		function teleportPartner() {
+			/*partner.teleportTo(castPoint.x, castPoint.y);
+			partner.clearPath();*/
 		}
 		//------------END FRAME FUNCTIONS------------
-		public function castAbility(abID:int, mousePos:Point) {
-			if (usingAbility || cooldowns[abID] > 0)
-				return;
+		
+		public function castAbility(abID:int, mousePos:Point):Boolean {
 			
-			
-			
-			castAbilityType = AbilityDatabase.getTargetType(ID, abID);
-			castInputWait = true;
-			
-			switch (castAbilityType) {
-			case AbilityDatabase.ATKTYPE_TARGET:
-				// wait for click on target
-				break;
-			case AbilityDatabase.ATKTYPE_POINT:
-			case AbilityDatabase.ATKTYPE_SSHOT:
-				// wait for click
-				break;
-			case AbilityDatabase.ATKTYPE_SCAST:
-				castMousePoint = mousePos;
-				startCastAnimation();
-				break;
+			if (usingAbility || cooldowns[abID] > 0) {
+				return false;
 			}
-		}
-		public function clickHandler(pos:Point, target:StatUnit):Boolean {
-			castMousePoint	= pos;
-			if (!usingAbility)
-				castMouseTarget	= target;
 			
-			return startCastAnimation();
-		}
-		public function mouseHandler(pos:Point) {
-			/*if (!castInputWait) {
-				guide.visible = false;
+			abilityId = abID;
+			castPoint = mousePos;
+			
+			// test for range
+			var ability:Attack = unitData.abilities[abilityId];
+			if (!ability.inRange(this, castPoint)) {
+				return false;
 			}
-			else {
-				var horizmult:int = (scaleX > 0) ? 1 : -1;
-				guide.visible = true;
-				
-				// set range guide
-				guide.range_circle.width = guide.range_circle.height =
-							2 * AbilityDatabase.getAttribute(ID, castAbilityID, "Range");
-				
-				switch (castAbilityType) {
-					case AbilityDatabase.ATKTYPE_POINT:
-						guide.gotoAndStop("point");
-						// set point radius
-						guide.guide_target.x = horizmult * (pos.x - x);
-						guide.guide_target.y = pos.y - y;
-						break;
-					case AbilityDatabase.ATKTYPE_TARGET:
-						guide.gotoAndStop("target");
-						guide.guide_target.x = horizmult * (pos.x - x);
-						guide.guide_target.y = pos.y - y;
-						break;
-					case AbilityDatabase.ATKTYPE_SSHOT:
-						guide.gotoAndStop("skillshot");
-						// set skillshot width/length
-						guide.guide_skillshot.rotation = Math.atan2(y - pos.y, horizmult * (x - pos.x)) * 180 / Math.PI + 180;
-						break;
-					case AbilityDatabase.ATKTYPE_CONE:
-						guide.gotoAndStop("cone");
-						// set cone width/length
-						guide.guide_cone.rotation = Math.atan2(y - pos.y, horizmult * (x - pos.x)) * 180 / Math.PI + 180;
-						break;
-				}
-			}*/
-		}
-		protected function startCastAnimation() {
-			if (usingAbility || !castInputWait || 
-				cooldowns[castAbilityID] > 0)
-				return false;
-			
-			// test for range and target
-			var dx = x - castMousePoint.x;
-			var dy = y - castMousePoint.y;
-			var dd = Math.sqrt(dx * dx + dy * dy);
-			var range = AbilityDatabase.getAttribute(ID, castAbilityID, "Range");
-			if (castAbilityType == AbilityDatabase.ATKTYPE_POINT &&
-				dd > range)
-				return false;
-			
-			if (castAbilityType == AbilityDatabase.ATKTYPE_TARGET &&
-				(castMouseTarget == null || dd > range))
-				return false;
 			
 			// look at direction of ability
-			turnTo(castMousePoint);
+			turnTo(castPoint);
 			updateDirection(moveDir);
 			
 			// set cooldown
-			cooldowns[castAbilityID] = AbilityDatabase.getAttribute(ID, castAbilityID, "Cooldown");
+			cooldowns[abilityId] = ability.cd;
 			
 			usingAbility = true;
 			prevLabel = animLabel;
 			
-			switch (castAbilityID) {
+			switch (abilityId) {
 			case 0:
 				setAnimLabel(ANIM_ABILITY1);
 				break;
@@ -355,11 +287,11 @@
 				break;
 			}
 			
-			castInputWait = false;
 			return true;
 		}
 		function testSkillshotCollision(skillshot:MovieClip, abilityWidth:Number, damage:Number, stopAtFirst:Boolean):Boolean {
-			var enemies = (isPlayer) ? MapManager.getAIUnits() : AIUnit.getTargets();
+			//var enemies = (isPlayer) ? MapManager.getAIUnits() : AIUnit.getTargets();
+			var enemies = new Array();
 			
 			for (var a in enemies) {
 				var en:StatUnit = enemies[a];
@@ -380,6 +312,7 @@
 			
 			return false;
 		}
+		
 		/**
 		 * 
 		 * the movement handler
@@ -387,7 +320,7 @@
 		 */
 		override public function moveHandler(e:Event):void {
 			// adjust cooldowns
-			for (var a = 0; a < cooldowns.length; a++) {
+			/*for (var a = 0; a < cooldowns.length; a++) {
 				if (cooldowns[a] > 0)
 					cooldowns[a]--;
 			}
@@ -426,16 +359,19 @@
 			else {
 				updateDirection(moveDir);
 				setAnimLabel(ANIM_WALKING);
-			}
+			}*/
 		}
+		
 		override public function turnLeft() {
 			super.turnLeft();
 			updateDirection(moveDir);
 		}
+		
 		override public function turnRight() {
 			super.turnRight();
 			updateDirection(moveDir);
 		}
+		
 		function setAnimLabel(l:String) {
 			// standing, walking, friend_finale, ability1, ability2, ability3
 			if (animClip == null || animLabel == l) return;
@@ -443,6 +379,7 @@
 			animLabel = l;
 			animClip.gotoAndStop(animLabel);
 		}
+		
 		function updateDirection(dir:int) {
 			if (!loaded) return;
 			
@@ -485,14 +422,17 @@
 				animClip.gotoAndStop(animLabel);
 			}
 		}
+		
 		public function setDeleteFunction(func:Function) {
 			deleteFunc = func;
 		}
+		
 		protected function deleteSelf() {
 			if (deleteFunc != null) {
 				deleteFunc(this);
 			}
 		}
+		
 		//make it stop running when transferring to a new map
 		public function destroy(){
 			deleteSelf();

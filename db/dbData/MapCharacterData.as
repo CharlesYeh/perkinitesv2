@@ -12,7 +12,7 @@
 		public function parseData(obj:Object):void {
 			id	= obj.id;
 			direction	= obj.direction;
-			position	= obj.position;
+			position	= new Point(obj.position.x, obj.position.y);
 			for (var lbl:String in obj.actions) {
 				var seq:SequenceData = new SequenceData();
 				seq.parseData(obj.actions[lbl]);
