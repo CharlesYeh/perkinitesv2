@@ -2,7 +2,7 @@
    
    import java.util.*;
    
-   public class Map{
+   public class Map  implements Cloneable{
    
    
       private String name;
@@ -224,5 +224,35 @@
       public int getTile(int r, int c){
          return mapMatrix[r][c];
       }
+         	
+      @Override public Object clone() throws CloneNotSupportedException {
+      //get initial bit-by-bit copy, which handles all immutable fields
+         Map result = (Map)super.clone();
       
+         int [][] copiedMapMatrix = new int[mapMatrix.length][];
+         for(int i = 0; i < mapMatrix.length; i++)
+            copiedMapMatrix[i] = mapMatrix[i].clone();
+         	
+         result.setMapMatrix(copiedMapMatrix);
+         
+         ArrayList<Teleport> newTeleports = new ArrayList<Teleport>();
+         ArrayList<Enemy> newEnemies = new ArrayList<Enemy>();
+         ArrayList<NPC> newNPCs = new ArrayList<NPC>();
+         
+         for(int i = 0; i < teleports.size(); i++){
+            newTeleports.add((Teleport)teleports.get(i).clone());
+         }
+         for(int i = 0; i < enemies.size(); i++){
+            newEnemies.add((Enemy)enemies.get(i).clone());
+         }
+         for(int i = 0; i < npcs.size(); i++){
+            newNPCs.add((NPC)npcs.get(i).clone());
+         }
+      
+         result.setTeleports(newTeleports);
+         result.setEnemies(newEnemies);
+         result.setNPCs(newNPCs);
+            
+         return result;
+      }
    }

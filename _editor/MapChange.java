@@ -3,16 +3,16 @@
    public class MapChange extends Change{
    
       private int _index;
-      private int[][] _mapMatrix;
-      public MapChange(int i, int[][] mapMatrix){
+      private Map _map;
+      public MapChange(int i, Map map){
          super();
          _index = i;
-         _mapMatrix = mapMatrix;
+         _map = map;
       }
       public int getIndex(){
          return _index;
       }
-      public int[][] getMapMatrix(){
-         return _mapMatrix;
+      public Map getMap(){
+         return _map;
       }
    }

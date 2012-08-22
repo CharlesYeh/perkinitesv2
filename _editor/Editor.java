@@ -158,7 +158,8 @@
          addTileComps(tilePanel);
          addListComps(listPanel);
       	
-         //setupUndoHotkeys();
+         setupShortcutHotkeys();
+         setupUndoHotkeys();
          setupCopyHotkeys();
          setupDeleteHotkeys();
          
@@ -341,6 +342,7 @@
          rs = new Point(-1, -1);
          re = new Point(-1, -1);
          superlabel.setText("I tell you stuff!");
+         addListComps(listPanel);
          
          if(currentMapIndex > -1){
             mapPanel.removeAll();
@@ -486,6 +488,55 @@
       
       
       }
+      
+      public static	class TileSelectAction extends AbstractAction {
+         final int index;
+         public TileSelectAction(int i) {
+            super();
+            index = i;
+         }
+         public void actionPerformed(ActionEvent e) {
+            changeSelectedTile(index);
+         }
+      }
+      public static void setupShortcutHotkeys(){
+         ArrayList<String> TILE = new ArrayList<String>();
+         ArrayList<AbstractAction> actions = new ArrayList<AbstractAction>();
+         for(int i = 1; i <= 35; i++){
+            TILE.add("Tile change action key " + i);
+            frame.getRootPane().getActionMap().put("Tile change action key " + i, new TileSelectAction(i-1));
+         }
+        // String TILE1 = "Tile change action key";
+      
+      
+      
+      
+         InputMap[] inputMaps = new InputMap[] {
+               frame.getRootPane().getInputMap(JComponent.WHEN_FOCUSED),
+               frame.getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT),
+               frame.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW),
+               };
+         for(InputMap i : inputMaps) {
+            for(int j = 1; j <= 35; j++){
+               if(j <= 9)
+                  i.put(KeyStroke.getKeyStroke(""+j), "Tile change action key " + j);
+               else if(j == 10)
+                  i.put(KeyStroke.getKeyStroke(""+0), "Tile change action key " + j);
+               else
+                  i.put(KeyStroke.getKeyStroke(""+(char)(j+55)), "Tile change action key " + j);
+            }
+         }
+      }
+      public static void changeSelectedTile(int tileIndex){
+         for(int i = 0; i < tileArray.size(); i++){
+            tileArray.get(i).setBorder(null);
+         }
+         if(tileIndex >= tileArray.size()){
+            tileIndex = tileArray.size()-1;
+         }
+         tileArray.get(tileIndex).setBorder(whiteline);
+         selectedTileID = tileIndex;
+      }
       public static void setupCopyHotkeys(){
          String CUT 	= "Cut action key";
          String COPY = "Copy action key";
@@ -536,6 +587,12 @@
                TileNPCListener ml = (TileNPCListener)tileMap[rs.y][rs.x].getMouseListeners()[0];
                Object object = ml.getObject();
                copiedObject = object;
+               try{
+                  undoStack.push(new MapChange(currentMapIndex, (Map)mapArray.get(currentMapIndex).clone()));
+               }
+                  catch (CloneNotSupportedException ce){
+                     ce.printStackTrace();
+                  }
                if(object instanceof Teleport){
                   ArrayList<Teleport> teleports = map.getTeleports();
                   index = teleports.indexOf((Teleport)object);
@@ -583,6 +640,12 @@
             int index = -1;
             Point rsCopy = new Point(rs.x, rs.y);
             if(!(tileMap[rs.y][rs.x].getIcon() instanceof CompoundIcon)){
+               try{
+                  undoStack.push(new MapChange(currentMapIndex, (Map)mapArray.get(currentMapIndex).clone()));
+               }
+                  catch (CloneNotSupportedException ce){
+                     ce.printStackTrace();
+                  }
                if(copiedObject instanceof Teleport){
                   ArrayList<Teleport> teleports = map.getTeleports();
                   try{
@@ -722,9 +785,14 @@
          System.out.println("UNDO");
       
          MapChange c = (MapChange)undoStack.pop();
-         redoStack.push(new MapChange(currentMapIndex, mapArray.get(currentMapIndex).getMapMatrix()));
-         Map map = mapArray.get(c.getIndex());
-         map.setMapMatrix(c.getMapMatrix());
+         try{
+            redoStack.push(new MapChange(currentMapIndex, (Map)mapArray.get(currentMapIndex).clone()));
+         }
+            catch (CloneNotSupportedException e){
+               e.printStackTrace();
+            }
+         Map map = c.getMap();
+       
          mapArray.set(c.getIndex(), map);
          if(currentMapIndex == c.getIndex()){
             repaintMap(currentMapIndex);
@@ -737,9 +805,13 @@
             return;
          System.out.println("REDO");
          MapChange c = (MapChange)redoStack.pop();
-         undoStack.push(c);
-         Map map = mapArray.get(c.getIndex());
-         map.setMapMatrix(c.getMapMatrix());
+         try{
+            undoStack.push(new MapChange(currentMapIndex, (Map)mapArray.get(currentMapIndex).clone()));
+         }
+            catch (CloneNotSupportedException e){
+               e.printStackTrace();
+            }
+         Map map = c.getMap();
          mapArray.set(c.getIndex(), map);
          if(currentMapIndex == c.getIndex()){
             repaintMap(currentMapIndex);
@@ -814,7 +886,13 @@
          }
          public void mousePressed(MouseEvent e) {
             mouseDown = true;
-            undoStack.push(new MapChange(currentMapIndex, mapArray.get(currentMapIndex).getMapMatrix()));
+            try{
+               undoStack.push(new MapChange(currentMapIndex, (Map)mapArray.get(currentMapIndex).clone()));
+            }
+               catch (CloneNotSupportedException ce){
+                  ce.printStackTrace();
+               }
+            
             superlabel.setText("(" + _x + ", " + _y + ")");
             if(drawMode.equals("Pencil")){
                if(_tileType != selectedTileID){
@@ -1068,6 +1146,12 @@
                updateSuperlabel();
             }
             if(selectedTileObject != null && !(tileMap[re.y][re.x].getIcon() instanceof CompoundIcon)){
+               try{
+                  undoStack.push(new MapChange(currentMapIndex, (Map)mapArray.get(currentMapIndex).clone()));
+               }
+                  catch (CloneNotSupportedException ce){
+                     ce.printStackTrace();
+                  }
                Map map = mapArray.get(currentMapIndex);
                int index = -1;
                if(selectedTileObject instanceof Teleport){
@@ -1338,7 +1422,12 @@
             int result = JOptionPane.showConfirmDialog(null, myPanel, 
                "Teleport Properties", JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
-             
+               try{
+                  undoStack.push(new MapChange(currentMapIndex, (Map)mapArray.get(currentMapIndex).clone()));
+               }
+                  catch (CloneNotSupportedException ce){
+                     ce.printStackTrace();
+                  }
                if (!entryXField.getText().matches("^\\d*$") || entryXField.getText().length() == 0) {
                   entryXField.setText(entryX+"");
                }  
@@ -1437,7 +1526,12 @@
             int result = JOptionPane.showConfirmDialog(null, myPanel, 
                "Enemy Properties", JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
-             
+               try{
+                  undoStack.push(new MapChange(currentMapIndex, (Map)mapArray.get(currentMapIndex).clone()));
+               }
+                  catch (CloneNotSupportedException ce){
+                     ce.printStackTrace();
+                  }
                if (!xField.getText().matches("^\\d*$") || xField.getText().length() == 0) {
                   xField.setText(x+"");
                }  
@@ -1622,6 +1716,12 @@
             int result = JOptionPane.showConfirmDialog(null, myPanel, 
                "Map Properties - ID: " + _index, JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
+               try{
+                  undoStack.push(new MapChange(_index, (Map)mapArray.get(_index).clone()));
+               }
+                  catch (CloneNotSupportedException ce){
+                     ce.printStackTrace();
+                  }
                if(!nameField.getText().matches(".*\\w.*")){
                   nameField.setText("BLANK");
                }
