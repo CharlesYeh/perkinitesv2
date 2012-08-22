@@ -24,11 +24,19 @@
 		public var auraRange:int = 0;
 		public var auraMult:Number = 0;
 		
+		/** amount of health to add for heal */
+		public var healAdd:int = 0;
+		
+		/** 1 = heal all of missing health */
+		public var healMissingMult:Number = 0;
+		
+		public var invincibility:Boolean = false;
+		
 		/** the number of frames this buff will last */
 		public var duration:int;
 		
 		public function parseData(obj:Object):void {
-			var fields:Array = new Array("defenseMult", "defenseAdd", "rangeMult", "rangeAdd", "stun", "poisonMult", "poisonAdd", "detect", "vanish", "auraRange", "auraMult", "duration");
+			var fields:Array = new Array("defenseMult", "defenseAdd", "rangeMult", "rangeAdd", "stun", "poisonMult", "poisonAdd", "detect", "vanish", "auraRange", "auraMult", "invincibility", "duration");
 			
 			for (var i:String in fields) {
 				var key:String = fields[i];

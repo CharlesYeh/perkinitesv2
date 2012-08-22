@@ -25,7 +25,13 @@
 			
 			"range": 200,
 			"cd": 10,
-			"radius": 10
+			"radius": 10,
+			
+			"buffs": {
+				"enemies": {
+					
+				}
+			}
 		},
 		{
 			"name": "Graceful Dodge",

@@ -7,11 +7,11 @@
 	 */
 	public class AttackCone extends Attack {
 		/** the width of the cone in radians */
-		public var radians:Number;
+		public var angle:Number;
 		
 		override public function parseData(obj:Object):void {
 			super.parseData(obj);
-			radians = obj.radians;
+			angle = obj.angle;
 		}
 	}
 }

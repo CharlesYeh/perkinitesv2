@@ -14,8 +14,13 @@
 		/** dictionary of "item name" -> "item quantity owned" */
 		public var items:Dictionary = new Dictionary();
 		
+		/** character level ups achieved */
+		public var levelUps:int;
+		
+		/** set of the unlocked teams */
 		public var unlockedTeams:Dictionary = new Dictionary();
 		
+		/** map position of the player */
 		public var map:String;
 		public var x:int;
 		public var y:int;

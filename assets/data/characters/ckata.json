@@ -33,12 +33,14 @@
 		},
 		{
 			"name": "Coffee Boost",
-			"type": "AttackPoint",
+			"type": "AttackSmartcast",
 			"icon": "Icon - Coffee Boost.png",
 			"description": "Drink coffee, gaining a small boost.",
 			
 			"range": 250,
 			"cd": 20,
+			
+			"goToCastPoint": true,
 			
 			"buffs": {
 				"self": {

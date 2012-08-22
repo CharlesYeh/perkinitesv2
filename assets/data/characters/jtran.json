@@ -16,7 +16,7 @@
 	"abilities": [
 		{
 			"name": "Arrow Control",
-			"type": "AttackPoint",
+			"type": "AttackSmartcast",
 			"icon": "Icon - Arrow Control.png",
 			"description": "Four arrows appear that home towards the closest enemy.",
 			

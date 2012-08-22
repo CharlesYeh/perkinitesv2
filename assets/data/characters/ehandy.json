@@ -33,7 +33,7 @@
 		},
 		{
 			"name": "Awkward Stare",
-			"type": "AttackCone",
+			"type": "AttackSmartcast",
 			"icon": "Icon - Awkward Stare.png",
 			"description": "Stun all enemies by giving them an awkward Eric stare.",
 			
@@ -41,7 +41,13 @@
 			"dmgRatio": 50,
 			
 			"range": 200,
-			"cd": 20
+			"cd": 20,
+			
+			"buffs": {
+				"enemies": {
+					"stunDuration": 20
+				}
+			}
 		}
 	]
 }
