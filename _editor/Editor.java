@@ -1,5 +1,6 @@
    package _editor;
    
+   import java.awt.image.BufferedImage;
    import java.lang.reflect.Type;
 
    import com.google.gson.Gson;
@@ -52,7 +53,7 @@
       
       public static JButton saveButton = new JButton("Save");
       public static JButton mapModeButton = new JButton("Map Mode");
-      public static JButton NPCModeButton = new JButton("NPC Mode");
+      public static JButton NPCModeButton = new JButton("Object Mode");
       public static JButton pencilButton = new JButton("Pencil");
       public static JButton rectangleButton = new JButton("Rectangle");
       public static JButton fillButton = new JButton("Fill");
@@ -82,7 +83,7 @@
       
       //Properties stuff
    	
-      public static String[] BGMs = {"", "Exceed the Sky.mp3", "Fight Back!.mp3", "P.S.F.mp3", "perkinite panic!!.mp3"};
+      public static String[] BGMs;
       public static String[] BGSs = {""};
       public static String[] tilesets;
       public static String[] enemies;
@@ -105,7 +106,7 @@
          frame = new JFrame("Perkinites Editor! :)");
          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       	
-         //readMapXML();
+         BGMs = MapJSONReader.readBGMJSON();
          enemies = MapJSONReader.readEnemyJSON();
          tilesets = MapJSONReader.readTilesetJSON();
          mapArray = MapJSONReader.readMapArrayJSON();
@@ -135,14 +136,9 @@
          tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
       
          JComponent panel2 = makeTextPanel("Panel #2");
-         tabbedPane.addTab("Enemies", null, panel2,
-                  "Brings up all the possible enemies!");
-         tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
-      
-         JComponent panel3 = makeTextPanel("Panel #3");
-         tabbedPane.addTab("Doodads", null, panel3,
+         tabbedPane.addTab("Doodads", null, panel2,
                   "Brings up all the possible objects!");
-         tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);
+         tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
       	
          frame.setLayout(new BorderLayout());
          frame.add(toolPanel, BorderLayout.PAGE_START);
@@ -215,12 +211,13 @@
          NPCModeButton.addActionListener(
                new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
+                  
                      mapModeButton.setEnabled(true);
                      NPCModeButton.setEnabled(false);
                      pencilButton.setEnabled(false);
                      rectangleButton.setEnabled(false);
                      fillButton.setEnabled(false);
-                     selectButton.setEnabled(false);
+                     //selectButton.setEnabled(false);
                      mapMode = false;
                      repaintMap(currentMapIndex);
                   }
@@ -405,6 +402,37 @@
                   JLabel tile = tileMap[y][x];
                   mapPanel.remove(tile);
                   Icon enemyIcon = createImageIcon("\\Objects\\enemy.png");
+                  int angle = 0;
+                  switch(enemy.getDirection()){
+                     case "down":
+                        angle = 0;
+                        break;
+                     case "right":
+                        angle = 270;
+                        break;
+                     case "up":
+                        angle = 180;
+                        break;
+                     case "left":
+                        angle = 90;
+                        break;
+                     default: 
+                        angle = 0;
+                        break;
+                  
+                  }
+                  int w = enemyIcon.getIconWidth();
+                  int h = enemyIcon.getIconHeight();
+                  BufferedImage bi = new BufferedImage(w,h,
+                      BufferedImage.TYPE_INT_RGB);
+                  Graphics2D bg = bi.createGraphics();
+                  bg.rotate(Math.toRadians(angle), w/2, h/2);
+                  bg.drawImage(((ImageIcon)enemyIcon).getImage(),0,0,w, h,
+                     0,0,w, h, null);
+               
+                  bg.dispose();//cleans up resources
+                  enemyIcon = (new ImageIcon(bi));
+                       
                   Icon tileIcon = createImageIcon("\\Tileset_"+tilesets[currentTilesetIndex]+"\\Tile"+mapMatrix[y][x]+".png");
                 
                   tile = new JLabel(new CompoundIcon(CompoundIcon.Axis.Z_AXIS, 0, CompoundIcon.CENTER, CompoundIcon.CENTER, tileIcon, enemyIcon));
@@ -536,6 +564,7 @@
       
       }
       public static void copyObject(){
+         System.out.println("COPY: (" + rs.x + ", " + rs.y + ")");
          if(rs.x != -1 && rs.y != -1 && !mapMode){
             Map map = mapArray.get(currentMapIndex);
             int index = -1;
@@ -551,6 +580,7 @@
          if(rs.x != -1 && rs.y != -1 && !mapMode){
             Map map = mapArray.get(currentMapIndex);
             int index = -1;
+            Point rsCopy = new Point(rs.x, rs.y);
             if(!(tileMap[rs.y][rs.x].getIcon() instanceof CompoundIcon)){
                if(copiedObject instanceof Teleport){
                   ArrayList<Teleport> teleports = map.getTeleports();
@@ -595,6 +625,10 @@
                      }
                
                }
+               rs = rsCopy;
+               tileMap[rs.y][rs.x].setBorder(whiteline);
+               TileNPCListener ml = (TileNPCListener)tileMap[rs.y][rs.x].getMouseListeners()[0];
+               ml.updateSuperlabel();
             }
          }
       }
@@ -724,6 +758,7 @@
       
       public static class SaveListener implements ActionListener{
          public void actionPerformed(ActionEvent e){
+            superlabel.setText("Your data has been saved. :)");
             for(int i = 0; i < mapArray.size(); i++){
                Map map = mapArray.get(i);
                map.updateMapCode();
@@ -998,6 +1033,17 @@
             return _object;
          }
          public void mousePressed(MouseEvent e) {
+                    
+            JLabel tile = tileMap[_y][_x];
+            if(rs.y != -1 && rs.x != -1)
+               tileMap[rs.y][rs.x].setBorder(null);
+           
+            _tile.setBorder(whiteline);
+            rs = new Point(_x, _y);
+            re = new Point(_x, _y);
+            updateSuperlabel();       
+            selectedTileObject = _object;
+            
             if(e.getClickCount() >= 2){
             
                if(_object == null){
@@ -1014,16 +1060,6 @@
                }
             }
             mouseDown = true;
-           
-            JLabel tile = tileMap[_y][_x];
-            if(rs.y != -1 && rs.x != -1)
-               tileMap[rs.y][rs.x].setBorder(null);
-           
-            _tile.setBorder(whiteline);
-            rs = new Point(_x, _y);
-            re = new Point(_x, _y);
-            updateSuperlabel();       
-            selectedTileObject = _object;
          }
          public void mouseReleased(MouseEvent e){
             //System.out.println(e);
@@ -1106,6 +1142,101 @@
          public void mouseDragged(MouseEvent e){
          }
          public void mouseMoved(MouseEvent e){
+         }
+         public void mouseClicked(MouseEvent e){
+         
+            if(e.getButton() == 3){
+               if(_object == null){
+                     
+                  JPopupMenu rcMenu = new JPopupMenu();
+                  JMenuItem menuItem;
+                  	
+                  menuItem = new JMenuItem("Create Teleport");
+                  menuItem.addActionListener( 
+                        new ActionListener() {
+                           public void actionPerformed(ActionEvent e) {
+                              teleportPopup(Properties.CREATE);
+                           }
+                        });
+                  rcMenu.add(menuItem);
+                  menuItem = new JMenuItem("Create Enemy");
+                  menuItem.addActionListener( 
+                        new ActionListener() {
+                           public void actionPerformed(ActionEvent e) {
+                              enemyPopup(Properties.CREATE);
+                           }
+                        });  rcMenu.add(menuItem);
+                  menuItem = new JMenuItem("Create NPC");
+                  rcMenu.add(menuItem);  
+                  menuItem.addActionListener( 
+                        new ActionListener() {
+                           public void actionPerformed(ActionEvent e) {
+                              npcPopup(Properties.CREATE);
+                           }
+                        });
+                  if(copiedObject != null){
+                     menuItem = new JMenuItem("Paste");
+                     rcMenu.add(menuItem);  
+                     menuItem.addActionListener( 
+                           new ActionListener() {
+                              public void actionPerformed(ActionEvent e) {
+                                 pasteObject();
+                              }
+                           });
+                  
+                  }
+                  
+                  rcMenu.show(e.getComponent(),e.getX(), e.getY());
+               }
+               else if(_object != null){
+               
+                  JPopupMenu rcMenu = new JPopupMenu();
+                  JMenuItem menuItem;
+                  	
+                  menuItem = new JMenuItem("Edit Object");
+                  menuItem.addActionListener( 
+                        new ActionListener() {
+                           public void actionPerformed(ActionEvent e) {
+                              if(_object instanceof Teleport){
+                                 teleportPopup(Properties.CHANGE);
+                              }
+                              else if(_object instanceof Enemy){
+                                 enemyPopup(Properties.CHANGE);
+                              }
+                              else if(_object instanceof NPC){
+                                 npcPopup(Properties.CHANGE);
+                              }
+                           }
+                        });
+                  rcMenu.add(menuItem);
+                  menuItem = new JMenuItem("Cut");
+                  menuItem.addActionListener( 
+                        new ActionListener() {
+                           public void actionPerformed(ActionEvent e) {
+                              cutObject();
+                           }
+                        });  rcMenu.add(menuItem);
+                  menuItem = new JMenuItem("Copy");
+                  rcMenu.add(menuItem);  
+                  menuItem.addActionListener( 
+                        new ActionListener() {
+                           public void actionPerformed(ActionEvent e) {
+                              copyObject();
+                           }
+                        });
+                  menuItem = new JMenuItem("Delete");
+                  rcMenu.add(menuItem);  
+                  menuItem.addActionListener( 
+                        new ActionListener() {
+                           public void actionPerformed(ActionEvent e) {
+                              deleteObject();
+                           }
+                        });
+               
+                  
+                  rcMenu.show(e.getComponent(),e.getX(), e.getY());
+               }
+            }
          }
          public void updateSuperlabel(){
             if(_object == null){
@@ -1232,7 +1363,6 @@
                }
                
                int[][] exitMapMatrix = mapArray.get(mapList.getSelectedIndex()).getMapMatrix();
-               System.out.println(exitMapMatrix[0].length + " " + exitMapMatrix.length);
                if(eX2 < 0 || eX2 >=  exitMapMatrix[0].length){
                   eX2 = exitX;
                }
@@ -1262,7 +1392,12 @@
                map.setTeleports(teleports);
                
                repaintMap(currentMapIndex);
+               rs = new Point(eX1, eY1);
+               re = new Point(eX1, eY1);
+               updateSuperlabel();
             }
+            
+            tileMap[rs.y][rs.x].setBorder(whiteline);
          }
          public void enemyPopup(Properties p){
             int x = _x;
@@ -1341,79 +1476,84 @@
                map.setEnemies(es);
                
                repaintMap(currentMapIndex);
+               rs = new Point(x1, y1);
+               re = new Point(x1, y1);
+               tileMap[rs.y][rs.x].setBorder(whiteline);
+               updateSuperlabel();
             }
          }
          
          public void npcPopup(Properties p){
-            int x = _x;
-            int y = _y;
-            Map map = mapArray.get(currentMapIndex);
-            
-                   
-            Border blackline = BorderFactory.createLineBorder(Color.black);
-            
-            JPanel myPanel = new JPanel();  
-            myPanel.setLayout(new BorderLayout());
-            
-            JPanel statPanel = new JPanel();
-            statPanel.setBorder(blackline);
-            
-            JTextField spriteField = new JTextField("", 20);
-            String[] dirArray = {"down", "right", "up", "left"};
-            JComboBox dirList = new JComboBox(dirArray);
-            
-            if(p == Properties.CHANGE){
-               spriteField.setText( ((NPC)_object).getSprite());
-               dirList.setSelectedIndex( Arrays.asList(dirArray).indexOf( ((NPC)_object).getDirection()));
-            }
-            else if(p == Properties.CREATE){
-               dirList.setSelectedIndex(0);
-            }
-            
-            JTextField xField = new JTextField(x+"", 20);
-            JTextField yField = new JTextField(y+"", 20);
-            
-         	
+            // int x = _x;
+            // int y = _y;
+            // Map map = mapArray.get(currentMapIndex);
+         //    
+         //           
+            // Border blackline = BorderFactory.createLineBorder(Color.black);
+         //    
+            // JPanel myPanel = new JPanel();  
+            // myPanel.setLayout(new BorderLayout());
+         //    
+            // JPanel statPanel = new JPanel();
+            // statPanel.setBorder(blackline);
+         //    
+            // JTextField spriteField = new JTextField("", 20);
+            // String[] dirArray = {"down", "right", "up", "left"};
+            // JComboBox dirList = new JComboBox(dirArray);
+         //    
+            // if(p == Properties.CHANGE){
+               // spriteField.setText( ((NPC)_object).getSprite());
+               // dirList.setSelectedIndex( Arrays.asList(dirArray).indexOf( ((NPC)_object).getDirection()));
+            // }
+            // else if(p == Properties.CREATE){
+               // dirList.setSelectedIndex(0);
+            // }
+         //    
+            // JTextField xField = new JTextField(x+"", 20);
+            // JTextField yField = new JTextField(y+"", 20);
+         //    
+         // 	
+         // 
+            // statPanel.setLayout(new GridLayout(8, 1));
+            // statPanel.add(new JLabel("Sprite:"));
+            // statPanel.add(spriteField);
+            // statPanel.add(new JLabel("Direction:"));
+            // statPanel.add(dirList);   
+            // statPanel.add(new JLabel("X:"));
+            // statPanel.add(xField);
+            // statPanel.add(new JLabel("Y:"));
+            // statPanel.add(yField);
+         //    
+            // myPanel.add(statPanel, BorderLayout.LINE_START);
+         //    
+            // JPanel actionsPanel = new JPanel();
+            // actionsPanel.setBorder(blackline);
+            // actionsPanel.setLayout(new BorderLayout());
+         //    
+            // DefaultListModel model = new DefaultListModel();
+            // final JList list = new JList(model);
+         // 
+            // if(p == Properties.CHANGE){
+            //    // ArrayList<NPCAction> actions = ((NPC)(_object)).getActions();
+            //    // for(int i = 0; i < actions.size(); i++){
+            //       // model.add(i, actions.get(i).getDisplay());
+            //    // }
+            // }
+            // else if(p == Properties.CREATE){
+               // model.add(0, "\t\t\t\t");
+            // }
+            // actionsPanel.add(new JLabel("List of Actions :)"), BorderLayout.PAGE_START);
+            // actionsPanel.add(list, BorderLayout.CENTER);
+            // myPanel.add(actionsPanel, BorderLayout.LINE_END);
+         //                      	         	
+            // int result = JOptionPane.showConfirmDialog(null, myPanel, 
+               // "NPC Properties", JOptionPane.OK_CANCEL_OPTION);  
+         //       
+            // if (result == JOptionPane.OK_OPTION) {
+            // 	
+            // }    
          
-            statPanel.setLayout(new GridLayout(8, 1));
-            statPanel.add(new JLabel("Sprite:"));
-            statPanel.add(spriteField);
-            statPanel.add(new JLabel("Direction:"));
-            statPanel.add(dirList);   
-            statPanel.add(new JLabel("X:"));
-            statPanel.add(xField);
-            statPanel.add(new JLabel("Y:"));
-            statPanel.add(yField);
-            
-            myPanel.add(statPanel, BorderLayout.LINE_START);
-            
-            JPanel actionsPanel = new JPanel();
-            actionsPanel.setBorder(blackline);
-            actionsPanel.setLayout(new BorderLayout());
-            
-            DefaultListModel model = new DefaultListModel();
-            final JList list = new JList(model);
-         
-            if(p == Properties.CHANGE){
-               // ArrayList<NPCAction> actions = ((NPC)(_object)).getActions();
-               // for(int i = 0; i < actions.size(); i++){
-                  // model.add(i, actions.get(i).getDisplay());
-               // }
-            }
-            else if(p == Properties.CREATE){
-               model.add(0, "\t\t\t\t");
-            }
-            actionsPanel.add(new JLabel("List of Actions :)"), BorderLayout.PAGE_START);
-            actionsPanel.add(list, BorderLayout.CENTER);
-            myPanel.add(actionsPanel, BorderLayout.LINE_END);
-                              	         	
-            int result = JOptionPane.showConfirmDialog(null, myPanel, 
-               "NPC Properties", JOptionPane.OK_CANCEL_OPTION);  
-               
-            if (result == JOptionPane.OK_OPTION) {
-            	
-            }    
-         
+            updateSuperlabel();
          }
       }     
    

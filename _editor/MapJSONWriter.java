@@ -103,13 +103,13 @@
                catch (IOException e) {
                   e.printStackTrace();
                }
-            for(int i = 0; i < 1; i++){
+            for(int i = 0; i < mapArray.size(); i++){
                Map map = mapArray.get(i);
             
                String json = gson.toJson(map);
             
                try {
-                  FileWriter writer = new FileWriter(path + map.getID() + "_c.json");
+                  FileWriter writer = new FileWriter(path + map.getID() + ".json");
                   writer.write(json);
                   writer.close();
                

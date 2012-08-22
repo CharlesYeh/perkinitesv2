@@ -25,6 +25,52 @@
    import java.io.IOException;
    public class MapJSONReader{
    
+      public static String[] readBGMJSON(){
+         ArrayList<String> bgms = new ArrayList<String>();
+         bgms.add("");
+         Gson gson = new Gson();
+         
+         File dir1 = new File(".");
+         try {
+            String path = dir1.getCanonicalPath() + "\\assets\\data\\maps\\";
+           
+            try {
+            
+               JsonReader reader = new JsonReader(new FileReader(path + "bgmusic.json"));
+               
+               reader.beginObject();
+               reader.setLenient(true);
+               String name = reader.nextName();
+               reader.beginArray();
+               while (reader.hasNext()) {
+                  reader.beginObject();
+                  while(reader.hasNext()){
+                     name = reader.nextName();
+                     if(name.equals("name")){
+                        bgms.add(reader.nextString());
+                     }
+                     else{
+                        reader.skipValue();
+                     }
+                  }
+                  reader.endObject();
+               }
+               reader.endArray();
+               reader.endObject();
+               reader.close();
+            
+            }
+               catch(FileNotFoundException e){
+                  e.printStackTrace();
+               }
+         }
+            catch(IOException e){
+               e.printStackTrace();
+            }
+            
+         return bgms.toArray(new String[bgms.size()]);
+      }
+   
       public static String[] readEnemyJSON(){
          ArrayList<String> enemies = new ArrayList<String>();
          Gson gson = new Gson();
@@ -437,6 +483,7 @@
                            
                         while (reader.hasNext()) {
                            String id = "";
+                           String direction = "";
                            Point position = new Point(0,0);
                            int x = 0;
                            int y = 0;
@@ -449,6 +496,8 @@
                                  case "id":
                                     id = reader.nextString();
                                     break;
+                                 case "direction":
+                                    direction = reader.nextString();
                                  case "x":
                                     x = reader.nextInt();
                                     break;
@@ -462,7 +511,7 @@
                                                               
                            }
                            position = new Point(x, y);
-                           map.addEnemy(new Enemy(id, position));
+                           map.addEnemy(new Enemy(id, direction, position));
                            reader.endObject();
                         }
                         reader.endArray();
