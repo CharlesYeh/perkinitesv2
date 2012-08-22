@@ -341,6 +341,7 @@
          rs = new Point(-1, -1);
          re = new Point(-1, -1);
          superlabel.setText("I tell you stuff!");
+         
          if(currentMapIndex > -1){
             mapPanel.removeAll();
             mapPanel.setLayout(new GridBagLayout());
