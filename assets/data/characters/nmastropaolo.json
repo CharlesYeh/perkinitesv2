@@ -15,18 +15,6 @@
 	"weapon": "Claws",
 	"abilities": [
 		{
-			"name": "Claw Attack",
-			"type": "AttackPoint",
-			"icon": "Icon - Claw Attack.png",
-			"description": "Deal heavy damage to a single targeted enemy.",
-			
-			"dmgBase": 50,
-			"dmgRatio": 50,
-			
-			"radius": 50,
-			"cd": 5
-		},
-		{
 			"name": "Shopping Spree",
 			"type": "AttackSkillshot",
 			"icon": "Icon - Shopping Spree.png",
@@ -42,6 +30,19 @@
 			"speed": 450,
 			
 			"stopAtEnemy": true
+		},
+		{
+			"name": "Claw Attack",
+			"type": "AttackSmartcast",
+			"icon": "Icon - Claw Attack.png",
+			"description": "Deal heavy damage to a single targeted enemy.",
+			
+			"dmgBase": 50,
+			"dmgRatio": 50,
+			"cd": 5,
+			
+			"atCaster": true,
+			"radius": 50
 		}
 	]
 }

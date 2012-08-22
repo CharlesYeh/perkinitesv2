@@ -16,7 +16,7 @@
 	"abilities": [
 		{
 			"name": "Frying Pan Smash",
-			"type": "AttackPoint",
+			"type": "AttackCone",
 			"icon": "Icon - Frying Pan Smash.png",
 			"description": "Smack that enemy with yo' fryin' pan.",
 			
@@ -24,11 +24,13 @@
 			"dmgRatio": 50,
 			
 			"range": 50,
-			"cd": 10
+			"cd": 10,
+			
+			"angle": 90
 		},
 		{
 			"name": "Ramen Boost",
-			"type": "AttackPoint",
+			"type": "AttackSmartcast",
 			"icon": "Icon - Ramen Boost.png",
 			"description": "Eat dat delicious ramen.",
 			
@@ -36,7 +38,14 @@
 			"dmgRatio": 50,
 			
 			"range": 250,
-			"cd": 20
+			"cd": 20,
+			
+			"buffs": {
+				"team": {
+					"movementMult": 1.5,
+					"duration": 40
+				}
+			}
 		}
 	]
 }

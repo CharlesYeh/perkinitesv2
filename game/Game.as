@@ -1,13 +1,17 @@
 ﻿package game {
+	import flash.display.MovieClip;
+	
 	import db.EnemyDatabase;
 	import db.MapDatabase;
 	import db.CharacterDatabase;
 	
+	import db.dbData.CharacterData;
+	
 	import game.progress.PlayerProgress;
 	
 	import events.GameEventDispatcher;
-	import flash.display.MovieClip;
-	import db.dbData.CharacterData;
+	
+	import units.Perkinite;
 
 	public class Game {
 		public static var eventDispatcher:GameEventDispatcher;
@@ -49,14 +53,16 @@
 		public static function startGameWorld(container:MovieClip):void {
 			gamePause = false;
 			
+			team = new Array();
+			
 			// create players
 			var teamDat:Array = dbChar.getTeamCharacterData(teamIndex);
 			Controls.startGameInputs();
 			for (var i:String in teamDat) {
 				var cdat:CharacterData = teamDat[i];
 				
-				//var char:Perkinite = new Perkinite(cdat);
-				//team.push(char);
+				var char:Perkinite = new Perkinite(cdat);
+				team.push(char);
 			}
 			
 			// create map/world

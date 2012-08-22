@@ -33,12 +33,24 @@
 		},
 		{
 			"name": "Coffee Boost",
-			"type": "AttackPoint",
+			"type": "AttackSmartcast",
 			"icon": "Icon - Coffee Boost.png",
 			"description": "Drink coffee, gaining a small boost.",
 			
 			"range": 250,
-			"cd": 20
+			"cd": 20,
+			
+			"goToCastPoint": true,
+			
+			"buffs": {
+				"self": {
+					"movementMult": 1.25,
+					"attackAdd": -30
+				},
+				"allies": {
+					"movementAdd": 50
+				}
+			}
 		}
 	]
 }

@@ -16,24 +16,21 @@
 	"abilities": [
 		{
 			"name": "Jade Fang",
-			"type": "AttackSkillshot",
+			"type": "AttackCone",
 			"icon": "Icon - Jade Fang.png",
 			"description": "Throw two daggers at a target.",
 			
 			"dmgBase": 50,
 			"dmgRatio": 50,
 			
-			"range": 200,
+			"range": 50,
 			"cd": 10,
 			
-			"width": 50,
-			"speed": 430,
-			
-			"stopAtEnemy": true
+			"angle": 90
 		},
 		{
 			"name": "Astral Arts",
-			"type": "AttackPoint",
+			"type": "AttackSmartcast",
 			"icon": "Icon - Astral Arts.png",
 			"description": "Gain temporary invincibility and speed for a longer time period.",
 			
@@ -41,7 +38,14 @@
 			"dmgRatio": 50,
 			
 			"range": 250,
-			"cd": 20
+			"cd": 20,
+			
+			"buffs": {
+				"team": {
+					"invincibility": true,
+					"duration": 20
+				}
+			}
 		}
 	]
 }

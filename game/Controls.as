@@ -32,13 +32,13 @@
 		 */
 		public static function rightClickDown(x:int, y:int):void {
 			if (acceptRightClicks) {
-				showGuides(1, new Point(x, y));
+				showGuides(1, KeyDown.mousePoint);
 			}
 		}
 		
 		public static function rightClickUp(x:int, y:int):void {
 			if (acceptRightClicks) {
-				castAbilities(1, new Point(x, y));
+				castAbilities(1, KeyDown.mousePoint);
 			}
 		}
 		

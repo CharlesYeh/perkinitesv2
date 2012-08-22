@@ -1,4 +1,4 @@
-﻿package game {
+﻿package ui {
 	import flash.display.MovieClip;
 	
 	public class GameHUD extends MovieClip {

@@ -12,7 +12,7 @@
 		public static const ABILITY_PACKAGE:String = "attacks.";
 		
 		/** compile these classes for attack types */
-		public static const abilityClasses:Array = new Array(AttackSkillshot, AttackPoint, AttackDashSkillshot, AttackCone);
+		public static const abilityClasses:Array = new Array(AttackSkillshot, AttackPoint, AttackDashSkillshot, AttackCone, AttackSmartcast);
 		
 		/** dictionary of "name" -> "class definition" */
 		public static var abilityByName:Dictionary = new Dictionary();
@@ -26,7 +26,7 @@
 		public static function getAbility(abilityData:Object):AttackData {
 			var abilityName = abilityData.name;
 			
-			if (!abilities.hasOwnProperty(abilityData)) {
+			if (!abilities.hasOwnProperty(abilityName)) {
 				abilities[abilityName] = AttackData.createAttack(abilityData);
 			}
 			
