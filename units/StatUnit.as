@@ -10,6 +10,7 @@
 	import db.AbilityDatabase;
 	import db.dbData.UnitData;
 	import attacks.Attack;
+	import game.progress.CharacterProgress;
 
 	public class StatUnit extends GameUnit {
 		
@@ -31,9 +32,9 @@
 		
 		//----------STATS VARS---------
 		public var unitData:UnitData;
+		public var progressData:CharacterProgress;
 		
 		public var cooldowns:Array;
-		public var healthPoints:int;
 		var healthbar:MovieClip;
 		//--------END STATS VARS-------
 		
@@ -52,12 +53,13 @@
 			super();
 			
 			unitData = udat;
+			progressData = new CharacterProgress();
 			
 			animLabel = ANIM_STANDING;
 			
 			cooldowns = new Array(10);
 			
-			healthPoints = unitData.health;
+			progressData.health = unitData.health;
 			
 			// draw health bar
 			healthbar = new MovieClip();
@@ -75,12 +77,12 @@
 			healthbar.graphics.drawRect(sx, 30, WIDTH, 5);
 			
 			healthbar.graphics.beginFill(0x33FF33, .7);
-			healthbar.graphics.drawRect(sx, 30, WIDTH * healthPoints / unitData.health, 5);
+			healthbar.graphics.drawRect(sx, 30, WIDTH * progressData.health / unitData.health, 5);
 			healthbar.graphics.endFill();
 		}
 		
 		function takeDamage(dmg:int) {
-			healthPoints = Math.max(0, healthPoints - dmg);
+			progressData.health = Math.max(0, progressData.health - dmg);
 			drawHealthbar();
 		}
 		
@@ -289,6 +291,7 @@
 			
 			return true;
 		}
+		
 		function testSkillshotCollision(skillshot:MovieClip, abilityWidth:Number, damage:Number, stopAtFirst:Boolean):Boolean {
 			//var enemies = (isPlayer) ? MapManager.getAIUnits() : AIUnit.getTargets();
 			var enemies = new Array();

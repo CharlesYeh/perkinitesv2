@@ -1,9 +1,7 @@
 ﻿package game {
 	import util.*;
 	import tileMapper.*;
-	import db.MapDatabase;
-	import db.NPCDatabase;
-	import game.GameUnit;
+	import units.GameUnit;
 
 	import flash.geom.Point;
 	import flash.display.MovieClip;

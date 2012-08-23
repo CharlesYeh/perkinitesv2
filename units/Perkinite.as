@@ -7,7 +7,7 @@
 		public function Perkinite(charData:CharacterData) {
 			super(charData);
 			
-			healthPoints = unitData.health;
+			progressData.health = unitData.health;
 			setSpeed(unitData.speed);
 			
 			// load swf
