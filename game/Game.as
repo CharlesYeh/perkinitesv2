@@ -66,6 +66,7 @@
 			}
 			
 			// create map/world
+			MapManager.createWorld(playerProgress.map);
 			/*container.addChild(MapManager.mapClip);
 			container.setChildIndex(hud, numChildren - 1);
 			MapManager.loadMap(map, player, partner);

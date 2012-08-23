@@ -1,6 +1,9 @@
 ﻿package game {
 	import util.*;
 	import tileMapper.*;
+	
+	import db.MapDatabase;
+	
 	import units.GameUnit;
 
 	import flash.geom.Point;
@@ -11,38 +14,24 @@
 	import flash.utils.Timer;
 	import flash.events.TimerEvent;
 	import flashx.textLayout.operations.MoveChildrenOperation;
-	import aiunits.AISpawnPoint;
 	
 	import flash.net.SharedObject;
+	import db.dbData.MapData;
 
 	public class MapManager {
-		static const FINISH_SPAWN = "FINISH_SPAWN ";
-		
+		public static var map:Map;
 		public static var mapClip = new MovieClip();
-		public static var mapCode:String;
-		public static var mapName:String;
-
-		public static var mapNumber:int;
-		public static var mapWidth:Number;
-		public static var mapHeight:Number;
 		
-		static var telePoints:Array;
-		static var aiUnits:Array;
-		static var npcUnits:Array;
-
-		public static var trackUnit1:GameUnit, trackUnit2:GameUnit;
-
 		// for cutscene scrolling
-		public static var scrollDir = 0;
-		public static var speed		= 0;
-		public static var distance	= 0;	// distance so far
-		public static var totalDistance = 0;// distance to travel
-		public static var scrolling:Boolean = false;
-
 		public static var tileClings = new Array(false, false, false, true, true, false);
 		public static var sObject:SharedObject;
 
-		public static function loadMap(mapNum:int, unit1:GameUnit, unit2:GameUnit) {
+		public static function createWorld(mapName:String):void {
+			var mdat:MapData = Game.dbMap.getMapData(mapName);
+			map = new Map(mdat);
+		}
+
+		/*public static function loadMap(mapNum:int, unit1:GameUnit, unit2:GameUnit) {
 			sObject = SharedObject.getLocal("PERKINITES_MAPS");
 			
 			InteractiveTile.resetTiles();
@@ -53,9 +42,6 @@
 
 			ScreenRect.createScreenRect(new Array(mapClip), 640, 480);
 			mapClip.addEventListener(Event.ENTER_FRAME, scrollHandler);
-			
-			trackUnit1 = unit1;
-			trackUnit2 = unit2;
 			
 			return mapClip;
 		}
@@ -98,6 +84,7 @@
 			
 			return u;
 		}
+		
 		public static function deleteSpawn(u:AISpawnPoint) {
 			deleteEnemy(u);
 			if (u.healthPoints <= 0 && u.destroyable) {
@@ -105,13 +92,16 @@
 				sObject.data[FINISH_SPAWN + u.map + "_" + u.ptID] = true;
 			}
 		}
+		
 		// remove self from public array of units
 		public static function deleteEnemy(u:StatUnit) {
 			aiUnits.splice(aiUnits.indexOf(u), 1);
 			removeFromMapClip(u);
 		}
+		
 		public static function getAIUnits():Array {
-			return aiUnits;
+			//return aiUnits;
+			return null;
 		}
 		//-----------END AI UNITS-----------
 		public static function addToMapClip(mc:MovieClip) {
@@ -120,7 +110,7 @@
 		public static function removeFromMapClip(mc:MovieClip) {
 			mapClip.removeChild(mc);
 		}
-/*		public static function depthSortHandler(e) {
+		public static function depthSortHandler(e) {
 			var depthArray:Array = new Array();
 			for (var i:int = 0; i < mapClip.numChildren; i++) {
 				var child = mapClip.getChildAt(i);
@@ -139,7 +129,7 @@
 					mapClip.setChildIndex(depthArray[i], t);
 				}
 			}
-		}*/
+		}
 		public static function testTeleportPoints(su:StatUnit):MovieClip {
 			var sx = Math.floor(su.x / TileMap.TILE_SIZE);
 			var sy = Math.floor(su.y / TileMap.TILE_SIZE);
@@ -296,10 +286,10 @@
 		}
 		
 		public static function setEnemies() {
-			/*var e = new Enemy(5);
+			var e = new Enemy(5);
 			mapClip.addChild(e);
 			e.x = 4 * 32 + 16;
-			e.y = 9 * 32 + 16;*/
+			e.y = 9 * 32 + 16;
 		}
 
 
@@ -316,7 +306,7 @@
 		}
 
 		public static function stopScrolling() {
-			scrolling = false;
+			//scrolling = false;
 		}
 		public static function scrollHandler(e) {
 			// follow player
@@ -371,6 +361,6 @@
 			if (ScreenRect.getY() + 480 > mapHeight * 32) {
 				ScreenRect.setY(mapHeight * 32 - 480);
 			}
-		}
+		}*/
 	}
 }

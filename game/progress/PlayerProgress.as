@@ -45,8 +45,9 @@
 			return unlockedTeams.hasOwnProperty(team.join("_"));
 		}
 		
-		public function reset():void {
+		public function newGame():void {
 			id = "";
+			map = "perkins_2f";
 			completedSequences = new Array();
 			items = new Dictionary();
 			
@@ -55,10 +56,11 @@
 			unlockedTeams["JT_EH"] = true;
 		}
 		
-		public function load(soId:String):void {
+		public function loadGame(soId:String):void {
 			var prog:PlayerProgress = sharedObj.data[soId];
 			
 			id		= soId;
+			map		= prog.map;
 			completedSequences = prog.completedSequences;
 			items	= prog.items;
 			

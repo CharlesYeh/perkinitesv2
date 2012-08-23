@@ -27,7 +27,7 @@ function newGame(e:Event):void {
 	sound.play();
 	
 	clearTitleScreen();
-	Game.playerProgress.reset();
+	Game.playerProgress.newGame();
 	gotoAndStop("char_select");
 }
 

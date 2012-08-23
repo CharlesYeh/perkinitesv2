@@ -2,8 +2,13 @@
 	import flash.utils.getDefinitionByName;
 	import flash.net.URLRequest;
 	import flash.events.Event;
+	
 	import db.EnemyDatabase;
+	import db.dbData.EnemyData;
+	
 	import aiunits.*;
+	
+	import game.Game;
 	
 	public class AIUnit extends StatUnit {
 		var chaserange:Number;
@@ -14,8 +19,8 @@
 			
 			ID = id;
 			
-			healthPoints = healthMax = EnemyDatabase.getHP(ID);
-			setSpeed(EnemyDatabase.getSpeed(ID));
+			healthPoints = unitData.health;
+			setSpeed(unitData.speed);
 			
 			// load swf
 			loadSwf();
@@ -23,17 +28,12 @@
 			// TODO: remove event listener
 			addEventListener(Event.ENTER_FRAME, runnerAI);
 		}
-		public static function createAIUnit(id:int) {
-			//var AIClass:Class = getDefinitionByName("aiunits." + EnemyDatabase.getAI(id)) as Class;
-			//return new AIClass(id);
-			return new BasicAIUnit(id);
+		public static function createAIUnit(id:String) {
+			var edat:EnemyData = Game.dbEnemy.get
+			var AIClass:Class = getDefinitionByName("aiunits." + edat.ai) as Class;
+			return new AIClass(edat);
 		}
-		public static function setTargets(t:Array) {
-			targets = t;
-		}
-		public static function getTargets():Array {
-			return targets;
-		}
+		
 		override protected function deleteSelf() {
 			super.deleteSelf();
 			

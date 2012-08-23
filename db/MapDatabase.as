@@ -62,7 +62,7 @@
 			var mdat:MapData = new MapData();
 			mdat.parseData(dat);
 			
-			maps[dat.name] = mdat;
+			maps[dat.id] = mdat;
 		}
 		
 		public function getTileset(id:String):TilesetData {
@@ -71,6 +71,10 @@
 			}
 			
 			return tilesets[id];
+		}
+		
+		public function getMapData(id:String):MapData {
+			return maps[id];
 		}
 	}
 	
