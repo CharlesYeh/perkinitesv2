@@ -17,6 +17,7 @@
 	
 	import flash.net.SharedObject;
 	import db.dbData.MapData;
+	import db.dbData.TilesetData;
 
 	public class MapManager {
 		public static var map:Map;
@@ -26,25 +27,31 @@
 		public static var tileClings = new Array(false, false, false, true, true, false);
 		public static var sObject:SharedObject;
 
-		public static function createWorld(mapName:String):void {
+		public static function createWorld(mapName:String):MovieClip {
+			resetWorld();
+			
 			var mdat:MapData = Game.dbMap.getMapData(mapName);
+			var tdat:TilesetData = mdat.tilesetData;
+			
 			map = new Map(mdat);
+			
+			var prefix:String = "tiles.Tile_" + tdat.id + "_";
+			TileMap.createTileMap(mdat.code, mdat.height, mdat.width, GameConstants.TILE_SIZE, tdat.types, tdat.clings, prefix);
+			
+			// render tiles into map
+			TileMap.addTiles(map.m_tiles);
+			
+			return map;
 		}
-
-		/*public static function loadMap(mapNum:int, unit1:GameUnit, unit2:GameUnit) {
-			sObject = SharedObject.getLocal("PERKINITES_MAPS");
+		
+		public static function resetWorld():void {
+			TileMap.removeTiles(mapClip);
 			
 			InteractiveTile.resetTiles();
-			
-			mapNumber = mapNum;
-			loadMapData(mapNumber);
-			//setEnemies();
-
-			ScreenRect.createScreenRect(new Array(mapClip), 640, 480);
-			mapClip.addEventListener(Event.ENTER_FRAME, scrollHandler);
-			
-			return mapClip;
+			ScreenRect.createScreenRect(new Array(mapClip), GameConstants.WIDTH, GameConstants.HEIGHT);
 		}
+		
+		/*
 		//-------------AI UNITS-------------
 		public static function clearTelePoints() {
 			for (var a in telePoints) {

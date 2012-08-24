@@ -97,9 +97,11 @@
 		/**
 		 * load the sprite swf for this unit
 		 */
-		protected function getSprite() {}
+		protected function getSprite():URLRequest {
+			return new URLRequest(unitData.sprite);
+		}
 		
-		function completeLoad(e) {
+		function completeLoad(e):void {
 			loaded = true;
 			
 			swf.content.char.stop();

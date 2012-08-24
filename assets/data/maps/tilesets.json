@@ -2,15 +2,18 @@
 	"tilesets": [
 		{
 			"id": "perkins",
-			"types": ["s", "s", "s", "w", "w", "w", "w"]
+			"types": ["s", "s", "s", "w", "w", "w", "w"],
+			"clings": [false, false, false, false, false, false, false]
 		},
 		{
 			"id": "outdoors",
-			"types": ["s", "s", "s", "w", "w", "w", "w"]
+			"types": ["s", "s", "s", "w", "w", "w", "w"],
+			"clings": [false, false, false, false, false, false, false]
 		},
 		{
 			"id": "gradcenter",
-			"types": ["s", "s", "s", "w", "w", "w", "w"]
+			"types": ["s", "s", "s", "w", "w", "w", "w"],
+			"clings": [false, false, false, false, false, false, false]
 		}
 	]
 }

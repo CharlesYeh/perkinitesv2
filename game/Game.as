@@ -20,9 +20,10 @@
 		public static var dbMap:MapDatabase;
 		public static var dbChar:CharacterDatabase;
 		
+		/** info about the player's progress is stored here */
 		public static var playerProgress:PlayerProgress;
 		
-		/** player variables are stored here */
+		/** in-game player variables are stored here */
 		public static var player:Player;
 		
 		/** the index of team the player is playing with */
@@ -66,7 +67,9 @@
 			}
 			
 			// create map/world
-			MapManager.createWorld(playerProgress.map);
+			var world:MovieClip = MapManager.createWorld(playerProgress.map);
+			container.addChild(world);
+			
 			/*container.addChild(MapManager.mapClip);
 			container.setChildIndex(hud, numChildren - 1);
 			MapManager.loadMap(map, player, partner);
