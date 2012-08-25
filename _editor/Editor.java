@@ -506,9 +506,6 @@
             TILE.add("Tile change action key " + i);
             frame.getRootPane().getActionMap().put("Tile change action key " + i, new TileSelectAction(i-1));
          }
-        // String TILE1 = "Tile change action key";
-      
-      
       
       
          InputMap[] inputMaps = new InputMap[] {
@@ -517,14 +514,16 @@
                frame.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW),
                };
          for(InputMap i : inputMaps) {
-            for(int j = 1; j <= 35; j++){
+            for(int j = 1; j <= 36; j++){
                if(j <= 9)
                   i.put(KeyStroke.getKeyStroke(""+j), "Tile change action key " + j);
                else if(j == 10)
                   i.put(KeyStroke.getKeyStroke(""+0), "Tile change action key " + j);
                else
-                  i.put(KeyStroke.getKeyStroke(""+(char)(j+55)), "Tile change action key " + j);
+                  i.put(KeyStroke.getKeyStroke(""+(char)(j+54)), "Tile change action key " + j);
+             
             }
+            
          }
       }
       public static void changeSelectedTile(int tileIndex){
