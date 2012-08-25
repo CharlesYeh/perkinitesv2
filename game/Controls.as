@@ -16,6 +16,8 @@
 	import flash.geom.Point;
 	
 	public class Controls {
+		public static var MOVEMENT_DELTA = 10;
+		
 		public static var acceptRightClicks:Boolean = false;
 		public static var secondaryClick:Boolean = false;
 		
@@ -108,19 +110,23 @@
 		 * Move the leader, and have all other characters follow
 		 */
 		public static function handleGameInputs() {
+			var horz:int = 0;
+			var vert:int = 0;
+			
 			if (KeyDown.keyIsDown(Keyboard.W) || KeyDown.keyIsDown(Keyboard.UP)) {
-				
+				vert--;
 			}
 			if (KeyDown.keyIsDown(Keyboard.A) || KeyDown.keyIsDown(Keyboard.LEFT)) {
-				
+				horz--;
 			}
 			if (KeyDown.keyIsDown(Keyboard.S) || KeyDown.keyIsDown(Keyboard.DOWN)) {
-				
+				vert++;
 			}
 			if (KeyDown.keyIsDown(Keyboard.D) || KeyDown.keyIsDown(Keyboard.RIGHT)) {
-				
+				horz++;
 			}
 			
+			Game.moveTeam(horz * MOVEMENT_DELTA, vert * MOVEMENT_DELTA);
 		}
 		
 	}

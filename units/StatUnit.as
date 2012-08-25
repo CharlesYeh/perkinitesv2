@@ -5,6 +5,8 @@
 	import flash.display.MovieClip;
 	import flash.geom.Point;
 	
+	import game.GameConstants;
+	
 	import tileMapper.TileMap;
 	
 	import db.AbilityDatabase;
@@ -14,7 +16,7 @@
 
 	public class StatUnit extends GameUnit {
 		
-		static const DIRECTIONS:Array = new Array("left", "up", "right", "down");
+		static const DIRECTIONS:Array = new Array("east", "north", "east", "south");
 
 		static const ANIM_STANDING	= "standing";
 		static const ANIM_FF		= "friend_finale";
@@ -23,8 +25,8 @@
 		static const ANIM_ABILITY2	= "ability2";
 		static const ANIM_ABILITY3	= "ability3";
 		
+		/** the swf sprite asset */
 		var swf;
-		var deleteFunc:Function = null;
 		
 		var animLabel:String = ANIM_STANDING;
 		var animClip:MovieClip;
@@ -45,7 +47,6 @@
 		var prevLabel:String = ANIM_STANDING;
 		var usingAbility:Boolean	= false;
 		var disabledMovement:Boolean= false;
-		var forwardMovement:Boolean = false;
 		var forwardVector:Point = null;
 		//--------END FRAME VARS--------
 		
@@ -98,7 +99,7 @@
 		 * load the sprite swf for this unit
 		 */
 		protected function getSprite():URLRequest {
-			return new URLRequest(unitData.sprite);
+			return new URLRequest(GameConstants.PATH_SPRITES + unitData.sprite + GameConstants.SPRITES_EXT);
 		}
 		
 		function completeLoad(e):void {
@@ -136,7 +137,7 @@
 			disabledMovement = false;
 		}
 		public function beginForwardMovement() {
-			forwardMovement = true;
+			/*forwardMovement = true;
 			
 			var dx = castPoint.x - x;
 			var dy = castPoint.y - y;
@@ -144,11 +145,11 @@
 			dx = dx / d;
 			dy = dy / d;
 			
-			forwardVector = new Point(dx, dy);
+			forwardVector = new Point(dx, dy);*/
 		}
 		public function stopForwardMovement() {
-			forwardMovement = false;
-			clearPath();
+			/*forwardMovement = false;
+			clearPath();*/
 		}
 		public function dealDamage(abilityID:int) {
 			//castMouseTarget.takeDamage(AbilityDatabase.getAttribute(ID, abilityID, "Damage"));
@@ -324,6 +325,7 @@
 		 * @param e - Event.ENTER_FRAME
 		 */
 		override public function moveHandler(e:Event):void {
+			super.moveHandler(e);
 			// adjust cooldowns
 			/*for (var a = 0; a < cooldowns.length; a++) {
 				if (cooldowns[a] > 0)
@@ -428,19 +430,16 @@
 			}
 		}
 		
-		public function setDeleteFunction(func:Function) {
+		/*public function setDeleteFunction(func:Function) {
 			deleteFunc = func;
-		}
+		}*/
 		
-		protected function deleteSelf() {
-			if (deleteFunc != null) {
-				deleteFunc(this);
-			}
+		protected function deleteSelf():void {
 		}
 		
 		//make it stop running when transferring to a new map
-		public function destroy(){
+		/*public function destroy(){
 			deleteSelf();
-		}
+		}*/
 	}
 }

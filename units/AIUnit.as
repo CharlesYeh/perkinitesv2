@@ -32,7 +32,7 @@
 			return new AIClass(edat);
 		}
 		
-		override protected function deleteSelf() {
+		override protected function deleteSelf():void {
 			super.deleteSelf();
 			
 			removeEventListener(Event.ENTER_FRAME, runnerAI);

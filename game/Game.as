@@ -11,6 +11,7 @@
 	
 	import events.GameEventDispatcher;
 	
+	import units.StatUnit;
 	import units.Perkinite;
 
 	public class Game {
@@ -34,6 +35,11 @@
 		
 		public static var gamePause:Boolean = false;
 		
+		/** container movieclip for maps */
+		private static var container:MovieClip;
+		
+		private static var world:World;
+		
 		public static function init():void {
 			eventDispatcher = new GameEventDispatcher();
 			
@@ -51,7 +57,10 @@
 			teamIndex = index;
 		}
 		
-		public static function startGameWorld(container:MovieClip):void {
+		public static function startGameWorld(cont:MovieClip):void {
+			var START_SEPARATION:int = 15;
+			
+			container = cont;
 			gamePause = false;
 			
 			team = new Array();
@@ -59,40 +68,52 @@
 			// create players
 			var teamDat:Array = dbChar.getTeamCharacterData(teamIndex);
 			Controls.startGameInputs();
-			for (var i:String in teamDat) {
+			for (var i:int = 0; i < teamDat.length; i++) {
 				var cdat:CharacterData = teamDat[i];
 				
 				var char:Perkinite = new Perkinite(cdat);
+				char.x = GameConstants.TILE_SIZE * playerProgress.x + i * START_SEPARATION;
+				char.y = GameConstants.TILE_SIZE * playerProgress.y;
 				team.push(char);
 			}
 			
 			// create map/world
-			var world:MovieClip = MapManager.createWorld(playerProgress.map);
+			world = MapManager.createWorld(playerProgress.map, team);
 			container.addChild(world);
-			
-			/*container.addChild(MapManager.mapClip);
-			container.setChildIndex(hud, numChildren - 1);
-			MapManager.loadMap(map, player, partner);
-			MapManager.addToMapClip(player);
-			MapManager.addToMapClip(partner);*/
-			
-			//MapManager.setHeroPosition(player, partner, startPoint);
 		}
 		
 		public static function endGameWorld():void {
-			// clear characters
-			for (var i:String in team) {
-				team[i];
-			}
+			container.removeChild(world);
+			world = null;
 			
 			team = new Array();
 			
-			// clear map
-			/*MapManager.clearTelePoints();
-			MapManager.clearAIUnits();
-			MapManager.clearNPCUnits();
-			MapManager.removeFromMapClip(player);
-			MapManager.removeFromMapClip(partner);*/
+			MapManager.resetWorld();
+		}
+		
+		public static function moveTeam(horz:int, vert:int):void {
+			if (horz == 0 && vert == 0) {
+				return;
+			}
+			
+			var lead:StatUnit = team[0];
+			lead.moveDelta(horz, vert);
+			
+			for (var i:String in team) {
+				var u:StatUnit = team[i];
+				if (lead == u) {
+					continue;
+				}
+				
+				u.moveTo(lead.x, lead.y, true);
+			}
+		}
+		
+		public static function update():void {
+			Controls.handleGameInputs();
+			
+			// follow player
+			MapManager.update();
 		}
 	}
 }

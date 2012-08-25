@@ -47,7 +47,11 @@
 		
 		public function newGame():void {
 			id = "";
+			
 			map = "perkins_2f";
+			x = 5;
+			y = 10;
+			
 			completedSequences = new Array();
 			items = new Dictionary();
 			

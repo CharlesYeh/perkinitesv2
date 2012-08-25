@@ -13,64 +13,78 @@
 	import flash.ui.*;
 	import flash.utils.Timer;
 	import flash.events.TimerEvent;
-	import flashx.textLayout.operations.MoveChildrenOperation;
 	
 	import flash.net.SharedObject;
 	import db.dbData.MapData;
 	import db.dbData.TilesetData;
+	import units.StatUnit;
 
 	public class MapManager {
-		public static var map:Map;
-		public static var mapClip = new MovieClip();
+		public static var world:World;
 		
 		// for cutscene scrolling
 		public static var tileClings = new Array(false, false, false, true, true, false);
 		public static var sObject:SharedObject;
 
-		public static function createWorld(mapName:String):MovieClip {
+		public static var customClips:Array = new Array();
+
+		/**
+		 * @param	team	Array of StatUnits which are custom-added into the world
+		 */
+		public static function createWorld(mapName:String, team:Array):World {
 			resetWorld();
 			
 			var mdat:MapData = Game.dbMap.getMapData(mapName);
 			var tdat:TilesetData = mdat.tilesetData;
 			
-			map = new Map(mdat);
+			world = new World(mdat);
+			for (var i:String in team) {
+				world.addUnit(team[i]);
+			}
+			
+			// reset camera
+			ScreenRect.createScreenRect(new Array(world), GameConstants.WIDTH, GameConstants.HEIGHT);
 			
 			var prefix:String = "tiles.Tile_" + tdat.id + "_";
 			TileMap.createTileMap(mdat.code, mdat.height, mdat.width, GameConstants.TILE_SIZE, tdat.types, tdat.clings, prefix);
 			
 			// render tiles into map
-			TileMap.addTiles(map.m_tiles);
+			TileMap.addTiles(world.m_tiles);
 			
-			return map;
+			return world;
 		}
 		
 		public static function resetWorld():void {
-			TileMap.removeTiles(mapClip);
+			if (world != null) {
+				world.clearWorld();
+				TileMap.removeTiles(world.m_tiles);
+			}
 			
 			InteractiveTile.resetTiles();
-			ScreenRect.createScreenRect(new Array(mapClip), GameConstants.WIDTH, GameConstants.HEIGHT);
+		}
+		
+		public static function update():void {
+			var avgX:Number = 0;
+			var avgY:Number = 0;
+			
+			for (var i:String in Game.team) {
+				var u:StatUnit = Game.team[i];
+				avgX += u.x;
+				avgY += u.y;
+			}
+			
+			avgX /= Game.team.length;
+			avgY /= Game.team.length;
+			
+			var sx = avgX - GameConstants.WIDTH / 2;
+			var sy = avgY - GameConstants.HEIGHT / 2;
+			ScreenRect.easeScreen(new Point(sx, sy));
+			
+			checkScreenRect();
 		}
 		
 		/*
-		//-------------AI UNITS-------------
-		public static function clearTelePoints() {
-			for (var a in telePoints) {
-				var t = telePoints[a];
-				removeFromMapClip(t);
-			}
-			
-			telePoints = new Array();
-		}
-		public static function clearAIUnits() {
-			if (aiUnits != null) {
-				while (aiUnits.length > 0) {
-					var u = aiUnits[0];
-					u.destroy();
-				}
-			}
-			
-			aiUnits = new Array();
-		}
+		//-------------AI UNITS-------------\
 		public static function clearNPCUnits(){
 			for (var n in npcUnits){
 				var npc = npcUnits[n];
@@ -79,17 +93,6 @@
 			}
 			
 			npcUnits = new Array();
-		}
-		public static function createEnemy(id:int, ox, oy):StatUnit {
-			var u = AIUnit.createAIUnit(id);
-			u.x = ox;
-			u.y = oy;
-			u.setDeleteFunction(deleteEnemy);
-			
-			addToMapClip(u);
-			aiUnits.push(u);
-			
-			return u;
 		}
 		
 		public static function deleteSpawn(u:AISpawnPoint) {
@@ -151,92 +154,7 @@
 			
 			return null;
 		}
-		public static function loadMapData(mapNumber:int) {
-			stopScrolling();
-			TileMap.removeTiles(mapClip);
-			
-			var map:Map = MapDatabase.getMap(mapNumber);
-			mapCode = map.mapCode;
-			mapName = map.mapName;
-			
-			var tileset:String = MapDatabase.getTilesetName(map.tilesetID);
-			//-------------------------------######################
-			var tileTypes:Array = MapDatabase.getTileTypes(map.tilesetID);
-			
-			TileMap.createTileMap(mapCode, 32, tileTypes, tileClings, "Tile");
-			TileMap.addTiles(mapClip);
-
-			var firstSep = mapCode.indexOf(":");
-			var secSep = mapCode.indexOf(":", firstSep + 1);
-			mapWidth = parseInt(mapCode.substring(firstSep + 1, secSep));
-			mapHeight = parseInt(mapCode.substring(0, firstSep));
-			
-			// get map points
-			clearAIUnits();
-			clearNPCUnits();
-			preparePointArrays();
-			
-			// get teleport points
-			var ind1 = 0;
-			while (true) {
-				ind1 = mapCode.indexOf("(", ind1) + 1;
-				if (ind1 == 0)
-					break;
-				
-				var ind2 = mapCode.indexOf(",", ind1);
-				var ind3 = mapCode.indexOf(";", ind2 + 1);
-				var ind4 = mapCode.indexOf(",", ind3 + 1);
-				var ind5 = mapCode.indexOf(",", ind4 + 1);
-				var ind6 = mapCode.indexOf(")", ind1);
-				
-				var teleX = parseInt(mapCode.substring(ind1, ind2));
-				var teleY = parseInt(mapCode.substring(ind2 + 1, ind3));
-				
-				var destMap = parseInt(mapCode.substring(ind3 + 1, ind4));
-				var destX = parseInt(mapCode.substring(ind4 + 1, ind5));
-				var destY = parseInt(mapCode.substring(ind5 + 1, ind6));
-				
-				var mapX = (teleX + .5) * TileMap.TILE_SIZE;
-				var mapY = (teleY + .5) * TileMap.TILE_SIZE;
-				
-				addTelePoint(mapX, mapY, teleX, teleY, destMap, new Point(destX, destY));
-			}
-			
-			// get spawn points
-			var ptID = 0;
-			ind1 = 0;
-			while (true) {
-				ind1 = mapCode.indexOf("[", ind1) + 1;
-				if (ind1 == 0)
-					break;
-				
-				ind2 = mapCode.indexOf(",", ind1);
-				ind3 = mapCode.indexOf(",", ind2 + 1);
-				ind4 = mapCode.indexOf("]", ind3 + 1);
-				
-				// is destroyable (permanently)?
-				var indd = mapCode.indexOf("!", ind1) + 1;
-				var destroy = indd <= ind4;
-				
-				var spawnx	= parseInt(mapCode.substring(Math.max(ind1, indd), ind2));
-				var spawny	= parseInt(mapCode.substring(ind2 + 1, ind3));
-				var spawnid	= parseInt(mapCode.substring(ind3 + 1, ind4));
-				
-				if (!sObject.data[FINISH_SPAWN + mapNumber + "_" + ptID]) {
-					addSpawnPoint(spawnid, (spawnx + .5) * TileMap.TILE_SIZE, (spawny + .5) * TileMap.TILE_SIZE, ptID, destroy);
-					ptID++;
-				}
-			}
-			
-			//get NPCs
-			var npcArray = map.NPCs;
-			for(var n in npcArray){
-				var npc = npcArray[n];
-				var npcx	= parseInt(npc.xpos);
-				var npcy	= parseInt(npc.ypos);
-				addNPC(npc, (npcx + .5) * TileMap.TILE_SIZE, (npcy + .5) * TileMap.TILE_SIZE);
-			}
-		}
+		
 		static function preparePointArrays() {
 			if (telePoints != null) {
 				for (var a in telePoints) {
@@ -245,18 +163,6 @@
 				}
 			}
 			telePoints = new Array();
-		}
-		static function addTelePoint(mapX:Number, mapY:Number, teleX:int, teleY:int, destMap:int, destPoint:Point) {
-			var tele = new TeleportPoint();
-			tele.x = mapX;
-			tele.y = mapY;
-			tele.tx = teleX;
-			tele.ty = teleY;
-			tele.destMap = destMap;
-			tele.destPoint = destPoint;
-			
-			addToMapClip(tele);
-			telePoints.push(tele);
 		}
 		static function addSpawnPoint(spawnid:int, mapX:Number, mapY:Number, ptID:int, destroy:Boolean) {
 			var spawn = new AISpawnPoint(spawnid);
@@ -355,19 +261,20 @@
 				}
 			}
 		}
-		static function checkScreenRect() {
+		*/
+		private static function checkScreenRect():void {
 			if (ScreenRect.getX() < 0) {
 				ScreenRect.setX(0);
 			}
 			if (ScreenRect.getY() < 0) {
 				ScreenRect.setY(0);
 			}
-			if (ScreenRect.getX() + 640 > mapWidth * 32) {
-				ScreenRect.setX(mapWidth * 32 - 640);
+			if (ScreenRect.getX() + 640 > world.mapData.width * GameConstants.TILE_SIZE) {
+				ScreenRect.setX(world.mapData.width * GameConstants.TILE_SIZE - GameConstants.WIDTH);
 			}
-			if (ScreenRect.getY() + 480 > mapHeight * 32) {
-				ScreenRect.setY(mapHeight * 32 - 480);
+			if (ScreenRect.getY() + 480 > world.mapData.height * GameConstants.TILE_SIZE) {
+				ScreenRect.setY(world.mapData.height * GameConstants.TILE_SIZE - GameConstants.HEIGHT);
 			}
-		}*/
+		}
 	}
 }

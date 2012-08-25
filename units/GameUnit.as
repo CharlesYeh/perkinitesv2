@@ -54,13 +54,21 @@
 		//----------------------------------MOVEMENT----------------------------------
 		
 		/**
+		 * move relative to current position
+		 * don't smooth since distance is small
+		 */
+		public function moveDelta(dx:Number, dy:Number):void {
+			moveTo(x + dx, y + dy, false);
+		}
+		
+		/**
 		 * Start movement to new destination
 		 * 
-		 * @paramobject
-		 * @paramtargetX
-		 * @paramtargetY
+		 * @param object
+		 * @param targetX
+		 * @param targetY
 		 */
-		public function moveTo(targetX:Number, targetY:Number):void {
+		public function moveTo(targetX:Number, targetY:Number, smoothing:Boolean = true):void {
 			
 			// show animation#############################
 			
@@ -70,7 +78,14 @@
 				var startTile:Point= new Point(Math.floor(x / TileMap.TILE_SIZE), Math.floor(y / TileMap.TILE_SIZE));
 				var destTile:Point = new Point(Math.floor(targetX / TileMap.TILE_SIZE), Math.floor(targetY / TileMap.TILE_SIZE));
 
-				var npath = smoothPath(TileMap.findPath(TileMap.map, startTile, destTile, false, true));
+				var npath:Array;
+				if (smoothing) {
+					npath = smoothPath(TileMap.findPath(TileMap.map, startTile, destTile, false, true));
+				}
+				else {
+					npath = TileMap.findPath(TileMap.map, startTile, destTile, false, true);
+				}
+				
 				if (npath.length == 0)
 					return;
 				

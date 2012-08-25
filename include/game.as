@@ -3,17 +3,25 @@ import game.Controls;
 
 stop();
 
-stage.addEventListener(Event.DEACTIVATE, loseFocus);
-pauseScreen.addEventListener(MouseEvent.CLICK, regainFocus);
-pauseScreen.y = 999;
-
+setupGame();
 Game.startGameWorld(this);
 
-//AIUnit.setTargets(new Array(player, partner));
-Game.dbChar.getTeamCharacterData(chosenTeam);
+function gameRunner(e:Event):void {
+	Game.update();
+}
 
-function gameRunnerHandler(e:Event):void {
-	Controls.handleGameInputs();
+function setupGame():void {
+	addEventListener(Event.ENTER_FRAME, gameRunner);
+	stage.addEventListener(Event.DEACTIVATE, loseFocus);
+	pauseScreen.addEventListener(MouseEvent.CLICK, regainFocus);
+	
+	pauseScreen.y = 999;
+}
+
+function clearGame():void {
+	removeEventListener(Event.ENTER_FRAME, gameRunner);
+	stage.removeEventListener(Event.DEACTIVATE, loseFocus);
+	pauseScreen.removeEventListener(MouseEvent.CLICK, regainFocus);
 }
 
 function loseFocus(e:Event) {
