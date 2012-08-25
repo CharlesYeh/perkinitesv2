@@ -14,12 +14,9 @@
 		var chaserange:Number;
 		static var targets:Array;
 		
-		public function AIUnit(id) {
-			super();
+		public function AIUnit(edat:EnemyData) {
+			super(edat);
 			
-			ID = id;
-			
-			healthPoints = unitData.health;
 			setSpeed(unitData.speed);
 			
 			// load swf
@@ -28,8 +25,9 @@
 			// TODO: remove event listener
 			addEventListener(Event.ENTER_FRAME, runnerAI);
 		}
-		public static function createAIUnit(id:String) {
-			var edat:EnemyData = Game.dbEnemy.get
+		public static function createAIUnit(id:String):AIUnit {
+			var edat:EnemyData = Game.dbEnemy.getEnemyData(id);
+			
 			var AIClass:Class = getDefinitionByName("aiunits." + edat.ai) as Class;
 			return new AIClass(edat);
 		}
@@ -39,13 +37,10 @@
 			
 			removeEventListener(Event.ENTER_FRAME, runnerAI);
 		}
-		override protected function getSprite() {
-			return new URLRequest(EnemyDatabase.getSprite(ID));
-		}
 		
 		// just moves to player if player is in range
 		protected function runnerAI(e:Event) {
-			if (healthPoints < 0)
+			if (progressData.health < 0)
 				deleteSelf();
 			
 			chaserange = 250;

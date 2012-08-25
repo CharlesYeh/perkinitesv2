@@ -23,7 +23,7 @@
 		public static var theBitmaps:Array;
 		public static var theData:Array;
 
-		public static function createTileMap(m:String, tileSize:Number, types:Array, cling:Array, pref:String) {
+		public static function createTileMap(m:String, rows:int, cols:int, tileSize:Number, types:Array, cling:Array, pref:String) {
 			TILE_SIZE = tileSize;
 			tileTypes = types;
 			tileClings = cling;
@@ -42,15 +42,11 @@
 				}
 			}
 
-			initMap(m);
+			initMap(m, rows, cols);
 		}
-		static function initMap(mapData:String) {
-			//row:col:data
-			var firstSep = mapData.indexOf(":");
-			var secSep = mapData.indexOf(":",firstSep + 1);
-
-			ROWS = parseInt(mapData.substring(0,firstSep));
-			COLS=parseInt(mapData.substring(firstSep+1,secSep));
+		static function initMap(mapData:String, rows:int, cols:int) {
+			ROWS = rows;
+			COLS = cols;
 
 			var rowSpace = ROWS * TILE_SIZE;
 
@@ -144,13 +140,13 @@
 		public static function updateTile(a, b, mapData) {
 			var mat = new Matrix();
 
-			var num = COLS * a + b + mapData.lastIndexOf(":") + 1;
+			var num = COLS * a + b;
 
 			var mnum = parseInt(mapData.charAt(num));
 			map[a][b] = mnum;
 			var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-			if (alphabet.indexOf(mnum) != -1) {
-				mnum = alphabet.indexOf(mnum) + 10;
+			if (isNaN(mnum)) {
+				mnum = alphabet.indexOf(mapData.charAt(num).toUpperCase()) + 10;
 			}
 
 			var t = tileSet[mnum];

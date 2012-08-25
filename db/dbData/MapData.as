@@ -8,7 +8,7 @@
 		public var width:int;
 		public var height:int;
 		
-		public var tileset:TilesetData;
+		public var tilesetData:TilesetData;
 		
 		/** code for grid of tiles */
 		public var code:String;
@@ -25,10 +25,13 @@
 		public function parseData(obj:Object):void {
 			name	= obj.name;
 			id		= obj.id;
+			
+			code	= obj.code;
+			
 			width	= obj.width;
 			height	= obj.height;
 			
-			tileset = Game.dbMap.getTileset(obj.tileset);
+			tilesetData = Game.dbMap.getTileset(obj.tileset);
 			
 			for (var i:String in obj.teleports) {
 				var tdat:TeleportData = new TeleportData();

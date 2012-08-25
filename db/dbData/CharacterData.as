@@ -6,6 +6,8 @@
 	
 	import flash.net.URLRequest;
 	
+	import flash.events.IOErrorEvent;
+	
 	public class CharacterData extends UnitData implements DatabaseData {
 		
 		public var weapon:String;

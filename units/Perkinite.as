@@ -13,8 +13,5 @@
 			// load swf
 			loadSwf();
 		}
-		override protected function getSprite() {
-			return new URLRequest(unitData.sprite);
-		}
 	}
 }
