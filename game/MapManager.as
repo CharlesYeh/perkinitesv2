@@ -7,14 +7,13 @@
 	import units.GameUnit;
 
 	import flash.geom.Point;
+	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
 	import flash.display.Stage;
+	import flash.display.Bitmap;
 	import flash.events.*;
 	import flash.ui.*;
-	import flash.utils.Timer;
-	import flash.events.TimerEvent;
 	
-	import flash.net.SharedObject;
 	import db.dbData.MapData;
 	import db.dbData.TilesetData;
 	import units.StatUnit;
@@ -24,7 +23,6 @@
 		
 		// for cutscene scrolling
 		public static var tileClings = new Array(false, false, false, true, true, false);
-		public static var sObject:SharedObject;
 
 		public static var customClips:Array = new Array();
 
@@ -81,6 +79,31 @@
 			ScreenRect.easeScreen(new Point(sx, sy));
 			
 			checkScreenRect();
+			depthSortHandler();
+		}
+		
+		public static function depthSortHandler():void {
+			var depthArray:Array = new Array();
+			var mapClip:MovieClip = world;
+			
+			for (var i:int = 0; i < mapClip.numChildren; i++) {
+				var child:DisplayObject = mapClip.getChildAt(i);
+				
+				if (!(child is Bitmap) && ScreenRect.inBounds(child)) {
+					depthArray.push(mapClip.getChildAt(i));
+				}
+			}
+			
+			depthArray.sortOn("y", Array.NUMERIC);
+			
+			var t = mapClip.numChildren;
+			i = depthArray.length;
+			while (i--) {
+				t--;
+				if (mapClip.getChildIndex(depthArray[i]) != t) {
+					mapClip.setChildIndex(depthArray[i], t);
+				}
+			}
 		}
 		
 		/*
@@ -119,26 +142,6 @@
 		}
 		public static function removeFromMapClip(mc:MovieClip) {
 			mapClip.removeChild(mc);
-		}
-		public static function depthSortHandler(e) {
-			var depthArray:Array = new Array();
-			for (var i:int = 0; i < mapClip.numChildren; i++) {
-				var child = mapClip.getChildAt(i);
-				if (!(mapClip.getChildAt(i) is Tile0)) {//&& ScreenRect.inBounds(mapClip.getChildAt(i))) {
-					depthArray.push(mapClip.getChildAt(i));
-				}
-			}
-			
-			depthArray.sortOn("y", Array.NUMERIC);
-			
-			var t = mapClip.numChildren;
-			i = depthArray.length;
-			while (i--) {
-				t--;
-				if (mapClip.getChildIndex(depthArray[i]) != t) {
-					mapClip.setChildIndex(depthArray[i], t);
-				}
-			}
 		}
 		public static function testTeleportPoints(su:StatUnit):MovieClip {
 			var sx = Math.floor(su.x / TileMap.TILE_SIZE);

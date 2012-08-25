@@ -325,14 +325,14 @@
 		 * @param e - Event.ENTER_FRAME
 		 */
 		override public function moveHandler(e:Event):void {
-			super.moveHandler(e);
 			// adjust cooldowns
-			/*for (var a = 0; a < cooldowns.length; a++) {
-				if (cooldowns[a] > 0)
+			for (var a = 0; a < cooldowns.length; a++) {
+				if (cooldowns[a] > 0) {
 					cooldowns[a]--;
+				}
 			}
 			
-			if (forwardMovement) {
+			/*if (forwardMovement) {
 				// move forward!!
 				teleportTo(x + forwardVector.x, y + forwardVector.y);
 				
@@ -348,16 +348,18 @@
 					enableMovement();
 					endAbility();
 				}
-				
-			}
-			if (disabledMovement)
+			}*/
+			
+			if (disabledMovement) {
 				return;
+			}
 			
 			super.moveHandler(e);
 			
 			// set frame?
-			if (usingAbility)
+			if (usingAbility) {
 				return
+			}
 			
 			if (path.length == 0) {
 				// not moving
@@ -366,7 +368,7 @@
 			else {
 				updateDirection(moveDir);
 				setAnimLabel(ANIM_WALKING);
-			}*/
+			}
 		}
 		
 		override public function turnLeft() {

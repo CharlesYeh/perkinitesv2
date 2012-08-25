@@ -58,7 +58,9 @@
 		 * don't smooth since distance is small
 		 */
 		public function moveDelta(dx:Number, dy:Number):void {
-			moveTo(x + dx, y + dy, false);
+			moveTo(x + dx,	y + dy, false) || 
+			moveTo(x,		y + dy, false) || 
+			moveTo(x + dx,	y, false);
 		}
 		
 		/**
@@ -67,13 +69,14 @@
 		 * @param object
 		 * @param targetX
 		 * @param targetY
+		 *
+		 * @return whether a path was found
 		 */
-		public function moveTo(targetX:Number, targetY:Number, smoothing:Boolean = true):void {
-			
-			// show animation#############################
+		public function moveTo(targetX:Number, targetY:Number, smoothing:Boolean = true):Boolean {
 			
 			if (TileMap.hitNonpass(targetX, targetY)) {
 				// pressed on non-moveable place
+				return false;
 			} else {
 				var startTile:Point= new Point(Math.floor(x / TileMap.TILE_SIZE), Math.floor(y / TileMap.TILE_SIZE));
 				var destTile:Point = new Point(Math.floor(targetX / TileMap.TILE_SIZE), Math.floor(targetY / TileMap.TILE_SIZE));
@@ -87,7 +90,7 @@
 				}
 				
 				if (npath.length == 0)
-					return;
+					return false;
 				
 				path = npath;
 				
@@ -102,6 +105,8 @@
 				// replace last point with actual destination
 				path.pop();
 				path.push(new Point(targetX, targetY));
+				
+				return true;
 			}
 		}
 		public function teleportTo(targetX:int, targetY:int) {
