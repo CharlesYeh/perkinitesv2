@@ -17,6 +17,8 @@
 	import db.dbData.MapData;
 	import db.dbData.TilesetData;
 	import units.StatUnit;
+	import db.dbData.TeleportData;
+	import units.Teleport;
 
 	public class MapManager {
 		public static var world:World;
@@ -35,7 +37,12 @@
 			var mdat:MapData = Game.dbMap.getMapData(mapName);
 			var tdat:TilesetData = mdat.tilesetData;
 			
-			world = new World(mdat);
+			if (world == null) {
+				world = new World(mdat);
+			}
+			
+			world.createWorld(mdat);
+			
 			for (var i:String in team) {
 				world.addUnit(team[i]);
 			}
@@ -59,6 +66,28 @@
 			}
 			
 			InteractiveTile.resetTiles();
+		}
+		
+		public static function checkTeleports():void {
+			var su:GameUnit = Game.team[0];
+			
+			var map:TeleportData = world.checkTeleports(su);
+			if (map != null) {
+				// change map
+				changeMap(map);
+			}
+		}
+		
+		public static function changeMap(tdat:TeleportData):void {
+			createWorld(tdat.exitMap, Game.team);
+			
+			// move team to exit location
+			for (var i:String in Game.team) {
+				var u:GameUnit = Game.team[i];
+				
+				u.x = tdat.exitX * GameConstants.TILE_SIZE;
+				u.y = tdat.exitY * GameConstants.TILE_SIZE;
+			}
 		}
 		
 		public static function update():void {
@@ -96,7 +125,7 @@
 			
 			depthArray.sortOn("y", Array.NUMERIC);
 			
-			var t = mapClip.numChildren;
+			var t:int = mapClip.numChildren;
 			i = depthArray.length;
 			while (i--) {
 				t--;

@@ -58,6 +58,7 @@
 		 * don't smooth since distance is small
 		 */
 		public function moveDelta(dx:Number, dy:Number):void {
+			// try different deltas if combining deltas doesn't work
 			moveTo(x + dx,	y + dy, false) || 
 			moveTo(x,		y + dy, false) || 
 			moveTo(x + dx,	y, false);

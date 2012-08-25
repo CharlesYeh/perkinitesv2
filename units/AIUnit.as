@@ -11,8 +11,9 @@
 	import game.Game;
 	
 	public class AIUnit extends StatUnit {
-		var chaserange:Number;
-		static var targets:Array;
+		private var chaserange:Number;
+		
+		public static const aiClasses:Array = new Array(BasicAIUnit);
 		
 		public function AIUnit(edat:EnemyData) {
 			super(edat);
@@ -50,7 +51,7 @@
 			var min:StatUnit;
 			var minDist:Number = 99999999;
 			
-			for (var i in targets) {
+			/*for (var i in targets) {
 				var un:StatUnit = targets[i];
 				var dx = un.x - x;
 				var dy = un.y - y;
@@ -60,7 +61,7 @@
 					min = un;
 					minDist = d;
 				}
-			}
+			}*/
 			
 			return min;
 		}

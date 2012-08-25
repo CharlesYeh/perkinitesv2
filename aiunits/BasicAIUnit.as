@@ -3,21 +3,23 @@
 	import flash.events.Event;
 	import db.EnemyDatabase;
 	import db.AbilityDatabase;
-	import game.*;
+	import units.*;
 	import flash.geom.Point;
+	import db.dbData.EnemyData;
 	
 	/* BASIC AI ENEMY
 	 * if within chase range, chases
 	 * if within ability range, uses ability
 	 */
 	public class BasicAIUnit extends AIUnit {
-		public function BasicAIUnit(id) {
-			super(EnemyDatabase.ENEMY_ID_START + id);
+		public function BasicAIUnit(edat:EnemyData) {
+			super(edat);
+			//super(EnemyDatabase.ENEMY_ID_START + id);
 		}
 		
 		// just moves to player if player is in range then attack
 		override protected function runnerAI(e:Event) {
-			if (healthPoints <= 0)
+			/*if (healthPoints <= 0)
 				deleteSelf();
 			
 			var atkRange = AbilityDatabase.getAttribute(ID, 0, "Range");
@@ -38,7 +40,7 @@
 			}
 			else {
 				chaseTarget(target, 250);
-			}
+			}*/
 		}
 	}
 }

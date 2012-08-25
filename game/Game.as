@@ -110,10 +110,13 @@
 		}
 		
 		public static function update():void {
+			// move player
 			Controls.handleGameInputs();
 			
-			// follow player
+			// screen follows player
 			MapManager.update();
+			
+			MapManager.checkTeleports();
 		}
 	}
 }
