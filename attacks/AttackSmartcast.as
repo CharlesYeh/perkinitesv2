@@ -2,6 +2,7 @@
 	import db.dbData.AttackData;
 	import units.StatUnit;
 	import flash.geom.Point;
+	import game.Game;
 	
 	/**
 	 * An attack which is cast on a circular shaped space.
@@ -30,8 +31,20 @@
 		/**
 		 * casts the ability at castPoint
 		 */
-		override public function castAbility(cast:StatUnit, castPoint:Point):void {
+		override public function castAbility(caster:StatUnit, castPoint:Point):void {
+			super.castAbility(caster, castPoint);
+		}
+		
+		override public function dealDamage():void {
+			var enemies:Array = Game.world.getEnemies();
 			
+			for (var i:String in enemies) {
+				var e:StatUnit = enemies[i];
+				
+				if (StatUnit.distance(m_caster, e) < range) {
+					e.takeDamage(dmgBase);
+				}
+			}
 		}
 	}
 }

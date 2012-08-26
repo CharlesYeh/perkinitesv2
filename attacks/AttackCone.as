@@ -1,6 +1,7 @@
 ﻿package attacks {
 	import db.dbData.AttackData;
 	import units.StatUnit;
+	import game.Game;
 	import flash.geom.Point;
 	
 	/**
@@ -31,34 +32,18 @@
 			}
 			caster.guide.guide_skillshot.height = Math.tan(angle)*range;
 			caster.guide.guide_cone.rotation = Math.atan2(caster.y - castPoint.y, horizmult * (caster.x - castPoint.x)) * 180 / Math.PI + 180;			
+		}
+		
+		override public function dealDamage():void {
+			var enemies:Array = Game.world.getEnemies();
 			
-			/*var ability = 
-			
-			var rad;
-
-			caster.guide.visible = true;
-
-				switch(ability.type){
-					case "AttackSkillshot": 
-						//120,30.20
-						break;
-					case "AttackPoint":	
-
-						break;
-					case "AttackDashSkillshot":
-						caster.guide.gotoAndStop("skillshot");
-						caster.guide.guide_skillshot.rotation = 0;
-						dist = Math.sqrt(dx * dx + dy * dy);
-						caster.guide.guide_skillshot.width = Math.min(ability.range, dist);
-						caster.guide.guide_skillshot.rotation = Math.atan2(caster.y - castPoint.y, horizmult * (caster.x - castPoint.x)) * 180 / Math.PI + 180;
-						break;
-					case "AttackCone":
-						break;
-					case "AttackSmartcast":
-						caster.guide.gotoAndStop("smartcast");
-						break;
-					}			*/
-			
+			for (var i:String in enemies) {
+				var e:StatUnit = enemies[i];
+				
+				if (StatUnit.distance(m_caster, e) < range) {
+					e.takeDamage(dmgBase);
+				}
+			}
 		}
 	}
 }

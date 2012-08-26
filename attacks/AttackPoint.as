@@ -1,6 +1,7 @@
 ﻿package attacks {
 	import db.dbData.AttackData;
 	import units.StatUnit;
+	import game.Game;
 	import flash.geom.Point;
 	
 	/**
@@ -46,8 +47,24 @@
 		/**
 		 * casts the ability at castPoint
 		 */
-		override public function castAbility(cast:StatUnit, castPoint:Point):void {
+		override public function castAbility(caster:StatUnit, castPoint:Point):void {
+			super.castAbility(caster, castPoint);
+		}
+		
+		override public function dealDamage():void {
+			var enemies:Array = Game.world.getEnemies();
 			
+			for (var i:String in enemies) {
+				var e:StatUnit = enemies[i];
+				
+				var dx:Number = e.x - m_castPoint.x;
+				var dy:Number = e.y - m_castPoint.y;
+				var dist:Number = Math.sqrt(dx * dx + dy * dy);
+				
+				if (dist < radius) {
+					e.takeDamage(dmgBase);
+				}
+			}
 		}
 	}
 }

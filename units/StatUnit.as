@@ -5,14 +5,12 @@
 	import flash.display.MovieClip;
 	import flash.geom.Point;
 	
-	import game.GameConstants;
-	
 	import tileMapper.TileMap;
-	
-	
 	import db.AbilityDatabase;
 	import db.dbData.UnitData;
 	import attacks.Attack;
+	
+	import game.GameConstants;
 	import game.progress.CharacterProgress;
 
 	public class StatUnit extends GameUnit {
@@ -344,8 +342,6 @@
 			
 			// update ability if animation is playing
 			if (usingAbility) {
-				
-			trace(unitData.id);
 				var atk:Attack = unitData.abilities[abilityId];
 				atk.castInProgress(this);
 				
@@ -427,6 +423,14 @@
 				
 				animClip.gotoAndStop(animLabel);
 			}
+		}
+		
+		public static function distance(u1:StatUnit, u2:StatUnit):Number {
+			var dx:Number = u1.x - u2.x;
+			var dy:Number = u1.y - u2.y;
+			
+			var d:Number = Math.sqrt(dx * dx + dy * dy);
+			return d;
 		}
 		
 		protected function deleteSelf():void {

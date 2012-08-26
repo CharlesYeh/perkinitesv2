@@ -54,6 +54,7 @@
 			if (m_moveForward) {
 				// move forward!!
 				caster.teleportTo(caster.x + m_forwardVector.x, caster.y + m_forwardVector.y);
+				caster.clearPath();
 				
 				// caster is the skillshot projectile
 				if (testSkillshotCollision(caster)) {

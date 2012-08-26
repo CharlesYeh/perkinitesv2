@@ -1,11 +1,14 @@
 ﻿package attacks {
 	import flash.geom.Point;
-	
+	import game.Game;
 	import units.StatUnit;
-	
 	import db.dbData.AttackData;
 
 	public class Attack extends AttackData {
+		
+		public var m_caster:StatUnit;
+		public var m_castPoint:Point;
+		
 		/**
 		 * returns whether or not the caster can cast to this point
 		 */
@@ -30,7 +33,10 @@
 		/**
 		 * casts the ability at castPoint
 		 */
-		public function castAbility(caster:StatUnit, castPoint:Point):void {}
+		public function castAbility(caster:StatUnit, castPoint:Point):void {
+			m_caster	= caster;
+			m_castPoint	= castPoint;
+		}
 		
 		/**
 		 * updates the ability as its animation is playing
@@ -45,7 +51,20 @@
 		public function dealDamage():void {}
 		public function applyBuffs():void {}
 		public function shootSkillshot():void {}
-		public function teleport():void {}
-		public function teleportPartner():void {}
+		
+		public function teleport():void {
+			m_caster.teleportTo(m_castPoint.x, m_castPoint.y);
+		}
+		
+		public function teleportPartner():void {
+			for (var i:String in Game.team) {
+				var u:StatUnit = Game.team[i];
+				if (u == m_caster) {
+					continue;
+				}
+				
+				u.teleportTo(m_castPoint.x, m_castPoint.y);
+			}
+		}
 	}
 }
