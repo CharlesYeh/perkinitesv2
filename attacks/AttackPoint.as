@@ -62,7 +62,7 @@
 				var dist:Number = Math.sqrt(dx * dx + dy * dy);
 				
 				if (dist < radius) {
-					e.takeDamage(dmgBase);
+					e.takeDamage(damage());
 				}
 			}
 		}

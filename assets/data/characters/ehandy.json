@@ -27,7 +27,7 @@
 			"cd": 10,
 			
 			"width": 50,
-			"speed": 430,
+			"speed": 30,
 			
 			"stopAtEnemy": false
 		},

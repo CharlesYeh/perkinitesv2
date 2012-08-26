@@ -43,6 +43,13 @@
 		 */
 		public function castInProgress(caster:StatUnit):void {}
 		
+		/**
+		 * calculate amount of damage to deal
+		 */
+		public function damage():int {
+			return dmgBase;
+		}
+		
 		//--------------FRAME FUNCTIONS----------------
 		
 		public function endAbility():void {}
@@ -50,7 +57,7 @@
 		public function stopForwardMovement():void {}
 		public function dealDamage():void {}
 		public function applyBuffs():void {}
-		public function shootSkillshot():void {}
+		public function shootSkillshot(bullets:Array):void {}
 		
 		public function teleport():void {
 			m_caster.teleportTo(m_castPoint.x, m_castPoint.y);

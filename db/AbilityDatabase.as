@@ -12,7 +12,7 @@
 		public static const ABILITY_PACKAGE:String = "attacks.";
 		
 		/** compile these classes for attack types */
-		public static const abilityClasses:Array = new Array(AttackSkillshot, AttackPoint, AttackDashSkillshot, AttackCone, AttackSmartcast);
+		public static const abilityClasses:Array = new Array(AttackSkillshot, AttackPoint, AttackDashSkillshot, AttackCone, AttackSmartcast, AttackHomingProjectiles);
 		
 		/** dictionary of "name" -> "class definition" */
 		public static var abilityByName:Dictionary = new Dictionary();

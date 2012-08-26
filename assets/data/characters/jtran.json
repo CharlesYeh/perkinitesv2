@@ -16,7 +16,7 @@
 	"abilities": [
 		{
 			"name": "Arrow Control",
-			"type": "AttackSmartcast",
+			"type": "AttackHomingProjectiles",
 			"icon": "Icon - Arrow Control.png",
 			"description": "Four arrows appear that home towards the closest enemy.",
 			
@@ -24,7 +24,9 @@
 			"dmgRatio": 50,
 			
 			"range": 200,
-			"cd": 10
+			"cd": 10,
+			
+			"quantity": 4
 		},
 		{
 			"name": "D4X",
@@ -38,8 +40,10 @@
 			"range": 200,
 			"cd": 20,
 			
+			"penetrates": 999,
+			
 			"width": 200,
-			"speed": 500,
+			"speed": 50,
 			
 			"stopAtEnemy": false
 		}

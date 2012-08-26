@@ -74,9 +74,14 @@
 		/**
 		 * custom-add units
 		 */
-		public function addUnit(u:GameUnit):void {
+		public function addUnit(u:MovieClip):void {
 			m_customs.push(u);
 			addChild(u);
+		}
+		
+		public function removeUnit(u:MovieClip):void {
+			m_customs.splice(m_customs.indexOf(u), 1);
+			removeChild(u);
 		}
 		
 		/**

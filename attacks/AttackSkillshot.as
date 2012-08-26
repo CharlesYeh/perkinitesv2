@@ -6,6 +6,8 @@
 	import flash.geom.Point;
 	import flash.display.MovieClip;
 	
+	import flash.events.Event;
+	
 	import game.Game;
 	
 	/**
@@ -23,12 +25,30 @@
 		/** travel speed of projectile */
 		public var speed:int;
 		
+		/** the projectile MCs themselves */
+		protected var m_bullets:Array;
+		
 		override public function parseData(obj:Object):void {
 			super.parseData(obj);
 			
 			width	= obj.width;
 			penetrates	= obj.penetrates;
 			speed	= obj.speed;
+		}
+		
+		override public function castAbility(caster:StatUnit, castPoint:Point):void {
+			super.castAbility(caster, castPoint);
+			
+			// if bullets still exist from before, remove them
+			if (m_bullets != null) {
+				for (var i:String in m_bullets) {
+					var p:MovieClip = m_bullets[i];
+					
+					p.removeEventListener(Event.ENTER_FRAME, projectileRunner);
+					Game.world.removeUnit(p);
+				}
+			}
+			m_bullets = new Array();
 		}
 	
 		override public function showGuide(caster:StatUnit, castPoint:Point):void{
@@ -47,6 +67,9 @@
 			caster.guide.guide_skillshot.rotation = Math.atan2(caster.y - castPoint.y, horizmult * (caster.x - castPoint.x)) * 180 / Math.PI + 180;
 		}
 		
+		protected function projectileRunner(e:Event):void {
+			
+		}
 		
 		protected function testSkillshotCollision(skillshot:MovieClip):Boolean {
 			var enemies:Array = Game.world.m_enemies;
@@ -54,12 +77,8 @@
 			for (var a:String in enemies) {
 				var en:StatUnit = enemies[a];
 				
-				var dx:Number = en.x - skillshot.x;
-				var dy:Number = en.y - skillshot.y;
-				var dist:Number = Math.sqrt(dx * dx + dy * dy);
-				
-				if (dist < width) {
-					en.takeDamage(dmgBase);
+				if (StatUnit.distance(en, skillshot) < width) {
+					en.takeDamage(damage());
 					
 					// TODO: find actual closest to old position?
 					
@@ -71,6 +90,12 @@
 			}
 			
 			return false;
+		}
+		
+		protected function removeProjectile(p:MovieClip):void {
+			m_bullets.splice(m_bullets.indexOf(p), 1);
+			p.removeEventListener(Event.ENTER_FRAME, projectileRunner);
+			Game.world.removeUnit(p);
 		}
 	}
 }

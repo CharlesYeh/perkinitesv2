@@ -42,7 +42,7 @@
 				var e:StatUnit = enemies[i];
 				
 				if (StatUnit.distance(m_caster, e) < range) {
-					e.takeDamage(dmgBase);
+					e.takeDamage(damage());
 				}
 			}
 		}

@@ -37,11 +37,12 @@
 		override public function dealDamage():void {
 			var enemies:Array = Game.world.getEnemies();
 			
+			// TODO: calculate cone
 			for (var i:String in enemies) {
 				var e:StatUnit = enemies[i];
 				
 				if (StatUnit.distance(m_caster, e) < range) {
-					e.takeDamage(dmgBase);
+					e.takeDamage(damage());
 				}
 			}
 		}

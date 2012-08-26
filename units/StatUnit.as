@@ -149,11 +149,11 @@
 		}
 		
 		private function generateFrameFunction(caster:StatUnit, functionName:String):Function {
-			return function():void {
+			return function(... args):void {
 				var atk:Attack = caster.unitData.abilities[caster.abilityId];
 				var func:Function = atk[functionName];
 				
-				func();
+				func.apply(atk, args);
 			};
 		}
 		
@@ -425,7 +425,7 @@
 			}
 		}
 		
-		public static function distance(u1:StatUnit, u2:StatUnit):Number {
+		public static function distance(u1:MovieClip, u2:MovieClip):Number {
 			var dx:Number = u1.x - u2.x;
 			var dy:Number = u1.y - u2.y;
 			
