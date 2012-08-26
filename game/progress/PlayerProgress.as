@@ -17,6 +17,9 @@
 		/** character level ups achieved */
 		public var levelUps:int;
 		
+		/** chosen team */
+		public var chosenTeam:Array;
+		
 		/** set of the unlocked teams */
 		public var unlockedTeams:Dictionary = new Dictionary();
 		
@@ -58,6 +61,8 @@
 			unlockedTeams = new Dictionary();
 			unlockedTeams["CY_NM"] = true;
 			unlockedTeams["JT_EH"] = true;
+			unlockedTeams["HQ_HV"] = true;
+			unlockedTeams["CK_CM"] = true;			
 		}
 		
 		public function loadGame(soId:String):void {

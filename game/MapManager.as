@@ -40,9 +40,9 @@
 			if (world == null) {
 				world = new World(mdat);
 			}
-			
-			world.createWorld(mdat);
-			
+			else{
+				world.createWorld(mdat);
+			}
 			for (var i:String in team) {
 				world.addUnit(team[i]);
 			}
@@ -85,8 +85,9 @@
 			for (var i:String in Game.team) {
 				var u:GameUnit = Game.team[i];
 				
-				u.x = tdat.exitX * GameConstants.TILE_SIZE;
-				u.y = tdat.exitY * GameConstants.TILE_SIZE;
+				u.x = tdat.exitX * GameConstants.TILE_SIZE + (GameConstants.TILE_SIZE >> 1);
+				u.y = tdat.exitY * GameConstants.TILE_SIZE + (GameConstants.TILE_SIZE >> 1);
+				u.path = new Array();
 			}
 		}
 		

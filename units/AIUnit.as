@@ -13,7 +13,7 @@
 	public class AIUnit extends StatUnit {
 		private var chaserange:Number;
 		
-		public static const aiClasses:Array = new Array(BasicAIUnit);
+		//public static const aiClasses:Array = new Array(BasicAIUnit);
 		
 		public function AIUnit(edat:EnemyData) {
 			super(edat);
@@ -23,12 +23,17 @@
 			// load swf
 			loadSwf();
 			
-			// TODO: remove event listener
+			
+		}
+		// prevent any possible conflict that results it in being standing-only
+		override function completeLoad(e):void {
+			super.completeLoad(e);
+			
 			addEventListener(Event.ENTER_FRAME, runnerAI);
 		}
 		public static function createAIUnit(id:String):AIUnit {
 			var edat:EnemyData = Game.dbEnemy.getEnemyData(id);
-			
+			var rand:BasicAIUnit;
 			var AIClass:Class = getDefinitionByName("aiunits." + edat.ai) as Class;
 			return new AIClass(edat);
 		}

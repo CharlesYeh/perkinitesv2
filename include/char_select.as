@@ -88,6 +88,7 @@ function showEntries() {
 function chooseTeam(team) {
 	chosenTeam = team;
 	var dat:Array = Game.dbChar.getTeamCharacterData(chosenTeam);
+	Game.chooseTeam(team);
 	
 	// activate entry in middle
 	entries[chosenTeam].gotoAndStop(2);
@@ -114,6 +115,7 @@ function startLevel(e) {
 	var sound = new se_chargeup();
 	sound.play();
 	
+	var dat:Array = Game.dbChar.getTeamCharacterData(chosenTeam);
 	clearCharSelect();
 	gotoAndStop(1, "game");
 }

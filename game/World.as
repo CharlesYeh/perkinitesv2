@@ -8,6 +8,7 @@
 	import flash.display.MovieClip;
 	import units.GameUnit;
 	import units.Teleport;
+	import aiunits.BasicAIUnit;
 	
     public class World extends MovieClip {
 		
@@ -81,8 +82,8 @@
 		 */
 		public function createEnemy(edat:MapCharacterData):void {
 			var u:AIUnit = AIUnit.createAIUnit(edat.id);
-			u.x = edat.position.x;
-			u.y = edat.position.y;
+			u.x = (edat.position.x * GameConstants.TILE_SIZE) + (GameConstants.TILE_SIZE >> 1);
+			u.y = (edat.position.y * GameConstants.TILE_SIZE) + (GameConstants.TILE_SIZE >> 1);
 			
 			m_enemies.push(u);
 			addChild(u);
