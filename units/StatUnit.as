@@ -9,6 +9,7 @@
 	
 	import tileMapper.TileMap;
 	
+	
 	import db.AbilityDatabase;
 	import db.dbData.UnitData;
 	import attacks.Attack;
@@ -93,9 +94,11 @@
 		}
 		
 		public function showGuide(abilityID:int, pt:Point){
-			unitData.abilities[abilityId].showGuide(this, new Point(x, y));
+			trace(pt.x + " " + pt.y);
+			unitData.abilities[abilityID].showGuide(this, pt);
 		}
 		public function hideGuide(){
+			guide.stop();
 			guide.visible = false;
 		}
 		

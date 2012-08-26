@@ -40,6 +40,8 @@
 			icon.load(iconURL);
 			
 			description = obj.description;
+			range = obj.range;
+			cd = obj.cd;
 		}
 	}
 }

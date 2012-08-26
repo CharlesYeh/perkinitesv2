@@ -3,6 +3,8 @@
 	
 	import util.KeyDown;
 	
+	import tileMapper.*;
+	
 	import events.GameEventDispatcher;
 	
 	import flash.events.MouseEvent;
@@ -90,9 +92,10 @@
 		 * show aim guides for whole team
 		 */
 		public static function showGuides(abilityId:int, pt:Point):void {
+			var stagePoint = new Point(pt.x + ScreenRect.getX(), pt.y + ScreenRect.getY());
 			for (var i:String in Game.team) {
 				// TODO: attack with:
-				Game.team[i].showGuide(abilityId, pt);
+				Game.team[i].showGuide(abilityId, stagePoint);
 			}
 		}
 		
@@ -100,10 +103,11 @@
 		 * cast abilities for team
 		 */
 		public static function castAbilities(abilityId:int, pt:Point):void {
+			var stagePoint = new Point(pt.x + ScreenRect.getX(), pt.y + ScreenRect.getY());
 			for (var i:String in Game.team) {
 				// TODO: attack with:
 				Game.team[i].hideGuide();
-				Game.team[i].castAbility(abilityId, pt);
+				Game.team[i].castAbility(abilityId, stagePoint);
 			}
 		}		 
 		

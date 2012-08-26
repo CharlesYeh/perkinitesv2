@@ -25,13 +25,12 @@
 			
 			var horizmult:int = (caster.scaleX > 0) ? 1 : -1;			
 			caster.guide.gotoAndStop("skillshot");
-			trace("okay");
 			var dx = castPoint.x - caster.x;
 			var dy = castPoint.y - caster.y;
 			var dist = Math.sqrt(dx * dx + dy * dy);
 			caster.guide.guide_skillshot.rotation = 0;
-			caster.guide.guide_skillshot.width = Math.min(range, dist);
-			caster.guide.guide_skillshot.rotation = Math.atan2(caster.y - castPoint.y, horizmult * (caster.x - castPoint.x)) * 180 / Math.PI + 180;
+			//caster.guide.guide_skillshot.width = Math.min(range, dist);
+			caster.guide.guide_skillshot.rotation = Math.atan2(caster.y - castPoint.y,  horizmult*(caster.x - castPoint.x)) * 180 / Math.PI + 180;
 		}
 	}
 }

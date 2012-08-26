@@ -36,6 +36,7 @@
 			
 			var horizmult:int = (caster.scaleX > 0) ? 1 : -1;			
 			caster.guide.gotoAndStop("point");
+			//trace(caster.x + " " + caster.y);
 			caster.guide.guide_point.x = horizmult * (castPoint.x - caster.x);
 			caster.guide.guide_point.y = castPoint.y - caster.y;
 		}
