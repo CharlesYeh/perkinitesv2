@@ -23,6 +23,9 @@
 		public static var acceptRightClicks:Boolean = false;
 		public static var secondaryClick:Boolean = false;
 		
+		public static var aiming1:Boolean = false;
+		public static var aiming2:Boolean = false;
+		
 		public static function setupRightClick():void {
 			if (ExternalInterface.available) {
 				ExternalInterface.addCallback("rightClickDown", rightClickDown);
@@ -36,32 +39,43 @@
 		 */
 		public static function rightClickDown(x:int, y:int):void {
 			if (acceptRightClicks) {
+				aiming1 = false;
+				aiming2 = true;
 				showGuides(1, KeyDown.mousePoint);
 			}
 		}
 		
 		public static function rightClickUp(x:int, y:int):void {
-			if (acceptRightClicks) {
+			if (acceptRightClicks && aiming2) {
+				aiming2 = false;
 				castAbilities(1, KeyDown.mousePoint);
 			}
 		}
 		
 		public static function mouseDownHandler(e:Event):void {
+			aiming1 = true;
+			aiming2 = false;
 			showGuides(0, KeyDown.mousePoint);
 		}
 		
 		public static function mouseUpHandler(e:Event):void {
-			castAbilities(0, KeyDown.mousePoint);
+			if(aiming1){
+				aiming1 = false;
+				castAbilities(0, KeyDown.mousePoint);
+			}
 		}
 		
 		public static function keyDownHandler(e:Event):void {
 			if ((e as KeyboardEvent).keyCode == Keyboard.SPACE && !acceptRightClicks) {
+				aiming1 = false;
+				aiming2 = true;
 				showGuides(1, KeyDown.mousePoint);
 			}
 		}
 		
 		public static function keyUpHandler(e:Event):void {
-			if ((e as KeyboardEvent).keyCode == Keyboard.SPACE && !acceptRightClicks) {
+			if ((e as KeyboardEvent).keyCode == Keyboard.SPACE && !acceptRightClicks && aiming2) {
+				aiming2 = false;
 				castAbilities(1, KeyDown.mousePoint);
 			}
 		}
@@ -129,6 +143,12 @@
 			}
 			if (KeyDown.keyIsDown(Keyboard.D) || KeyDown.keyIsDown(Keyboard.RIGHT)) {
 				horz++;
+			}
+			if (aiming2) {
+				showGuides(1, KeyDown.mousePoint);
+			}			
+			if(aiming1){
+				showGuides(0, KeyDown.mousePoint);
 			}
 			
 			Game.moveTeam(horz * MOVEMENT_DELTA, vert * MOVEMENT_DELTA);

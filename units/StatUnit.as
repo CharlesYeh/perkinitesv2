@@ -94,8 +94,12 @@
 		}
 		
 		public function showGuide(abilityID:int, pt:Point){
-			trace(pt.x + " " + pt.y);
-			unitData.abilities[abilityID].showGuide(this, pt);
+			if(guide.visible){
+				unitData.abilities[abilityID].updateGuide(this, pt);
+			}
+			else{
+				unitData.abilities[abilityID].showGuide(this, pt);
+			}
 		}
 		public function hideGuide(){
 			guide.stop();
@@ -271,7 +275,9 @@
 		//------------END FRAME FUNCTIONS------------
 		
 		public function castAbility(abID:int, mousePos:Point):Boolean {
-			
+			if(!loaded){
+				return false;
+			}
 			if (usingAbility || cooldowns[abID] > 0) {
 				return false;
 			}

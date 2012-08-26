@@ -20,7 +20,10 @@
 		 * shows the guide aiming at castPoint
 		 */
 		override public function showGuide(caster:StatUnit, castPoint:Point):void {
-			super.showGuide(caster, castPoint);
+			caster.guide.visible = true;
+			// set range guide
+			caster.guide.range_circle.width = caster.guide.range_circle.height =
+							2 * range;
 			caster.guide.gotoAndStop("smartcast");
 		}
 		

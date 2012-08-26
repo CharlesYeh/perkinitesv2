@@ -32,11 +32,13 @@
 		 * shows the guide aiming at castPoint
 		 */
 		override public function showGuide(caster:StatUnit, castPoint:Point):void {
-			super.showGuide(caster, castPoint);
+			caster.guide.visible = true;
+			// set range guide
+			caster.guide.range_circle.width = caster.guide.range_circle.height =
+							2 * range;
 			
 			var horizmult:int = (caster.scaleX > 0) ? 1 : -1;			
 			caster.guide.gotoAndStop("point");
-			//trace(caster.x + " " + caster.y);
 			caster.guide.guide_point.x = horizmult * (castPoint.x - caster.x);
 			caster.guide.guide_point.y = castPoint.y - caster.y;
 		}

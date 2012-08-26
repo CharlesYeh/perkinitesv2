@@ -17,11 +17,15 @@
 		 * shows the guide aiming at castPoint
 		 */
 		public function showGuide(caster:StatUnit, castPoint:Point):void {
-			caster.guide.visible = true;
-			// set range guide
-			caster.guide.range_circle.width = caster.guide.range_circle.height =
-							2 * range;
 		}
+		
+		/**
+		 * shows the guide aiming at castPoint
+		 */
+		public function updateGuide(caster:StatUnit, castPoint:Point):void {
+			showGuide(caster, castPoint);
+		}
+				
 		
 		/**
 		 * casts the ability at castPoint

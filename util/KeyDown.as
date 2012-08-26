@@ -64,6 +64,7 @@
 		public static function mouseTracker(e:MouseEvent) {
 			mousePoint.x = e.stageX;
 			mousePoint.y = e.stageY;
+			//trace(mousePoint);
 		}
 		
 		private static function broadcast(e:Event):void {
