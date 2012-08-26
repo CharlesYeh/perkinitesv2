@@ -29,7 +29,7 @@
 			"width": 60,
 			"speed": 20,
 			
-			"stopAtEnemy": true
+			"penetrates": 0
 		},
 		{
 			"name": "Claw Attack",

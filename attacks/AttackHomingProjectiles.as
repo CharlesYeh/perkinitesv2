@@ -10,8 +10,6 @@
 	 * projectiles appear around the caster which home-in on nearby targets
 	 */
 	public class AttackHomingProjectiles extends AttackSkillshot {
-		/** the width of the cone in radians */
-		public var quantity:int;
 		
 		/** once a target is chosen, whether the projectile will only hit */
 		/** the chosen target or if it'll collide with other enemies first */
@@ -22,31 +20,14 @@
 		override public function parseData(obj:Object):void {
 			super.parseData(obj);
 			
-			quantity	= obj.quantity;
 			hardTarget	= obj.hardTarget;
 			expires		= (obj.expires) ? obj.expires : 9999;
 		}
 		
-		override public function shootSkillshot(bullets:Array):void {
-			// get constructor and delete template
-			var b:MovieClip = bullets[0];
-			var projClass:Class = b.constructor;
-			b.parent.removeChild(b);
-			
-			for (var i:int = 0; i < quantity; i++) {
-				var p:MovieClip = new projClass();
-				p.x = m_caster.x;
-				p.y = m_caster.y;
-				
-				p.expires	= expires;
-				p.radius	= 20;
-				p.radians	= Math.PI / 2 * i;
-				
-				p.addEventListener(Event.ENTER_FRAME, projectileRunner);
-				Game.world.addUnit(p);
-				
-				m_bullets.push(p);
-			}
+		override protected function prepareProjectile(p:MovieClip, ratio:Number):void {
+			p.expires	= expires;
+			p.radius	= 20;
+			p.radians	= 2 * Math.PI * ratio;
 		}
 		
 		override protected function projectileRunner(e:Event):void {

@@ -1,4 +1,4 @@
-{
+ {
 	"name": "Charles Y.",
 	"id": "CY",
 	"sprite": "CY",
@@ -29,7 +29,7 @@
 			"width": 50,
 			"speed": 15,
 			
-			"stopAtEnemy": true
+			"penetrates": 0
 		},
 		{
 			"name": "Ninjutsu",
