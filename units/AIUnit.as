@@ -56,8 +56,8 @@
 			var min:StatUnit;
 			var minDist:Number = 99999999;
 			
-			/*for (var i in targets) {
-				var un:StatUnit = targets[i];
+			for (var i in Game.team) { //change targets to Game.team 
+				var un:StatUnit = Game.team[i];
 				var dx = un.x - x;
 				var dy = un.y - y;
 				var d = dx * dx + dy * dy;
@@ -66,7 +66,7 @@
 					min = un;
 					minDist = d;
 				}
-			}*/
+			}
 			
 			return min;
 		}
