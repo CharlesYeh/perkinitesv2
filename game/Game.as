@@ -38,7 +38,7 @@
 		/** container movieclip for maps */
 		private static var container:MovieClip;
 		
-		private static var world:World;
+		public static var world:World;
 		
 		public static function init():void {
 			eventDispatcher = new GameEventDispatcher();

@@ -1,7 +1,12 @@
 ﻿package attacks {
 	import db.dbData.AttackData;
+	
 	import units.StatUnit;
+	
 	import flash.geom.Point;
+	import flash.display.MovieClip;
+	
+	import game.Game;
 	
 	/**
 	 * A skillshot attack which is cast in a line
@@ -40,6 +45,32 @@
 			caster.guide.guide_skillshot.rotation = 0;
 			//caster.guide.guide_skillshot.width = Math.min(range, dist);
 			caster.guide.guide_skillshot.rotation = Math.atan2(caster.y - castPoint.y, horizmult * (caster.x - castPoint.x)) * 180 / Math.PI + 180;
-		}		
+		}
+		
+		
+		protected function testSkillshotCollision(skillshot:MovieClip):Boolean {
+			var enemies:Array = Game.world.m_enemies;
+			
+			for (var a:String in enemies) {
+				var en:StatUnit = enemies[a];
+				
+				var dx:Number = en.x - skillshot.x;
+				var dy:Number = en.y - skillshot.y;
+				var dist:Number = Math.sqrt(dx * dx + dy * dy);
+				
+				if (dist < width) {
+					en.takeDamage(dmgBase);
+					
+					// TODO: find actual closest to old position?
+					
+					// TODO: penetrate select amount
+					if (penetrates == 0) {
+						return true;
+					}
+				}
+			}
+			
+			return false;
+		}
 	}
 }

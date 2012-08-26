@@ -30,6 +30,22 @@
 		/**
 		 * casts the ability at castPoint
 		 */
-		public function castAbility(cast:StatUnit, castPoint:Point):void {}
+		public function castAbility(caster:StatUnit, castPoint:Point):void {}
+		
+		/**
+		 * updates the ability as its animation is playing
+		 */
+		public function castInProgress(caster:StatUnit):void {}
+		
+		//--------------FRAME FUNCTIONS----------------
+		
+		public function endAbility():void {}
+		public function beginForwardMovement():void {}
+		public function stopForwardMovement():void {}
+		public function dealDamage():void {}
+		public function applyBuffs():void {}
+		public function shootSkillshot():void {}
+		public function teleport():void {}
+		public function teleportPartner():void {}
 	}
 }

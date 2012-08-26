@@ -13,6 +13,7 @@
 		
 		/** whether this */
 		public var m_moveForward:Boolean = false;
+		public var m_forwardVector:Point;
 		
 		override public function parseData(obj:Object):void {
 			super.parseData(obj);
@@ -32,8 +33,40 @@
 			var dy = castPoint.y - caster.y;
 			var dist = Math.sqrt(dx * dx + dy * dy);
 			caster.guide.guide_skillshot.rotation = 0;
-			//caster.guide.guide_skillshot.width = Math.min(range, dist);
 			caster.guide.guide_skillshot.rotation = Math.atan2(caster.y - castPoint.y,  horizmult*(caster.x - castPoint.x)) * 180 / Math.PI + 180;
+		}
+		
+		override public function castAbility(caster:StatUnit, castPoint:Point):void {
+			m_moveForward = false;
+			
+			var dx:Number = castPoint.x - caster.x;
+			var dy:Number = castPoint.y - caster.y;
+			var d:Number = Math.sqrt(dx * dx + dy * dy);
+			dx = dx / d;
+			dy = dy / d;
+			
+			m_forwardVector = new Point(dx * speed, dy * speed);
+		}
+		
+		override public function castInProgress(caster:StatUnit):void {
+			super.castInProgress(caster);
+			
+			if (m_moveForward) {
+				// move forward!!
+				caster.teleportTo(caster.x + m_forwardVector.x, caster.y + m_forwardVector.y);
+				
+				// caster is the skillshot projectile
+				if (testSkillshotCollision(caster)) {
+					// stop dashing and ability
+					caster.stopForwardMovement();
+					caster.enableMovement();
+					caster.endAbility();
+				}
+			}
+		}
+		
+		override public function beginForwardMovement():void {
+			m_moveForward = true;
 		}
 	}
 }

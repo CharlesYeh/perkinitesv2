@@ -29,6 +29,7 @@
 			// init npcs
         }
 		
+		//----------------------CREATION FUNCTIONS---------------------
 		public function createWorld(mdat:MapData):void {
 			mapData = mdat;
 			
@@ -69,6 +70,7 @@
 			}
 		}
 		
+		//-------------------------UNIT CREATE------------------------
 		/**
 		 * custom-add units
 		 */
@@ -95,8 +97,13 @@
 			m_teleports.push(t);
 			addChild(t);
 		}
+		//-------------------------------------------------------------
 		
-		public function checkTeleports(su:GameUnit) {
+		public function getEnemies():Array {
+			return m_enemies;
+		}
+		
+		public function checkTeleports(su:GameUnit):TeleportData {
 			var sx = Math.floor(su.x / GameConstants.TILE_SIZE);
 			var sy = Math.floor(su.y / GameConstants.TILE_SIZE);
 			
@@ -111,5 +118,6 @@
 			
 			return null;
 		}
+		
     }
 }

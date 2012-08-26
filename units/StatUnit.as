@@ -19,12 +19,17 @@
 		
 		static const DIRECTIONS:Array = new Array("east", "north", "east", "south");
 
-		static const ANIM_STANDING	= "standing";
-		static const ANIM_FF		= "friend_finale";
-		static const ANIM_WALKING	= "walking";
-		static const ANIM_ABILITY1	= "ability1";
-		static const ANIM_ABILITY2	= "ability2";
-		static const ANIM_ABILITY3	= "ability3";
+		static const ANIM_STANDING:String	= "standing";
+		static const ANIM_FF:String			= "friend_finale";
+		static const ANIM_WALKING:String	= "walking";
+		static const ANIM_ABILITY1:String	= "ability1";
+		static const ANIM_ABILITY2:String	= "ability2";
+		static const ANIM_ABILITY3:String	= "ability3";
+		
+		/** all the frame functions called by the animation */
+		static const frameFuncs:Array = new Array("beginForwardMovement", "stopForwardMovement",
+										"dealDamage", "applyBuffs", "shootSkillshot",
+										"teleport", "teleportPartner");
 		
 		/** the swf sprite asset */
 		var swf;
@@ -88,12 +93,12 @@
 			healthbar.graphics.endFill();
 		}
 		
-		function takeDamage(dmg:int) {
+		public function takeDamage(dmg:int):void {
 			progressData.health = Math.max(0, progressData.health - dmg);
 			drawHealthbar();
 		}
 		
-		public function showGuide(abilityID:int, pt:Point){
+		public function showGuide(abilityID:int, pt:Point):void {
 			if(guide.visible){
 				unitData.abilities[abilityID].updateGuide(this, pt);
 			}
@@ -134,14 +139,24 @@
 			swf.content.char.endAbility			= endAbility;
 			swf.content.char.disableMovement	= disableMovement;
 			swf.content.char.enableMovement		= enableMovement;
-			swf.content.char.beginForwardMovement	= beginForwardMovement;
-			swf.content.char.stopForwardMovement	= stopForwardMovement;
-			swf.content.char.dealDamage			= dealDamage;
-			swf.content.char.applyDebuffs       = applyDebuffs;
-			swf.content.char.applyBuffs			= applyBuffs;
-			swf.content.char.shootSkillshot		= shootSkillshot;
-			swf.content.char.teleport			= teleport;
-			swf.content.char.teleportPartner	= teleportPartner;
+			
+			// attach ability frame functions
+			for (var i:String in frameFuncs) {
+				var caster:StatUnit = this;
+				var functionName:String = frameFuncs[i];
+				
+				var ff:Function = generateFrameFunction(caster, functionName);
+				swf.content.char[functionName] = ff;
+			}
+		}
+		
+		private function generateFrameFunction(caster:StatUnit, functionName:String):Function {
+			return function():void {
+				var atk:Attack = caster.unitData.abilities[caster.abilityId];
+				var func:Function = atk[functionName];
+				
+				func();
+			};
 		}
 		
 		//--------------FRAME FUNCTIONS--------------
@@ -226,10 +241,6 @@
 			
 		}
 		
-		function applyDebuffs() {
-			
-		}
-		
 		function skillshotMover(e:Event) {
 			/*var ss = e.target;
 			
@@ -291,6 +302,8 @@
 				return false;
 			}
 			
+			ability.castAbility(this, mousePos);
+			
 			// look at direction of ability
 			turnTo(castPoint);
 			updateDirection(moveDir);
@@ -316,30 +329,6 @@
 			return true;
 		}
 		
-		function testSkillshotCollision(skillshot:MovieClip, abilityWidth:Number, damage:Number, stopAtFirst:Boolean):Boolean {
-			//var enemies = (isPlayer) ? MapManager.getAIUnits() : AIUnit.getTargets();
-			var enemies = new Array();
-			
-			for (var a in enemies) {
-				var en:StatUnit = enemies[a];
-				var dx = en.x - skillshot.x;
-				var dy = en.y - skillshot.y;
-				var dist = dx * dx + dy * dy;
-				
-				if (dist < abilityWidth) {
-					en.takeDamage(damage);
-					
-					// find actual closest to old position?#########################
-					
-					if (stopAtFirst) {
-						return true;
-					}
-				}
-			}
-			
-			return false;
-		}
-		
 		/**
 		 * 
 		 * the movement handler
@@ -353,34 +342,21 @@
 				}
 			}
 			
-			/*if (forwardMovement) {
-				// move forward!!
-				teleportTo(x + forwardVector.x, y + forwardVector.y);
+			// update ability if animation is playing
+			if (usingAbility) {
 				
-				// do damage!! if did damage and stop at enemy, then end ability
-				var abilityWidth= AbilityDatabase.getAttribute(ID, castAbilityID, "MovementRadius");
-				abilityWidth 	= abilityWidth * abilityWidth;
-				var stopAtEnemy	= AbilityDatabase.getAttribute(ID, castAbilityID, "StopAtEnemy");
-				var damage		= AbilityDatabase.getAttribute(ID, castAbilityID, "Damage");
+			trace(unitData.id);
+				var atk:Attack = unitData.abilities[abilityId];
+				atk.castInProgress(this);
 				
-				if (testSkillshotCollision(this, abilityWidth, damage, stopAtEnemy)) {
-					// stop dashing and ability
-					stopForwardMovement();
-					enableMovement();
-					endAbility();
-				}
-			}*/
+				return;
+			}
 			
 			if (disabledMovement) {
 				return;
 			}
 			
 			super.moveHandler(e);
-			
-			// set frame?
-			if (usingAbility) {
-				return
-			}
 			
 			if (path.length == 0) {
 				// not moving
@@ -453,11 +429,17 @@
 			}
 		}
 		
-		/*public function setDeleteFunction(func:Function) {
-			deleteFunc = func;
-		}*/
-		
 		protected function deleteSelf():void {
+			removeChild(healthbar);
+			removeChild(guide);
+			
+			healthbar = null;
+			guide = null;
+			
+			if (swf != null) {
+				removeChild(swf);
+				swf = null;
+			}
 		}
 		
 		//make it stop running when transferring to a new map
