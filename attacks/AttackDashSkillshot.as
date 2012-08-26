@@ -39,6 +39,8 @@
 		}
 		
 		override public function castAbility(caster:StatUnit, castPoint:Point):void {
+			super.castAbility(caster, castPoint);
+			
 			m_moveForward = false;
 			
 			var dx:Number = castPoint.x - caster.x;

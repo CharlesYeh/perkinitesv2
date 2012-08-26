@@ -50,6 +50,10 @@
 			return dmgBase;
 		}
 		
+		public function targets():Array {
+			return m_caster.abilityTargets;
+		}
+		
 		//--------------FRAME FUNCTIONS----------------
 		
 		public function endAbility():void {}

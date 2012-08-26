@@ -41,8 +41,10 @@
 		public var progressData:CharacterProgress;
 		
 		public var cooldowns:Array;
-		var healthbar:MovieClip;
+		public var abilityTargets:Array;
 		public var guide:AimGuide;
+		
+		private var healthbar:MovieClip;
 		//--------END STATS VARS-------
 		
 		var abilityId:int;
@@ -76,6 +78,10 @@
 			addChildAt(guide, 0);
 			guide.visible = false;
 			
+		}
+		
+		public function setAbilityTargets(targets:Array):void {
+			abilityTargets = targets;
 		}
 		
 		protected function drawHealthbar() {

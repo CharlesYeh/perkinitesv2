@@ -87,9 +87,10 @@
 				p.x = p.x * .5 + (m_caster.x + p.radius * Math.cos(p.radians)) * .5;
 				p.y = p.y * .5 + (m_caster.y + p.radius * Math.sin(p.radians)) * .5;
 				
-				var enemies:Array = Game.world.getEnemies();
-				for (var i:String in enemies) {
-					var en:StatUnit = enemies[i];
+				var targets:Array = targets();
+				
+				for (var i:String in targets) {
+					var en:StatUnit = targets[i];
 					
 					if(StatUnit.distance(en, p) < range) {
 						p.target = en;

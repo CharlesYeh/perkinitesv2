@@ -31,7 +31,7 @@
 		public static var teamIndex:int;
 		
 		/** array of current Perkinites */
-		public static var team:Array;
+		public static var team:Array = new Array();
 		
 		public static var gamePause:Boolean = false;
 		
@@ -63,7 +63,7 @@
 			container = cont;
 			gamePause = false;
 			
-			team = new Array();
+			team.splice(0);
 			
 			// create players
 			var teamDat:Array = dbChar.getTeamCharacterData(teamIndex);
@@ -74,19 +74,22 @@
 				var char:Perkinite = new Perkinite(cdat);
 				char.x = GameConstants.TILE_SIZE * playerProgress.x + i * START_SEPARATION;
 				char.y = GameConstants.TILE_SIZE * playerProgress.y;
+				
 				team.push(char);
 			}
 			
 			// create map/world
 			world = MapManager.createWorld(playerProgress.map, team);
 			container.addChild(world);
+			
+			char.setAbilityTargets(world.getEnemies());
 		}
 		
 		public static function endGameWorld():void {
 			container.removeChild(world);
 			world = null;
 			
-			team = new Array();
+			team.splice(0);
 			
 			MapManager.resetWorld();
 		}

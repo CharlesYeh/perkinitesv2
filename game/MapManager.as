@@ -43,6 +43,7 @@
 			else{
 				world.createWorld(mdat);
 			}
+			
 			for (var i:String in team) {
 				world.addUnit(team[i]);
 			}
@@ -54,7 +55,7 @@
 			TileMap.createTileMap(mdat.code, mdat.height, mdat.width, GameConstants.TILE_SIZE, tdat.types, tdat.clings, prefix);
 			
 			// render tiles into map
-			TileMap.addTiles(world.m_tiles);
+			TileMap.addTiles(world.getTilesClip());
 			
 			return world;
 		}
@@ -62,7 +63,7 @@
 		public static function resetWorld():void {
 			if (world != null) {
 				world.clearWorld();
-				TileMap.removeTiles(world.m_tiles);
+				TileMap.removeTiles(world.getTilesClip());
 			}
 			
 			InteractiveTile.resetTiles();

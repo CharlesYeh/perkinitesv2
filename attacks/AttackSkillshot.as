@@ -72,10 +72,10 @@
 		}
 		
 		protected function testSkillshotCollision(skillshot:MovieClip):Boolean {
-			var enemies:Array = Game.world.m_enemies;
+			var targets:Array = targets();
 			
-			for (var a:String in enemies) {
-				var en:StatUnit = enemies[a];
+			for (var a:String in targets) {
+				var en:StatUnit = targets[a];
 				
 				if (StatUnit.distance(en, skillshot) < width) {
 					en.takeDamage(damage());

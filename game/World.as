@@ -14,12 +14,12 @@
 		
 		public var mapData:MapData;
 		
-		public var m_tiles:MovieClip;
+		private var m_tiles:MovieClip;
 		
-		public var m_customs:Array;
-		public var m_teleports:Array;
-		public var m_enemies:Array;
-		public var m_NPCs:Array;
+		private var m_customs:Array;
+		private var m_teleports:Array;
+		private var m_enemies:Array;
+		private var m_NPCs:Array;
 		
         /**
 		 * creates the world with MapData
@@ -52,6 +52,10 @@
 				var e:MapCharacterData = mapData.enemies[i];
 				createEnemy(e);
 			}
+		}
+		
+		public function getTilesClip():MovieClip {
+			return m_tiles;
 		}
 		
 		public function clearWorld():void {
@@ -91,6 +95,7 @@
 			var u:AIUnit = AIUnit.createAIUnit(edat.id);
 			u.x = (edat.position.x * GameConstants.TILE_SIZE) + (GameConstants.TILE_SIZE >> 1);
 			u.y = (edat.position.y * GameConstants.TILE_SIZE) + (GameConstants.TILE_SIZE >> 1);
+			u.setAbilityTargets(Game.team);
 			
 			m_enemies.push(u);
 			addChild(u);
