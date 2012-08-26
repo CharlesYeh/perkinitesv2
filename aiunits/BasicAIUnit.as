@@ -19,10 +19,10 @@
 		
 		// just moves to player if player is in range then attack
 		override protected function runnerAI(e:Event) {
-			/*if (healthPoints <= 0)
+			if (progressData.health <= 0) //is this the right health to use?
 				deleteSelf();
 			
-			var atkRange = AbilityDatabase.getAttribute(ID, 0, "Range");
+			var atkRange = unitData.abilities[0].range;//AbilityDatabase.getAttribute(ID, 0, "Range");
 			
 			var target:StatUnit = getCloserPlayer();
 			var tp:Point = new Point(target.x, target.y);
@@ -30,17 +30,17 @@
 			var dist:Number = getDistance(target);
 			if (dist < atkRange) {
 				// attack
-				castMousePoint	= new Point(target.x, target.y);
-				castMouseTarget	= target;
+				//castMousePoint	= new Point(target.x, target.y);
+				//castMouseTarget	= target;
 				
 				castAbility(0, tp);
-				if (AbilityDatabase.getTargetType(ID, 0) != AbilityDatabase.ATKTYPE_SCAST) {
+				/*if (AbilityDatabase.getTargetType(ID, 0) != AbilityDatabase.ATKTYPE_SCAST) {
 					clickHandler(tp, target);
-				}
+				}*/
 			}
 			else {
 				chaseTarget(target, 250);
-			}*/
+			}
 		}
 	}
 }
