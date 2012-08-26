@@ -1,8 +1,6 @@
 ﻿package attacks {
 	import db.dbData.AttackData;
-	
 	import units.StatUnit;
-	
 	import flash.geom.Point;
 	
 	/**
@@ -34,7 +32,12 @@
 		 * shows the guide aiming at castPoint
 		 */
 		override public function showGuide(caster:StatUnit, castPoint:Point):void {
+			super.showGuide(caster, castPoint);
 			
+			var horizmult:int = (caster.scaleX > 0) ? 1 : -1;			
+			caster.guide.gotoAndStop("point");
+			caster.guide.guide_point.x = horizmult * (castPoint.x - caster.x);
+			caster.guide.guide_point.y = castPoint.y - caster.y;
 		}
 		
 		/**

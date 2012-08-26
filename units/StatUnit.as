@@ -38,6 +38,7 @@
 		
 		public var cooldowns:Array;
 		var healthbar:MovieClip;
+		public var guide:AimGuide;
 		//--------END STATS VARS-------
 		
 		var abilityId:int;
@@ -67,6 +68,10 @@
 			addChild(healthbar);
 			drawHealthbar();
 			
+			guide = new AimGuide();
+			addChildAt(guide, 0);
+			guide.visible = false;
+			
 		}
 		
 		protected function drawHealthbar() {
@@ -85,6 +90,13 @@
 		function takeDamage(dmg:int) {
 			progressData.health = Math.max(0, progressData.health - dmg);
 			drawHealthbar();
+		}
+		
+		public function showGuide(abilityID:int, pt:Point){
+			unitData.abilities[abilityId].showGuide(this, new Point(x, y));
+		}
+		public function hideGuide(){
+			guide.visible = false;
 		}
 		
 		protected function loadSwf() {

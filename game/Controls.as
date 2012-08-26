@@ -92,7 +92,7 @@
 		public static function showGuides(abilityId:int, pt:Point):void {
 			for (var i:String in Game.team) {
 				// TODO: attack with:
-				Game.team[i];
+				Game.team[i].showGuide(abilityId, pt);
 			}
 		}
 		
@@ -102,9 +102,10 @@
 		public static function castAbilities(abilityId:int, pt:Point):void {
 			for (var i:String in Game.team) {
 				// TODO: attack with:
-				Game.team[i];
+				Game.team[i].hideGuide();
+				Game.team[i].castAbility(abilityId, pt);
 			}
-		}
+		}		 
 		
 		/*
 		 * Move the leader, and have all other characters follow

@@ -1,8 +1,6 @@
 ﻿package attacks {
 	import db.dbData.AttackData;
-	
 	import units.StatUnit;
-	
 	import flash.geom.Point;
 	
 	/**
@@ -22,7 +20,8 @@
 		 * shows the guide aiming at castPoint
 		 */
 		override public function showGuide(caster:StatUnit, castPoint:Point):void {
-			
+			super.showGuide(caster, castPoint);
+			caster.guide.gotoAndStop("smartcast");
 		}
 		
 		/**
