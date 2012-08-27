@@ -39,7 +39,6 @@
 				var dx:Number = target.x - p.x;
 				var dy:Number = target.y - p.y;
 				var dist:Number = Math.sqrt(dx * dx + dy * dy);
-				
 				p.x += speed * dx / dist;
 				p.y += speed * dy / dist;
 				

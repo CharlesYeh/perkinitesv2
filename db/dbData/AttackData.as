@@ -42,6 +42,9 @@
 			description = obj.description;
 			range = obj.range;
 			cd = obj.cd;
+			
+			dmgBase = obj.dmgBase;
+			dmgScale = obj.dmgRatio;
 		}
 	}
 }

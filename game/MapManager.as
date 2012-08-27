@@ -44,8 +44,10 @@
 				world.createWorld(mdat);
 			}
 			
+			
 			for (var i:String in team) {
 				world.addUnit(team[i]);
+				team[i].setAbilityTargets(world.getEnemies()); //make it so that enemies will take damage
 			}
 			
 			// reset camera
@@ -84,11 +86,16 @@
 			
 			// move team to exit location
 			for (var i:String in Game.team) {
-				var u:GameUnit = Game.team[i];
+				var u:StatUnit = Game.team[i]; //allow to end dashing by changing gameunit -> statunit
 				
 				u.x = tdat.exitX * GameConstants.TILE_SIZE + (GameConstants.TILE_SIZE >> 1);
 				u.y = tdat.exitY * GameConstants.TILE_SIZE + (GameConstants.TILE_SIZE >> 1);
+				//prevent any movement from the last map
 				u.path = new Array();
+				//prevent dashing
+				u.stopForwardMovement();
+				u.enableMovement();
+				u.endAbility();
 			}
 		}
 		

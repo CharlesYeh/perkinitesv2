@@ -85,16 +85,19 @@
 		}
 		
 		protected function drawHealthbar() {
-			var WIDTH = 50;
-			var sx = -WIDTH/2;
-			
-			healthbar.graphics.clear();
-			healthbar.graphics.lineStyle(1, 0);
-			healthbar.graphics.drawRect(sx, 30, WIDTH, 5);
-			
-			healthbar.graphics.beginFill(0x33FF33, .7);
-			healthbar.graphics.drawRect(sx, 30, WIDTH * progressData.health / unitData.health, 5);
-			healthbar.graphics.endFill();
+			//prevent drawing healthbar after death
+			if(healthbar != null){
+				var WIDTH = 50;
+				var sx = -WIDTH/2;
+				
+				healthbar.graphics.clear();
+				healthbar.graphics.lineStyle(1, 0);
+				healthbar.graphics.drawRect(sx, 30, WIDTH, 5);
+				
+				healthbar.graphics.beginFill(0x33FF33, .7);
+				healthbar.graphics.drawRect(sx, 30, WIDTH * progressData.health / unitData.health, 5);
+				healthbar.graphics.endFill();
+			}
 		}
 		
 		public function takeDamage(dmg:int):void {
@@ -103,6 +106,9 @@
 		}
 		
 		public function showGuide(abilityID:int, pt:Point):void {
+			if (usingAbility || cooldowns[abilityID] > 0) {
+				return;
+			}		
 			if(guide.visible){
 				unitData.abilities[abilityID].updateGuide(this, pt);
 			}
@@ -389,7 +395,8 @@
 		}
 		
 		function updateDirection(dir:int) {
-			if (!loaded) return;
+			if (!loaded || healthbar == null) return;
+			
 			
 			var frame;
 			if (dir == 2) {
@@ -450,6 +457,11 @@
 				removeChild(swf);
 				swf = null;
 			}
+			//hacky
+			x = -1000;
+			y = -1000;
+			//end hacky
+			removeEventListener(Event.ENTER_FRAME, moveHandler); //prevent dead enemies
 		}
 		
 		//make it stop running when transferring to a new map

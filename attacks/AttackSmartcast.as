@@ -37,8 +37,8 @@
 		
 		override public function dealDamage():void {
 			var targets:Array = targets();
-			
 			for (var i:String in targets) {
+				
 				var e:StatUnit = targets[i];
 				
 				if (StatUnit.distance(m_caster, e) < range) {

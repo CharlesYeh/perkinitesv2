@@ -25,6 +25,7 @@
 			
 			"range": 270,
 			"cd": 20,
+			"animLabel": "ability2",			
 			
 			"width": 60,
 			"speed": 20,
@@ -40,7 +41,7 @@
 			"dmgBase": 50,
 			"dmgRatio": 50,
 			"cd": 5,
-			
+			"animLabel": "ability1",			
 			"atCaster": true,
 			"radius": 50
 		}

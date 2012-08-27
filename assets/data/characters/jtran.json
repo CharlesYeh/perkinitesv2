@@ -23,9 +23,11 @@
 			"dmgBase": 50,
 			"dmgRatio": 50,
 			
+			"width": 100,
+			"speed": 30,
 			"range": 200,
 			"cd": 10,
-			
+			"animLabel": "ability1",			
 			"quantity": 4
 		},
 		{
@@ -39,7 +41,7 @@
 			
 			"range": 200,
 			"cd": 20,
-			
+			"animLabel": "ability2",			
 			"penetrates": 999,
 			
 			"width": 200,

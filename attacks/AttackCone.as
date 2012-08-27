@@ -26,11 +26,11 @@
 			var horizmult:int = (caster.scaleX > 0) ? 1 : -1;			
 			caster.guide.gotoAndStop("cone");
 			caster.guide.guide_cone.rotation = 0;
-			caster.guide.guide_skillshot.width = range;
+			caster.guide.guide_cone.width = range;
 			if(angle == 90){
 				angle = 45;
 			}
-			caster.guide.guide_skillshot.height = Math.tan(angle)*range;
+			caster.guide.guide_cone.height = Math.tan(angle)*range;
 			caster.guide.guide_cone.rotation = Math.atan2(caster.y - castPoint.y, horizmult * (caster.x - castPoint.x)) * 180 / Math.PI + 180;			
 		}
 		

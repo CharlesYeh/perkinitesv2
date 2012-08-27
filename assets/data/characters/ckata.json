@@ -25,7 +25,7 @@
 			
 			"range": 200,
 			"cd": 10,
-			
+			"animLabel": "ability1",			
 			"width": 50,
 			"speed": 30,
 			
@@ -39,7 +39,7 @@
 			
 			"range": 250,
 			"cd": 20,
-			
+			"animLabel": "ability2",			
 			"goToCastPoint": true,
 			
 			"buffs": {

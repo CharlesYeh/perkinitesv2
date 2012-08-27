@@ -82,7 +82,8 @@
 			world = MapManager.createWorld(playerProgress.map, team);
 			container.addChild(world);
 			
-			char.setAbilityTargets(world.getEnemies());
+			//remove so that it doesn't set enemies only once
+			//char.setAbilityTargets(world.getEnemies());
 		}
 		
 		public static function endGameWorld():void {

@@ -40,6 +40,8 @@
 			
 			var horizmult:int = (caster.scaleX > 0) ? 1 : -1;			
 			caster.guide.gotoAndStop("point");
+			caster.guide.guide_point.width = caster.guide.guide_point.height =
+							2 * radius;
 			caster.guide.guide_point.x = horizmult * (castPoint.x - caster.x);
 			caster.guide.guide_point.y = castPoint.y - caster.y;
 		}

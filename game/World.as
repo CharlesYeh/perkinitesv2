@@ -85,7 +85,9 @@
 		
 		public function removeUnit(u:MovieClip):void {
 			m_customs.splice(m_customs.indexOf(u), 1);
-			removeChild(u);
+			if(u.parent != null){ //prevent skillshots from being removed twice
+				removeChild(u);
+			}
 		}
 		
 		/**

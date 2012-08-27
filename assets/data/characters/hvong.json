@@ -25,7 +25,7 @@
 			
 			"range": 50,
 			"cd": 10,
-			
+			"animLabel": "ability1",			
 			"angle": 90
 		},
 		{
@@ -39,7 +39,7 @@
 			
 			"range": 250,
 			"cd": 20,
-			
+			"animLabel": "ability2",			
 			"buffs": {
 				"team": {
 					"movementMult": 1.5,

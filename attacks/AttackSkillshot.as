@@ -28,10 +28,14 @@
 		/** travel speed of projectile */
 		public var speed:int;
 		
+		//prevent a skillshot from hitting the same enemy multiple times
+		protected var hits:Array;
+		
 		/** the projectile MCs themselves */
 		protected var m_bullets:Array;
 		
 		protected var m_penetrates:int;
+		
 		
 		override public function parseData(obj:Object):void {
 			super.parseData(obj);
@@ -54,8 +58,9 @@
 					Game.world.removeUnit(p);
 				}
 			}
-			m_bullets = new Array();
+			hits = new Array();
 			
+			m_bullets = new Array();
 			m_penetrates = penetrates;
 		}
 	
@@ -79,12 +84,15 @@
 			// get constructor and delete template
 			var b:MovieClip = bullets[0];
 			var projClass:Class = b.constructor;
-			b.parent.removeChild(b);
+			b.parent.removeChild(b); 
 			
 			for (var i:int = 0; i < quantity; i++) {
 				var p:MovieClip = new projClass();
 				p.x = m_caster.x;
 				p.y = m_caster.y;
+				//get correct orientation
+				p.rotation = b.rotation;
+				p.scaleX = (m_caster.scaleX > 0) ? 1 : -1;			
 				
 				prepareProjectile(p, Number(i) / quantity);
 				
@@ -107,6 +115,7 @@
 			
 			p.vx = speed * dx / dist;
 			p.vy = speed * dy / dist;
+			p.dist = 0; //make skillshot show up
 		}
 		
 		/**
@@ -122,7 +131,7 @@
 			
 			testSkillshotCollision(p);
 			
-			if (p.dist > range) {
+			if (p.dist > range || m_penetrates < 0) {
 				removeProjectile(p);
 			}
 		}
@@ -135,17 +144,22 @@
 				var en:StatUnit = targets[a];
 				
 				if (StatUnit.distance(en, skillshot) < width) {
-					en.takeDamage(damage());
-					
-					// TODO: find actual closest to old position?
-					
-					// TODO: penetrate select amount
-					if (m_penetrates == 0) {
-						return true;
-					}
-					else {
-						m_penetrates--;
-						hit = true;
+					//prevent multiple hits on the same enemy
+					if(hits.indexOf(en) == -1){
+						hits.push(en);
+						en.takeDamage(damage());
+						
+						// TODO: find actual closest to old position?
+						
+						// TODO: penetrate select amount
+						if (m_penetrates == 0) {
+							m_penetrates--;
+							return true;
+						}
+						else {
+							m_penetrates--;
+							hit = true;
+						}
 					}
 				}
 			}

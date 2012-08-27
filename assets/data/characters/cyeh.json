@@ -25,7 +25,7 @@
 			
 			"range": 200,
 			"cd": 10,
-			
+			"animLabel": "ability1",			
 			"width": 50,
 			"speed": 15,
 			
@@ -41,7 +41,9 @@
 			"dmgRatio": 50,
 			
 			"range": 250,
-			"cd": 20
+			"cd": 20,
+			"radius": 10,
+			"animLabel": "ability2"			
 		}
 	]
 }

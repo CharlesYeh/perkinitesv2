@@ -25,7 +25,8 @@
 			
 			"range": 200,
 			"cd": 10,
-			"radius": 10,
+			"animLabel": "ability1",
+			"radius": 50,
 			
 			"buffs": {
 				"enemies": {
@@ -40,7 +41,8 @@
 			"description": "Teleport self to a point.",
 			
 			"range": 250,
-			"cd": 20
+			"cd": 20,
+			"animLabel": "ability2"			
 		}
 	]
 }
