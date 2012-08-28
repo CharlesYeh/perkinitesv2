@@ -44,9 +44,10 @@
 			if (actions.length == 0 || Game.playerProgress.hasCompletedSequence(id)) {
 				m_completed = true;
 			}
-			
 			// start first frame
-			startFrame();
+			if(!m_completed){
+				startFrame();
+			}
 		}
 		
 		protected function startFrame():void {
