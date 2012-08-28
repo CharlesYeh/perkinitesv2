@@ -5,7 +5,7 @@
 	
 	public class Action implements DatabaseData {
 		/** compile classes */
-		//public static const actionTypes:Array = new Array(ActionSpeech, ActionNarrator, ActionControls, ActionWait);
+		//public static const actionTypes:Array = new Array(ActionControls, ActionBlackout);
 		
 		/** length of action in frames */
 		public var time:int;
@@ -13,6 +13,7 @@
 		private var m_complete:Boolean;
 		
 		public function parseData(obj:Object):void {
+			var actionTypes:Array = new Array(ActionControls, ActionBlackout);
 			time = obj.time;
 		}
 		

@@ -58,9 +58,8 @@
 			for (i in obj.sequences) {
 				var seqName:String = obj.sequences[i];
 				
-				var seq:Sequence = new Sequence();
-				seq.parseData(Game.dbSeq.getSequence(seqName));
-				
+				// already parsed by sequence database
+				var seq:Sequence = Game.dbSeq.getSequence(seqName)
 				sequences.push(seq);
 			}
 		}
