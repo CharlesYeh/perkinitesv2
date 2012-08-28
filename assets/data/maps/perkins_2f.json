@@ -52,5 +52,7 @@
     }
   ],
   "enemies": [],
-  "npcs": []
+  "npcs": [],
+  
+  "sequences": ["level1_start"]
 }

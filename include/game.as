@@ -1,16 +1,20 @@
 ﻿import game.Game;
 import game.Controls;
+import ui.*;
+import flash.display.MovieClip;
 
 stop();
 
-setupGame();
+var overlay:MovieClip;
 Game.startGameWorld(this);
+setupGame();
 
 function gameRunner(e:Event):void {
 	Game.update();
 }
 
 function setupGame():void {
+	
 	addEventListener(Event.ENTER_FRAME, gameRunner);
 	stage.addEventListener(Event.DEACTIVATE, loseFocus);
 	pauseScreen.addEventListener(MouseEvent.CLICK, regainFocus);

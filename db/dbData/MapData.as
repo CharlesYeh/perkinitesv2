@@ -1,5 +1,7 @@
 ﻿package db.dbData {
 	import game.Game;
+	import scripting.Sequence;
+	import db.SequenceDatabase;
 	
 	public class MapData implements DatabaseData {
 		
@@ -21,6 +23,8 @@
 		
 		/** array of all npcs on map */
 		public var npcs:Array = new Array();
+		
+		public var sequences:Array = new Array();
 		
 		public function parseData(obj:Object):void {
 			name	= obj.name;
@@ -51,6 +55,14 @@
 				npcs.push(cdat);
 			}
 			
+			for (i in obj.sequences) {
+				var seqName:String = obj.sequences[i];
+				
+				var seq:Sequence = new Sequence();
+				seq.parseData(Game.dbSeq.getSequence(seqName));
+				
+				sequences.push(seq);
+			}
 		}
 	}
 }

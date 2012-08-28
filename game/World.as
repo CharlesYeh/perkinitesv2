@@ -9,6 +9,7 @@
 	import units.GameUnit;
 	import units.Teleport;
 	import aiunits.BasicAIUnit;
+	import scripting.Sequence;
 	
     public class World extends MovieClip {
 		
@@ -131,5 +132,11 @@
 			return null;
 		}
 		
-    }
+		public function updateSequences():void {
+			for (var i:String in mapData.sequences) {
+				var seq:Sequence = mapData.sequences[i];
+				seq.updateActions();
+			}
+		}
+	}
 }

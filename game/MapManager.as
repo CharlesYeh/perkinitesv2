@@ -118,6 +118,8 @@
 			
 			checkScreenRect();
 			depthSortHandler();
+			
+			world.updateSequences();
 		}
 		
 		public static function depthSortHandler():void {

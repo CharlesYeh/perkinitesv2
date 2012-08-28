@@ -1,0 +1,47 @@
+{
+	"id": "level1_start",
+	"actions": [
+		[
+			{
+				"type": "ActionControls",
+				"enable": false
+			}
+		],
+		[
+			{
+				"type": "ActionBlackout",
+				"time": 20
+			}
+		],
+		[
+			{
+				"type": "ActionBlackout",
+				"time": 20,
+				
+				"text": "Once upon a time, a darkness took over"
+			}
+		],
+		[
+			{
+				"type": "ActionBlackout",
+				"time": 20,
+				
+				"text": "but Perkins was too far away, so the dark lord overlooked it"
+			}
+		],
+		[
+			{
+				"type": "ActionBlackout",
+				"time": 20,
+				
+				"text": "now the Perkinites are preparing to rally..."
+			}
+		],
+		[
+			{
+				"type": "ActionControls",
+				"enable": true
+			}
+		]
+	]
+}

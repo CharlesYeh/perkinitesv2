@@ -9,6 +9,7 @@
 		public function Database() {
 			// constructor code
 		}
+		
 		public static function loadData(url:String, completeLoad:Function) {
 			var loader:URLLoader = new URLLoader();
 			loader.addEventListener(Event.COMPLETE, completeLoad);

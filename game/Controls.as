@@ -26,6 +26,12 @@
 		public static var aiming1:Boolean = false;
 		public static var aiming2:Boolean = false;
 		
+		private static var m_enabled:Boolean = true;
+		
+		public static function set enabled(val:Boolean) {
+			m_enabled = val;
+		}
+		
 		public static function setupRightClick():void {
 			if (ExternalInterface.available) {
 				ExternalInterface.addCallback("rightClickDown", rightClickDown);
@@ -106,6 +112,10 @@
 		 * show aim guides for whole team
 		 */
 		public static function showGuides(abilityId:int, pt:Point):void {
+			if (!m_enabled) {
+				return;
+			}
+			
 			var stagePoint = new Point(pt.x + ScreenRect.getX(), pt.y + ScreenRect.getY());
 			for (var i:String in Game.team) {
 				// TODO: attack with:
@@ -117,6 +127,10 @@
 		 * cast abilities for team
 		 */
 		public static function castAbilities(abilityId:int, pt:Point):void {
+			if (!m_enabled) {
+				return;
+			}
+			
 			var stagePoint = new Point(pt.x + ScreenRect.getX(), pt.y + ScreenRect.getY());
 			for (var i:String in Game.team) {
 				// TODO: attack with:
@@ -129,6 +143,10 @@
 		 * Move the leader, and have all other characters follow
 		 */
 		public static function handleGameInputs() {
+			if (!m_enabled) {
+				return;
+			}
+			
 			var horz:int = 0;
 			var vert:int = 0;
 			

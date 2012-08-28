@@ -8,6 +8,8 @@
 		
 		public var id:String;
 		
+		public var flexPoints:int;
+		
 		/** array of all the sequences the player has already completed */
 		public var completedSequences:Array = new Array();
 		
@@ -50,6 +52,7 @@
 		
 		public function newGame():void {
 			id = "";
+			flexPoints = 0;
 			
 			map = "perkins_2f";
 			x = 5;
@@ -69,6 +72,8 @@
 			var prog:PlayerProgress = sharedObj.data[soId];
 			
 			id		= soId;
+			flexPoints = prog.flexPoints;
+			
 			map		= prog.map;
 			completedSequences = prog.completedSequences;
 			items	= prog.items;

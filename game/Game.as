@@ -4,6 +4,7 @@
 	import db.EnemyDatabase;
 	import db.MapDatabase;
 	import db.CharacterDatabase;
+	import db.SequenceDatabase;
 	
 	import db.dbData.CharacterData;
 	
@@ -13,6 +14,7 @@
 	
 	import units.StatUnit;
 	import units.Perkinite;
+	import ui.GameOverlay;
 
 	public class Game {
 		public static var eventDispatcher:GameEventDispatcher;
@@ -20,6 +22,7 @@
 		public static var dbEnemy:EnemyDatabase;
 		public static var dbMap:MapDatabase;
 		public static var dbChar:CharacterDatabase;
+		public static var dbSeq:SequenceDatabase;
 		
 		/** info about the player's progress is stored here */
 		public static var playerProgress:PlayerProgress;
@@ -39,6 +42,7 @@
 		private static var container:MovieClip;
 		
 		public static var world:World;
+		public static var overlay:GameOverlay;
 		
 		public static function init():void {
 			eventDispatcher = new GameEventDispatcher();
@@ -46,6 +50,7 @@
 			dbEnemy	= new EnemyDatabase();
 			dbMap	= new MapDatabase();
 			dbChar	= new CharacterDatabase();
+			dbSeq	= new SequenceDatabase();
 			
 			playerProgress = new PlayerProgress();
 		}
@@ -82,8 +87,9 @@
 			world = MapManager.createWorld(playerProgress.map, team);
 			container.addChild(world);
 			
-			//remove so that it doesn't set enemies only once
-			//char.setAbilityTargets(world.getEnemies());
+			// setup overlay
+			overlay = new GameOverlay();
+			container.addChild(overlay);
 		}
 		
 		public static function endGameWorld():void {
