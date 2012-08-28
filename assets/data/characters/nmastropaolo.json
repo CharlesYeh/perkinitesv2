@@ -40,10 +40,9 @@
 			
 			"dmgBase": 50,
 			"dmgRatio": 50,
+			"range": 50,
 			"cd": 5,
-			"animLabel": "ability1",			
-			"atCaster": true,
-			"radius": 50
+			"animLabel": "ability1"
 		}
 	]
 }
