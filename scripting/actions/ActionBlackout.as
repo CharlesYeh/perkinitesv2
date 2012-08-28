@@ -5,10 +5,13 @@
 		
 		public var text:String;
 		
+		public var alpha:Number;
+		
 		override public function parseData(obj:Object):void {
 			super.parseData(obj);
 			
 			text = obj.text;
+			alpha = obj.alpha;
 		}
 		
 		override public function act():void {
@@ -27,6 +30,10 @@
 					Game.overlay.fader.editText(this, text);
 					break;
 					
+				case "showAlpha":
+					Game.overlay.fader.alpha = alpha;
+					complete();
+					break;
 			}
 		}
 	}

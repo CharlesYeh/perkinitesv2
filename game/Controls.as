@@ -72,7 +72,7 @@
 		}
 		
 		public static function keyDownHandler(e:Event):void {
-			if ((e as KeyboardEvent).keyCode == Keyboard.SPACE && !acceptRightClicks) {
+			if ((e as KeyboardEvent).keyCode == Keyboard.SPACE/* && !acceptRightClicks*/) {
 				aiming1 = false;
 				aiming2 = true;
 				showGuides(1, KeyDown.mousePoint);
@@ -80,7 +80,7 @@
 		}
 		
 		public static function keyUpHandler(e:Event):void {
-			if ((e as KeyboardEvent).keyCode == Keyboard.SPACE && !acceptRightClicks && aiming2) {
+			if ((e as KeyboardEvent).keyCode == Keyboard.SPACE/* && !acceptRightClicks*/ && aiming2) {
 				aiming2 = false;
 				castAbilities(1, KeyDown.mousePoint);
 			}

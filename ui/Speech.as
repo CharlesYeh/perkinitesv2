@@ -19,6 +19,13 @@
 			visible = true;
 			act.complete();
 			
+			if (m_currSprite != null) {
+				removeChild(m_currSprite);
+			}
+			
+			m_currSprite = sprite;
+			addChild(sprite);
+			
 			txtName.text = name;
 			txtMessage.text = message;
 		}

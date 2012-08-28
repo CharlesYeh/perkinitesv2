@@ -1,5 +1,6 @@
 ﻿package db.dbData {
 	import db.AbilityDatabase;
+	import db.ImageDatabase;
 	import flash.display.Loader;
 	import flash.net.URLRequest;
 	
@@ -35,9 +36,12 @@
 			name = obj.name;
 			type = obj.type;
 			
-			var iconURL:URLRequest = new URLRequest(AbilityDatabase.ABILITY_ICONS + obj.icon);
-			icon = new Loader();
-			icon.load(iconURL);
+			if (obj.icon != null) {
+				icon = ImageDatabase.getIcon(obj.icon);
+			}
+			else {
+				icon = new Loader();
+			}
 			
 			description = obj.description;
 			range = obj.range;

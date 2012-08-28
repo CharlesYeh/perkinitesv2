@@ -1,5 +1,6 @@
 ﻿package db.dbData {
 	import db.AbilityDatabase;
+	import db.ImageDatabase;
 	
 	import flash.display.MovieClip;
 	import flash.display.Loader;
@@ -22,9 +23,7 @@
 			
 			weapon	= obj.weapon;
 			
-			var iconURL:URLRequest = new URLRequest("assets/icons/Face Icon - " + obj.sprite + ".png");
-			icon = new Loader();
-			icon.load(iconURL);
+			icon = ImageDatabase.getIcon("Face Icon - " + obj.sprite + ".png");
 			
 			levelBonuses= obj.levelBonuses;
 		}
