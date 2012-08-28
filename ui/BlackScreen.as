@@ -49,8 +49,10 @@
 		function endShow(e:Event) {
 			currAction.complete();
 			
-			currTween.removeEventListener(TweenEvent.MOTION_FINISH, endShow);
-			currTween = null;
+			if (currTween != null) {
+				currTween.removeEventListener(TweenEvent.MOTION_FINISH, endShow);
+				currTween = null;
+			}
 		}
 	}
 }

@@ -62,6 +62,16 @@
 				"type": "ActionControls",
 				"enable": true
 			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 20,
+				
+				"name": "Charles",
+				"sprite": "FaceIcon - CY",
+				"message": "awmahgawd John Tran!"
+			}
 		]
 	]
 }

@@ -23,11 +23,16 @@
 			time = obj.time;
 		}
 		
+		/**
+		 * start the action
+		 */
 		public function act():void {
 			m_complete = false;
-			// do stuff
 		}
 		
+		/**
+		 * mark as finished
+		 */
 		public function complete():void {
 			m_complete = true;
 		}
