@@ -15,17 +15,17 @@
 		public var speech:Speech;
 		
 		public function GameOverlay() {
-			fader = new BlackScreen();
-			
 			hud = new GameHUD();
 			hud.x = HUD_SPACING;
 			hud.y = GameConstants.HEIGHT - hud.height - HUD_SPACING;
 			
 			speech = new Speech();
 			
-			addChild(fader);
+			fader = new BlackScreen();
+			
 			addChild(hud);
 			addChild(speech);
+			addChild(fader);
 		}
 
 	}

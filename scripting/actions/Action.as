@@ -7,13 +7,19 @@
 		/** compile classes */
 		//public static const actionTypes:Array = new Array(ActionControls, ActionBlackout);
 		
+		public var subtype:String;
+		
 		/** length of action in frames */
 		public var time:int;
 		
 		private var m_complete:Boolean;
 		
-		public function parseData(obj:Object):void {
+		private function compileClasses():void {
 			var actionTypes:Array = new Array(ActionControls, ActionBlackout);
+		}
+		
+		public function parseData(obj:Object):void {
+			subtype = obj.subtype;
 			time = obj.time;
 		}
 		
@@ -26,7 +32,10 @@
 			m_complete = true;
 		}
 		
-		public function isCompleted():Boolean {
+		/**
+		 * updates the action, returning true if completed
+		 */
+		public function update():Boolean {
 			return m_complete;
 		}
 		

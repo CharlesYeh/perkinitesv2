@@ -14,7 +14,10 @@
 		}
 		
 		override public function act():void {
+			super.act();
+			
 			Controls.enabled = enable;
+			complete();
 		}
 	}
 }

@@ -53,6 +53,8 @@
 				var e:MapCharacterData = mapData.enemies[i];
 				createEnemy(e);
 			}
+			
+			mdat.startSequences();
 		}
 		
 		public function getTilesClip():MovieClip {

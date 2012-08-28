@@ -38,7 +38,7 @@
 		
 		public function start():void {
 			m_index = 0;
-			m_completed = true;
+			m_completed = false;
 			
 			// test whether this sequence has been done before
 			if (actions.length == 0 || Game.playerProgress.hasCompletedSequence(id)) {
@@ -74,14 +74,13 @@
 				for (var i:String in frame) {
 					var act:Action = frame[i];
 					
-					if (!act.isCompleted()) {
-						allCompleted = false;
-						break;
-					}
+					// update all actions, and see if all are done
+					allCompleted = act.update() && allCompleted;
 				}
 				
 				if (allCompleted) {
-					complete();
+					m_index++;
+					startFrame();
 				}
 			}
 		}

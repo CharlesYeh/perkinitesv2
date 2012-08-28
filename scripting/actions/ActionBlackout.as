@@ -12,7 +12,22 @@
 		}
 		
 		override public function act():void {
-			Game.overlay.fader.show(time, this);
+			super.act();
+			
+			switch(subtype) {
+				case "show":
+					Game.overlay.fader.show(this, time);
+					break;
+					
+				case "hide":
+					Game.overlay.fader.hide(this, time);
+					break;
+					
+				case "editText":
+					Game.overlay.fader.editText(this, text);
+					break;
+					
+			}
 		}
 	}
 }

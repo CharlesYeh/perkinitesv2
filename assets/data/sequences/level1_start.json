@@ -10,31 +10,51 @@
 		[
 			{
 				"type": "ActionBlackout",
+				"subtype": "show",
 				"time": 20
 			}
 		],
 		[
 			{
 				"type": "ActionBlackout",
-				"time": 20,
+				"subtype": "editText",
 				
 				"text": "Once upon a time, a darkness took over"
+			},
+			{
+				"type": "ActionWait",
+				"time": 20
 			}
 		],
 		[
 			{
 				"type": "ActionBlackout",
-				"time": 20,
+				"subtype": "editText",
 				
 				"text": "but Perkins was too far away, so the dark lord overlooked it"
+			},
+			{
+				"type": "ActionWait",
+				"time": 20
 			}
 		],
 		[
 			{
 				"type": "ActionBlackout",
-				"time": 20,
+				"subtype": "editText",
 				
 				"text": "now the Perkinites are preparing to rally..."
+			},
+			{
+				"type": "ActionWait",
+				"time": 20
+			}
+		],
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "hide",
+				"time": 25
 			}
 		],
 		[

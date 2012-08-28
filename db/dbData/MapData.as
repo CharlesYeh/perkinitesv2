@@ -63,5 +63,11 @@
 				sequences.push(seq);
 			}
 		}
+		
+		public function startSequences():void {
+			for (var i:String in sequences) {
+				sequences[i].start();
+			}
+		}
 	}
 }
