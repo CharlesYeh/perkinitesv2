@@ -1,0 +1,125 @@
+{
+	"id": "level1_start",
+	"actions": [
+		[
+			{
+				"type": "ActionControls",
+				"enable": false
+			},
+			{
+				"type": "ActionBlackout",
+				"subtype": "showAlpha",
+				"alpha": 1
+			}
+		],
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "editText",
+				
+				"text": "Hello. Today I am going to share with you the Tale of the Perkinites."
+			},
+			{
+				"type": "ActionWait",
+				"time": 25
+			}
+		],
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "editText",
+				
+				"text": "Once upon a time, in the year 201X, a legendary demon awoke to cast terror upon the land."
+			},
+			{
+				"type": "ActionWait",
+				"time": 30
+			}
+		],
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "editText",
+				
+				"text": "This evil lord brought about many monsters to take the lives of many innocents, and submerged the entire land in darkness..."
+			},
+			{
+				"type": "ActionWait",
+				"time": 30
+			}
+		],
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "editText",
+				
+				"text": "However, there was one place he did not corrupt."
+			},
+			{
+				"type": "ActionWait",
+				"time": 30
+			}
+		],
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "editText",
+				
+				"text": "It was a safe haven known as Perkins Hall, untouched by the darkness, because it was too far away from anything that mattered"
+			},
+			{
+				"type": "ActionWait",
+				"time": 30
+			}
+		],
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "editText",
+				
+				"text": ""
+			},
+			{
+				"type": "ActionWait",
+				"time": 15
+			}
+		],
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "editText",
+				
+				"text": "for anyone to care about"
+			},
+			{
+				"type": "ActionWait",
+				"time": 15
+			}
+		],
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "editText",
+				
+				"text": "Our story begins in that particular building."
+			},
+			{
+				"type": "ActionWait",
+				"time": 20
+			}
+		],
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "hide",
+				"time": 45
+			}
+		],
+		[
+			{
+				"type": "ActionControls",
+				"enable": true
+			}
+		]
+	]
+}

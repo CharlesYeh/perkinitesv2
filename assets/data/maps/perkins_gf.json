@@ -34,7 +34,7 @@
         "y": 21
       },
       "exit": {
-        "map": "perkins_gf",
+        "map": "perkins_lounge",
         "x": 33,
         "y": 16
       }
@@ -45,7 +45,7 @@
         "y": 21
       },
       "exit": {
-        "map": "perkins_gf",
+        "map": "perkins_lounge",
         "x": 38,
         "y": 16
       }
@@ -56,7 +56,7 @@
         "y": 17
       },
       "exit": {
-        "map": "perkins_gf",
+        "map": "perkins_lounge",
         "x": 33,
         "y": 22
       }
@@ -67,7 +67,7 @@
         "y": 17
       },
       "exit": {
-        "map": "perkins_gf",
+        "map": "perkins_lounge",
         "x": 38,
         "y": 22
       }
@@ -78,7 +78,7 @@
         "y": 9
       },
       "exit": {
-        "map": "perkins_gf",
+        "map": "perkins_lounge",
         "x": 47,
         "y": 9
       }
@@ -89,7 +89,7 @@
         "y": 9
       },
       "exit": {
-        "map": "perkins_gf",
+        "map": "perkins_lounge",
         "x": 23,
         "y": 9
       }
@@ -100,7 +100,7 @@
         "y": 9
       },
       "exit": {
-        "map": "perkins_gf",
+        "map": "perkins_lounge",
         "x": 27,
         "y": 9
       }
@@ -111,7 +111,7 @@
         "y": 9
       },
       "exit": {
-        "map": "perkins_gf",
+        "map": "perkins_lounge",
         "x": 43,
         "y": 9
       }
