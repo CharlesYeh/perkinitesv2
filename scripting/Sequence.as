@@ -63,23 +63,23 @@
 				return;
 			}
 			
-			if (m_index == actions.length) {
-				complete();
-				return;
+			var frame:Array = actions[m_index];
+			
+			var allCompleted:Boolean = true;
+			for (var i:String in frame) {
+				var act:Action = frame[i];
+				
+				// update all actions, and see if all are done
+				allCompleted = act.update() && allCompleted;
 			}
-			else {
-				var frame:Array = actions[m_index];
+			
+			if (allCompleted) {
+				m_index++;
 				
-				var allCompleted:Boolean = true;
-				for (var i:String in frame) {
-					var act:Action = frame[i];
-					
-					// update all actions, and see if all are done
-					allCompleted = act.update() && allCompleted;
+				if (m_index == actions.length) {
+					complete();
 				}
-				
-				if (allCompleted) {
-					m_index++;
+				else {
 					startFrame();
 				}
 			}
