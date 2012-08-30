@@ -20,7 +20,7 @@
 			"icon": "Icon - Perk-kulate.png",
 			"description": "Dash forward, dealing damage to all enemies at the target location.",
 			
-			"dmgBase": 50,
+			"dmgBase": 0,
 			"dmgRatio": 50,
 			
 			"range": 200,

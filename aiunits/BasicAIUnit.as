@@ -19,7 +19,7 @@
 		
 		// just moves to player if player is in range then attack
 		override protected function runnerAI(e:Event) {
-			if (progressData.health <= 0) //is this the right health to use?
+			if (progressData.health <= 0) 
 				deleteSelf();
 			
 			var atkRange = unitData.abilities[0].range;//AbilityDatabase.getAttribute(ID, 0, "Range");

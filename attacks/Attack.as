@@ -65,6 +65,7 @@
 		
 		public function teleport():void {
 			m_caster.teleportTo(m_castPoint.x, m_castPoint.y);
+			m_caster.clearPath();
 		}
 		
 		public function teleportPartner():void {
@@ -75,6 +76,7 @@
 				}
 				
 				u.teleportTo(m_castPoint.x, m_castPoint.y);
+				u.clearPath();
 			}
 		}
 	}

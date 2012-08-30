@@ -20,7 +20,7 @@
 			"icon": "Icon - Arrow Control.png",
 			"description": "Four arrows appear that home towards the closest enemy.",
 			
-			"dmgBase": 50,
+			"dmgBase": 5,
 			"dmgRatio": 50,
 			
 			"width": 100,
@@ -28,7 +28,8 @@
 			"range": 200,
 			"cd": 10,
 			"animLabel": "ability1",			
-			"quantity": 4
+			"quantity": 4,
+			"hardTarget": true
 		},
 		{
 			"name": "D4X",

@@ -49,6 +49,7 @@
 		protected function runnerAI(e:Event) {
 			if (progressData.health < 0)
 				deleteSelf();
+
 			
 			chaserange = 250;
 			chasePlayer(chaserange);

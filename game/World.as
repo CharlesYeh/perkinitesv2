@@ -95,7 +95,7 @@
 		
 		public function removeUnit(u:MovieClip):void {
 			m_customs.splice(m_customs.indexOf(u), 1);
-			if(u.parent != null){ //prevent skillshots from being removed twice
+			if(u.parent != null){ 
 				removeChild(u);
 			}
 		}
@@ -120,7 +120,9 @@
 			addChild(t);
 		}
 		//-------------------------------------------------------------
-		
+		public function getCustoms():Array{
+			return m_customs;
+		}
 		public function getEnemies():Array {
 			return m_enemies;
 		}

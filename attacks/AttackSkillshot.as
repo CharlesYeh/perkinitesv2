@@ -172,5 +172,10 @@
 			p.removeEventListener(Event.ENTER_FRAME, projectileRunner);
 			Game.world.removeUnit(p);
 		}
+		
+		//making a public function?
+		public function destroyProjectile(p:MovieClip):void{
+			removeProjectile(p);
+		}
 	}
 }
