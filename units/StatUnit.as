@@ -457,16 +457,12 @@
 				removeChild(swf);
 				swf = null;
 			}
-			//hacky
-			x = -1000;
-			y = -1000;
-			//end hacky
 			removeEventListener(Event.ENTER_FRAME, moveHandler); //prevent dead enemies
 		}
 		
 		//make it stop running when transferring to a new map
-		/*public function destroy(){
+		public function destroy(){
 			deleteSelf();
-		}*/
+		}
 	}
 }

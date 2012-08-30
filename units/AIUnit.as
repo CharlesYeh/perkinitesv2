@@ -41,6 +41,7 @@
 		override protected function deleteSelf():void {
 			super.deleteSelf();
 			
+			Game.world.clearEnemy(this);
 			removeEventListener(Event.ENTER_FRAME, runnerAI);
 		}
 		

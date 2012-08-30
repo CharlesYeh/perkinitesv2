@@ -61,6 +61,13 @@
 			return m_tiles;
 		}
 		
+		public function clearEnemy(e:AIUnit):void{
+			var index = m_enemies.indexOf(e);
+			removeChild(e);
+			m_enemies.splice(index, 1);
+			
+			
+		}
 		public function clearWorld():void {
 			clearWorldHelper(m_customs);
 			clearWorldHelper(m_teleports);
