@@ -1,4 +1,7 @@
 ﻿package scripting.actions {
+	
+	import game.Game;
+	
 	public class ActionNarrator extends Action {
 		
 		public var text:String;
@@ -10,7 +13,7 @@
 		}
 		
 		override public function act():void {
-			
+			Game.overlay.narrator.showText(this, text);
 		}
 	}
 }
