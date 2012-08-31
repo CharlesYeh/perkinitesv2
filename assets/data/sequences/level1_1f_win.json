@@ -1,0 +1,51 @@
+{
+	"id": "level1_1f_win",
+	"actions": [
+		[
+			{
+				"type": "ConditionBeatEnemies",
+				"map": "perkins_1f"
+			},
+			{
+				"type": "ConditionSequence",
+				"name": "level1_1f"
+			},
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 30,
+				
+				"name": "Narrator",
+				"message": "As you might have realized now, yes indeed! Some of the darkness has eventually reached over to Perkins."
+			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 30,
+				
+				"name": "Narrator",
+				"message": "The darkness isn’t as strong as it could be here, but it has corrupted some everyday items into beings of somewhat destruction."
+			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 30,
+				
+				"name": "Narrator",
+				"message": "Our heroes realize that they should probably do something about this, so they postpone their trip to Keeney and fight back for the sake of Perkins."
+			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 30,
+				
+				"name": "Narrator",
+				"message": "They set off to the Ground Floor."
+			}
+		]
+	]
+}

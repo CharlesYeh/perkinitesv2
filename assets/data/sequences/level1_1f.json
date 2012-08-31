@@ -4,7 +4,7 @@
 		[
 			{
 				"type": "ConditionSequence",
-				"name": "level1_intro
+				"name": "level1_2f",
 			}
 		],
 		[
@@ -13,7 +13,7 @@
 				"time": 30,
 				
 				"name": "Narrator",
-				"message": "We find two of our heroes on the second floor, staring blankly to the right, doing nothing."
+				"message": "As this scene suggests, their trip to Keeney is cut short by a couple of evil PROBLEM SETS surrounding our heroes."
 			}
 		],
 		[
@@ -22,7 +22,7 @@
 				"time": 30,
 				
 				"name": "Narrator",
-				"message": "Realizing they are doing nothing, and no one else is around to help them do even more nothing, they decide to leave Perkins and go somewhere INFINITELY BETTER,"
+				"message": "Now normally, pieces of paper don't move on their own."
 			}
 		],
 		[
@@ -31,7 +31,7 @@
 				"time": 30,
 				
 				"name": "Narrator",
-				"message": "like the Main Green or Keeney."
+				"message": "These do."
 			}
 		],
 		[
@@ -40,7 +40,7 @@
 				"time": 30,
 				
 				"name": "Narrator",
-				"message": "Let’s say Keeney. Keeney’s a pretty chill place. Good people."
+				"message": "(TIP: Use the left-click and right-click to trigger the Perkinites' special abilities. Use these to attack the enemies and maintain your lives!)"
 			}
 		],
 		[
@@ -49,7 +49,7 @@
 				"time": 30,
 				
 				"name": "Narrator",
-				"message": "(TIP: Use the W/A/S/D keys or the Directional keys to move the Perkinites around!)"
+				"message": "(TIP: Abilities will have cooldowns after activation, meaning that they cannot be activated until the cooldown is over. Most cooldowns are short, but take note of this!)"
 			}
 		]
 	]

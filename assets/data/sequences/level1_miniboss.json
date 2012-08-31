@@ -1,0 +1,77 @@
+{
+	"id": "level1_gf_win",
+	"actions": [
+		[
+			{
+				"type": "ConditionNearLocation",
+				"x": 10,
+				"y": 10
+			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 30,
+				
+				"name": "Narrator",
+				"message": "To their surprise, they find a teddy bear on the ground, one marked with several peace symbols."
+			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 30,
+				
+				"name": "???",
+				"message": "Hyuk hyuk hyuk..."
+			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 30,
+				
+				"name": "Narrator",
+				"message": "For some odd reason, a masked child pops out of nowhere. Clearly this cannot be good."
+			}
+		],
+		[
+			{
+				"type": "ActionAnimate",
+				"time": 30,
+				
+				"sprite": "Ira"
+				"animation": "warbear_cast"
+			},
+			{
+				"type": "ActionAnimate",
+				"time": 30,
+				
+				"sprite": "Warbear"
+				"animation": "warbear_grow"
+			}
+		],
+		[
+			{
+				"type": "ActionAnimate",
+				"time": 30,
+				
+				"sprite": "Ira"
+				"animation": "leave"
+			}
+		],
+		[
+			{
+				"type": "ActionRemove",
+				"sprite": "Ira"
+			},
+			{
+				"type": "ActionSpeech",
+				"time": 30,
+				
+				"name": "Narrator",
+				"message": "It seems like the tables have turned against our heroes. Oh man, they’re about to get beat by a teddy bear. With peace symbols. Doesn’t that suck?"
+			}
+		]
+	]
+}

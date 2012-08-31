@@ -1,0 +1,29 @@
+{
+	"id": "level1_gf",
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level1_1f_win"
+			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 30,
+				
+				"name": "Narrator",
+				"message": "Now they are on the ground floor! Being the heroes that they are, they also decide to defeat all the enemies on this floor."
+			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 30,
+				
+				"name": "Narrator",
+				"message": "This part is more difficult because there are some DRUNK GUYS to deal with, as well as some actual demons!"
+			}
+		]
+	]
+}

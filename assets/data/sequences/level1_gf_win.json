@@ -1,0 +1,33 @@
+{
+	"id": "level1_gf_win",
+	"actions": [
+		[
+			{
+				"type": "ConditionBeatEnemies",
+				"map": "perkins_gf"
+			},
+			{
+				"type": "ConditionSequence",
+				"name": "level1_gf",
+			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 30,
+				
+				"name": "Narrator",
+				"message": "But clearly, this difficulty is no match for our heroes, and through their arrogance, they will DIE later."
+			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 30,
+				
+				"name": "Narrator",
+				"message": "Our heroes feel a strange and depressing force, emanating from the ground floor lounge. Something evil is up, so they go investigate."
+			}
+		]
+	]
+}

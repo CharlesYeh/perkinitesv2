@@ -1,0 +1,65 @@
+{
+	"id": "level1_gf_win",
+	"actions": [
+		[
+			{
+				"type": "ConditionBeatEnemy",
+				"map": "perkins_gf"
+				"sprite": "Warbear"
+			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 30,
+				
+				"name": "Narrator",
+				"message": "By hitting the teddy bear multiple times, they have warded away the darkness from this object."
+			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 30,
+				
+				"name": "Narrator",
+				"message": "Even better for them, they manage to unlock six new heroes!"
+			}
+		],
+		[
+			{
+				"type": "ActionUnlockCharacters",
+				"time": 30,
+				
+				"quantity": 3
+			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 30,
+				
+				"name": "Narrator",
+				"message": "They don’t stop to wonder what this means. They just roll with it."
+			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 30,
+				
+				"name": "Narrator",
+				"message": "However, they know that evil demon child is still probably within Perkins, planning something diabolical, like making an evil lamp or something."
+			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 30,
+				
+				"name": "Narrator",
+				"message": "The only place they haven’t investigated yet is the third floor, so our heroes journey to the depths of wherever that might be."
+			}
+		]
+	]
+}
