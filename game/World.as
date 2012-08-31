@@ -10,6 +10,7 @@
 	import units.Teleport;
 	import aiunits.BasicAIUnit;
 	import scripting.Sequence;
+	import units.StatUnit;
 	
     public class World extends MovieClip {
 		
@@ -63,24 +64,28 @@
 		
 		public function clearEnemy(e:AIUnit):void{
 			var index = m_enemies.indexOf(e);
+			
+			e.destroy();
 			removeChild(e);
 			m_enemies.splice(index, 1);
-			
-			
 		}
 		public function clearWorld():void {
-			clearWorldHelper(m_customs);
+			clearWorldHelper(m_customs, true);
 			clearWorldHelper(m_teleports);
-			clearWorldHelper(m_enemies);
+			clearWorldHelper(m_enemies, true);
 			
 			m_customs = null;
 			m_teleports = null;
 			m_enemies = null;
 		}
 		
-		private function clearWorldHelper(clips:Array):void {
+		private function clearWorldHelper(clips:Array, destroy:Boolean=false):void {
 			for (var i:String in clips) {
 				removeChild(clips[i]);
+				
+				if (destroy) {
+					(clips[i] as StatUnit).destroy();
+				}
 			}
 		}
 		

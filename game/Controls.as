@@ -33,9 +33,9 @@
 		}
 		
 		public static function setupRightClick():void {
-			if (ExternalInterface.available) {
+			/*if (ExternalInterface.available) {
 				ExternalInterface.addCallback("rightClickDown", rightClickDown);
-			}
+			}*/
 			
 			secondaryClick = ExternalInterface.available;
 		}
