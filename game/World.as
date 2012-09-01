@@ -89,7 +89,7 @@
 			m_teleports.splice(index, 1);
 		}
 		public function clearWorld():void {
-			clearWorldHelper(m_customs, true);
+			clearWorldHelper(m_customs);
 			clearWorldHelper(m_teleports);
 			clearWorldHelper(m_enemies, true);
 			
