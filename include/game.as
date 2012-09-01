@@ -5,7 +5,6 @@ import flash.display.MovieClip;
 
 stop();
 
-var overlay:MovieClip;
 Game.startGameWorld(this);
 setupGame();
 

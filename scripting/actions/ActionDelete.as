@@ -1,6 +1,9 @@
 ﻿package scripting.actions {
 	
+	import game.GameConstants;
 	import game.Game;
+	
+	import flash.geom.Point;
 	
 	public class ActionDelete extends Action{
 		
@@ -18,7 +21,7 @@
 			super.act();
 			
 			if(subtype == "custom"){
-				var customs = Game.world.getCustoms();
+				var customs:Array = Game.world.getCustoms();
 				for(var i:String in customs){
 					if(Math.floor(customs[i].x/GameConstants.TILE_SIZE) == position.x &&
 					   Math.floor(customs[i].y/GameConstants.TILE_SIZE) == position.y){
@@ -28,8 +31,8 @@
 				}						
 			}
 			else if(subtype == "enemy"){
-				var enemies = Game.world.getEnemies();
-				for(var i:String in enemies){
+				var enemies:Array = Game.world.getEnemies();
+				for(i in enemies){
 					if(Math.floor(enemies[i].x/GameConstants.TILE_SIZE) == position.x &&
 					   Math.floor(enemies[i].y/GameConstants.TILE_SIZE) == position.y){
 		   					Game.world.clearEnemy(enemies[i]);
@@ -38,10 +41,10 @@
 				}				
 			}
 			else if(subtype == "teleport"){
-				var teleports = Game.world.getTeleports();
-				for(var i:String in teleports){
-					if(teleports[i].teleData.entryX = position.x && 
-					   teleports[i].teleData.entryY = position.y){
+				var teleports:Array = Game.world.getTeleports();
+				for(i in teleports){
+					if(teleports[i].teleData.entryX == position.x && 
+					   teleports[i].teleData.entryY == position.y){
 						   Game.world.clearTeleport(teleports[i]);
 						   break;
 					   }

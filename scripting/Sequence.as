@@ -1,7 +1,12 @@
 ﻿package scripting {
+	
+	import flash.utils.getDefinitionByName;
+	
 	import db.dbData.DatabaseData;
+	
 	import scripting.actions.*;
 	import scripting.conditions.*;
+	
 	import game.Game;
 	
 	public class Sequence implements DatabaseData {
@@ -15,8 +20,8 @@
 		private var m_completed:Boolean;
 		
 		private function compileClasses():void {
-			var actionTypes:Array = new Array(ActionControls, ActionBlackout, ActionSpeech, ActionWait, ActionNarrator, ActionMusic, ActionAI);
-			var condTypes:Array = new Array(ConditionSequence);
+			var actionTypes:Array = new Array(ActionControls, ActionBlackout, ActionSpeech, ActionWait, ActionNarrator, ActionMusic, ActionAI, ActionUnlockCharacters, ActionAnimate, ActionDelete);
+			var condTypes:Array = new Array(ConditionSequence, ConditionNearLocation, ConditionBeatEnemy, ConditionClearedArea);
 		}
 		
 		public function parseData(obj:Object):void {
@@ -40,7 +45,15 @@
 		}
 		
 		public static function createAction(type:String):Action {
-			var ActionClass:Class = getDefinitionByName(type) as Class;
+			var pkg:String = "";
+			if (type.indexOf("Action") == 0) {
+				pkg = "scripting.actions.";
+			}
+			else if (type.indexOf("Condition") == 0) {
+				pkg = "scripting.conditions.";
+			}
+			
+			var ActionClass:Class = getDefinitionByName(pkg + type) as Class;
 			
 			var act:Action = new ActionClass();
 			return act;

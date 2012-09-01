@@ -1,8 +1,6 @@
 ﻿package scripting.actions {
 	import db.dbData.DatabaseData;
 	
-	import flash.utils.getDefinitionByName;
-	
 	public class Action implements DatabaseData {
 		public var subtype:String;
 		

@@ -3,13 +3,13 @@
 	"actions": [
 		[
 			{
-				"type": "ConditionBeatEnemies",
+				"type": "ConditionClearedArea",
 				"map": "perkins_1f"
 			},
 			{
 				"type": "ConditionSequence",
 				"name": "level1_1f"
-			},
+			}
 		],
 		[
 			{

@@ -85,13 +85,13 @@
 				team.push(char);
 			}
 			
-			// create map/world
-			world = MapManager.createWorld(playerProgress.map, team);
-			container.addChild(world);
-			
 			// setup overlay
 			overlay = new GameOverlay();
 			container.addChild(overlay);
+			
+			// create map/world
+			world = MapManager.createWorld(playerProgress.map, team);
+			container.addChild(world);
 		}
 		
 		public static function endGameWorld():void {

@@ -1,5 +1,5 @@
 {
-	"id": "level1_gf_win",
+	"id": "level1_miniboss",
 	"actions": [
 		[
 			{
@@ -40,14 +40,14 @@
 				"type": "ActionAnimate",
 				"time": 30,
 				
-				"sprite": "Ira"
+				"sprite": "Ira",
 				"animation": "warbear_cast"
 			},
 			{
 				"type": "ActionAnimate",
 				"time": 30,
 				
-				"sprite": "Warbear"
+				"sprite": "Warbear",
 				"animation": "warbear_grow"
 			}
 		],
@@ -56,13 +56,13 @@
 				"type": "ActionAnimate",
 				"time": 30,
 				
-				"sprite": "Ira"
+				"sprite": "Ira",
 				"animation": "leave"
 			}
 		],
 		[
 			{
-				"type": "ActionRemove",
+				"type": "ActionDelete",
 				"sprite": "Ira"
 			},
 			{

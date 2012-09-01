@@ -1,4 +1,6 @@
 ﻿package scripting.conditions {
+	import flash.events.Event;
+	
 	import events.GameEventDispatcher;
 	import game.Game;
 	import scripting.actions.*;
@@ -22,11 +24,6 @@
 				update();
 			}
 		}
-		
-		override public function update():void {
-			return super.update();
-		}
-		
 		
 	}
 }

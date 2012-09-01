@@ -18,7 +18,7 @@
 		}
 
 		override public function update():Boolean {
-			var finished:Boolean = true;
+			/*var finished:Boolean = true;
 			for(var i:String in units){
 				if(units[i] == "player"){
 					if(c[0].usingAnimation){
@@ -38,7 +38,7 @@
 			if(finished){
 				complete();
 			}
-			
+			*/
 			return super.update();
 		}
 

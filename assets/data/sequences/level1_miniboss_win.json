@@ -1,10 +1,10 @@
 {
-	"id": "level1_gf_win",
+	"id": "level1_miniboss_win",
 	"actions": [
 		[
 			{
 				"type": "ConditionBeatEnemy",
-				"map": "perkins_gf"
+				"map": "perkins_gf",
 				"sprite": "Warbear"
 			}
 		],

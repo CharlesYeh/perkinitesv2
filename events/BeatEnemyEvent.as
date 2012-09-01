@@ -5,7 +5,7 @@
 	 * Fired whenever the player beats an enemy 
 	 */
 	public class BeatEnemyEvent extends Event {
-		var id;
+		public var id;
 		
 		public function BeatEnemyEvent(eID:String) {
 			super(GameEventDispatcher.BEAT_ENEMY);

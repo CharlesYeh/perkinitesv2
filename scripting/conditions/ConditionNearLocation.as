@@ -12,8 +12,8 @@
 			super.act();
 		}
 		
-		override public function update():void {
-			return m_completed;
+		override public function update():Boolean {
+			return true;
 		}
 		
 		

@@ -1,4 +1,7 @@
 ﻿package scripting.conditions {
+	import flash.events.Event;
+	
+	import events.BeatEnemyEvent;
 	import events.GameEventDispatcher;
 	import game.Game;
 	import scripting.actions.*;
@@ -18,19 +21,13 @@
 			Game.eventDispatcher.addEventListener(GameEventDispatcher.BEAT_ENEMY, conditionHandler);
 		}
 		
-		public function conditionHandler(e:Event):void{
-			if(e.id == id){
+		public function conditionHandler(e:BeatEnemyEvent):void{
+			if (e.id == id) {
 				Game.eventDispatcher.removeEventListener(GameEventDispatcher.BEAT_ENEMY, conditionHandler);
 				complete();
 				update();
 			}
 			
 		}
-		
-		override public function update():void {
-			return super.update();
-		}
-		
-		
 	}
 }
