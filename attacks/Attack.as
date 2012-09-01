@@ -28,7 +28,6 @@
 		public function updateGuide(caster:StatUnit, castPoint:Point):void {
 			showGuide(caster, castPoint);
 		}
-				
 		
 		/**
 		 * casts the ability at castPoint

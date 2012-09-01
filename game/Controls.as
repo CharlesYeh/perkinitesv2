@@ -29,14 +29,21 @@
 		
 		private static var m_enabled:Boolean = true;
 		
-		public static function set enabled(val:Boolean) {
+		public static function set enabled(val:Boolean):void {
 			m_enabled = val;
 		}
 		
 		public static function setupRightClick():void {
 			if (ExternalInterface.available) {
-				ExternalInterface.addCallback("rightClickDown", rightClickDown);
-				ExternalInterface.addCallback("rightClickUp", rightClickUp);
+				try {
+					ExternalInterface.addCallback("rightClickDown", rightClickDown);
+					ExternalInterface.addCallback("rightClickUp", rightClickUp);
+				} catch (e:Error) {
+					trace("Error: " + e.message);
+				}
+			}
+			else {
+				trace("Error adding right click callbacks");
 			}
 			
 			secondaryClick = ExternalInterface.available;

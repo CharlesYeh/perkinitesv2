@@ -4,9 +4,6 @@
 	import flash.utils.getDefinitionByName;
 	
 	public class Action implements DatabaseData {
-		/** compile classes */
-		//public static const actionTypes:Array = new Array(ActionControls, ActionBlackout);
-		
 		public var subtype:String;
 		
 		/** length of action in frames */
@@ -15,7 +12,7 @@
 		private var m_complete:Boolean;
 		
 		private function compileClasses():void {
-			var actionTypes:Array = new Array(ActionControls, ActionBlackout);
+			var actionTypes:Array = new Array(ActionControls, ActionBlackout, ActionSpeech, ActionWait, ActionNarrator, ActionMusic, ActionAI);
 		}
 		
 		public function parseData(obj:Object):void {

@@ -110,13 +110,16 @@
 				return true;
 			}
 		}
-		public function teleportTo(targetX:int, targetY:int) {
+		public function teleportTo(targetX:int, targetY:int):Boolean {
 			if (TileMap.hitNonpass(targetX, targetY)) {
 				// invalid destination
+				return false;
 			}
 			else {
 				x = targetX;
 				y = targetY;
+				
+				return true;
 			}
 		}
 

@@ -13,7 +13,7 @@
 	public class AIUnit extends StatUnit {
 		private var chaserange:Number;
 		
-		//public static const aiClasses:Array = new Array(BasicAIUnit);
+		public static var m_enabled:Boolean;
 		
 		public function AIUnit(edat:EnemyData) {
 			super(edat);
@@ -22,9 +22,16 @@
 			
 			// load swf
 			loadSwf();
-			
-			
 		}
+		
+		private static function compileClasses():void {
+			var aiClasses:Array = new Array(BasicAIUnit, WarbearAI);
+		}
+		
+		public static function set enabled(val:Boolean):void {
+			m_enabled = val;
+		}
+		
 		// prevent any possible conflict that results it in being standing-only
 		override function completeLoad(e):void {
 			super.completeLoad(e);
@@ -33,7 +40,6 @@
 		}
 		public static function createAIUnit(id:String):AIUnit {
 			var edat:EnemyData = Game.dbEnemy.getEnemyData(id);
-			var rand:BasicAIUnit;
 			var AIClass:Class = getDefinitionByName("aiunits." + edat.ai) as Class;
 			return new AIClass(edat);
 		}
@@ -47,9 +53,13 @@
 		
 		// just moves to player if player is in range
 		protected function runnerAI(e:Event) {
-			if (progressData.health < 0)
+			if (!m_enabled) {
+				return;
+			}
+			
+			if (progressData.health < 0) {
 				deleteSelf();
-
+			}
 			
 			chaserange = 250;
 			chasePlayer(chaserange);

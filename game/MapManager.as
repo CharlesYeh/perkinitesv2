@@ -92,8 +92,8 @@
 				u.y = tdat.exitY * GameConstants.TILE_SIZE + (GameConstants.TILE_SIZE >> 1);
 				//prevent any movement from the last map
 				u.clearPath();
+				
 				//prevent dashing
-				u.stopForwardMovement();
 				u.enableMovement();
 				u.endAbility();
 			}
