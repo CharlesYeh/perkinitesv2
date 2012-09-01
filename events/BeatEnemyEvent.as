@@ -2,15 +2,15 @@
 	import flash.events.Event;
 	
 	/*
-	 * Fired whenever the player beats an enemy (or multiple)
+	 * Fired whenever the player beats an enemy 
 	 */
 	public class BeatEnemyEvent extends Event {
-		var enemies:Array;
+		var id;
 		
-		public function BeatEnemyEvent(beat:Array) {
+		public function BeatEnemyEvent(eID:String) {
 			super(GameEventDispatcher.BEAT_ENEMY);
 			
-			enemies = beat;
+			id = eID;
 		}
 	}
 }
