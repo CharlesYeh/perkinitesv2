@@ -82,12 +82,15 @@
 				showGuides(1, KeyDown.mousePoint);
 			}
 			
-			if (ke.keyCode == Keyboard.S) {
+			if (ke.keyCode == Keyboard.B) {
 				var seqs:Array = Game.world.mapData.sequences;
 				for (var i:String in seqs) {
-					var seq:Sequence = seq[i];
+					var seq:Sequence = seqs[i];
 					seq.complete();
 				}
+				
+				m_enabled = true;
+				Game.overlay.fader.visible = false;
 			}
 		}
 		

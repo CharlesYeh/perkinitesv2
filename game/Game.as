@@ -10,6 +10,7 @@
 	
 	import game.progress.PlayerProgress;
 	
+	import game.SoundManager;
 	import events.GameEventDispatcher;
 	
 	import units.StatUnit;
@@ -17,6 +18,7 @@
 	import ui.GameOverlay;
 
 	public class Game {
+		public static var sndManager:SoundManager;
 		public static var eventDispatcher:GameEventDispatcher;
 		
 		public static var dbEnemy:EnemyDatabase;

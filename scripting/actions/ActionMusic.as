@@ -18,6 +18,13 @@
 		override public function act():void {
 			super.act();
 			
+			if (enable) {
+				
+			}
+			else {
+				
+			}
+			
 			complete();
 		}
 	}
