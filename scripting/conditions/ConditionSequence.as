@@ -16,7 +16,7 @@
 			super.act();
 		}
 		
-		override public function update():void {
+		override public function update():Boolean {
 			return Game.playerProgress.hasCompletedSequence(name);
 		}
 		

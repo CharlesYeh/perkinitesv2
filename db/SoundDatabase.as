@@ -8,7 +8,8 @@
 	
 	public class SoundDatabase implements DatabaseLoader {
 		
-		public var sounds:Dictionary;
+		/** dictionary of sndname -> SoundData */
+		public var sounds:Dictionary = new Dictionary();
 		
 		public function SoundDatabase() {
 			loadData();

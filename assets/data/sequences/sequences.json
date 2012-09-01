@@ -1,5 +1,13 @@
 {
 	"sequences": [
-		"level1_start"
+		"level1_intro",
+		"level1_2f",
+		"level1_1f",
+		"level1_1f_win",
+		"level1_gf",
+		"level1_gf_win",
+		"level1_lounge",
+		"level1_miniboss",
+		"level1_miniboss_win"
 	]
 }
