@@ -11,6 +11,9 @@
 		/** cutscene */
 		public var cutscene:Cutscene;
 		
+		/** char unlock */
+		public var charUnlock:CharUnlock;
+		
 		/** hud */
 		public var hud:GameHUD;
 		
@@ -29,6 +32,11 @@
 			
 			narrator = new Narrator();
 			
+			charUnlock = new CharUnlock();
+			charUnlock.x = 330;
+			charUnlock.y = 240;
+			charUnlock.visible = false;
+			
 			fader = new BlackScreen();
 			
 			cutscene = new Cutscene();
@@ -36,6 +44,7 @@
 			
 			addChild(hud);
 			addChild(cutscene);
+			addChild(charUnlock);
 			addChild(narrator);
 			addChild(speech);
 			addChild(fader);

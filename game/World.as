@@ -55,11 +55,23 @@
 				createEnemy(e);
 			}
 			
+			m_NPCs = new Array();
+			for (i in mapData.npcs) {
+				var n:MapCharacterData = mapData.npcs[i];
+				//createNPC(n);
+			}			
+			
 			mdat.startSequences();
 		}
 		
 		public function getTilesClip():MovieClip {
 			return m_tiles;
+		}
+		public function clearCustom(c:MovieClip):void{
+			var index = m_customs.indexOf(c);
+			
+			removeChild(c);
+			m_customs.splice(index, 1);			
 		}
 		
 		public function clearEnemy(e:AIUnit):void{
@@ -68,6 +80,13 @@
 			e.destroy();
 			removeChild(e);
 			m_enemies.splice(index, 1);
+		}
+		
+		public function clearTeleport(t:Teleport):void{
+			var index = m_teleports.indexOf(t);
+			
+			removeChild(t);
+			m_teleports.splice(index, 1);
 		}
 		public function clearWorld():void {
 			clearWorldHelper(m_customs, true);
@@ -98,13 +117,17 @@
 			addChild(u);
 		}
 		
-		public function removeUnit(u:MovieClip):void {
+		public function removeUnits(u:Array):void {
+			for(var i:String in u){
+				removeUnitHelper(u[i]);
+			}
+		}
+		private function removeUnitHelper(u:MovieClip):void{
 			m_customs.splice(m_customs.indexOf(u), 1);
 			if(u.parent != null){ 
 				removeChild(u);
 			}
 		}
-		
 		/**
 		 * add this enemy to the map
 		 */
@@ -130,6 +153,9 @@
 		}
 		public function getEnemies():Array {
 			return m_enemies;
+		}
+		public function getTeleports():Array{
+			return m_teleports;
 		}
 		
 		public function checkTeleports(su:GameUnit):TeleportData {

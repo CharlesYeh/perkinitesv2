@@ -55,7 +55,7 @@
 					var p:MovieClip = m_bullets[i];
 					
 					p.removeEventListener(Event.ENTER_FRAME, projectileRunner);
-					Game.world.removeUnit(p);
+					Game.world.clearCustom(p);
 				}
 			}
 			hits = new Array();
@@ -170,7 +170,7 @@
 		protected function removeProjectile(p:MovieClip):void {
 			m_bullets.splice(m_bullets.indexOf(p), 1);
 			p.removeEventListener(Event.ENTER_FRAME, projectileRunner);
-			Game.world.removeUnit(p);
+			Game.world.clearCustom(p);
 		}
 		
 		//making a public function?

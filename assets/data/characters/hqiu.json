@@ -1,52 +1,38 @@
 {
-	"name": "Sophie Q.",
-	"id": "HQ",
-	"sprite": "HQ",
-	"health": 75,
-	"defense": 0,
-	"speed": 300,
-	
-	"levelBonuses": {
-		"health": 8,
-		"attack": 1,
-		"speed": 5
-	},
-	
-	"weapon": "Chinese Magic",
-	"abilities": [
-		{
-			"name": "Jade Fang",
-			"type": "AttackCone",
-			"icon": "Icon - Jade Fang.png",
-			"description": "Throw two daggers at a target.",
-			
-			"dmgBase": 50,
-			"dmgRatio": 50,
-			
-			"range": 50,
-			"cd": 10,
-			"animLabel": "ability1",			
-			
-			"angle": 90
-		},
-		{
-			"name": "Astral Arts",
-			"type": "AttackSmartcast",
-			"icon": "Icon - Astral Arts.png",
-			"description": "Gain temporary invincibility and speed for a longer time period.",
-			
-			"dmgBase": 50,
-			"dmgRatio": 50,
-			
-			"range": 250,
-			"cd": 20,
-			"animLabel": "ability2",			
-			"buffs": {
-				"team": {
-					"invincibility": true,
-					"duration": 20
-				}
-			}
-		}
-	]
+  "levelBonuses": {
+    "health": 8,
+    "attack": 1,
+    "speed": 5
+  },
+  "weapon": "Chinese Magic",
+  "name": "Sophie Q.",
+  "id": "HQ",
+  "sprite": "HQ",
+  "health": 75,
+  "defense": 0,
+  "speed": 300,
+  "abilities": [
+    {
+      "name": "Jade Fang",
+      "type": "AttackCone",
+      "icon": "Icon - Jade Fang.png",
+      "description": "Throw two daggers at a target.",
+      "dmgBase": "50",
+      "dmgRatio": "50",
+      "range": 50,
+      "cd": 10,
+      "angle": 90
+    },
+    {
+      "name": "Astral Arts",
+      "type": "AttackSmartcast",
+      "icon": "Icon - Astral Arts.png",
+      "description": "Gain temporary invincibility and speed for a longer time period.",
+      "dmgBase": "50",
+      "dmgRatio": "50",
+      "range": 250,
+      "cd": 20,
+      "goToCastPoint": false
+    }
+  ]
 }

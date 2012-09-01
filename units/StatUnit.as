@@ -52,6 +52,7 @@
 		
 		//----------FRAME VARS----------
 		var prevLabel:String = ANIM_STANDING;
+		public var usingAnimation:Boolean = false;
 		var usingAbility:Boolean	= false;
 		var disabledMovement:Boolean= false;
 		var forwardVector:Point = null;
@@ -174,6 +175,17 @@
 			usingAbility = false;
 			setAnimLabel(prevLabel);
 		}
+		//only for cutscene animations 
+		public function beginAnimation(animLabel:String){
+			prevLabel = animLabel;
+			usingAnimation = true;
+			setAnimLabel(animLabel);
+		}
+		public function endAnimation(){
+			usingAnimation = false;
+			setAnimLabel(prevLabel);
+		}
+		//
 		public function disableMovement() {
 			disabledMovement = true;
 		}
@@ -324,6 +336,7 @@
 			usingAbility = true;
 			prevLabel = animLabel;
 			
+			//change this
 			switch (abilityId) {
 			case 0:
 				setAnimLabel(ANIM_ABILITY1);
@@ -353,6 +366,9 @@
 			}
 			
 			// update ability if animation is playing
+			if(usingAnimation){
+				return;
+			}
 			if (usingAbility) {
 				var atk:Attack = unitData.abilities[abilityId];
 				atk.castInProgress(this);

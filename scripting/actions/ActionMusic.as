@@ -2,7 +2,7 @@
 	import game.Game;
 	
 	public class ActionMusic extends Action{
-		/** whether to enable to disable HUD */
+		/** whether to enable to disable music */
 		public var enable:Boolean;
 		
 		/** song to play */

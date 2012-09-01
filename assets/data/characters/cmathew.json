@@ -1,48 +1,35 @@
 {
-	"name": "Cia M.",
-	"id": "CM",
-	"sprite": "CM",
-	"health": 75,
-	"defense": 0,
-	"speed": 300,
-	
-	"levelBonuses": {
-		"health": 8,
-		"attack": 1,
-		"speed": 5
-	},
-	
-	"weapon": "Knitting Needles",
-	"abilities": [
-		{
-			"name": "Sedated Needles",
-			"type": "AttackPoint",
-			"icon": "Icon - Sedated Needles.png",
-			"description": "Throws a sedated knitting needle at an enemy. If close enough, sedate more.",
-			
-			"dmgBase": 50,
-			"dmgRatio": 50,
-			
-			"range": 200,
-			"cd": 10,
-			"animLabel": "ability1",
-			"radius": 50,
-			
-			"buffs": {
-				"enemies": {
-					
-				}
-			}
-		},
-		{
-			"name": "Graceful Dodge",
-			"type": "AttackPoint",
-			"icon": "Icon - Graceful Dodge.png",
-			"description": "Teleport self to a point.",
-			
-			"range": 250,
-			"cd": 20,
-			"animLabel": "ability2"			
-		}
-	]
+  "levelBonuses": {
+    "health": 8,
+    "attack": 1,
+    "speed": 5
+  },
+  "weapon": "Knitting Needles",
+  "name": "Cia M.",
+  "id": "CM",
+  "sprite": "CM",
+  "health": 75,
+  "defense": 0,
+  "speed": 300,
+  "abilities": [
+    {
+      "name": "Sedated Needles",
+      "type": "AttackPoint",
+      "icon": "Icon - Sedated Needles.png",
+      "description": "Throws a sedated knitting needle at an enemy. If close enough, sedate more.",
+      "dmgBase": "50",
+      "dmgRatio": "50",
+      "range": 200,
+      "cd": 10,
+      "radius": 50
+    },
+    {
+      "name": "Graceful Dodge",
+      "type": "AttackPoint",
+      "icon": "Icon - Graceful Dodge.png",
+      "description": "Teleport self to a point.",
+      "range": 250,
+      "cd": 20
+    }
+  ]
 }

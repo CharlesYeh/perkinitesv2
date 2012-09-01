@@ -1,53 +1,39 @@
 {
-	"name": "Eric H.",
-	"id": "EH",
-	"sprite": "EH",
-	"health": 75,
-	"defense": 0,
-	"speed": 300,
-	
-	"levelBonuses": {
-		"health": 8,
-		"attack": 1,
-		"speed": 5
-	},
-	
-	"weapon": "Tentacles",
-	"abilities": [
-		{
-			"name": "Perk-ulate",
-			"type": "AttackDashSkillshot",
-			"icon": "Icon - Perk-kulate.png",
-			"description": "Dash forward, dealing damage to all enemies at the target location.",
-			
-			"dmgBase": 0,
-			"dmgRatio": 50,
-			
-			"range": 200,
-			"cd": 10,
-			"animLabel": "ability1",			
-			"width": 50,
-			"speed": 30,
-			
-			"stopAtEnemy": false
-		},
-		{
-			"name": "Awkward Stare",
-			"type": "AttackSmartcast",
-			"icon": "Icon - Awkward Stare.png",
-			"description": "Stun all enemies by giving them an awkward Eric stare.",
-			
-			"dmgBase": 50,
-			"dmgRatio": 50,
-			
-			"range": 200,
-			"cd": 20,
-			"animLabel": "ability2",			
-			"buffs": {
-				"enemies": {
-					"stunDuration": 20
-				}
-			}
-		}
-	]
+  "levelBonuses": {
+    "health": 8,
+    "attack": 1,
+    "speed": 5
+  },
+  "weapon": "Tentacles",
+  "name": "Eric H.",
+  "id": "EH",
+  "sprite": "EH",
+  "health": 75,
+  "defense": 0,
+  "speed": 300,
+  "abilities": [
+    {
+      "name": "Perk-ulate",
+      "type": "AttackDashSkillshot",
+      "icon": "Icon - Perk-kulate.png",
+      "description": "Dash forward, dealing damage to all enemies at the target location.",
+      "dmgBase": "0",
+      "dmgRatio": "50",
+      "range": 200,
+      "cd": 10,
+      "speed": 30,
+      "width": 50
+    },
+    {
+      "name": "Awkward Stare",
+      "type": "AttackSmartcast",
+      "icon": "Icon - Awkward Stare.png",
+      "description": "Stun all enemies by giving them an awkward Eric stare.",
+      "dmgBase": "50",
+      "dmgRatio": "50",
+      "range": 200,
+      "cd": 20,
+      "goToCastPoint": false
+    }
+  ]
 }

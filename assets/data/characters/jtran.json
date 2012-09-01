@@ -1,54 +1,42 @@
 {
-	"name": "JohnTran",
-	"id": "JT",
-	"sprite": "JT",
-	"health": 75,
-	"defense": 0,
-	"speed": 300,
-	
-	"levelBonuses": {
-		"health": 8,
-		"attack": 1,
-		"speed": 5
-	},
-	
-	"weapon": "Hoverpad",
-	"abilities": [
-		{
-			"name": "Arrow Control",
-			"type": "AttackHomingProjectiles",
-			"icon": "Icon - Arrow Control.png",
-			"description": "Four arrows appear that home towards the closest enemy.",
-			
-			"dmgBase": 5,
-			"dmgRatio": 50,
-			
-			"width": 100,
-			"speed": 30,
-			"range": 200,
-			"cd": 10,
-			"animLabel": "ability1",			
-			"quantity": 4,
-			"hardTarget": true
-		},
-		{
-			"name": "D4X",
-			"type": "AttackDashSkillshot",
-			"icon": "Icon - D4X.png",
-			"description": "Dash a distance, dealing damage to enemies you dash through.",
-			
-			"dmgBase": 50,
-			"dmgRatio": 50,
-			
-			"range": 200,
-			"cd": 20,
-			"animLabel": "ability2",			
-			"penetrates": 999,
-			
-			"width": 200,
-			"speed": 50,
-			
-			"stopAtEnemy": false
-		}
-	]
+  "levelBonuses": {
+    "health": 8,
+    "attack": 1,
+    "speed": 5
+  },
+  "weapon": "Hoverpad",
+  "name": "JohnTran",
+  "id": "JT",
+  "sprite": "JT",
+  "health": 75,
+  "defense": 0,
+  "speed": 300,
+  "abilities": [
+    {
+      "name": "Arrow Control",
+      "type": "AttackHomingProjectiles",
+      "icon": "Icon - Arrow Control.png",
+      "description": "Four arrows appear that home towards the closest enemy.",
+      "dmgBase": "5",
+      "dmgRatio": "50",
+      "range": 200,
+      "cd": 10,
+      "speed": 30,
+      "width": 100,
+      "hardTarget": false
+    },
+    {
+      "name": "D4X",
+      "type": "AttackDashSkillshot",
+      "icon": "Icon - D4X.png",
+      "description": "Dash a distance, dealing damage to enemies you dash through.",
+      "dmgBase": "50",
+      "dmgRatio": "50",
+      "range": 200,
+      "cd": 20,
+      "speed": 50,
+      "width": 200,
+      "penetrates": 999
+    }
+  ]
 }

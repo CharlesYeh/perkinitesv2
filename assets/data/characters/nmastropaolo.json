@@ -1,48 +1,39 @@
 {
-	"name": "Nate M.",
-	"id": "NM",
-	"sprite": "NM",
-	"health": 100,
-	"defense": 0,
-	"speed": 250,
-	
-	"levelBonuses": {
-		"health": 8,
-		"attack": 1,
-		"speed": 5
-	},
-	
-	"weapon": "Claws",
-	"abilities": [
-		{
-			"name": "Shopping Spree",
-			"type": "AttackDashSkillshot",
-			"icon": "Icon - Shopping Spree.png",
-			"description": "Dash forward, dealing damage to all enemies with which the shopping cart comes into contact.",
-			
-			"dmgBase": 50,
-			"dmgRatio": 50,
-			
-			"range": 270,
-			"cd": 20,
-			"animLabel": "ability2",			
-			
-			"width": 60,
-			"speed": 20,
-			
-			"penetrates": 0
-		},
-		{
-			"name": "Claw Attack",
-			"type": "AttackSmartcast",
-			"icon": "Icon - Claw Attack.png",
-			"description": "Deal heavy damage to a single targeted enemy.",
-			
-			"dmgBase": 50,
-			"dmgRatio": 50,
-			"range": 50,
-			"cd": 5,
-			"animLabel": "ability1"
-		}
-	]
+  "levelBonuses": {
+    "health": 8,
+    "attack": 1,
+    "speed": 5
+  },
+  "weapon": "Claws",
+  "name": "Nate M.",
+  "id": "NM",
+  "sprite": "NM",
+  "health": 100,
+  "defense": 0,
+  "speed": 250,
+  "abilities": [
+    {
+      "name": "Shopping Spree",
+      "type": "AttackDashSkillshot",
+      "icon": "Icon - Shopping Spree.png",
+      "description": "Dash forward, dealing damage to all enemies with which the shopping cart comes into contact.",
+      "dmgBase": "50",
+      "dmgRatio": "50",
+      "range": 270,
+      "cd": 20,
+      "speed": 20,
+      "width": 60
+    },
+    {
+      "name": "Claw Attack",
+      "type": "AttackSmartcast",
+      "icon": "Icon - Claw Attack.png",
+      "description": "Deal heavy damage to a single targeted enemy.",
+      "dmgBase": "50",
+      "dmgRatio": "50",
+      "range": 50,
+      "cd": 5,
+      "goToCastPoint": false
+    }
+  ]
 }
