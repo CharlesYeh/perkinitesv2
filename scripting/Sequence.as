@@ -5,9 +5,6 @@
 	
 	public class Sequence implements DatabaseData {
 		
-		/** compile classes */
-		public static const actionTypes:Array = new Array(ActionSpeech, ActionNarrator, ActionControls, ActionWait);
-		
 		public var id:String;
 		public var actions:Array;
 		

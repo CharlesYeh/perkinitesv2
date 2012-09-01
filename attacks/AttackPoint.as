@@ -21,12 +21,14 @@
 		 * returns whether or not the caster can cast to this point
 		 */
 		override public function inRange(caster:StatUnit, castPoint:Point):Boolean {
-			var dx = caster.x - castPoint.x;
+			/*var dx = caster.x - castPoint.x;
 			var dy = caster.y - castPoint.y;
 			
 			var dd = Math.sqrt(dx * dx + dy * dy);
 			
-			return (dd < range);
+			return (dd < range);*/
+			
+			return super.inRange(caster, castPoint);
 		}
 		
 		/**
@@ -50,6 +52,19 @@
 		 * casts the ability at castPoint
 		 */
 		override public function castAbility(caster:StatUnit, castPoint:Point):void {
+			var dx = castPoint.x - caster.x;
+			var dy = castPoint.y - caster.y;
+			
+			var dd = Math.sqrt(dx * dx + dy * dy);
+			
+			if (dd < range) {
+				// in range
+			}
+			else {
+				castPoint.x = caster.x + dx / dd * range;
+				castPoint.y = caster.y + dy / dd * range;
+			}
+			
 			super.castAbility(caster, castPoint);
 		}
 		

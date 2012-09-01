@@ -47,6 +47,7 @@
 		public static var overlay:GameOverlay;
 		
 		public static function init():void {
+			sndManager = new SoundManager();
 			eventDispatcher = new GameEventDispatcher();
 			
 			dbEnemy	= new EnemyDatabase();

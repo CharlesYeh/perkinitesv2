@@ -7,12 +7,12 @@
 	import flash.geom.Point;
 	import db.dbData.EnemyData;
 	
-	/* BASIC AI ENEMY
+	/* MINIBOSS WARBEAR AI
 	 * if within chase range, chases
 	 * if within ability range, uses ability
 	 */
-	public class BasicAIUnit extends AIUnit {
-		public function BasicAIUnit(edat:EnemyData) {
+	public class WarbearAI extends AIUnit {
+		public function WarbearAI(edat:EnemyData) {
 			super(edat);
 		}
 		

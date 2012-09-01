@@ -29,7 +29,7 @@
 		
 		private static var m_enabled:Boolean = true;
 		
-		public static function set enabled(val:Boolean) {
+		public static function set enabled(val:Boolean):void {
 			m_enabled = val;
 		}
 		
