@@ -1,5 +1,6 @@
 ﻿package game {
 	import game.Game;
+	import scripting.Sequence;
 	
 	import util.KeyDown;
 	
@@ -33,9 +34,10 @@
 		}
 		
 		public static function setupRightClick():void {
-			/*if (ExternalInterface.available) {
+			if (ExternalInterface.available) {
 				ExternalInterface.addCallback("rightClickDown", rightClickDown);
-			}*/
+				ExternalInterface.addCallback("rightClickUp", rightClickUp);
+			}
 			
 			secondaryClick = ExternalInterface.available;
 		}
@@ -72,10 +74,20 @@
 		}
 		
 		public static function keyDownHandler(e:Event):void {
-			if ((e as KeyboardEvent).keyCode == Keyboard.SPACE/* && !acceptRightClicks*/) {
+			var ke:KeyboardEvent = e as KeyboardEvent;
+			
+			if (ke.keyCode == Keyboard.SPACE/* && !acceptRightClicks*/) {
 				aiming1 = false;
 				aiming2 = true;
 				showGuides(1, KeyDown.mousePoint);
+			}
+			
+			if (ke.keyCode == Keyboard.S) {
+				var seqs:Array = Game.world.mapData.sequences;
+				for (var i:String in seqs) {
+					var seq:Sequence = seq[i];
+					seq.complete();
+				}
 			}
 		}
 		
