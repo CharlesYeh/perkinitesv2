@@ -7,6 +7,9 @@
 		
 		public var name:String;
 		public var id:String;
+		
+		public var bgmusic:String;
+		
 		public var width:int;
 		public var height:int;
 		
@@ -29,6 +32,8 @@
 		public function parseData(obj:Object):void {
 			name	= obj.name;
 			id		= obj.id;
+			
+			bgmusic	= obj.bgmusic;
 			
 			code	= obj.code;
 			

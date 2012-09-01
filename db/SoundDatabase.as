@@ -1,0 +1,38 @@
+﻿package db {
+	import flash.utils.Dictionary;
+	import flash.events.Event;
+	
+	import com.adobe.serialization.json.JSON;
+	
+	import db.dbData.SoundData;
+	
+	public class SoundDatabase implements DatabaseLoader {
+		
+		public var sounds:Dictionary;
+		
+		public function SoundDatabase() {
+			loadData();
+		}
+		
+		public function loadData():void {
+			Database.loadData("assets/data/maps/bgmusic.json", completeLoad);
+		}
+		
+		public function completeLoad(e:Event):void {
+			var sdat:Object = JSON.decode(e.target.data);
+			
+			for (var i:String in sdat.music) {
+				var dat:Object = sdat.music[i];
+				
+				var snd:SoundData = new SoundData();
+				snd.parseData(dat);
+				
+				sounds[snd.name] = snd;
+			}
+		}
+		
+		public function getSound(name:String):SoundData {
+			return sounds[name];
+		}
+	}
+}

@@ -1,6 +1,7 @@
 {
   "name": "Perkins Hall 2F",
   "id": "perkins_2f",
+  "bgmusic": "P.S.F. -Perkinite Strike Force-",
   "tileset": "perkins",
   "height": 31,
   "width": 71,
@@ -78,5 +79,5 @@
   "enemies": [],
   "npcs": [],
   
-  "sequences": ["level1_start"]
+  "sequences": ["level1_intro", "level1_2f"]
 }

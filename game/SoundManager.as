@@ -2,12 +2,10 @@
 	
 	public class SoundManager {
 		
-		public function SoundManager() {
-			// constructor code
-		}
-		public function playSong():void{
+		public function playSong(name:String):void {
 			
 		}
+		
 		public function endSong():void{
 			
 		}
