@@ -1,10 +1,7 @@
 ﻿package game {
 	import flash.display.MovieClip;
 	
-	import db.EnemyDatabase;
-	import db.MapDatabase;
-	import db.CharacterDatabase;
-	import db.SequenceDatabase;
+	import db.*;
 	
 	import db.dbData.CharacterData;
 	
@@ -25,6 +22,7 @@
 		public static var dbMap:MapDatabase;
 		public static var dbChar:CharacterDatabase;
 		public static var dbSeq:SequenceDatabase;
+		public static var dbSnd:SoundDatabase;
 		
 		/** info about the player's progress is stored here */
 		public static var playerProgress:PlayerProgress;
@@ -54,6 +52,7 @@
 			dbMap	= new MapDatabase();
 			dbChar	= new CharacterDatabase();
 			dbSeq	= new SequenceDatabase();
+			dbSnd	= new SoundDatabase();
 			
 			playerProgress = new PlayerProgress();
 		}

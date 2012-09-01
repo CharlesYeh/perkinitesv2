@@ -1,6 +1,7 @@
 ﻿package scripting {
 	import db.dbData.DatabaseData;
 	import scripting.actions.*;
+	import scripting.conditions.*;
 	import game.Game;
 	
 	public class Sequence implements DatabaseData {
@@ -13,6 +14,11 @@
 		
 		private var m_completed:Boolean;
 		
+		private function compileClasses():void {
+			var actionTypes:Array = new Array(ActionControls, ActionBlackout, ActionSpeech, ActionWait, ActionNarrator, ActionMusic, ActionAI);
+			var condTypes:Array = new Array(ConditionSequence);
+		}
+		
 		public function parseData(obj:Object):void {
 			id = obj.id;
 			
@@ -24,13 +30,20 @@
 				for (var j:String in fdat) {
 					var adat:Object = fdat[j];
 					
-					var a:Action = Action.createAction(adat.type);
+					var a:Action = createAction(adat.type);
 					a.parseData(adat);
 					frame.push(a);
 				}
 				
 				actions.push(frame);
 			}
+		}
+		
+		public static function createAction(type:String):Action {
+			var ActionClass:Class = getDefinitionByName(type) as Class;
+			
+			var act:Action = new ActionClass();
+			return act;
 		}
 		
 		public function start():void {

@@ -11,10 +11,6 @@
 		
 		private var m_complete:Boolean;
 		
-		private function compileClasses():void {
-			var actionTypes:Array = new Array(ActionControls, ActionBlackout, ActionSpeech, ActionWait, ActionNarrator, ActionMusic, ActionAI);
-		}
-		
 		public function parseData(obj:Object):void {
 			subtype = obj.subtype;
 			time = obj.time;
@@ -39,13 +35,6 @@
 		 */
 		public function update():Boolean {
 			return m_complete;
-		}
-		
-		public static function createAction(type:String):Action {
-			var ActionClass:Class = getDefinitionByName("scripting.actions." + type) as Class;
-			
-			var act:Action = new ActionClass();
-			return act;
 		}
 	}
 }

@@ -1,6 +1,7 @@
 {
   "name": "Perkins Hall 1F",
   "id": "perkins_1f",
+  "bgmusic": "P.S.F. -Perkinite Strike Force-",
   "tileset": "perkins",
   "height": 31,
   "width": 71,
@@ -105,5 +106,7 @@
       }
     }
   ],
-  "npcs": []
+  "npcs": [],
+  
+  "sequences": ["level1_1f", "level1_1f_win"]
 }
