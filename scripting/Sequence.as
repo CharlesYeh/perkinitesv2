@@ -82,6 +82,10 @@
 			}
 		}
 		
+		public function getIndex():int {
+			return m_index;
+		}
+		
 		public function updateActions():void {
 			if (m_completed) {
 				return;
