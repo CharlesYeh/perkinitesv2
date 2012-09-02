@@ -1,5 +1,9 @@
 ﻿import flash.display.MovieClip;
 
+import game.SoundManager;
+
+SoundManager.playSong("P.S.F. -Perkinite Strike Force-");
+
 // for button hover glow
 var rFilter:GlowFilter = new GlowFilter(0xFF0000, 100, 20, 20, 1, 10, true, false);
 var gFilter:GlowFilter = new GlowFilter(0x00FF00, 100, 20, 20, 1, 10, true, false);

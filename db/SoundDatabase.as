@@ -27,12 +27,11 @@
 				
 				var snd:SoundData = new SoundData();
 				snd.parseData(dat);
-				
 				sounds[snd.name] = snd;
 			}
 		}
 		
-		public function getSound(name:String):SoundData {
+		public function getSoundData(name:String):SoundData {
 			return sounds[name];
 		}
 	}

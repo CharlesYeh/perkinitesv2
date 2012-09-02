@@ -1,17 +1,20 @@
 ﻿package game{
+	import flash.display.MovieClip;
+	
 	import db.dbData.MapData;
 	import db.dbData.MapCharacterData;
 	import db.dbData.TeleportData;
 
 	import units.AIUnit;
-	
-	import flash.display.MovieClip;
 	import units.GameUnit;
 	import units.Teleport;
-	import aiunits.BasicAIUnit;
-	import scripting.Sequence;
 	import units.StatUnit;
+	
+	import aiunits.BasicAIUnit;
+	
+	import scripting.Sequence;
 	import events.BeatEnemyEvent;
+	import game.SoundManager;
 	
     public class World extends MovieClip {
 		
@@ -65,6 +68,8 @@
 			}			
 			
 			mdat.startSequences();
+			
+			SoundManager.playSong(mdat.bgmusic);
 		}
 		
 		public function getTilesClip():MovieClip {

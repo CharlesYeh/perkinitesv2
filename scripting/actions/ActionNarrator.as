@@ -25,7 +25,6 @@
 		override public function act():void {
 			Game.overlay.narrator.showText(message);
 			m_time = time;
-			trace(time);
 		}
 	}
 }

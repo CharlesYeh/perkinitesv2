@@ -34,7 +34,7 @@
 		
 		var animLabel:String = ANIM_STANDING;
 		var animClip:MovieClip;
-		var loaded = false;
+		var loaded:Boolean = false;
 		
 		//----------STATS VARS---------
 		public var unitData:UnitData;
@@ -124,6 +124,7 @@
 		
 		protected function loadSwf() {
 			swf = new Loader();
+			swf.y = -20;
 			swf.load(getSprite());
 			addChild(swf);
 			

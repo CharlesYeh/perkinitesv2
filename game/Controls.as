@@ -1,5 +1,6 @@
 ﻿package game {
 	import game.Game;
+	
 	import scripting.Sequence;
 	
 	import util.KeyDown;
@@ -7,6 +8,8 @@
 	import tileMapper.*;
 	
 	import events.GameEventDispatcher;
+	
+	import units.AIUnit;
 	
 	import flash.events.MouseEvent;
 	import flash.events.KeyboardEvent;
@@ -98,6 +101,7 @@
 				
 				m_enabled = true;
 				Game.overlay.fader.visible = false;
+				AIUnit.enabled = true;
 			}
 		}
 		
