@@ -23,7 +23,7 @@
 			"entry": {"x": 13, "y": 13},
 			"exit": {"map": "perkins_gf", "x": 38, "y": 22}
 		}
-	]
+	],
 	"enemies": [
 		{
 			"id": "peacebear",
@@ -68,30 +68,17 @@
 				},
 				"activated": {
 					"name": "lv1_find_peacebear",
-					"actions": [[
-							{
-								"type": "ActionNarrator",
-								"text": "You find Peace Bear randomly in the middle of the lounge."
-							}
-						],
-						[
-							{
-								"type": "ActionTalk",
-								"name": "Masked Figure",
-								"faceIcon": "boss_ira",
-								"text": "Hyuk hyuk hyuk hyuk..."
-							}
-						]
+					"actions": [
 					]
 				}
 			}		
-				},
+		}
 	],
 	"npcs": [
 		{
 			"id": "CK",
-			"direction": "down"
-			"position": {"x": 4, "y": 4}
+			"direction": "down",
+			"position": {"x": 4, "y": 4},
 			"actions": {
 				"default": {
 					"actions": [

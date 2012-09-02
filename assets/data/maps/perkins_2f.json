@@ -79,5 +79,5 @@
   "enemies": [],
   "npcs": [],
   
-  "sequences": ["level1_intro", "level1_2f"]
+  "sequences": ["level1_intro", "level1_2f", "level1_2f_stopmusic"]
 }

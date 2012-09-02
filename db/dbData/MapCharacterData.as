@@ -2,6 +2,9 @@
 	import flash.geom.Point;
 	import flash.utils.Dictionary;
 	
+	import game.Game;
+	import scripting.Sequence;
+	
 	public class MapCharacterData implements DatabaseData {
 		public var id:String;
 		public var direction:String;
@@ -13,11 +16,10 @@
 			id	= obj.id;
 			direction	= obj.direction;
 			position	= new Point(obj.position.x, obj.position.y);
-			for (var lbl:String in obj.actions) {
-				var seq:SequenceData = new SequenceData();
-				seq.parseData(obj.actions[lbl]);
+			/*for (var lbl:String in obj.actions) {
+				var seq:Sequence = Game.dbSeq.getSequence(lbl);
 				actions[lbl] = seq;
-			}
+			}*/
 		}
 	}
 	

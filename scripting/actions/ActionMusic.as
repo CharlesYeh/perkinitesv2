@@ -1,5 +1,6 @@
 ﻿package scripting.actions {
 	import game.Game;
+	import game.SoundManager;
 	
 	public class ActionMusic extends Action{
 		/** whether to enable to disable music */
@@ -22,7 +23,7 @@
 				
 			}
 			else {
-				
+				SoundManager.endSong();
 			}
 			
 			complete();
