@@ -14,6 +14,10 @@
 				
 				"name": "Narrator",
 				"message": "As this scene suggests, their trip to Keeney is cut short by a couple of evil PROBLEM SETS surrounding our heroes."
+			},
+			{
+				"type": "ActionSound",
+				"sound": "1f"
 			}
 		],
 		[

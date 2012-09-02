@@ -6,7 +6,7 @@
 	
 	public class SoundData implements DatabaseData {
 		
-		public const PATH:String = "assets/music/";
+		public const PATH:String = "assets/sound/";
 		
 		/** name of song used in data */
 		public var name:String;

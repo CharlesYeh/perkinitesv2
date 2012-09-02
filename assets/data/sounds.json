@@ -1,0 +1,69 @@
+{
+	"music": [
+		{
+			"name": "Exceed the Sky",
+			"src": "music/Exceed the Sky.mp3"
+		},
+		{
+			"name": "Junk Stereo Concept",
+			"src": "music/Junk Stereo Concept.mp3"
+		},
+		{
+			"name": "P.S.F. -Perkinite Strike Force-",
+			"src": "music/P.S.F. -Perkinite Strike Force-.mp3",
+			"intro": "music/P.S.F. -Perkinite Strike Force-.intro.mp3"
+		},
+		{
+			"name": "Perk Step",
+			"src": "music/Perk Step.mp3"
+		},
+		{
+			"name": "Perkinite Panic!!",
+			"src": "music/perkinite panic!!.mp3"
+		},
+		{
+			"name": "intro",
+			"src": "narration/intro.mp3"
+		},
+		{
+			"name": "2f",
+			"src": "narration/2f.mp3"
+		},
+		{
+			"name": "1f",
+			"src": "narration/1f.mp3"
+		},
+		{
+			"name": "1f_win",
+			"src": "narration/1f_win.mp3"
+		},
+		{
+			"name": "gf",
+			"src": "narration/gf.mp3"
+		},
+		{
+			"name": "gf_win",
+			"src": "narration/gf_win.mp3"
+		},
+		{
+			"name": "lounge",
+			"src": "narration/lounge.mp3"
+		},
+		{
+			"name": "miniboss_1",
+			"src": "narration/miniboss_1.mp3"
+		},
+		{
+			"name": "miniboss_2",
+			"src": "narration/miniboss_2.mp3"
+		},
+		{
+			"name": "miniboss_win_1",
+			"src": "narration/miniboss_win_1.mp3"
+		},
+		{
+			"name": "miniboss_win_2",
+			"src": "narration/miniboss_win_2.mp3"
+		}
+	]
+}

@@ -15,6 +15,10 @@
 				
 				"name": "Narrator",
 				"message": "To their surprise, they find a teddy bear on the ground, one marked with several peace symbols."
+			},
+			{
+				"type": "ActionSound",
+				"sound": "miniboss_1"
 			}
 		],
 		[
@@ -71,6 +75,10 @@
 				
 				"name": "Narrator",
 				"message": "It seems like the tables have turned against our heroes. Oh man, they’re about to get beat by a teddy bear. With peace symbols. Doesn’t that suck?"
+			},
+			{
+				"type": "ActionSound",
+				"sound": "miniboss_2"
 			}
 		]
 	]

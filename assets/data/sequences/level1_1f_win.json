@@ -18,6 +18,10 @@
 				
 				"name": "Narrator",
 				"message": "As you might have realized now, yes indeed! Some of the darkness has eventually reached over to Perkins."
+			},
+			{
+				"type": "ActionSound",
+				"sound": "1f_win"
 			}
 		],
 		[

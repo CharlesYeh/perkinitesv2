@@ -16,7 +16,7 @@
 		}
 		
 		public function loadData():void {
-			Database.loadData("assets/data/maps/bgmusic.json", completeLoad);
+			Database.loadData("assets/data/sounds.json", completeLoad);
 		}
 		
 		public function completeLoad(e:Event):void {

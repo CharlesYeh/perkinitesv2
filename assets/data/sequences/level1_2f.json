@@ -13,6 +13,10 @@
 				"time": 30,
 				
 				"message": "We find two of our heroes on the second floor, staring blankly to the right, doing nothing."
+			},
+			{
+				"type": "ActionSound",
+				"sound": "2f"
 			}
 		],
 		[
@@ -36,7 +40,15 @@
 				"type": "ActionNarrator",
 				"time": 30,
 				
-				"message": "Let’s say Keeney. Keeney’s a pretty chill place. Good people."
+				"message": "Let’s say Keeney. Keeney’s a pretty chill place." 
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 30,
+				
+				"message": "Good people."
 			}
 		],
 		[

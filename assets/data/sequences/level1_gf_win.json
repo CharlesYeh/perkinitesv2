@@ -18,6 +18,10 @@
 				
 				"name": "Narrator",
 				"message": "But clearly, this difficulty is no match for our heroes, and through their arrogance, they will DIE later."
+			},
+			{
+				"type": "ActionSound",
+				"sound": "gf_win"
 			}
 		],
 		[
