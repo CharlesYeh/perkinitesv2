@@ -11,7 +11,7 @@
 		[
 			{
 				"type": "ActionSpeech",
-				"time": 30,
+				"time": 128,
 				
 				"name": "Narrator",
 				"message": "To their surprise, they find a teddy bear on the ground, one marked with several peace symbols."
@@ -24,7 +24,7 @@
 		[
 			{
 				"type": "ActionSpeech",
-				"time": 30,
+				"time": 10,
 				
 				"name": "???",
 				"message": "Hyuk hyuk hyuk..."
@@ -33,7 +33,7 @@
 		[
 			{
 				"type": "ActionSpeech",
-				"time": 30,
+				"time": 130,
 				
 				"name": "Narrator",
 				"message": "For some odd reason, a masked child pops out of nowhere. Clearly this cannot be good."
@@ -71,7 +71,7 @@
 			},
 			{
 				"type": "ActionSpeech",
-				"time": 30,
+				"time": 230,
 				
 				"name": "Narrator",
 				"message": "It seems like the tables have turned against our heroes. Oh man, they’re about to get beat by a teddy bear. With peace symbols. Doesn’t that suck?"

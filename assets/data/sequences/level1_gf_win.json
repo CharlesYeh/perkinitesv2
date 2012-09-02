@@ -14,7 +14,7 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 30,
+				"time": 166,
 				
 				"name": "Narrator",
 				"message": "But clearly, this difficulty is no match for our heroes, and through their arrogance, they will DIE later."
@@ -27,7 +27,7 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 30,
+				"time": 194,
 				
 				"name": "Narrator",
 				"message": "Our heroes feel a strange and depressing force, emanating from the ground floor lounge. Something evil is up, so they go investigate."

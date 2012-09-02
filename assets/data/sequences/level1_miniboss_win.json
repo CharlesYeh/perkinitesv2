@@ -11,7 +11,7 @@
 		[
 			{
 				"type": "ActionSpeech",
-				"time": 30,
+				"time": 123,
 				
 				"name": "Narrator",
 				"message": "By hitting the teddy bear multiple times, they have warded away the darkness from this object."
@@ -24,7 +24,16 @@
 		[
 			{
 				"type": "ActionSpeech",
-				"time": 30,
+				"time": 176,
+				
+				"name": "Narrator",
+				"message": "They have saved a teddy bear from an ancient darkness plaguing millions of human lives. GOOD JOB GUYS."
+			},
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 113,
 				
 				"name": "Narrator",
 				"message": "Even better for them, they manage to unlock six new heroes!"
@@ -41,7 +50,7 @@
 		[
 			{
 				"type": "ActionSpeech",
-				"time": 30,
+				"time": 83,
 				
 				"name": "Narrator",
 				"message": "They don’t stop to wonder what this means. They just roll with it."
@@ -54,7 +63,7 @@
 		[
 			{
 				"type": "ActionSpeech",
-				"time": 30,
+				"time": 200,
 				
 				"name": "Narrator",
 				"message": "However, they know that evil demon child is still probably within Perkins, planning something diabolical, like making an evil lamp or something."
@@ -63,7 +72,7 @@
 		[
 			{
 				"type": "ActionSpeech",
-				"time": 30,
+				"time": 178,
 				
 				"name": "Narrator",
 				"message": "The only place they haven’t investigated yet is the third floor, so our heroes journey to the depths of wherever that might be."

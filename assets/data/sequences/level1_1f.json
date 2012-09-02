@@ -10,7 +10,7 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 30,
+				"time": 152,
 				
 				"name": "Narrator",
 				"message": "As this scene suggests, their trip to Keeney is cut short by a couple of evil PROBLEM SETS surrounding our heroes."
@@ -23,7 +23,7 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 30,
+				"time": 79,
 				
 				"name": "Narrator",
 				"message": "Now normally, pieces of paper don't move on their own."
@@ -32,7 +32,7 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 30,
+				"time": 31,
 				
 				"name": "Narrator",
 				"message": "These do."
@@ -41,7 +41,7 @@
 		[
 			{
 				"type": "ActionSpeech",
-				"time": 30,
+				"time": 150,
 				
 				"name": "",
 				"message": "(TIP: Use the left-click and right-click to trigger the Perkinites' special abilities. Use these to attack the enemies and maintain your lives!)"
@@ -50,7 +50,7 @@
 		[
 			{
 				"type": "ActionSpeech",
-				"time": 30,
+				"time": 200,
 				
 				"name": "",
 				"message": "(TIP: Abilities will have cooldowns after activation, meaning that they cannot be activated until the cooldown is over. Most cooldowns are short, but take note of this!)"

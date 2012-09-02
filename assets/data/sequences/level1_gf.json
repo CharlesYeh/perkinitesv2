@@ -10,7 +10,7 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 30,
+				"time": 165,
 				
 				"name": "Narrator",
 				"message": "Now they are on the ground floor! Being the heroes that they are, they also decide to defeat all the enemies on this floor."
@@ -23,7 +23,7 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 30,
+				"time": 143,
 				
 				"name": "Narrator",
 				"message": "This part is more difficult because there are some DRUNK GUYS to deal with, as well as some actual demons!"

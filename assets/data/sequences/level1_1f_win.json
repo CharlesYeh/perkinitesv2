@@ -14,7 +14,7 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 30,
+				"time": 150,
 				
 				"name": "Narrator",
 				"message": "As you might have realized now, yes indeed! Some of the darkness has eventually reached over to Perkins."
@@ -27,7 +27,7 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 30,
+				"time": 182,
 				
 				"name": "Narrator",
 				"message": "The darkness isn’t as strong as it could be here, but it has corrupted some everyday items into beings of somewhat destruction."
@@ -36,7 +36,7 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 30,
+				"time": 200,
 				
 				"name": "Narrator",
 				"message": "Our heroes realize that they should probably do something about this, so they postpone their trip to Keeney and fight back for the sake of Perkins."
@@ -45,7 +45,7 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 30,
+				"time": 50,
 				
 				"name": "Narrator",
 				"message": "They set off to the Ground Floor."
