@@ -17,7 +17,7 @@
 		
 		public function showText(act:Action, sprite:Loader, name:String, message:String):void {
 			visible = true;
-			act.complete();
+			//act.complete();
 			
 			if (m_currSprite != null) {
 				removeChild(m_currSprite);
@@ -28,6 +28,10 @@
 			
 			txtName.text = name;
 			txtMessage.text = message;
+		}
+		public function hideText(act:Action){
+			visible = false;
+			act.complete();
 		}
 	}
 	

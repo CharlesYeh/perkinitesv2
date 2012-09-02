@@ -7,8 +7,11 @@
 	
 	public class ConditionClearedArea extends Action {
 		
+		public var map:String = "";
 		override public function parseData(obj:Object):void {
 			super.parseData(obj);
+			
+			map = obj.map;
 		}
 		
 		override public function act():void {
@@ -20,6 +23,7 @@
 			var enemies = Game.world.getEnemies();
 			if(enemies.length == 0){
 				Game.eventDispatcher.removeEventListener(GameEventDispatcher.BEAT_ENEMY, conditionHandler);
+				Game.playerProgress.clearedAreas.push(map);
 				complete();
 				update();
 			}

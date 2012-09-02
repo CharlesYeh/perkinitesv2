@@ -13,7 +13,7 @@
 	public class AIUnit extends StatUnit {
 		private var chaserange:Number;
 		
-		public static var m_enabled:Boolean;
+		public static var m_enabled:Boolean = true;
 		
 		public function AIUnit(edat:EnemyData) {
 			super(edat);
@@ -47,7 +47,6 @@
 		override protected function deleteSelf():void {
 			super.deleteSelf();
 			
-			Game.world.clearEnemy(this);
 			removeEventListener(Event.ENTER_FRAME, runnerAI);
 		}
 		
@@ -58,7 +57,7 @@
 			}
 			
 			if (progressData.health < 0) {
-				deleteSelf();
+				Game.world.clearEnemy(this);
 			}
 			
 			chaserange = 250;

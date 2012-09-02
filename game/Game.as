@@ -87,11 +87,12 @@
 			
 			// setup overlay
 			overlay = new GameOverlay();
-			container.addChild(overlay);
 			
 			// create map/world
 			world = MapManager.createWorld(playerProgress.map, team);
 			container.addChild(world);
+			
+			container.addChild(overlay);
 		}
 		
 		public static function endGameWorld():void {

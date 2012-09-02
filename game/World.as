@@ -11,6 +11,7 @@
 	import aiunits.BasicAIUnit;
 	import scripting.Sequence;
 	import units.StatUnit;
+	import events.BeatEnemyEvent;
 	
     public class World extends MovieClip {
 		
@@ -50,9 +51,11 @@
 			
 			// init enemies
 			m_enemies = new Array();
-			for (i in mapData.enemies) {
-				var e:MapCharacterData = mapData.enemies[i];
-				createEnemy(e);
+			if(!Game.playerProgress.hasClearedArea(mapData.id)){
+				for (i in mapData.enemies) {
+					var e:MapCharacterData = mapData.enemies[i];
+					createEnemy(e);
+				}
 			}
 			
 			m_NPCs = new Array();
@@ -80,6 +83,10 @@
 			e.destroy();
 			removeChild(e);
 			m_enemies.splice(index, 1);
+			
+			if(e.progressData.health <= 0){
+				Game.eventDispatcher.dispatchEvent(new BeatEnemyEvent(e.unitData.id));
+			}
 		}
 		
 		public function clearTeleport(t:Teleport):void{

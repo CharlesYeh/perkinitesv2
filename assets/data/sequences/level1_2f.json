@@ -9,37 +9,33 @@
 		],
 		[
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 30,
 				
-				"name": "Narrator",
 				"message": "We find two of our heroes on the second floor, staring blankly to the right, doing nothing."
 			}
 		],
 		[
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 30,
 				
-				"name": "Narrator",
 				"message": "Realizing they are doing nothing, and no one else is around to help them do even more nothing, they decide to leave Perkins and go somewhere INFINITELY BETTER,"
 			}
 		],
 		[
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 30,
 				
-				"name": "Narrator",
 				"message": "like the Main Green or Keeney."
 			}
 		],
 		[
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 30,
 				
-				"name": "Narrator",
 				"message": "Let’s say Keeney. Keeney’s a pretty chill place. Good people."
 			}
 		],
@@ -48,7 +44,7 @@
 				"type": "ActionSpeech",
 				"time": 30,
 				
-				"name": "Narrator",
+				"name": "",
 				"message": "(TIP: Use the W/A/S/D keys or the Directional keys to move the Perkinites around!)"
 			}
 		]

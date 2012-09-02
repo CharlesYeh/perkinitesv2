@@ -31,10 +31,12 @@
 					break;
 					
 				case "showAlpha":
+					Game.overlay.fader.visible = true;
 					Game.overlay.fader.alpha = alpha;
 					complete();
 					break;
 			}
+
 		}
 	}
 }

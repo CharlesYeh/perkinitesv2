@@ -9,7 +9,7 @@
 		],
 		[
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 30,
 				
 				"name": "Narrator",
@@ -18,7 +18,7 @@
 		],
 		[
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 30,
 				
 				"name": "Narrator",
@@ -27,7 +27,7 @@
 		],
 		[
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 30,
 				
 				"name": "Narrator",
@@ -39,7 +39,7 @@
 				"type": "ActionSpeech",
 				"time": 30,
 				
-				"name": "Narrator",
+				"name": "",
 				"message": "(TIP: Use the left-click and right-click to trigger the Perkinites' special abilities. Use these to attack the enemies and maintain your lives!)"
 			}
 		],
@@ -48,7 +48,7 @@
 				"type": "ActionSpeech",
 				"time": 30,
 				
-				"name": "Narrator",
+				"name": "",
 				"message": "(TIP: Abilities will have cooldowns after activation, meaning that they cannot be activated until the cooldown is over. Most cooldowns are short, but take note of this!)"
 			}
 		]

@@ -78,7 +78,7 @@
 			
 			for (var i:String in frame) {
 				var action:Action = frame[i];
-				action.act();
+				action.act();	
 			}
 		}
 		
@@ -96,14 +96,13 @@
 				// update all actions, and see if all are done
 				allCompleted = act.update() && allCompleted;
 			}
-			
 			if (allCompleted) {
 				m_index++;
 				
 				if (m_index == actions.length) {
 					complete();
 				}
-				else {
+				else{
 					startFrame();
 				}
 			}

@@ -13,12 +13,15 @@
 			y = GameConstants.HEIGHT - height;
 		}
 		
-		public function showText(act:Action, text:String):void {
+		public function showText(text:String):void {
 			visible = true;
-			act.complete();
 			
 			txtMessage.text = text;
 		}
+		public function hideText(act:Action):void {
+			visible = false;
+			act.complete();
+		}		
 	}
 	
 }

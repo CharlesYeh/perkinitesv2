@@ -1,4 +1,5 @@
 ﻿package aiunits {
+	import game.Game;
 	import flash.net.URLRequest;
 	import flash.events.Event;
 	import db.EnemyDatabase;
@@ -23,7 +24,7 @@
 			}
 			
 			if (progressData.health <= 0) 
-				deleteSelf();
+				Game.world.clearEnemy(this);
 			
 			var atkRange = unitData.abilities[0].range;
 			

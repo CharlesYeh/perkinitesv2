@@ -13,6 +13,9 @@
 		/** array of all the sequences the player has already completed */
 		public var completedSequences:Array = new Array();
 		
+		/** array of all the sequences the player has already cleared */
+		public var clearedAreas:Array = new Array();
+		
 		/** dictionary of "item name" -> "item quantity owned" */
 		public var items:Dictionary = new Dictionary();
 		
@@ -41,6 +44,13 @@
 		public function hasCompletedSequence(id:String):Boolean {
 			return completedSequences.indexOf(id) != -1;
 		}
+		
+		public function addClearedArea(id:String):void {
+			clearedAreas.push(id);
+		}
+		public function hasClearedArea(id:String):Boolean {
+			return clearedAreas.indexOf(id) != -1;
+		}		
 		
 		public function unlockTeam(team:Array):void {
 			unlockedTeams[team.join("_")] = true;

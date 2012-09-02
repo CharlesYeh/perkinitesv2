@@ -13,7 +13,7 @@
 		],
 		[
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 30,
 				
 				"name": "Narrator",
@@ -22,7 +22,7 @@
 		],
 		[
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 30,
 				
 				"name": "Narrator",
@@ -31,7 +31,7 @@
 		],
 		[
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 30,
 				
 				"name": "Narrator",
@@ -40,7 +40,7 @@
 		],
 		[
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 30,
 				
 				"name": "Narrator",
