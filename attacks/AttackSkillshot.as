@@ -153,7 +153,7 @@
 						hits.push(en);
 						
 						// find actual closest to old position?
-						if (en == null) {
+						if (en != null) {
 							closest[dist] = en;
 							distances.push(dist);
 						}
@@ -165,8 +165,14 @@
 			
 			// check collisions for closest
 			if (hit) {
+			 	var n:int = 0;
+				for (var key:* in closest) {
+					n++;
+				}
+				//what does this if statement do? explain to me later prease :D
 				if (m_penetrates == 1) {
-					if (closest.length != 0) {
+					//length on dictionary doesn't exist
+					if (n != 0) {
 						var keys:Array = distances.sort();
 						en = closest[0];
 						en.takeDamage(damage());

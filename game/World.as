@@ -9,6 +9,7 @@
 	import units.GameUnit;
 	import units.Teleport;
 	import units.StatUnit;
+	import units.NPCUnit;
 	
 	import aiunits.BasicAIUnit;
 	
@@ -26,7 +27,7 @@
 		private var m_customs:Array;
 		private var m_teleports:Array;
 		private var m_enemies:Array;
-		private var m_NPCs:Array;
+		private var m_npcs:Array;
 		
         /**
 		 * creates the world with MapData
@@ -62,10 +63,10 @@
 				}
 			}
 			
-			m_NPCs = new Array();
+			m_npcs = new Array();
 			for (i in mapData.npcs) {
 				var n:MapCharacterData = mapData.npcs[i];
-				//createNPC(n);
+				createNPC(n);
 			}			
 			
 			mdat.startSequences();
@@ -106,10 +107,12 @@
 			clearWorldHelper(m_customs);
 			clearWorldHelper(m_teleports);
 			clearWorldHelper(m_enemies, true);
+			clearWorldHelper(m_npcs);
 			
 			m_customs = null;
 			m_teleports = null;
 			m_enemies = null;
+			m_npcs = null;
 		}
 		
 		private function clearWorldHelper(clips:Array, destroy:Boolean=false):void {
@@ -155,6 +158,15 @@
 			addChild(u);
 		}
 		
+		public function createNPC(npcdat:MapCharacterData):void {
+			var u:NPCUnit = new NPCUnit(npcdat);
+			u.x = (npcdat.position.x * GameConstants.TILE_SIZE) + (GameConstants.TILE_SIZE >> 1);
+			u.y = (npcdat.position.y * GameConstants.TILE_SIZE) + (GameConstants.TILE_SIZE >> 1);
+
+			m_npcs.push(u);
+			addChild(u);
+		}
+				
 		public function createTeleport(tdat:TeleportData):void {
 			// check conditions, only create if all true
 			var enableTele:Boolean = true;

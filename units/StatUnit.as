@@ -44,7 +44,7 @@
 		public var abilityTargets:Array;
 		public var guide:AimGuide;
 		
-		private var healthbar:MovieClip;
+		public var healthbar:MovieClip;
 		//--------END STATS VARS-------
 		
 		var abilityId:int;
@@ -61,20 +61,21 @@
 		public function StatUnit(udat:UnitData) {
 			super();
 			
-			unitData = udat;
-			progressData = new CharacterProgress();
-			
-			animLabel = ANIM_STANDING;
-			
+			if(udat != null){
+				unitData = udat;
+				progressData = new CharacterProgress();
+				
+				animLabel = ANIM_STANDING;
+				
+				progressData.health = unitData.health;
+				
+				// draw health bar
+				healthbar = new MovieClip();
+				addChild(healthbar);
+				drawHealthbar();
+			}
 			cooldowns = new Array(10);
-			
-			progressData.health = unitData.health;
-			
-			// draw health bar
-			healthbar = new MovieClip();
-			addChild(healthbar);
-			drawHealthbar();
-			
+		
 			guide = new AimGuide();
 			addChildAt(guide, 0);
 			guide.visible = false;
@@ -162,7 +163,7 @@
 			}
 		}
 		
-		private function generateFrameFunction(caster:StatUnit, functionName:String):Function {
+		protected function generateFrameFunction(caster:StatUnit, functionName:String):Function {
 			return function(... args):void {
 				var atk:Attack = caster.unitData.abilities[caster.abilityId];
 				var func:Function = atk[functionName];

@@ -63,7 +63,7 @@
   ],
   "npcs": [
     {
-      "id": "CK",
+      "id": "npc_Peace-Bear",
       "direction": "down",
       "position": {
         "x": 9,
