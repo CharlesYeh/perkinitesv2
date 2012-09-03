@@ -351,6 +351,8 @@
 		}
 		
 		protected function deleteSelf():void {
+			endAbility();
+			setAnimLabel("standing");
 			removeChild(healthbar);
 			removeChild(guide);
 			

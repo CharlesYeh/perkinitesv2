@@ -1,107 +1,80 @@
 {
-	"name": "Perkins Lounge",
-	"id": "perkins_lounge",
-	"bgmusic": "P.S.F. -Perkinite Strike Force-",
-	"tileset": "perkins",
-	"height": 15,
-	"width": 20,
-	"code": "333333333333333333333666666666666666666336666666666666666663300000000000000000033000000000000000000330000000000000000003333333000000000000033666631666660026666336666616666666266663366666000000662000033000060000000000000330000000000000000003300003000000000030033333333300000033333333333333333333333333",
-	"teleports": [
-		{
-			"entry": {"x": 8, "y": 13},
-			"exit": {"map": "perkins_gf", "x": 33, "y": 33}
-		},
-		{
-			"entry": {"x": 1, "y": 5},
-			"exit": {"map": "perkins_gf", "x": 23, "y": 9}
-		},
-		{
-			"entry": {"x": 8, "y": 13},
-			"exit": {"map": "perkins_gf", "x": 33, "y": 22}
-		},
-		{
-			"entry": {"x": 13, "y": 13},
-			"exit": {"map": "perkins_gf", "x": 38, "y": 22}
-		}
-	],
-	"enemies": [
-		{
-			"id": "peacebear",
-			"direction": "down",
-			"position": {"x": 9, "y": 4},
-			"actions": {
-				"default": {
-					"actions": [
-						[
-							{
-								"type": "ConditionNearPoint",
-								"action": {
-									"type": "ActionChangeState",
-									"state": "activated"
-								}
-							},
-							{
-								"type": "ActionMove",
-								"deltaX": 3
-							}
-						],
-						[
-							{
-								"type": "ConditionNearPoint",
-								"action": {
-									"type": "ActionChangeState",
-									"state": "activated"
-								}
-							},
-							{
-								"type": "ActionMove",
-								"deltaX": -3
-							}
-						],
-						[
-							{
-								"type": "ActionChangeState",
-								"state": "default"
-							}
-						]
-					]
-				},
-				"activated": {
-					"name": "lv1_find_peacebear",
-					"actions": [
-					]
-				}
-			}		
-		}
-	],
-	"npcs": [
-		{
-			"id": "CK",
-			"direction": "down",
-			"position": {"x": 4, "y": 4},
-			"actions": {
-				"default": {
-					"actions": [
-						[
-							{
-								"type": "ConditionKeyboard",
-								"keyType": "action",
-								"block": true
-							}
-						],
-						[
-							{
-								"type": "ActionTalk",
-								"faceIcon": "CK",
-								"text": "Hyuk hyuk hyuk hyuk..."
-							}
-						]
-					]
-				}
-			}
-			
-		}
-	],
-	
-	"sequences": ["level1_lounge", "level1_miniboss", "level1_miniboss_win"]
+  "name": "Perkins Lounge",
+  "id": "perkins_lounge",
+  "tileset": "perkins",
+  "height": 15,
+  "width": 20,
+  "code": "333333333333333333333666666666666666666336666666666666666663300000000000000000033000000000000000000330000000000000000003333333000000000000033666631666660026666336666616666666266663366666000000662000033000060000000000000330000000000000000003300003000000000030033333333300000033333333333333333333333333",
+  "teleports": [
+    {
+      "entry": {
+        "x": 8,
+        "y": 13
+      },
+      "exit": {
+        "map": "perkins_gf",
+        "x": 33,
+        "y": 33
+      }
+    },
+    {
+      "entry": {
+        "x": 1,
+        "y": 5
+      },
+      "exit": {
+        "map": "perkins_gf",
+        "x": 23,
+        "y": 9
+      }
+    },
+    {
+      "entry": {
+        "x": 8,
+        "y": 13
+      },
+      "exit": {
+        "map": "perkins_gf",
+        "x": 33,
+        "y": 22
+      }
+    },
+    {
+      "entry": {
+        "x": 13,
+        "y": 13
+      },
+      "exit": {
+        "map": "perkins_gf",
+        "x": 38,
+        "y": 22
+      }
+    }
+  ],
+  "enemies": [
+    {
+      "id": "pset",
+      "direction": "down",
+      "position": {
+        "x": 10,
+        "y": 10
+      }
+    }
+  ],
+  "npcs": [
+    {
+      "id": "CK",
+      "direction": "down",
+      "position": {
+        "x": 9,
+        "y": 4
+      }
+    }
+  ],
+  "sequences": [
+    "level1_lounge",
+    "level1_miniboss",
+    "level1_miniboss_win"
+  ],
+  "bgmusic": "P.S.F. -Perkinite Strike Force-"
 }

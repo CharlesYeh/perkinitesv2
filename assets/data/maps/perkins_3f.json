@@ -1,7 +1,6 @@
 {
   "name": "Perkins Hall 3F",
   "id": "perkins_3f",
-  "bgmusic": "P.S.F. -Perkinite Strike Force-",
   "tileset": "perkins",
   "height": 31,
   "width": 71,
@@ -31,5 +30,7 @@
     }
   ],
   "enemies": [],
-  "npcs": []
+  "npcs": [],
+  "sequences": [],
+  "bgmusic": "P.S.F. -Perkinite Strike Force-"
 }
