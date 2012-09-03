@@ -12,6 +12,7 @@
 	public class Sequence implements DatabaseData {
 		
 		public var id:String;
+		public var repeatable:Boolean;
 		public var actions:Array;
 		
 		/** current action index within "actions" */
@@ -26,6 +27,7 @@
 		
 		public function parseData(obj:Object):void {
 			id = obj.id;
+			repeatable = obj.repeatable;
 			
 			actions = new Array();
 			for (var i:String in obj.actions) {
@@ -113,8 +115,11 @@
 		}
 		
 		public function complete():void {
-			Game.playerProgress.addCompletedSequence(id);
-			m_completed = true;
+			if (!repeatable) {
+				
+				Game.playerProgress.addCompletedSequence(id);
+				m_completed = true;
+			}
 		}
 	}
 }
