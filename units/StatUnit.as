@@ -94,10 +94,10 @@
 				
 				healthbar.graphics.clear();
 				healthbar.graphics.lineStyle(1, 0);
-				healthbar.graphics.drawRect(sx, 30, WIDTH, 5);
+				healthbar.graphics.drawRect(sx, 10, WIDTH, 5);
 				
 				healthbar.graphics.beginFill(0x33FF33, .7);
-				healthbar.graphics.drawRect(sx, 30, WIDTH * progressData.health / unitData.health, 5);
+				healthbar.graphics.drawRect(sx, 10, WIDTH * progressData.health / unitData.health, 5);
 				healthbar.graphics.endFill();
 			}
 		}

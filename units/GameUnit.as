@@ -10,37 +10,15 @@
 	  */
 	public class GameUnit extends MovieClip {
 
-		public var objectWidth:Number;
-		public var objectHeight:Number;
-
-		/*** Animation ***/
-		public var currentAnimLabel:String;
-
-		/*** Cutscenes ***/
-		public var commands:Array;// queue of Command's for cutscene commands
-		public static var pauseAction:Boolean;// pause the movement of the GameUnit
-
 		/*** Movement ***/
 		public var speed:Number;
 		public var path:Array = new Array();
 		public var moveDir:int;	// 0=right, 1=up, 2=left, 3=down
 
-		/*** Dialogue ***/
-		public var dialogueName:String;
-		public var dialogueMsg:Array;
-		public var dialogueTrigger:String;// how to trigger dialogue
-
 		public function GameUnit() {
-			commands = new Array  ;
-			pauseAction = false;
-
 			speed = 150;
 			path = new Array();
 			moveDir = 0;	// right
-
-			dialogueName = "";
-			dialogueMsg= new Array();
-			dialogueTrigger = "None";
 
 			addEventListener(Event.ENTER_FRAME, moveHandler);
 		}
@@ -217,10 +195,6 @@
 			speed = s;
 		}
 		public function eraseObject() {
-			if (dialogueTrigger == "Auto") {
-				//GameUnit.pauseAction = false;
-			}
-
 			parent.removeChild(this);
 			removeEventListener(Event.ENTER_FRAME, moveHandler);
 		}

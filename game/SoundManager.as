@@ -83,6 +83,14 @@
 			}
 		}
 		
+		public static function stopSounds():void {
+			for (var i:String in playingSounds) {
+				playingSounds[i].stop();
+			}
+			
+			playingSounds = new Array();
+		}
+		
 		/**
 		 * resume sounds using dictionary pause positions to jump to the right point
 		 */

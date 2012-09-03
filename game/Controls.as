@@ -20,6 +20,8 @@
 	import flash.external.ExternalInterface;
 	
 	import flash.geom.Point;
+	import units.StatUnit;
+	import attacks.Attack;
 	
 	public class Controls {
 		public static var MOVEMENT_DELTA = 10;
@@ -86,27 +88,17 @@
 		public static function keyDownHandler(e:Event):void {
 			var ke:KeyboardEvent = e as KeyboardEvent;
 			
-			if (ke.keyCode == Keyboard.SPACE/* && !acceptRightClicks*/) {
+			if (ke.keyCode == Keyboard.SPACE && GameConstants.DEBUG_MODE) {
 				aiming1 = false;
 				aiming2 = true;
 				showGuides(1, KeyDown.mousePoint);
 			}
 			
-			if (ke.keyCode == Keyboard.B) {
-				var seqs:Array = Game.world.mapData.sequences;
-				for (var i:String in seqs) {
-					var seq:Sequence = seqs[i];
-					seq.complete();
-				}
-				
-				m_enabled = true;
-				Game.overlay.fader.visible = false;
-				AIUnit.enabled = true;
-			}
+			testCheats(ke.keyCode);
 		}
 		
 		public static function keyUpHandler(e:Event):void {
-			if ((e as KeyboardEvent).keyCode == Keyboard.SPACE/* && !acceptRightClicks*/ && aiming2) {
+			if ((e as KeyboardEvent).keyCode == Keyboard.SPACE && GameConstants.DEBUG_MODE && aiming2) {
 				aiming2 = false;
 				castAbilities(1, KeyDown.mousePoint);
 			}
@@ -144,7 +136,6 @@
 			
 			var stagePoint = new Point(pt.x + ScreenRect.getX(), pt.y + ScreenRect.getY());
 			for (var i:String in Game.team) {
-				// TODO: attack with:
 				Game.team[i].showGuide(abilityId, stagePoint);
 			}
 		}
@@ -159,7 +150,6 @@
 			
 			var stagePoint = new Point(pt.x + ScreenRect.getX(), pt.y + ScreenRect.getY());
 			for (var i:String in Game.team) {
-				// TODO: attack with:
 				Game.team[i].hideGuide();
 				Game.team[i].castAbility(abilityId, stagePoint);
 			}
@@ -198,5 +188,48 @@
 			Game.moveTeam(horz * MOVEMENT_DELTA, vert * MOVEMENT_DELTA);
 		}
 		
+		private static function testCheats(key:uint):void {
+			if (!GameConstants.DEBUG_MODE) {
+				return;
+			}
+			
+			switch (key) {
+				case Keyboard.B:
+					// complete sequences on map
+					var seqs:Array = Game.world.mapData.sequences;
+					for (var i:String in seqs) {
+						var seq:Sequence = seqs[i];
+						seq.complete();
+					}
+					
+					m_enabled = true;
+					Game.overlay.fader.visible = false;
+					AIUnit.enabled = true;
+					SoundManager.stopSounds();
+					break;
+					
+				case Keyboard.S:
+					// become super damaging
+					for (i in Game.team) {
+						var su:StatUnit = Game.team[i];
+						
+						var abilities:Array = su.unitData.abilities;
+						for (var a:String in abilities) {
+							var ab:Attack = abilities[a];
+							ab.dmgBase = 100000;
+						}
+					}
+					break;
+				
+				case Keyboard.D:
+					// kill all enemies except one
+					var enemies:Array = Game.world.getEnemies();
+					for (var j:int = 1; j < enemies.length; j++) {
+						su = enemies[j];
+						su.takeDamage(100000);
+					}
+					break;
+			}
+		}
 	}
 }
