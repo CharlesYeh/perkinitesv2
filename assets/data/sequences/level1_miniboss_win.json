@@ -10,7 +10,7 @@
 		],
 		[
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 123,
 				
 				"name": "Narrator",

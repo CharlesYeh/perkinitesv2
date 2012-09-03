@@ -83,6 +83,9 @@
 		
 		public static function changeMap(tdat:TeleportData):void {
 			createWorld(tdat.exitMap, Game.team);
+						
+			var avgX:Number = 0;
+			var avgY:Number = 0;
 			
 			// move team to exit location
 			for (var i:String in Game.team) {
@@ -96,7 +99,17 @@
 				//prevent dashing
 				u.enableMovement();
 				u.endAbility();
+				avgX += u.x;
+				avgY += u.y;
 			}
+
+			avgX /= Game.team.length;
+			avgY /= Game.team.length;
+			
+			var sx = avgX - GameConstants.WIDTH / 2;
+			var sy = avgY - GameConstants.HEIGHT / 2;
+			ScreenRect.setX(sx);
+			ScreenRect.setY(sy);			
 		}
 		
 		public static function update():void {
