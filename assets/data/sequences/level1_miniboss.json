@@ -4,16 +4,16 @@
 		[
 			{
 				"type": "ConditionNearLocation",
-				"x": 10,
-				"y": 10
+				"x": 9,
+				"y": 4,
+				"radius": 32
 			}
 		],
 		[
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 128,
 				
-				"name": "Narrator",
 				"message": "To their surprise, they find a teddy bear on the ground, one marked with several peace symbols."
 			},
 			{
@@ -32,13 +32,22 @@
 		],
 		[
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 130,
 				
-				"name": "Narrator",
 				"message": "For some odd reason, a masked child pops out of nowhere. Clearly this cannot be good."
 			}
 		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Masked Child",
+				"icon": "Face Icon - Ira.png",
+				"message": "Hyuk hyuk hyuk..."			
+			}
+		],		
 		[
 			{
 				"type": "ActionAnimate",
@@ -70,10 +79,9 @@
 				"sprite": "Ira"
 			},
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 230,
 				
-				"name": "Narrator",
 				"message": "It seems like the tables have turned against our heroes. Oh man, they’re about to get beat by a teddy bear. With peace symbols. Doesn’t that suck?"
 			},
 			{

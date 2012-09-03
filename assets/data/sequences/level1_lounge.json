@@ -3,10 +3,9 @@
 	"actions": [
 		[
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 175,
 				
-				"name": "Narrator",
 				"message": "Maybe they’ve already been to Keeney. I mean, this shit is really trippy, man. Whoever hears of pieces of paper walking up and killing you?"
 			},
 			{

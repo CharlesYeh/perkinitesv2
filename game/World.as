@@ -77,8 +77,9 @@
 		}
 		public function clearCustom(c:MovieClip):void{
 			var index = m_customs.indexOf(c);
-			
-			removeChild(c);
+			if(c.parent != null){
+				removeChild(c);
+			}
 			m_customs.splice(index, 1);			
 		}
 		
