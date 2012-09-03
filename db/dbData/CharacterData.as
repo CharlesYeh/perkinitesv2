@@ -25,7 +25,7 @@
 			
 			icon = ImageDatabase.getIcon("Face Icon - " + obj.sprite + ".png");
 			
-			levelBonuses= obj.levelBonuses;
+			levelBonuses = obj.levelBonuses;
 		}
 	}
 }

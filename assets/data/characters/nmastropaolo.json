@@ -8,7 +8,7 @@
   "name": "Nate M.",
   "id": "NM",
   "sprite": "NM",
-  "health": 100,
+  "health": 120,
   "defense": 0,
   "speed": 250,
   "abilities": [
@@ -17,11 +17,11 @@
       "type": "AttackDashSkillshot",
       "icon": "Icon - Shopping Spree.png",
       "description": "Dash forward, dealing damage to all enemies with which the shopping cart comes into contact.",
-      "dmgBase": "50",
-      "dmgRatio": "50",
-      "range": 270,
-      "cd": 20,
-      "speed": 20,
+      "dmgBase": "4",
+      "dmgRatio": "1",
+      "range": 190,
+      "cd": 25,
+      "speed": 24,
       "width": 60
     },
     {
@@ -29,10 +29,10 @@
       "type": "AttackSmartcast",
       "icon": "Icon - Claw Attack.png",
       "description": "Deal heavy damage to a single targeted enemy.",
-      "dmgBase": "50",
-      "dmgRatio": "50",
+      "dmgBase": "10",
+      "dmgRatio": "0",
       "range": 50,
-      "cd": 5,
+      "cd": 20,
       "goToCastPoint": false
     }
   ]

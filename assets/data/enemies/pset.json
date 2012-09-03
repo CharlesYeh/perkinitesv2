@@ -3,13 +3,17 @@
   "name": "Problem Set",
   "id": "pset",
   "sprite": "enemy_Problem-Set",
-  "health": 70,
+  "health": 50,
   "defense": 0,
   "speed": 80,
   "abilities": [
     {
       "name": "Math Problem",
       "type": "AttackSkillshot",
+      "icon": "",
+      "description": "",
+      "dmgBase": "5",
+      "dmgRatio": "0",
       "range": 100,
       "cd": 20,
       "speed": 10,

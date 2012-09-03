@@ -10,8 +10,12 @@
     {
       "name": "Puke",
       "type": "AttackCone",
+      "icon": "",
+      "description": "",
+      "dmgBase": "7",
+      "dmgRatio": "",
       "range": 60,
-      "cd": 10
+      "cd": 15
     }
   ]
 }

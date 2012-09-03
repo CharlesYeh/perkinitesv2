@@ -10,6 +10,10 @@
     {
       "name": "Hatred Slash",
       "type": "AttackPoint",
+      "icon": "",
+      "description": "",
+      "dmgBase": "10",
+      "dmgRatio": "",
       "range": 50,
       "cd": 20
     }

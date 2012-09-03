@@ -46,7 +46,10 @@
 			
 			caster.guide.gotoAndStop("smartcast");
 		}
+		
 		override protected function prepareProjectile(p:MovieClip, ratio:Number):void {
+			super.prepareProjectile(p, ratio);
+			
 			p.expires	= expires;
 			p.radius	= 20;
 			p.radians	= 2 * Math.PI * ratio;
@@ -78,12 +81,14 @@
 					if (StatUnit.distance(target, p) < width) {
 						target.takeDamage(damage());
 						removeProjectile(p);
+						return;
 					}
 				}
 				else {
 					// soft target testing
 					if(testSkillshotCollision(p)){
 						removeProjectile(p);
+						return;
 					}
 				}
 			}
@@ -123,6 +128,7 @@
 					}
 				}
 			}
+			
 		}
 		
 		override protected function testSkillshotCollision(skillshot:MovieClip):Boolean {

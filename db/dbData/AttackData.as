@@ -36,7 +36,7 @@
 			name = obj.name;
 			type = obj.type;
 			
-			if (obj.icon != null) {
+			if (obj.icon != null && obj.icon != "") {
 				icon = ImageDatabase.getIcon(obj.icon);
 			}
 			else {

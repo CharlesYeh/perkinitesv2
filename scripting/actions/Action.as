@@ -28,6 +28,10 @@
 			m_complete = true;
 		}
 		
+		public function isComplete():Boolean {
+			return m_complete;
+		}
+		
 		/**
 		 * updates the action, returning true if completed
 		 */

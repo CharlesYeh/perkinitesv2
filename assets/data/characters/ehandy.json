@@ -8,7 +8,7 @@
   "name": "Eric H.",
   "id": "EH",
   "sprite": "EH",
-  "health": 75,
+  "health": 100,
   "defense": 0,
   "speed": 300,
   "abilities": [
@@ -17,10 +17,10 @@
       "type": "AttackDashSkillshot",
       "icon": "Icon - Perk-kulate.png",
       "description": "Dash forward, dealing damage to all enemies at the target location.",
-      "dmgBase": "0",
-      "dmgRatio": "50",
+      "dmgBase": "6",
+      "dmgRatio": "0",
       "range": 200,
-      "cd": 10,
+      "cd": 30,
       "speed": 30,
       "width": 50
     },
@@ -29,10 +29,10 @@
       "type": "AttackSmartcast",
       "icon": "Icon - Awkward Stare.png",
       "description": "Stun all enemies by giving them an awkward Eric stare.",
-      "dmgBase": "50",
-      "dmgRatio": "50",
+      "dmgBase": "3",
+      "dmgRatio": "0",
       "range": 200,
-      "cd": 20,
+      "cd": 15,
       "goToCastPoint": false
     }
   ]

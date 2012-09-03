@@ -17,8 +17,8 @@
       "type": "AttackCone",
       "icon": "Icon - Frying Pan Smash.png",
       "description": "Smack that enemy with yo\u0027 fryin\u0027 pan.",
-      "dmgBase": "50",
-      "dmgRatio": "50",
+      "dmgBase": "8",
+      "dmgRatio": "0",
       "range": 50,
       "cd": 10,
       "angle": 90
@@ -28,8 +28,8 @@
       "type": "AttackSmartcast",
       "icon": "Icon - Ramen Boost.png",
       "description": "Eat dat delicious ramen.",
-      "dmgBase": "50",
-      "dmgRatio": "50",
+      "dmgBase": "0",
+      "dmgRatio": "0",
       "range": 250,
       "cd": 20,
       "goToCastPoint": false

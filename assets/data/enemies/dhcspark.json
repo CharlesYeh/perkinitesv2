@@ -5,11 +5,15 @@
   "sprite": "enemy_DHC-Spark",
   "health": 70,
   "defense": 0,
-  "speed": 50,
+  "speed": 0,
   "abilities": [
     {
       "name": "Psychosy Shot",
       "type": "AttackSkillshot",
+      "icon": "",
+      "description": "",
+      "dmgBase": "8",
+      "dmgRatio": "",
       "range": 300,
       "cd": 40,
       "speed": 10,

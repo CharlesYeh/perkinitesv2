@@ -1,12 +1,12 @@
 {
-	"name": "Drunk Enemy",
-	"id": "drunkguy",
-	"sprite": "enemy_Drunk-Guy",
-	"ai": "BasicAIUnit",
+	"name": "War Bear",
+	"id": "warbear",
+	"sprite": "enemy_War-Bear",
+	"ai": "WarbearAI",
 	
-	"health": 80,
+	"health": 250,
 	"defense": 0,
-	"speed": 80,
+	"speed": 100,
 	"abilities": [
 		{
 			"type": "AttackCone",

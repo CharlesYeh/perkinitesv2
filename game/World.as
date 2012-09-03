@@ -15,6 +15,7 @@
 	import scripting.Sequence;
 	import events.BeatEnemyEvent;
 	import game.SoundManager;
+	import scripting.actions.Action;
 	
     public class World extends MovieClip {
 		
@@ -154,7 +155,17 @@
 		}
 		
 		public function createTeleport(tdat:TeleportData):void {
+			// check conditions, only create if all true
+			var enableTele:Boolean = true;
+			for (var i:String in tdat.conditions) {
+				var cond:Action = tdat.conditions[i];
+				cond.act();
+				
+				enableTele = enableTele && cond.isComplete();
+			}
+			
 			var t:Teleport = new Teleport(tdat);
+			t.enabled = enableTele;
 			
 			m_teleports.push(t);
 			addChild(t);
@@ -176,6 +187,9 @@
 			
 			for (var i:String in m_teleports) {
 				var t:Teleport = m_teleports[i];
+				if (!t.enabled) {
+					continue;
+				}
 				
 				if (sx == t.teleData.entryX && sy == t.teleData.entryY) {
 					// change map!
@@ -191,6 +205,16 @@
 				var seq:Sequence = mapData.sequences[i];
 				seq.updateActions();
 			}
+			
+			for (i in m_teleports) {
+				var tele:Teleport = m_teleports[i];
+				
+				for (var j:String in tele.teleData.conditions) {
+					var cond:Action = tele.teleData.conditions[j];
+					tele.enabled = enabled && cond.update();
+				}
+			}
 		}
+		
 	}
 }

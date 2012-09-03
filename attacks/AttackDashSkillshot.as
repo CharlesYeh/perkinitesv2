@@ -54,7 +54,7 @@
 				caster.clearPath();
 				
 				// caster is the skillshot projectile
-				if (testSkillshotCollision(caster)) {
+				if (testSkillshotCollision(caster) && m_penetrates == 0) {
 					// stop dashing and ability
 					stopForwardMovement();
 					

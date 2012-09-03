@@ -10,16 +10,16 @@
   "sprite": "CM",
   "health": 75,
   "defense": 0,
-  "speed": 300,
+  "speed": 250,
   "abilities": [
     {
       "name": "Sedated Needles",
       "type": "AttackPoint",
       "icon": "Icon - Sedated Needles.png",
       "description": "Throws a sedated knitting needle at an enemy. If close enough, sedate more.",
-      "dmgBase": "50",
+      "dmgBase": "10",
       "dmgRatio": "50",
-      "range": 200,
+      "range": 100,
       "cd": 10,
       "radius": 50
     },
@@ -28,6 +28,8 @@
       "type": "AttackPoint",
       "icon": "Icon - Graceful Dodge.png",
       "description": "Teleport self to a point.",
+      "dmgBase": "",
+      "dmgRatio": "",
       "range": 250,
       "cd": 20
     }

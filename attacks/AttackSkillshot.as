@@ -9,6 +9,7 @@
 	import flash.events.Event;
 	
 	import game.Game;
+	import flash.utils.Dictionary;
 	
 	/**
 	 * A skillshot attack which is cast in a line
@@ -35,7 +36,6 @@
 		protected var m_bullets:Array;
 		
 		protected var m_penetrates:int;
-		
 		
 		override public function parseData(obj:Object):void {
 			super.parseData(obj);
@@ -75,8 +75,7 @@
 			var dx = castPoint.x - caster.x;
 			var dy = castPoint.y - caster.y;
 			var dist = Math.sqrt(dx * dx + dy * dy);
-			caster.guide.guide_skillshot.rotation = 0;
-			//caster.guide.guide_skillshot.width = Math.min(range, dist);
+			
 			caster.guide.guide_skillshot.rotation = Math.atan2(caster.y - castPoint.y, horizmult * (caster.x - castPoint.x)) * 180 / Math.PI + 180;
 		}
 		
@@ -140,28 +139,53 @@
 			var targets:Array = targets();
 			var hit:Boolean = false;
 			
+			var closest:Dictionary = new Dictionary();
+			var distances:Array = new Array();
+			
 			for (var a:String in targets) {
 				var en:StatUnit = targets[a];
 				
-				if (StatUnit.distance(en, skillshot) < width) {
+				var dist:Number = StatUnit.distance(en, skillshot);
+				
+				if (dist < width) {
 					//prevent multiple hits on the same enemy
 					if(hits.indexOf(en) == -1){
 						hits.push(en);
-						en.takeDamage(damage());
 						
-						// TODO: find actual closest to old position?
+						// find actual closest to old position?
+						if (en == null) {
+							closest[dist] = en;
+							distances.push(dist);
+						}
 						
-						// TODO: penetrate select amount
-						if (m_penetrates == 0) {
-							m_penetrates--;
-							return true;
-						}
-						else {
-							m_penetrates--;
-							hit = true;
-						}
+						hit = true;
 					}
 				}
+			}
+			
+			// check collisions for closest
+			if (hit) {
+				if (m_penetrates == 1) {
+					if (closest.length != 0) {
+						var keys:Array = distances.sort();
+						en = closest[0];
+						en.takeDamage(damage());
+						
+						//removeProjectile(skillshot);
+					}
+					
+					m_penetrates--;
+				}
+				else {
+					// damage all closest units
+					for (var i:String in closest) {
+						en = closest[i];
+						en.takeDamage(damage());
+						
+						m_penetrates--;
+					}
+				}
+				
 			}
 			
 			return hit;
