@@ -1,6 +1,7 @@
 {
   "name": "Perkins Hall 1F",
   "id": "perkins_1f",
+  "bgmusic": "P.S.F. -Perkinite Strike Force-",
   "tileset": "perkins",
   "height": 31,
   "width": 71,
@@ -24,6 +25,7 @@
       }
     },
     {
+      "conditions": [],
       "entry": {
         "x": 60,
         "y": 16
@@ -52,6 +54,7 @@
       }
     },
     {
+      "conditions": [],
       "entry": {
         "x": 10,
         "y": 16
@@ -66,42 +69,10 @@
   "enemies": [
     {
       "id": "pset",
-      "direction": "down",
-      "position": {
-        "x": 6,
-        "y": 11
-      }
-    },
-    {
-      "id": "pset",
       "direction": "up",
       "position": {
         "x": 6,
-        "y": 17
-      }
-    },
-    {
-      "id": "pset",
-      "direction": "down",
-      "position": {
-        "x": 64,
-        "y": 11
-      }
-    },
-    {
-      "id": "pset",
-      "direction": "up",
-      "position": {
-        "x": 64,
-        "y": 17
-      }
-    },
-    {
-      "id": "drunkguy",
-      "direction": "down",
-      "position": {
-        "x": 26,
-        "y": 14
+        "y": 19
       }
     }
   ],
@@ -109,6 +80,5 @@
   "sequences": [
     "level1_1f",
     "level1_1f_win"
-  ],
-  "bgmusic": "P.S.F. -Perkinite Strike Force-"
+  ]
 }

@@ -5,7 +5,7 @@
 			{
 				"type": "ConditionBeatEnemy",
 				"map": "perkins_gf",
-				"sprite": "Warbear"
+				"id": "warbear"
 			}
 		],
 		[

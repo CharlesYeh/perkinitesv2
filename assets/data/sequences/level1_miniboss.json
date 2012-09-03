@@ -5,7 +5,7 @@
 			{
 				"type": "ConditionNearLocation",
 				"x": 9,
-				"y": 4,
+				"y": 5,
 				"radius": 32
 			}
 		],
@@ -32,6 +32,31 @@
 		],
 		[
 			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "npc_Ira",
+    		   "direction": "down",
+				"animation": "appearing",
+    			"position": {
+					"x": 9,
+        			"y": 3
+      		}
+			},
+			{
+				"type": "ActionWait",
+				"time": 52
+			}
+		],
+		[
+			{
+				"type": "ActionAnimate",
+				"time": 0,
+				
+				"sprite": "npc_Ira",
+				"animation": "standing"
+			},		
+			{
 				"type": "ActionNarrator",
 				"time": 130,
 				
@@ -47,37 +72,95 @@
 				"icon": "Face Icon - Ira.png",
 				"message": "Hyuk hyuk hyuk..."			
 			}
+		],	
+		[
+			{
+				"type": "ActionAnimate",
+				"time": 18,
+				
+				"sprite": "npc_Ira",
+				"animation": "begin_casting"
+			}
+		],			
+		[
+			{
+				"type": "ActionAnimate",
+				"time": 70,
+				
+				"sprite": "npc_Ira",
+				"animation": "casting"
+			},
+			{
+				"type": "ActionAnimate",
+				"time": 70,
+				
+				"sprite": "npc_Peace-Bear",
+				"animation": "casting"
+			}
+		],
+		[
+			{
+				"type": "ActionAnimate",
+				"time": 54,
+				
+				"sprite": "npc_Peace-Bear",
+				"animation": "transforming"
+			}
 		],		
 		[
 			{
-				"type": "ActionAnimate",
-				"time": 30,
-				
-				"sprite": "Ira",
-				"animation": "warbear_cast"
+				"type": "ActionBlackout",
+				"subtype": "showAlpha",
+				"alpha": 1
 			},
 			{
-				"type": "ActionAnimate",
-				"time": 30,
-				
-				"sprite": "Warbear",
-				"animation": "warbear_grow"
-			}
-		],
-		[
-			{
-				"type": "ActionAnimate",
-				"time": 30,
-				
-				"sprite": "Ira",
-				"animation": "leave"
-			}
-		],
-		[
+				"type": "ActionBlackout",
+				"subtype": "editText",
+				"text": ""
+			},			
 			{
 				"type": "ActionDelete",
-				"sprite": "Ira"
+				
+				"subtype": "npc",
+				"sprite": "npc_Ira"
 			},
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Peace-Bear"
+			},
+			{
+				"type": "ActionWait",
+				"time": 48
+			}		
+		],
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "hide",
+				"time": 1
+			},		
+			{
+				"type": "ActionAnimate",
+				"time": 52,
+				
+				"sprite": "npc_Ira",
+				"animation": "disappearing"
+			},
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "enemy",
+				"id": "warbear",
+				"direction": "down",
+    			"position": {
+					"x": 9,
+        			"y": 5
+      		}
+			}			
+		],
+		[	
 			{
 				"type": "ActionNarrator",
 				"time": 230,

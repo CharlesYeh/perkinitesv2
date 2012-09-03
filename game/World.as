@@ -103,6 +103,15 @@
 			removeChild(t);
 			m_teleports.splice(index, 1);
 		}
+		
+		public function clearNPC(npc:NPCUnit):void{
+			var index = m_npcs.indexOf(npc);
+			if(npc.parent != null){
+				removeChild(npc);
+			}
+			m_npcs.splice(index, 1);			
+		}
+		
 		public function clearWorld():void {
 			clearWorldHelper(m_customs);
 			clearWorldHelper(m_teleports);
@@ -193,6 +202,9 @@
 		public function getTeleports():Array{
 			return m_teleports;
 		}
+		public function getNPCs():Array{
+			return m_npcs;
+		}		
 		
 		public function checkTeleports(su:GameUnit):TeleportData {
 			var sx = Math.floor(su.x / GameConstants.TILE_SIZE);

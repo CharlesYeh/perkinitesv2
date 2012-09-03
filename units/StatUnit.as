@@ -32,7 +32,7 @@
 		/** the swf sprite asset */
 		var swf;
 		
-		var animLabel:String = ANIM_STANDING;
+		public var animLabel:String = ANIM_STANDING;
 		var animClip:MovieClip;
 		var loaded:Boolean = false;
 		

@@ -9,18 +9,18 @@
 		
 		/** type of thing to delete */
 		
-		public var position:Point;
+		public var sprite:String;
 		
 		override public function parseData(obj:Object):void {
 			super.parseData(obj);
 			
-			position = obj.position;
+			sprite = obj.sprite;
 		}
 		
 		override public function act():void {
 			super.act();
 			
-			if(subtype == "custom"){
+/*			if(subtype == "custom"){
 				var customs:Array = Game.world.getCustoms();
 				for(var i:String in customs){
 					if(Math.floor(customs[i].x/GameConstants.TILE_SIZE) == position.x &&
@@ -50,6 +50,16 @@
 					   }
 				}						
 			}
+			else*/ 
+			if(subtype == "npc"){
+				var npcs:Array = Game.world.getNPCs();
+				for(var i:String in npcs){
+					if(npcs[i].mapCharacterData.id == sprite){
+						   Game.world.clearNPC(npcs[i]);
+						   break;
+					   }
+				}						
+			}			
 
 			
 			complete();

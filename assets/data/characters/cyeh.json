@@ -17,7 +17,7 @@
       "type": "AttackDashSkillshot",
       "icon": "Icon - Kendo Strike.png",
       "description": "Dash forward, dealing damage to the first enemy contact.",
-      "dmgBase": "4",
+      "dmgBase": "9004",
       "dmgRatio": "1",
       "range": 180,
       "cd": 25,

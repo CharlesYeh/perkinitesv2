@@ -39,11 +39,6 @@
 			loaded = true;
 			
 			swf.content.char.stop();
-			swf.content.char.dire.gotoAndStop(ANIM_STANDING);
-			swf.content.char.dirn.gotoAndStop(ANIM_STANDING);
-			swf.content.char.dirs.gotoAndStop(ANIM_STANDING);
-			setAnimLabel(ANIM_STANDING);
-			trace(mapCharacterData.direction);
 			switch(mapCharacterData.direction){
 				case "right":
 					updateDirection(0);
@@ -56,10 +51,13 @@
 					break;
 				case "down":
 					updateDirection(3);
-					trace("down");
 					break;
 			}
 			
+			setAnimLabel(animLabel);
+			swf.content.char.dire.gotoAndStop(animLabel);
+			swf.content.char.dirn.gotoAndStop(animLabel);
+			swf.content.char.dirs.gotoAndStop(animLabel);			
 			swf.content.char.endAbility			= endAbility;
 			swf.content.char.disableMovement	= disableMovement;
 			swf.content.char.enableMovement		= enableMovement;
@@ -73,5 +71,47 @@
 				swf.content.char[functionName] = ff;
 			}
 		}		
+		
+		override function updateDirection(dir:int) {
+			if (!loaded) return;
+			
+			
+			var frame;
+			if (dir == 2) {
+				frame = "east";
+				scaleX = -1;
+			}
+			else {
+				frame = DIRECTIONS[dir];
+				scaleX = 1;
+			}
+			
+			if (swf.content.char.currentLabel == frame) {
+				// don't change labels
+			}
+			else {
+				swf.content.char.gotoAndStop(frame);
+				swf.content.char.dire.gotoAndStop(ANIM_WALKING);
+				swf.content.char.dirn.gotoAndStop(ANIM_WALKING);
+				swf.content.char.dirs.gotoAndStop(ANIM_WALKING);
+				
+				switch (dir) {
+				case 0:
+					animClip = swf.content.char.dire;
+					break;
+				case 1:
+					animClip = swf.content.char.dirn;
+					break;
+				case 2:
+					animClip = swf.content.char.dire;
+					break;
+				case 3:
+					animClip = swf.content.char.dirs;
+					break;
+				}
+				
+				animClip.gotoAndStop(animLabel);
+			}
+		}
 	}
 }
