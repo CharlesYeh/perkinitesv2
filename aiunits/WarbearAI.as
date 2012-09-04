@@ -7,6 +7,8 @@
 	import flash.geom.Point;
 	import db.dbData.EnemyData;
 	
+	import game.Game;
+	
 	/* MINIBOSS WARBEAR AI
 	 * if within chase range, chases
 	 * if within ability range, uses ability
@@ -23,7 +25,7 @@
 			}
 			
 			if (progressData.health <= 0) 
-				deleteSelf();
+				Game.world.clearEnemy(this);
 			
 			var atkRange = unitData.abilities[0].range;
 			
