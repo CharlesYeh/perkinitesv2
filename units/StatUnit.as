@@ -299,9 +299,8 @@
 			animClip.gotoAndStop(animLabel);
 		}
 		
-		function updateDirection(dir:int) {
+		public function updateDirection(dir:int) {
 			if (!loaded || healthbar == null) return;
-			
 			
 			var frame;
 			if (dir == 2) {

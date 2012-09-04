@@ -67,8 +67,7 @@
 		override public function showGuide(caster:StatUnit, castPoint:Point):void{
 			caster.guide.visible = true;
 			// set range guide
-			caster.guide.range_circle.width = caster.guide.range_circle.height =
-							2 * range;
+			caster.guide.range_circle.width = caster.guide.range_circle.height = 2 * range;
 			
 			var horizmult:int = (caster.scaleX > 0) ? 1 : -1;			
 			caster.guide.gotoAndStop("skillshot");

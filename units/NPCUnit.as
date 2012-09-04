@@ -72,9 +72,8 @@
 			}
 		}		
 		
-		override function updateDirection(dir:int) {
+		override public function updateDirection(dir:int) {
 			if (!loaded) return;
-			
 			
 			var frame;
 			if (dir == 2) {

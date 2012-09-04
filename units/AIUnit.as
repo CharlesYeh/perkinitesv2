@@ -40,6 +40,7 @@
 		}
 		public static function createAIUnit(id:String):AIUnit {
 			var edat:EnemyData = Game.dbEnemy.getEnemyData(id);
+			
 			var AIClass:Class = getDefinitionByName("aiunits." + edat.ai) as Class;
 			return new AIClass(edat);
 		}

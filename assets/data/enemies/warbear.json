@@ -1,19 +1,17 @@
 {
-	"name": "War Bear",
-	"id": "warbear",
-	"sprite": "enemy_War-Bear",
-	"ai": "WarbearAI",
-	
-	"health": 250,
-	"defense": 0,
-	"speed": 100,
-	"abilities": [
-		{
-			"type": "AttackCone",
-			"name": "Puke",
-			"range": 60,
-			"cd": 10,
-			"damage": 5
-		}
-	]
+  "ai": "WarbearAI",
+  "name": "War Bear",
+  "id": "warbear",
+  "sprite": "enemy_War-Bear",
+  "health": 250,
+  "defense": 0,
+  "speed": 100,
+  "abilities": [
+    {
+      "name": "Puke",
+      "type": "AttackCone",
+      "range": 60,
+      "cd": 10
+    }
+  ]
 }

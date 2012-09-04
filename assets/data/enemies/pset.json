@@ -15,7 +15,7 @@
       "dmgBase": "5",
       "dmgRatio": "0",
       "range": 100,
-      "cd": 20,
+      "cd": 25,
       "speed": 10,
       "width": 10
     }

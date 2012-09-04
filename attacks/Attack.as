@@ -9,6 +9,14 @@
 		public var m_caster:StatUnit;
 		public var m_castPoint:Point;
 		
+		/*public function clone():Attack {
+			var AtkClass:Class = this.constructor;
+			var atk:Attack = new AtkClass();
+			atk.parseData(this);
+			
+			return atk;
+		}*/
+		
 		/**
 		 * returns whether or not the caster can cast to this point
 		 */
