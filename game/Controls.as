@@ -208,7 +208,7 @@
 					SoundManager.stopSounds();
 					break;
 					
-				case Keyboard.S:
+				case Keyboard.V:
 					// become super damaging
 					for (i in Game.team) {
 						var su:StatUnit = Game.team[i];
@@ -220,8 +220,8 @@
 						}
 					}
 					break;
-				
-				case Keyboard.V:
+					
+				case Keyboard.C:
 					// kill all enemies except one
 					var enemies:Array = Game.world.getEnemies();
 					for (var j:int = 1; j < enemies.length; j++) {
