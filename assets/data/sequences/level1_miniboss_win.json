@@ -23,7 +23,7 @@
 		],
 		[
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 176,
 				
 				"name": "Narrator",
@@ -32,7 +32,7 @@
 		],
 		[
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 113,
 				
 				"name": "Narrator",
@@ -49,7 +49,7 @@
 		],
 		[
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 83,
 				
 				"name": "Narrator",
@@ -62,7 +62,7 @@
 		],
 		[
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 200,
 				
 				"name": "Narrator",
@@ -71,7 +71,7 @@
 		],
 		[
 			{
-				"type": "ActionSpeech",
+				"type": "ActionNarrator",
 				"time": 178,
 				
 				"name": "Narrator",

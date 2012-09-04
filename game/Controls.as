@@ -221,7 +221,7 @@
 					}
 					break;
 				
-				case Keyboard.D:
+				case Keyboard.V:
 					// kill all enemies except one
 					var enemies:Array = Game.world.getEnemies();
 					for (var j:int = 1; j < enemies.length; j++) {

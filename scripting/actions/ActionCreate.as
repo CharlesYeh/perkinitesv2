@@ -38,6 +38,7 @@
 				cdat.parseData(dat);
 				
 				Game.world.createEnemy(cdat);	
+				
 			}
 			else if(subtype == "npc"){
 				cdat.parseData(dat);

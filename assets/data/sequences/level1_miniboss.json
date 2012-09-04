@@ -122,12 +122,6 @@
 				"type": "ActionDelete",
 				
 				"subtype": "npc",
-				"sprite": "npc_Ira"
-			},
-			{
-				"type": "ActionDelete",
-				
-				"subtype": "npc",
 				"sprite": "npc_Peace-Bear"
 			},
 			{
@@ -161,6 +155,12 @@
 			}			
 		],
 		[	
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Ira"
+			},		
 			{
 				"type": "ActionNarrator",
 				"time": 230,
