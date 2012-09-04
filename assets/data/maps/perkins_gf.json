@@ -32,7 +32,12 @@
       }
     },
     {
-      "conditions": [],
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level1_gf_win"
+        }
+      ],
       "entry": {
         "x": 33,
         "y": 21
@@ -44,7 +49,12 @@
       }
     },
     {
-      "conditions": [],
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level1_gf_win"
+        }
+      ],
       "entry": {
         "x": 38,
         "y": 21
@@ -62,7 +72,7 @@
         "y": 17
       },
       "exit": {
-        "map": "perkins_lounge",
+        "map": "perkins_gf",
         "x": 33,
         "y": 22
       }
@@ -74,7 +84,7 @@
         "y": 17
       },
       "exit": {
-        "map": "perkins_lounge",
+        "map": "perkins_gf",
         "x": 38,
         "y": 22
       }
@@ -86,7 +96,7 @@
         "y": 9
       },
       "exit": {
-        "map": "perkins_lounge",
+        "map": "perkins_gf",
         "x": 47,
         "y": 9
       }
@@ -98,13 +108,18 @@
         "y": 9
       },
       "exit": {
-        "map": "perkins_lounge",
+        "map": "perkins_gf",
         "x": 23,
         "y": 9
       }
     },
     {
-      "conditions": [],
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level1_gf_win"
+        }
+      ],
       "entry": {
         "x": 24,
         "y": 9
@@ -116,7 +131,12 @@
       }
     },
     {
-      "conditions": [],
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level1_gf_win"
+        }
+      ],
       "entry": {
         "x": 46,
         "y": 9
@@ -128,7 +148,112 @@
       }
     }
   ],
-  "enemies": [],
+  "enemies": [
+    {
+      "id": "drunkguy",
+      "direction": "down",
+      "position": {
+        "x": 12,
+        "y": 9
+      }
+    },
+    {
+      "id": "drunkguy",
+      "direction": "up",
+      "position": {
+        "x": 12,
+        "y": 21
+      }
+    },
+    {
+      "id": "dhcspark",
+      "direction": "left",
+      "position": {
+        "x": 22,
+        "y": 20
+      }
+    },
+    {
+      "id": "dhcspark",
+      "direction": "left",
+      "position": {
+        "x": 22,
+        "y": 21
+      }
+    },
+    {
+      "id": "dhcspark",
+      "direction": "right",
+      "position": {
+        "x": 44,
+        "y": 20
+      }
+    },
+    {
+      "id": "dhcspark",
+      "direction": "right",
+      "position": {
+        "x": 44,
+        "y": 21
+      }
+    },
+    {
+      "id": "drunkguy",
+      "direction": "down",
+      "position": {
+        "x": 53,
+        "y": 9
+      }
+    },
+    {
+      "id": "drunkguy",
+      "direction": "down",
+      "position": {
+        "x": 64,
+        "y": 18
+      }
+    },
+    {
+      "id": "pset",
+      "direction": "right",
+      "position": {
+        "x": 38,
+        "y": 22
+      }
+    },
+    {
+      "id": "pset",
+      "direction": "right",
+      "position": {
+        "x": 36,
+        "y": 23
+      }
+    },
+    {
+      "id": "pset",
+      "direction": "right",
+      "position": {
+        "x": 35,
+        "y": 21
+      }
+    },
+    {
+      "id": "essay",
+      "direction": "right",
+      "position": {
+        "x": 41,
+        "y": 22
+      }
+    },
+    {
+      "id": "essay",
+      "direction": "left",
+      "position": {
+        "x": 32,
+        "y": 22
+      }
+    }
+  ],
   "npcs": [],
   "sequences": [
     "level1_gf",
