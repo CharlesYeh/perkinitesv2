@@ -23,7 +23,7 @@
 		/** clip for narrator speech */
 		public var narrator:Narrator;
 		
-		public function GameOverlay() {
+		public function GameOverlay() {			
 			hud = new GameHUD();
 			hud.x = HUD_SPACING;
 			hud.y = GameConstants.HEIGHT - hud.height - HUD_SPACING;
@@ -35,7 +35,6 @@
 			charUnlock = new CharUnlock();
 			charUnlock.x = 330;
 			charUnlock.y = 240;
-			charUnlock.visible = false;
 			
 			fader = new BlackScreen();
 			

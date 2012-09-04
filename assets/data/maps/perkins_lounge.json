@@ -41,16 +41,7 @@
       }
     }
   ],
-  "enemies": [
-    {
-      "id": "pset",
-      "direction": "down",
-      "position": {
-        "x": 10,
-        "y": 10
-      }
-    }
-  ],
+  "enemies": [],
   "npcs": [
     {
       "id": "npc_Peace-Bear",

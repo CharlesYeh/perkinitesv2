@@ -204,6 +204,8 @@
 					
 					m_enabled = true;
 					Game.overlay.fader.visible = false;
+					Game.overlay.speech.visible = false;
+					Game.overlay.narrator.visible = false;
 					AIUnit.enabled = true;
 					SoundManager.stopSounds();
 					break;

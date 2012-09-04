@@ -27,10 +27,11 @@
 		public var done;
 		
 		public function CharUnlock(){
-			
+			visible = false;
 		}
 		
 		public function enable(){
+			mouseChildren = true;
 			visible = true;
 			done = false;
 			scrollPane.source = playerList;
@@ -40,11 +41,10 @@
 			beginButton.addEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
 			beginButton.addEventListener(MouseEvent.MOUSE_OUT, entryOutHandler);
 			beginButton.addEventListener(MouseEvent.CLICK, startLevel);
-			stage.addEventListener(KeyboardEvent.KEY_DOWN, charKeyHandler);
+			//stage.addEventListener(KeyboardEvent.KEY_DOWN, charKeyHandler);
 
 			// show available teams in middle
 			showEntries();
-			chooseTeam(0);
 
 		}
 		public function disable(){
@@ -60,7 +60,10 @@
 				entry.removeEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
 				entry.removeEventListener(MouseEvent.MOUSE_OUT, entryOutHandler);
 				entry.removeEventListener(MouseEvent.CLICK, clickHandler);
+				playerList.removeChild(entry);
 			}
+			
+			entries = new Array();
 			
 
 		}
@@ -71,11 +74,7 @@
 			for (var i = 0; i < allTeams.length; i++) {
 				var team:Array = allTeams[i];
 				
-				// skip unlocked teams
-				if (Game.playerProgress.hasUnlockedTeam(team)) {
-					continue;
-				}
-				
+
 				var dat:Array = Game.dbChar.getTeamCharacterData(i);
 				
 				var entry = new Entry();
@@ -85,11 +84,17 @@
 				entry.gotoAndStop(1);
 				entry.glowF = glowEntry;
 				
-				// GOTTA ADD LISTENERS TO ENTRIES AND GOTTA FIX THEM
-				entry.addEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
-				entry.addEventListener(MouseEvent.MOUSE_OUT, entryOutHandler);
-				entry.addEventListener(MouseEvent.CLICK, clickHandler);
-		
+				entry.alpha = 0.5;
+				// skip unlocked teams
+				if (!Game.playerProgress.hasUnlockedTeam(team)) {
+					entry.addEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
+					entry.addEventListener(MouseEvent.MOUSE_OUT, entryOutHandler);
+					entry.addEventListener(MouseEvent.CLICK, clickHandler);
+					entry.alpha = 1;
+				
+				}
+				
+				
 				// GOTTA ADD
 				playerList.addChild(entry);
 				entry.mouseChildren = false;
@@ -101,10 +106,11 @@
 		function chooseTeam(team) {
 			chosenTeam = team;
 			var dat:Array = Game.dbChar.getTeamCharacterData(chosenTeam);
-			Game.chooseTeam(team);
 			
 			// activate entry in middle
 			entries[chosenTeam].gotoAndStop(2);
+			trace(entries[chosenTeam].currentFrame);
+			trace(chosenTeam);
 		}
 		
 		function startLevel(e) {

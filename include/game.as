@@ -6,6 +6,7 @@ import flash.display.MovieClip;
 stop();
 
 Game.startGameWorld(this);
+this.mouseChildren = true;
 setupGame();
 
 function gameRunner(e:Event):void {

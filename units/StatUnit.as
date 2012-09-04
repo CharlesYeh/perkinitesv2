@@ -147,7 +147,7 @@
 			swf.content.char.dirn.gotoAndStop(ANIM_WALKING);
 			swf.content.char.dirs.gotoAndStop(ANIM_WALKING);
 			setAnimLabel(ANIM_WALKING);
-			updateDirection(0);
+			updateDirection(moveDir);
 			
 			swf.content.char.endAbility			= endAbility;
 			swf.content.char.disableMovement	= disableMovement;
@@ -300,8 +300,10 @@
 		}
 		
 		public function updateDirection(dir:int) {
-			if (!loaded || healthbar == null) return;
-			
+			if (!loaded || healthbar == null) {
+				moveDir = dir;
+				return;
+			}
 			var frame;
 			if (dir == 2) {
 				frame = "east";

@@ -103,6 +103,13 @@
 				"type": "ActionAnimate",
 				"time": 54,
 				
+				"sprite": "npc_Ira",
+				"animation": "casting"
+			},		
+			{
+				"type": "ActionAnimate",
+				"time": 54,
+				
 				"sprite": "npc_Peace-Bear",
 				"animation": "transforming"
 			}

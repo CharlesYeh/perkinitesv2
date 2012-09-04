@@ -39,7 +39,6 @@
 		}
 		
 		public function hide(act:Action, f:int):void {
-			visible = true;
 			currAction = act;
 			
 			currTween = new Tween(this, "alpha", null, 1, 0, f);
@@ -48,6 +47,7 @@
 		
 		function endShow(e:Event) {
 			currAction.complete();
+			visible = false;
 			
 			if (currTween != null) {
 				currTween.removeEventListener(TweenEvent.MOTION_FINISH, endShow);

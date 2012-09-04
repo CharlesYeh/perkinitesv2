@@ -42,7 +42,6 @@
 		[
 			{
 				"type": "ActionUnlockCharacters",
-				"time": 30,
 				
 				"quantity": 3
 			}

@@ -112,6 +112,13 @@ function chooseTeam(team) {
 
 function startLevel(e) {
 	// pressed the start button
+	var allTeams:Array	= Game.dbChar.getUnlockedTeams();
+	
+	Game.playerProgress.unlockedTeams= new Dictionary();
+	
+	var team:Array = allTeams[chosenTeam];
+	Game.playerProgress.unlockTeam(team);
+	
 	var sound = new se_chargeup();
 	sound.play();
 	
