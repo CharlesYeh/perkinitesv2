@@ -163,6 +163,28 @@
 			u.y = (edat.position.y * GameConstants.TILE_SIZE) + (GameConstants.TILE_SIZE >> 1);
 			u.setAbilityTargets(Game.team);
 			
+			switch (edat.direction) {
+				case "east":
+				case "right":
+					u.updateDirection(0);
+					break;
+					
+				case "north":
+				case "up":
+					u.updateDirection(1);
+					break;
+					
+				case "west":
+				case "left":
+					u.updateDirection(2);
+					break;
+					
+				case "south":
+				case "down":
+					u.updateDirection(3);
+					break;
+			}
+			
 			m_enemies.push(u);
 			addChild(u);
 		}

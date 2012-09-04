@@ -12,5 +12,10 @@
 			
 			ai		= obj.ai;
 		}
+		
+		/*public function clone():EnemyData {
+			var newdat:EnemyData = new EnemyData();
+			newdat.parseData(this);
+		}*/
 	}
 }

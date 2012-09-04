@@ -37,8 +37,7 @@
 			if(subtype == "enemy"){
 				cdat.parseData(dat);
 				
-				Game.world.createEnemy(cdat);	
-				
+				Game.world.createEnemy(cdat);
 			}
 			else if(subtype == "npc"){
 				cdat.parseData(dat);
