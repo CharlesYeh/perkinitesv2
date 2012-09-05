@@ -113,35 +113,14 @@
 				"sprite": "npc_Peace-Bear",
 				"animation": "transforming"
 			}
-		],		
-		[
-			{
-				"type": "ActionBlackout",
-				"subtype": "showAlpha",
-				"alpha": 1
-			},
-			{
-				"type": "ActionBlackout",
-				"subtype": "editText",
-				"text": ""
-			},			
+		],	
+		[	
 			{
 				"type": "ActionDelete",
 				
 				"subtype": "npc",
 				"sprite": "npc_Peace-Bear"
-			},
-			{
-				"type": "ActionWait",
-				"time": 48
-			}		
-		],
-		[
-			{
-				"type": "ActionBlackout",
-				"subtype": "hide",
-				"time": 1
-			},		
+			},			
 			{
 				"type": "ActionAnimate",
 				"time": 52,

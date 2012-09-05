@@ -109,8 +109,6 @@
 			
 			// activate entry in middle
 			entries[chosenTeam].gotoAndStop(2);
-			trace(entries[chosenTeam].currentFrame);
-			trace(chosenTeam);
 		}
 		
 		function startLevel(e) {
