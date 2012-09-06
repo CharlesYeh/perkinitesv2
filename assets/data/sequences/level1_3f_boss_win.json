@@ -1,0 +1,96 @@
+{
+	"id": "level1_3f_boss_win",
+	"actions": [
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 128,
+				
+				"message": "IRA was also the weakest of the evil lord's CARDINAL SERVANTS so this should not be considered a significant victory. It's a dumb victory."
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 128,
+				
+				"message": "IRA was also so stupid that he accidentally dropped a very important item, the J-FRAGMENT ONE, for the heroes to pick up. FRIGGIN' RIDICULOUS. SO DUMB."
+			}
+		],	
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 128,
+				
+				"message": "Nevertheless, this long and arduous battle ended with a victory by our heroes."
+			}
+		],				
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 230,
+				
+				"message": "Now they can tell this story to drunk people at parties and get laid or something."
+			}
+		],				
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "show",
+				"time": 20
+			},
+			{
+				"type": "ActionWait",
+				"time": 60,
+			}
+		],
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 230,
+				
+				"message": "Realizing their world is in danger, now these heroes set out to take back the world from the evil lord!"
+			}
+		],		
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 230,
+				
+				"message": "A new day is ahead. A new day of liberation and freedom!"
+			}
+		],		
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 230,
+				
+				"message": "These are the PERKINITES."
+			}
+		],		
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 230,
+				
+				"message": "Until they are killed. By our wonderful evil demon lord."
+			}
+		],		
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 230,
+				
+				"message": "Also, I wonder where Ruth Simmons is in all of this. She should probably be doing something about this."
+			}
+		],		
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 230,
+				
+				"message": "She's probably doing something about this."
+			}
+		]		
+	]
+}

@@ -1,0 +1,141 @@
+{
+	"id": "level1_3f_boss",
+	"actions": [
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 128,
+				
+				"message": "Now they are in the kitchen. The demon could be hiding here or not."
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 128,
+				
+				"message": "Let's just say he's here and speed this up."
+			}
+		],	
+		[
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "npc_Ira",
+    		   "direction": "down",
+				"animation": "appearing",
+    			"position": {
+					"x": 9,
+        			"y": 3
+      		}
+			},
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Masked Child",
+				"message": "Hyuk hyuk hyuk..."
+			},			
+			{
+				"type": "ActionWait",
+				"time": 52
+			}
+		],
+		[
+			{
+				"type": "ActionAnimate",
+				"time": 0,
+				
+				"sprite": "npc_Ira",
+				"animation": "standing"
+			},		
+		],		
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 128,
+				
+				"message": "Our heroes are pretty peeved about all these monsters and stuff, so they prepare to attack."
+			}
+		],				
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Masked Child",
+				"message": "..."
+			},		
+		],	
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 230,
+				
+				"message": "Fortunately for our evil demon child, he's pretty peeved that the heroes kept on ruining his hard efforts, and starts fuming with anger."
+			}
+		],				
+		[
+			{
+				"type": "ActionAnimate",
+				"time": 54,
+				
+				"sprite": "npc_Ira",
+				"animation": "raging"
+			},		
+		],	
+		[	
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Ira"
+			},			
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "enemy",
+				"id": "boss_ira",
+				"direction": "down",
+    			"position": {
+					"x": 9,
+        			"y": 3
+      		}
+			}			
+		],
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 230,
+				
+				"message": "YES! Here he is, IRA, in his true form!"
+			}
+		],
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 230,
+				
+				"message": "The complete embodiment of wrath and hatred! The first of many CARDINAL SERVANTS."
+			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ira",
+				"message": "GRAAAAWWRRRRHHHHHHHHHHHHHH"
+			},		
+		],		
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 230,
+				
+				"message": "So our heroes are pretty much dead now. THE END."
+			}
+		]
+	]
+}

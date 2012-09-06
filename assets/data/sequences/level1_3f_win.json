@@ -1,0 +1,39 @@
+{
+	"id": "level1_3f_win",
+	"actions": [
+		[
+			{
+				"type": "ConditionClearedArea",
+				"map": "perkins_3f"
+			},
+			{
+				"type": "ConditionSequence",
+				"name": "level1_3f"
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 166,
+				
+				"message": "Well it seems like they liberated all of Perkins from the evil darkness. Or did they...?"
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 48,
+				
+				"message": "No they didn't."
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 194,
+				
+				"message": ""They sense evil from within the kitchen. Like the goody-two shoes they are, they go see what's up."
+			}
+		]		
+	]
+}

@@ -1,0 +1,35 @@
+{
+	"id": "level1_3f",
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level1_miniboss_win"
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 165,
+				
+				"message": "Obviously they're going to listen to what I say and go to the third floor."
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 143,
+				
+				"message": "Ahahaha, free will my ass."
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 143,
+				
+				"message": "Anyway, it seems like darkness is still afoot. There's even more evil stuff now. Our heroes go at it."
+			}
+		]		
+	]
+}

@@ -16,7 +16,7 @@
       "dmgRatio": "",
       "range": 50,
       "cd": 20,
-      "speed": 50,
+      "speed": 10,
       "width": 30
     }
   ]
