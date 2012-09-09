@@ -43,7 +43,7 @@
 		public var cooldowns:Array;
 		public var abilityTargets:Array;
 		public var guide:AimGuide;
-		
+		public var attackQueue:Array;
 		public var healthbar:MovieClip;
 		//--------END STATS VARS-------
 		
@@ -53,7 +53,7 @@
 		//----------FRAME VARS----------
 		var prevLabel:String = ANIM_STANDING;
 		public var usingAnimation:Boolean = false;
-		var usingAbility:Boolean	= false;
+		public var usingAbility:Boolean	= false;
 		var disabledMovement:Boolean= false;
 		var forwardVector:Point = null;
 		//--------END FRAME VARS--------
@@ -75,6 +75,7 @@
 				drawHealthbar();
 			}
 			cooldowns = new Array(10);
+			attackQueue = new Array();
 		
 			guide = new AimGuide();
 			addChildAt(guide, 0);
@@ -248,11 +249,32 @@
 		 */
 		override public function moveHandler(e:Event):void {
 			// adjust cooldowns
-			for (var a = 0; a < cooldowns.length; a++) {
+			var a;
+			for (a = 0; a < cooldowns.length; a++) {
 				if (cooldowns[a] > 0) {
 					cooldowns[a]--;
 				}
 			}
+			
+			for (a = 0; a < attackQueue.length; a++){
+				if(attackQueue[a].timeout > 0){
+					attackQueue[a].timeout--;
+				}
+				if(attackQueue[a].timeout <= 0){
+					if(usingAbility){
+						attackQueue.splice(a,1);
+						a--;
+					}
+				}
+			}
+			if(attackQueue.length > 0 && !usingAbility){
+				var attack = attackQueue[0];
+				if(cooldowns[attack.abilityId] <= 0){
+					attackQueue.splice(0,1);
+					castAbility(attack.abilityId, attack.stagePoint);
+				}
+			}
+			
 			
 			// update ability if animation is playing
 			if(usingAnimation){
