@@ -34,6 +34,8 @@
 		
 		private static var m_enabled:Boolean = true;
 		
+		private static var attackTimeout:int = 15;
+		
 		public static function set enabled(val:Boolean):void {
 			m_enabled = val;
 		}
@@ -156,8 +158,10 @@
 					var attack = new Object();
 					attack.abilityId = abilityId;
 					attack.stagePoint = stagePoint;
-					attack.timeout = 36;
-					Game.team[i].attackQueue.push(attack);
+					attack.timeout = attackTimeout;
+					if(Game.team[i].attackQueue.length < 1){
+						Game.team[i].attackQueue.push(attack);						
+					}
 				}
 				else{
 					if(Game.team[i].attackQueue.length > 0){

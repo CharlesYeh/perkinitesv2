@@ -70,7 +70,6 @@
 			}			
 			
 			mdat.startSequences();
-			
 			SoundManager.playSong(mdat.bgmusic);
 		}
 		

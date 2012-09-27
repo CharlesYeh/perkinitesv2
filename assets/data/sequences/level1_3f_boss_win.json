@@ -41,7 +41,7 @@
 			},
 			{
 				"type": "ActionWait",
-				"time": 60,
+				"time": 60
 			}
 		],
 		[		

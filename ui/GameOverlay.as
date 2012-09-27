@@ -23,6 +23,9 @@
 		/** clip for narrator speech */
 		public var narrator:Narrator;
 		
+		/** clip for location display */
+		public var locationDisplay:LocationDisplay;
+		
 		public function GameOverlay() {			
 			hud = new GameHUD();
 			hud.x = HUD_SPACING;
@@ -31,6 +34,10 @@
 			speech = new Speech();
 			
 			narrator = new Narrator();
+			
+			locationDisplay = new LocationDisplay();
+			locationDisplay.x = 515;
+			locationDisplay.y = 425;
 			
 			charUnlock = new CharUnlock();
 			charUnlock.x = 330;
@@ -42,6 +49,7 @@
 			cutscene.visible = false;
 			
 			addChild(hud);
+			addChild(locationDisplay);
 			addChild(cutscene);
 			addChild(charUnlock);
 			addChild(narrator);

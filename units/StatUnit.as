@@ -259,18 +259,18 @@
 			for (a = 0; a < attackQueue.length; a++){
 				if(attackQueue[a].timeout > 0){
 					attackQueue[a].timeout--;
+					//trace(a + ": " + attackQueue[a].timeout);
 				}
 				if(attackQueue[a].timeout <= 0){
-					if(usingAbility){
 						attackQueue.splice(a,1);
 						a--;
-					}
 				}
 			}
 			if(attackQueue.length > 0 && !usingAbility){
 				var attack = attackQueue[0];
 				if(cooldowns[attack.abilityId] <= 0){
 					attackQueue.splice(0,1);
+					cooldowns[attack.abilityId] = 0;
 					castAbility(attack.abilityId, attack.stagePoint);
 				}
 			}

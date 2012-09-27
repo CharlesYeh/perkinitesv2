@@ -5,6 +5,8 @@
 	import db.MapDatabase;
 	
 	import units.GameUnit;
+	
+	import game.Game;
 
 	import flash.geom.Point;
 	import flash.display.DisplayObject;
@@ -45,6 +47,7 @@
 			}
 			
 			
+			Game.overlay.locationDisplay.txtMessage.text = mdat.name;
 			for (var i:String in team) {
 				world.addUnit(team[i]);
 				team[i].setAbilityTargets(world.getEnemies()); //make it so that enemies will take damage
