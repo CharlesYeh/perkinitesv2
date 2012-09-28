@@ -26,6 +26,9 @@
 		/** clip for location display */
 		public var locationDisplay:LocationDisplay;
 		
+		/** clip for gameover */
+		public var gameover:GameOverScreen;
+		
 		public function GameOverlay() {			
 			hud = new GameHUD();
 			hud.x = HUD_SPACING;
@@ -48,6 +51,9 @@
 			cutscene = new Cutscene();
 			cutscene.visible = false;
 			
+			gameover = new GameOverScreen();
+			gameover.visible = false;
+			
 			addChild(hud);
 			addChild(locationDisplay);
 			addChild(cutscene);
@@ -55,6 +61,7 @@
 			addChild(narrator);
 			addChild(speech);
 			addChild(fader);
+			addChild(gameover);
 		}
 
 	}

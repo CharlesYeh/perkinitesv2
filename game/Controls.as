@@ -154,8 +154,9 @@
 			for (var i:String in Game.team) {
 				//fix logic if needed
 				Game.team[i].hideGuide();
+				var attack;
 				if(Game.team[i].usingAbility || Game.team[i].cooldowns[abilityId] > 0){
-					var attack = new Object();
+					attack = new Object();
 					attack.abilityId = abilityId;
 					attack.stagePoint = stagePoint;
 					attack.timeout = attackTimeout;
@@ -165,7 +166,7 @@
 				}
 				else{
 					if(Game.team[i].attackQueue.length > 0){
-						var attack = Game.team[i].attackQueue[0];
+						attack = Game.team[i].attackQueue[0];
 						Game.team[i].attackQueue.splice(0,1);
 						Game.team[i].castAbility(attack.abilityId, attack.stagePoint);
 						
