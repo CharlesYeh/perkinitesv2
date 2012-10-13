@@ -11,7 +11,7 @@
       "conditions": [
         {
           "type": "ConditionSequence",
-          "name": "level1_miniboss_win"
+          "name": "level1_obtain_peacebear"
         }
       ],
       "entry": {
@@ -28,7 +28,7 @@
       "conditions": [
         {
           "type": "ConditionSequence",
-          "name": "level1_miniboss_win"
+          "name": "level1_obtain_peacebear"
         }
       ],
       "entry": {
@@ -45,7 +45,7 @@
       "conditions": [
         {
           "type": "ConditionSequence",
-          "name": "level1_miniboss_win"
+          "name": "level1_obtain_peacebear"
         }
       ],
       "entry": {
@@ -62,7 +62,7 @@
       "conditions": [
         {
           "type": "ConditionSequence",
-          "name": "level1_miniboss_win"
+          "name": "level1_obtain_peacebear"
         }
       ],
       "entry": {
@@ -77,19 +77,11 @@
     }
   ],
   "enemies": [],
-  "npcs": [
-    {
-      "id": "npc_Peace-Bear",
-      "direction": "down",
-      "position": {
-        "x": 9,
-        "y": 5
-      }
-    }
-  ],
+  "npcs": [],
   "sequences": [
     "level1_lounge",
     "level1_miniboss",
-    "level1_miniboss_win"
+    "level1_miniboss_win",
+	 "level1_obtain_peacebear"
   ]
 }

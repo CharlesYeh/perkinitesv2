@@ -16,7 +16,7 @@
 		/** array of all the sequences the player has already cleared */
 		public var clearedAreas:Array = new Array();
 		
-		/** dictionary of "item name" -> "item quantity owned" */
+		/** dictionary of "item name" -> "boolean" */
 		public var items:Dictionary = new Dictionary();
 		
 		/** character level ups achieved */
@@ -43,6 +43,14 @@
 		
 		public function hasCompletedSequence(id:String):Boolean {
 			return completedSequences.indexOf(id) != -1;
+		}
+		
+		public function unlockItem(item:String):void {
+			items[item] = true;
+		}
+		
+		public function hasUnlockedItem(item:String):Boolean {
+			return items.hasOwnProperty(item);
 		}
 		
 		public function addClearedArea(id:String):void {

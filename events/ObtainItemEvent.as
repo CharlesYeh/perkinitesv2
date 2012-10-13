@@ -5,12 +5,12 @@
 	 * Fired whenever the player obtains a new item
 	 */
 	public class ObtainItemEvent extends Event {
-		var items:Array;
+		var items:String;
 		
-		public function ObtainItemEvent(newItems:Array) {
+		public function ObtainItemEvent(newItem:String) {
 			super(GameEventDispatcher.OBTAIN_ITEM);
 			
-			items = newItems;
+			items = newItem;
 		}
 	}
 }

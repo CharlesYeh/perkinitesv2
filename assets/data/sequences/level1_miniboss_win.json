@@ -10,6 +10,30 @@
 		],
 		[
 			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "npc_Peace-Bear",
+    		   "direction": "down",
+				"animation": "returning",
+    			"position": {
+					"x": 9,
+        			"y": 5
+      		}
+			},
+			{
+				"type": "ActionWait",
+				"time": 20
+			}
+		],				
+		[	{
+				"type": "ActionAnimate",
+				"time": 0,
+				
+				"sprite": "npc_Peace-Bear",
+				"animation": "standing"
+			},
+			{
 				"type": "ActionNarrator",
 				"time": 123,
 				

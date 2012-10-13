@@ -3,6 +3,20 @@
 	"actions": [
 		[
 			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "npc_Peace-Bear",
+    		   "direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 9,
+        			"y": 5
+      		}
+			}
+		],	
+		[
+			{
 				"type": "ActionNarrator",
 				"time": 175,
 				
