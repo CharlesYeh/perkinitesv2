@@ -2,7 +2,7 @@
 	import db.dbData.DatabaseData;
 	import abilities.buffs.BuffData;
 	
-	public class AttackBuffData implement db.dbData.DatabaseData {
+	public class AttackBuffData implements db.dbData.DatabaseData {
 		
 		/** buffs to apply to self */
 		public var self:Array = new Array();
@@ -28,6 +28,10 @@
 				
 				this[key].push(buff);
 			}
+		}
+		
+		public function applyBuffs() {
+			
 		}
 	}
 	
