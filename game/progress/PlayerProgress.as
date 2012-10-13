@@ -1,5 +1,12 @@
 ﻿package game.progress {
+	import game.Game;
+	
+	import tileMapper.TileMap;
+	
+	import units.StatUnit;
+	
 	import flash.net.SharedObject;
+	import flash.net.registerClassAlias;
 	import flash.utils.Dictionary;
 	
 	public class PlayerProgress {
@@ -34,11 +41,18 @@
 		public var y:int;
 		
 		public function PlayerProgress() {
+			registerClassAlias("pp", PlayerProgress);
+			registerClassAlias("a", Array);
+			registerClassAlias("d", Dictionary);
+			
 			sharedObj = SharedObject.getLocal("PERKINITES");
 		}
 		
 		public function addCompletedSequence(id:String):void {
 			completedSequences.push(id);
+			
+			//----------------AUTO-SAVE----------------
+			save();
 		}
 		
 		public function hasCompletedSequence(id:String):Boolean {
@@ -69,7 +83,7 @@
 		}
 		
 		public function newGame():void {
-			id = "";
+			id = "PERKINITES";
 			flexPoints = 0;
 			
 			map = "perkins_2f";
@@ -87,13 +101,17 @@
 		}
 		
 		public function loadGame(soId:String):void {
-			var prog:PlayerProgress = sharedObj.data[soId];
+			var prog:Object = sharedObj.data[soId];
+			
+			x = prog.x;
+			y = prog.y;
 			
 			id		= soId;
 			flexPoints = prog.flexPoints;
 			
 			map		= prog.map;
 			completedSequences = prog.completedSequences;
+			clearedAreas = prog.clearedAreas;
 			items	= prog.items;
 			
 			unlockedTeams = prog.unlockedTeams;
@@ -103,11 +121,20 @@
 			var so:SharedObject = sharedObj;
 			sharedObj = null;
 			
+			var player:StatUnit = Game.team[0];
+			x = player.x / TileMap.TILE_SIZE;
+			y = player.y / TileMap.TILE_SIZE;
+			
+			var uteams = unlockedTeams;
+			unlockedTeams = uteams();
+			
 			// save this object without reference to SharedObject
 			so.data[id] = this;
 			so.flush();
 			
+			// restore variables
 			sharedObj = so;
+			unlockedTeams = uteams;
 		}
 	}
 	

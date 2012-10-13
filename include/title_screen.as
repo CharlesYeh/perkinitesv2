@@ -39,9 +39,9 @@ function continueGame(e:Event):void {
 	var sound:Sound = new se_chargeup();
 	sound.play();
 	
-	//Game.playerProgres.loadGame("PERKINITES");
 	clearTitleScreen();
-	//gotoAndStop("char_select");
+	Game.playerProgress.loadGame("PERKINITES");
+	gotoAndStop("char_select");
 }
 
 function config(e:Event):void {
