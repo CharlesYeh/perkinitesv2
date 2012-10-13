@@ -3,7 +3,7 @@
   "name": "Essay",
   "id": "essay",
   "sprite": "enemy_Essay",
-  "health": 60,
+  "health": 20,
   "defense": 0,
   "speed": 50,
   "abilities": [

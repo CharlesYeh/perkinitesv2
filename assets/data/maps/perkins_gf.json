@@ -161,14 +161,6 @@
   "enemies": [
     {
       "id": "drunkguy",
-      "direction": "down",
-      "position": {
-        "x": 12,
-        "y": 9
-      }
-    },
-    {
-      "id": "drunkguy",
       "direction": "up",
       "position": {
         "x": 12,
@@ -185,34 +177,10 @@
     },
     {
       "id": "dhcspark",
-      "direction": "left",
-      "position": {
-        "x": 22,
-        "y": 21
-      }
-    },
-    {
-      "id": "dhcspark",
       "direction": "right",
       "position": {
         "x": 44,
         "y": 20
-      }
-    },
-    {
-      "id": "dhcspark",
-      "direction": "right",
-      "position": {
-        "x": 44,
-        "y": 21
-      }
-    },
-    {
-      "id": "drunkguy",
-      "direction": "down",
-      "position": {
-        "x": 53,
-        "y": 9
       }
     },
     {
@@ -225,30 +193,6 @@
     },
     {
       "id": "pset",
-      "direction": "right",
-      "position": {
-        "x": 38,
-        "y": 22
-      }
-    },
-    {
-      "id": "pset",
-      "direction": "right",
-      "position": {
-        "x": 36,
-        "y": 23
-      }
-    },
-    {
-      "id": "pset",
-      "direction": "right",
-      "position": {
-        "x": 35,
-        "y": 21
-      }
-    },
-    {
-      "id": "essay",
       "direction": "right",
       "position": {
         "x": 41,

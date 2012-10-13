@@ -116,6 +116,17 @@
 		],	
 		[	
 			{
+				"type": "ActionCreate",
+				
+				"subtype": "enemy",
+				"id": "warbear",
+				"direction": "down",
+    			"position": {
+					"x": 9,
+        			"y": 4
+      		}
+			},			
+			{
 				"type": "ActionDelete",
 				
 				"subtype": "npc",
@@ -127,18 +138,7 @@
 				
 				"sprite": "npc_Ira",
 				"animation": "disappearing"
-			},
-			{
-				"type": "ActionCreate",
-				
-				"subtype": "enemy",
-				"id": "warbear",
-				"direction": "down",
-    			"position": {
-					"x": 9,
-        			"y": 5
-      		}
-			}			
+			}
 		],
 		[	
 			{

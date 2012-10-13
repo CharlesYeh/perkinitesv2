@@ -25,7 +25,6 @@
 			var dy = ty - Game.team[0].y;
 			var dist = Math.sqrt(dx * dx + dy * dy);
 			
-			trace(dist + " " + Math.random());
 			if(dist <= radius){
 				complete();
 			}

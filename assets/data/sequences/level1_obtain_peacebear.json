@@ -3,14 +3,16 @@
 	"actions": [
 		[
 			{
+				"type": "ConditionSequence",
+				"name": "level1_miniboss_win"
+			}
+		],
+		[
+			{
 				"type": "ConditionNearLocation",
 				"x": 9,
 				"y": 5,
 				"radius": 32
-			},
-			{
-				"type": "ConditionSequence",
-				"name": "level1_miniboss_win"
 			}
 		],
 		[

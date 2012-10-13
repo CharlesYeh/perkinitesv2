@@ -3,7 +3,7 @@
   "name": "Drunk Enemy",
   "id": "drunkguy",
   "sprite": "enemy_Drunk-Guy",
-  "health": 80,
+  "health": 40,
   "defense": 0,
   "speed": 80,
   "abilities": [

@@ -52,27 +52,11 @@
       }
     },
     {
-      "id": "dhcspark",
-      "direction": "left",
-      "position": {
-        "x": 25,
-        "y": 14
-      }
-    },
-    {
       "id": "drunkguy",
-      "direction": "down",
-      "position": {
-        "x": 30,
-        "y": 15
-      }
-    },
-    {
-      "id": "drunkguy",
-      "direction": "down",
+      "direction": "up",
       "position": {
         "x": 37,
-        "y": 14
+        "y": 17
       }
     },
     {
@@ -100,14 +84,6 @@
       }
     },
     {
-      "id": "dhcspark",
-      "direction": "right",
-      "position": {
-        "x": 45,
-        "y": 15
-      }
-    },
-    {
       "id": "essay",
       "direction": "down",
       "position": {
@@ -119,72 +95,8 @@
       "id": "pset",
       "direction": "up",
       "position": {
-        "x": 6,
+        "x": 59,
         "y": 21
-      }
-    },
-    {
-      "id": "pset",
-      "direction": "up",
-      "position": {
-        "x": 11,
-        "y": 20
-      }
-    },
-    {
-      "id": "pset",
-      "direction": "up",
-      "position": {
-        "x": 15,
-        "y": 21
-      }
-    },
-    {
-      "id": "pset",
-      "direction": "up",
-      "position": {
-        "x": 19,
-        "y": 20
-      }
-    },
-    {
-      "id": "pset",
-      "direction": "up",
-      "position": {
-        "x": 50,
-        "y": 20
-      }
-    },
-    {
-      "id": "pset",
-      "direction": "up",
-      "position": {
-        "x": 53,
-        "y": 21
-      }
-    },
-    {
-      "id": "pset",
-      "direction": "up",
-      "position": {
-        "x": 57,
-        "y": 20
-      }
-    },
-    {
-      "id": "pset",
-      "direction": "up",
-      "position": {
-        "x": 61,
-        "y": 21
-      }
-    },
-    {
-      "id": "essay",
-      "direction": "down",
-      "position": {
-        "x": 58,
-        "y": 10
       }
     },
     {
@@ -196,11 +108,35 @@
       }
     },
     {
-      "id": "essay",
+      "id": "pset",
+      "direction": "up",
+      "position": {
+        "x": 11,
+        "y": 21
+      }
+    },
+    {
+      "id": "drunkguy",
       "direction": "down",
       "position": {
-        "x": 19,
+        "x": 61,
         "y": 9
+      }
+    },
+    {
+      "id": "drunkguy",
+      "direction": "left",
+      "position": {
+        "x": 19,
+        "y": 20
+      }
+    },
+    {
+      "id": "drunkguy",
+      "direction": "right",
+      "position": {
+        "x": 50,
+        "y": 20
       }
     }
   ],
