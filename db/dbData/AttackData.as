@@ -1,6 +1,9 @@
 ﻿package db.dbData {
 	import db.AbilityDatabase;
 	import db.ImageDatabase;
+	
+	import db.dbData.AttackBuffData;
+	
 	import flash.display.Loader;
 	import flash.net.URLRequest;
 	
@@ -22,6 +25,8 @@
 		
 		/** # of consecutive uses before the cooldown is applied */
 		public var uses:int;
+		
+		public var attackBuffs:AttackBuffData;
 		
 		public static function createAttack(obj:Object):AttackData {
 			var AttackClass:Class = AbilityDatabase.getAbilityClass(obj.type);
@@ -49,6 +54,11 @@
 			
 			dmgBase = obj.dmgBase;
 			dmgScale = obj.dmgRatio;
+			
+			if (obj.buffs) {
+				attackBuffs = new AttackBuffData();
+				attackBuffs.parseData(obj.buffs);
+			}
 		}
 	}
 }

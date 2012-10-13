@@ -70,6 +70,12 @@
 			
 			for (var i in Game.team) { //change targets to Game.team 
 				var un:StatUnit = Game.team[i];
+				
+				// if not detector, ignore invisible units
+				if (un.frameBuff.vanish && !frameBuff.detect) {
+					continue;
+				}
+				
 				var dx = un.x - x;
 				var dy = un.y - y;
 				var d = dx * dx + dy * dy;

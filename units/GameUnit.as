@@ -192,8 +192,8 @@
 				// keep moving towards path[0]
 				var radian = turnTo(path[0]);
 				
-				var nx = x + speed * Math.cos(radian) / 24;
-				var ny = y + speed * Math.sin(radian) / 24;
+				var nx = x + getSpeed() * Math.cos(radian) / 24;
+				var ny = y + getSpeed() * Math.sin(radian) / 24;
 				
 				teleportTo(nx, ny);
 			}
@@ -210,6 +210,9 @@
 		}
 		public function turnRight() {
 			moveDir = (moveDir == 0) ? 3 : (moveDir - 1);
+		}
+		protected function getSpeed():Number {
+			return speed;
 		}
 		protected function setSpeed(s) {
 			speed = s;

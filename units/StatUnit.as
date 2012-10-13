@@ -8,10 +8,12 @@
 	import tileMapper.TileMap;
 	import db.AbilityDatabase;
 	import db.dbData.UnitData;
+	import attacks.buffs.BuffUtil;
 	import attacks.Attack;
 	
 	import game.GameConstants;
 	import game.progress.CharacterProgress;
+	import game.progress.BuffProgress;
 
 	public class StatUnit extends GameUnit {
 		
@@ -45,6 +47,9 @@
 		public var guide:AimGuide;
 		public var attackQueue:Array;
 		public var healthbar:MovieClip;
+		
+		public var appliedBuffs:Array;
+		public var frameBuff:BuffProgress;
 		//--------END STATS VARS-------
 		
 		var abilityId:int;
@@ -76,11 +81,16 @@
 			}
 			cooldowns = new Array(10);
 			attackQueue = new Array();
-		
+			appliedBuffs = new Array();
+			
 			guide = new AimGuide();
 			addChildAt(guide, 0);
 			guide.visible = false;
 			
+		}
+		
+		public function addBuff(bp:BuffProgress):void {
+			appliedBuffs.push(bp);
 		}
 		
 		public function setAbilityTargets(targets:Array):void {
@@ -104,7 +114,14 @@
 		}
 		
 		public function takeDamage(dmg:int):void {
-			progressData.health = Math.max(0, progressData.health - dmg);
+			if (frameBuff.invincibility) {
+				return;
+			}
+			
+			var def:int = Math.floor(unitData.defense * frameBuff.defenseMult + frameBuff.defenseAdd);
+			var adjustedDmg:int = Math.max(1, dmg - def);
+			
+			progressData.health = Math.max(0, progressData.health - adjustedDmg);
 			drawHealthbar();
 		}
 		
@@ -242,12 +259,39 @@
 			return true;
 		}
 		
+		public function updateBuffs():void {
+			frameBuff = BuffUtil.updateBuffs(appliedBuffs);
+			
+			if (frameBuff == null) {
+				frameBuff = new BuffProgress();
+			}
+			else {
+				if (frameBuff.vanish) {
+					alpha = .5;
+				}
+				else {
+					alpha = 1;
+				}
+				
+				// poison
+				var dmg:int = Math.floor(frameBuff.poisonMult * unitData.health) + frameBuff.poisonAdd;
+				takeDamage(dmg);
+			}
+		}
+		
+		override protected function getSpeed():Number {
+			return super.getSpeed() * frameBuff.moveMult + frameBuff.moveAdd;
+		}
+		
 		/**
 		 * 
 		 * the movement handler
 		 * @param e - Event.ENTER_FRAME
 		 */
 		override public function moveHandler(e:Event):void {
+			// adjust buffs
+			updateBuffs();
+			
 			// adjust cooldowns
 			var a;
 			for (a = 0; a < cooldowns.length; a++) {
@@ -259,7 +303,6 @@
 			for (a = 0; a < attackQueue.length; a++){
 				if(attackQueue[a].timeout > 0){
 					attackQueue[a].timeout--;
-					//trace(a + ": " + attackQueue[a].timeout);
 				}
 				if(attackQueue[a].timeout <= 0){
 						attackQueue.splice(a,1);
@@ -275,6 +318,9 @@
 				}
 			}
 			
+			if (frameBuff.stun) {
+				return;
+			}
 			
 			// update ability if animation is playing
 			if(usingAnimation){
