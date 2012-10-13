@@ -37,7 +37,12 @@
 				if (tileTypes[a].length > 1) {
 					var TileType = getDefinitionByName(tileTypes[a]);
 				} else {
-					TileType=getDefinitionByName(prefix+a);
+					if(a > 9){
+						TileType=getDefinitionByName(prefix+String.fromCharCode(a+55));					
+					}
+					else{						
+						TileType=getDefinitionByName(prefix+a);
+					}
 					tileSet[a] = new TileType();
 				}
 			}
@@ -143,11 +148,11 @@
 			var num = COLS * a + b;
 
 			var mnum = parseInt(mapData.charAt(num));
-			map[a][b] = mnum;
 			var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 			if (isNaN(mnum)) {
 				mnum = alphabet.indexOf(mapData.charAt(num).toUpperCase()) + 10;
 			}
+			map[a][b] = mnum;
 
 			var t = tileSet[mnum];
 			if (tileTypes[mnum].length != 1) {
@@ -316,6 +321,7 @@
 						found = true;
 						break;
 					}
+					
 					if (tiles[i - 1] < COLS && tileTypes[map[tiles[i]][tiles[i - 1] + 1]] == "s") {
 						map[tiles[i]][tiles[i - 1] + 1] = {y:tiles[i],x:tiles[i - 1]};
 						tiles.push(tiles[i-1]+1, tiles[i]);

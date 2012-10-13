@@ -32,6 +32,8 @@
 		
 		public var invincibility:Boolean = false;
 		
+		public var moveMult:Number = 1;
+		public var moveAdd:int = 1;
 		/** the number of frames this buff will last */
 		public var duration:int;
 		
