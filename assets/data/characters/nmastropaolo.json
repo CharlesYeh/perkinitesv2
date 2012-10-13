@@ -9,8 +9,8 @@
   "id": "NM",
   "sprite": "NM",
   "health": 120,
-  "defense": 0,
-  "speed": 250,
+  "defense": 5,
+  "speed": 150,
   "abilities": [
     {
       "name": "Shopping Spree",
