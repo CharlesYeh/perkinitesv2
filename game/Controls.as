@@ -34,6 +34,8 @@
 		
 		private static var m_enabled:Boolean = true;
 		
+		private static var attackTimeout:int = 15;
+		
 		public static function set enabled(val:Boolean):void {
 			m_enabled = val;
 		}
@@ -152,16 +154,19 @@
 			for (var i:String in Game.team) {
 				//fix logic if needed
 				Game.team[i].hideGuide();
+				var attack;
 				if(Game.team[i].usingAbility || Game.team[i].cooldowns[abilityId] > 0){
-					var attack = new Object();
+					attack = new Object();
 					attack.abilityId = abilityId;
 					attack.stagePoint = stagePoint;
-					attack.timeout = 36;
-					Game.team[i].attackQueue.push(attack);
+					attack.timeout = attackTimeout;
+					if(Game.team[i].attackQueue.length < 1){
+						Game.team[i].attackQueue.push(attack);						
+					}
 				}
 				else{
 					if(Game.team[i].attackQueue.length > 0){
-						var attack = Game.team[i].attackQueue[0];
+						attack = Game.team[i].attackQueue[0];
 						Game.team[i].attackQueue.splice(0,1);
 						Game.team[i].castAbility(attack.abilityId, attack.stagePoint);
 						

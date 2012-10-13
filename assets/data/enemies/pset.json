@@ -3,7 +3,7 @@
   "name": "Problem Set",
   "id": "pset",
   "sprite": "enemy_Problem-Set",
-  "health": 50,
+  "health": 10,
   "defense": 0,
   "speed": 80,
   "abilities": [

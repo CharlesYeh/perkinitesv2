@@ -24,6 +24,7 @@
 			var dx = tx - Game.team[0].x;
 			var dy = ty - Game.team[0].y;
 			var dist = Math.sqrt(dx * dx + dy * dy);
+			
 			if(dist <= radius){
 				complete();
 			}

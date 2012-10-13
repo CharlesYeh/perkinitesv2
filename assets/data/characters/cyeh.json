@@ -9,7 +9,7 @@
   "id": "CY",
   "sprite": "CY",
   "health": 130,
-  "defense": 10,
+  "defense": 20,
   "speed": 200,
   "abilities": [
     {

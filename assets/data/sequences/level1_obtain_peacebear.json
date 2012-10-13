@@ -1,0 +1,31 @@
+{
+	"id": "level1_obtain_peacebear",
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level1_miniboss_win"
+			}
+		],
+		[
+			{
+				"type": "ConditionNearLocation",
+				"x": 9,
+				"y": 5,
+				"radius": 32
+			}
+		],
+		[
+			{
+				"type": "ActionItem",
+				"item": "Peace Bear"
+			},
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Peace-Bear"
+			}
+		]
+	]
+}

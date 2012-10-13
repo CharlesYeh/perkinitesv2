@@ -10,71 +10,29 @@
 		],
 		[
 			{
-				"type": "ActionNarrator",
-				"time": 123,
+				"type": "ActionCreate",
 				
-				"name": "Narrator",
-				"message": "By hitting the teddy bear multiple times, they have warded away the darkness from this object."
+				"subtype": "npc",
+				"id": "npc_Peace-Bear",
+    		   "direction": "down",
+				"animation": "returning",
+    			"position": {
+					"x": 9,
+        			"y": 5
+      		}
 			},
 			{
-				"type": "ActionSound",
-				"sound": "miniboss_win_1"
+				"type": "ActionWait",
+				"time": 20
 			}
 		],
 		[
 			{
-				"type": "ActionNarrator",
-				"time": 176,
+				"type": "ActionAnimate",
+				"time": 0,
 				
-				"name": "Narrator",
-				"message": "They have saved a teddy bear from an ancient darkness plaguing millions of human lives. GOOD JOB GUYS."
-			}
-		],
-		[
-			{
-				"type": "ActionNarrator",
-				"time": 113,
-				
-				"name": "Narrator",
-				"message": "Even better for them, they manage to unlock six new heroes!"
-			}
-		],
-		[
-			{
-				"type": "ActionUnlockCharacters",
-				
-				"quantity": 3
-			}
-		],
-		[
-			{
-				"type": "ActionNarrator",
-				"time": 83,
-				
-				"name": "Narrator",
-				"message": "They don’t stop to wonder what this means. They just roll with it."
-			},
-			{
-				"type": "ActionSound",
-				"sound": "miniboss_win_2"
-			}
-		],
-		[
-			{
-				"type": "ActionNarrator",
-				"time": 200,
-				
-				"name": "Narrator",
-				"message": "However, they know that evil demon child is still probably within Perkins, planning something diabolical, like making an evil lamp or something."
-			}
-		],
-		[
-			{
-				"type": "ActionNarrator",
-				"time": 178,
-				
-				"name": "Narrator",
-				"message": "The only place they haven’t investigated yet is the third floor, so our heroes journey to the depths of wherever that might be."
+				"sprite": "npc_Peace-Bear",
+				"animation": "standing"
 			}
 		]
 	]

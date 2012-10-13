@@ -90,6 +90,26 @@
 		}
 		public function teleportTo(targetX:int, targetY:int):Boolean {
 			if (TileMap.hitNonpass(targetX, targetY)) {
+				var dx:Number = targetX - x;
+				var dy:Number = targetY - y;
+				var dist:Number = Math.sqrt(dx * dx + dy * dy);
+				
+				dx = dx / dist;
+				dy = dy / dist;
+				
+				for (var i = 0; i < dist; i += 10) {
+					var tx:Number = targetX - dx * i;
+					var ty:Number = targetY - dy * i;
+					
+					if (!TileMap.hitNonpass(tx, ty)) {
+						// found good teleport destination!
+						x = tx;
+						y = ty;
+						
+						return true;
+					}
+				}
+				
 				// invalid destination
 				return false;
 			}

@@ -9,7 +9,7 @@
   "id": "NM",
   "sprite": "NM",
   "health": 120,
-  "defense": 5,
+  "defense": 10,
   "speed": 150,
   "abilities": [
     {
@@ -29,7 +29,7 @@
       "type": "AttackSmartcast",
       "icon": "Icon - Claw Attack.png",
       "description": "Deal heavy damage to a single targeted enemy.",
-      "dmgBase": "10",
+      "dmgBase": "13",
       "dmgRatio": "0",
       "range": 50,
       "cd": 20,

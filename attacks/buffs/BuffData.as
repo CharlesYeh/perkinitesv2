@@ -47,5 +47,9 @@
 				}
 			}
 		}
+		
+		public function applyBuff(su:StatUnit):void {
+			
+		}
 	}
 }
