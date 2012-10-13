@@ -1,7 +1,5 @@
-﻿package abilities.buffs {
-	import db.dbData.DatabaseData;
-
-	public class BuffData implements DatabaseData {
+﻿package game.progress {
+	public class BuffProgress {
 		
 		public var defenseMult:Number = 1;
 		public var defenseAdd:int = 0;
