@@ -1,6 +1,6 @@
-﻿package  {
+﻿package db.dbData {
 	import db.dbData.DatabaseData;
-	import abilities.buffs.BuffData;
+	import db.dbData.BuffData;
 	
 	public class AttackBuffData implements db.dbData.DatabaseData {
 		
@@ -22,16 +22,14 @@
 			for (var i:String in fields) {
 				var key:String = fields[i];
 				
-				// parse each buff's data
-				var buff:BuffData = new BuffData();
-				buff.parseData(obj[key]);
-				
-				this[key].push(buff);
+				if (obj.hasOwnProperty(key)) {
+					// parse each buff's data
+					var buff:BuffData = new BuffData();
+					buff.parseData(obj[key]);
+					
+					this[key].push(buff);
+				}
 			}
-		}
-		
-		public function applyBuffs() {
-			
 		}
 	}
 	

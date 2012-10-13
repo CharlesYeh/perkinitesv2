@@ -1,7 +1,11 @@
 ﻿package attacks {
 	import flash.geom.Point;
+	
 	import game.Game;
+	import attacks.buffs.BuffUtil;
+	
 	import units.StatUnit;
+	
 	import db.dbData.AttackData;
 
 	public class Attack extends AttackData {
@@ -67,7 +71,17 @@
 		public function beginForwardMovement():void {}
 		public function stopForwardMovement():void {}
 		public function dealDamage():void {}
-		public function applyBuffs():void {}
+		
+		public function applyBuffs():void {
+			if (attackBuffs) {
+				BuffUtil.applyBuffs(attackBuffs.self, m_caster);
+				BuffUtil.applyBuffsToArray(attackBuffs.enemies, m_caster.abilityTargets);
+				
+				attackBuffs.allies;
+				attackBuffs.team;
+			}
+		}
+		
 		public function shootSkillshot(bullets:Array):void {}
 		
 		public function teleport():void {
