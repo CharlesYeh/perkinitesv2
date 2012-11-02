@@ -105,11 +105,11 @@
 			
 			x = prog.x;
 			y = prog.y;
+			map = prog.map;
 			
 			id		= soId;
 			flexPoints = prog.flexPoints;
 			
-			map		= prog.map;
 			completedSequences = prog.completedSequences;
 			clearedAreas = prog.clearedAreas;
 			items	= prog.items;
@@ -124,6 +124,7 @@
 			var player:StatUnit = Game.team[0];
 			x = player.x / TileMap.TILE_SIZE;
 			y = player.y / TileMap.TILE_SIZE;
+			map = Game.world.mapData.name;
 			
 /*			var uteams = unlockedTeams;
 			unlockedTeams = uteams();*/
