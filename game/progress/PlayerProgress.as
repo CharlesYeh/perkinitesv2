@@ -125,8 +125,8 @@
 			x = player.x / TileMap.TILE_SIZE;
 			y = player.y / TileMap.TILE_SIZE;
 			
-			var uteams = unlockedTeams;
-			unlockedTeams = uteams();
+/*			var uteams = unlockedTeams;
+			unlockedTeams = uteams();*/
 			
 			// save this object without reference to SharedObject
 			so.data[id] = this;
@@ -134,7 +134,7 @@
 			
 			// restore variables
 			sharedObj = so;
-			unlockedTeams = uteams;
+			//unlockedTeams = uteams;
 		}
 	}
 	
