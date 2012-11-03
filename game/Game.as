@@ -54,6 +54,7 @@
 			dbSeq	= new SequenceDatabase();
 			dbSnd	= new SoundDatabase();
 			
+			player	= new Player();
 			playerProgress = new PlayerProgress();
 		}
 		
@@ -128,6 +129,9 @@
 			
 			// screen follows player
 			MapManager.update();
+			
+			// fps healing
+			player.updateHealing(team);
 			
 			MapManager.checkTeleports();
 		}

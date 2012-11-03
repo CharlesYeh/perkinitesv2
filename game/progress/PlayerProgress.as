@@ -97,7 +97,7 @@
 			unlockedTeams["CY_NM"] = true;
 			unlockedTeams["JT_EH"] = true;
 			unlockedTeams["HQ_HV"] = true;
-			unlockedTeams["CK_CM"] = true;			
+			unlockedTeams["CM_CK"] = true;			
 		}
 		
 		public function loadGame(soId:String):void {
