@@ -79,10 +79,10 @@
   "enemies": [
     {
       "id": "pset",
-      "direction": "up",
+      "direction": "down",
       "position": {
         "x": 6,
-        "y": 21
+        "y": 20
       }
     },
     {

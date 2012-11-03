@@ -15,6 +15,7 @@
 	public class BasicAIUnit extends AIUnit {
 		public function BasicAIUnit(edat:EnemyData) {
 			super(edat);
+			cooldowns[0] = 0; //temporary 
 		}
 		
 		// just moves to player if player is in range then attack
@@ -34,7 +35,12 @@
 			var dist:Number = getDistance(target);
 			if (dist < atkRange) {
 				// attack
-				castAbility(0, tp);
+				if(cooldowns[0] <= 0){
+					castAbility(0, tp);
+				}
+				else{
+					path = new Array();
+				}
 			}
 			else {
 				chaseTarget(target, 250);
