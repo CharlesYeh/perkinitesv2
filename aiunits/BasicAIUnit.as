@@ -35,6 +35,7 @@
 			var dist:Number = getDistance(target);
 			if (dist < atkRange) {
 				// attack
+				//trace(cooldowns[0]);
 				if(cooldowns[0] <= 0){
 					castAbility(0, tp);
 				}

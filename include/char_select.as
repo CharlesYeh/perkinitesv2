@@ -49,12 +49,12 @@ for (a = 0; a <= 3; a++) {
 
 // show available teams in middle
 showEntries();
-chooseTeam(0);
 
 function showEntries() {
 	var allTeams:Array	= Game.dbChar.getUnlockedTeams();
 	
 	// must only show available Units, not all Units!
+	var counter = 0;
 	for (var i = 0; i < allTeams.length; i++) {
 		var team:Array = allTeams[i];
 		
@@ -64,7 +64,6 @@ function showEntries() {
 		}
 		
 		var dat:Array = Game.dbChar.getTeamCharacterData(i);
-		
 		var entry = new Entry();
 		entry.playerName1.text = dat[0].name;
 		entry.playerName2.text = dat[1].name;
@@ -81,17 +80,22 @@ function showEntries() {
 		playerList.addChild(entry);
 		entry.mouseChildren = false;
 		entry.x = 0;
-		entry.y = 16 * i;
+		entry.y = 16 * counter;
 		entries.push(entry);
+		
+		if(counter == 0){
+			chooseTeam(entry);
+		}
+		counter++;
 	}
 }
-function chooseTeam(team) {
-	chosenTeam = team;
+function chooseTeam(entry) { //team
+	chosenTeam = entry.id;
 	var dat:Array = Game.dbChar.getTeamCharacterData(chosenTeam);
-	Game.chooseTeam(team);
+	Game.chooseTeam(chosenTeam);
 	
 	// activate entry in middle
-	entries[chosenTeam].gotoAndStop(2);
+	entries[entries.indexOf(entry)].gotoAndStop(2);
 	
 	unitName1.text = dat[0].name;
 	unitName2.text = dat[1].name;
@@ -229,7 +233,7 @@ function clickHandler(e) {
 	var sound = new se_timeout();
 	sound.play();
 	
-	chooseTeam(e.target.id);
+	chooseTeam(entries[entries.indexOf(e.target)]);
 }
 function entryOverHandler(e) {
 	e.target.filters = [e.target.glowF];

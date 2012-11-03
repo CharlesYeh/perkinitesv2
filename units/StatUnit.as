@@ -192,7 +192,6 @@
 		
 		//--------------FRAME FUNCTIONS--------------
 		public function endAbility() {
-			trace("end Ability");
 			usingAbility = false;
 			setAnimLabel(prevLabel);
 		}
@@ -220,7 +219,7 @@
 				return false;
 			}
 			
-			trace(usingAbility);
+			//trace(usingAbility);
 			if (usingAbility || cooldowns[abID] > 0) {
 				return false;
 			}

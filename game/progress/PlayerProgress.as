@@ -124,7 +124,7 @@
 			var player:StatUnit = Game.team[0];
 			x = player.x / TileMap.TILE_SIZE;
 			y = player.y / TileMap.TILE_SIZE;
-			map = Game.world.mapData.name;
+			map = Game.world.mapData.id;
 			
 /*			var uteams = unlockedTeams;
 			unlockedTeams = uteams();*/

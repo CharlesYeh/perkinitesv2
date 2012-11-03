@@ -57,6 +57,9 @@
 		}
 		
 		public function getTeamCharacterData(id:int):Array {
+/*			trace(teamData.hasOwnProperty(0));
+			trace(teamData.hasOwnProperty(1));
+			trace(teamData.hasOwnProperty(2));*/
 			if (!teamData.hasOwnProperty(id)) {
 				var team:Array = new Array();
 				
