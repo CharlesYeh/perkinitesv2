@@ -43,6 +43,7 @@
 		public var progressData:CharacterProgress;
 		
 		public var cooldowns:Array;
+		public var stands:Array;
 		public var abilityTargets:Array;
 		public var guide:AimGuide;
 		public var attackQueue:Array;
@@ -53,7 +54,7 @@
 		//--------END STATS VARS-------
 		
 		var abilityId:int;
-		var castPoint:Point;
+		public var castPoint:Point;
 		
 		//----------FRAME VARS----------
 		var prevLabel:String = ANIM_STANDING;
@@ -80,6 +81,7 @@
 				drawHealthbar();
 			}
 			cooldowns = new Array(10);
+			stands = new Array(10);
 			attackQueue = new Array();
 			appliedBuffs = new Array();
 			
@@ -219,11 +221,14 @@
 				return false;
 			}
 			
-			//trace(usingAbility);
-			if (usingAbility || cooldowns[abID] > 0) {
+			if(stands[abID] <= 0 && usingAbility){
+				endAbility();
+			}
+			if ((usingAbility || cooldowns[abID] > 0) && stands[abID] > 0) {
 				return false;
 			}
 			
+			enableMovement();
 			abilityId = abID;
 			castPoint = mousePos;
 			
@@ -241,6 +246,8 @@
 			
 			// set cooldown
 			cooldowns[abilityId] = ability.cd;
+			stands[abilityId] = ability.stand;
+			stands[Math.abs(abilityId-1)] = ability.stand;
 			
 			usingAbility = true;
 			prevLabel = animLabel;
@@ -302,7 +309,13 @@
 				}
 			}
 			
-			for (a = 0; a < attackQueue.length; a++){
+			for (a = 0; a < stands.length; a++) {
+				if (stands[a] > 0) {
+					stands[a]--;
+				}
+			}
+			
+			/*for (a = 0; a < attackQueue.length; a++){
 				if(attackQueue[a].timeout > 0){
 					attackQueue[a].timeout--;
 				}
@@ -318,7 +331,7 @@
 					cooldowns[attack.abilityId] = 0;
 					castAbility(attack.abilityId, attack.stagePoint);
 				}
-			}
+			}*/
 			
 			if (frameBuff.stun) {
 				return;
@@ -328,6 +341,13 @@
 			if(usingAnimation){
 				return;
 			}
+			
+			
+			if (disabledMovement) {
+				return;
+			}
+			
+			super.moveHandler(e);
 			if (usingAbility) {
 				var atk:Attack = unitData.abilities[abilityId];
 				atk.castInProgress(this);
@@ -335,12 +355,7 @@
 				return;
 			}
 			
-			if (disabledMovement) {
-				return;
-			}
-			
-			super.moveHandler(e);
-			
+			//was here before
 			if (path.length == 0) {
 				// not moving
 				setAnimLabel(ANIM_STANDING);

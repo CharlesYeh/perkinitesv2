@@ -113,8 +113,8 @@
 		
 		function startLevel(e) {
 			// pressed the start button
-			var sound = new se_chargeup();
-			sound.play();
+			//var sound = new se_chargeup();
+			//sound.play();
 			
 			//fix
 			var allTeams:Array	= Game.dbChar.getUnlockedTeams();
@@ -133,8 +133,8 @@
 			// choose entry
 			entries[chosenTeam].gotoAndStop(1);
 			
-			var sound = new se_timeout();
-			sound.play();
+			//var sound = new se_timeout();
+			//sound.play();
 			
 			chooseTeam(e.target.id);
 		}

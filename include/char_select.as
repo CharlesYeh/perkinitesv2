@@ -2,7 +2,7 @@
 
 import db.dbData.CharacterData;
 import db.dbData.AttackData;
-
+import db.dbData.MapData;
 import game.Game;
 
 import flash.display.MovieClip;
@@ -123,12 +123,21 @@ function startLevel(e) {
 	var team:Array = allTeams[chosenTeam];
 	Game.playerProgress.unlockTeam(team);
 	
-	var sound = new se_chargeup();
-	sound.play();
+	//var sound = new se_chargeup();
+	//sound.play();
 	
+
 	var dat:Array = Game.dbChar.getTeamCharacterData(chosenTeam);
+	
+	if(Game.playerProgress.health == -1){
+		Game.playerProgress.health = dat[0].health;
+	}
+	
 	clearCharSelect();
+	var mdat:MapData = Game.dbMap.getMapData(Game.playerProgress.map);
+	SoundManager.playSong(mdat.bgmusic);	
 	gotoAndStop(1, "game");
+		
 }
 function charKeyHandler(e) {
 	if (e.keyCode == Keyboard.SPACE) {
@@ -230,8 +239,8 @@ function clickHandler(e) {
 	// choose entry
 	entries[chosenTeam].gotoAndStop(1);
 	
-	var sound = new se_timeout();
-	sound.play();
+	//var sound = new se_timeout();
+	//sound.play();
 	
 	chooseTeam(entries[entries.indexOf(e.target)]);
 }

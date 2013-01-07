@@ -48,13 +48,29 @@
 			
 			
 			Game.overlay.locationDisplay.txtMessage.text = mdat.name;
-			for (var i:String in team) {
-				world.addUnit(team[i]);
-				team[i].setAbilityTargets(world.getEnemies()); //make it so that enemies will take damage
-			}
 			
 			// reset camera
 			ScreenRect.createScreenRect(new Array(world), GameConstants.WIDTH, GameConstants.HEIGHT);
+			
+			//make sure that on continue game, it doesn't start at the beginning
+			var avgX:Number = 0;
+			var avgY:Number = 0;
+			for (var i:String in team) {
+				world.addUnit(team[i]);
+				team[i].setAbilityTargets(world.getEnemies()); //make it so that enemies will take damage
+				var u:StatUnit = Game.team[i]; //allow to end dashing by changing gameunit -> statunit
+				
+				avgX += u.x;
+				avgY += u.y;
+			}
+			
+			avgX /= Game.team.length;
+			avgY /= Game.team.length;
+			
+			var sx = avgX - GameConstants.WIDTH / 2;
+			var sy = avgY - GameConstants.HEIGHT / 2;
+			ScreenRect.setX(sx);
+			ScreenRect.setY(sy);	
 			
 			var prefix:String = "tiles.Tile_" + tdat.id + "_";
 			TileMap.createTileMap(mdat.code, mdat.height, mdat.width, GameConstants.TILE_SIZE, tdat.types, tdat.clings, prefix);

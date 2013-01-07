@@ -21,6 +21,7 @@
       "dmgRatio": "50",
       "range": 100,
       "cd": 10,
+      "stand": 0,
       "radius": 50
     },
     {
@@ -31,7 +32,8 @@
       "dmgBase": "",
       "dmgRatio": "",
       "range": 250,
-      "cd": 20
+      "cd": 20,
+      "stand": 0
     }
   ]
 }

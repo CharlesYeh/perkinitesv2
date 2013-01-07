@@ -6,6 +6,7 @@
 	
 	import game.Game;
 	import game.Controls;
+	import game.Player;
 	
 	public class Perkinite extends StatUnit {
 		public function Perkinite(charData:CharacterData) {
@@ -14,20 +15,22 @@
 			progressData.health = unitData.health;
 			setSpeed(unitData.speed);
 			
+			removeChild(this.healthbar);
+				
 			// load swf
 			loadSwf();
 		}
 		
 		override public function takeDamage(dmg:int):void {
-			if(progressData.health > 0){
-				progressData.health = Math.max(0, progressData.health - dmg);
-				drawHealthbar();
-				
-				if(progressData.health <= 0){
-					Controls.enabled = false;
-					Game.overlay.gameover.visible = true;
-				}				
+			Game.playerProgress.takeDamage(dmg);
+		}
+		
+		override public function moveHandler(e:Event):void {
+			var lead:StatUnit = Game.team[0];
+			if(!usingAbility && lead != this && StatUnit.distance(lead, this) <= 40){
+				path = new Array();
 			}
+			super.moveHandler(e);			
 		}
 		
 	}

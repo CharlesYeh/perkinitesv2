@@ -21,6 +21,7 @@
       "dmgRatio": "1",
       "range": 120,
       "cd": 10,
+      "stand": 0,
       "speed": 30,
       "width": 50
     },
@@ -33,13 +34,8 @@
       "dmgRatio": "",
       "range": 250,
       "cd": 20,
-      "goToCastPoint": true,
-	  "buffs": {
-	  	"self": {
-			"duration": 50,
-			"moveMult": 1.5
-		}
-	  }
+      "stand": 0,
+      "goToCastPoint": true
     }
   ]
 }

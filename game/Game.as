@@ -39,7 +39,7 @@
 		public static var gamePause:Boolean = false;
 		
 		/** container movieclip for maps */
-		private static var container:MovieClip;
+		public static var container:MovieClip;
 		
 		public static var world:World;
 		public static var overlay:GameOverlay;
@@ -98,11 +98,13 @@
 		
 		public static function endGameWorld():void {
 			container.removeChild(world);
+			container.removeChild(overlay);
+			MapManager.resetWorld();
 			world = null;
 			
 			team.splice(0);
+			team.splice(0);
 			
-			MapManager.resetWorld();
 		}
 		
 		public static function moveTeam(horz:int, vert:int):void {
@@ -118,8 +120,9 @@
 				if (lead == u) {
 					continue;
 				}
-				
-				u.moveTo(lead.x, lead.y, true);
+				/*if(StatUnit.distance(lead, u) >= 24){
+					u.moveTo(lead.x, lead.y, true);					
+				}*/u.moveTo(lead.x, lead.y, true);		
 			}
 		}
 		

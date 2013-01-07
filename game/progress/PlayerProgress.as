@@ -1,5 +1,6 @@
 ﻿package game.progress {
 	import game.Game;
+	import game.Controls;
 	
 	import tileMapper.TileMap;
 	
@@ -34,6 +35,9 @@
 		
 		/** set of the unlocked teams */
 		public var unlockedTeams:Dictionary = new Dictionary();
+		
+		/** health of the team */
+		public var health;
 		
 		/** map position of the player */
 		public var map:String;
@@ -95,9 +99,11 @@
 			
 			unlockedTeams = new Dictionary();
 			unlockedTeams["CY_NM"] = true;
-			unlockedTeams["JT_EH"] = true;
-			unlockedTeams["HQ_HV"] = true;
-			unlockedTeams["CM_CK"] = true;			
+			unlockedTeams["EH_JT"] = true;
+			unlockedTeams["CK_CM"] = true;
+			unlockedTeams["HV_HQ"] = true;			
+			
+			health = -1;
 		}
 		
 		public function loadGame(soId:String):void {
@@ -115,6 +121,8 @@
 			items	= prog.items;
 			
 			unlockedTeams = prog.unlockedTeams;
+			
+			health = prog.health;
 		}
 		
 		public function save():void {
@@ -136,6 +144,31 @@
 			// restore variables
 			sharedObj = so;
 			//unlockedTeams = uteams;
+		}
+		
+		public function takeDamage(dmg:int){
+/*			if(progressData.health > 0){
+				progressData.health = Math.max(0, progressData.health - dmg);
+				drawHealthbar();
+				
+				if(progressData.health <= 0){
+					Controls.enabled = false;
+					Game.overlay.gameover.enable();
+				}				
+			}		*/
+			if(health > 0){
+				health = Math.max(0, health - dmg);
+				for (var i:String in Game.team) {
+					var u:StatUnit = Game.team[i];
+					u.progressData.health = health;
+				}
+				//drawHealthbar();
+				
+				if(health <= 0){
+					Controls.enabled = false;
+					Game.overlay.gameover.enable();
+				}				
+			}	
 		}
 	}
 	

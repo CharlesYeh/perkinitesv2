@@ -21,6 +21,7 @@
       "dmgRatio": "0",
       "range": 50,
       "cd": 10,
+      "stand": 0,
       "angle": 90
     },
     {
@@ -32,6 +33,7 @@
       "dmgRatio": "0",
       "range": 250,
       "cd": 20,
+      "stand": 0,
       "goToCastPoint": false
     }
   ]

@@ -154,8 +154,9 @@
 			for (var i:String in Game.team) {
 				//fix logic if needed
 				Game.team[i].hideGuide();
-				var attack;
-				if(Game.team[i].usingAbility || Game.team[i].cooldowns[abilityId] > 0){
+				//var attack;
+				Game.team[i].castAbility(abilityId, stagePoint);
+				/*if(Game.team[i].usingAbility || Game.team[i].cooldowns[abilityId] > 0){
 					attack = new Object();
 					attack.abilityId = abilityId;
 					attack.stagePoint = stagePoint;
@@ -174,7 +175,7 @@
 					else{
 						Game.team[i].castAbility(abilityId, stagePoint);
 					}
-				}
+				}*/
 			}
 		}		 
 		

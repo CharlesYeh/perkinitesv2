@@ -20,8 +20,12 @@
 
 			//retryButton.addEventListener(MouseEvent.CLICK, retry);
 			//loadButton.addEventListener(MouseEvent.CLICK, loadGame);
-			//addEventListener(KeyboardEvent.KEY_DOWN, retry);
 			//load();
+		}
+		
+		public function enable(){
+			visible = true;
+			addEventListener(MouseEvent.CLICK, retry);
 		}
 		
 		public function retry(e){
@@ -33,10 +37,17 @@
 			//removeDisplay();
 			//unload();
 			
-			
 			//load save data
 			Controls.enabled = true;
 			Game.overlay.gameover.visible = false;
+			//MovieClip(stage)._root.gotoAndStop(1, "menu");
+			Game.playerProgress.loadGame("PERKINITES");
+			//MovieClip(stage)._root.gotoAndStop("char_select");
+			Game.endGameWorld();
+			Game.startGameWorld(Game.container);
+			
+			visible = false;
+			removeEventListener(MouseEvent.CLICK, retry);
 
 		}
 	}

@@ -70,7 +70,12 @@
 			}			
 			
 			mdat.startSequences();
-			SoundManager.playSong(mdat.bgmusic);
+			if(mdat.bgmusic != null){
+				SoundManager.playSong(mdat.bgmusic);				
+			}
+			else{
+				SoundManager.endSong();
+			}
 		}
 		
 		public function getTilesClip():MovieClip {
@@ -121,6 +126,10 @@
 			m_teleports = null;
 			m_enemies = null;
 			m_npcs = null;
+			
+			while(numChildren > 0){
+				removeChildAt(0);
+			}
 		}
 		
 		private function clearWorldHelper(clips:Array, destroy:Boolean=false):void {

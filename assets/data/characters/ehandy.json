@@ -21,6 +21,7 @@
       "dmgRatio": "0",
       "range": 200,
       "cd": 30,
+      "stand": 0,
       "speed": 30,
       "width": 50
     },
@@ -33,6 +34,7 @@
       "dmgRatio": "0",
       "range": 200,
       "cd": 15,
+      "stand": 0,
       "goToCastPoint": false
     }
   ]

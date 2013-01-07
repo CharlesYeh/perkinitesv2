@@ -3,6 +3,14 @@
 	"actions": [
 		[
 			{
+				"type": "ConditionBeatEnemy",
+				"map": "perkins_3f_kitchen",
+				"id": "boss_ira"
+			}
+		],
+		
+		[
+			{
 				"type": "ActionNarrator",
 				"time": 128,
 				

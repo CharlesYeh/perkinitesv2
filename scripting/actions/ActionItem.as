@@ -22,7 +22,7 @@
 			Game.playerProgress.unlockItem(item);
 			Game.eventDispatcher.dispatchEvent(new ObtainItemEvent(item));			
 			//add any necessary popups here :)
-			trace("okay");
+			trace("ActionItem: add any necessary popups here");
 			complete();
 		}
 	}

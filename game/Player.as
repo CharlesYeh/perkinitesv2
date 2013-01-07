@@ -8,7 +8,7 @@
 		public static var playerHealDelay:int = 0;
 		
 		private static var prevHealth:Array = new Array();
-		
+
 		public function updateHealing(team:Array):void {
 			if (prevHealth.length != team.length) {
 				// init previous healths

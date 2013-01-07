@@ -2,7 +2,7 @@
 
 import game.SoundManager;
 
-SoundManager.playSong("P.S.F. -Perkinite Strike Force-");
+SoundManager.playSong("Exceed the Sky");
 
 // for button hover glow
 var rFilter:GlowFilter = new GlowFilter(0xFF0000, 100, 20, 20, 1, 10, true, false);
@@ -27,8 +27,8 @@ for (var a:int = 0; a < btnLabels.length; a++) {
 }
 
 function newGame(e:Event):void {
-	var sound:Sound = new se_chargeup();
-	sound.play();
+	//var sound:Sound = new se_chargeup();
+	//sound.play();
 	
 	clearTitleScreen();
 	Game.playerProgress.newGame();
@@ -36,8 +36,8 @@ function newGame(e:Event):void {
 }
 
 function continueGame(e:Event):void {
-	var sound:Sound = new se_chargeup();
-	sound.play();
+	///var sound:Sound = new se_chargeup();
+	//sound.play();
 	
 	clearTitleScreen();
 	Game.playerProgress.loadGame("PERKINITES");
@@ -45,8 +45,8 @@ function continueGame(e:Event):void {
 }
 
 function config(e:Event):void {
-	var sound:Sound = new se_timeout();
-	sound.play();
+	//var sound:Sound = new se_timeout();
+	//sound.play();
 	
 	clearTitleScreen();
 	gotoAndStop("char_select");

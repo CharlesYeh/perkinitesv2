@@ -18,7 +18,8 @@
 		public static var channelSources:Dictionary = new Dictionary();
 		
 		public static function playSong(name:String):void {
-			if (currentChannel == null || (currentSong != name && name == null)) {
+			if (currentChannel == null || (currentSong != name && name != null)) {
+				endSong();
 				// change songs
 				currentSong = name;
 				
@@ -43,7 +44,9 @@
 		}
 		
 		public static function endSong():void{
-			currentChannel.stop();
+			if(currentChannel != null){
+				currentChannel.stop();
+			}
 			currentChannel = null;
 		}
 		

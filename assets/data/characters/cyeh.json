@@ -10,30 +10,32 @@
   "sprite": "CY",
   "health": 130,
   "defense": 20,
-  "speed": 200,
+  "speed": 220,
   "abilities": [
     {
       "name": "Kendo Strike",
-      "type": "AttackDashSkillshot",
+      "type": "AttackCone",
       "icon": "Icon - Kendo Strike.png",
-      "description": "Dash forward, dealing damage to the first enemy contact.",
+      "description": "Strikes down on enemies in front of him.",
       "dmgBase": "6",
       "dmgRatio": "1",
-      "range": 180,
-      "cd": 25,
-      "speed": 33,
-      "width": 50
+      "range": 60,
+      "cd": 0,
+      "stand": 6,
+      "angle": 35
     },
     {
       "name": "Ninjutsu",
-      "type": "AttackPoint",
+      "type": "AttackSkillshot",
       "icon": "Icon - Ninjitsu.png",
-      "description": "Teleport self and roommate to a target location.",
+      "description": "Throws a dagger in a line in front of him, stopping at the first enemy it hits.",
       "dmgBase": "0",
       "dmgRatio": "0",
-      "range": 220,
+      "range": 110,
       "cd": 20,
-      "radius": 10
+      "stand": 6,
+      "speed": 30,
+      "width": 50
     }
   ]
 }

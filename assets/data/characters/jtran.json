@@ -19,11 +19,12 @@
       "description": "Four arrows appear that home towards the closest enemy.",
       "dmgBase": "3",
       "dmgRatio": "1",
-	  "quantity": 4,
       "range": 80,
       "cd": 30,
+      "stand": 0,
       "speed": 15,
       "width": 15,
+      "quantity": 4,
       "hardTarget": false
     },
     {
@@ -35,6 +36,7 @@
       "dmgRatio": "50",
       "range": 160,
       "cd": 10,
+      "stand": 0,
       "speed": 40,
       "width": 50,
       "penetrates": 999

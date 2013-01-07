@@ -14,6 +14,11 @@
 			"id": "gradcenter",
 			"types": ["s", "s", "s", "w", "w", "w", "w"],
 			"clings": [false, false, false, false, false, false, false]
+		},
+		{
+			"id": "malefic",
+			"types": ["s", "w", "w"],
+			"clings": [false, false, false]
 		}
 	]
 }

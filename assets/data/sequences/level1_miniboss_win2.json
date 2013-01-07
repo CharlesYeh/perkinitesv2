@@ -32,22 +32,6 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 113,
-				
-				"name": "Narrator",
-				"message": "Even better for them, they manage to unlock six new heroes!"
-			}
-		],
-		[
-			{
-				"type": "ActionUnlockCharacters",
-				
-				"quantity": 3
-			}
-		],
-		[
-			{
-				"type": "ActionNarrator",
 				"time": 83,
 				
 				"name": "Narrator",
