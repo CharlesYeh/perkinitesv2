@@ -163,6 +163,7 @@
 					u.progressData.health = health;
 				}
 				
+				//make sure playerprogress health is synced with game's playerprogress health
 				Game.playerProgress.health = Game.team[0].progressData.health;
 				
 				Game.overlay.hud.HPDisplay1.text = Game.playerProgress.health;

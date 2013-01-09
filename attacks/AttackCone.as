@@ -45,7 +45,7 @@
 					var u:Point =  new Point(m_caster.castPoint.x - m_caster.x, m_caster.castPoint.y - m_caster.y);
 					var v:Point = new Point(e.x - m_caster.x, e.y - m_caster.y); 
 					if(Math.acos((u.x * v.x + u.y * v.y)/(u.length*v.length)) * 180 / Math.PI<= angle){
-						trace(Math.acos((u.x * v.x + u.y * v.y)/(u.length*v.length)) * 180 / Math.PI);
+						//trace(Math.acos((u.x * v.x + u.y * v.y)/(u.length*v.length)) * 180 / Math.PI);
 						e.takeDamage(damage());						
 					}
 				}
