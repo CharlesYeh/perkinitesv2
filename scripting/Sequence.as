@@ -21,7 +21,7 @@
 		private var m_completed:Boolean;
 		
 		private function compileClasses():void {
-			var actionTypes:Array = new Array(ActionControls, ActionBlackout, ActionSpeech, ActionWait, ActionNarrator, ActionMusic, ActionAI, ActionUnlockCharacters, ActionAnimate, ActionDelete, ActionSound, ActionCreate, ActionItem);
+			var actionTypes:Array = new Array(ActionControls, ActionBlackout, ActionSpeech, ActionWait, ActionNarrator, ActionMusic, ActionAI, ActionUnlockCharacters, ActionAnimate, ActionDelete, ActionSound, ActionCreate, ActionItem, ActionHUD);
 			var condTypes:Array = new Array(ConditionSequence, ConditionNearLocation, ConditionBeatEnemy, ConditionClearedArea);
 		}
 		

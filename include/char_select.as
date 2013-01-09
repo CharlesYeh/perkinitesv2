@@ -131,11 +131,13 @@ function startLevel(e) {
 	
 	if(Game.playerProgress.health == -1){
 		Game.playerProgress.health = dat[0].health;
+		dat[1].health = dat[0].health;
 	}
 	
 	clearCharSelect();
 	var mdat:MapData = Game.dbMap.getMapData(Game.playerProgress.map);
 	SoundManager.playSong(mdat.bgmusic);	
+
 	gotoAndStop(1, "game");
 		
 }

@@ -14,28 +14,27 @@
   "abilities": [
     {
       "name": "Perk-ulate",
-      "type": "AttackDashSkillshot",
+      "type": "AttackSmartcast",
       "icon": "Icon - Perk-kulate.png",
-      "description": "Dash forward, dealing damage to all enemies at the target location.",
+      "description": "Deals multi-hit vibration damage to all enemies in range.",
       "dmgBase": "6",
       "dmgRatio": "0",
       "range": 200,
       "cd": 30,
       "stand": 0,
-      "speed": 30,
-      "width": 50
+      "goToCastPoint": false
     },
     {
       "name": "Awkward Stare",
-      "type": "AttackSmartcast",
+      "type": "AttackCone",
       "icon": "Icon - Awkward Stare.png",
       "description": "Stun all enemies by giving them an awkward Eric stare.",
       "dmgBase": "3",
       "dmgRatio": "0",
-      "range": 200,
+      "range": 100,
       "cd": 15,
       "stand": 0,
-      "goToCastPoint": false
+      "angle": 45
     }
   ]
 }

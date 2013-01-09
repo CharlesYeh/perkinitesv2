@@ -5,14 +5,48 @@
   "sprite": "enemy_War-Bear",
   "health": 250,
   "defense": 0,
-  "speed": 100,
+  "speed": 150,
   "abilities": [
     {
-      "name": "Puke",
+      "name": "Bear Claw",
       "type": "AttackCone",
-      "range": 60,
+      "icon": "",
+      "description": "",
+      "dmgBase": "20",
+      "dmgRatio": "",
+      "range": 64,
       "cd": 10,
-      "stand": 0
+      "stand": 23,
+      "angle": 45
+    },
+    {
+      "name": "Warmonger",
+      "type": "AttackSkillshot",
+      "icon": "",
+      "description": "",
+      "dmgBase": "5",
+      "dmgRatio": "",
+      "range": 1000,
+      "cd": 0,
+      "stand": 24,
+      "speed": 30,
+      "width": 30
+    },
+    {
+      "name": "Ball Bearing",
+      "type": "AttackHomingProjectiles",
+      "icon": "",
+      "description": "",
+      "dmgBase": "10",
+      "dmgRatio": "",
+      "range": 0,
+      "cd": 0,
+      "stand": 0,
+      "expires": 100,
+      "speed": 30,
+      "width": 50,
+      "quantity": 1,
+      "hardTarget": true
     }
   ]
 }

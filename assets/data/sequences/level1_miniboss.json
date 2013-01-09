@@ -125,7 +125,13 @@
 					"x": 9,
         			"y": 4
       		}
-			},			
+			},		
+			{
+				"type": "ActionHUD",
+				
+				"enable": true,
+				"enemy": true
+			},					
 			{
 				"type": "ActionDelete",
 				
@@ -139,7 +145,7 @@
 				"sprite": "npc_Ira",
 				"animation": "disappearing"
 			}
-		],
+		],	
 		[	
 			{
 				"type": "ActionDelete",
@@ -157,6 +163,6 @@
 				"type": "ActionSound",
 				"sound": "miniboss_2"
 			}
-		]
+		]		
 	]
 }

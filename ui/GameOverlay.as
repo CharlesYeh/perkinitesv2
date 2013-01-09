@@ -16,6 +16,7 @@
 		
 		/** hud */
 		public var hud:GameHUD;
+		public var ehud:EnemyHUD;
 		
 		/** clip for character speech */
 		public var speech:Speech;
@@ -33,6 +34,12 @@
 			hud = new GameHUD();
 			hud.x = HUD_SPACING;
 			hud.y = GameConstants.HEIGHT - hud.height - HUD_SPACING;
+			
+			
+			ehud = new EnemyHUD();
+			ehud.x = GameConstants.WIDTH - ehud.width - HUD_SPACING;
+			ehud.y = HUD_SPACING;
+			ehud.visible = false;
 			
 			speech = new Speech();
 			
@@ -55,6 +62,7 @@
 			gameover.visible = false;
 			
 			addChild(hud);
+			addChild(ehud);
 			addChild(locationDisplay);
 			addChild(cutscene);
 			addChild(charUnlock);

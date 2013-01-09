@@ -10,6 +10,7 @@
 		private static var prevHealth:Array = new Array();
 
 		public function updateHealing(team:Array):void {
+			//i think this works now
 			if (prevHealth.length != team.length) {
 				// init previous healths
 				for (var i = 0; i < team.length; i++) {

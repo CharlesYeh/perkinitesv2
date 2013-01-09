@@ -89,6 +89,12 @@
 			// setup overlay
 			overlay = new GameOverlay();
 			
+				
+			Game.overlay.hud.HPDisplay1.text = Game.playerProgress.health;
+			Game.overlay.hud.HPDisplay2.text = Game.playerProgress.health;
+			Game.overlay.hud.unitName1.text = teamDat[0].name;
+			Game.overlay.hud.unitName2.text = teamDat[1].name;
+			
 			// create map/world
 			world = MapManager.createWorld(playerProgress.map, team);
 			container.addChild(world);

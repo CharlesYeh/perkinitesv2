@@ -16,7 +16,7 @@
       "dmgRatio": "0",
       "range": 100,
       "cd": 25,
-      "stand": 0,
+      "stand": 36,
       "speed": 10,
       "width": 10
     }

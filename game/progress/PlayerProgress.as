@@ -162,12 +162,17 @@
 					var u:StatUnit = Game.team[i];
 					u.progressData.health = health;
 				}
-				//drawHealthbar();
 				
+				Game.playerProgress.health = Game.team[0].progressData.health;
+				
+				Game.overlay.hud.HPDisplay1.text = Game.playerProgress.health;
+				Game.overlay.hud.HPDisplay2.text = Game.playerProgress.health;
+								
 				if(health <= 0){
 					Controls.enabled = false;
 					Game.overlay.gameover.enable();
-				}				
+				}
+				
 			}	
 		}
 	}

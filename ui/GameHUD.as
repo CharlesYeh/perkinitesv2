@@ -6,14 +6,14 @@
 		var pid1:int, pid2:int;
 		var icons:Array;
 		var icon_conts:Array;
-		/*
+		var unitHUD:HUD_Unit;
 		public function GameHUD() {
-			icons = new Array(4);
+			/*icons = new Array(4);
 			icon_conts = new Array(4);
 			for (var a = 0; a < 4; a++) {
 				icon_conts[a] = this["icon_cont" + a];
-			}
-		}
+			}*/
+		}/*
 		public function updateIcons(id1:int, id2:int) {
 			pid1 = id1;
 			pid2 = id2;

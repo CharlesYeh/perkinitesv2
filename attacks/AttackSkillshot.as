@@ -44,12 +44,14 @@
 			width		= obj.width;
 			penetrates	= obj.penetrates;
 			speed		= obj.speed;
+			
+			m_bullets = new Array();
 		}
 		
 		override public function castAbility(caster:StatUnit, castPoint:Point):void {
 			super.castAbility(caster, castPoint);
 			
-			// if bullets still exist from before, remove them
+/*			// if bullets still exist from before, remove them
 			if (m_bullets != null) {
 				for (var i:String in m_bullets) {
 					var p:MovieClip = m_bullets[i];
@@ -57,10 +59,10 @@
 					p.removeEventListener(Event.ENTER_FRAME, projectileRunner);
 					Game.world.clearCustom(p);
 				}
-			}
+			}*/
 			hits = new Array();
 			
-			m_bullets = new Array();
+			//m_bullets = new Array();
 			m_penetrates = penetrates;
 		}
 	
@@ -95,6 +97,7 @@
 				prepareProjectile(p, Number(i) / quantity);
 				
 				p.addEventListener(Event.ENTER_FRAME, projectileRunner);
+				p.m_penetrates = penetrates;
 				Game.world.addUnit(p);
 				
 				m_bullets.push(p);
@@ -129,7 +132,7 @@
 			
 			testSkillshotCollision(p);
 			
-			if (p.dist > range || m_penetrates < 0) {
+			if (p.dist > range || p.m_penetrates < 0) {
 				removeProjectile(p);
 			}
 		}
@@ -169,7 +172,7 @@
 					n++;
 				}
 				//what does this if statement do? explain to me later prease :D
-				if (m_penetrates == 1) {
+				if (skillshot.m_penetrates == 1) {
 					//length on dictionary doesn't exist
 					if (n != 0) {
 						var keys:Array = distances.sort();
@@ -179,7 +182,7 @@
 						//removeProjectile(skillshot);
 					}
 					
-					m_penetrates--;
+					skillshot.m_penetrates--;
 				}
 				else {
 					// damage all closest units
@@ -187,7 +190,7 @@
 						en = closest[i];
 						en.takeDamage(damage());
 						
-						m_penetrates--;
+						skillshot.m_penetrates--;
 					}
 				}
 				
