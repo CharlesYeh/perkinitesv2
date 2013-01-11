@@ -104,6 +104,31 @@
 			}
 		}
 		
+		override public function shootDirectedSkillshot(bullets:Array, dir:Point, t:Number):void {
+			// get constructor and delete template
+			var b:MovieClip = bullets[0];
+			var projClass:Class = b.constructor;
+			b.parent.removeChild(b); 
+			
+			for (var i:int = 0; i < quantity; i++) {
+				var p:MovieClip = new projClass();
+				p.x = m_caster.x;
+				p.y = m_caster.y;
+				//get correct orientation
+				p.rotation = b.rotation;
+				p.scaleX = (m_caster.scaleX > 0) ? 1 : -1;			
+				
+				prepareDirectedProjectile(p, Number(i) / quantity, dir, t);
+				
+				p.addEventListener(Event.ENTER_FRAME, projectileRunner);
+				p.m_penetrates = penetrates;
+				Game.world.addUnit(p);
+				
+				m_bullets.push(p);
+			}
+		}
+		
+		
 		/**
 		 * custom prepare a projectile
 		 *
@@ -112,6 +137,18 @@
 		protected function prepareProjectile(p:MovieClip, ratio:Number):void {
 			var dx:Number = m_castPoint.x - p.x;
 			var dy:Number = m_castPoint.y - p.y;
+			var dist:Number = Math.sqrt(dx * dx + dy * dy);
+			
+			p.vx = speed * dx / dist;
+			p.vy = speed * dy / dist;
+			p.dist = 0; //make skillshot show up
+		}
+		
+		protected function prepareDirectedProjectile(p:MovieClip, ratio:Number, dir:Point, t:Number):void {
+			var castPoint:Point = new Point(p.x + dir.x * t, p.y + dir.y*t);
+			
+			var dx:Number = castPoint.x - p.x;
+			var dy:Number = castPoint.y - p.y;
 			var dist:Number = Math.sqrt(dx * dx + dy * dy);
 			
 			p.vx = speed * dx / dist;
@@ -132,7 +169,7 @@
 			
 			testSkillshotCollision(p);
 			
-			if (p.dist > range || p.m_penetrates < 0) {
+			if (p.dist > range || p.m_penetrates < 0 || m_caster.progressData.health <= 0) {
 				removeProjectile(p);
 			}
 		}

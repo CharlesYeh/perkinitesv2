@@ -20,7 +20,7 @@
 			super.act();
 			
 			if (enable) {
-				
+				SoundManager.playSong(song);
 			}
 			else {
 				SoundManager.endSong();

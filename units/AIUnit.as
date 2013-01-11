@@ -25,7 +25,7 @@
 		}
 		
 		private static function compileClasses():void {
-			var aiClasses:Array = new Array(BasicAIUnit, WarbearAI);
+			var aiClasses:Array = new Array(BasicAIUnit, WarbearAI, BossIraAI);
 		}
 		
 		public static function set enabled(val:Boolean):void {

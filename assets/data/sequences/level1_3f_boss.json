@@ -19,6 +19,13 @@
 		],	
 		[
 			{
+				"type": "ActionMusic",
+				"time": 0,
+				
+				"enable": true,
+				"song": "Junk Stereo Concept"
+			},
+			{
 				"type": "ActionCreate",
 				
 				"subtype": "npc",
@@ -107,7 +114,7 @@
 		[		
 			{
 				"type": "ActionNarrator",
-				"time": 230,
+				"time": 120,
 				
 				"message": "YES! Here he is, IRA, in his true form!"
 			}
@@ -115,7 +122,7 @@
 		[		
 			{
 				"type": "ActionNarrator",
-				"time": 230,
+				"time": 120,
 				
 				"message": "The complete embodiment of wrath and hatred! The first of many CARDINAL SERVANTS."
 			}

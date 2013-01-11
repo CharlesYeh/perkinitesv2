@@ -32,6 +32,13 @@
 		],
 		[
 			{
+				"type": "ActionMusic",
+				"time": 0,
+				
+				"enable": true,
+				"song": "Junk Stereo Concept"
+			},
+			{
 				"type": "ActionCreate",
 				
 				"subtype": "npc",
@@ -116,6 +123,13 @@
 		],	
 		[	
 			{
+				"type": "ActionMusic",
+				"time": 0,
+				
+				"enable": true,
+				"song": "perkinite Panic!!"
+			},		
+			{
 				"type": "ActionCreate",
 				
 				"subtype": "enemy",
@@ -125,12 +139,6 @@
 					"x": 9,
         			"y": 4
       		}
-			},		
-			{
-				"type": "ActionHUD",
-				
-				"enable": true,
-				"enemy": true
 			},					
 			{
 				"type": "ActionDelete",

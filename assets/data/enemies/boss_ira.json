@@ -1,24 +1,75 @@
 {
-  "ai": "BasicAIUnit",
-  "name": "Boss Ira",
+  "ai": "BossIraAI",
+  "name": "Ira",
   "id": "boss_ira",
   "sprite": "enemy_Ira",
   "health": 500,
   "defense": 0,
-  "speed": 125,
+  "speed": 180,
   "abilities": [
     {
       "name": "Hate Haze",
       "type": "AttackSkillshot",
       "icon": "",
       "description": "",
-      "dmgBase": "",
+      "dmgBase": "20",
       "dmgRatio": "",
-      "range": 96,
+      "range": 72,
       "cd": 60,
-      "stand": 0,
+      "stand": 23,
       "speed": 32,
       "width": 48
+    },
+    {
+      "name": "Negative Spike",
+      "type": "AttackSmartcast",
+      "icon": "",
+      "description": "",
+      "dmgBase": "6",
+      "dmgRatio": "",
+      "range": 175,
+      "cd": 0,
+      "stand": 70,
+      "goToCastPoint": true
+    },
+    {
+      "name": "DD",
+      "type": "AttackSkillshot",
+      "icon": "",
+      "description": "",
+      "dmgBase": "20",
+      "dmgRatio": "",
+      "range": 110,
+      "cd": 0,
+      "stand": 27,
+      "width": 110,
+      "penetrates": 2
+    },
+    {
+      "name": "Shadowgazer",
+      "type": "AttackSmartcast",
+      "icon": "",
+      "description": "",
+      "dmgBase": "12",
+      "dmgRatio": "",
+      "range": 265,
+      "cd": 0,
+      "stand": 1000,
+      "goToCastPoint": false
+    },
+    {
+      "name": "Virus Altar",
+      "type": "AttackSkillshot",
+      "icon": "",
+      "description": "",
+      "dmgBase": "10",
+      "dmgRatio": "",
+      "range": 1000,
+      "cd": 0,
+      "stand": 1000,
+      "speed": 40,
+      "width": 20,
+      "penetrates": 2
     }
   ]
 }

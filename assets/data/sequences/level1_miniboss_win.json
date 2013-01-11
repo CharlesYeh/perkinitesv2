@@ -10,6 +10,12 @@
 		],
 		[
 			{
+				"type": "ActionMusic",
+				"time": 0,
+				
+				"enable": false
+			},				
+			{
 				"type": "ActionCreate",
 				
 				"subtype": "npc",

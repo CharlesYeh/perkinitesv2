@@ -34,6 +34,7 @@
 		override public function castAbility(caster:StatUnit, castPoint:Point):void {
 			super.castAbility(caster, castPoint);
 			
+			
 			allTargets = new Array();
 			targetIndex = 0;
 		}
@@ -59,6 +60,10 @@
 			var p:MovieClip = e.target as MovieClip;
 			var target:StatUnit = p.target as StatUnit;
 			
+			if(m_caster.progressData.health <= 0){
+				removeProjectile(p);
+				return;
+			}
 			//hacky
 			if(p.parent == null){
 				p.removeEventListener(Event.ENTER_FRAME, projectileRunner);
@@ -66,6 +71,11 @@
 			}
 			if (target) {
 				// locked on
+				p.expires--;
+				if (p.expires <= 0) {
+					removeProjectile(p);
+					return;
+				}
 				if(target.progressData.health <= 0){
 					removeProjectile(p);
 					return;
@@ -115,6 +125,7 @@
 						if(StatUnit.distance(en, p) < range && allTargets.indexOf(en) == -1) {
 							allTargets.push(en);
 							p.target = en;
+							p.expires = expires;
 							//wait = 120;
 						}
 					}
@@ -129,6 +140,31 @@
 				}
 			}
 			
+		}
+
+		override public function shootSkillshot(bullets:Array):void {
+			// get constructor and delete template
+			var b:MovieClip = bullets[0];
+			var projClass:Class = b.constructor;
+			b.parent.removeChild(b); 
+			
+			for (var i:int = 0; i < quantity; i++) {
+				var p:MovieClip = new projClass();
+				p.x = m_caster.x;
+				p.y = m_caster.y;
+				//get correct orientation
+				p.rotation = b.rotation;
+				p.scaleX = (m_caster.scaleX > 0) ? 1 : -1;			
+				
+				prepareProjectile(p, Number(i) / quantity);
+				
+				p.addEventListener(Event.ENTER_FRAME, projectileRunner);
+				p.m_penetrates = penetrates;
+				p.expires = expires;
+				Game.world.addUnit(p);
+				
+				m_bullets.push(p);
+			}
 		}
 		
 		override protected function testSkillshotCollision(skillshot:MovieClip):Boolean {

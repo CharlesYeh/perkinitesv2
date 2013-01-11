@@ -25,13 +25,13 @@
 		 3. if close enough, melee attack
 		 */
 		 
-	public class WarbearAI extends AIUnit {
+	public class BossIraAI extends AIUnit {
 		
 		var wait; //how long it waits after an attack
 		var angry:Boolean;
 		
 		var shotwait; //how long it waits to perform the shot ability
-		public function WarbearAI(edat:EnemyData) {
+		public function BossIraAI(edat:EnemyData) {
 			super(edat);
 			
 			angry = false;

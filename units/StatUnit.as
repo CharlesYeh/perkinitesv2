@@ -29,7 +29,8 @@
 		/** all the frame functions called by the animation */
 		static const frameFuncs:Array = new Array("beginForwardMovement", "stopForwardMovement",
 										"dealDamage", "applyBuffs", "shootSkillshot",
-										"teleport", "teleportPartner");
+										"teleport", "teleportPartner",
+										"shootDirectedSkillshot");
 		
 		/** the swf sprite asset */
 		var swf;
@@ -116,6 +117,7 @@
 		}
 		
 		public function takeDamage(dmg:int):void {
+			//this may cause problems - work on it
 			if (frameBuff.invincibility) {
 				return;
 			}

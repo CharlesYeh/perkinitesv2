@@ -24,11 +24,11 @@
       "type": "AttackSkillshot",
       "icon": "",
       "description": "",
-      "dmgBase": "5",
+      "dmgBase": "10",
       "dmgRatio": "",
       "range": 1000,
       "cd": 0,
-      "stand": 24,
+      "stand": 48,
       "speed": 30,
       "width": 30
     },
