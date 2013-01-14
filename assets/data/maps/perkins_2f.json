@@ -76,7 +76,16 @@
       }
     }
   ],
-  "enemies": [],
+  "enemies": [
+    {
+      "id": "boss_ira",
+      "direction": "down",
+      "position": {
+        "x": 12,
+        "y": 10
+      }
+    }
+  ],
   "npcs": [],
   "sequences": [
     "level1_intro",

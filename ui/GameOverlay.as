@@ -40,6 +40,7 @@
 			ehud.x = GameConstants.WIDTH - ehud.width - HUD_SPACING;
 			ehud.y = HUD_SPACING;
 			ehud.visible = false;
+			ehud.gotoAndStop("normal");
 			
 			speech = new Speech();
 			

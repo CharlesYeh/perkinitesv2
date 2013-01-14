@@ -5,20 +5,19 @@
   "sprite": "enemy_Ira",
   "health": 500,
   "defense": 0,
-  "speed": 180,
+  "speed": 150,
   "abilities": [
     {
       "name": "Hate Haze",
-      "type": "AttackSkillshot",
+      "type": "AttackCone",
       "icon": "",
       "description": "",
-      "dmgBase": "20",
+      "dmgBase": "15",
       "dmgRatio": "",
       "range": 72,
-      "cd": 60,
+      "cd": 0,
       "stand": 23,
-      "speed": 32,
-      "width": 48
+      "angle": 45
     },
     {
       "name": "Negative Spike",
@@ -27,23 +26,23 @@
       "description": "",
       "dmgBase": "6",
       "dmgRatio": "",
-      "range": 175,
+      "range": 88,
       "cd": 0,
       "stand": 70,
-      "goToCastPoint": true
+      "goToCastPoint": false
     },
     {
       "name": "DD",
       "type": "AttackSkillshot",
       "icon": "",
       "description": "",
-      "dmgBase": "20",
+      "dmgBase": "5",
       "dmgRatio": "",
-      "range": 110,
+      "range": 400,
       "cd": 0,
       "stand": 27,
-      "width": 110,
-      "penetrates": 2
+      "speed": 15,
+      "width": 20
     },
     {
       "name": "Shadowgazer",
@@ -52,7 +51,7 @@
       "description": "",
       "dmgBase": "12",
       "dmgRatio": "",
-      "range": 265,
+      "range": 133,
       "cd": 0,
       "stand": 1000,
       "goToCastPoint": false

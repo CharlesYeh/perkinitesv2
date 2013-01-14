@@ -4,7 +4,7 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 128,
+				"time": 96,
 				
 				"message": "Now they are in the kitchen. The demon could be hiding here or not."
 			}
@@ -12,7 +12,7 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 128,
+				"time": 72,
 				
 				"message": "Let's just say he's here and speed this up."
 			}

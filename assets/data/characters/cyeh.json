@@ -32,7 +32,7 @@
       "dmgBase": "4",
       "dmgRatio": "0",
       "range": 200,
-      "cd": 20,
+      "cd": 0,
       "stand": 8,
       "speed": 30,
       "width": 50

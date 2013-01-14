@@ -44,9 +44,21 @@
 				if (StatUnit.distance(m_caster, e) < range) {
 					var u:Point =  new Point(m_caster.castPoint.x - m_caster.x, m_caster.castPoint.y - m_caster.y);
 					var v:Point = new Point(e.x - m_caster.x, e.y - m_caster.y); 
-					if(Math.acos((u.x * v.x + u.y * v.y)/(u.length*v.length)) * 180 / Math.PI<= angle){
-						//trace(Math.acos((u.x * v.x + u.y * v.y)/(u.length*v.length)) * 180 / Math.PI);
+					
+					var arg:Number = (u.x * v.x + u.y * v.y)/(u.length*v.length);
+					if(arg > 1){
+						arg = 1;
+					}
+					else if(arg < -1){
+						arg = -1;
+					}
+					if(Math.acos(arg) * 180 / Math.PI<= angle){
 						e.takeDamage(damage());						
+						
+						//if it hits the lead Perkinite, do not hit the partner Perkinite
+						if(e == Game.team[0]){
+							break;
+						}
 					}
 				}
 			}

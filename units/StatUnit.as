@@ -378,7 +378,7 @@
 			updateDirection(moveDir);
 		}
 		
-		function setAnimLabel(l:String) {
+		protected function setAnimLabel(l:String) {
 			// standing, walking, friend_finale, ability1, ability2, ability3
 			if (animClip == null || animLabel == l) return;
 			
