@@ -10,7 +10,7 @@
   "sprite": "NM",
   "health": 120,
   "defense": 10,
-  "speed": 220,
+  "speed": 210,
   "abilities": [
     {
       "name": "Claw Attack",

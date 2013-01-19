@@ -8,20 +8,20 @@
   "name": "Eric H.",
   "id": "EH",
   "sprite": "EH",
-  "health": 100,
+  "health": 60,
   "defense": 0,
-  "speed": 300,
+  "speed": 230,
   "abilities": [
     {
       "name": "Perk-ulate",
       "type": "AttackSmartcast",
       "icon": "Icon - Perk-kulate.png",
       "description": "Deals multi-hit vibration damage to all enemies in range.",
-      "dmgBase": "6",
+      "dmgBase": "4",
       "dmgRatio": "0",
-      "range": 200,
-      "cd": 30,
-      "stand": 0,
+      "range": 72,
+      "cd": 0,
+      "stand": 16,
       "goToCastPoint": false
     },
     {
@@ -32,8 +32,8 @@
       "dmgBase": "3",
       "dmgRatio": "0",
       "range": 100,
-      "cd": 15,
-      "stand": 0,
+      "cd": 0,
+      "stand": 6,
       "angle": 45
     }
   ]

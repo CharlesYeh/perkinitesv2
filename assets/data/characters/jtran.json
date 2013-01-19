@@ -8,23 +8,24 @@
   "name": "JohnTran",
   "id": "JT",
   "sprite": "JT",
-  "health": 50,
+  "health": 60,
   "defense": 0,
-  "speed": 300,
+  "speed": 230,
   "abilities": [
     {
       "name": "Arrow Control",
       "type": "AttackHomingProjectiles",
       "icon": "Icon - Arrow Control.png",
       "description": "Four arrows appear that home towards nearby enemies.",
-      "dmgBase": "3",
+      "dmgBase": "2",
       "dmgRatio": "1",
       "range": 80,
-      "cd": 30,
-      "stand": 0,
+      "cd": 0,
+      "stand": 16,
+      "expires": 32,
       "speed": 15,
       "width": 15,
-      "quantity": 4,
+      "quantity": 2,
       "hardTarget": false
     },
     {
@@ -35,9 +36,9 @@
       "dmgBase": "3",
       "dmgRatio": "50",
       "range": 160,
-      "cd": 10,
-      "stand": 0,
-      "angle": 45
+      "cd": 0,
+      "stand": 6,
+      "angle": 35
     }
   ]
 }

@@ -30,30 +30,7 @@
 		angry state (when anger reaches 100):
 		1. rages and becomes invulnerable
 		2. advances towards player and casts ability2, slowly decreases anger level
-		
-		at half-health
-		changes map
-		starting state:
-		1. run faster to player
-		2. if close enough, melee attack (do not turn around if player at different direction now)
-		
-		anger helps speed up Ira (from 200 -> 240 @ 500+ anger)
-		
-		angry state (now reaches 999):
-		1. goes to the middle of the screen and  casts ability4, slowly decreases anger level to 100
-
-		
 		*/
-		
- 	/**
-	 	Perkinite Secret Skill: TELEPHONE
-		You can telephone either DPS or BUMP.
-		Press Shift to activate Telephone when Ira gets 100 angry/999 angry.
-		Selecting DPS will decrease anger slowly but deal damage.
-		Selecting BUMP will decrease anger quickly but deal no damage.
-		
-		*/
-			
 		 
 	public class BossIraAI extends AIUnit {
 		
@@ -66,6 +43,7 @@
 		
 		var float:Boolean;
 		var chase:int; //how long this unit has chased the player
+		var duration:int; //how long this unit shoots at things
 		
 		public function BossIraAI(edat:EnemyData) {
 			super(edat);
@@ -79,6 +57,7 @@
 			
 			float = false;
 			chase = 0;
+			duration = 0;
 			healthbar.visible = false;
 			
 			Game.overlay.ehud.visible = true;
@@ -145,31 +124,9 @@
 			
 			var dist:Number;
 			
-			if(!float && chase >= 24 * 5){
-				//(1,3), (23, 16)
-				//1 - 23, 3 - 16
-				float = true;
-				var gx;
-				var gy;
-				if((x + 0.5)/ GameConstants.TILE_SIZE < 12){
-					gx = (x + 0.5)/ GameConstants.TILE_SIZE + 10;
-				}
-				else{
-					gx = (x + 0.5)/ GameConstants.TILE_SIZE - 10;
-				}
-				if((y + 0.5)/ GameConstants.TILE_SIZE < 10){
-					gy = (y + 0.5)/ GameConstants.TILE_SIZE + 6;
-				}
-				else{
-					gy = (y + 0.5)/ GameConstants.TILE_SIZE - 6;
-				}
-				var gp:Point = new Point(gx, gy);
-				
-				this.moveTo((gx + 0.5) * GameConstants.TILE_SIZE, (gy + 0.5)  * GameConstants.TILE_SIZE);
-			}
-			else if(float){
-				if(path.length == 0){
-					float = false;
+			if(duration > 0){
+				duration--;
+				if(duration <= 0){
 					chase = 0;
 					atkRange = unitData.abilities[0].range;
 				
@@ -183,11 +140,34 @@
 					}	
 					wait = 72;
 					path = new Array();
+					duration = 0;
 				}
 				else{
 					target = getCloserPlayer();
 					tp = new Point(target.x, target.y);
 					castAbility(2, tp);
+				}
+				//(1,3), (23, 16)
+				//1 - 23, 3 - 16
+				if(path.length <= 0){
+					var gx;
+					var gy;
+					if((x + 0.5)/ GameConstants.TILE_SIZE < 12){
+						gx = (x + 0.5)/ GameConstants.TILE_SIZE + 10;
+					}
+					else{
+						gx = (x + 0.5)/ GameConstants.TILE_SIZE - 10;
+					}
+					if((y + 0.5)/ GameConstants.TILE_SIZE < 10){
+						gy = (y + 0.5)/ GameConstants.TILE_SIZE + 6;
+					}
+					else{
+						gy = (y + 0.5)/ GameConstants.TILE_SIZE - 6;
+					}
+					var gp:Point = new Point(gx, gy);
+					
+					this.moveTo((gx + 0.5) * GameConstants.TILE_SIZE, (gy + 0.5)  * GameConstants.TILE_SIZE);
+
 				}
 			}
 			else{
@@ -204,12 +184,14 @@
 					wait = 50;
 					path = new Array();
 					chase = 9999;
+					duration = 27 * 5;
 				}
 				else {
 					chaseTarget(target, 1000);
 					chase++;
 					if(chase >= 24 * 5){
 						wait = 50;
+						duration = 27 * 5;
 					}
 				}
 			}			

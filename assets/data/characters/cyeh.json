@@ -10,7 +10,7 @@
   "sprite": "CY",
   "health": 130,
   "defense": 20,
-  "speed": 220,
+  "speed": 210,
   "abilities": [
     {
       "name": "Kendo Strike",
