@@ -29,7 +29,7 @@
       "type": "AttackCone",
       "icon": "Icon - Awkward Stare.png",
       "description": "Stun all enemies by giving them an awkward Eric stare.",
-      "dmgBase": "3",
+      "dmgBase": "4",
       "dmgRatio": "0",
       "range": 100,
       "cd": 0,

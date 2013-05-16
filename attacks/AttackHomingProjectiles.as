@@ -1,10 +1,12 @@
 ﻿package attacks {
 	import game.Game;
 	import db.dbData.AttackData;
+	import units.AIUnit;
 	import units.StatUnit;
 	import flash.geom.Point;
 	import flash.display.MovieClip;
 	import flash.events.Event;
+	import game.SoundManager;
 	
 	/**
 	 * projectiles appear around the caster which home-in on nearby targets
@@ -90,6 +92,9 @@
 					// hard target testing
 					if (StatUnit.distance(target, p) < width) {
 						target.takeDamage(damage());
+/*						if(AIUnit.m_enabled){
+							SoundManager.playSound("hit");
+						}		*/
 						removeProjectile(p);
 						return;
 					}
@@ -178,7 +183,9 @@
 					//prevent multiple hits on the same enemy
 					en.takeDamage(damage());
 					// TODO: find actual closest to old position?
-					
+/*						if(AIUnit.m_enabled){
+							SoundManager.playSound("hit");
+						}		*/					
 					// TODO: penetrate select amount
 					m_penetrates--;
 					return true;

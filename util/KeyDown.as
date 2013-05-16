@@ -18,6 +18,8 @@
 			stage.addEventListener(KeyboardEvent.KEY_UP, keyUpHandler);
 			stage.addEventListener(MouseEvent.MOUSE_DOWN, mouseDownHandler);
 			stage.addEventListener(MouseEvent.MOUSE_UP, mouseUpHandler);
+			stage.addEventListener("rightMouseDown", mouseDownHandler);
+			stage.addEventListener("rightMouseUp", mouseUpHandler);
 			stage.addEventListener(MouseEvent.MOUSE_MOVE, mouseTracker);
 			
 			mousePoint = new Point();

@@ -82,9 +82,13 @@
 			}
 		}
 		
+		public function pointAttack(bullets:Array):void {}
+		
 		public function shootSkillshot(bullets:Array):void {}
 		
 		public function shootDirectedSkillshot(bullets:Array, dir:Point, t:Number):void {}
+		
+		public function shootRelativeSkillshot(bullets:Array, angle:Number):void {}
 		
 		public function teleport():void {
 			m_caster.teleportTo(m_castPoint.x, m_castPoint.y);

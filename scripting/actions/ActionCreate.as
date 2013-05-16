@@ -49,6 +49,14 @@
 				npcs[npcs.length-1].beginAnimation(animation);
 			}
 			
+			var o:Object = new Object();
+			o.id = id;
+			o.direction = direction;
+			o.position = position;
+			o.animation = animation;
+			o.subtype = subtype;
+			Game.playerProgress.createdUnits.push(o);
+			
 			complete();
 		}
 	}

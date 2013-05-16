@@ -23,6 +23,11 @@
 		
 		override public function takeDamage(dmg:int):void {
 			Game.playerProgress.takeDamage(dmg);
+			
+			if(dmg > 0 && visible){
+				glowHit.alpha = 1.0;
+				this.swf.filters = [glowHit];				
+			}
 		}
 		
 		override public function moveHandler(e:Event):void {
@@ -30,7 +35,7 @@
 			if(!usingAbility && lead != this && StatUnit.distance(lead, this) <= 40){
 				path = new Array();
 			}
-			super.moveHandler(e);			
+			super.moveHandler(e);		
 		}
 		
 	}

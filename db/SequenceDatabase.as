@@ -4,7 +4,7 @@
 	
 	import scripting.Sequence;
 	
-	import com.adobe.serialization.json.JSON;
+	import com.adobe.serialization.json.*;
 
 	public class SequenceDatabase implements DatabaseLoader {
 		
@@ -33,8 +33,8 @@
 		/**
 		 * Callback from loading base file with enemy names
 		 */
-		function completeLoad(e:Event):void {
-			var dat = JSON.decode(e.target.data);
+		function completeLoad(e:Event):void {			
+			var dat = JSON_.decode(e.target.data);
 			
 			for (var sequenceId:String in dat.sequences) {
 				Database.loadData(PATH + dat.sequences[sequenceId] + EXTENSION, completeLoadSequence);
@@ -42,7 +42,7 @@
 		}
 		
 		function completeLoadSequence(e:Event):void {
-			var obj = JSON.decode(e.target.data);
+			var obj = JSON_.decode(e.target.data);
 			
 			var cdat:Sequence = new Sequence();
 			cdat.parseData(obj);

@@ -7,9 +7,21 @@
 				"enable": false
 			},
 			{
+				"type": "ActionHUD",
+				"enable": false
+			},
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},
+			{
 				"type": "ActionBlackout",
 				"subtype": "showAlpha",
 				"alpha": 1
+			},
+			{
+				"type": "ActionSkip",
+				"skip": true
 			}
 		],
 		[
@@ -114,15 +126,15 @@
 		],
 		[
 			{
-				"type": "ActionBlackout",
-				"subtype": "hide",
-				"time": 45
+				"type": "ActionSkip",
+				"skip": false
 			}
 		],
 		[
 			{
-				"type": "ActionControls",
-				"enable": true
+				"type": "ActionBlackout",
+				"subtype": "hide",
+				"time": 45
 			}
 		]
 	]

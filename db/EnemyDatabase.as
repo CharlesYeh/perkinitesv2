@@ -34,7 +34,7 @@
 		 * Callback from loading base file with enemy names
 		 */
 		function completeLoad(e:Event):void {
-			var dat = JSON.decode(e.target.data);
+			var dat = JSON_.decode(e.target.data);
 			
 			for (var enemyName:String in dat.enemies) {
 				Database.loadData(PATH + dat.enemies[enemyName] + EXTENSION, completeLoadEnemy);
@@ -45,7 +45,7 @@
 		 * Callback for loading data for one enemy
 		 */
 		function completeLoadEnemy(e:Event):void {
-			var dat:Object = JSON.decode(e.target.data);
+			var dat:Object = JSON_.decode(e.target.data);
 			
 			var edat:EnemyData = new EnemyData();
 			edat.parseData(dat);

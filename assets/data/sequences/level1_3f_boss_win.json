@@ -8,8 +8,32 @@
 				"id": "boss_ira"
 			}
 		],
-		
 		[
+			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			},
+			{
+				"type": "ActionHUD",
+				"enable": false
+			},
+			{
+				"type": "ActionControls",
+				"enable": false
+			},
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},
+			{
+				"type": "ActionMusic",
+				"time": 0,
+				
+				"enable": false
+			}			
+		],
+		[		
 			{
 				"type": "ActionNarrator",
 				"time": 128,
@@ -43,62 +67,114 @@
 		],				
 		[
 			{
+				"type": "ActionMusic",
+				"time": 0,
+				
+				"enable": true,
+				"song": "Exceed the Sky"
+			},	
+			{
+				"type": "ActionBlackout",
+				"subtype": "editText",
+				
+				"text": ""
+			},					
+			{
 				"type": "ActionBlackout",
 				"subtype": "show",
-				"time": 20
+				"time": 30
 			},
 			{
 				"type": "ActionWait",
-				"time": 60
+				"time": 50
 			}
 		],
-		[		
+		[			
 			{
-				"type": "ActionNarrator",
-				"time": 230,
+				"type": "ActionBlackout",
+				"subtype": "editText",
 				
-				"message": "Realizing their world is in danger, now these heroes set out to take back the world from the evil lord!"
+				"text": "Realizing their world is in danger, now these heroes set out to take back the world from the evil lord!"
+			},
+			{
+				"type": "ActionWait",
+				"time": 150
 			}
 		],		
 		[		
 			{
-				"type": "ActionNarrator",
-				"time": 230,
+				"type": "ActionBlackout",
+				"subtype": "editText",
 				
-				"message": "A new day is ahead. A new day of liberation and freedom!"
+				"text": "A new day is ahead. A new day of liberation and freedom!"
+			},
+			{
+				"type": "ActionWait",
+				"time": 120
+			}		
+		],		
+		[	
+			{
+				"type": "ActionBlackout",
+				"subtype": "editText",
+				
+				"text": "These are the PERKINITES."
+			},
+			{
+				"type": "ActionWait",
+				"time": 120
+			}	
+		],		
+		[		
+			{
+				"type": "ActionMusic",
+				"time": 0,
+				
+				"enable": false
+			},			
+			{
+				"type": "ActionBlackout",
+				"subtype": "editText",
+				
+				"text": "Until they are killed. By our wonderful evil demon lord."
+			},
+			{
+				"type": "ActionWait",
+				"time": 120
 			}
 		],		
 		[		
 			{
-				"type": "ActionNarrator",
-				"time": 230,
+				"type": "ActionBlackout",
+				"subtype": "editText",
 				
-				"message": "These are the PERKINITES."
-			}
-		],		
-		[		
+				"text": "Also, I wonder where Ruth Simmons is in all of this. She should probably be doing something about this."
+			},
 			{
-				"type": "ActionNarrator",
-				"time": 230,
-				
-				"message": "Until they are killed. By our wonderful evil demon lord."
-			}
+				"type": "ActionWait",
+				"time": 150
+			}		
 		],		
-		[		
+		[	
 			{
-				"type": "ActionNarrator",
-				"time": 230,
+				"type": "ActionBlackout",
+				"subtype": "editText",
 				
-				"message": "Also, I wonder where Ruth Simmons is in all of this. She should probably be doing something about this."
-			}
-		],		
-		[		
+				"text": "She's probably doing something about this."
+			},
 			{
-				"type": "ActionNarrator",
-				"time": 230,
+				"type": "ActionWait",
+				"time": 72
+			}	
+		],	
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "editText",
 				
-				"message": "She's probably doing something about this."
+				"text": ""
 			}
-		]		
+		
+		]	
 	]
 }

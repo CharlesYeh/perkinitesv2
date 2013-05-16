@@ -8,7 +8,7 @@
   "name": "Charles Y.",
   "id": "CY",
   "sprite": "CY",
-  "health": 130,
+  "health": 100,
   "defense": 20,
   "speed": 210,
   "abilities": [
@@ -31,7 +31,7 @@
       "description": "Throws a dagger in a line in front of him, stopping at the first enemy it hits.",
       "dmgBase": "4",
       "dmgRatio": "0",
-      "range": 200,
+      "range": 2000,
       "cd": 0,
       "stand": 8,
       "speed": 30,

@@ -13,6 +13,11 @@
 		],
 		[
 			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			},
+			{
 				"type": "ActionNarrator",
 				"time": 150,
 				
@@ -49,6 +54,13 @@
 				
 				"name": "Narrator",
 				"message": "They set off to the Ground Floor."
+			}
+		],
+		[
+			{
+				"type": "ActionJournal",
+				
+				"message": "Go downstairs! :D"
 			}
 		]
 	]

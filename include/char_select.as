@@ -5,6 +5,8 @@ import db.dbData.AttackData;
 import db.dbData.MapData;
 import game.Game;
 
+import game.SoundManager;
+
 import flash.display.MovieClip;
 import flash.display.Loader;
 
@@ -26,12 +28,22 @@ beginButton.buttonText.text = "Start!";
 beginButton.mouseChildren = false;
 beginButton.glowF = glowBegin;
 
+backButton.buttonText.text = "<- Back";
+backButton.mouseChildren = false;
+backButton.glowF = glowBegin;
+
+
 beginButton.addEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
 beginButton.addEventListener(MouseEvent.MOUSE_OUT, entryOutHandler);
 beginButton.addEventListener(MouseEvent.CLICK, startLevel);
+
+backButton.addEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
+backButton.addEventListener(MouseEvent.MOUSE_OUT, entryOutHandler);
+backButton.addEventListener(MouseEvent.CLICK, returnToDifficulty);
+
 stage.addEventListener(KeyboardEvent.KEY_DOWN, charKeyHandler);
 
-for (a = 0; a <= 3; a++) {
+for (a = 0; a <= 1; a++) {
 	var b1 = playerDisplay1["button" + a];
 	var b2 = playerDisplay2["button" + a];
 	
@@ -46,6 +58,12 @@ for (a = 0; a <= 3; a++) {
 	b1.addEventListener(MouseEvent.CLICK, pageHandler);
 	b2.addEventListener(MouseEvent.CLICK, pageHandler);
 }
+
+
+playerDisplay1.button0.buttonText.text = "Stats";
+playerDisplay1.button1.buttonText.text = "Techs";
+playerDisplay2.button0.buttonText.text = "Stats";
+playerDisplay2.button1.buttonText.text = "Techs";
 
 // show available teams in middle
 showEntries();
@@ -125,6 +143,7 @@ function startLevel(e) {
 	
 	//var sound = new se_chargeup();
 	//sound.play();
+	//SoundManager.playSound("start");
 	
 
 	var dat:Array = Game.dbChar.getTeamCharacterData(chosenTeam);
@@ -136,9 +155,18 @@ function startLevel(e) {
 	
 	clearCharSelect();
 	var mdat:MapData = Game.dbMap.getMapData(Game.playerProgress.map);
-	SoundManager.playSong(mdat.bgmusic);	
+	//SoundManager.playSong(mdat.bgmusic);	//watch out for this
 
 	gotoAndStop(1, "game");
+		
+}
+
+function returnToDifficulty(e) {
+	clearCharSelect();
+	
+	SoundManager.playSound("cancel");
+
+	gotoAndStop("title_screen");
 		
 }
 function charKeyHandler(e) {
@@ -162,10 +190,12 @@ function clearCharSelect() {
 	}
 	
 	// page buttons
-	for (a = 0; a < 4; a++) {
+	for (a = 0; a < 2; a++) {
 		playerDisplay1["button" + a].removeEventListener(MouseEvent.CLICK, pageHandler);
 		playerDisplay2["button" + a].removeEventListener(MouseEvent.CLICK, pageHandler);
 	}
+
+	
 }
 
 // update display
@@ -174,33 +204,32 @@ function update(display:MovieClip, page:Number, char:CharacterData) {
 	display.gotoAndStop(page + 1);
 	
 	// update tabs
-	for (var a = 0; a < 4; a++) {
+	for (var a = 0; a < 2; a++) {
 		display["button" + a].filters = (page == a) ? [glowDisplay] : [];
 	}
 	
 	//display.setChildIndex(display["button" + page], display.numChildren - 1);
 	
 	// show correct page
-	display.portrait.visible = (page == 0);
-	display.page2.visible = (page == 1);
-	display.page3.visible = (page == 2);
-	display.page4.visible = (page == 3);
+	//display.portrait.visible = (page == 0);
+	display.portrait.visible = false;
+	display.page4.visible = false;
+	display.page2.visible = (page == 0);
+	display.page3.visible = (page == 1);
+	//display.page4.visible = (page == 3);
 	
 	// update data inside page
 	switch (page) {
 		case 0 :
-			//display.portrait.gotoAndStop(index + 1);
-			break;
-		case 1 :
 			// show stats
 			display.page2.HPCount.text = char.health;
 			display.page2.APCount.text = 0;				// TODO: ability power?
 			display.page2.SPCount.text = char.speed;
 			display.page2.weaponName.text = char.weapon;
 
-			//display.page2.wIcon.gotoAndStop(index + 1);
+			display.page2.wIcon.gotoAndStop(1);
 			break;
-		case 2 :
+		case 1 :
 			// show AVAILABLE abilities
 			//var basicAbilities = AbilityDatabase.getBasicAbilities(ActorDatabase.getName(index));
 			
@@ -218,14 +247,6 @@ function update(display:MovieClip, page:Number, char:CharacterData) {
 				r.icon.addChild(ic);
 			}
 			break;
-		case 3 :
-//			page4.ffName.text=ActorDatabase.getFFName(index);
-//			page4.ffDescription.text=ActorDatabase.getFFDescription(index);
-//			page4.ffBonus.text=ActorDatabase.getFFBonus(index);
-//
-//			page4.ffIcon.gotoAndStop(Math.ceil((index+1)/2));
-			display.page4.ffIcon.gotoAndStop(1);
-			break;
 	}
 }
 function pageHandler(e) {
@@ -239,7 +260,7 @@ function pageHandler(e) {
 }
 function clickHandler(e) {
 	// choose entry
-	entries[chosenTeam].gotoAndStop(1);
+	e.target.gotoAndStop(1);
 	
 	//var sound = new se_timeout();
 	//sound.play();

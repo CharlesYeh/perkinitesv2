@@ -11,6 +11,10 @@
 		],
 		[
 			{
+				"type": "ActionAI",
+				"enabled": false
+			},
+			{
 				"type": "ActionNarrator",
 				"time": 128,
 				
@@ -152,8 +156,13 @@
 				
 				"sprite": "npc_Ira",
 				"animation": "disappearing"
-			}
-		],	
+			},
+			{
+				"type": "ActionJournal",
+				
+				"message": "Rescue Peace Bear from corruption by defeating his evil version!"
+			}			
+		],			
 		[	
 			{
 				"type": "ActionDelete",
@@ -170,6 +179,21 @@
 			{
 				"type": "ActionSound",
 				"sound": "miniboss_2"
+			}
+		],
+		[
+			{
+				"type": "ActionAI",
+				"enabled": true
+			},		
+			{
+				"type": "ActionHUD",
+				"enable": true
+			},
+			{
+				"type": "ActionHUD",
+				"enable": true,
+				"enemy": true
 			}
 		]		
 	]

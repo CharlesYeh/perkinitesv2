@@ -44,7 +44,7 @@
 		}
 		
 		function completeTeamsLoad(e:Event):void {
-			var dat = JSON.decode(e.target.data);
+			var dat = JSON_.decode(e.target.data);
 			
 			teams = new Array();
 			for (var i:String in dat.teams) {
@@ -77,7 +77,7 @@
 		 * Callback from loading base file with enemy names
 		 */
 		function completeLoad(e:Event):void {
-			var dat = JSON.decode(e.target.data);
+			var dat = JSON_.decode(e.target.data);
 			
 			for (var charName:String in dat.characters) {
 				Database.loadData(PATH + dat.characters[charName] + EXTENSION, completeLoadChar);
@@ -85,7 +85,7 @@
 		}
 		
 		function completeLoadChar(e:Event):void {
-			var obj = JSON.decode(e.target.data);
+			var obj = JSON_.decode(e.target.data);
 			
 			var cdat:CharacterData = new CharacterData();
 			cdat.parseData(obj);

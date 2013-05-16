@@ -19,11 +19,15 @@
 			Game.eventDispatcher.addEventListener(GameEventDispatcher.BEAT_ENEMY, conditionHandler);
 		}
 		
+		override public function update():Boolean {
+			return Game.playerProgress.hasClearedArea(map);
+		}
+		
 		public function conditionHandler(e:Event):void{
 			var enemies = Game.world.getEnemies();
 			if(enemies.length == 0){
 				Game.eventDispatcher.removeEventListener(GameEventDispatcher.BEAT_ENEMY, conditionHandler);
-				Game.playerProgress.clearedAreas.push(map);
+				Game.playerProgress.addClearedArea(map);
 				complete();
 				update();
 			}

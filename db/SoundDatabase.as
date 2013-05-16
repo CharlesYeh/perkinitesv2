@@ -2,7 +2,7 @@
 	import flash.utils.Dictionary;
 	import flash.events.Event;
 	
-	import com.adobe.serialization.json.JSON;
+	import com.adobe.serialization.json.*;
 	
 	import db.dbData.SoundData;
 	
@@ -20,7 +20,7 @@
 		}
 		
 		public function completeLoad(e:Event):void {
-			var sdat:Object = JSON.decode(e.target.data);
+			var sdat:Object = JSON_.decode(e.target.data);
 			
 			for (var i:String in sdat.music) {
 				var dat:Object = sdat.music[i];

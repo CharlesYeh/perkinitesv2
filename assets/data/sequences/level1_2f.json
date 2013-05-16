@@ -9,6 +9,10 @@
 		],
 		[
 			{
+				"type": "ActionSkip",
+				"skip": true
+			},		
+			{
 				"type": "ActionNarrator",
 				"time": 146,
 				
@@ -53,11 +57,29 @@
 		],
 		[
 			{
-				"type": "ActionSpeech",
-				"time": 150,
+				"type": "ActionSkip",
+				"skip": false
+			},		
+			{
+				"type": "ActionNotification",
+				"time": 240,
 				
-				"name": "",
-				"message": "(TIP: Use the W/A/S/D keys or the Directional keys to move the Perkinites around!)"
+				"message": "Use WASD to move!"
+			},
+			{
+				"type": "ActionControls",
+				"enable": true
+			},
+			{
+				"type": "ActionWait",
+				"time": 24
+			}
+		],
+		[
+			{
+				"type": "ActionJournal",
+				
+				"message": "Go downstairs! :D"
 			}
 		]
 	]

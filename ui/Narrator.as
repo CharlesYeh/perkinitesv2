@@ -10,7 +10,8 @@
 		public function Narrator() {
 			visible = false;
 			
-			y = GameConstants.HEIGHT - height;
+			y = GameConstants.HEIGHT - height - 5;
+			//y = 8;
 		}
 		
 		public function showText(text:String):void {

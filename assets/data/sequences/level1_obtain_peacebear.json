@@ -21,11 +21,24 @@
 				"item": "Peace Bear"
 			},
 			{
+				"type": "ActionNotification",
+				
+				"time": 120,
+				"message": "Got the Peace Bear!"
+			},			
+			{
 				"type": "ActionDelete",
 				
 				"subtype": "npc",
 				"sprite": "npc_Peace-Bear"
 			}
-		]
+		],
+		[
+			{
+				"type": "ActionJournal",
+				
+				"message": "Go all the way upstairs to the 3rd floor! :D"
+			}			
+		]		
 	]
 }

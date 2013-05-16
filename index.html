@@ -1,40 +1,5 @@
-<html>
+﻿<html>
 	<head>
-		<script type="text/javascript" language="javascript" src="js/jquery-1.7.2.min.js"></script>
-		<script>
-		
-		$(document).ready(function() {
-			
-			$("#flashContainer").mousedown(function(e) {
-				// pass right clicks on through external interface
-				if (e.which === 3) {
-					e.preventDefault();
-					if (!$.browser.msie) {
-						$flashobj = $("#flashObj")[0];
-					}
-					else {
-						$flashobj = $("#flashObj");
-					}
-					$flashobj.rightClickDown(e.offsetX, e.offsetY);
-				}
-			});
-			$("#flashContainer").mouseup(function(e) {
-				// pass right clicks on through external interface
-				if (e.which === 3) {
-					e.preventDefault();
-					if (!$.browser.msie) {
-						$flashobj = $("#flashObj")[0];
-					}
-					else {
-						$flashobj = $("#flashObj");
-						alert($flashobj.html());
-					}
-					$flashobj.rightClickUp(e.offsetX, e.offsetY);
-				}
-			});
-
-		});
-		</script>
 	</head>
 	<body>
 		<div id="flashContainer">

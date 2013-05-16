@@ -8,32 +8,32 @@
   "name": "Huong V.",
   "id": "HV",
   "sprite": "HV",
-  "health": 75,
+  "health": 90,
   "defense": 0,
-  "speed": 300,
+  "speed": 220,
   "abilities": [
     {
       "name": "Frying Pan Smash",
       "type": "AttackCone",
       "icon": "Icon - Frying Pan Smash.png",
       "description": "Smack that enemy with yo\u0027 fryin\u0027 pan.",
-      "dmgBase": "8",
+      "dmgBase": "5",
       "dmgRatio": "0",
-      "range": 50,
-      "cd": 10,
-      "stand": 0,
-      "angle": 90
+      "range": 65,
+      "cd": 0,
+      "stand": 6,
+      "angle": 45
     },
     {
       "name": "Ramen Boost",
       "type": "AttackSmartcast",
       "icon": "Icon - Ramen Boost.png",
-      "description": "Eat dat delicious ramen.",
-      "dmgBase": "0",
+      "description": "Eat dat delicious ramen. Others be jelly they don\u0027t get any.",
+      "dmgBase": "8",
       "dmgRatio": "0",
-      "range": 250,
-      "cd": 20,
-      "stand": 0,
+      "range": 64,
+      "cd": 0,
+      "stand": 12,
       "goToCastPoint": false
     }
   ]

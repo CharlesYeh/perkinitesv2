@@ -9,6 +9,11 @@
 		],
 		[
 			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			},
+			{
 				"type": "ActionNarrator",
 				"time": 165,
 				
@@ -21,6 +26,11 @@
 			}
 		],
 		[
+			{
+				"type": "ActionJournal",
+				
+				"message": "Destroy the enemies on the ground floor!"
+			},
 			{
 				"type": "ActionNarrator",
 				"time": 143,

@@ -64,6 +64,18 @@
 		{
 			"name": "miniboss_win_2",
 			"src": "narration/miniboss_win_2.mp3"
-		}
+		},
+		{
+			"name": "select",
+			"src": "sfx/se_chargeup.mp3"
+		},
+		{
+			"name": "start",
+			"src": "sfx/se_pause.mp3"
+		},
+		{
+			"name": "cancel",
+			"src": "sfx/se_timeout.mp3"
+		}								
 	]
 }

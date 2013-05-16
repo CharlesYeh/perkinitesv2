@@ -33,9 +33,9 @@
       "type": "AttackCone",
       "icon": "Icon - Apologetic.png",
       "description": "Damages enemies in range of his constant apologizing.",
-      "dmgBase": "3",
+      "dmgBase": "4",
       "dmgRatio": "50",
-      "range": 160,
+      "range": 140,
       "cd": 0,
       "stand": 6,
       "angle": 35

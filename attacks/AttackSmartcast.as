@@ -3,6 +3,8 @@
 	import units.StatUnit;
 	import flash.geom.Point;
 	import game.Game;
+	import game.SoundManager;
+	import units.AIUnit;
 	
 	/**
 	 * An attack which is cast on a circular shaped space.
@@ -43,6 +45,12 @@
 				
 				if (StatUnit.distance(m_caster, e) < range) {
 					e.takeDamage(damage());
+/*						if(AIUnit.m_enabled){
+							SoundManager.playSound("hit");
+						}		*/					
+					if(e == Game.team[0]){
+						break;
+					}						
 				}
 			}
 		}

@@ -20,6 +20,9 @@
 		/** # of frames between consecutive attack uses */
 		public var stand:int;
 		
+		/** how far the hit enemy moves back */
+		public var knockback:int;
+		
 		/** the base damage of this attack without additional scaling */
 		public var dmgBase:int;
 		
@@ -55,6 +58,7 @@
 			range = obj.range;
 			cd = obj.cd;
 			stand = obj.stand;
+			knockback = 4;
 			
 			dmgBase = obj.dmgBase;
 			dmgScale = obj.dmgRatio;

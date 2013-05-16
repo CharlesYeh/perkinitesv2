@@ -34,20 +34,25 @@
 		
 		private static var m_enabled:Boolean = true;
 		
-		private static var attackTimeout:int = 15;
+		public static function get enabled():Boolean {
+			return m_enabled;
+		}
 		
 		public static function set enabled(val:Boolean):void {
 			m_enabled = val;
 		}
+		
 		
 		public static function setupRightClick():void {
 			if (ExternalInterface.available) {
 				try {
 					ExternalInterface.addCallback("rightClickDown", rightClickDown);
 					ExternalInterface.addCallback("rightClickUp", rightClickUp);
+					
 				} catch (e:Error) {
 					trace("Error: " + e.message);
 				}
+				
 			}
 			else {
 				trace("Error adding right click callbacks");
@@ -59,7 +64,7 @@
 		/**
 		 * use either right click or space bar (if right click not possible) for ability #2
 		 */
-		public static function rightClickDown(x:int, y:int):void {
+		public static function rightClickDown(e:Event):void {
 			if (acceptRightClicks) {
 				aiming1 = false;
 				aiming2 = true;
@@ -67,7 +72,7 @@
 			}
 		}
 		
-		public static function rightClickUp(x:int, y:int):void {
+		public static function rightClickUp(e:Event):void {
 			if (acceptRightClicks && aiming2) {
 				aiming2 = false;
 				castAbilities(1, KeyDown.mousePoint);
@@ -111,8 +116,12 @@
 				acceptRightClicks = true;
 			}
 			
+			acceptRightClicks = true;
+			
 			KeyDown.subscribe(MouseEvent.MOUSE_DOWN, mouseDownHandler);
 			KeyDown.subscribe(MouseEvent.MOUSE_UP, mouseUpHandler);
+			KeyDown.subscribe("rightMouseDown", rightClickDown);
+			KeyDown.subscribe("rightMouseUp", rightClickUp);
 			KeyDown.subscribe(KeyboardEvent.KEY_DOWN, keyDownHandler);
 			KeyDown.subscribe(KeyboardEvent.KEY_UP, keyUpHandler);
 		}
@@ -121,9 +130,12 @@
 			if (secondaryClick) {
 				acceptRightClicks = false;
 			}
+			acceptRightClicks = false;
 			
 			KeyDown.unsubscribe(MouseEvent.MOUSE_DOWN, mouseDownHandler);
 			KeyDown.unsubscribe(MouseEvent.MOUSE_UP, mouseUpHandler);
+			KeyDown.unsubscribe("rightMouseDown", rightClickDown);
+			KeyDown.unsubscribe("rightMouseUp", rightClickUp);
 			KeyDown.unsubscribe(KeyboardEvent.KEY_DOWN, keyDownHandler);
 			KeyDown.unsubscribe(KeyboardEvent.KEY_UP, keyUpHandler);
 		}

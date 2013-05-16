@@ -12,19 +12,19 @@
       "type": "AttackCone",
       "icon": "",
       "description": "",
-      "dmgBase": "15",
+      "dmgBase": "20",
       "dmgRatio": "",
       "range": 72,
       "cd": 0,
       "stand": 23,
-      "angle": 45
+      "angle": 60
     },
     {
       "name": "Negative Spike",
       "type": "AttackSmartcast",
       "icon": "",
       "description": "",
-      "dmgBase": "6",
+      "dmgBase": "10",
       "dmgRatio": "",
       "range": 88,
       "cd": 0,

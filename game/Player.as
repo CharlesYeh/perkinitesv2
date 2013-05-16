@@ -45,7 +45,7 @@
 			
 			// heal
 			if (playerHealDelay > PLAYER_HEAL_DELAY) {
-				for (i = 0; i < team.length; i++) {
+				for (i = 0; i < 1; i++) { //make everyone share the same HP as the leader
 					p = team[i];
 					
 					// add % of max hp

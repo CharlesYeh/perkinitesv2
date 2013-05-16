@@ -10,7 +10,7 @@
 	
 	import util.TextUtil;
 	
-	public class BlackScreen extends MovieClip {
+	public class BlackScreen extends flash.display.MovieClip {
 		
 		/** the action which triggered this animation */
 		private var currAction:Action;
@@ -42,10 +42,19 @@
 			currAction = act;
 			
 			currTween = new Tween(this, "alpha", null, 1, 0, f);
-			currTween.addEventListener(TweenEvent.MOTION_FINISH, endShow);
+			currTween.addEventListener(TweenEvent.MOTION_FINISH, endHide);
 		}
 		
 		function endShow(e:Event) {
+			currAction.complete();
+			
+			if (currTween != null) {
+				currTween.removeEventListener(TweenEvent.MOTION_FINISH, endShow);
+				currTween = null;
+			}
+		}
+		
+		function endHide(e:Event) {
 			currAction.complete();
 			visible = false;
 			

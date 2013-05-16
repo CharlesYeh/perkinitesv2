@@ -21,6 +21,7 @@
 	import units.StatUnit;
 	import db.dbData.TeleportData;
 	import units.Teleport;
+	import ui.Notification;
 
 	public class MapManager {
 		public static var world:World;
@@ -96,6 +97,7 @@
 			var map:TeleportData = world.checkTeleports(su);
 			if (map != null) {
 				// change map
+				Game.playerProgress.createdUnits.length = 0;
 				changeMap(map);
 			}
 		}
@@ -156,18 +158,27 @@
 		
 		public static function depthSortHandler():void {
 			var depthArray:Array = new Array();
+			var topArray:Array = new Array();
+			var botArray:Array = new Array();
 			var mapClip:MovieClip = world;
 			
 			for (var i:int = 0; i < mapClip.numChildren; i++) {
 				var child:DisplayObject = mapClip.getChildAt(i);
 				
+/*				if (!(child is Bitmap) && ScreenRect.inBounds(child) && (child is Notification)) {
+					topArray.push(mapClip.getChildAt(i));
+				}*/
 				if (!(child is Bitmap) && ScreenRect.inBounds(child)) {
 					depthArray.push(mapClip.getChildAt(i));
 				}
 			}
 			
-			depthArray.sortOn("y", Array.NUMERIC);
 			
+			topArray.sortOn("y", Array.NUMERIC);
+			depthArray.sortOn("y", Array.NUMERIC);
+			botArray.sortOn("y", Array.NUMERIC);
+			
+			//depthArray = botArray.concat(depthArray).concat(topArray);
 			var t:int = mapClip.numChildren;
 			i = depthArray.length;
 			while (i--) {

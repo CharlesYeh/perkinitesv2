@@ -6,14 +6,38 @@
 		var pid1:int, pid2:int;
 		var icons:Array;
 		var icon_conts:Array;
-		var unitHUD:HUD_Unit;
+		//var unitHUD:HUD_Unit;
+		
+		//var goal:String;	//what will be displayed on the screen
+		//var goalWait:int;	//how long it takes to update
+		//var maxGoalWait:int;
 		public function GameHUD() {
 			/*icons = new Array(4);
 			icon_conts = new Array(4);
 			for (var a = 0; a < 4; a++) {
 				icon_conts[a] = this["icon_cont" + a];
 			}*/
-		}/*
+			/*goal = "";
+			goalWait = 0;
+			maxGoalWait = 2;
+			goalDisplay.text = "";*/
+		}
+		/*
+		public function setGoal(message:String){
+			goal = message;
+		}
+		public function updateGoal(){
+			goalWait--;
+			if(goalDisplay.text.length < goal.length && goalWait <= 0){
+				//SoundManager.playSound("");
+				goalWait = maxGoalWait;
+				goalDisplay.text = goal.substring(0, goalDisplay.text.length + 1);
+			}
+			
+		}*/
+		
+		/*
+		
 		public function updateIcons(id1:int, id2:int) {
 			pid1 = id1;
 			pid2 = id2;

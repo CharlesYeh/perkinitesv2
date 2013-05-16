@@ -42,6 +42,8 @@
 			Game.overlay.gameover.visible = false;
 			//MovieClip(stage)._root.gotoAndStop(1, "menu");
 			Game.playerProgress.loadGame("PERKINITES");
+			
+			trace(Game.playerProgress.health);
 			//MovieClip(stage)._root.gotoAndStop("char_select");
 			Game.endGameWorld();
 			Game.startGameWorld(Game.container);

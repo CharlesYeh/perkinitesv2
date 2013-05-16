@@ -13,6 +13,11 @@
 		],
 		[
 			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			},		
+			{
 				"type": "ActionNarrator",
 				"time": 166,
 				
@@ -31,6 +36,13 @@
 				
 				"name": "Narrator",
 				"message": "Our heroes feel a strange and depressing force, emanating from the ground floor lounge. Something evil is up, so they go investigate."
+			}
+		],
+		[
+			{
+				"type": "ActionJournal",
+				
+				"message": "Go to the ground floor lounge! :D"
 			}
 		]
 	]

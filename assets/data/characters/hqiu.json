@@ -8,32 +8,34 @@
   "name": "Sophie Q.",
   "id": "HQ",
   "sprite": "HQ",
-  "health": 75,
+  "health": 90,
   "defense": 0,
-  "speed": 300,
+  "speed": 220,
   "abilities": [
     {
       "name": "Jade Fang",
-      "type": "AttackCone",
+      "type": "AttackSkillshot",
       "icon": "Icon - Jade Fang.png",
       "description": "Throw two daggers at a target.",
-      "dmgBase": "8",
+      "dmgBase": "6",
       "dmgRatio": "50",
-      "range": 50,
-      "cd": 10,
-      "stand": 0,
-      "angle": 90
+      "range": 72,
+      "cd": 0,
+      "stand": 6,
+      "speed": 15,
+      "width": 50,
+      "penetrates": 2
     },
     {
       "name": "Astral Arts",
       "type": "AttackSmartcast",
       "icon": "Icon - Astral Arts.png",
-      "description": "Gain temporary invincibility and speed for a longer time period.",
-      "dmgBase": "0",
+      "description": "Uses ancient magic to create a shockwave.",
+      "dmgBase": "12",
       "dmgRatio": "0",
-      "range": 250,
-      "cd": 20,
-      "stand": 0,
+      "range": 64,
+      "cd": 0,
+      "stand": 12,
       "goToCastPoint": false
     }
   ]

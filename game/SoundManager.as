@@ -48,6 +48,7 @@
 				currentChannel.stop();
 			}
 			currentChannel = null;
+			currentSong = null;
 		}
 		
 		/**

@@ -70,11 +70,41 @@
 			}			
 			
 			mdat.startSequences();
-			if(mdat.bgmusic != null){
-				SoundManager.playSong(mdat.bgmusic);				
+			if(!Game.playerProgress.loadedSong){
+				if(mdat.bgmusic != null){
+					SoundManager.playSong(mdat.bgmusic);				
+				}
+				else{
+					SoundManager.endSong();
+				}				
 			}
 			else{
-				SoundManager.endSong();
+				if(Game.playerProgress.currentSong != null){
+					SoundManager.playSong(Game.playerProgress.currentSong);				
+				}
+				else{
+					SoundManager.endSong();
+				}				
+				Game.playerProgress.loadedSong = false;
+			}
+			
+			for(var j = 0; j < Game.playerProgress.createdUnits.length; j++){
+				var dat = Game.playerProgress.createdUnits[j];
+				
+				var cdat = new MapCharacterData();
+				
+				if(dat.subtype == "enemy"){
+					cdat.parseData(dat);
+					createEnemy(cdat);
+				}
+				else if(dat.subtype == "npc"){
+					cdat.parseData(dat);
+					
+					Game.world.createNPC(cdat);	
+					m_npcs[m_npcs.length-1].animLabel = dat.animation;
+					m_npcs[m_npcs.length-1].beginAnimation(dat.animation);
+				}
+				
 			}
 		}
 		

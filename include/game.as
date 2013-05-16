@@ -16,10 +16,8 @@ function gameRunner(e:Event):void {
 function setupGame():void {
 	
 	addEventListener(Event.ENTER_FRAME, gameRunner);
-	stage.addEventListener(Event.DEACTIVATE, loseFocus);
-	pauseScreen.addEventListener(MouseEvent.CLICK, regainFocus);
+	//stage.addEventListener(Event.DEACTIVATE, loseFocus);
 	
-	pauseScreen.y = 999;
 }
 
 function clearGame():void {
@@ -30,10 +28,16 @@ function clearGame():void {
 
 function loseFocus(e:Event) {
 	Game.gamePause = true;
-	pauseScreen.y = 0;
+	var f = new FocusScreen();
+	stage.addChild(f);
+	f.addEventListener(MouseEvent.CLICK, regainFocus);
+	f.addEventListener("rightMouseDown", regainFocus);
+	
+	//pauseScreen.y = 0;
 }
 
 function regainFocus(e:MouseEvent):void {
 	Game.gamePause = false;
-	pauseScreen.y = 999;
+	e.target.parent.removeChild(e.target);
+	//pauseScreen.y = 999;
 }

@@ -105,5 +105,13 @@
 				moveTo(target.x, target.y);
 			}
 		}
+		
+		override public function takeDamage(dmg:int):void {
+			if (!m_enabled) {
+				return;
+			}
+			
+			super.takeDamage(dmg);
+		}
 	}
 }

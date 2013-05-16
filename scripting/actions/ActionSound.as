@@ -13,7 +13,7 @@
 		}
 		
 		override public function act():void {
-			SoundManager.playSound(sound);
+			//SoundManager.playSound(sound);
 			complete();
 		}
 	}

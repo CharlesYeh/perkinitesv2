@@ -8,7 +8,7 @@
   "name": "Nate M.",
   "id": "NM",
   "sprite": "NM",
-  "health": 120,
+  "health": 90,
   "defense": 10,
   "speed": 210,
   "abilities": [
@@ -31,7 +31,7 @@
       "description": "Launches a shopping cart, damaging all enemies it comes into contact with.",
       "dmgBase": "5",
       "dmgRatio": "1",
-      "range": 180,
+      "range": 2000,
       "cd": 0,
       "stand": 8,
       "speed": 24,

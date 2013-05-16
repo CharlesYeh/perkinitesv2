@@ -29,6 +29,7 @@ for (var a:int = 0; a < btnLabels.length; a++) {
 function newGame(e:Event):void {
 	//var sound:Sound = new se_chargeup();
 	//sound.play();
+	SoundManager.playSound("select");
 	
 	clearTitleScreen();
 	Game.playerProgress.newGame();
@@ -38,6 +39,7 @@ function newGame(e:Event):void {
 function continueGame(e:Event):void {
 	///var sound:Sound = new se_chargeup();
 	//sound.play();
+	SoundManager.playSound("select");
 	
 	clearTitleScreen();
 	Game.playerProgress.loadGame("PERKINITES");

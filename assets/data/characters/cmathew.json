@@ -8,32 +8,34 @@
   "name": "Cia M.",
   "id": "CM",
   "sprite": "CM",
-  "health": 75,
+  "health": 65,
   "defense": 0,
-  "speed": 250,
+  "speed": 190,
   "abilities": [
     {
       "name": "Sedated Needles",
-      "type": "AttackPoint",
+      "type": "AttackSkillshot",
       "icon": "Icon - Sedated Needles.png",
-      "description": "Throws a sedated knitting needle at an enemy. If close enough, sedate more.",
-      "dmgBase": "10",
+      "description": "Throws a sedated knitting needle at an enemy.",
+      "dmgBase": "4",
       "dmgRatio": "50",
-      "range": 100,
+      "range": 2000,
       "cd": 10,
-      "stand": 0,
-      "radius": 50
+      "stand": 8,
+      "speed": 30,
+      "width": 40
     },
     {
-      "name": "Graceful Dodge",
+      "name": "Distortion",
       "type": "AttackPoint",
       "icon": "Icon - Graceful Dodge.png",
       "description": "Teleport self to a point.",
-      "dmgBase": "",
+      "dmgBase": "5",
       "dmgRatio": "",
       "range": 250,
       "cd": 20,
-      "stand": 0
+      "stand": 24,
+      "radius": 48
     }
   ]
 }

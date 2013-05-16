@@ -3,6 +3,19 @@
 	"actions": [
 		[
 			{
+				"type": "ActionHUD",
+				"enabled": false
+			},
+			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			},			
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},		
+			{
 				"type": "ActionNarrator",
 				"time": 96,
 				
@@ -36,14 +49,7 @@
 					"x": 12,
         			"y": 3
       		}
-			},
-			{
-				"type": "ActionSpeech",
-				"time": 10,
-				
-				"name": "Masked Child",
-				"message": "Hyuk hyuk hyuk..."
-			},			
+			},		
 			{
 				"type": "ActionWait",
 				"time": 52
@@ -56,7 +62,14 @@
 				
 				"sprite": "npc_Ira",
 				"animation": "standing"
-			}		
+			},	
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Masked Child",
+				"message": "Hyuk hyuk hyuk..."
+			}	
 		],		
 		[
 			{
@@ -117,7 +130,12 @@
 				"time": 120,
 				
 				"message": "YES! Here he is, IRA, in his true form!"
-			}
+			},
+			{
+				"type": "ActionJournal",
+				
+				"message": "The darkness has transformed! Defeat the evil to free Perkins!"
+			}		
 		],
 		[		
 			{
@@ -142,6 +160,21 @@
 				"time": 100,
 				
 				"message": "So our heroes are pretty much dead now. THE END."
+			}
+		],
+		[
+			{
+				"type": "ActionAI",
+				"enabled": true
+			},
+			{
+				"type": "ActionHUD",
+				"enable": true
+			},	
+			{
+				"type": "ActionHUD",
+				"enable": true,
+				"enemy": true
 			}
 		]
 	]

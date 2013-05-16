@@ -9,14 +9,17 @@
   "abilities": [
     {
       "name": "Puke",
-      "type": "AttackCone",
+      "type": "AttackSkillshot",
       "icon": "",
       "description": "",
       "dmgBase": "7",
       "dmgRatio": "",
-      "range": 60,
+      "range": 200,
       "cd": 15,
-      "stand": 0
+      "stand": 0,
+      "speed": 15,
+      "width": 30,
+      "penetrates": 4
     }
   ]
 }

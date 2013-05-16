@@ -1,14 +1,18 @@
 ﻿package game.progress {
 	import game.Game;
 	import game.Controls;
+	import game.SoundManager;
 	
 	import tileMapper.TileMap;
 	
+	import units.AIUnit;
 	import units.StatUnit;
 	
 	import flash.net.SharedObject;
 	import flash.net.registerClassAlias;
+	import flash.utils.ByteArray;
 	import flash.utils.Dictionary;
+	import ui.GameOverlay;
 	
 	public class PlayerProgress {
 		
@@ -44,6 +48,20 @@
 		public var x:int;
 		public var y:int;
 		
+		/** difficulty of the game */
+		public var difficulty:int;
+		
+		/** current information about game determined by actions */
+		public var controlsEnabled:Boolean;	//for Controls
+		public var aiEnabled:Boolean;	//for AIUnit
+		public var currentSong:String;	//for SoundManager
+		public var loadedSong:Boolean = false;	//for World/SoundManager
+		public var hudVisible:Boolean = false;
+		public var ehudVisible:Boolean = false;
+		public var goal:String = "";
+		
+		public var createdUnits:Array = new Array();
+		
 		public function PlayerProgress() {
 			registerClassAlias("pp", PlayerProgress);
 			registerClassAlias("a", Array);
@@ -73,6 +91,9 @@
 		
 		public function addClearedArea(id:String):void {
 			clearedAreas.push(id);
+			
+			//----------------AUTO-SAVE----------------
+			save();
 		}
 		public function hasClearedArea(id:String):Boolean {
 			return clearedAreas.indexOf(id) != -1;
@@ -123,6 +144,18 @@
 			unlockedTeams = prog.unlockedTeams;
 			
 			health = prog.health;
+			
+			difficulty = prog.difficulty;
+			
+			Controls.enabled = prog.controlsEnabled;
+			AIUnit.enabled = prog.aiEnabled;
+			currentSong = prog.currentSong;
+			loadedSong = true;
+			hudVisible = prog.hudVisible;
+			ehudVisible = prog.ehudVisible;
+			goal = prog.goal;
+			
+			createdUnits = prog.createdUnits;
 		}
 		
 		public function save():void {
@@ -137,8 +170,15 @@
 /*			var uteams = unlockedTeams;
 			unlockedTeams = uteams();*/
 			
+			controlsEnabled = Controls.enabled;
+			aiEnabled = AIUnit.m_enabled;
+			currentSong = SoundManager.currentSong;
+			hudVisible = Game.overlay.hud.visible;
+			ehudVisible = Game.overlay.ehud.visible;
+			goal = Game.overlay.journal.goal;
+			
 			// save this object without reference to SharedObject
-			so.data[id] = this;
+			so.data[id] = this.clone(this);
 			so.flush();
 			
 			// restore variables
@@ -167,7 +207,7 @@
 				Game.playerProgress.health = Game.team[0].progressData.health;
 				
 				Game.overlay.hud.HPDisplay1.text = Game.playerProgress.health;
-				Game.overlay.hud.HPDisplay2.text = Game.playerProgress.health;
+				Game.overlay.hud.healthbar.FP.width = Game.playerProgress.health/int(Game.overlay.hud.HPDisplay2.text) * 190;
 								
 				if(health <= 0){
 					Controls.enabled = false;
@@ -176,6 +216,12 @@
 				
 			}	
 		}
+		
+		private function clone(obj:Object):Object {
+			var temp:ByteArray = new ByteArray();
+			temp.writeObject(obj);
+			temp.position = 0;
+			return temp.readObject();
+		}		
 	}
-	
 }

@@ -1,8 +1,13 @@
 ﻿package attacks {
 	import db.dbData.AttackData;
+	import units.AIUnit;
 	import units.StatUnit;
 	import game.Game;
 	import flash.geom.Point;
+	import game.SoundManager;
+	
+	import flash.events.Event;
+	import flash.display.MovieClip;
 	
 	/**
 	 * An attack which is cast on a circular shaped space.
@@ -68,6 +73,26 @@
 			super.castAbility(caster, castPoint);
 		}
 		
+		override public function pointAttack(bullets:Array):void {
+			// get constructor and delete template
+			var b:MovieClip = bullets[0];
+			var projClass:Class = b.constructor;
+			if(b.parent != null){
+				b.parent.removeChild(b); 				
+			}
+			
+			var p:MovieClip = new projClass();
+			p.x = m_castPoint.x;
+			p.y = m_castPoint.y;
+			//get correct orientation
+			//p.rotation = b.rotation;
+			//p.scaleX = (m_caster.scaleX > 0) ? 1 : -1;			
+			
+			
+			p.addEventListener(Event.ENTER_FRAME, projectileRunner);
+			Game.world.addUnit(p);
+		}
+		
 		override public function dealDamage():void {
 			var targets:Array = targets();
 			
@@ -80,8 +105,27 @@
 				
 				if (dist < radius) {
 					e.takeDamage(damage());
+/*						if(AIUnit.m_enabled){
+							SoundManager.playSound("hit");
+						}		*/			
 				}
 			}
 		}
+		
+		/**
+		 * enter frame handler for projectiles
+		 */
+		protected function projectileRunner(e:Event):void {
+			var p:MovieClip = e.target as MovieClip;
+			
+			if (p.currentFrame >= p.totalFrames) {
+				removeProjectile(p);
+			}
+		}
+		
+		protected function removeProjectile(p:MovieClip):void {
+			p.removeEventListener(Event.ENTER_FRAME, projectileRunner);
+			Game.world.clearCustom(p);
+		}		
 	}
 }

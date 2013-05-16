@@ -18,6 +18,8 @@
 		public var hud:GameHUD;
 		public var ehud:EnemyHUD;
 		
+		public var journal:Journal;
+		
 		/** clip for character speech */
 		public var speech:Speech;
 		
@@ -31,14 +33,20 @@
 		public var gameover:GameOverScreen;
 		
 		public function GameOverlay() {			
+			journal = new Journal();
+			journal.x = HUD_SPACING;
+			//journal.y = GameConstants.HEIGHT - hud.height - 5 + 70;
+			journal.y = 8;
+			
 			hud = new GameHUD();
 			hud.x = HUD_SPACING;
-			hud.y = GameConstants.HEIGHT - hud.height - HUD_SPACING;
-			
+			//hud.y = GameConstants.HEIGHT - hud.height - 5;
+			hud.y = journal.y + journal.height + 8;
 			
 			ehud = new EnemyHUD();
 			ehud.x = GameConstants.WIDTH - ehud.width - HUD_SPACING;
-			ehud.y = HUD_SPACING;
+			//ehud.y = HUD_SPACING;
+			ehud.y = GameConstants.HEIGHT - ehud.height - 5;
 			ehud.visible = false;
 			ehud.gotoAndStop("normal");
 			
@@ -47,8 +55,10 @@
 			narrator = new Narrator();
 			
 			locationDisplay = new LocationDisplay();
-			locationDisplay.x = 515;
-			locationDisplay.y = 425;
+			locationDisplay.x = 504.5;
+			//locationDisplay.y = 410;
+			//locationDisplay.x = 8;
+			locationDisplay.y = journal.y + journal.height + 8;
 			
 			charUnlock = new CharUnlock();
 			charUnlock.x = 330;
@@ -64,6 +74,7 @@
 			
 			addChild(hud);
 			addChild(ehud);
+			addChild(journal);
 			addChild(locationDisplay);
 			addChild(cutscene);
 			addChild(charUnlock);

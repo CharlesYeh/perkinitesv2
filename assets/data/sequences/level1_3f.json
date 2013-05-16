@@ -9,6 +9,11 @@
 		],
 		[
 			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			},	
+			{
 				"type": "ActionNarrator",
 				"time": 165,
 				
@@ -25,11 +30,16 @@
 		],
 		[
 			{
+				"type": "ActionJournal",
+				
+				"message": "Destroy the enemies on the 3rd floor!"
+			},	
+			{
 				"type": "ActionNarrator",
 				"time": 143,
 				
 				"message": "Anyway, it seems like darkness is still afoot. There's even more evil stuff now. Our heroes go at it."
 			}
-		]		
+		]	
 	]
 }

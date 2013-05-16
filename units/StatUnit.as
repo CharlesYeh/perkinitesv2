@@ -5,6 +5,7 @@
 	import flash.display.MovieClip;
 	import flash.geom.Point;
 	
+	import flash.filters.GlowFilter;
 	import tileMapper.TileMap;
 	import db.AbilityDatabase;
 	import db.dbData.UnitData;
@@ -30,7 +31,8 @@
 		static const frameFuncs:Array = new Array("beginForwardMovement", "stopForwardMovement",
 										"dealDamage", "applyBuffs", "shootSkillshot",
 										"teleport", "teleportPartner",
-										"shootDirectedSkillshot");
+										"shootDirectedSkillshot", "shootRelativeSkillshot",
+										"pointAttack");
 		
 		/** the swf sprite asset */
 		var swf;
@@ -64,6 +66,11 @@
 		var disabledMovement:Boolean= false;
 		var forwardVector:Point = null;
 		//--------END FRAME VARS--------
+		
+		
+		//----------DISPLAY VARS----------
+		var glowHit = new GlowFilter(0xFF0000, 0, 20, 20, 1, 10, true, false);
+		//--------END DISPLAY VARS--------
 		
 		public function StatUnit(udat:UnitData) {
 			super();
@@ -118,7 +125,7 @@
 		
 		public function takeDamage(dmg:int):void {
 			//this may cause problems - work on it
-			if (frameBuff.invincibility) {
+			if (frameBuff.invincibility || !visible) {
 				return;
 			}
 			
@@ -127,6 +134,8 @@
 			
 			progressData.health = Math.max(0, progressData.health - adjustedDmg);
 			drawHealthbar();
+			glowHit.alpha = 1.0;
+			this.swf.filters = [glowHit];
 		}
 		
 		public function showGuide(abilityID:int, pt:Point):void {
@@ -300,6 +309,11 @@
 		 * @param e - Event.ENTER_FRAME
 		 */
 		override public function moveHandler(e:Event):void {
+			
+			//adjust filter
+			glowHit.alpha-=0.1;
+			this.swf.filters = [glowHit];
+			
 			// adjust buffs
 			updateBuffs();
 			
@@ -458,6 +472,10 @@
 		//make it stop running when transferring to a new map
 		public function destroy(){
 			deleteSelf();
+		}
+		
+		public function getSwf(){
+			return swf;
 		}
 	}
 }

@@ -3,6 +3,17 @@
 	"actions": [
 		[
 			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			},
+			{
+				"type": "ActionHUD",
+				"enabled": false
+			}
+		],	
+		[
+			{
 				"type": "ActionCreate",
 				
 				"subtype": "npc",
@@ -14,6 +25,7 @@
         			"y": 5
       		}
 			}
+			
 		],	
 		[
 			{

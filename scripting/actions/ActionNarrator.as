@@ -15,7 +15,7 @@
 		
 		override public function update():Boolean {
 			m_time--;
-			if (m_time <= 0) {
+			if (m_time <= 0 || super.update()) {
 				Game.overlay.narrator.hideText(this);
 			}
 			

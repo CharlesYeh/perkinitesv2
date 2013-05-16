@@ -1,6 +1,7 @@
 ﻿package attacks {
 	import db.dbData.AttackData;
 	
+	import units.AIUnit;
 	import units.StatUnit;
 	
 	import flash.geom.Point;
@@ -9,6 +10,7 @@
 	import flash.events.Event;
 	
 	import game.Game;
+	import game.SoundManager;
 	import flash.utils.Dictionary;
 	
 	/**
@@ -73,6 +75,7 @@
 			
 			var horizmult:int = (caster.scaleX > 0) ? 1 : -1;			
 			caster.guide.gotoAndStop("skillshot");
+			
 			var dx = castPoint.x - caster.x;
 			var dy = castPoint.y - caster.y;
 			var dist = Math.sqrt(dx * dx + dy * dy);
@@ -128,6 +131,37 @@
 			}
 		}
 		
+		override public function shootRelativeSkillshot(bullets:Array, angle:Number):void {
+			// get constructor and delete template
+			var b:MovieClip = bullets[0];
+			var projClass:Class = b.constructor;
+			b.parent.removeChild(b); 
+			
+			for (var i:int = 0; i < quantity; i++) {
+				var p:MovieClip = new projClass();
+				p.x = m_caster.x;
+				p.y = m_caster.y;
+				//get correct orientation
+				p.rotation = b.rotation;
+				p.scaleX = (m_caster.scaleX > 0) ? 1 : -1;			
+				
+				var newX = p.x + (m_castPoint.x - p.x) * Math.cos(angle * Math.PI/180) - 
+								(m_castPoint.y - p.y) * Math.sin(angle * Math.PI/180);
+								
+				var newY = p.y + (m_castPoint.x - p.x) * Math.sin(angle * Math.PI/180) +
+								(m_castPoint.y - p.y) * Math.cos(angle * Math.PI/180);
+								
+				trace(p + " " + m_castPoint + " " + newX + " " + newY);
+				prepareRelativeProjectile(p, Number(i) / quantity, new Point(newX, newY));
+				
+				p.addEventListener(Event.ENTER_FRAME, projectileRunner);
+				p.m_penetrates = penetrates;
+				Game.world.addUnit(p);
+				
+				m_bullets.push(p);
+			}
+		}		
+		
 		
 		/**
 		 * custom prepare a projectile
@@ -137,6 +171,16 @@
 		protected function prepareProjectile(p:MovieClip, ratio:Number):void {
 			var dx:Number = m_castPoint.x - p.x;
 			var dy:Number = m_castPoint.y - p.y;
+			var dist:Number = Math.sqrt(dx * dx + dy * dy);
+			
+			p.vx = speed * dx / dist;
+			p.vy = speed * dy / dist;
+			p.dist = 0; //make skillshot show up
+		}
+		
+		protected function prepareRelativeProjectile(p:MovieClip, ratio:Number, point:Point):void {
+			var dx:Number = point.x - p.x;
+			var dy:Number = point.y - p.y;
 			var dist:Number = Math.sqrt(dx * dx + dy * dy);
 			
 			p.vx = speed * dx / dist;
@@ -213,9 +257,11 @@
 					//length on dictionary doesn't exist
 					if (n != 0) {
 						var keys:Array = distances.sort();
-						en = closest[0];
+						en = closest[keys[0]];
 						en.takeDamage(damage());
-						
+/*						if(AIUnit.m_enabled){
+							SoundManager.playSound("hit");
+						}		*/			
 						//removeProjectile(skillshot);
 					}
 					
@@ -226,7 +272,9 @@
 					for (var i:String in closest) {
 						en = closest[i];
 						en.takeDamage(damage());
-						
+/*						if(AIUnit.m_enabled){
+							SoundManager.playSound("hit");
+						}		*/						
 						skillshot.m_penetrates--;
 					}
 				}

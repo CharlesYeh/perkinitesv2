@@ -1,8 +1,10 @@
 ﻿package attacks {
 	import db.dbData.AttackData;
+	import units.AIUnit;
 	import units.StatUnit;
 	import game.Game;
 	import flash.geom.Point;
+	import game.SoundManager;
 	
 	/**
 	 * An attack which is cast on a cone shaped space.
@@ -53,7 +55,19 @@
 						arg = -1;
 					}
 					if(Math.acos(arg) * 180 / Math.PI<= angle){
-						e.takeDamage(damage());						
+						e.takeDamage(damage());				
+						
+/*						if(AIUnit.m_enabled){
+							SoundManager.playSound("hit");
+						}		*/
+						
+/*						if(AIUnit.m_enabled){
+							var mtv = new Point(m_caster.x - e.x, m_caster.y - e.y);
+							//try to make it so that it doesn't knockback into an impassable tile
+							mtv.normalize(knockback);
+							e.x -= mtv.x;
+							e.y -= mtv.y;							
+						}*/
 						
 						//if it hits the lead Perkinite, do not hit the partner Perkinite
 						if(e == Game.team[0]){

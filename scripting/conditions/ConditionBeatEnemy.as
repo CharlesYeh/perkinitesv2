@@ -24,6 +24,14 @@
 		public function conditionHandler(e:BeatEnemyEvent):void{
 			if (e.id == id) {
 				Game.eventDispatcher.removeEventListener(GameEventDispatcher.BEAT_ENEMY, conditionHandler);
+				for(var j = 0; j < Game.playerProgress.createdUnits.length; j++){
+					if(Game.playerProgress.createdUnits[j].id == id){
+						Game.playerProgress.createdUnits.splice(j, 1);
+						trace(id + " deleted in ConditionBeatEnemy");
+						break;
+					}
+				}
+				
 				complete();
 				update();
 			}

@@ -9,6 +9,11 @@
 		],
 		[
 			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			},
+			{
 				"type": "ActionNarrator",
 				"time": 152,
 				
@@ -40,20 +45,29 @@
 		],
 		[
 			{
-				"type": "ActionSpeech",
-				"time": 150,
+				"type": "ActionJournal",
 				
-				"name": "",
-				"message": "(TIP: Use the left-click and right-click to trigger the Perkinites' special abilities. Use these to attack the enemies and maintain your lives!)"
+				"message": "Destroy the enemies on the 1st floor!"
+			},
+			{
+				"type": "ActionWait",
+				"time": 24
 			}
-		],
+		],		
 		[
 			{
-				"type": "ActionSpeech",
-				"time": 200,
+				"type": "ActionHUD",
+				"enable": true
+			},
+			{
+				"type": "ActionAI",
+				"enabled": true
+			},
+			{
+				"type": "ActionNotification",
+				"time": 240,
 				
-				"name": "",
-				"message": "(TIP: Abilities will have cooldowns after activation, meaning that they cannot be activated until the cooldown is over. Most cooldowns are short, but take note of this!)"
+				"message": "Left-click to attack!\nRight-click to special attack!"
 			}
 		]
 	]

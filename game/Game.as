@@ -87,19 +87,29 @@
 			}
 			
 			// setup overlay
-			overlay = new GameOverlay();
 			
-				
-			Game.overlay.hud.HPDisplay1.text = Game.playerProgress.health;
-			Game.overlay.hud.HPDisplay2.text = Game.playerProgress.health;
+			overlay = new GameOverlay();	
 			Game.overlay.hud.unitName1.text = teamDat[0].name;
-			Game.overlay.hud.unitName2.text = teamDat[1].name;
+			Game.overlay.hud.unitName2.text = teamDat[1].name;		
 			
+			Game.overlay.hud.HPDisplay1.text = Game.playerProgress.health;
+			Game.overlay.hud.HPDisplay2.text = teamDat[0].health;
+			
+			Game.overlay.hud.healthbar.FP.width = Game.playerProgress.health/teamDat[0].health * 190;
+			
+			Game.overlay.hud.visible = Game.playerProgress.hudVisible;
+			Game.overlay.ehud.visible = Game.playerProgress.ehudVisible;
+			Game.overlay.journal.setGoal(Game.playerProgress.goal);
+			
+			container.addChild(overlay);
 			// create map/world
 			world = MapManager.createWorld(playerProgress.map, team);
 			container.addChild(world);
 			
-			container.addChild(overlay);
+			var tempIndex = container.getChildIndex(overlay);
+			container.setChildIndex(overlay, container.getChildIndex(world));
+			container.setChildIndex(world, tempIndex);
+			
 		}
 		
 		public static function endGameWorld():void {
@@ -143,6 +153,9 @@
 			player.updateHealing(team);
 			
 			MapManager.checkTeleports();
+			
+			//update journal
+			Game.overlay.journal.updateGoal();
 		}
 	}
 }

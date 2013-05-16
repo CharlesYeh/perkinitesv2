@@ -38,7 +38,7 @@
 			shotwait = 24 * 4; //4 seconds before shot attack
 			healthbar.visible = false;
 			
-			Game.overlay.ehud.visible = true;
+			//Game.overlay.ehud.visible = true;
 			Game.overlay.ehud.enemyName.text = unitData.name;
 			Game.overlay.ehud.HPDisplay.text = unitData.health+"";
 			//SCALE IS 2 FOR NOW I'M SORRY WE CAN REVISE IT LATER IF NORMAL HUD REQUIRES A HEALTHBAR
@@ -46,6 +46,9 @@
 		}
 		
 		override public function takeDamage(dmg:int):void {
+			if (!m_enabled) {
+				return;
+			}
 			super.takeDamage(dmg);
 			Game.overlay.ehud.HPDisplay.text = progressData.health+"";
 			Game.overlay.ehud.ehpbar.HP.scaleX = progressData.health/unitData.health * 2;
