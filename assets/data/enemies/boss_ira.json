@@ -21,18 +21,18 @@
     },
     {
       "name": "Negative Spike",
-      "type": "AttackSmartcast",
+      "type": "AttackPoint",
       "icon": "",
       "description": "",
       "dmgBase": "10",
       "dmgRatio": "",
-      "range": 88,
+      "range": 1000,
       "cd": 0,
       "stand": 70,
-      "goToCastPoint": false
+      "radius": 88
     },
     {
-      "name": "DD",
+      "name": "Detached Embers",
       "type": "AttackSkillshot",
       "icon": "",
       "description": "",

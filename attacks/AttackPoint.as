@@ -62,6 +62,7 @@
 			
 			var dd = Math.sqrt(dx * dx + dy * dy);
 			
+			
 			if (dd < range) {
 				// in range
 			}
@@ -73,7 +74,7 @@
 			super.castAbility(caster, castPoint);
 		}
 		
-		override public function pointAttack(bullets:Array):void {
+		override public function pointAttack(bullets:Array, offset:Point):void {
 			// get constructor and delete template
 			var b:MovieClip = bullets[0];
 			var projClass:Class = b.constructor;
@@ -82,10 +83,11 @@
 			}
 			
 			var p:MovieClip = new projClass();
-			p.x = m_castPoint.x;
-			p.y = m_castPoint.y;
+			p.x = m_castPoint.x + offset.x;
+			p.y = m_castPoint.y + offset.y;
+			
 			//get correct orientation
-			//p.rotation = b.rotation;
+			p.rotation = b.rotation;
 			//p.scaleX = (m_caster.scaleX > 0) ? 1 : -1;			
 			
 			

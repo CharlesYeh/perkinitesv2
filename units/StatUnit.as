@@ -63,7 +63,7 @@
 		var prevLabel:String = ANIM_STANDING;
 		public var usingAnimation:Boolean = false;
 		public var usingAbility:Boolean	= false;
-		var disabledMovement:Boolean= false;
+		public var disabledMovement:Boolean= false;
 		var forwardVector:Point = null;
 		//--------END FRAME VARS--------
 		

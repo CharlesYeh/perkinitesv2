@@ -87,12 +87,15 @@
 			// get constructor and delete template
 			var b:MovieClip = bullets[0];
 			var projClass:Class = b.constructor;
+			var bp = b.parent.height;
 			b.parent.removeChild(b); 
 			
 			for (var i:int = 0; i < quantity; i++) {
 				var p:MovieClip = new projClass();
 				p.x = m_caster.x;
-				p.y = m_caster.y;
+				p.x += (m_caster.scaleX > 0) ? b.x : -b.x;
+				p.y = m_caster.y + b.y - bp/2;
+				//trace(m_caster.y + " " + p.y);
 				//get correct orientation
 				p.rotation = b.rotation;
 				p.scaleX = (m_caster.scaleX > 0) ? 1 : -1;			
@@ -111,12 +114,13 @@
 			// get constructor and delete template
 			var b:MovieClip = bullets[0];
 			var projClass:Class = b.constructor;
+			var bp = b.parent.height;
 			b.parent.removeChild(b); 
 			
 			for (var i:int = 0; i < quantity; i++) {
 				var p:MovieClip = new projClass();
-				p.x = m_caster.x;
-				p.y = m_caster.y;
+				p.x = m_caster.x + b.x;
+				p.y = m_caster.y + b.y - bp/2;
 				//get correct orientation
 				p.rotation = b.rotation;
 				p.scaleX = (m_caster.scaleX > 0) ? 1 : -1;			
@@ -135,12 +139,14 @@
 			// get constructor and delete template
 			var b:MovieClip = bullets[0];
 			var projClass:Class = b.constructor;
+			var bp = b.parent.height;
 			b.parent.removeChild(b); 
 			
 			for (var i:int = 0; i < quantity; i++) {
 				var p:MovieClip = new projClass();
 				p.x = m_caster.x;
-				p.y = m_caster.y;
+				p.x += (m_caster.scaleX > 0) ? b.x : -b.x;
+				p.y = m_caster.y + b.y - bp/2;
 				//get correct orientation
 				p.rotation = b.rotation;
 				p.scaleX = (m_caster.scaleX > 0) ? 1 : -1;			
@@ -151,7 +157,6 @@
 				var newY = p.y + (m_castPoint.x - p.x) * Math.sin(angle * Math.PI/180) +
 								(m_castPoint.y - p.y) * Math.cos(angle * Math.PI/180);
 								
-				trace(p + " " + m_castPoint + " " + newX + " " + newY);
 				prepareRelativeProjectile(p, Number(i) / quantity, new Point(newX, newY));
 				
 				p.addEventListener(Event.ENTER_FRAME, projectileRunner);

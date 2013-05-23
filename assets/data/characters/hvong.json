@@ -10,7 +10,7 @@
   "sprite": "HV",
   "health": 90,
   "defense": 0,
-  "speed": 220,
+  "speed": 180,
   "abilities": [
     {
       "name": "Frying Pan Smash",

@@ -10,7 +10,7 @@
   "sprite": "CK",
   "health": 65,
   "defense": 0,
-  "speed": 190,
+  "speed": 150,
   "abilities": [
     {
       "name": "Shoe Throwing",

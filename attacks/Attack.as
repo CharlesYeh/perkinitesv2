@@ -82,7 +82,7 @@
 			}
 		}
 		
-		public function pointAttack(bullets:Array):void {}
+		public function pointAttack(bullets:Array, offset:Point):void {}
 		
 		public function shootSkillshot(bullets:Array):void {}
 		

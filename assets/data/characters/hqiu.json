@@ -10,7 +10,7 @@
   "sprite": "HQ",
   "health": 90,
   "defense": 0,
-  "speed": 220,
+  "speed": 180,
   "abilities": [
     {
       "name": "Jade Fang",

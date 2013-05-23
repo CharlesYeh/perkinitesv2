@@ -1,6 +1,6 @@
 {
   "ai": "BasicAIUnit",
-  "name": "Perkinite Shade",
+  "name": "CS15 Student",
   "id": "shade",
   "sprite": "enemy_Perkinite-Shade",
   "health": 100,

@@ -10,7 +10,7 @@
   "sprite": "CY",
   "health": 100,
   "defense": 20,
-  "speed": 210,
+  "speed": 160,
   "abilities": [
     {
       "name": "Kendo Strike",
@@ -29,7 +29,7 @@
       "type": "AttackSkillshot",
       "icon": "Icon - Ninjitsu.png",
       "description": "Throws a dagger in a line in front of him, stopping at the first enemy it hits.",
-      "dmgBase": "4",
+      "dmgBase": "3",
       "dmgRatio": "0",
       "range": 2000,
       "cd": 0,

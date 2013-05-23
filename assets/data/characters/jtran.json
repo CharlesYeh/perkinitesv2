@@ -10,7 +10,7 @@
   "sprite": "JT",
   "health": 60,
   "defense": 0,
-  "speed": 230,
+  "speed": 170,
   "abilities": [
     {
       "name": "Arrow Control",

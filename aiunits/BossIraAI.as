@@ -49,7 +49,7 @@
 			super(edat);
 			
 			wait = 0;
-			anger = 10;
+			anger = 99;
 			angerDelay = 18;
 			maxAngerDelay = 18;
 			angerInc = 2;
@@ -218,7 +218,13 @@
 			
 			chaseTarget(target, 1000);
 			if (dist < atkRange){
-				castAbility(1, tp);
+				if(usingAbility){
+					//make this more intuitive
+					unitData.abilities[1].m_castPoint = new Point(x + 0.85 * 1.25, y + (41.60) * 1.25); //update it so that while it's moving, it can launch the correct point					
+				}
+				else{
+					castAbility(1, tp); //tp					
+				}
 			}
 			
 			angerDelay--;
@@ -227,7 +233,7 @@
 				anger = Math.max(Math.min(100, anger - angerInc*2), 0);
 				
 			}						
-			if(anger <= 0){
+			if(anger <= 0 && !usingAbility){
 				//when done
 				wait = 96;
 				angry = false;

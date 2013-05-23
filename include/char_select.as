@@ -264,7 +264,9 @@ function clickHandler(e) {
 	
 	//var sound = new se_timeout();
 	//sound.play();
-	
+	for(var i = 0; i < entries.length; i++){ 
+		entries[i].gotoAndStop(1);
+	}
 	chooseTeam(entries[entries.indexOf(e.target)]);
 }
 function entryOverHandler(e) {

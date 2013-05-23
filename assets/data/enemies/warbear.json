@@ -37,7 +37,7 @@
       "type": "AttackHomingProjectiles",
       "icon": "",
       "description": "",
-      "dmgBase": "15",
+      "dmgBase": "10",
       "dmgRatio": "",
       "range": 1000,
       "cd": 0,
