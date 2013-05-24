@@ -1,0 +1,26 @@
+{
+	"id": "level1_miniboss_check",
+	"actions": [
+		[
+			{
+				"type": "ConditionBeatEnemy",
+				"map": "perkins_gf",
+				"id": "warbear"
+			}
+		],
+		[
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "npc_Peace-Bear",
+    		   "direction": "down",
+				"animation": "returning",
+    			"position": {
+					"x": 9,
+        			"y": 5
+      		}
+			}		
+		]
+	]
+}
