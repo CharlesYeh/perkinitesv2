@@ -3,9 +3,8 @@
 	"actions": [
 		[
 			{
-				"type": "ConditionBeatEnemy",
-				"map": "perkins_3f_kitchen",
-				"id": "boss_ira"
+				"type": "ConditionSequence",
+				"name": "level1_3f_boss_check"
 			}
 		],
 		[

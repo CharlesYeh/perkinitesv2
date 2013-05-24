@@ -1,13 +1,46 @@
 {
-	"id": "level1_miniboss_win2",
+	"id": "level1_miniboss_win",
 	"actions": [
 		[
 			{
 				"type": "ConditionSequence",
-				"name": "level1_miniboss_win"
+				"name": "level1_miniboss_check"
 			}
 		],
 		[
+			{
+				"type": "ActionMusic",
+				"time": 0,
+				
+				"enable": false
+			},				
+			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			},			
+			{
+				"type": "ActionWait",
+				"time": 20
+			}
+		],
+		[
+			{
+				"type": "ActionAnimate",
+				"time": 0,
+				
+				"sprite": "npc_Peace-Bear",
+				"animation": "standing"
+			}
+		],
+		[
+			{
+				"type": "ActionAnimate",
+				"time": 20,
+				
+				"sprite": "npc_Peace-Bear",
+				"animation": "standing"
+			},
 			{
 				"type": "ActionNarrator",
 				"time": 123,

@@ -4,7 +4,7 @@
 		[
 			{
 				"type": "ConditionSequence",
-				"name": "level1_miniboss_win"
+				"name": "level1_miniboss_check"
 			}
 		],
 		[

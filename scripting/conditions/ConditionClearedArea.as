@@ -25,7 +25,7 @@
 		
 		public function conditionHandler(e:Event):void{
 			var enemies = Game.world.getEnemies();
-			if(enemies.length == 0){
+			if(enemies.length == 0 || update()){
 				Game.eventDispatcher.removeEventListener(GameEventDispatcher.BEAT_ENEMY, conditionHandler);
 				Game.playerProgress.addClearedArea(map);
 				complete();

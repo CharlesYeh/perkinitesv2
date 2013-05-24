@@ -1,5 +1,5 @@
 {
-	"id": "level1_miniboss_win",
+	"id": "level1_miniboss_check",
 	"actions": [
 		[
 			{
@@ -9,12 +9,6 @@
 			}
 		],
 		[
-			{
-				"type": "ActionMusic",
-				"time": 0,
-				
-				"enable": false
-			},				
 			{
 				"type": "ActionCreate",
 				
@@ -26,25 +20,7 @@
 					"x": 9,
         			"y": 5
       		}
-			},
-			{
-				"type": "ActionJournal",
-				
-				"completed": true
-			},			
-			{
-				"type": "ActionWait",
-				"time": 20
-			}
-		],
-		[
-			{
-				"type": "ActionAnimate",
-				"time": 0,
-				
-				"sprite": "npc_Peace-Bear",
-				"animation": "standing"
-			}
+			}		
 		]
 	]
 }

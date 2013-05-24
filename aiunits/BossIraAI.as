@@ -49,7 +49,7 @@
 			super(edat);
 			
 			wait = 0;
-			anger = 99;
+			anger = 10;
 			angerDelay = 18;
 			maxAngerDelay = 18;
 			angerInc = 2;

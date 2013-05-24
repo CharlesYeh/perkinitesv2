@@ -31,7 +31,6 @@
 						break;
 					}
 				}
-				
 				complete();
 				update();
 			}

@@ -100,7 +100,7 @@
 				else if(dat.subtype == "npc"){
 					cdat.parseData(dat);
 					
-					Game.world.createNPC(cdat);	
+					createNPC(cdat);	
 					m_npcs[m_npcs.length-1].animLabel = dat.animation;
 					m_npcs[m_npcs.length-1].beginAnimation(dat.animation);
 				}
@@ -231,7 +231,9 @@
 			var u:NPCUnit = new NPCUnit(npcdat);
 			u.x = (npcdat.position.x * GameConstants.TILE_SIZE) + (GameConstants.TILE_SIZE >> 1);
 			u.y = (npcdat.position.y * GameConstants.TILE_SIZE) + (GameConstants.TILE_SIZE >> 1);
-
+			
+			var directions = new Array("east", "north", "west", "south");
+			u.updateDirection(directions.indexOf(npcdat.direction));
 			m_npcs.push(u);
 			addChild(u);
 		}

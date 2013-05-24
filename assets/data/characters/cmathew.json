@@ -10,7 +10,7 @@
   "sprite": "CM",
   "health": 65,
   "defense": 0,
-  "speed": 150,
+  "speed": 160,
   "abilities": [
     {
       "name": "Sedated Needles",
