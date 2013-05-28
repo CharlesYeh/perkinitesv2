@@ -74,7 +74,6 @@
 			completedSequences.push(id);
 			
 			//----------------AUTO-SAVE----------------
-			trace(id);
 			save();
 		}
 		
@@ -154,12 +153,12 @@
 			loadedSong = true;
 			hudVisible = prog.hudVisible;
 			ehudVisible = prog.ehudVisible;
-			trace("Loaded enemy hud: " + ehudVisible);		
+			//trace("Loaded enemy hud: " + ehudVisible);		
 			goal = prog.goal;
 			
 			createdUnits = prog.createdUnits;
 				
-			trace("LOADED UNITS");
+			/*trace("LOADED UNITS");
 			for(var i = 0; i < createdUnits.length; i++){
 				trace("Loaded Unit: " + createdUnits[i]);				
 			}
@@ -167,7 +166,7 @@
 			trace("LOADED SEQUENCES");
 			for(var i = 0; i < completedSequences.length; i++){
 				trace("Loaded Unit: " + completedSequences[i]);				
-			}
+			}*/
 		}
 		
 		public function save():void {
@@ -188,10 +187,11 @@
 			hudVisible = Game.overlay.hud.visible;
 			ehudVisible = Game.overlay.ehud.visible;
 			
-			trace("CREATED UNITS:");
+			/*trace("CREATED UNITS:");
 			for(var i = 0; i < createdUnits.length; i++){
 				trace("Created Unit: " + createdUnits[i]);				
 			}
+			*/
 			goal = Game.overlay.journal.goal;
 			
 			// save this object without reference to SharedObject

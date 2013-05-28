@@ -120,7 +120,7 @@
       }
     },
     {
-      "id": "dhcspark",
+      "id": "pset",
       "direction": "left",
       "position": {
         "x": 22,
@@ -128,7 +128,7 @@
       }
     },
     {
-      "id": "dhcspark",
+      "id": "essay",
       "direction": "right",
       "position": {
         "x": 44,
@@ -155,7 +155,15 @@
       "id": "essay",
       "direction": "left",
       "position": {
-        "x": 32,
+        "x": 30,
+        "y": 22
+      }
+    },
+    {
+      "id": "drunkguy",
+      "direction": "down",
+      "position": {
+        "x": 36,
         "y": 22
       }
     }

@@ -4,6 +4,7 @@
 	import game.Game;
 	import attacks.buffs.BuffUtil;
 	
+	import units.AIUnit;
 	import units.StatUnit;
 	
 	import db.dbData.AttackData;
@@ -82,6 +83,9 @@
 			}
 		}
 		
+		public function prepareCastPoint():void {
+			m_castPoint = m_caster.prepareCastPoint();
+		}
 		public function pointAttack(bullets:Array, offset:Point):void {}
 		
 		public function shootSkillshot(bullets:Array):void {}

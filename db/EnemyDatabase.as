@@ -50,16 +50,19 @@
 			var edat:EnemyData = new EnemyData();
 			edat.parseData(dat);
 			
-			enemies[dat.id] = edat;
+			//enemies[dat.id] = edat;
+			enemies[dat.id] = dat;
 		}
 		
 		public function getSprite(id:String):String {
-			var edat:EnemyData = enemies[id];
-			return "assets/sprites/" + edat.sprite + ".swf";
+			//var edat:EnemyData = enemies[id];
+			return "assets/sprites/" + enemies[id].sprite + ".swf";
 		}
 		
 		public function getEnemyData(id:String):EnemyData {
-			return enemies[id];
+			var edat:EnemyData = new EnemyData();
+			edat.parseData(enemies[id]);
+			return edat;
 		}
 	}
 	

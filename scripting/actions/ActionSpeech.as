@@ -16,7 +16,6 @@
 		
 		public var message:String = "";
 		
-		var glowBegin = new GlowFilter(0xFF9900, 100, 20, 20, 1, 10, true, false);
 		
 		override public function parseData(obj:Object):void {
 			super.parseData(obj);
@@ -33,15 +32,16 @@
 		
 		override public function act():void {
 			//add a button
-			var b = new SelectButton();
+			var b = new SkipButton();
 			b.buttonText.text = "Next";
+			b.gotoAndStop(1);
 			b.addEventListener(MouseEvent.CLICK, nextHandler);
 			b.addEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
 			b.addEventListener(MouseEvent.MOUSE_OUT, entryOutHandler);	
 			b.mouseChildren = false;
 			Game.overlay.parent.addChild(b);
-			b.x = 400;
-			b.y = 400;
+			b.x = 515;
+			b.y = 375;
 			
 			Game.overlay.speech.showText(this, icon, name, message);
 		}
@@ -56,10 +56,12 @@
 		}
 		
 		function entryOverHandler(e) {
-			e.target.filters = [glowBegin];
+			e.target.gotoAndStop(2);
+			e.target.buttonText.text = "Next";
 		}
 		function entryOutHandler(e) {
-			e.target.filters = [];
+			e.target.gotoAndStop(1);
+			e.target.buttonText.text = "Next";
 		}					
 	}
 }

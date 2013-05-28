@@ -26,11 +26,14 @@
 		public static function getAbility(abilityData:Object):AttackData {
 			var abilityName = abilityData.name;
 			
+			var ability = AttackData.createAttack(abilityData);
+			
 			if (!abilities.hasOwnProperty(abilityName)) {
-				abilities[abilityName] = AttackData.createAttack(abilityData);
+				abilities[abilityName] = ability;
 			}
 			
-			return abilities[abilityName];
+			//return abilities[abilityName];
+			return ability;
 		}
 		
 		/**

@@ -64,7 +64,6 @@
 			for(var j = 0; j < Game.playerProgress.createdUnits.length; j++){
 				if(Game.playerProgress.createdUnits[j].id == sprite){
 					Game.playerProgress.createdUnits.splice(j, 1);
-					trace(sprite + " deleted");
 					break;
 				}
 			}

@@ -12,7 +12,8 @@
 		public function Speech() {
 			visible = false;
 			
-			y = GameConstants.HEIGHT - height;
+			x = (GameConstants.WIDTH - width)/2;
+			y = GameConstants.HEIGHT - height - 10;
 		}
 		
 		public function showText(act:Action, sprite:Loader, name:String, message:String):void {
@@ -24,6 +25,8 @@
 			}
 			
 			m_currSprite = sprite;
+			m_currSprite.x = 18;
+			m_currSprite.y = 18;
 			addChild(sprite);
 			
 			txtName.text = name;
@@ -31,6 +34,7 @@
 		}
 		public function hideText(act:Action){
 			visible = false;
+			
 			act.complete();
 		}
 	}

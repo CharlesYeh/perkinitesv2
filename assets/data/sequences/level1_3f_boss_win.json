@@ -9,6 +9,9 @@
 		],
 		[
 			{
+				"type": "ActionClearEnemies"
+			},
+			{
 				"type": "ActionJournal",
 				
 				"completed": true
@@ -38,14 +41,6 @@
 				"time": 128,
 				
 				"message": "IRA was also the weakest of the evil lord's CARDINAL SERVANTS so this should not be considered a significant victory. It's a dumb victory."
-			}
-		],
-		[
-			{
-				"type": "ActionNarrator",
-				"time": 128,
-				
-				"message": "IRA was also so stupid that he accidentally dropped a very important item, the J-FRAGMENT ONE, for the heroes to pick up. FRIGGIN' RIDICULOUS. SO DUMB."
 			}
 		],	
 		[

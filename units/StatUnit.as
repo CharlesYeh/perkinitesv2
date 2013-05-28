@@ -32,7 +32,7 @@
 										"dealDamage", "applyBuffs", "shootSkillshot",
 										"teleport", "teleportPartner",
 										"shootDirectedSkillshot", "shootRelativeSkillshot",
-										"pointAttack");
+										"pointAttack", "prepareCastPoint");
 		
 		/** the swf sprite asset */
 		var swf;
@@ -105,6 +105,10 @@
 		
 		public function setAbilityTargets(targets:Array):void {
 			abilityTargets = targets;
+		}
+		
+		public function prepareCastPoint():Point{
+			return new Point(0, 0);
 		}
 		
 		protected function drawHealthbar() {

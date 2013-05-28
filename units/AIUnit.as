@@ -8,6 +8,8 @@
 	
 	import aiunits.*;
 	
+	import flash.geom.Point;
+	
 	import game.Game;
 	
 	public class AIUnit extends StatUnit {
@@ -104,6 +106,12 @@
 			if (dist < chaserange) {
 				moveTo(target.x, target.y);
 			}
+		}
+		
+		override public function prepareCastPoint():Point{
+			var target:StatUnit = getCloserPlayer();
+			var tp:Point = new Point(target.x, target.y);
+			return tp;
 		}
 		
 		override public function takeDamage(dmg:int):void {

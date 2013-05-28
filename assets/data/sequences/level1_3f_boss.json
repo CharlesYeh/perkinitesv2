@@ -122,7 +122,51 @@
 					"x": 12,
         			"y": 3
       		}
-			}			
+			},
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "enemy",
+				"id": "dhcspark",
+				"direction": "down",
+    			"position": {
+					"x": 5,
+        			"y": 6
+      		}
+			},
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "enemy",
+				"id": "dhcspark",
+				"direction": "down",
+    			"position": {
+					"x": 19,
+        			"y": 6
+      		}
+			},
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "enemy",
+				"id": "dhcspark",
+				"direction": "up",
+    			"position": {
+					"x": 5,
+        			"y": 13
+      		}
+			},
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "enemy",
+				"id": "dhcspark",
+				"direction": "up",
+    			"position": {
+					"x": 19,
+        			"y": 13
+      		}
+			}															
 		],
 		[		
 			{

@@ -15,7 +15,7 @@
 			},	
 			{
 				"type": "ActionNarrator",
-				"time": 165,
+				"time": 125,
 				
 				"message": "Obviously they're going to listen to what I say and go to the third floor."
 			}
@@ -23,7 +23,7 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 143,
+				"time": 96,
 				
 				"message": "Ahahaha, free will my ass."
 			}
@@ -40,6 +40,14 @@
 				
 				"message": "Anyway, it seems like darkness is still afoot. There's even more evil stuff now. Our heroes go at it."
 			}
-		]	
+		],
+		[	
+			{
+				"type": "ActionNarrator",
+				"time": 143,
+				
+				"message": "It also doesn't help that LiteBrite is due tonight, and all the frustrated CS15 students have been attracted here by the demon."
+			}		
+		]
 	]
 }

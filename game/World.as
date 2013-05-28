@@ -129,6 +129,8 @@
 			if(e.progressData.health <= 0){
 				Game.eventDispatcher.dispatchEvent(new BeatEnemyEvent(e.unitData.id));
 			}
+			
+			e = null; //garbage collect this on the next GC cycle?
 		}
 		
 		public function clearTeleport(t:Teleport):void{

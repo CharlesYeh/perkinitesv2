@@ -85,6 +85,7 @@
 		
 		override public function shootSkillshot(bullets:Array):void {
 			// get constructor and delete template
+			
 			var b:MovieClip = bullets[0];
 			var projClass:Class = b.constructor;
 			var bp = b.parent.height;

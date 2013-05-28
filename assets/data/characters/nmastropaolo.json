@@ -8,7 +8,7 @@
   "name": "Nate M.",
   "id": "NM",
   "sprite": "NM",
-  "health": 90,
+  "health": 100,
   "defense": 10,
   "speed": 165,
   "abilities": [

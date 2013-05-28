@@ -2,21 +2,22 @@
   "ai": "BasicAIUnit",
   "name": "CS15 Student",
   "id": "shade",
-  "sprite": "enemy_Perkinite-Shade",
-  "health": 100,
+  "sprite": "enemy_CS15-Student",
+  "health": 60,
   "defense": 0,
   "speed": 50,
   "abilities": [
     {
-      "name": "Hatred Slash",
+      "name": "Compiler Error",
       "type": "AttackPoint",
       "icon": "",
       "description": "",
-      "dmgBase": "10",
+      "dmgBase": "8",
       "dmgRatio": "",
-      "range": 50,
+      "range": 160,
       "cd": 20,
-      "stand": 0
+      "stand": 0,
+      "radius": 24
     }
   ]
 }

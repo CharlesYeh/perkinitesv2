@@ -14,7 +14,7 @@
 		/** type of thing to delete */
 		
 		public var skip:Boolean;	//either skips or receives the signal
-		var glowBegin = new GlowFilter(0xFF9900, 100, 20, 20, 1, 10, true, false);
+		//var glowBegin = new GlowFilter(0x333333, 100, 2, 2, 1, 5, true, false);
 		
 		override public function parseData(obj:Object):void {
 			super.parseData(obj);
@@ -25,21 +25,21 @@
 		override public function act():void {
 			if(skip){
 				//add a button
-				var b = new SelectButton();
-				b.buttonText.text = "Skip";
+				var b = new SkipButton();
+				b.gotoAndStop(1);
 				b.addEventListener(Event.ENTER_FRAME, eventHandler);
 				b.addEventListener(MouseEvent.CLICK, skipHandler);
 				b.addEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
 				b.addEventListener(MouseEvent.MOUSE_OUT, entryOutHandler);	
 				b.mouseChildren = false;
 				Game.overlay.parent.addChild(b);
-				b.x = 400;
-				b.y = 400;
+				b.x = 500;
+				b.y = 395;
 			}
 			else{
 				for(var i = 0; i < Game.overlay.parent.numChildren; i++){
 					var child = Game.overlay.parent.getChildAt(i);
-					if(child is SelectButton){
+					if(child is SkipButton){
 						child.removeEventListener(Event.ENTER_FRAME, eventHandler);
 						child.removeEventListener(MouseEvent.CLICK, skipHandler);
 						child.addEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
@@ -108,10 +108,10 @@
 		}
 		
 		function entryOverHandler(e) {
-			e.target.filters = [glowBegin];
+			e.target.gotoAndStop(2);
 		}
 		function entryOutHandler(e) {
-			e.target.filters = [];
+			e.target.gotoAndStop(1);
 		}			
 	}
 }
