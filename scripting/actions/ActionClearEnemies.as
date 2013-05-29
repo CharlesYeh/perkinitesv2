@@ -8,8 +8,9 @@
 			super.act();
 			
 			var enemies = Game.world.getEnemies();
-			for(var e:String in enemies){
-				Game.world.clearEnemy(enemies[e]);
+			for(var i = 0; i < enemies.length; i++){
+				Game.world.clearEnemy(enemies[i]);
+				i--;
 			}
 			
 			for(var j = 0; j < Game.playerProgress.createdUnits.length; j++){

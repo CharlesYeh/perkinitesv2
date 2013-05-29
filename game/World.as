@@ -120,6 +120,8 @@
 		}
 		
 		public function clearEnemy(e:AIUnit):void{
+			
+			trace(m_enemies);
 			var index = m_enemies.indexOf(e);
 			
 			e.destroy();
@@ -131,6 +133,8 @@
 			}
 			
 			e = null; //garbage collect this on the next GC cycle?
+			
+			trace(m_enemies);
 		}
 		
 		public function clearTeleport(t:Teleport):void{

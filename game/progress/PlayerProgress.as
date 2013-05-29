@@ -125,6 +125,21 @@
 			unlockedTeams["HV_HQ"] = true;			
 			
 			health = -1;
+			
+			clearedAreas = new Array();
+			items = new Dictionary();
+			
+			difficulty = 0;			//at the moment, set it to the easiest
+			
+			Controls.enabled = true;
+			AIUnit.enabled = true;
+			currentSong = "";
+			loadedSong = false;
+			hudVisible = false;
+			ehudVisible = false;	
+			goal = "";
+			
+			createdUnits = new Array();
 		}
 		
 		public function loadGame(soId:String):void {
@@ -138,6 +153,7 @@
 			flexPoints = prog.flexPoints;
 			
 			completedSequences = prog.completedSequences;
+			trace(completedSequences);
 			clearedAreas = prog.clearedAreas;
 			items	= prog.items;
 			

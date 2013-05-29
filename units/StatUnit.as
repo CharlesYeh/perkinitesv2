@@ -176,7 +176,6 @@
 		
 		function completeLoad(e):void {
 			loaded = true;
-			
 			swf.content.char.stop();
 			swf.content.char.dire.gotoAndStop(ANIM_WALKING);
 			swf.content.char.dirn.gotoAndStop(ANIM_WALKING);
@@ -458,6 +457,8 @@
 		}
 		
 		protected function deleteSelf():void {
+			swf.contentLoaderInfo.removeEventListener(Event.COMPLETE, completeLoad);
+			
 			endAbility();
 			setAnimLabel("standing");
 			removeChild(healthbar);
@@ -468,6 +469,8 @@
 			
 			if (swf != null) {
 				removeChild(swf);
+				swf.close();
+				swf.unload();
 				swf = null;
 			}
 			removeEventListener(Event.ENTER_FRAME, moveHandler); //prevent dead enemies

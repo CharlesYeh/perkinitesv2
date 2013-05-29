@@ -17,7 +17,7 @@
       "type": "AttackSkillshot",
       "icon": "Icon - Jade Fang.png",
       "description": "Throw two daggers at a target.",
-      "dmgBase": "6",
+      "dmgBase": "4",
       "dmgRatio": "50",
       "range": 72,
       "cd": 0,

@@ -9,6 +9,7 @@
 	
 	import game.Game;
 	import game.GameConstants;
+	import db.dbData.MapCharacterData;
 	
 	/* IRA AI
 	 * if within chase range, chases
@@ -238,6 +239,35 @@
 				wait = 96;
 				angry = false;
 				anger = 0;
+				
+				if(Game.playerProgress.difficulty >= 1){
+					var spawn = new Array(new Point(5, 13), new Point(19, 13), new Point(5, 6), new Point(19, 6));
+					var enemies = Game.world.getEnemies();
+					var i;
+					for(i = 0; i < enemies.length; i++){
+						var checkPoint =  new Point(  (enemies[i].x - GameConstants.TILE_SIZE/2)/GameConstants.TILE_SIZE,
+													  (enemies[i].y - GameConstants.TILE_SIZE/2)/GameConstants.TILE_SIZE );
+						
+						for(var j = 0; j < spawn.length; j++){
+							if(enemies[i].unitData.id == "dhcspark" && spawn[j].x == checkPoint.x && spawn[j].y == checkPoint.y){
+								spawn.splice(j, 1);
+							}							
+						}
+					}
+					
+					for(i = 0; i < spawn.length; i++){
+						var edat = new MapCharacterData();
+						edat.id = "dhcspark";
+						edat.direction = "up";
+						if(spawn[i].y == 6){
+							edat.direction = "down";
+						}
+						edat.position = spawn[i];
+						
+						Game.world.createEnemy(edat);
+					}
+					
+				}
 			}			
 		}
 		

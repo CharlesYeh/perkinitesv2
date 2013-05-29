@@ -3,7 +3,7 @@
   "name": "Dark Turret",
   "id": "dhcspark",
   "sprite": "enemy_DHC-Spark",
-  "health": 70,
+  "health": 60,
   "defense": 0,
   "speed": 0,
   "abilities": [
@@ -12,7 +12,7 @@
       "type": "AttackSkillshot",
       "icon": "",
       "description": "",
-      "dmgBase": "8",
+      "dmgBase": "4",
       "dmgRatio": "",
       "range": 300,
       "cd": 40,

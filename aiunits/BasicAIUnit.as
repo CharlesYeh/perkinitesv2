@@ -24,6 +24,7 @@
 				return;
 			}
 			
+			
 			if (progressData.health <= 0) 
 				Game.world.clearEnemy(this);
 			

@@ -167,6 +167,10 @@
 				"subtype": "editText",
 				
 				"text": ""
+			},
+			{
+				"type": "ActionWait",
+				"time": 24
 			}
 		
 		]	

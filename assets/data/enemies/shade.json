@@ -12,7 +12,7 @@
       "type": "AttackPoint",
       "icon": "",
       "description": "",
-      "dmgBase": "8",
+      "dmgBase": "10",
       "dmgRatio": "",
       "range": 160,
       "cd": 20,

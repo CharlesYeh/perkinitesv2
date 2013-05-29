@@ -18,6 +18,7 @@
 		
 		override public function act():void {
 			super.act();
+			trace("why");
 			Game.eventDispatcher.addEventListener(GameEventDispatcher.BEAT_ENEMY, conditionHandler);
 		}
 		
