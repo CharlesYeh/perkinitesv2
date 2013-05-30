@@ -2,6 +2,7 @@
 import game.Controls;
 import ui.*;
 import flash.display.MovieClip;
+import util.KeyDown;
 
 stop();
 
@@ -16,7 +17,7 @@ function gameRunner(e:Event):void {
 function setupGame():void {
 	
 	addEventListener(Event.ENTER_FRAME, gameRunner);
-	//stage.addEventListener(Event.DEACTIVATE, loseFocus);
+	stage.addEventListener(Event.DEACTIVATE, loseFocus);
 	
 }
 
@@ -32,6 +33,8 @@ function loseFocus(e:Event) {
 	stage.addChild(f);
 	f.addEventListener(MouseEvent.CLICK, regainFocus);
 	f.addEventListener("rightMouseDown", regainFocus);
+	//Controls.enabled = false;
+	KeyDown.clearBindings();
 	
 	//pauseScreen.y = 0;
 }
@@ -39,5 +42,7 @@ function loseFocus(e:Event) {
 function regainFocus(e:MouseEvent):void {
 	Game.gamePause = false;
 	e.target.parent.removeChild(e.target);
+	//Controls.enabled = true;
+	//KeyDown.clearBindings();
 	//pauseScreen.y = 999;
 }

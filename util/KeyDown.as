@@ -90,5 +90,9 @@
 		public static function mouseIsDown(){
 			return keys[MOUSE];
 		}
+		
+		public static function clearBindings(){
+			keys = new Object;
+		}
 	}
 }
