@@ -29,6 +29,8 @@
 		private var m_enemies:Array;
 		private var m_npcs:Array;
 		
+		public var maxEnemies:int = 0;
+		
         /**
 		 * creates the world with MapData
          */
@@ -116,12 +118,12 @@
 			if(c.parent != null){
 				removeChild(c);
 			}
-			m_customs.splice(index, 1);			
+			m_customs.splice(index, 1);
+			c = null;
 		}
 		
 		public function clearEnemy(e:AIUnit):void{
 			
-			trace(m_enemies);
 			var index = m_enemies.indexOf(e);
 			
 			e.destroy();
@@ -134,7 +136,6 @@
 			
 			e = null; //garbage collect this on the next GC cycle?
 			
-			trace(m_enemies);
 		}
 		
 		public function clearTeleport(t:Teleport):void{
@@ -231,6 +232,7 @@
 			
 			m_enemies.push(u);
 			addChild(u);
+			maxEnemies++;
 		}
 		
 		public function createNPC(npcdat:MapCharacterData):void {

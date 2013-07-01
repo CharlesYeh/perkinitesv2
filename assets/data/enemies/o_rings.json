@@ -1,0 +1,23 @@
+{
+  "ai": "BasicAIUnit",
+  "name": "Onion Rings",
+  "id": "o_rings",
+  "sprite": "enemy_O-Rings",
+  "health": 20,
+  "defense": 0,
+  "speed": 100,
+  "abilities": [
+    {
+      "name": "Grease Guard",
+      "type": "AttackSmartcast",
+      "icon": "",
+      "description": "",
+      "dmgBase": "6",
+      "dmgRatio": "0",
+      "range": 88,
+      "cd": 25,
+      "stand": 36,
+      "goToCastPoint": false
+    }
+  ]
+}

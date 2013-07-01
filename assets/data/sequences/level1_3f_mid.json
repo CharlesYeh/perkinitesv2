@@ -1,0 +1,46 @@
+{
+	"id": "level1_3f_mid",
+	"actions": [
+		[
+			{
+				"type": "ConditionClearedArea",
+				"map": "perkins_3f",
+				"beat": 5
+			},
+			{
+				"type": "ConditionSequence",
+				"name": "level1_3f"
+			}
+		],
+		[			
+			{
+				"type": "ActionNarrator",
+				"time": 166,
+				
+				"message": "In the midst of these evil and delirious CS15 students, they still have not found that darn demon child."
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 166,
+				
+				"message": "The only place left to look is the kitchen, so they decide to head there after liberating this floor."
+			}
+		],
+		[
+			{
+				"type": "ActionWait",
+				"time": 48
+			}
+		],		
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 96,
+				
+				"message": "Seriously, they better go to the damn kitchen right after this."
+			}
+		]
+	]
+}

@@ -19,23 +19,14 @@
 			},		
 			{
 				"type": "ActionNarrator",
-				"time": 166,
+				"time": 120,
 				
 				"name": "Narrator",
-				"message": "But clearly, this difficulty is no match for our heroes, and through their arrogance, they will DIE later."
+				"message": "And while our duo survives this time, through their arrogance, they will DIE later."
 			},
 			{
 				"type": "ActionSound",
 				"sound": "gf_win"
-			}
-		],
-		[
-			{
-				"type": "ActionNarrator",
-				"time": 194,
-				
-				"name": "Narrator",
-				"message": "Our heroes feel a strange and depressing force, emanating from the ground floor lounge. Something evil is up, so they go investigate."
 			}
 		],
 		[

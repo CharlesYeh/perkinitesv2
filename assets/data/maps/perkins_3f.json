@@ -160,6 +160,7 @@
   "npcs": [],
   "sequences": [
     "level1_3f",
+	 "level1_3f_mid",
     "level1_3f_win"
   ]
 }

@@ -10,8 +10,8 @@ var gFilter:GlowFilter = new GlowFilter(0x00FF00, 100, 20, 20, 1, 10, true, fals
 var bFilter:GlowFilter = new GlowFilter(0x0000FF, 100, 20, 20, 1, 10, true, false);
 
 var btnFilters:Array	= new Array(bFilter, gFilter, rFilter);
-var btnLabels:Array		= new Array("New Game", "Continue", "Settings");
-var btnObjects:Array	= new Array(newGameButton, continueButton, configButton);
+var btnLabels:Array		= new Array("New Game", "Continue");
+var btnObjects:Array	= new Array(newGameButton, continueButton);
 var btnFuncs:Array		= new Array(newGame, continueGame, config);
 
 for (var a:int = 0; a < btnLabels.length; a++) {

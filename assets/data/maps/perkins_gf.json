@@ -123,7 +123,7 @@
       "id": "pset",
       "direction": "left",
       "position": {
-        "x": 22,
+        "x": 5,
         "y": 20
       }
     },
@@ -147,16 +147,16 @@
       "id": "pset",
       "direction": "right",
       "position": {
-        "x": 41,
-        "y": 22
+        "x": 60,
+        "y": 20
       }
     },
     {
       "id": "essay",
       "direction": "left",
       "position": {
-        "x": 30,
-        "y": 22
+        "x": 17,
+        "y": 21
       }
     },
     {
@@ -166,11 +166,28 @@
         "x": 36,
         "y": 22
       }
+    },
+    {
+      "id": "pset",
+      "direction": "right",
+      "position": {
+        "x": 29,
+        "y": 22
+      }
+    },
+    {
+      "id": "pset",
+      "direction": "right",
+      "position": {
+        "x": 42,
+        "y": 22
+      }
     }
   ],
   "npcs": [],
   "sequences": [
     "level1_gf",
-    "level1_gf_win"
+    "level1_gf_win",
+	 "level1_gf_win2"
   ]
 }

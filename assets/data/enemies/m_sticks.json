@@ -1,0 +1,25 @@
+{
+  "ai": "BasicAIUnit",
+  "name": "Mozarella Stick",
+  "id": "m_stick",
+  "sprite": "enemy_M-Stick",
+  "health": 50,
+  "defense": 0,
+  "speed": 100,
+  "abilities": [
+    {
+      "name": "Cheese Strike",
+      "type": "AttackSkillshot",
+      "icon": "",
+      "description": "",
+      "dmgBase": "12",
+      "dmgRatio": "0",
+      "range": 70,
+      "cd": 25,
+      "stand": 20,
+      "speed": 35,
+      "width": 20,
+      "penetrates": 9999
+    }
+  ]
+}

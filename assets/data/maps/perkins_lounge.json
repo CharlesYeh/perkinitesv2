@@ -78,7 +78,6 @@
   "enemies": [],
   "npcs": [],
   "sequences": [
-    "level1_lounge",
     "level1_miniboss",
     "level1_miniboss_check",
     "level1_miniboss_win",

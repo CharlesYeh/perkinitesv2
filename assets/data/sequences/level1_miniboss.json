@@ -3,12 +3,30 @@
 	"actions": [
 		[
 			{
-				"type": "ConditionNearLocation",
-				"x": 9,
-				"y": 5,
-				"radius": 32
+				"type": "ActionJournal",
+				
+				"completed": true
+			},
+			{
+				"type": "ActionHUD",
+				"enabled": false
 			}
-		],
+		],	
+		[
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "npc_Peace-Bear",
+    		   "direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 9,
+        			"y": 5
+      		}
+			}
+			
+		],	
 		[
 			{
 				"type": "ActionAI",
@@ -18,7 +36,19 @@
 				"type": "ActionNarrator",
 				"time": 128,
 				
-				"message": "To their surprise, they find a teddy bear on the ground, one marked with several peace symbols."
+				"message": "Our heroes find a pleasant surprise as they spot a teddy bear on the ground, one marked with several peace symbols."
+			},
+			{
+				"type": "ActionSound",
+				"sound": "miniboss_1"
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 128,
+				
+				"message": "Such a teddy bear could only be the one formerly known as 'Peace Bear', who belongs to their superior formerly known as 'Ananya.'"
 			},
 			{
 				"type": "ActionSound",
@@ -71,7 +101,7 @@
 				"type": "ActionNarrator",
 				"time": 130,
 				
-				"message": "For some odd reason, a masked child pops out of nowhere. Clearly this cannot be good."
+				"message": "For some odd reason, a masked child pops out of nowhere. This is probably a bad thing."
 			}
 		],
 		[
@@ -174,7 +204,7 @@
 				"type": "ActionNarrator",
 				"time": 230,
 				
-				"message": "It seems like the tables have turned against our heroes. Oh man, they’re about to get beat by a teddy bear. With peace symbols. Doesn’t that suck?"
+				"message": "Oh man, they’re about to get beat by a teddy bear. SUCKS FOR THEM."
 			},
 			{
 				"type": "ActionSound",

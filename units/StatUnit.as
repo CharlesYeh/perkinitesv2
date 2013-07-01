@@ -469,7 +469,7 @@
 			
 			if (swf != null) {
 				removeChild(swf);
-				swf.close();
+				//swf.close();
 				swf.unload();
 				swf = null;
 			}

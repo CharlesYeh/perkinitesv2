@@ -1,0 +1,71 @@
+{
+  "ai": "BossAcediaAI",
+  "name": "Acedia",
+  "id": "boss_acedia",
+  "sprite": "enemy_Acedia",
+  "health": 850,
+  "defense": 0,
+  "speed": 50,
+  "abilities": [
+    {
+      "name": "Creepy Weepy",
+      "type": "AttackSmartcast",
+      "icon": "",
+      "description": "",
+      "dmgBase": "20",
+      "dmgRatio": "",
+      "range": 72,
+      "cd": 0,
+      "stand": 23,
+      "goToCastPoint": false
+    },
+    {
+      "name": "Deep-Fried Impact",
+      "type": "AttackPoint",
+      "icon": "",
+      "description": "",
+      "dmgBase": "15",
+      "dmgRatio": "",
+      "range": 2000,
+      "cd": 0,
+      "stand": 70,
+      "radius": 88
+    },
+    {
+      "name": "Fat Division",
+      "type": "AttackSmartcast",
+      "icon": "",
+      "description": "",
+      "dmgBase": "5",
+      "dmgRatio": "",
+      "range": 100,
+      "cd": 0,
+      "stand": 27,
+      "goToCastPoint": false
+    },
+    {
+      "name": "Deep Terror",
+      "type": "AttackPoint",
+      "icon": "",
+      "description": "",
+      "dmgBase": "20",
+      "dmgRatio": "",
+      "range": 400,
+      "cd": 0,
+      "stand": 1000,
+      "radius": 100
+    },
+    {
+      "name": "Ensnare",
+      "type": "AttackSmartcast",
+      "icon": "",
+      "description": "",
+      "dmgBase": "0",
+      "dmgRatio": "",
+      "range": 1000,
+      "cd": 0,
+      "stand": 1000,
+      "goToCastPoint": false
+    }
+  ]
+}

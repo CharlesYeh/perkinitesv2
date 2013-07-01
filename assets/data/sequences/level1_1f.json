@@ -9,6 +9,10 @@
 		],
 		[
 			{
+				"type": "ActionControls",
+				"enable": false
+			},
+			{
 				"type": "ActionJournal",
 				
 				"completed": true
@@ -18,7 +22,7 @@
 				"time": 152,
 				
 				"name": "Narrator",
-				"message": "As this scene suggests, their trip to Keeney is cut short by a couple of evil PROBLEM SETS surrounding our heroes."
+				"message": "Yikes. It looks like they aren't the only ones here. Their trip to Keeney is cut short by a couple of evil PROBLEM SETS."
 			},
 			{
 				"type": "ActionSound",
@@ -31,7 +35,7 @@
 				"time": 79,
 				
 				"name": "Narrator",
-				"message": "Now normally, pieces of paper don't move on their own."
+				"message": "Fortunately for our two rabblerousers, they know how to smash things around."
 			}
 		],
 		[
@@ -40,7 +44,27 @@
 				"time": 31,
 				
 				"name": "Narrator",
-				"message": "These do."
+				"message": "Not that I approve of such things though."
+			}
+		],
+		[
+			{
+				"type": "ActionHUD",
+				"enable": true
+			},
+			{
+				"type": "ActionControls",
+				"enable": true
+			},			
+			{
+				"type": "ActionAI",
+				"enabled": true
+			},
+			{
+				"type": "ActionNotification",
+				"time": 240,
+				
+				"message": "Left-click to attack!\nRight-click to special attack!"
 			}
 		],
 		[
@@ -52,22 +76,6 @@
 			{
 				"type": "ActionWait",
 				"time": 24
-			}
-		],		
-		[
-			{
-				"type": "ActionHUD",
-				"enable": true
-			},
-			{
-				"type": "ActionAI",
-				"enabled": true
-			},
-			{
-				"type": "ActionNotification",
-				"time": 240,
-				
-				"message": "Left-click to attack!\nRight-click to special attack!"
 			}
 		]
 	]

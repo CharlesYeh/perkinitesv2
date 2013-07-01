@@ -1,0 +1,25 @@
+{
+  "ai": "BasicAIUnit",
+  "name": "Fries",
+  "id": "fries",
+  "sprite": "enemy_Fries",
+  "health": 15,
+  "defense": 0,
+  "speed": 120,
+  "abilities": [
+    {
+      "name": "Fry Volley",
+      "type": "AttackSkillshot",
+      "icon": "",
+      "description": "",
+      "dmgBase": "5",
+      "dmgRatio": "0",
+      "range": 120,
+      "cd": 25,
+      "stand": 24,
+      "speed": 15,
+      "width": 30,
+      "penetrates": 4
+    }
+  ]
+}

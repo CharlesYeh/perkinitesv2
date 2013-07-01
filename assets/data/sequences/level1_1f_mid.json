@@ -1,0 +1,60 @@
+{
+	"id": "level1_1f_mid",
+	"actions": [
+		[
+			{
+				"type": "ConditionClearedArea",
+				"map": "perkins_1f",
+				"beat": 3
+			},		
+			{
+				"type": "ConditionSequence",
+				"name": "level1_1f"
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 150,
+				
+				"name": "Narrator",
+				"message": "Now normally, pieces of paper don't move on their own."
+			},
+			{
+				"type": "ActionSound",
+				"sound": "1f_win"
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 150,
+				
+				"name": "Narrator",
+				"message": "But as you might have realized, yes indeed! Some of the darkness has eventually reached over to Perkins."
+			},
+			{
+				"type": "ActionSound",
+				"sound": "1f_win"
+			}
+		],		
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 182,
+				
+				"name": "Narrator",
+				"message": "It's not a whole lot of darkness, but you get what you get. Homicidal pieces of paper is pretty decent to me."
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 200,
+				
+				"name": "Narrator",
+				"message": "Our raggamuffins realize that they should probably take care of this, so they postpone their trip to Keeney for the sake of Perkins or something."
+			}
+		]
+	]
+}

@@ -16,7 +16,7 @@
 				"type": "ActionNarrator",
 				"time": 146,
 				
-				"message": "We find two of our heroes on the second floor, staring blankly to the right, doing nothing."
+				"message": "We find two lost freshmen on the second floor, staring blankly to the right, doing nothing."
 			},
 			{
 				"type": "ActionSound",
@@ -28,7 +28,7 @@
 				"type": "ActionNarrator",
 				"time": 195,
 				
-				"message": "Realizing they are doing nothing, and no one else is around to help them do even more nothing, they decide to leave Perkins and go somewhere INFINITELY BETTER,"
+				"message": "Realizing they are doing nothing, they decide to leave Perkins and go somewhere INFINITELY BETTER,"
 			}
 		],
 		[

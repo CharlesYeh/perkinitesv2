@@ -1,0 +1,24 @@
+{
+  "ai": "BasicAIUnit",
+  "name": "Burger",
+  "id": "burger",
+  "sprite": "enemy_Burger",
+  "health": 10,
+  "defense": 0,
+  "speed": 80,
+  "abilities": [
+    {
+      "name": "Pick A Burger",
+      "type": "AttackSkillshot",
+      "icon": "",
+      "description": "",
+      "dmgBase": "15",
+      "dmgRatio": "0",
+      "range": 400,
+      "cd": 25,
+      "stand": 36,
+      "speed": 20,
+      "width": 15
+    }
+  ]
+}

@@ -11,7 +11,7 @@
       "conditions": [
         {
           "type": "ConditionSequence",
-          "name": "level1_miniboss_win"
+          "name": "level1_obtain_peacebear"
         }
       ],
       "entry": {
@@ -45,7 +45,7 @@
       "conditions": [
         {
           "type": "ConditionSequence",
-          "name": "level1_miniboss_win"
+          "name": "level1_obtain_peacebear"
         }
       ],
       "entry": {

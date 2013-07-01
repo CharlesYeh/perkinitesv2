@@ -45,7 +45,7 @@
 				"type": "ActionBlackout",
 				"subtype": "editText",
 				
-				"text": "Once upon a time, in the year 201X, a legendary demon awoke to cast terror upon the land."
+				"text": "Once upon a time, in the year 201X, a legendary demon awoke once more to cast terror upon the land."
 			},
 			{
 				"type": "ActionWait",
@@ -57,7 +57,7 @@
 				"type": "ActionBlackout",
 				"subtype": "editText",
 				
-				"text": "This evil lord brought about many monsters to take the lives of many innocents, and submerged the entire land in darkness..."
+				"text": "This evil lord brought about many horrors, and submerged the entire land in darkness..."
 			},
 			{
 				"type": "ActionWait",
@@ -69,7 +69,7 @@
 				"type": "ActionBlackout",
 				"subtype": "editText",
 				
-				"text": "However, there was one place he did not corrupt."
+				"text": "However, there was one place he did not reach."
 			},
 			{
 				"type": "ActionWait",
@@ -81,7 +81,7 @@
 				"type": "ActionBlackout",
 				"subtype": "editText",
 				
-				"text": "It was a safe haven known as Perkins Hall, untouched by the darkness, because it was too far away from anything that mattered"
+				"text": "This was Perkins Hall, a temporary haven from the darkness, because it was too far away from anything that mattered"
 			},
 			{
 				"type": "ActionWait",
@@ -117,7 +117,7 @@
 				"type": "ActionBlackout",
 				"subtype": "editText",
 				
-				"text": "Our story begins in that particular building."
+				"text": "Our story begins here."
 			},
 			{
 				"type": "ActionWait",

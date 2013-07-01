@@ -1,0 +1,29 @@
+{
+	"id": "level1_gf_win2",
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level1_obtain_peacebear"
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 200,
+				
+				"name": "Narrator",
+				"message": "So normally, these two should be dead by now, but they're not."
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 178,
+				
+				"name": "Narrator",
+				"message": "So our two simpletons go to the third floor in the hopes of catching that evil demon child making evil household items or something."
+			}
+		]	
+	]
+}

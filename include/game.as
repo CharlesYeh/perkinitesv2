@@ -17,13 +17,13 @@ function gameRunner(e:Event):void {
 function setupGame():void {
 	
 	addEventListener(Event.ENTER_FRAME, gameRunner);
-	stage.addEventListener(Event.DEACTIVATE, loseFocus);
+	//stage.addEventListener(Event.DEACTIVATE, loseFocus);
 	
 }
 
 function clearGame():void {
 	removeEventListener(Event.ENTER_FRAME, gameRunner);
-	stage.removeEventListener(Event.DEACTIVATE, loseFocus);
+	//stage.removeEventListener(Event.DEACTIVATE, loseFocus);
 	pauseScreen.removeEventListener(MouseEvent.CLICK, regainFocus);
 }
 

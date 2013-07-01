@@ -145,6 +145,7 @@
   "npcs": [],
   "sequences": [
     "level1_1f",
+    "level1_1f_mid",
     "level1_1f_win"
   ]
 }

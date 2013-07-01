@@ -1,0 +1,23 @@
+{
+  "ai": "InvulnerableUnit",
+  "name": "Blob",
+  "id": "blob",
+  "sprite": "enemy_Blob",
+  "health": 1,
+  "defense": 0,
+  "speed": 80,
+  "abilities": [
+    {
+      "name": "Attack",
+      "type": "AttackSmartcast",
+      "icon": "",
+      "description": "",
+      "dmgBase": "4",
+      "dmgRatio": "",
+      "range": 16,
+      "cd": 40,
+      "stand": 0,
+      "goToCastPoint": false
+    }
+  ]
+}
