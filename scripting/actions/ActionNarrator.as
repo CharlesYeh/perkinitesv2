@@ -3,6 +3,7 @@
 	import game.Game;
 	
 	public class ActionNarrator extends Action {
+		public static var toggle:Boolean = true;
 		
 		public var message:String;
 		private var m_time:int;
@@ -11,6 +12,9 @@
 			super.parseData(obj);
 			
 			message = obj.message;
+			if (obj.toggle != null) {
+				toggle = obj.toggle;
+			}
 		}
 		
 		override public function update():Boolean {
@@ -23,7 +27,9 @@
 		}
 		
 		override public function act():void {
+			Game.overlay.narrator.setToggle(toggle);
 			Game.overlay.narrator.showText(message);
+			Game.overlay.narrator.setAction(this);
 			m_time = time;
 		}
 	}
