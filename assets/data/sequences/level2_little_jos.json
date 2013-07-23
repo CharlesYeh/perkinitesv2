@@ -1,0 +1,69 @@
+{
+	"id": "level2_little_jos",
+	"actions": [
+		[
+			{
+				"type": "ActionControls",
+				"enable": false
+			},
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Cashier",
+				"message": "OH GOD PLEASE HELP ME"			
+			}
+		],	
+		[	
+			{
+				"type": "ActionNarrator",
+				"time": 72,
+				"toggle": false,
+				
+				"message": "Ah yes, the cashier is worried about food attacking him. How silly."
+			},
+			{
+				"type": "ActionSound",
+				"sound": "2f"
+			}
+		],
+		[	
+			{
+				"type": "ActionNarrator",
+				"time": 120,
+				"toggle": false,
+				
+				"message": "Instead of PROBLEM SETS, you now have to fight some FRIES and ONION RINGS. Wonderful."
+			},
+			{
+				"type": "ActionSound",
+				"sound": "2f"
+			}
+		],	
+		[	
+			{
+				"type": "ActionJournal",
+				
+				"message": "Save the cashier or something!"
+			},		
+			{
+				"type": "ActionNotification",
+				"time": 240,
+				
+				"message": "Don't get fat. Eat salads!"
+			},		
+			{
+				"type": "ActionControls",
+				"enable": true
+			},
+			{
+				"type": "ActionHUD",
+				"enable": true
+			},
+			{
+				"type": "ActionAI",
+				"enabled": true
+			}					
+		]
+	]
+}

@@ -1,0 +1,43 @@
+{
+	"id": "level2_main_jos",
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level2_little_jos_win"
+			}
+		],
+		[
+			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			},
+			{
+				"type": "ActionNarrator",
+				"time": 196,
+				"toggle": false,
+				
+				"name": "Narrator",
+				"message": "Our heroes walk into the dining court of Jo's, which is completely trashed, surprisingly not by drunk Brown students."
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 172,
+				"toggle": false,
+				
+				"name": "Narrator",
+				"message": "It seems like there are dark barriers preventing them from moving onto the next area, so our heroes do something about that."
+			}
+		],		
+		[
+			{
+				"type": "ActionJournal",
+				
+				"message": "Defeat enough enemies to tear down the dark barriers!"
+			}
+		]
+	]
+}

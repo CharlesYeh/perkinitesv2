@@ -32,13 +32,6 @@
 				"subtype": "npc",
 				"sprite": "npc_Peace-Bear"
 			}
-		],
-		[
-			{
-				"type": "ActionJournal",
-				
-				"message": "Go all the way upstairs to the 3rd floor! :D"
-			}			
-		]		
+		]
 	]
 }

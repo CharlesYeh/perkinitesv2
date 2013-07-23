@@ -73,6 +73,7 @@ function showEntries() {
 	
 	// must only show available Units, not all Units!
 	var counter = 0;
+	var select = false;
 	for (var i = 0; i < allTeams.length; i++) {
 		var team:Array = allTeams[i];
 		
@@ -90,9 +91,11 @@ function showEntries() {
 		entry.glowF = glowEntry;
 		
 		// GOTTA ADD LISTENERS TO ENTRIES AND GOTTA FIX THEM
-		entry.addEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
-		entry.addEventListener(MouseEvent.MOUSE_OUT, entryOutHandler);
-		entry.addEventListener(MouseEvent.CLICK, clickHandler);
+		if(!Game.playerProgress.hasLockedTeam(team)) {
+			entry.addEventListener(MouseEvent.MOUSE_OVER, entryOverHandler);
+			entry.addEventListener(MouseEvent.MOUSE_OUT, entryOutHandler);
+			entry.addEventListener(MouseEvent.CLICK, clickHandler);			
+		}
 
 		// GOTTA ADD
 		playerList.addChild(entry);
@@ -101,8 +104,9 @@ function showEntries() {
 		entry.y = 16 * counter;
 		entries.push(entry);
 		
-		if(counter == 0){
+		if(!select && !Game.playerProgress.hasLockedTeam(team)){
 			chooseTeam(entry);
+			select = true;
 		}
 		counter++;
 	}
@@ -136,10 +140,10 @@ function startLevel(e) {
 	// pressed the start button
 	var allTeams:Array	= Game.dbChar.getUnlockedTeams();
 	
-	Game.playerProgress.unlockedTeams= new Dictionary();
+	//Game.playerProgress.unlockedTeams= new Dictionary();
 	
 	var team:Array = allTeams[chosenTeam];
-	Game.playerProgress.unlockTeam(team);
+	//Game.playerProgress.unlockTeam(team);
 	
 	//var sound = new se_chargeup();
 	//sound.play();
@@ -156,6 +160,8 @@ function startLevel(e) {
 	clearCharSelect();
 	var mdat:MapData = Game.dbMap.getMapData(Game.playerProgress.map);
 	//SoundManager.playSong(mdat.bgmusic);	//watch out for this
+	
+	Game.playerProgress.chosenTeam = team;
 
 	gotoAndStop(1, "game");
 		

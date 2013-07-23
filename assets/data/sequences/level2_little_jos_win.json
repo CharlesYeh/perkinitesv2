@@ -1,0 +1,60 @@
+{
+	"id": "level2_little_jos_win",
+	"actions": [
+		[
+			{
+				"type": "ConditionClearedArea",
+				"map": "little_jos"
+			},
+			{
+				"type": "ConditionSequence",
+				"name": "level2_little_jos"
+			}
+		],	
+		[
+			{
+				"type": "ActionControls",
+				"enable": false
+			}		
+		],	
+		[	
+			{
+				"type": "ActionNarrator",
+				"time": 96,
+				"toggle": false,
+				
+				"message": "Well, you managed to save the cashier's life, but he runs away. How ungrateful."
+			},
+			{
+				"type": "ActionSound",
+				"sound": "2f"
+			}
+		],
+		[	
+			{
+				"type": "ActionNarrator",
+				"time": 72,
+				"toggle": false,
+				
+				"message": "Our heroes move on and hurry to get their Quesadilla."
+			},
+			{
+				"type": "ActionSound",
+				"sound": "2f"
+			}
+		],		
+		[
+			{
+				"type": "ActionControls",
+				"enable": true
+			}		
+		],
+		[
+			{
+				"type": "ActionJournal",
+				
+				"message": "Get that Quesadilla! :D"
+			}
+		]
+	]
+}

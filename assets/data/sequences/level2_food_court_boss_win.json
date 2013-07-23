@@ -1,0 +1,129 @@
+{
+	"id": "level2_food_court_boss_win",
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level2f_food_court_boss"
+			},
+			{
+				"type": "ConditionBeatEnemy",
+				"map": "jos_food_court",
+				"id": "boss_socordia"
+			}
+		],
+		[
+			{
+				"type": "ActionClearEnemies"
+			},
+			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			},
+			{
+				"type": "ActionHUD",
+				"enable": false
+			},
+			{
+				"type": "ActionControls",
+				"enable": false
+			},
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},
+			{
+				"type": "ActionMusic",
+				"time": 0,
+				
+				"enable": false
+			}			
+		],
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 48,
+				"toggle": false,
+				
+				"message": "HOLY CRAP NO. NOOO."
+			}
+		],	
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 48,
+				"toggle": false,
+				
+				"message": "THAT WAS NOT SUPPOSED TO HAPPEN AGAIN."
+			}
+		],			
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 128,
+				
+				"message": "Well whatever. They managed to overcome Socordia through well-timed hacking and slashing."
+			}
+		],				
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 72,
+				
+				"message": "Now that they have the Quesadilla, they can return it to Ananya."
+			}
+		],				
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "editText",
+				
+				"text": ""
+			},					
+			{
+				"type": "ActionBlackout",
+				"subtype": "show",
+				"time": 30
+			},
+			{
+				"type": "ActionWait",
+				"time": 40
+			}
+		],
+		[			
+			{
+				"type": "ActionBlackout",
+				"subtype": "editText",
+				
+				"text": "I hope on the way back they trip and fall and die or something though. That'd be hilarious."
+			},
+			{
+				"type": "ActionWait",
+				"time": 150
+			}
+		],
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "editText",
+				
+				"text": ""
+			},
+			{
+				"type": "ActionWait",
+				"time": 24
+			}
+		
+		],
+		[
+			{
+				"type": "ActionNext",
+				
+				"map": "jos_outer_corridor",
+				"x": 5,
+				"y": 10
+			}
+		]	
+	]
+}

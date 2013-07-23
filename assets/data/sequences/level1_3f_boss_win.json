@@ -39,6 +39,7 @@
 			{
 				"type": "ActionNarrator",
 				"time": 128,
+				"toggle": false,
 				
 				"message": "IRA was also the weakest of the evil lord's CARDINAL SERVANTS so this should not be considered a significant victory. It's a dumb victory."
 			}
@@ -54,7 +55,7 @@
 		[		
 			{
 				"type": "ActionNarrator",
-				"time": 230,
+				"time": 72,
 				
 				"message": "Now they can tell this story to drunk people at parties and get laid or something."
 			}
@@ -173,6 +174,15 @@
 				"time": 24
 			}
 		
+		],
+		[
+			{
+				"type": "ActionNext",
+				
+				"map": "jos_outer_corridor",
+				"x": 5,
+				"y": 10
+			}
 		]	
 	]
 }

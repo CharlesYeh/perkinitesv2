@@ -10,6 +10,10 @@
 			{
 				"type": "ActionHUD",
 				"enabled": false
+			},
+			{
+				"type": "ActionControls",
+				"enable": false
 			}
 		],	
 		[
@@ -25,7 +29,6 @@
         			"y": 5
       		}
 			}
-			
 		],	
 		[
 			{
@@ -35,6 +38,7 @@
 			{
 				"type": "ActionNarrator",
 				"time": 128,
+				"toggle": true,
 				
 				"message": "Our heroes find a pleasant surprise as they spot a teddy bear on the ground, one marked with several peace symbols."
 			},
@@ -62,6 +66,12 @@
 				
 				"name": "???",
 				"message": "Hyuk hyuk hyuk..."
+			}
+		],
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
 			}
 		],
 		[
@@ -114,6 +124,12 @@
 				"message": "Hyuk hyuk hyuk..."			
 			}
 		],	
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
+			}
+		],		
 		[
 			{
 				"type": "ActionAnimate",
@@ -213,9 +229,19 @@
 		],
 		[
 			{
+				"type": "ActionSkip",
+				"skip": false
+			}
+		],		
+		[
+			{
 				"type": "ActionAI",
 				"enabled": true
-			},		
+			},	
+			{
+				"type": "ActionControls",
+				"enable": true
+			},				
 			{
 				"type": "ActionHUD",
 				"enable": true

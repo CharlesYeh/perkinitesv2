@@ -18,6 +18,13 @@
 		"level1_3f_win",
 		"level1_3f_boss",
 		"level1_3f_boss_check",
-		"level1_3f_boss_win"
+		"level1_3f_boss_win",
+		"level2_outer_corridor",
+		"level2_little_jos",
+		"level2_little_jos_win",
+		"level2_main_jos",
+		"level2_main_jos_win",
+		"level2_food_court_boss",
+		"level2_food_court_boss_win"
 	]
 }

@@ -57,7 +57,7 @@
 			},
 			{
 				"type": "ActionNarrator",
-				"time": 123,
+				"time": 96,
 				
 				"name": "Narrator",
 				"message": "Well they won against a teddy bear. GOOD JOB GUYS."
@@ -65,6 +65,12 @@
 			{
 				"type": "ActionSound",
 				"sound": "miniboss_win_1"
+			}
+		],
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
 			}
 		]
 	]

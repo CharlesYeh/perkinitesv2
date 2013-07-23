@@ -1,15 +1,10 @@
 {
-	"id": "level1_3f_boss",
+	"id": "level2_food_court_boss",
 	"actions": [
 		[
 			{
 				"type": "ActionHUD",
 				"enabled": false
-			},
-			{
-				"type": "ActionJournal",
-				
-				"completed": true
 			},			
 			{
 				"type": "ActionAI",
@@ -24,15 +19,23 @@
 				"time": 96,
 				"toggle": true,
 				
-				"message": "Now they are in the kitchen. The demon could be hiding here or not."
+				"message": "Clearly I was here for all of this when it happened so that's why I'm narrating."
 			}
 		],
 		[
 			{
 				"type": "ActionNarrator",
+				"time": 150,
+				
+				"message": "In any case, it's eerily quiet, and there is no one manning the Quesadilla station."
+			}
+		],		
+		[
+			{
+				"type": "ActionNarrator",
 				"time": 72,
 				
-				"message": "Let's just say he's here and speed this up."
+				"message": "Fortunately the screams of two ragamuffins break the silence."
 			}
 		],
 		[
@@ -40,7 +43,30 @@
 				"type": "ActionSkip",
 				"skip": false
 			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Two Raggamuffins",
+				"message": "AHHHHHHHHHHHHHHHHH"
+			}		
+		],			
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 170,
+				
+				"message": "It seems like the two ragamuffins Ananya mentioned are standing ever so silly. I wonder why they aren't running away or something smart."
+			}
 		],	
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
+			}
+		],						
 		[
 			{
 				"type": "ActionMusic",
@@ -78,35 +104,25 @@
 				"type": "ActionSpeech",
 				"time": 10,
 				
-				"name": "Masked Child",
+				"name": "Sleepy-headed Girl",
 				"icon": "Face Icon - Ira.png",
-				"message": "Hyuk hyuk hyuk..."
-			}	
+				"message": "I'm tired."
+			}		
 		],		
 		[
 			{
 				"type": "ActionNarrator",
 				"time": 128,
 				
-				"message": "Our heroes are pretty peeved about all these monsters and stuff, so they prepare to attack."
+				"message": "Ah yes, it is our sleepy-headed girl from earlier. Nothing important to say as usual."
 			}
-		],				
-		[
-			{
-				"type": "ActionSpeech",
-				"time": 10,
-				
-				"name": "Masked Child",
-				"icon": "Face Icon - Ira.png",
-				"message": "..."
-			}		
-		],	
+		],		
 		[		
 			{
 				"type": "ActionNarrator",
 				"time": 230,
 				
-				"message": "Fortunately for our evil demon child, he's pretty peeved that the heroes kept on ruining his hard efforts, and starts fuming with anger."
+				"message": "Welp, it looks like the sleepy-headed girl is about to undergo a transformation. Let's watch and not do anything about it."
 			}
 		],		
 		[
@@ -170,12 +186,12 @@
 				"type": "ActionNarrator",
 				"time": 120,
 				
-				"message": "YES! Here he is, IRA, in his true form!"
+				"message": "YES! Here he is, SOCORDIA, in her true form!"
 			},
 			{
 				"type": "ActionJournal",
 				
-				"message": "The darkness has transformed! Defeat the evil to free Perkins!"
+				"message": "The darkness has transformed! Defeat the evil to get a Quesadilla!"
 			}		
 		],
 		[		
@@ -191,9 +207,9 @@
 				"type": "ActionSpeech",
 				"time": 10,
 				
-				"name": "Ira",
+				"name": "Socordia",
 				"icon": "Face Icon - Ira.png",
-				"message": "GRAAAAWWRRRRHHHHHHHHHHHHHH"
+				"message": "MERHHHHHHHHHHHHHHH"
 			}		
 		],		
 		[		
@@ -201,7 +217,7 @@
 				"type": "ActionNarrator",
 				"time": 100,
 				
-				"message": "So our heroes are pretty much dead now. THE END."
+				"message": "I'm sure our heroes are gonna die now. THE END."
 			}
 		],
 		[

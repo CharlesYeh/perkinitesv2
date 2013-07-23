@@ -1,0 +1,66 @@
+{
+	"id": "level2_outer_corridor",
+	"actions": [
+		[	
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},		
+			{
+				"type": "ActionNarrator",
+				"time": 72,
+				"toggle": true,
+				
+				"message": "Our freshmen find themselves in suspicious silence."
+			},
+			{
+				"type": "ActionSound",
+				"sound": "2f"
+			}
+		],
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
+			}		
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "???",
+				"message": "AHHHHHHHHHHHHHHHHHHHHHHHHHH-"			
+			}
+		],	
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 128,
+				
+				"message": "That silence is broken. It appears the shriek came from Little Jo's, the minimart of this fine dining establishment. Let's follow."
+			}
+		],
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
+			},		
+			{
+				"type": "ActionControls",
+				"enable": true
+			},
+			{
+				"type": "ActionHUD",
+				"enable": true
+			}			
+		],
+		[
+			{
+				"type": "ActionJournal",
+				
+				"message": "Go to Little Jo's! :D"
+			}
+		]
+	]
+}

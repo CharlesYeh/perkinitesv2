@@ -15,7 +15,7 @@
 			},
 			{
 				"type": "ActionNarrator",
-				"time": 165,
+				"time": 120,
 				
 				"name": "Narrator",
 				"message": "Now they are on the ground floor! Being the goody two-shoes they are, they also try to stop the things from killing them."
@@ -33,7 +33,7 @@
 			},
 			{
 				"type": "ActionNarrator",
-				"time": 143,
+				"time": 72,
 				
 				"name": "Narrator",
 				"message": "This part is more difficult because there are some DRUNK GUYS to deal with!"

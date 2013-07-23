@@ -9,8 +9,13 @@
 		],
 		[
 			{
+				"type": "ActionControls",
+				"enable": false
+			},		
+			{
 				"type": "ActionNarrator",
-				"time": 200,
+				"time": 96,
+				"toggle": true,
 				
 				"name": "Narrator",
 				"message": "So normally, these two should be dead by now, but they're not."
@@ -19,11 +24,28 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 178,
+				"time": 120,
 				
 				"name": "Narrator",
 				"message": "So our two simpletons go to the third floor in the hopes of catching that evil demon child making evil household items or something."
 			}
-		]	
+		],
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
+			}
+		],		
+		[
+			{
+				"type": "ActionControls",
+				"enable": true
+			},		
+			{
+				"type": "ActionJournal",
+				
+				"message": "Go all the way upstairs to the 3rd floor! :D"
+			}			
+		]			
 	]
 }

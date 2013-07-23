@@ -20,8 +20,8 @@
 			{
 				"type": "ActionNarrator",
 				"time": 152,
+				"toggle": false,
 				
-				"name": "Narrator",
 				"message": "Yikes. It looks like they aren't the only ones here. Their trip to Keeney is cut short by a couple of evil PROBLEM SETS."
 			},
 			{
@@ -32,9 +32,8 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 79,
+				"time": 60,
 				
-				"name": "Narrator",
 				"message": "Fortunately for our two rabblerousers, they know how to smash things around."
 			}
 		],
@@ -43,7 +42,6 @@
 				"type": "ActionNarrator",
 				"time": 31,
 				
-				"name": "Narrator",
 				"message": "Not that I approve of such things though."
 			}
 		],

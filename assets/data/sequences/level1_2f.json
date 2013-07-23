@@ -7,14 +7,11 @@
 				"name": "level1_intro"
 			}
 		],
-		[
-			{
-				"type": "ActionSkip",
-				"skip": true
-			},		
+		[	
 			{
 				"type": "ActionNarrator",
 				"time": 146,
+				"toggle": true,
 				
 				"message": "We find two lost freshmen on the second floor, staring blankly to the right, doing nothing."
 			},
@@ -81,6 +78,15 @@
 				
 				"message": "Go downstairs! :D"
 			}
-		]
+		],
+		[
+			{
+				"type": "ActionNext",
+				
+				"map": "jos_outer_corridor",
+				"x": 5,
+				"y": 10
+			}
+		]	
 	]
 }

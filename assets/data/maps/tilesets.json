@@ -19,6 +19,11 @@
 			"id": "malefic",
 			"types": ["s", "w", "w"],
 			"clings": [false, false, false]
+		},
+		{
+			"id": "jos",
+			"types": ["s", "w", "s", "w"],
+			"clings": [false, false, false, false]
 		}
 	]
 }

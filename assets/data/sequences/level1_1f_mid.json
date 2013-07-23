@@ -28,7 +28,7 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 150,
+				"time": 96,
 				
 				"name": "Narrator",
 				"message": "But as you might have realized, yes indeed! Some of the darkness has eventually reached over to Perkins."
@@ -41,7 +41,7 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 182,
+				"time": 96,
 				
 				"name": "Narrator",
 				"message": "It's not a whole lot of darkness, but you get what you get. Homicidal pieces of paper is pretty decent to me."
@@ -50,10 +50,10 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 200,
+				"time": 120,
 				
 				"name": "Narrator",
-				"message": "Our raggamuffins realize that they should probably take care of this, so they postpone their trip to Keeney for the sake of Perkins or something."
+				"message": "Our raggamuffins realize people could die from this, so they postpone their trip to Keeney to save Perkins."
 			}
 		]
 	]

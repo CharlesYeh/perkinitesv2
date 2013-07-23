@@ -16,6 +16,7 @@
 			{
 				"type": "ActionNarrator",
 				"time": 125,
+				"toggle": false,
 				
 				"message": "Obviously they're going to listen to what I say and go to the third floor."
 			}

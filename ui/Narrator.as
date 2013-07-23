@@ -5,7 +5,10 @@
 	import flash.events.MouseEvent;
 	
 	import game.GameConstants;
+	import game.MapManager;
+	import scripting.Sequence;
 	import scripting.actions.Action;
+	import scripting.actions.ActionSkip;
 	
 	public class Narrator extends MovieClip {
 		
@@ -28,9 +31,11 @@
 		}
 		public function setToggle(toggle:Boolean): void {
 			this.toggle = toggle;
+			trace(toggle);
 		}	
 		public function showText(text:String):void {
 			visible = true;
+			
 			
 			txtMessage.text = text;
 			txtMessage.setTextFormat(bold);
@@ -78,7 +83,49 @@
 			hideText(action);
 		}
 		function skipHandler(e) {
-			
+			var frameSubset = new Array();
+			var foundSequence = null;
+			outer: for (var i:String in MapManager.world.mapData.sequences) {
+				var seq:Sequence = MapManager.world.mapData.sequences[i];
+				
+				//find the containing sequence, ASSUME IT HAS A RECEIVING ACTIONSKIP
+				
+				for(var j:String in seq.actions){
+					var frame:Array = seq.actions[j];
+					
+					for(var k:String in frame){
+						var act:Action = frame[k];
+						if(this.action == act){
+							foundSequence = seq;
+							break outer;
+						}
+					}
+				}
+			}
+			if(foundSequence != null){
+				var receive = false;				
+				outer2: for(j in foundSequence.actions){
+					frame = foundSequence.actions[j];
+					
+					for(k in frame){
+						act = frame[k];
+						if(act is ActionSkip && !(ActionSkip)(act).skip){
+							receive = true;
+							act.complete();
+							break outer2;
+						}
+					}
+					
+					if(!receive){
+						for(k in frame){
+							act = frame[k];
+							act.complete();
+						}						
+					}
+				}
+				
+				hideText(this.action);
+			}			
 		}
 	}
 }

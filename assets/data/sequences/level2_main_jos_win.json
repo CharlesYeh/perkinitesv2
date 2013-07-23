@@ -1,0 +1,54 @@
+{
+	"id": "level2_main_jos_win",
+	"actions": [
+		[
+			{
+				"type": "ConditionClearedArea",
+				"map": "main_jos",
+				"beat": 10
+			},		
+			{
+				"type": "ConditionSequence",
+				"name": "level2_main_jos"
+			}
+		],
+		[			
+			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 96,
+				
+				"name": "Narrator",
+				"message": "The dark barriers are down now. Our heroes prepare to get a Quesadilla."
+			}
+		],
+		[
+			{
+				"type": "ActionWait",
+				"time": 48
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 48,
+				
+				"name": "Narrator",
+				"message": "Exciting."
+			}
+		],	
+		[
+			{
+				"type": "ActionJournal",
+				
+				"message": "Get that Quesadilla! :D"
+			}
+		]			
+	]
+}

@@ -39,6 +39,7 @@
 		
 		/** set of the unlocked teams */
 		public var unlockedTeams:Dictionary = new Dictionary();
+		public var lockedTeams:Dictionary = new Dictionary();
 		
 		/** health of the team */
 		public var health;
@@ -107,13 +108,17 @@
 			return unlockedTeams.hasOwnProperty(team.join("_"));
 		}
 		
+		public function hasLockedTeam(team:Array):Boolean {
+			return lockedTeams.hasOwnProperty(team.join("_"));
+		}		
+		
 		public function newGame():void {
 			id = "PERKINITES";
 			flexPoints = 0;
 			
-			map = "perkins_2f";
+			map = "jos_outer_corridor"; //perkins_2f
 			x = 5;
-			y = 10;
+			y = 26; //10
 			
 			completedSequences = new Array();
 			items = new Dictionary();
@@ -123,6 +128,7 @@
 			unlockedTeams["EH_JT"] = true;
 			unlockedTeams["CK_CM"] = true;
 			unlockedTeams["HV_HQ"] = true;			
+			lockedTeams = new Dictionary();
 			
 			health = -1;
 			
@@ -142,6 +148,37 @@
 			createdUnits = new Array();
 		}
 		
+		public function nextLevel(mapName:String, xpos:int, ypos:int):void {
+			this.map = mapName;
+			
+			var player:StatUnit = Game.team[0];
+			player.x = xpos * TileMap.TILE_SIZE;
+			player.y = ypos * TileMap.TILE_SIZE;
+			
+			//disable the last team played
+			
+			health = -1;
+			
+			Controls.enabled = true;
+			AIUnit.enabled = true;
+			currentSong = "";
+			loadedSong = false;
+			hudVisible = false;
+			ehudVisible = false;	
+			goal = "";	
+			
+						
+			Game.playerProgress = this;
+			lockedTeams[chosenTeam.join("_")] = true;
+			
+			save();
+			
+			
+			Game.container.gotoAndStop(1, "menu");
+			Game.container.gotoAndStop("char_select");
+
+		}
+		
 		public function loadGame(soId:String):void {
 			var prog:Object = sharedObj.data[soId];
 			
@@ -158,6 +195,7 @@
 			items	= prog.items;
 			
 			unlockedTeams = prog.unlockedTeams;
+			lockedTeams = prog.lockedTeams;
 			
 			health = prog.health;
 			
@@ -192,7 +230,7 @@
 			var player:StatUnit = Game.team[0];
 			x = player.x / TileMap.TILE_SIZE;
 			y = player.y / TileMap.TILE_SIZE;
-			map = Game.world.mapData.id;
+			map = Game.playerProgress.map;
 			
 /*			var uteams = unlockedTeams;
 			unlockedTeams = uteams();*/
