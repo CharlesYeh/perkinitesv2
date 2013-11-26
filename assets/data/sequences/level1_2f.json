@@ -59,9 +59,10 @@
 			},		
 			{
 				"type": "ActionNotification",
-				"time": 240,
+				"time": 180,
 				
-				"message": "Use WASD to move!"
+				"title": "Use W, A, S, + D",
+				"longSubtitle": "Go move yo' FINE self ;)"
 			},
 			{
 				"type": "ActionControls",
@@ -78,15 +79,6 @@
 				
 				"message": "Go downstairs! :D"
 			}
-		],
-		[
-			{
-				"type": "ActionNext",
-				
-				"map": "jos_outer_corridor",
-				"x": 5,
-				"y": 10
-			}
-		]	
+		]
 	]
 }

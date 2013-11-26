@@ -72,6 +72,23 @@
 			}
 		}		
 		
+		public function resetDirection() {
+			switch(mapCharacterData.direction){
+				case "right":
+					updateDirection(0);
+					break;
+				case "up":
+					updateDirection(1);
+					break;
+				case "left":
+					updateDirection(2);
+					break;
+				case "down":
+					updateDirection(3);
+					break;
+			}
+		}
+		
 		override public function updateDirection(dir:int) {
 			if (!loaded) return;
 			

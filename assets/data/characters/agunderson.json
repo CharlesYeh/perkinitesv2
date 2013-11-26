@@ -1,0 +1,39 @@
+{
+  "levelBonuses": {
+    "health": 0,
+    "attack": 0,
+    "speed": 0
+  },
+  "weapon": "The Language Exchanger",
+  "name": "Ariana G.",
+  "id": "AG",
+  "sprite": "AG",
+  "health": 0,
+  "defense": 0,
+  "speed": 0,
+  "abilities": [
+    {
+      "name": "Mummy Curse",
+      "type": "AttackPoint",
+      "icon": "Icon - Mummy Curse.png",
+      "description": "Curse an enemy, damaging and slowing it.\n",
+      "dmgBase": "",
+      "dmgRatio": "",
+      "range": 0,
+      "cd": 0,
+      "stand": 0
+    },
+    {
+      "name": "Swap Attire",
+      "type": "AttackSmartcast",
+      "icon": "Icon - Swap Attire.png",
+      "description": "Modify Movement Speed with new clothes, and also dazzle everybody.\n",
+      "dmgBase": "",
+      "dmgRatio": "",
+      "range": 0,
+      "cd": 0,
+      "stand": 0,
+      "goToCastPoint": false
+    }
+  ]
+}

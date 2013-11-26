@@ -1,34 +1,38 @@
 ﻿package game {
 	import flash.display.MovieClip;
 	
-	import db.*;
-	
+	import db.CharacterDatabase;
+	import db.EnemyDatabase;
+	import db.MapDatabase;
+	import db.SequenceDatabase;
+	import db.SoundDatabase;
+	import db.SpeechDatabase;
 	import db.dbData.CharacterData;
-	
-	import game.progress.PlayerProgress;
-	
-	import game.SoundManager;
+	import db.dbData.MapData;
+
 	import events.GameEventDispatcher;
 	
-	import units.StatUnit;
-	import units.Perkinite;
+	import game.SoundManager;	
+	import game.progress.PlayerProgress;
+	
 	import ui.GameOverlay;
 
+	import units.StatUnit;
+	import units.Perkinite;
+
 	public class Game {
-		public static var sndManager:SoundManager;
+		private static var sndManager:SoundManager;
 		public static var eventDispatcher:GameEventDispatcher;
 		
 		public static var dbEnemy:EnemyDatabase;
+		public static var dbSeq:SequenceDatabase;
 		public static var dbMap:MapDatabase;
 		public static var dbChar:CharacterDatabase;
-		public static var dbSeq:SequenceDatabase;
 		public static var dbSnd:SoundDatabase;
+		public static var dbSpch:SpeechDatabase;
 		
 		/** info about the player's progress is stored here */
 		public static var playerProgress:PlayerProgress;
-		
-		/** in-game player variables are stored here */
-		public static var player:Player;
 		
 		/** the index of team the player is playing with */
 		public static var teamIndex:int;
@@ -49,12 +53,11 @@
 			eventDispatcher = new GameEventDispatcher();
 			
 			dbEnemy	= new EnemyDatabase();
+			dbSeq	= new SequenceDatabase();
 			dbMap	= new MapDatabase();
 			dbChar	= new CharacterDatabase();
-			dbSeq	= new SequenceDatabase();
 			dbSnd	= new SoundDatabase();
-			
-			player	= new Player();
+			dbSpch  = new SpeechDatabase();
 			playerProgress = new PlayerProgress();
 		}
 		
@@ -80,8 +83,8 @@
 				var cdat:CharacterData = teamDat[i];
 				
 				var char:Perkinite = new Perkinite(cdat);
-				char.x = GameConstants.TILE_SIZE * playerProgress.x + i * START_SEPARATION;
-				char.y = GameConstants.TILE_SIZE * playerProgress.y;
+				char.x = GameConstants.TILE_SIZE * playerProgress.x + (GameConstants.TILE_SIZE >> 1) + i * START_SEPARATION;
+				char.y = GameConstants.TILE_SIZE * playerProgress.y + (GameConstants.TILE_SIZE >> 1) + i;
 				
 				team.push(char);
 			}
@@ -90,7 +93,7 @@
 			
 			overlay = new GameOverlay();	
 			Game.overlay.hud.unitName1.text = teamDat[0].name;
-			Game.overlay.hud.unitName2.text = teamDat[1].name;		
+			//Game.overlay.hud.unitName2.text = teamDat[1].name;		
 			
 			Game.overlay.hud.HPDisplay1.text = Game.playerProgress.health;
 			Game.overlay.hud.HPDisplay2.text = teamDat[0].health;
@@ -103,7 +106,7 @@
 			
 			container.addChild(overlay);
 			// create map/world
-			world = MapManager.createWorld(playerProgress.map, team);
+			world = MapManager.createWorld(Game.playerProgress.map);
 			container.addChild(world);
 			
 			var tempIndex = container.getChildIndex(overlay);
@@ -136,12 +139,13 @@
 				if (lead == u) {
 					continue;
 				}
-				/*if(StatUnit.distance(lead, u) >= 24){
-					u.moveTo(lead.x, lead.y, true);					
-				}*/u.moveTo(lead.x, lead.y, true);		
+				u.moveTo(lead.x, lead.y, true);		
 			}
 		}
 		
+		/**
+		 * This is the main game loop.
+		 */
 		public static function update():void {
 			// move player
 			Controls.handleGameInputs();
@@ -150,9 +154,7 @@
 			MapManager.update();
 			
 			// fps healing
-			player.updateHealing(team);
-			
-			MapManager.checkTeleports();
+			Player.updateHealing();
 			
 			//update journal
 			Game.overlay.journal.updateGoal();

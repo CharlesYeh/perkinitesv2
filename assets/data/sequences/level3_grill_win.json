@@ -1,0 +1,12 @@
+{
+	"id": "level3_grill_win",
+	"actions": [
+		[
+			{
+				"type": "ConditionClearedArea",
+				"map": "ratty_grill",
+            "beat": 4
+			}
+		]
+	]
+}

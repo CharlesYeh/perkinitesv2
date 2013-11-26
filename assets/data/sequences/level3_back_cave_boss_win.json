@@ -1,0 +1,137 @@
+{
+	"id": "level3_back_cave_boss_win",
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level3_back_cave_boss"
+			},
+			{
+				"type": "ConditionBeatEnemy",
+				"map": "ratty_back_cave",
+				"id": "boss_gula"
+			}
+		],
+		[
+			{
+				"type": "ActionClearEnemies"
+			},
+			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			},
+			{
+				"type": "ActionHUD",
+				"enable": false
+			},
+			{
+				"type": "ActionControls",
+				"enable": false
+			},
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},
+			{
+				"type": "ActionMusic",
+				"time": 0,
+				
+				"enable": false
+			}			
+		],
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 36,
+				"toggle": false,
+				
+				"message": "SON OF A-"
+			}
+		],	
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 72,
+				"toggle": false,
+				
+				"message": "I'm sure starting on Level 4, these evil things will be a lot more competent. I'm just sure of it."
+			}
+		],			
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 72,
+				
+				"message": "Like damn, how hard is it for these things to kill these guys?"
+			}
+		],				
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 144,
+				
+				"message": "Hell, I don't even know what these guys are doing at the Ratty. Why weren't they killed by the drunk guys?"
+			}
+		],		
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 144,
+				
+				"message": "Those guys play sports. THEY ACTUALLY GO TO THE GYM."
+			}
+		],      		
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "editText",
+				
+				"text": ""
+			},					
+			{
+				"type": "ActionBlackout",
+				"subtype": "show",
+				"time": 30
+			},
+			{
+				"type": "ActionWait",
+				"time": 40
+			}
+		],
+		[			
+			{
+				"type": "ActionBlackout",
+				"subtype": "editText",
+				
+				"text": "Who the fuck uses ice cream to kill people?"
+			},
+			{
+				"type": "ActionWait",
+				"time": 48
+			}
+		],
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "editText",
+				
+				"text": ""
+			},
+			{
+				"type": "ActionWait",
+				"time": 24
+			}
+		
+		],
+		[
+			{
+				"type": "ActionNext",
+				
+				"map": "ratty_dining_court",
+				"x": 14,
+				"y": 4
+			}
+		]	
+	]
+}

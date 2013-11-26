@@ -1,0 +1,12 @@
+{
+	"id": "level2_food_court_boss_check",
+	"actions": [
+		[
+			{
+				"type": "ConditionBeatEnemy",
+				"map": "jos_food_court",
+				"id": "boss_socordia"
+			}
+		]	
+	]
+}

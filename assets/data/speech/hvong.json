@@ -1,0 +1,57 @@
+{
+   "name": "Huong V.",
+   "id": "HV",
+	"speech": [
+		{
+			"name": "greetings",
+      	"lines": [
+            "Hey gurlllll.",
+            "Hey, whatchu up to? ;)",
+            "Sup."
+      	]
+		},
+		{
+			"name": "acceptance",
+      	"lines": [
+            "Yeah, come to the dark side :)",
+            "Great! We can be twinsies :)",
+            "Cool! Let's be besties. "
+      	]
+		},      
+		{
+			"name": "rejection",
+      	"lines": [
+            "Damn gurl I didn't want you anyway.",
+            "Yeah whateva."
+      	]
+		},
+		{
+			"name": "mirror",
+      	"lines": [
+            "WTF!?!?"
+      	]
+		},
+		{
+			"name": "field",
+      	"lines": [
+            "Oh no! The demons are here :("
+      	]
+		},    
+
+		{
+			"name": "perkinite_CY",
+      	"lines": [
+            "Charles, I had a dream about John Tran being my sibling and you were the trouble-making friend. =)"
+      	]
+		},                
+		{
+			"name": "npc",
+      	"lines": [
+            "Did you eat yet? Let's eat together :)",
+            "Hey guys, what's up? Let's plan someone's birthday party.",
+            "heyyygirlheyy! guesswhat? meeeeeeeeeee.",
+            "I'M NOT A SAUSAGE."
+      	]
+		}         	        	
+	]
+}

@@ -32,6 +32,9 @@
 			dat.direction = direction;
 			dat.position = position;
 			
+			
+			
+			
 			var cdat = new MapCharacterData();
 			
 			if(subtype == "enemy"){
@@ -46,17 +49,18 @@
 				
 				var npcs = Game.world.getNPCs();
 				npcs[npcs.length-1].animLabel = animation;
+				//set usinganimation to false here
 				npcs[npcs.length-1].beginAnimation(animation);
 			}
 			
 			var o:Object = new Object();
 			o.id = id;
+			o.map = Game.playerProgress.map;
 			o.direction = direction;
 			o.position = position;
 			o.animation = animation;
 			o.subtype = subtype;
-			Game.playerProgress.createdUnits.push(o);
-			
+			Game.playerProgress.addCreatedUnit(o);
 			complete();
 		}
 	}

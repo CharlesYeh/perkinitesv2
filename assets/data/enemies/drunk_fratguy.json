@@ -1,0 +1,25 @@
+{
+  "ai": "BasicAIUnit",
+  "name": "Drunk Frat Guy",
+  "id": "drunk_fratguy",
+  "sprite": "enemy_Drunk-Frat-Guy",
+  "health": 10,
+  "defense": 0,
+  "speed": 80,
+  "abilities": [
+    {
+      "name": "Puke",
+      "type": "AttackSkillshot",
+      "icon": "",
+      "description": "",
+      "dmgBase": "3",
+      "dmgRatio": "",
+      "range": 120,
+      "cd": 0,
+      "stand": 20,
+      "speed": 15,
+      "width": 30,
+      "penetrates": 4
+    }
+  ]
+}

@@ -24,7 +24,8 @@
 				"type": "ActionNotification",
 				
 				"time": 120,
-				"message": "Got the Peace Bear!"
+				"title": "Item Get!",
+				"longSubtitle": "Unlocked Ananya's Peace Bear!"
 			},			
 			{
 				"type": "ActionDelete",

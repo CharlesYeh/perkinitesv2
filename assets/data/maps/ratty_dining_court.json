@@ -1,0 +1,179 @@
+{
+  "name": "Ratty - Dining Court",
+  "id": "ratty_dining_court",
+  "tileset": "ratty",
+  "height": 35,
+  "width": 35,
+  "code": "1111111111111111111111111111111111111111111111111555555511111111111111113333333333335555555333333333333111133333333333355555553333333333331111444555544455411111455444555544411114111551114554111114554111551114111141115511145544444445541115511141111511155111553333333335511155111511115555555555533333333355555555555111151115511155111111111551115511151111411155111453111111135411155111411114111551114531111111354111551114111144455554445511111115544455554441111511155111551111111115511155111511115111551115531111111355111551115111141115511145311111113541115511141111444555544455111111155444555544411114111551114551111111554111551114111151115511155511111115551115511151111511155111551111111115511155111511114445555444531111111354445555444111141115511145311111113541115511141111411155111555111111155411155111411115111551115511111111155111551115111155555555555333333333555555555551111511155111553333333335511155111511114111551114511111111154111551114111141115511145111111111541115511141111444555544455444444455444555544411115555555555554555554555555555555111155555555555544444445555555555551111151111115111511111511111111151111111111111111115333335111111111111111111111111111153333351111111111111111111111111111111111111111111111111",
+  "teleports": [
+    {
+      "conditions": [],
+      "entry": {
+        "x": 3,
+        "y": 31
+      },
+      "exit": {
+        "map": "ratty_entrance",
+        "x": 3,
+        "y": 4
+      }
+    },
+    {
+      "conditions": [],
+      "entry": {
+        "x": 10,
+        "y": 31
+      },
+      "exit": {
+        "map": "ratty_entrance",
+        "x": 16,
+        "y": 4
+      }
+    },
+    {
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level3_roots_shoots_win"
+        },
+        {
+          "type": "ConditionSequence",
+          "name": "level3_grill_win"
+        },
+        {
+          "type": "ConditionSequence",
+          "name": "level3_chefs_corner_win"
+        },
+        {
+          "type": "ConditionSequence",
+          "name": "level3_miniboss_win"
+        }
+      ],
+      "entry": {
+        "x": 20,
+        "y": 3
+      },
+      "exit": {
+        "map": "ratty_back_cave",
+        "x": 17,
+        "y": 12
+      }
+    },
+    {
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level3_roots_shoots_win"
+        },
+        {
+          "type": "ConditionSequence",
+          "name": "level3_grill_win"
+        },
+        {
+          "type": "ConditionSequence",
+          "name": "level3_chefs_corner_win"
+        },
+        {
+          "type": "ConditionSequence",
+          "name": "level3_miniboss_win"
+        }
+      ],
+      "entry": {
+        "x": 14,
+        "y": 3
+      },
+      "exit": {
+        "map": "ratty_back_cave",
+        "x": 8,
+        "y": 12
+      }
+    },
+    {
+      "conditions": [],
+      "entry": {
+        "x": 21,
+        "y": 16
+      },
+      "exit": {
+        "map": "ratty_grill",
+        "x": 13,
+        "y": 15
+      }
+    },
+    {
+      "conditions": [],
+      "entry": {
+        "x": 21,
+        "y": 18
+      },
+      "exit": {
+        "map": "ratty_roots_shoots",
+        "x": 13,
+        "y": 4
+      }
+    },
+    {
+      "conditions": [],
+      "entry": {
+        "x": 13,
+        "y": 16
+      },
+      "exit": {
+        "map": "ratty_chefs_corner",
+        "x": 6,
+        "y": 15
+      }
+    },
+    {
+      "conditions": [],
+      "entry": {
+        "x": 13,
+        "y": 18
+      },
+      "exit": {
+        "map": "ratty_bistro",
+        "x": 6,
+        "y": 4
+      }
+    }
+  ],
+  "enemies": [
+    {
+      "id": "ratty_spawnpoint",
+      "direction": "down",
+      "position": {
+        "x": 6,
+        "y": 4
+      }
+    },
+    {
+      "id": "ratty_spawnpoint",
+      "direction": "down",
+      "position": {
+        "x": 28,
+        "y": 4
+      }
+    },
+    {
+      "id": "ratty_spawnpoint",
+      "direction": "up",
+      "position": {
+        "x": 28,
+        "y": 30
+      }
+    },
+    {
+      "id": "ratty_spawnpoint",
+      "direction": "up",
+      "position": {
+        "x": 6,
+        "y": 30
+      }
+    }
+  ],
+  "npcs": [],
+  "sequences": [
+    "level3_ratty_dining_court",
+    "level3_suspicion"
+  ]
+}

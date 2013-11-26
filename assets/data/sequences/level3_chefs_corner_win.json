@@ -1,0 +1,12 @@
+{
+	"id": "level3_chefs_corner_win",
+	"actions": [
+		[
+			{
+				"type": "ConditionClearedArea",
+				"map": "ratty_chefs_corner",
+            "beat": 4
+			}
+		]
+	]
+}

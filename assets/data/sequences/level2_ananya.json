@@ -1,0 +1,130 @@
+{
+	"id": "level2_ananya",
+	"actions": [
+		[
+			{
+				"type": "ActionControls",
+				"enable": false
+			},		
+			{
+				"type": "ActionBlackout",
+				"subtype": "showAlpha",
+				"alpha": 1
+			},			
+			{
+				"type": "ActionNarrator",
+				"time": 24,
+				"toggle": true,
+				
+				"message": "Beginning transmission..."
+			}
+		],	
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
+			}		
+		],				
+		[		
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya",
+				"icon": "Face Icon - AA.png",
+				"message": "Greetings, Perkinites. Here is your next mission."
+			}	
+		],				
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya",
+				"icon": "Face Icon - AA.png",
+				"message": "Two of our honorary Perkinites went into Jo's to get me a Quesadilla."
+			}	
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya",
+				"icon": "Face Icon - AA.png",
+				"message": "It has been TWO HOURS since they have left …and I fear that this is the work of EVIL."
+			}	
+		],		
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya",
+				"icon": "Face Icon - AA.png",
+				"message": "Your mission is to get the prized Quesadilla and return it to me immediately."
+			}	
+		],				
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya",
+				"icon": "Face Icon - AA.png",
+				"message": "Failure to complete this mission will bring forth MY RAGE onto the world."
+			}	
+		],				
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya",
+				"icon": "Face Icon - AA.png",
+				"message": "Good luck, Perkinites."
+			}	
+		],
+		[
+			{
+				"type": "ActionWait",
+				"time": 48
+			}			
+		],		
+		[
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "npc_Socordia",
+    		   "direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 5,
+        			"y": 15
+      		}
+			}
+		],		
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "hide",
+				"time": 45
+			}
+		],										
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 144,
+				
+				"message": "It looks like the main door to Jo's is conveniently barricaded. Our two heroes manage to get access through the side door."
+			}
+		],
+		[
+			{
+				"type": "ActionWait",
+				"time": 48
+			}			
+		]		
+	]
+}

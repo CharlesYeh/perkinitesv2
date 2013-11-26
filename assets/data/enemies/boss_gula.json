@@ -1,0 +1,61 @@
+{
+  "ai": "BossGulaAI",
+  "name": "Gula",
+  "id": "boss_gula",
+  "sprite": "enemy_Gula",
+  "health": 600,
+  "defense": 0,
+  "speed": 80,
+  "abilities": [
+    {
+      "name": "Consume",
+      "type": "AttackConsumeSmartcast",
+      "icon": "",
+      "description": "",
+      "dmgBase": "1",
+      "dmgRatio": "",
+      "range": 165,
+      "cd": 0,
+      "stand": 0,
+      "goToCastPoint": false
+    },
+    {
+      "name": "Indigestion",
+      "type": "AttackDashSkillshot",
+      "icon": "",
+      "description": "",
+      "dmgBase": "6",
+      "dmgRatio": "",
+      "range": 400,
+      "cd": 0,
+      "stand": 0,
+      "speed": 20,
+      "width": 20,
+      "penetrates": 1
+    },
+    {
+      "name": "Waste Artillery",
+      "type": "AttackPoint",
+      "icon": "",
+      "description": "",
+      "dmgBase": "10",
+      "dmgRatio": "",
+      "range": 400,
+      "cd": 0,
+      "stand": 0,
+      "radius": 50
+    },
+    {
+      "name": "Chain Reaction",
+      "type": "AttackSmartcast",
+      "icon": "",
+      "description": "",
+      "dmgBase": "",
+      "dmgRatio": "",
+      "range": 0,
+      "cd": 0,
+      "stand": 0,
+      "goToCastPoint": false
+    }
+  ]
+}

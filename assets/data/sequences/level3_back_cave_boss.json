@@ -1,0 +1,203 @@
+{
+	"id": "level3_back_cave_boss",
+	"actions": [
+		[
+			{
+				"type": "ActionHUD",
+				"enabled": false
+			},			
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},
+			{
+				"type": "ActionControls",
+				"enable": false
+			},		
+         {
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "npc_Gula",
+    		   "direction": "down",
+				"animation": "eating",
+    			"position": {
+					"x": 12,
+        			"y": 4
+      		}
+			}
+		],
+      [
+         {
+            "type": "ActionMove",
+            
+            "subtype": "player",
+				"xpos": 12,
+				"ypos": 9
+         
+         },				
+			{
+				"type": "ActionNarrator",
+				"time": 60,
+				"toggle": true,
+				
+				"message": "You are now at the Back Cave of the Ratty."
+			}					
+		],
+		[
+         {
+            "type": "ActionMove",
+            
+            "subtype": "player",
+				"xpos": 12,
+				"ypos": 8
+         
+         },	      
+			{
+				"type": "ActionNarrator",
+				"time": 150,
+				
+				"message": "Oh look, it's that kid, now eating the quality dining featured at the Ratty. Let's hear what he has to say."
+			}
+		],					
+		[
+			{
+				"type": "ActionMusic",
+				"time": 0,
+				
+				"enable": true,
+				"song": "Junk Stereo Concept"
+			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Fat Kid",
+				"icon": "Face Icon - Gula.png",
+				"message": "ASJDKASJDKLASJDKLASDJKAJDSKADJKALDJASD."
+			}		
+		],		
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 96,
+				
+				"message": "That was more unintelligible than I thought."
+			}
+		],		
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 230,
+				
+				"message": "Ah, so this makes more sense. There's an effective food barrier that prevents our heroes from interrupting his transformation sequence."
+			}
+		],		
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
+			}
+		],		
+		[
+			{
+				"type": "ActionAnimate",
+				"time": 54,
+				
+				"sprite": "npc_Gula",
+				"animation": "transforming"
+			}		
+		],	
+		[	
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Gula"
+			},			
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "enemy",
+				"id": "boss_gula",
+				"direction": "down",
+    			"position": {
+					"x": 12,
+        			"y": 4
+      		}
+			}														
+		],
+		[
+			{
+				"type": "ActionAI",
+				"enabled": true
+			},		
+			{
+				"type": "ActionControls",
+				"enable": true
+			},	
+			{
+				"type": "ActionHUD",
+				"enable": true
+			}
+		],    
+		[	
+			{
+				"type": "ActionJournal",
+				
+				"message": "The darkness has transformed! Defeat the evil for the sake of fine dining!"
+			},      	
+			{
+				"type": "ActionNarrator",
+				"time": 120,
+				
+				"message": "YES! Here he is, GULA, in his true form!"
+			}			
+		],
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 170,
+				
+				"message": "The complete embodiment of over-indulgence of food, drink, and wealth, showcasing off his extravagance and leaving others in his waste!  The third of many CARDINAL SERVANTS."
+			}
+		],
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
+			}
+		],				
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Gula",
+				"icon": "Face Icon - Gula.png",
+				"message": "I WILL EAT YOU, AND YOU WILL BE IN ME FOREVER."
+			}		
+		],		
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 100,
+				
+				"message": "With logic like that, I'm sure he's going to win!"
+			}
+		],
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
+			},
+			{
+				"type": "ActionHUD",
+				"enable": true,
+				"enemy": true
+			}         
+		]
+	]
+}

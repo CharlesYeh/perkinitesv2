@@ -1,0 +1,196 @@
+{
+	"id": "level3_miniboss",
+	"actions": [
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "showAlpha",
+				"alpha": 1
+			},	      
+			{
+				"type": "ActionHUD",
+				"enabled": false
+			},
+			{
+				"type": "ActionControls",
+				"enable": false
+			}
+		],	
+		[
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "npc_Vendor",
+    		   "direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 10,
+        			"y": 5
+      		}
+			}
+		],	
+		[
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},
+			{
+				"type": "ActionNarrator",
+				"time": 128,
+				"toggle": true,
+				
+				"message": "This area seems different from all the others...it seems like we've teleported to a really stranger dark dimension."
+			},
+			{
+				"type": "ActionSound",
+				"sound": "miniboss_1"
+			}
+		],
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
+			}
+		],      
+      [
+			{
+				"type": "ActionBlackout",
+				"subtype": "hide",
+				"time": 45
+			}
+      ],
+		[
+      	{
+				"type": "ActionMove",
+				
+				"subtype": "player",
+				"xpos": 10,
+				"ypos": 8
+			},		            
+			{
+				"type": "ActionNarrator",
+				"time": 96,
+				
+				"message": "Oh look an ice cream machine! Our heroes get some fine-ass ice cream."
+			},
+			{
+				"type": "ActionSound",
+				"sound": "miniboss_1"
+			}
+		],   
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
+			}
+		],
+      [
+      	{
+				"type": "ActionMove",
+				
+				"subtype": "player",
+				"xpos": 10,
+				"ypos": 7
+			}	      
+      ],      				
+		[
+			{
+				"type": "ActionAnimate",
+				"time": 72,
+				
+				"sprite": "npc_Vendor",
+				"animation": "casting"
+			}
+		],
+		[	
+			{
+				"type": "ActionAnimate",
+				"time": 54,
+				
+				"sprite": "npc_Vendor",
+				"animation": "transforming"
+			}
+		],	
+		[	
+			{
+				"type": "ActionMusic",
+				"time": 0,
+				
+				"enable": true,
+				"song": "perkinite Panic!!"
+			},		
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "enemy",
+				"id": "vendor",
+				"direction": "down",
+    			"position": {
+					"x": 10,
+        			"y": 5
+      		}
+			},					
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Vendor"
+			},	
+			{
+				"type": "ActionJournal",
+				
+				"message": "Rescue the Ice Cream machine from corruption!"
+			}			
+		],			
+		[			
+			{
+				"type": "ActionNarrator",
+				"time": 72,
+				
+				"message": "Oh never mind it's evil."
+			}
+		],
+		[			
+			{
+				"type": "ActionNarrator",
+				"time": 96,
+				
+				"message": "That's probably a good thing for me, but bad for our heroes."
+			}
+		], 
+		[			
+			{
+				"type": "ActionNarrator",
+				"time": 72,
+				
+				"message": "I forget I'm evil sometimes."
+			}
+		],             
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
+			}
+		],		
+		[
+			{
+				"type": "ActionAI",
+				"enabled": true
+			},	
+			{
+				"type": "ActionControls",
+				"enable": true
+			},				
+			{
+				"type": "ActionHUD",
+				"enable": true
+			},
+			{
+				"type": "ActionHUD",
+				"enable": true,
+				"enemy": true
+			}
+		]		
+	]
+}

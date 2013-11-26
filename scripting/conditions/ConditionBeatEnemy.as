@@ -18,20 +18,22 @@
 		
 		override public function act():void {
 			super.act();
-			trace("why");
 			Game.eventDispatcher.addEventListener(GameEventDispatcher.BEAT_ENEMY, conditionHandler);
 		}
 		
 		public function conditionHandler(e:BeatEnemyEvent):void{
 			if (e.id == id) {
 				Game.eventDispatcher.removeEventListener(GameEventDispatcher.BEAT_ENEMY, conditionHandler);
-				for(var j = 0; j < Game.playerProgress.createdUnits.length; j++){
-					if(Game.playerProgress.createdUnits[j].id == id){
-						Game.playerProgress.createdUnits.splice(j, 1);
+				var createdUnits = Game.playerProgress.getCreatedUnits();
+				for(var j = 0; j < createdUnits.length; j++){
+					if(createdUnits[j].id == id){
+						createdUnits.splice(j, 1);
 						trace(id + " deleted in ConditionBeatEnemy");
 						break;
 					}
 				}
+				
+				Game.playerProgress.setCreatedUnits(createdUnits);
 				complete();
 				update();
 			}

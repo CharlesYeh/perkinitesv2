@@ -78,9 +78,9 @@
 			addChild(locationDisplay);
 			addChild(cutscene);
 			addChild(charUnlock);
+			addChild(fader);
 			addChild(narrator);
 			addChild(speech);
-			addChild(fader);
 			addChild(gameover);
 		}
 

@@ -2,7 +2,7 @@
 
 import game.SoundManager;
 
-SoundManager.playSong("Exceed the Sky");
+//SoundManager.playSong("Exceed the Sky");
 
 // for button hover glow
 var rFilter:GlowFilter = new GlowFilter(0xFF0000, 100, 20, 20, 1, 10, true, false);
@@ -33,7 +33,7 @@ function newGame(e:Event):void {
 	
 	clearTitleScreen();
 	Game.playerProgress.newGame();
-	gotoAndStop("char_select");
+	gotoAndStop("char_select2");
 }
 
 function continueGame(e:Event):void {
@@ -43,7 +43,7 @@ function continueGame(e:Event):void {
 	
 	clearTitleScreen();
 	Game.playerProgress.loadGame("PERKINITES");
-	gotoAndStop("char_select");
+	gotoAndStop("char_select2");
 }
 
 function config(e:Event):void {
@@ -51,7 +51,7 @@ function config(e:Event):void {
 	//sound.play();
 	
 	clearTitleScreen();
-	gotoAndStop("char_select");
+	gotoAndStop("char_select2");
 }
 
 function clearTitleScreen() {

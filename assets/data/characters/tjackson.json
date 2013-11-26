@@ -1,0 +1,39 @@
+{
+  "levelBonuses": {
+    "health": 0,
+    "attack": 0,
+    "speed": 0
+  },
+  "weapon": "The Tease",
+  "name": "Tevin J.",
+  "id": "TJ",
+  "sprite": "TJ",
+  "health": 0,
+  "defense": 0,
+  "speed": 0,
+  "abilities": [
+    {
+      "name": "Lung Crusher",
+      "type": "AttackCone",
+      "icon": "Icon - Lung Crusher.png",
+      "description": "Crushes the enemy through the power of hugging at close-range.",
+      "dmgBase": "",
+      "dmgRatio": "",
+      "range": 0,
+      "cd": 0,
+      "stand": 0
+    },
+    {
+      "name": "Deep Sleep",
+      "type": "AttackSmartcast",
+      "icon": "Icon - Deep Sleep.png",
+      "description": "Hold down R-Click to let yo homebody sleep and make a dream shield for 7.5 seconds.\n",
+      "dmgBase": "",
+      "dmgRatio": "",
+      "range": 0,
+      "cd": 0,
+      "stand": 0,
+      "goToCastPoint": false
+    }
+  ]
+}

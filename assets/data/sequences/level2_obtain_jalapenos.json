@@ -1,0 +1,44 @@
+{
+	"id": "level2_obtain_jalapenos",
+	"saveable": false,
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level2_food_court_boss"
+			}
+		],
+		[
+			{
+				"type": "ConditionNearLocation",
+				"x": 16,
+				"y": 14,
+				"radius": 32
+			},
+			{
+				"type": "ConditionHasItem",
+				"item": "Jalapenos",
+				"negation": true
+			}				
+		],
+		[
+			{
+				"type": "ActionItem",
+				"item": "Jalapenos"
+			},
+			{
+				"type": "ActionNotification",
+				
+				"time": 48,
+				"title": "Item Get!",
+				"longSubtitle": "Unlocked Jalapenos! Spicy :x"
+			},			
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Quesadilla_Jalapenos"
+			}
+		]
+	]
+}

@@ -13,21 +13,23 @@
 		
 		public var id:String;
 		public var repeatable:Boolean;
+		public var saveable:Boolean = true;
 		public var actions:Array;
 		
 		/** current action index within "actions" */
-		private var m_index:int;
+		private var m_index:int = 0;
 		
-		private var m_completed:Boolean;
+		private var m_completed:Boolean = false;
 		
 		private function compileClasses():void {
-			var actionTypes:Array = new Array(ActionControls, ActionBlackout, ActionSpeech, ActionWait, ActionNarrator, ActionMusic, ActionAI, ActionUnlockCharacters, ActionAnimate, ActionDelete, ActionSound, ActionCreate, ActionItem, ActionHUD, ActionJournal, ActionNotification, ActionSkip, ActionTeleport, ActionClearEnemies, ActionNext);
-			var condTypes:Array = new Array(ConditionSequence, ConditionNearLocation, ConditionBeatEnemy, ConditionClearedArea);
+			var actionTypes:Array = new Array(ActionControls, ActionBlackout, ActionSpeech, ActionWait, ActionNarrator, ActionMusic, ActionAI, ActionUnlockCharacters, ActionAnimate, ActionDelete, ActionSound, ActionCreate, ActionItem, ActionHUD, ActionJournal, ActionNotification, ActionSkip, ActionTeleport, ActionClearEnemies, ActionNext, ActionMove);
+			var condTypes:Array = new Array(ConditionSequence, ConditionNearLocation, ConditionBeatEnemy, ConditionClearedArea, ConditionNPC, ConditionHasItem);
 		}
 		
 		public function parseData(obj:Object):void {
 			id = obj.id;
 			repeatable = obj.repeatable;
+			saveable = (obj.saveable != null) ? obj.saveable : true;
 			
 			actions = new Array();
 			for (var i:String in obj.actions) {
@@ -68,11 +70,24 @@
 			// test whether this sequence has been done before
 			if (actions.length == 0 || Game.playerProgress.hasCompletedSequence(id)) {
 				m_completed = true;
-			}
+			} 
+			
 			// start first frame
 			if(!m_completed){
+				reset();
 				startFrame();
 			}
+		}
+		
+		public function reset():void {
+			for(var i:String in actions) {
+				var frame:Array = actions[i];
+				for(var j:String in frame) {
+					var action:Action = frame[j];
+					action.reset();	
+				}
+			}
+			m_completed = false;
 		}
 		
 		protected function startFrame():void {
@@ -116,10 +131,17 @@
 		
 		public function complete():void {
 			if (!repeatable) {
-				
 				Game.playerProgress.addCompletedSequence(id);
-				m_completed = true;
 			}
+			if (saveable) {
+				//----------------AUTO-SAVE----------------					
+				Game.playerProgress.save();
+			}			
+			m_completed = true;
+		}
+		
+		public function update():Boolean {
+			return m_completed;
 		}
 	}
 }

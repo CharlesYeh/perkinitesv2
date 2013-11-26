@@ -1,0 +1,39 @@
+{
+  "levelBonuses": {
+    "health": 0,
+    "attack": 0,
+    "speed": 0
+  },
+  "weapon": "The True Healer",
+  "name": "Chloe C.",
+  "id": "CC",
+  "sprite": "CC",
+  "health": 0,
+  "defense": 0,
+  "speed": 0,
+  "abilities": [
+    {
+      "name": "Healthy Exploder",
+      "type": "AttackPoint",
+      "icon": "Icon - Healthy Exploder.png",
+      "description": "Creates a happy shield inside a target and makes it expand.\n",
+      "dmgBase": "",
+      "dmgRatio": "",
+      "range": 0,
+      "cd": 0,
+      "stand": 0
+    },
+    {
+      "name": "Shield",
+      "type": "AttackSmartcast",
+      "icon": "Icon - Shield.png",
+      "description": "Creates a 20 HP barrier around Chloe that lasts for five seconds.\n",
+      "dmgBase": "",
+      "dmgRatio": "",
+      "range": 0,
+      "cd": 0,
+      "stand": 0,
+      "goToCastPoint": false
+    }
+  ]
+}

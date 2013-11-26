@@ -77,5 +77,10 @@
 				}
 			}
 		}
+		
+		override public function getAttackType():String {
+			return "Conic - This attack hits all enemies within a given angle and range.";
+		}
+		
 	}
 }

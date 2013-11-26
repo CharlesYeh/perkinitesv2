@@ -1,0 +1,83 @@
+{
+  "name": "Back Cave",
+  "id": "ratty_back_cave",
+  "tileset": "malefic",
+  "height": 15,
+  "width": 26,
+  "code": "222222222222222222222222222111111111111111111111111221111111111111111111111112200000220000000000220000022022000000000000000000220220220000000000000000002202200000220000000000220000022000002222222222222200000220000022000000000022000002200000000000000000000000022000000000000000000000000220220022000000000022002202202200220000000000220022022000002200222222002200000222222222222222222222222222",
+  "teleports": [
+    {
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level3_back_cave_boss_win"
+        }
+      ],
+      "entry": {
+        "x": 8,
+        "y": 13
+      },
+      "exit": {
+        "map": "ratty_dining_court",
+        "x": 14,
+        "y": 4
+      }
+    },
+    {
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level3_back_cave_boss_win"
+        }
+      ],
+      "entry": {
+        "x": 17,
+        "y": 13
+      },
+      "exit": {
+        "map": "ratty_dining_court",
+        "x": 20,
+        "y": 4
+      }
+    }
+  ],
+  "enemies": [
+    {
+      "id": "ratty_spawnpoint",
+      "direction": "down",
+      "position": {
+        "x": 1,
+        "y": 3
+      }
+    },
+    {
+      "id": "ratty_spawnpoint",
+      "direction": "up",
+      "position": {
+        "x": 1,
+        "y": 13
+      }
+    },
+    {
+      "id": "ratty_spawnpoint",
+      "direction": "up",
+      "position": {
+        "x": 24,
+        "y": 13
+      }
+    },
+    {
+      "id": "ratty_spawnpoint",
+      "direction": "down",
+      "position": {
+        "x": 24,
+        "y": 3
+      }
+    }
+  ],
+  "npcs": [],
+  "sequences": [
+    "level3_back_cave_boss",
+    "level3_back_cave_boss_win"
+  ]
+}

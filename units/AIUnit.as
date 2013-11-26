@@ -17,6 +17,8 @@
 		
 		public static var m_enabled:Boolean = true;
 		
+		private var deleteFunction:Function = null;
+		
 		public function AIUnit(edat:EnemyData) {
 			super(edat);
 			
@@ -27,11 +29,29 @@
 		}
 		
 		private static function compileClasses():void {
-			var aiClasses:Array = new Array(BasicAIUnit, WarbearAI, BossIraAI);
+			var aiClasses:Array = new Array(BasicAIUnit, 
+											WarbearAI, 
+											BossIraAI, 
+											BurgerUnit, 
+											JosSpawnPoint, 
+											BossSocordiaAI, 
+											InvulnerableUnit, 
+											WristonSpawnPoint, 
+											RattySpawnPoint,
+											VendorAI,
+											BossGulaAI);
 		}
 		
 		public static function set enabled(val:Boolean):void {
 			m_enabled = val;
+		}
+		
+		public function getDeleteFunction():Function {
+			return deleteFunction;
+		}
+		
+		public function setDeleteFunction(deleteFunction:Function):void {
+			this.deleteFunction = deleteFunction;
 		}
 		
 		// prevent any possible conflict that results it in being standing-only
@@ -49,8 +69,12 @@
 		
 		override protected function deleteSelf():void {
 			super.deleteSelf();
-			
 			removeEventListener(Event.ENTER_FRAME, runnerAI);
+			
+			if (deleteFunction != null) {
+				deleteFunction(this);
+			}
+			
 		}
 		
 		// just moves to player if player is in range
@@ -68,7 +92,7 @@
 		}
 		protected function getCloserPlayer():StatUnit {
 			var min:StatUnit;
-			var minDist:Number = 99999999;
+			var minDist:Number = Number.MAX_VALUE;
 			
 			for (var i in Game.team) { //change targets to Game.team 
 				var un:StatUnit = Game.team[i];

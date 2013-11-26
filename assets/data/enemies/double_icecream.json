@@ -1,0 +1,23 @@
+{
+  "ai": "BasicAIUnit",
+  "name": "Double Ice Cream",
+  "id": "double_icecream",
+  "sprite": "enemy_Ice-Cream2",
+  "health": 10,
+  "defense": 0,
+  "speed": 120,
+  "abilities": [
+    {
+      "name": "Melted 2",
+      "type": "AttackSkillshot",
+      "icon": "",
+      "description": "",
+      "dmgBase": "3",
+      "dmgRatio": "",
+      "range": 0,
+      "cd": 0,
+      "stand": 0,
+      "width": 5
+    }
+  ]
+}

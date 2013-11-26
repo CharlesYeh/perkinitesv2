@@ -22,8 +22,18 @@
 		},
 		{
 			"id": "jos",
-			"types": ["s", "w", "s", "w"],
-			"clings": [false, false, false, false]
+			"types": ["s", "w", "w", "w", "s", "w"],
+			"clings": [false, false, false, false, false, false]
+		},
+		{
+			"id": "wriston",
+			"types": ["s", "s", "w", "w", "w"],
+			"clings": [false, false, false, false, false]
+		},
+		{
+			"id": "ratty",
+			"types": ["s", "w", "s", "w", "s", "s", "w"],
+			"clings": [false, false, false, false, false, false, false]
 		}
 	]
 }

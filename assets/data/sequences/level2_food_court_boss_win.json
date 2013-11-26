@@ -4,7 +4,7 @@
 		[
 			{
 				"type": "ConditionSequence",
-				"name": "level2f_food_court_boss"
+				"name": "level2_food_court_boss"
 			},
 			{
 				"type": "ConditionBeatEnemy",
@@ -122,7 +122,8 @@
 				
 				"map": "jos_outer_corridor",
 				"x": 5,
-				"y": 10
+				"y": 10,
+            "menu": true
 			}
 		]	
 	]

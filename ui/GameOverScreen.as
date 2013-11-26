@@ -42,10 +42,13 @@
 			Game.overlay.gameover.visible = false;
 			//MovieClip(stage)._root.gotoAndStop(1, "menu");
 			Game.playerProgress.loadGame("PERKINITES");
+			Game.playerProgress.health = Math.max(
+				Game.playerProgress.getMaxHealth()/2,
+				Game.playerProgress.health);
 			
-			trace(Game.playerProgress.health);
 			//MovieClip(stage)._root.gotoAndStop("char_select");
 			Game.endGameWorld();
+			
 			Game.startGameWorld(Game.container);
 			
 			visible = false;

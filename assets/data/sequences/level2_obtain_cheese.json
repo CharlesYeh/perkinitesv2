@@ -1,0 +1,44 @@
+{
+	"id": "level2_obtain_cheese",
+	"saveable": false,
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level2_food_court_boss"
+			}
+		],
+		[
+			{
+				"type": "ConditionNearLocation",
+				"x": 23,
+				"y": 17,
+				"radius": 32
+			},
+			{
+				"type": "ConditionHasItem",
+				"item": "Cheese",
+				"negation": true
+			}				
+		],
+		[
+			{
+				"type": "ActionItem",
+				"item": "Cheese"
+			},
+			{
+				"type": "ActionNotification",
+				
+				"time": 48,
+				"title": "Item Get!",
+				"longSubtitle": "Unlocked Cheese!"
+			},			
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Quesadilla_Cheese"
+			}
+		]
+	]
+}

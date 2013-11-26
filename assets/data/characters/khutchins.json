@@ -1,0 +1,39 @@
+{
+  "levelBonuses": {
+    "health": 0,
+    "attack": 0,
+    "speed": 0
+  },
+  "weapon": "The Tower",
+  "name": "Kevin H.",
+  "id": "KH",
+  "sprite": "KH",
+  "health": 0,
+  "defense": 0,
+  "speed": 0,
+  "abilities": [
+    {
+      "name": "Acidic Sarcasm",
+      "type": "AttackSkillshot",
+      "icon": "Icon - Acidic Sarcasm.png",
+      "description": "Sends out biting sarcasm to nearby enemies.",
+      "dmgBase": "",
+      "dmgRatio": "",
+      "range": 0,
+      "cd": 0,
+      "stand": 0
+    },
+    {
+      "name": "Rapid Hair Growth",
+      "type": "AttackSmartcast",
+      "icon": "Icon - Rapid Hair Growth.png",
+      "description": "Stuns nearby enemies with the hair that ensnares.",
+      "dmgBase": "",
+      "dmgRatio": "",
+      "range": 0,
+      "cd": 0,
+      "stand": 0,
+      "goToCastPoint": false
+    }
+  ]
+}

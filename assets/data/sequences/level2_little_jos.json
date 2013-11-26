@@ -3,6 +3,18 @@
 	"actions": [
 		[
 			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "npc_Generic",
+    		   "direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 11,
+        			"y": 4
+      		}
+			},		
+			{
 				"type": "ActionControls",
 				"enable": false
 			},
@@ -45,13 +57,7 @@
 				"type": "ActionJournal",
 				
 				"message": "Save the cashier or something!"
-			},		
-			{
-				"type": "ActionNotification",
-				"time": 240,
-				
-				"message": "Don't get fat. Eat salads!"
-			},		
+			},	
 			{
 				"type": "ActionControls",
 				"enable": true

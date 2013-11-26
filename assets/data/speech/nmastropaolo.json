@@ -1,0 +1,75 @@
+{
+   "name": "Nate M.",
+   "id": "NM",
+	"speech": [
+		{
+			"name": "greetings",
+      	"lines": [
+            "Hello..."
+      	]
+		},
+		{
+			"name": "acceptance",
+      	"lines": [
+            "Aww yeah, bringing the pain...",
+            "Bringing 'em down!"
+      	]
+		},      
+		{
+			"name": "rejection",
+      	"lines": [
+            "WELL OKAY.",
+            "I don't think my friendship nipple can take this.",
+            "You're missing out, I have CLAWS."
+      	]
+		},
+		{
+			"name": "mirror",
+      	"lines": [
+            "Wow, I was not expecting this."
+      	]
+		},
+		{
+			"name": "field",
+      	"lines": [
+            "Allllright, shit is going down."
+      	]
+		},             
+		{
+			"name": "npc",
+      	"lines": [
+            "I was born with six fingers, and I had one of them surgically removed.",
+            "I didn't wear pants all day today. You're seeing something new.",
+            "Well, I guess I can’t play violin anymore. Charles broke my E string.",
+            "Perkins doesn't have real toilet paper.",
+            "Dude, we should go to Jo's!! But we're already at Jo's!!."
+      	]
+		},
+		{
+			"name": "perkinite_CY",
+      	"lines": [
+            "DASH",
+            "DASH DASH DASH. DASH"
+      	]
+		},
+		{
+			"name": "perkinite_CY",
+      	"lines": [
+            "I don't do this newfangled electronic mail thing.",
+            "My email got hacked. It's not my faultttttttttttt."
+      	]
+		},
+		{
+			"name": "perkinite_HV",
+      	"lines": [
+            "You're a spicy sausage."
+      	]
+		},      
+		{
+			"name": "perkinite_RB",
+      	"lines": [
+            "Where the f**k is the string cheese??"
+      	]
+		}                    	        	
+	]
+}

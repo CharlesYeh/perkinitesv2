@@ -31,7 +31,6 @@
 		}
 		public function setToggle(toggle:Boolean): void {
 			this.toggle = toggle;
-			trace(toggle);
 		}	
 		public function showText(text:String):void {
 			visible = true;
@@ -87,29 +86,32 @@
 			var foundSequence = null;
 			outer: for (var i:String in MapManager.world.mapData.sequences) {
 				var seq:Sequence = MapManager.world.mapData.sequences[i];
+				var foundFrameIndex:int;
 				
 				//find the containing sequence, ASSUME IT HAS A RECEIVING ACTIONSKIP
 				
-				for(var j:String in seq.actions){
+				for (var j:int = 0; j < seq.actions.length; j++) {
 					var frame:Array = seq.actions[j];
 					
 					for(var k:String in frame){
 						var act:Action = frame[k];
 						if(this.action == act){
 							foundSequence = seq;
+							foundFrameIndex = j;
 							break outer;
 						}
 					}
 				}
 			}
+			
 			if(foundSequence != null){
 				var receive = false;				
-				outer2: for(j in foundSequence.actions){
+				outer2: for (j = foundFrameIndex; j < foundSequence.actions.length; j++) {
 					frame = foundSequence.actions[j];
 					
 					for(k in frame){
 						act = frame[k];
-						if(act is ActionSkip && !(ActionSkip)(act).skip){
+						if (act is ActionSkip && !(ActionSkip)(act).skip) {
 							receive = true;
 							act.complete();
 							break outer2;
@@ -120,7 +122,7 @@
 						for(k in frame){
 							act = frame[k];
 							act.complete();
-						}						
+						}					
 					}
 				}
 				

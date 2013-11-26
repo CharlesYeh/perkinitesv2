@@ -1,0 +1,10 @@
+{
+  "ai": "RattySpawnPoint",
+  "name": "Ratty Spawn Point",
+  "id": "ratty_spawnpoint",
+  "sprite": "enemy_Spawn_Point",
+  "health": 1,
+  "defense": 0,
+  "speed": 0,
+  "abilities": []
+}

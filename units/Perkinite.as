@@ -22,10 +22,6 @@
 		}
 		
 		override public function takeDamage(dmg:int):void {
-			if(!AIUnit.m_enabled){
-				return;
-			}
-			
 			Game.playerProgress.takeDamage(dmg);
 			
 			if(dmg > 0 && visible){

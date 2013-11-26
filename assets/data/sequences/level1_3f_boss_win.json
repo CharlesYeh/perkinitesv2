@@ -181,7 +181,8 @@
 				
 				"map": "jos_outer_corridor",
 				"x": 5,
-				"y": 10
+				"y": 22,
+            "menu": true
 			}
 		]	
 	]

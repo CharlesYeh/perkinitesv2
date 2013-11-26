@@ -1,0 +1,149 @@
+{
+	"id": "level3_suspicion",
+	"actions": [	
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level3_back_cave_boss_win"
+			}
+		],    
+		[
+			{
+				"type": "ActionControls",
+				"enable": false
+			},
+			{
+				"type": "ActionBlackout",
+				"subtype": "hide",
+				"time": 45
+			},
+         {
+            "type": "ActionMove",
+            
+            "subtype": "player",
+				"xpos": 12,
+				"ypos": 8
+         }   
+		], 
+		[
+         {
+            "type": "ActionMove",
+            
+            "subtype": "player",
+				"xpos": 12,
+				"ypos": 12
+         },      
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "enemy_JC",
+    		   "direction": "down",
+				"animation": "appearing",
+    			"position": {
+					"x": 12,
+        			"y": 6
+      		}
+			},		
+			{
+				"type": "ActionWait",
+				"time": 18
+			}
+		],
+		[
+			{
+				"type": "ActionAnimate",
+				"time": 0,
+				
+				"sprite": "enemy_JC",
+				"animation": "standing"
+			},
+         {
+            "type": "ActionMove",
+            
+            "subtype": "player",
+				"xpos": 12,
+				"ypos": 11
+         }
+		],	              				
+		[    
+			{
+				"type": "ActionNarrator",
+				"time": 120,
+				
+				"message": "Oh hey look a mysterious guy. Must have popped up while I was ranting."
+			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Mysterious Guy",
+				"message": "Do not listen to Ananya anymore."
+			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Mysterious Guy",
+				"message": "She is deceiving you..."
+			}
+		],      
+		[				
+			{
+				"type": "ActionAnimate",
+				"time": 36,
+				
+				"sprite": "enemy_JC",
+				"animation": "returning"
+			}		
+		],			
+		[	
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "enemy_JC"
+			},		
+			{
+				"type": "ActionWait",
+				"time": 18
+			}
+		],  
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "editText",
+				
+				"text": ""
+			},					
+			{
+				"type": "ActionBlackout",
+				"subtype": "show",
+				"time": 30
+			},
+			{
+				"type": "ActionNarrator",
+				"time": 72,
+				
+				"message": "Ooh I wonder if that was Ruth Simmons."
+			},         
+			{
+				"type": "ActionWait",
+				"time": 72
+			}
+		],
+		[
+			{
+				"type": "ActionNext",
+				
+				"map": "sciences_quad",
+				"x": 5,
+				"y": 10
+			}
+		]	            
+	]
+}

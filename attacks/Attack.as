@@ -13,6 +13,7 @@
 		
 		public var m_caster:StatUnit;
 		public var m_castPoint:Point;
+		public var ratio:Number = 1;
 		
 		/*public function clone():Attack {
 			var AtkClass:Class = this.constructor;
@@ -59,7 +60,7 @@
 		 * calculate amount of damage to deal
 		 */
 		public function damage():int {
-			return dmgBase;
+			return Math.floor(dmgBase * ratio);
 		}
 		
 		public function targets():Array {
@@ -72,6 +73,10 @@
 		public function beginForwardMovement():void {}
 		public function stopForwardMovement():void {}
 		public function dealDamage():void {}
+		
+		public function setDamageRatio(damageRatio:Number):void {
+			ratio = damageRatio;
+		}
 		
 		public function applyBuffs():void {
 			if (attackBuffs) {
@@ -86,7 +91,18 @@
 		public function prepareCastPoint():void {
 			m_castPoint = m_caster.prepareCastPoint();
 		}
-		public function pointAttack(bullets:Array, offset:Point):void {}
+		
+		public function prepareRandomPoint(radius:int):void {
+			prepareCastPoint();
+			if (m_castPoint != null) {
+				var rand = Math.random() * Math.PI * 2;
+				m_castPoint.x = m_castPoint.x + radius * Math.cos(rand);
+				m_castPoint.y = m_castPoint.y + radius * Math.sin(rand);
+				
+				trace(radius * Math.cos(rand) + " " + radius * Math.sin(rand));
+			}
+		}
+		public function pointAttack(bullets:Array, offset:Point, delay:int = -1):void {}
 		
 		public function shootSkillshot(bullets:Array):void {}
 		
@@ -109,6 +125,10 @@
 				u.teleportTo(m_castPoint.x, m_castPoint.y);
 				u.clearPath();
 			}
+		}
+		
+		public function getAttackType():String {
+			return "";
 		}
 	}
 }

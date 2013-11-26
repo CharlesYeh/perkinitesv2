@@ -1,0 +1,129 @@
+{
+  "name": "Ratty Entrance",
+  "id": "ratty_entrance",
+  "tileset": "ratty",
+  "height": 18,
+  "width": 20,
+  "code": "111111111111111111111133333333333333331111333333333333333311110000000000000000111100000000000000001111222111111111122211112221111111111222111122211111111112221111222122211222122211112221222112221222111122212221122212221111000000000000000011110011111001111100111100333330033333001111003333300333330011110000000000000000111100111110011111001111111111111111111111",
+  "teleports": [
+    {
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level3_ivy_room_win"
+        }
+      ],
+      "entry": {
+        "x": 3,
+        "y": 3
+      },
+      "exit": {
+        "map": "ratty_dining_court",
+        "x": 3,
+        "y": 30
+      }
+    },
+    {
+      "conditions": [],
+      "entry": {
+        "x": 16,
+        "y": 3
+      },
+      "exit": {
+        "map": "ratty_dining_court",
+        "x": 10,
+        "y": 30
+      }
+    },
+    {
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level3_ratty_entrance"
+        }
+      ],
+      "entry": {
+        "x": 12,
+        "y": 8
+      },
+      "exit": {
+        "map": "ratty_bottom_corridor",
+        "x": 9,
+        "y": 12
+      }
+    },
+    {
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level3_ratty_entrance"
+        }
+      ],
+      "entry": {
+        "x": 7,
+        "y": 8
+      },
+      "exit": {
+        "map": "ratty_bottom_corridor",
+        "x": 4,
+        "y": 12
+      }
+    },
+    {
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level3_ratty_entrance"
+        }
+      ],
+      "entry": {
+        "x": 3,
+        "y": 16
+      },
+      "exit": {
+        "map": "wriston_quad",
+        "x": 24,
+        "y": 5
+      }
+    },
+    {
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level3_ratty_entrance"
+        }
+      ],
+      "entry": {
+        "x": 16,
+        "y": 16
+      },
+      "exit": {
+        "map": "wriston_quad",
+        "x": 24,
+        "y": 11
+      }
+    },
+    {
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level3_ratty_entrance"
+        }
+      ],
+      "entry": {
+        "x": 10,
+        "y": 16
+      },
+      "exit": {
+        "map": "wriston_quad",
+        "x": 24,
+        "y": 8
+      }
+    }
+  ],
+  "enemies": [],
+  "npcs": [],
+  "sequences": [
+    "level3_ratty_entrance"
+  ]
+}

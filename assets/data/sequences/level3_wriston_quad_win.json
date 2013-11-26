@@ -1,0 +1,54 @@
+{
+	"id": "level3_wriston_quad_win",
+	"actions": [
+		[
+			{
+				"type": "ConditionClearedArea",
+				"map": "wriston_quad",
+				"beat": 10
+			},		
+			{
+				"type": "ConditionSequence",
+				"name": "level3_wriston_quad"
+			}
+		],
+		[			
+			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 96,
+				
+				"name": "Narrator",
+				"message": "There are still many drunkards left, but the path is clear enough for you to get inside."
+			}
+		],
+		[
+			{
+				"type": "ActionWait",
+				"time": 24
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 48,
+				
+				"name": "Narrator",
+				"message": "Get inside."
+			}
+		],	
+		[
+			{
+				"type": "ActionJournal",
+				
+				"message": "Go to the Ratty! :D"
+			}
+		]			
+	]
+}

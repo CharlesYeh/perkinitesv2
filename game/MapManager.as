@@ -1,28 +1,28 @@
 ﻿package game {
-	import util.*;
-	import tileMapper.*;
-	
-	import db.MapDatabase;
-	
-	import units.GameUnit;
-	
-	import game.Game;
-
 	import flash.geom.Point;
 	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
 	import flash.display.Stage;
 	import flash.display.Bitmap;
-	import flash.events.*;
-	import flash.ui.*;
 	
 	import db.dbData.MapData;
-	import db.dbData.TilesetData;
-	import units.StatUnit;
 	import db.dbData.TeleportData;
-	import units.Teleport;
+	import db.dbData.TilesetData;
+	
+	import game.Game;
+	
+	import tileMapper.InteractiveTile;
+	import tileMapper.ScreenRect;
+	import tileMapper.TileMap;
+	
 	import ui.Notification;
 
+	import units.GameUnit;
+	import units.StatUnit;
+	import units.Teleport;
+	
+	import util.KeyDown;
+	
 	public class MapManager {
 		public static var world:World;
 		
@@ -34,11 +34,12 @@
 		/**
 		 * @param	team	Array of StatUnits which are custom-added into the world
 		 */
-		public static function createWorld(mapName:String, team:Array):World {
+		public static function createWorld(mapName:String):World {
 			resetWorld();
 			
 			var mdat:MapData = Game.dbMap.getMapData(mapName);
 			var tdat:TilesetData = mdat.tilesetData;
+			Game.playerProgress.map = mapName;
 			
 			if (world == null) {
 				world = new World(mdat);
@@ -46,7 +47,6 @@
 			else{
 				world.createWorld(mdat);
 			}
-			
 			
 			Game.overlay.locationDisplay.txtMessage.text = mdat.name;
 			
@@ -56,9 +56,12 @@
 			//make sure that on continue game, it doesn't start at the beginning
 			var avgX:Number = 0;
 			var avgY:Number = 0;
-			for (var i:String in team) {
-				world.addUnit(team[i]);
-				team[i].setAbilityTargets(world.getEnemies()); //make it so that enemies will take damage
+			if(Game.team.length == 2) {
+				Game.team.splice(1, 1);				
+			}
+			for (var i:String in Game.team) {
+				world.addUnit(Game.team[i]);
+				Game.team[i].setAbilityTargets(world.getEnemies()); //make it so that enemies will take damage
 				var u:StatUnit = Game.team[i]; //allow to end dashing by changing gameunit -> statunit
 				
 				avgX += u.x;
@@ -97,22 +100,23 @@
 			var map:TeleportData = world.checkTeleports(su);
 			if (map != null) {
 				// change map
-				Game.playerProgress.createdUnits.length = 0;
+				Game.playerProgress.setCreatedUnits(new Array());
 				changeMap(map);
 			}
 		}
 		
 		public static function changeMap(tdat:TeleportData):void {
-			createWorld(tdat.exitMap, Game.team);
+			createWorld(tdat.exitMap);
 						
 			var avgX:Number = 0;
 			var avgY:Number = 0;
 			
 			// move team to exit location
-			for (var i:String in Game.team) {
+			var START_SEPARATION:int = 15;
+			for (var i:int = 0; i < Game.team.length; i++) {
 				var u:StatUnit = Game.team[i]; //allow to end dashing by changing gameunit -> statunit
 				
-				u.x = tdat.exitX * GameConstants.TILE_SIZE + (GameConstants.TILE_SIZE >> 1);
+				u.x = tdat.exitX * GameConstants.TILE_SIZE + (GameConstants.TILE_SIZE >> 1) - i * START_SEPARATION;
 				u.y = tdat.exitY * GameConstants.TILE_SIZE + (GameConstants.TILE_SIZE >> 1);
 				//prevent any movement from the last map
 				u.clearPath();
@@ -121,7 +125,7 @@
 				u.enableMovement();
 				u.endAbility();
 				avgX += u.x;
-				avgY += u.y;
+				avgY += u.y;				
 			}
 
 			avgX /= Game.team.length;
@@ -134,6 +138,7 @@
 		}
 		
 		public static function update():void {
+			// Update ScreenRect position.
 			var avgX:Number = 0;
 			var avgY:Number = 0;
 			
@@ -150,10 +155,16 @@
 			var sy = avgY - GameConstants.HEIGHT / 2;
 			ScreenRect.easeScreen(new Point(sx, sy));
 			
+			//Stay within bounds of map for ScreenRect.
 			checkScreenRect();
+			
 			depthSortHandler();
 			
+			// Check to see if the leader unit walked into the teleport.
+			checkTeleports();
+			
 			world.updateSequences();
+			
 		}
 		
 		public static function depthSortHandler():void {
@@ -189,165 +200,6 @@
 			}
 		}
 		
-		/*
-		//-------------AI UNITS-------------\
-		public static function clearNPCUnits(){
-			for (var n in npcUnits){
-				var npc = npcUnits[n];
-				removeFromMapClip(npc);
-				npc.destroy();
-			}
-			
-			npcUnits = new Array();
-		}
-		
-		public static function deleteSpawn(u:AISpawnPoint) {
-			deleteEnemy(u);
-			if (u.healthPoints <= 0 && u.destroyable) {
-				// was destroyed, remove permanently?
-				sObject.data[FINISH_SPAWN + u.map + "_" + u.ptID] = true;
-			}
-		}
-		
-		// remove self from public array of units
-		public static function deleteEnemy(u:StatUnit) {
-			aiUnits.splice(aiUnits.indexOf(u), 1);
-			removeFromMapClip(u);
-		}
-		
-		public static function getAIUnits():Array {
-			//return aiUnits;
-			return null;
-		}
-		//-----------END AI UNITS-----------
-		public static function addToMapClip(mc:MovieClip) {
-			mapClip.addChild(mc);
-		}
-		public static function removeFromMapClip(mc:MovieClip) {
-			mapClip.removeChild(mc);
-		}
-		public static function testTeleportPoints(su:StatUnit):MovieClip {
-			var sx = Math.floor(su.x / TileMap.TILE_SIZE);
-			var sy = Math.floor(su.y / TileMap.TILE_SIZE);
-			
-			for (var a in telePoints) {
-				var t = telePoints[a];
-				if (sx == t.tx && sy == t.ty) {
-					// change map!
-					return t;
-				}
-			}
-			
-			return null;
-		}
-		
-		static function preparePointArrays() {
-			if (telePoints != null) {
-				for (var a in telePoints) {
-					var t = telePoints[a];
-					removeFromMapClip(t);
-				}
-			}
-			telePoints = new Array();
-		}
-		static function addSpawnPoint(spawnid:int, mapX:Number, mapY:Number, ptID:int, destroy:Boolean) {
-			var spawn = new AISpawnPoint(spawnid);
-			spawn.x = mapX;
-			spawn.y = mapY;
-			
-			// for permanent destroying
-			spawn.destroyable = destroy;
-			spawn.map = mapNumber;
-			spawn.ptID = ptID;
-			
-			spawn.setDeleteFunction(deleteSpawn);
-			
-			addToMapClip(spawn);
-			aiUnits.push(spawn);
-		}
-		static function addNPC(npc:NPCUnit, mapX:Number, mapY:Number){
-			npc.x = mapX;
-			npc.y = mapY;
-			addToMapClip(npc);
-			npcUnits.push(npc);
-		}
-		public static function setHeroPosition(hero:GameUnit, partner:GameUnit, startPoint:Point) {
-			var sx = startPoint.x * TileMap.TILE_SIZE;
-			var sy = startPoint.y * TileMap.TILE_SIZE;
-			
-			ScreenRect.setX(sx - ScreenRect.STAGE_WIDTH / 2);
-			ScreenRect.setY(sy - ScreenRect.STAGE_HEIGHT / 2);
-			
-			hero.x = sx - TileMap.TILE_SIZE / 2;
-			hero.y = sy;
-			partner.x = sx + TileMap.TILE_SIZE / 2;
-			partner.y = sy;
-		}
-		
-		public static function setEnemies() {
-			var e = new Enemy(5);
-			mapClip.addChild(e);
-			e.x = 4 * 32 + 16;
-			e.y = 9 * 32 + 16;
-		}
-
-
-		public static function startScrolling(scrollDir, numTiles, speed, startX, startY) {
-			scrollDir = scrollDir;
-			distance = 0;
-			totalDistance = numTiles * 32;
-			speed = speed;
-			
-			ScreenRect.setX(startX);
-			ScreenRect.setY(startY);
-			
-			scrolling = true;
-		}
-
-		public static function stopScrolling() {
-			//scrolling = false;
-		}
-		public static function scrollHandler(e) {
-			// follow player
-			if (!scrolling) {
-				//ScreenRect.setX(trackUnit.x - 640 / 2);
-				//ScreenRect.setY(Math.max(trackUnit.y - 480 / 2,0));
-				var sx = (trackUnit1.x + trackUnit2.x - 640) / 2;
-				var sy = (trackUnit1.y + trackUnit2.y - 480) / 2;
-				ScreenRect.easeScreen(new Point(sx, sy));
-				
-				checkScreenRect();
-			}
-			else {
-				// move to set point
-				if (distance < totalDistance) {
-					var xdist = 0;
-					var ydist = 0;
-					switch (scrollDir) {
-						case 2 :
-							ydist = speed;
-							break;
-						case 4 :
-							xdist = -1 * speed;
-							break;
-						case 6 :
-							xdist = speed;
-							break;
-						case 8 :
-							ydist = -1 * speed;
-							break;
-					}
-					
-					ScreenRect.setX(ScreenRect.getX() + xdist - ScreenRect.STAGE_WIDTH / 2);
-					ScreenRect.setY(Math.max(ScreenRect.getY() + xdist - ScreenRect.STAGE_HEIGHT / 2, 0));
-					
-					checkScreenRect();
-					
-					distance += Math.sqrt(Math.pow(xdist, 2) + Math.pow(ydist, 2));
-				}
-			}
-		}
-		*/
 		private static function checkScreenRect():void {
 			if (ScreenRect.getX() < 0) {
 				ScreenRect.setX(0);

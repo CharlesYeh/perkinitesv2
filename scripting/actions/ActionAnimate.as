@@ -52,6 +52,16 @@
 			if(units.length == 0 || time == 0){
 				complete();
 			}
+			
+			var createdUnits = Game.playerProgress.getCreatedUnits();
+			for (i in createdUnits) {
+				if(createdUnits[i].id == sprite){
+					createdUnits[i].animation = animation;
+				}
+			}
+			
+			Game.playerProgress.setCreatedUnits(createdUnits);
+			
 /*			for(var i:String in units){
 				if(units[i] == "player"){
 					c[0].beginAnimation(animLabel);

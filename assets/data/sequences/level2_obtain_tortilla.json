@@ -1,0 +1,44 @@
+{
+	"id": "level2_obtain_tortilla",
+	"saveable": false,
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level2_food_court_boss"
+			}
+		],
+		[
+			{
+				"type": "ConditionNearLocation",
+				"x": 11,
+				"y": 8,
+				"radius": 32
+			},
+			{
+				"type": "ConditionHasItem",
+				"item": "Tortilla",
+				"negation": true
+			}				
+		],
+		[
+			{
+				"type": "ActionItem",
+				"item": "Tortilla"
+			},
+			{
+				"type": "ActionNotification",
+				
+				"time": 48,
+				"title": "Item Get!",
+				"longSubtitle": "Unlocked Tortilla!"
+			},			
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Quesadilla_Tortilla"
+			}
+		]
+	]
+}

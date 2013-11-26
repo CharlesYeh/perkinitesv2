@@ -5,7 +5,7 @@
 	
 	public class ActionAI extends Action {
 		
-		public var enabled:Boolean;
+		public var enabled:Boolean; //CHANGE TO ENABLE
 		
 		override public function parseData(obj:Object):void {
 			super.parseData(obj);

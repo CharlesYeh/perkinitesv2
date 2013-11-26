@@ -1,0 +1,69 @@
+{
+  "name": "Ivy Room",
+  "id": "ratty_ivy_room",
+  "tileset": "ratty",
+  "height": 15,
+  "width": 20,
+  "code": "111111111111111111111111111111111111111111333633363336333311113336333633363333111100000000000000001111000000000000000011110000000000000000111100001111111111111111000033336333363311130000333363333633111300000000000000001110000000000000000011110000000000000000111111111111111111111111111111111111111111",
+  "teleports": [
+    {
+      "conditions": [],
+      "entry": {
+        "x": 1,
+        "y": 11
+      },
+      "exit": {
+        "map": "ratty_bottom_corridor",
+        "x": 17,
+        "y": 11
+      }
+    }
+  ],
+  "enemies": [
+    {
+      "id": "drunk_fratguy",
+      "direction": "down",
+      "position": {
+        "x": 4,
+        "y": 11
+      }
+    },
+    {
+      "id": "drunk_fratguy",
+      "direction": "down",
+      "position": {
+        "x": 5,
+        "y": 5
+      }
+    },
+    {
+      "id": "fries",
+      "direction": "down",
+      "position": {
+        "x": 15,
+        "y": 11
+      }
+    },
+    {
+      "id": "chocochip_cookie",
+      "direction": "down",
+      "position": {
+        "x": 13,
+        "y": 5
+      }
+    },
+    {
+      "id": "chocochip_cookie",
+      "direction": "down",
+      "position": {
+        "x": 9,
+        "y": 11
+      }
+    }
+  ],
+  "npcs": [],
+  "sequences": [
+    "level3_ivy_room",
+    "level3_ivy_room_win"
+  ]
+}

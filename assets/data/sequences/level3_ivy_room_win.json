@@ -1,0 +1,38 @@
+{
+	"id": "level3_ivy_room_win",
+	"actions": [
+		[
+			{
+				"type": "ConditionClearedArea",
+				"map": "ratty_ivy_room"
+			},
+			{
+				"type": "ConditionSequence",
+				"name": "level3_ivy_room"
+			}
+		],
+		[		
+			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 96,
+				
+				"name": "Narrator",
+				"message": "I bet the entrance to the dining hall is unlocked now. Our heroes should go check that out."
+			}
+		],
+		[
+			{
+				"type": "ActionJournal",
+				
+				"message": "Go to the Ratty dining hall! :D"
+			}
+		]
+	]
+}

@@ -1,17 +1,28 @@
 {
 	"id": "level2_outer_corridor",
 	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level2_ananya"
+			}
+		],					
 		[	
 			{
 				"type": "ActionAI",
 				"enabled": false
 			},		
 			{
+				"type": "ActionJournal",
+				
+				"message": ""
+			},
+			{
 				"type": "ActionNarrator",
-				"time": 72,
+				"time": 144,
 				"toggle": true,
 				
-				"message": "Our freshmen find themselves in suspicious silence."
+				"message": "Our freshmen find themselves in suspicious silence. That strange looking girl in front of them does not help this silence."
 			},
 			{
 				"type": "ActionSound",
@@ -29,6 +40,41 @@
 				"type": "ActionSpeech",
 				"time": 10,
 				
+				"name": "Sleepy-headed Girl",
+				"icon": "Face Icon - Socordia.png",
+				"message": "I'm tired."
+			}		
+		],
+		[
+			{
+				"type": "ActionAnimate",
+				"time": 28,
+				
+				"sprite": "npc_Socordia",
+				"animation": "forming"
+			}		
+		],	
+		[
+			{
+				"type": "ActionMove",
+				
+				"subtype": "npc",
+				"sprite": "npc_Socordia",
+				"xpos": 18,
+				"ypos": 14
+			}		
+		],					
+		[
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Socordia"
+			},				
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
 				"name": "???",
 				"message": "AHHHHHHHHHHHHHHHHHHHHHHHHHH-"			
 			}
@@ -38,7 +84,7 @@
 				"type": "ActionNarrator",
 				"time": 128,
 				
-				"message": "That silence is broken. It appears the shriek came from Little Jo's, the minimart of this fine dining establishment. Let's follow."
+				"message": "It appears just as the weird little girl left, a shriek comes from Little Jo's, the minimart of this fine dining establishment. Let's follow."
 			}
 		],
 		[

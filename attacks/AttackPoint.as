@@ -74,7 +74,7 @@
 			super.castAbility(caster, castPoint);
 		}
 		
-		override public function pointAttack(bullets:Array, offset:Point):void {
+		override public function pointAttack(bullets:Array, offset:Point, delay:int = -1):void {
 			// get constructor and delete template
 			var b:MovieClip = bullets[0];
 			var projClass:Class = b.constructor;
@@ -88,6 +88,7 @@
 			
 			//get correct orientation
 			p.rotation = b.rotation;
+			p.delay = delay;
 			//p.scaleX = (m_caster.scaleX > 0) ? 1 : -1;			
 			
 			
@@ -96,22 +97,7 @@
 		}
 		
 		override public function dealDamage():void {
-			var targets:Array = targets();
-			
-			for (var i:String in targets) {
-				var e:StatUnit = targets[i];
-				
-				var dx:Number = e.x - m_castPoint.x;
-				var dy:Number = e.y - m_castPoint.y;
-				var dist:Number = Math.sqrt(dx * dx + dy * dy);
-				
-				if (dist < radius) {
-					e.takeDamage(damage());
-/*						if(AIUnit.m_enabled){
-							SoundManager.playSound("hit");
-						}		*/			
-				}
-			}
+			damageHelper(m_castPoint);
 		}
 		
 		/**
@@ -119,6 +105,10 @@
 		 */
 		protected function projectileRunner(e:Event):void {
 			var p:MovieClip = e.target as MovieClip;
+			
+			if(p.currentFrame == p.delay) {
+				damageHelper(new Point(p.x, p.y));
+			}
 			
 			if (p.currentFrame >= p.totalFrames) {
 				removeProjectile(p);
@@ -129,5 +119,25 @@
 			p.removeEventListener(Event.ENTER_FRAME, projectileRunner);
 			Game.world.clearCustom(p);
 		}		
+		
+		private function damageHelper(castPoint:Point) {
+			var targets:Array = targets();
+			
+			for (var i:String in targets) {
+				var e:StatUnit = targets[i];
+				
+				var dx:Number = e.x - castPoint.x;
+				var dy:Number = e.y - castPoint.y;
+				var dist:Number = Math.sqrt(dx * dx + dy * dy);
+				
+				if (dist < radius) {
+					e.takeDamage(damage());
+					if(e == Game.team[0]) {
+						return;
+					}		
+				}
+				
+			}
+		}
 	}
 }

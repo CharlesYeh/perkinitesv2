@@ -1,0 +1,98 @@
+{
+  "name": "Bistro",
+  "id": "ratty_bistro",
+  "tileset": "malefic",
+  "height": 20,
+  "width": 20,
+  "code": "1111111111111111111111111111111111111111111111111111111111111111100000000001111111111000000000011111111111100000000111111111111000000001111111111110000000011111111111100000000111111111111000000001111111111111111111111111111111100000000111111111111000000001111111111110000000011111111111100000000111111111100000000001111111111000000000011111111111111111111111111111111111111111111111111111111111111111",
+  "teleports": [
+    {
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level3_miniboss_win"
+        }
+      ],
+      "entry": {
+        "x": 5,
+        "y": 4
+      },
+      "exit": {
+        "map": "ratty_dining_court",
+        "x": 12,
+        "y": 18
+      }
+    }
+  ],
+  "enemies": [
+    {
+      "id": "icecream_shooter",
+      "direction": "down",
+      "position": {
+        "x": 7,
+        "y": 3
+      }
+    },
+    {
+      "id": "icecream_shooter",
+      "direction": "down",
+      "position": {
+        "x": 8,
+        "y": 3
+      }
+    },
+    {
+      "id": "icecream_shooter",
+      "direction": "down",
+      "position": {
+        "x": 9,
+        "y": 3
+      }
+    },
+    {
+      "id": "icecream_shooter",
+      "direction": "down",
+      "position": {
+        "x": 10,
+        "y": 3
+      }
+    },
+    {
+      "id": "icecream_shooter",
+      "direction": "down",
+      "position": {
+        "x": 11,
+        "y": 3
+      }
+    },
+    {
+      "id": "icecream_shooter",
+      "direction": "down",
+      "position": {
+        "x": 12,
+        "y": 3
+      }
+    },
+    {
+      "id": "icecream_shooter",
+      "direction": "down",
+      "position": {
+        "x": 13,
+        "y": 3
+      }
+    },
+    {
+      "id": "icecream_shooter",
+      "direction": "down",
+      "position": {
+        "x": 14,
+        "y": 3
+      }
+    }
+  ],
+  "npcs": [],
+  "sequences": [
+    "level3_miniboss",
+    "level3_miniboss_win"
+  ]
+}

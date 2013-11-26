@@ -9,9 +9,19 @@
 		"boss_ira",
 		"fries",
 		"o_rings",
-		"m_sticks",
+		"m_stick",
 		"burger",
 		"blob",
-		"boss_acedia"
+		"boss_socordia",
+		"jos_spawnpoint",
+		"drunk_fratguy",
+		"icecream",
+		"double_icecream",
+		"chocochip_cookie",
+		"vendor",
+		"boss_gula",
+		"wriston_spawnpoint",
+		"ratty_spawnpoint",
+		"icecream_shooter"
 	]
 }

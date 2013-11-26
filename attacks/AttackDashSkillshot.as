@@ -38,6 +38,7 @@
 			var speedChunk:Number = speed / m_multi;
 			
 			m_forwardVector = new Point(dx * speedChunk, dy * speedChunk);
+			caster.m_penetrates = m_penetrates;
 		}
 		
 		override public function castInProgress(caster:StatUnit):void {
@@ -71,5 +72,10 @@
 		override public function stopForwardMovement():void {
 			m_moveForward = false;
 		}
+		
+		override public function getAttackType():String {
+			return "Dash-Da-Dash - This attack allows this Perkinite to dash toward a given point.";
+		}
+		
 	}
 }

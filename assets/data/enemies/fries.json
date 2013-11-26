@@ -18,8 +18,7 @@
       "cd": 25,
       "stand": 24,
       "speed": 15,
-      "width": 30,
-      "penetrates": 4
+      "width": 30
     }
   ]
 }

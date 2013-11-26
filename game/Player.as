@@ -1,62 +1,42 @@
-﻿package game {
-	import units.Perkinite;
+﻿package game{
 	
 	public class Player {
+		private static const PLAYER_HEAL_TIMELAPSE:int = 24;
 		
-		public static const HEAL_PERCENTAGE:Number = .02;
-		public static const PLAYER_HEAL_DELAY:int = 80;
-		public static var playerHealDelay:int = 0;
-		
-		private static var prevHealth:Array = new Array();
+		private static var HEAL_PERCENTAGE:Number = .02;
+		private static var PLAYER_HEAL_DELAY:int = 120;
+		private static var playerHealDelay:int = 0;
 
-		public function updateHealing(team:Array):void {
+		private static var prevHealth:int = -1;
+
+		public static function updateHealing():void {
+			if (Game.playerProgress.health <= 0) {
+				playerHealDelay = PLAYER_HEAL_DELAY;
+				return;
+			}
 			//i think this works now
-			if (prevHealth.length != team.length) {
+			if (prevHealth == -1) {
 				// init previous healths
-				for (var i = 0; i < team.length; i++) {
-					var p:Perkinite = team[i];
-					prevHealth[i] = p.progressData.health;
-				}
-				
+				prevHealth = Game.playerProgress.health;
 				playerHealDelay = 0;
-			}
-			else {
-				var damaged:Boolean = false;
-				// check if any hps changed
-				for (i = 0; i < prevHealth.length; i++) {
-					p = team[i];
-					
-					if (p.progressData.health != prevHealth[i]) {
-						damaged = true;
-						break;
-					}
-				}
-				
-				if (damaged) {
-					playerHealDelay = 0;
-					for (i = 0; i < prevHealth.length; i++) {
-						prevHealth[i] = team[i].progressData.health;
-					}
-				}
-				else {
-					playerHealDelay++;
+			} else {
+				if (prevHealth > Game.playerProgress.health) {
+					playerHealDelay = PLAYER_HEAL_DELAY;
+				} else {
+					playerHealDelay--;
 				}
 			}
-			
+
 			// heal
-			if (playerHealDelay > PLAYER_HEAL_DELAY) {
-				for (i = 0; i < 1; i++) { //make everyone share the same HP as the leader
-					p = team[i];
-					
-					// add % of max hp
-					var mhp:int = p.unitData.health;
-					var dhp:int = mhp * HEAL_PERCENTAGE;
-					dhp = Math.min(mhp - p.progressData.health, dhp);
-					
-					p.takeDamage(-dhp);
-				}
+			if (playerHealDelay <= 0 && playerHealDelay % PLAYER_HEAL_TIMELAPSE == 0) {
+				// add % of max hp
+				var mhp:int = Game.playerProgress.getMaxHealth();
+				var dhp:int = mhp * HEAL_PERCENTAGE;
+				dhp = Math.min(mhp - Game.playerProgress.health, dhp);
+
+				Game.playerProgress.takeDamage(-dhp);
 			}
+			prevHealth = Game.playerProgress.health;
 		}
 	}
-	
 }

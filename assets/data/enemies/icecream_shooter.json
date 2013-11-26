@@ -1,0 +1,25 @@
+{
+  "ai": "InvulnerableUnit",
+  "name": "Icecream Shooter",
+  "id": "icecream_shooter",
+  "sprite": "enemy_Icecream_Shooter",
+  "health": 1,
+  "defense": 0,
+  "speed": 0,
+  "abilities": [
+    {
+      "name": "Spawn Icecream",
+      "type": "AttackSkillshot",
+      "icon": "",
+      "description": "",
+      "dmgBase": "10",
+      "dmgRatio": "",
+      "range": 1000,
+      "cd": 0,
+      "stand": 24,
+      "speed": 15,
+      "width": 16,
+      "penetrates": 1
+    }
+  ]
+}

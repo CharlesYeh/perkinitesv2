@@ -1,36 +1,12 @@
 {
-  "ai": "BossAcediaAI",
-  "name": "Acedia",
-  "id": "boss_acedia",
-  "sprite": "enemy_Acedia",
-  "health": 850,
+  "ai": "BossSocordiaAI",
+  "name": "Socordia",
+  "id": "boss_socordia",
+  "sprite": "enemy_Socordia",
+  "health": 500,
   "defense": 0,
   "speed": 50,
   "abilities": [
-    {
-      "name": "Creepy Weepy",
-      "type": "AttackSmartcast",
-      "icon": "",
-      "description": "",
-      "dmgBase": "20",
-      "dmgRatio": "",
-      "range": 72,
-      "cd": 0,
-      "stand": 23,
-      "goToCastPoint": false
-    },
-    {
-      "name": "Deep-Fried Impact",
-      "type": "AttackPoint",
-      "icon": "",
-      "description": "",
-      "dmgBase": "15",
-      "dmgRatio": "",
-      "range": 2000,
-      "cd": 0,
-      "stand": 70,
-      "radius": 88
-    },
     {
       "name": "Fat Division",
       "type": "AttackSmartcast",
@@ -40,7 +16,32 @@
       "dmgRatio": "",
       "range": 100,
       "cd": 0,
-      "stand": 27,
+      "stand": 45,
+      "goToCastPoint": false
+    },
+    {
+      "name": "Deep-Fried Impact",
+      "type": "AttackSkillshot",
+      "icon": "",
+      "description": "",
+      "dmgBase": "5",
+      "dmgRatio": "",
+      "range": 2000,
+      "cd": 0,
+      "stand": 70,
+      "speed": 20,
+      "width": 35
+    },
+    {
+      "name": "Creepy Weepy",
+      "type": "AttackSmartcast",
+      "icon": "",
+      "description": "",
+      "dmgBase": "15",
+      "dmgRatio": "",
+      "range": 160,
+      "cd": 0,
+      "stand": 45,
       "goToCastPoint": false
     },
     {
@@ -48,12 +49,12 @@
       "type": "AttackPoint",
       "icon": "",
       "description": "",
-      "dmgBase": "20",
+      "dmgBase": "5",
       "dmgRatio": "",
       "range": 400,
       "cd": 0,
-      "stand": 1000,
-      "radius": 100
+      "stand": 45,
+      "radius": 20
     },
     {
       "name": "Ensnare",

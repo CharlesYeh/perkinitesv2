@@ -13,14 +13,38 @@
 			{
 				"type": "ActionControls",
 				"enable": false
-			},					
+			},							
 			{
 				"type": "ActionNarrator",
 				"time": 96,
 				"toggle": true,
 				
 				"message": "Clearly I was here for all of this when it happened so that's why I'm narrating."
-			}
+			},
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "npc_Generic",
+    		   "direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 22,
+        			"y": 15
+      		}
+			},	
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "npc_Generic2",
+    		   "direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 22,
+        			"y": 12
+      		}
+			}						
 		],
 		[
 			{
@@ -52,13 +76,43 @@
 				"name": "Two Raggamuffins",
 				"message": "AHHHHHHHHHHHHHHHHH"
 			}		
-		],			
+		],	
 		[
+			{
+				"type": "ActionMove",
+				
+				"subtype": "npc",
+				"sprite": "npc_Generic",
+				"xpos": 1,
+				"ypos": 11
+			},		
+			{
+				"type": "ActionMove",
+				
+				"subtype": "npc",
+				"sprite": "npc_Generic2",
+				"xpos": 1,
+				"ypos": 11
+			}			
+		],					
+		[
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Generic"
+			},
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Generic2"
+			},					
 			{
 				"type": "ActionNarrator",
 				"time": 170,
 				
-				"message": "It seems like the two ragamuffins Ananya mentioned are standing ever so silly. I wonder why they aren't running away or something smart."
+				"message": "It seems like the two ragamuffins Ananya mentioned are running ever so silly."
 			}
 		],	
 		[
@@ -79,12 +133,12 @@
 				"type": "ActionCreate",
 				
 				"subtype": "npc",
-				"id": "npc_Ira",
+				"id": "npc_Socordia",
     		   "direction": "down",
 				"animation": "appearing",
     			"position": {
-					"x": 12,
-        			"y": 3
+					"x": 14,
+        			"y": 13
       		}
 			},		
 			{
@@ -97,7 +151,7 @@
 				"type": "ActionAnimate",
 				"time": 0,
 				
-				"sprite": "npc_Ira",
+				"sprite": "npc_Socordia",
 				"animation": "standing"
 			},	
 			{
@@ -105,7 +159,7 @@
 				"time": 10,
 				
 				"name": "Sleepy-headed Girl",
-				"icon": "Face Icon - Ira.png",
+				"icon": "Face Icon - Socordia.png",
 				"message": "I'm tired."
 			}		
 		],		
@@ -136,8 +190,8 @@
 				"type": "ActionAnimate",
 				"time": 54,
 				
-				"sprite": "npc_Ira",
-				"animation": "raging"
+				"sprite": "npc_Socordia",
+				"animation": "transforming"
 			}		
 		],	
 		[	
@@ -145,39 +199,17 @@
 				"type": "ActionDelete",
 				
 				"subtype": "npc",
-				"sprite": "npc_Ira"
+				"sprite": "npc_Socordia"
 			},			
 			{
 				"type": "ActionCreate",
 				
 				"subtype": "enemy",
-				"id": "boss_ira",
+				"id": "boss_socordia",
 				"direction": "down",
     			"position": {
-					"x": 12,
-        			"y": 3
-      		}
-			},
-			{
-				"type": "ActionCreate",
-				
-				"subtype": "enemy",
-				"id": "dhcspark",
-				"direction": "down",
-    			"position": {
-					"x": 5,
-        			"y": 6
-      		}
-			},
-			{
-				"type": "ActionCreate",
-				
-				"subtype": "enemy",
-				"id": "dhcspark",
-				"direction": "down",
-    			"position": {
-					"x": 19,
-        			"y": 6
+					"x": 14,
+        			"y": 13
       		}
 			}														
 		],
@@ -186,29 +218,30 @@
 				"type": "ActionNarrator",
 				"time": 120,
 				
-				"message": "YES! Here he is, SOCORDIA, in her true form!"
-			},
-			{
-				"type": "ActionJournal",
-				
-				"message": "The darkness has transformed! Defeat the evil to get a Quesadilla!"
-			}		
+				"message": "YES! Here she is, SOCORDIA, in her true form!"
+			}			
 		],
 		[		
 			{
 				"type": "ActionNarrator",
-				"time": 120,
+				"time": 144,
 				
-				"message": "The complete embodiment of wrath and hatred! The first of many CARDINAL SERVANTS."
+				"message": "The complete embodiment of apathy and lethargy, the one who commands her servants to do her bidding, and the one to engulf anyone that opposes her! The second of the CARDINAL SERVANTS."
 			}
 		],
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
+			}
+		],				
 		[
 			{
 				"type": "ActionSpeech",
 				"time": 10,
 				
 				"name": "Socordia",
-				"icon": "Face Icon - Ira.png",
+				"icon": "Face Icon - Socordia.png",
 				"message": "MERHHHHHHHHHHHHHHH"
 			}		
 		],		
@@ -226,23 +259,98 @@
 				"skip": false
 			}
 		],
+		[				
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "npc_Quesadilla_Tortilla",
+				"direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 11,
+        			"y": 8
+      		}
+			},
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "npc_Quesadilla_Cheese",
+				"direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 23,
+        			"y": 17
+      		}
+			},
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "npc_Quesadilla_Mushrooms",
+				"direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 22,
+        			"y": 6
+      		}
+			},
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "npc_Quesadilla_Jalapenos",
+				"direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 16,
+        			"y": 14
+      		}
+			},
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "npc_Quesadilla_Beans",
+				"direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 26,
+        			"y": 3
+      		}
+			},
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "npc_Quesadilla_Onions",
+				"direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 2,
+        			"y": 17
+      		}
+			}																									
+		],		
 		[
 			{
 				"type": "ActionAI",
 				"enabled": true
-			},
+			},		
 			{
 				"type": "ActionControls",
-				"enable": true
-			},
-			{
-				"type": "ActionHUD",
 				"enable": true
 			},	
 			{
 				"type": "ActionHUD",
 				"enable": true,
 				"enemy": true
+			},
+			{
+				"type": "ActionJournal",
+				
+				"message": "The darkness is invulnerable! Get a Quesadilla to weaken her!"
 			}
 		]
 	]

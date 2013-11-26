@@ -1,0 +1,104 @@
+{
+  "name": "Grill",
+  "id": "ratty_grill",
+  "tileset": "ratty",
+  "height": 20,
+  "width": 20,
+  "code": "1111111111111111111111111333133333311111111113331333333111111111100010000001111111111000100000011111111110001000011111111111100010000111111111111000300001111111111110003000011111111111100000000111111111111000000001111111111110001000011111111111100010000111111111111000100003311111111110001000033111111111100010000001111111111000100000011111111111111111111111111111111111111111111111111111111111111111",
+  "teleports": [
+    {
+      "conditions": [],
+      "entry": {
+        "x": 14,
+        "y": 4
+      },
+      "exit": {
+        "map": "ratty_dining_court",
+        "x": 22,
+        "y": 12
+      }
+    },
+    {
+      "conditions": [],
+      "entry": {
+        "x": 14,
+        "y": 15
+      },
+      "exit": {
+        "map": "ratty_dining_court",
+        "x": 22,
+        "y": 16
+      }
+    }
+  ],
+  "enemies": [
+    {
+      "id": "icecream_shooter",
+      "direction": "down",
+      "position": {
+        "x": 9,
+        "y": 3
+      }
+    },
+    {
+      "id": "icecream_shooter",
+      "direction": "down",
+      "position": {
+        "x": 11,
+        "y": 3
+      }
+    },
+    {
+      "id": "icecream_shooter",
+      "direction": "down",
+      "position": {
+        "x": 7,
+        "y": 3
+      }
+    },
+    {
+      "id": "icecream_shooter",
+      "direction": "down",
+      "position": {
+        "x": 5,
+        "y": 3
+      }
+    },
+    {
+      "id": "burger",
+      "direction": "down",
+      "position": {
+        "x": 6,
+        "y": 5
+      }
+    },
+    {
+      "id": "burger",
+      "direction": "down",
+      "position": {
+        "x": 6,
+        "y": 14
+      }
+    },
+    {
+      "id": "burger",
+      "direction": "down",
+      "position": {
+        "x": 10,
+        "y": 9
+      }
+    },
+    {
+      "id": "drunk_fratguy",
+      "direction": "down",
+      "position": {
+        "x": 10,
+        "y": 12
+      }
+    }
+  ],
+  "npcs": [],
+  "sequences": [
+    "level3_grill_win"
+  ]
+}

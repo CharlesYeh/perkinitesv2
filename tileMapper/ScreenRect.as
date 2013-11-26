@@ -1,6 +1,8 @@
 ﻿package tileMapper{
 	import flash.display.MovieClip;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
+	
 	public class ScreenRect{
 		public static var screen:Rectangle = new Rectangle();
 		
@@ -45,6 +47,10 @@
 		
 		public static function inBounds(obj){
 			return obj.x >= screen.x && obj.y >= screen.y && obj.x <= screen.x+STAGE_WIDTH && obj.y <= screen.y + STAGE_HEIGHT;
+		}
+		
+		public static function fromScreenToGame(pt:Point):Point {
+ 			return new Point(pt.x + getX(), pt.y + getY());			
 		}
 	}
 }

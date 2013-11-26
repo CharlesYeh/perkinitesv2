@@ -4,7 +4,7 @@
     "attack": 1,
     "speed": 5
   },
-  "weapon": "Knitting Needles",
+  "weapon": "The Harmonious",
   "name": "Cia M.",
   "id": "CM",
   "sprite": "CM",
@@ -13,7 +13,7 @@
   "speed": 160,
   "abilities": [
     {
-      "name": "Sedated Needles",
+      "name": "Sedated Knitting",
       "type": "AttackSkillshot",
       "icon": "Icon - Sedated Needles.png",
       "description": "Throws a sedated knitting needle at an enemy.",
@@ -29,7 +29,7 @@
       "name": "Distortion",
       "type": "AttackPoint",
       "icon": "Icon - Graceful Dodge.png",
-      "description": "Teleport self to a point.",
+      "description": "Teleport self to a point, creating an angelic shockwave around you.",
       "dmgBase": "5",
       "dmgRatio": "",
       "range": 250,

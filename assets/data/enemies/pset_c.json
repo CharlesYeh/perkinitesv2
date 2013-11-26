@@ -1,0 +1,20 @@
+{
+  "ai": "BasicAIUnit",
+  "name": "Problem Set",
+  "id": "pset",
+  "sprite": "enemy_Problem-Set",
+  "health": 70,
+  "defense": 0,
+  "speed": 80,
+  "abilities": [
+    {
+      "name": "Math Problem",
+      "type": "AttackSkillshot",
+      "range": 100,
+      "cd": 20,
+      "speed": 10,
+      "width": 10,
+      "penetrates": 0
+    }
+  ]
+}

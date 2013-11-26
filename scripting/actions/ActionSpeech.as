@@ -10,6 +10,15 @@
 	
 	public class ActionSpeech extends Action{
 		
+		/** path relative to game of enemy jsons */
+		public static const PATH:String = "assets/data/sequences/";
+		
+		/** filename of file containing enemy json names */
+		public static const BASE:String = "sequences";
+		
+		/** path relative to game of enemy jsons */
+		public static const EXTENSION:String = ".json";
+		
 		public var icon:Loader;
 		
 		public var name:String = "";
@@ -21,9 +30,9 @@
 			super.parseData(obj);
 			
 			// TODO: get sprite from image cache
-			icon = ImageDatabase.getIcon(obj.icon);
-			name = obj.name;
-			message = obj.message;
+			icon = ImageDatabase.getIcon(obj.icon);				
+			name = (obj.name != null) ? obj.name : "";
+			message = (obj.message != null) ? obj.message : "";
 		}
 		
 		override public function update():Boolean {	
@@ -42,6 +51,21 @@
 			Game.overlay.parent.addChild(b);
 			b.x = 515;
 			b.y = 375;
+			
+			
+			if(key == "npc") {
+				var npc = Game.world.getActivatedNPC().mapCharacterData;
+				icon = ImageDatabase.getIcon("Face Icon - " + npc.id + ".png");
+				name = Game.dbSpch.getName(npc.id);
+				message = Game.dbSpch.getSpeech(npc.id, "perkinite_" + npc.id);
+				if(message == null) {
+					var type = "npc";
+					if(Game.team[0].unitData.id == npc.id) {
+						type = "mirror";
+					}			
+					message = Game.dbSpch.getSpeech(npc.id, type);
+				}
+			}
 			
 			Game.overlay.speech.showText(this, icon, name, message);
 		}

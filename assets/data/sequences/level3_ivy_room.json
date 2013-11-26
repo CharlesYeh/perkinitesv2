@@ -1,0 +1,72 @@
+{
+	"id": "level3_ivy_room",
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level3_ratty_entrance"
+			}
+		],  
+		[
+			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			},
+			{
+				"type": "ActionNarrator",
+				"time": 144,
+				"toggle": false,
+				
+				"name": "Narrator",
+				"message": "Ah, so that's why the entrance was blocked. Clearly there is too much dark ooze seeping here."
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 120,
+				"toggle": false,
+				
+				"name": "Narrator",
+				"message": "It must be caused by that one guy spewing dark ooze."
+			}
+		],	
+		[		
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Fat Kid",
+				"message": "OOOOOOOOOOOOO."
+			}	
+		],	      
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 48,
+				"toggle": false,
+				
+				"name": "Narrator",
+				"message": "Okay then."
+			}
+		],	
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 48,
+				"toggle": false,
+				
+				"name": "Narrator",
+				"message": "Clearly this makes sense."
+			}
+		],	             	
+		[
+			{
+				"type": "ActionJournal",
+				
+				"message": "Defeat the enemies to clear the dark ooze!"
+			}
+		]
+	]
+}

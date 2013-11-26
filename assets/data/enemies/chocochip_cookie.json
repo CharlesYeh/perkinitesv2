@@ -1,0 +1,25 @@
+{
+  "ai": "BasicAIUnit",
+  "name": "ChocoChip Cookie",
+  "id": "chocochip_cookie",
+  "sprite": "enemy_ChocoChip-Cookie",
+  "health": 10,
+  "defense": 0,
+  "speed": 90,
+  "abilities": [
+    {
+      "name": "Crumble",
+      "type": "AttackDashSkillshot",
+      "icon": "",
+      "description": "",
+      "dmgBase": "3",
+      "dmgRatio": "",
+      "range": 100,
+      "cd": 20,
+      "stand": 20,
+      "speed": 15,
+      "width": 25,
+      "penetrates": 999
+    }
+  ]
+}

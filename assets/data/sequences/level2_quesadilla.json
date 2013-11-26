@@ -1,0 +1,121 @@
+{
+	"id": "level2_quesadilla",
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level2_food_court_boss"
+			},
+			{
+				"type": "ConditionHasItem",
+				"item": "Beans"
+			},
+			{
+				"type": "ConditionHasItem",
+				"item": "Cheese"
+			},
+			{
+				"type": "ConditionHasItem",
+				"item": "Jalapenos"
+			},	
+			{
+				"type": "ConditionHasItem",
+				"item": "Mushrooms"
+			},	
+			{
+				"type": "ConditionHasItem",
+				"item": "Onions"
+			},	
+			{
+				"type": "ConditionHasItem",
+				"item": "Tortilla"
+			}																
+		],
+		[
+			{
+				"type": "ConditionNearLocation",
+				"x": 23,
+				"y": 13,
+				"radius": 48
+			}
+		],
+		[
+			{
+				"type": "ActionItem",
+				"item": "Beans"
+			},		
+			{
+				"type": "ActionItem",
+				"item": "Cheese"
+			},
+			{
+				"type": "ActionItem",
+				"item": "Jalapenos"
+			},
+			{
+				"type": "ActionItem",
+				"item": "Mushrooms"
+			},
+			{
+				"type": "ActionItem",
+				"item": "Onions"
+			},												
+			{
+				"type": "ActionItem",
+				"item": "Tortilla"
+			},			
+			{
+				"type": "ActionItem",
+				"item": "Quesadilla"
+			},
+			{
+				"type": "ActionNotification",
+				
+				"time": 48,
+				"title": "Item Get!",
+				"longSubtitle": "Unlocked Quesadilla!"
+			},		
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Quesadilla_Beans"
+			},		
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Quesadilla_Cheese"
+			},		
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Quesadilla_Jalapenos"
+			},		
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Quesadilla_Mushrooms"
+			},			
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Quesadilla_Onions"
+			},			
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Quesadilla_Tortilla"
+			},						
+			{
+				"type": "ActionJournal",
+				
+				"message": "Use your Quesadilla-augmented attacks to deal spicy damage to Socordia!"
+			}			
+		]
+	]
+}

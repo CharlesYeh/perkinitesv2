@@ -1,0 +1,113 @@
+{
+	"id": "level3_wriston_quad",
+	"actions": [		
+      [	
+			{
+				"type": "ConditionSequence",
+				"name": "level3_ananya"
+			}
+      ],				
+		[    
+			{
+				"type": "ActionNarrator",
+				"time": 144,
+				
+				"message": "Like the last level, it seems like our heroes find themselves in eerie silence."
+			}
+		],
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
+			}		
+		],		
+		[
+			{
+				"type": "ActionWait",
+				"time": 24
+			}			
+		],		      		
+		[		
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "???",
+				"message": "GRAWRRRRRRRRRR-."
+			}	
+		],		
+      [
+      	{
+				"type": "ActionCreate",
+				
+				"subtype": "enemy",
+				"id": "drunk_fratguy",
+				"direction": "up",
+    			"position": {
+					"x": 14,
+        			"y": 13
+      		}
+			},
+      	{
+				"type": "ActionCreate",
+				
+				"subtype": "enemy",
+				"id": "drunk_fratguy",
+				"direction": "up",
+    			"position": {
+					"x": 16,
+        			"y": 13
+      		}
+			}         	
+      ],     		
+		[
+         {
+				"type": "ActionNarrator",
+				"time": 120,
+				"toggle": true,
+				
+				"message": "Ruh roh, it seems like our heroes have invaded the drunken frat guys' territory."
+			}
+		],	
+		[
+         {
+				"type": "ActionNarrator",
+				"time": 120,
+				"toggle": true,
+				
+				"message": "Looks like they'll have to fight the drunkards to get into the Ratty."
+			}
+		],		
+		[
+			{
+				"type": "ActionWait",
+				"time": 12
+			}			
+		],		      
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
+			},		
+			{
+				"type": "ActionControls",
+				"enable": true
+			},
+			{
+				"type": "ActionHUD",
+				"enable": true
+			},		
+			{
+				"type": "ActionAI",
+				"enabled": true
+			}	         	
+		],
+		[
+			{
+				"type": "ActionJournal",
+				
+				"message": "Defeat a bunch of Drunk Frat Guys!"
+			}
+		]
+	]
+}

@@ -26,13 +26,15 @@
 		static const ANIM_ABILITY1:String	= "ability1";
 		static const ANIM_ABILITY2:String	= "ability2";
 		static const ANIM_ABILITY3:String	= "ability3";
+		static const ANIM_ABILITY4:String	= "ability4";
+		static const ANIM_ABILITY5:String	= "ability5";
 		
 		/** all the frame functions called by the animation */
 		static const frameFuncs:Array = new Array("beginForwardMovement", "stopForwardMovement",
 										"dealDamage", "applyBuffs", "shootSkillshot",
 										"teleport", "teleportPartner",
 										"shootDirectedSkillshot", "shootRelativeSkillshot",
-										"pointAttack", "prepareCastPoint");
+										"pointAttack", "prepareCastPoint", "prepareRandomPoint");
 		
 		/** the swf sprite asset */
 		var swf;
@@ -71,6 +73,9 @@
 		//----------DISPLAY VARS----------
 		var glowHit = new GlowFilter(0xFF0000, 0, 20, 20, 1, 10, true, false);
 		//--------END DISPLAY VARS--------
+		
+		
+		public var m_penetrates:int = 0;
 		
 		public function StatUnit(udat:UnitData) {
 			super();
@@ -129,6 +134,9 @@
 		
 		public function takeDamage(dmg:int):void {
 			//this may cause problems - work on it
+			if (progressData == null || progressData.health <= 0) {
+				return;
+			}
 			if (frameBuff.invincibility || !visible) {
 				return;
 			}
@@ -180,6 +188,7 @@
 			swf.content.char.dire.gotoAndStop(ANIM_WALKING);
 			swf.content.char.dirn.gotoAndStop(ANIM_WALKING);
 			swf.content.char.dirs.gotoAndStop(ANIM_WALKING);
+			
 			setAnimLabel(ANIM_WALKING);
 			updateDirection(moveDir);
 			
@@ -214,7 +223,7 @@
 		//only for cutscene animations 
 		public function beginAnimation(animLabel:String){
 			prevLabel = animLabel;
-			usingAnimation = true;
+			usingAnimation = (animLabel != "standing");
 			setAnimLabel(animLabel);
 		}
 		public function endAnimation(){
@@ -277,6 +286,12 @@
 			case 2:
 				setAnimLabel(ANIM_ABILITY3);
 				break;
+			case 3:
+				setAnimLabel(ANIM_ABILITY4);
+				break;				
+			case 4:
+				setAnimLabel(ANIM_ABILITY5);
+				break;						
 			}
 			
 			return true;
@@ -315,7 +330,9 @@
 			
 			//adjust filter
 			glowHit.alpha-=0.1;
-			this.swf.filters = [glowHit];
+			if(this.swf != null) {
+				this.swf.filters = [glowHit];
+			}
 			
 			// adjust buffs
 			updateBuffs();
@@ -333,24 +350,6 @@
 					stands[a]--;
 				}
 			}
-			
-			/*for (a = 0; a < attackQueue.length; a++){
-				if(attackQueue[a].timeout > 0){
-					attackQueue[a].timeout--;
-				}
-				if(attackQueue[a].timeout <= 0){
-						attackQueue.splice(a,1);
-						a--;
-				}
-			}
-			if(attackQueue.length > 0 && !usingAbility){
-				var attack = attackQueue[0];
-				if(cooldowns[attack.abilityId] <= 0){
-					attackQueue.splice(0,1);
-					cooldowns[attack.abilityId] = 0;
-					castAbility(attack.abilityId, attack.stagePoint);
-				}
-			}*/
 			
 			if (frameBuff.stun) {
 				return;
@@ -457,7 +456,9 @@
 		}
 		
 		protected function deleteSelf():void {
-			swf.contentLoaderInfo.removeEventListener(Event.COMPLETE, completeLoad);
+			if(swf != null) {
+				swf.contentLoaderInfo.removeEventListener(Event.COMPLETE, completeLoad);
+			}
 			
 			endAbility();
 			setAnimLabel("standing");

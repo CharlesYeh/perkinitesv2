@@ -17,6 +17,7 @@
 	import events.BeatEnemyEvent;
 	import game.SoundManager;
 	import scripting.actions.Action;
+	import flash.geom.Point;
 	
     public class World extends MovieClip {
 		
@@ -28,6 +29,8 @@
 		private var m_teleports:Array;
 		private var m_enemies:Array;
 		private var m_npcs:Array;
+		
+		private var activatedNPC:NPCUnit = null;
 		
 		public var maxEnemies:int = 0;
 		
@@ -41,6 +44,7 @@
 		
 		//----------------------CREATION FUNCTIONS---------------------
 		public function createWorld(mdat:MapData):void {
+			maxEnemies = 0;
 			mapData = mdat;
 			
 			m_customs = new Array();
@@ -71,30 +75,19 @@
 				createNPC(n);
 			}			
 			
-			mdat.startSequences();
-			if(!Game.playerProgress.loadedSong){
-				if(mdat.bgmusic != null){
-					SoundManager.playSong(mdat.bgmusic);				
-				}
-				else{
-					SoundManager.endSong();
-				}				
-			}
-			else{
-				if(Game.playerProgress.currentSong != null){
-					SoundManager.playSong(Game.playerProgress.currentSong);				
-				}
-				else{
-					SoundManager.endSong();
-				}				
-				Game.playerProgress.loadedSong = false;
-			}
+			var createdUnits = Game.playerProgress.getCreatedUnits();
 			
-			for(var j = 0; j < Game.playerProgress.createdUnits.length; j++){
-				var dat = Game.playerProgress.createdUnits[j];
+			//
+			//here, check if the unit was created on the same map
+			// if it's not, delete it we don't care about it yet
+			for(var j = 0; j < createdUnits.length; j++){
+				var dat = createdUnits[j];
 				
 				var cdat = new MapCharacterData();
 				
+				if (Game.playerProgress.map != dat.map) {
+					continue;
+				}
 				if(dat.subtype == "enemy"){
 					cdat.parseData(dat);
 					createEnemy(cdat);
@@ -106,7 +99,28 @@
 					m_npcs[m_npcs.length-1].animLabel = dat.animation;
 					m_npcs[m_npcs.length-1].beginAnimation(dat.animation);
 				}
-				
+			}
+			
+			
+			//Game.playerProgress.setCreatedUnits(new Array());
+			
+			mdat.startSequences();
+			if(!Game.playerProgress.loadedSong){
+				if(mdat.bgmusic != null){
+					//SoundManager.playSong(mdat.bgmusic);				
+				}
+				else{
+					SoundManager.endSong();
+				}				
+			}
+			else{
+				if(Game.playerProgress.currentSong != null){
+					//SoundManager.playSong(Game.playerProgress.currentSong);				
+				}
+				else{
+					SoundManager.endSong();
+				}				
+				Game.playerProgress.loadedSong = false;
 			}
 		}
 		
@@ -125,7 +139,6 @@
 		public function clearEnemy(e:AIUnit):void{
 			
 			var index = m_enemies.indexOf(e);
-			
 			e.destroy();
 			removeChild(e);
 			m_enemies.splice(index, 1);
@@ -235,6 +248,40 @@
 			maxEnemies++;
 		}
 		
+		public function createSpawnEnemy(id:String, xpos:int, ypos:int, dir:String):AIUnit {
+			var u:AIUnit = AIUnit.createAIUnit(id);
+			u.x = xpos;
+			u.y = ypos;
+			u.setAbilityTargets(Game.team);
+			
+			switch (dir) {
+				case "east":
+				case "right":
+					u.updateDirection(0);
+					break;
+					
+				case "north":
+				case "up":
+					u.updateDirection(1);
+					break;
+					
+				case "west":
+				case "left":
+					u.updateDirection(2);
+					break;
+					
+				case "south":
+				case "down":
+					u.updateDirection(3);
+					break;
+			}
+			
+			m_enemies.push(u);
+			addChild(u);
+			maxEnemies++;
+			return u;
+		}
+		
 		public function createNPC(npcdat:MapCharacterData):void {
 			var u:NPCUnit = new NPCUnit(npcdat);
 			u.x = (npcdat.position.x * GameConstants.TILE_SIZE) + (GameConstants.TILE_SIZE >> 1);
@@ -276,6 +323,10 @@
 			return m_npcs;
 		}		
 		
+		public function getActivatedNPC():NPCUnit {
+			return activatedNPC;
+		}
+		
 		public function checkTeleports(su:GameUnit):TeleportData {
 			var sx = Math.floor(su.x / GameConstants.TILE_SIZE);
 			var sy = Math.floor(su.y / GameConstants.TILE_SIZE);
@@ -295,10 +346,48 @@
 			return null;
 		}
 		
+		public function checkNPCs():void {
+			if(activatedNPC != null) {
+				return;
+			}
+						
+			for (var i:String in m_npcs) {
+				var t:NPCUnit = m_npcs[i];
+				
+				var dx = t.x - Game.team[0].x;
+				var dy = t.y - Game.team[0].y;
+				var dist = Math.sqrt(dx * dx + dy * dy);
+				
+				if(dist <= 64){
+					activatedNPC = t;
+					activatedNPC.turnTo(new Point(Game.team[0].x, Game.team[0].y));
+					activatedNPC.updateDirection(activatedNPC.moveDir);
+					for (var i:String in activatedNPC.mapCharacterData.actions) {
+						var seq:Sequence = activatedNPC.mapCharacterData.actions[i];
+						seq.start();
+					}							
+					break;
+				}
+			}
+		}		
+		
 		public function updateSequences():void {
-			for (var i:String in mapData.sequences) {
-				var seq:Sequence = mapData.sequences[i];
-				seq.updateActions();
+			if (activatedNPC != null) {
+				for (var i:String in activatedNPC.mapCharacterData.actions) {
+					var seq:Sequence = activatedNPC.mapCharacterData.actions[i];
+					seq.updateActions();
+					
+					if(seq.update()) {
+						activatedNPC.resetDirection();
+						activatedNPC = null;
+						seq.reset();
+					}
+				}		
+			} else {
+				for (var i:String in mapData.sequences) {
+					var seq:Sequence = mapData.sequences[i];
+					seq.updateActions();
+				}				
 			}
 			
 			for (i in m_teleports) {

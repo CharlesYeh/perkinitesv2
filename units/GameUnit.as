@@ -183,7 +183,6 @@
 			var targetY = path[0].y;
 			
 			var dist = Math.pow(targetX - x, 2) + Math.pow(targetY - y, 2);
-
 			if (dist < 100) {
 				// close enough, move onto next point
 				path.shift();

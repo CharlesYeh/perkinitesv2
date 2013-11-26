@@ -4,7 +4,7 @@
     "attack": 1,
     "speed": 5
   },
-  "weapon": "Chinese Magic",
+  "weapon": "The Chinese Mystic",
   "name": "Sophie Q.",
   "id": "HQ",
   "sprite": "HQ",
@@ -30,7 +30,7 @@
       "name": "Astral Arts",
       "type": "AttackSmartcast",
       "icon": "Icon - Astral Arts.png",
-      "description": "Uses ancient magic to create a shockwave.",
+      "description": "Uses ancient magic to become invulnerable for 1 second and increase your speed for 3 seconds.",
       "dmgBase": "12",
       "dmgRatio": "0",
       "range": 64,

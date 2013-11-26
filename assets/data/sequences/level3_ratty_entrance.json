@@ -1,0 +1,33 @@
+{
+	"id": "level3_ratty_entrance",
+	"actions": [		
+		[			
+			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			}
+		],   				
+		[    
+			{
+				"type": "ActionNarrator",
+				"time": 120,
+				
+				"message": "The entrance to the dining hall appears to be blocked. Our heroes instead go toward the Ivy Room."
+			}
+		],
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
+			}		
+		],		
+		[
+			{
+				"type": "ActionJournal",
+				
+				"message": "Go to the Ivy Room!"
+			}
+		]
+	]
+}

@@ -1,0 +1,10 @@
+{
+  "ai": "JosSpawnPoint",
+  "name": "Jo\u0027s Spawn Point",
+  "id": "jos_spawnpoint",
+  "sprite": "enemy_Spawn_Point",
+  "health": 1,
+  "defense": 0,
+  "speed": 0,
+  "abilities": []
+}

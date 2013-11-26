@@ -6,16 +6,16 @@
 	import game.*;
 	import flash.geom.Point;
 	
-	/* BASIC AI ENEMY
-	 * if within chase range, chases
-	 * if within ability range, uses ability
+	/* AI SPAWN POINT
+	 * Generates a new enemy every so often
 	 */
 	public class AISpawnPoint extends StatUnit {
 		
 		static const START_ID:int = 5000;
-		static const healths = new Array(300, 500, 800);
-		static const spawnRandBase = new Array(300, 340, 390);
-		static const spawnRandRange = new Array(90, 150, 230);
+		static const INVINCIBLE_ID:int = 0;
+		static const healths = new Array(1, 300, 500, 800);
+		static const spawnRandBase = new Array(300, 300, 340, 390);
+		static const spawnRandRange = new Array(90, 90, 150, 230);
 		
 		var nextSpawn:int;
 		private var myUnits:Array;
@@ -75,6 +75,14 @@
 			
 			removeEventListener(Event.ENTER_FRAME, aiSpawner);
 		}
+		
+		override public function takeDamage(dmg:int):void {
+			if (id == INVINCIBLE) {
+				return;
+			}
+			super.takeDamage(dmg);
+		}
+		
 		public static function getSprite(id:int) {
 			return "_sprites/enemy_Spawn_Point.swf";
 		}

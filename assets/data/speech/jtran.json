@@ -1,0 +1,70 @@
+{
+   "name": "John T.",
+   "id": "JT",
+	"speech": [
+		{
+			"name": "greetings",
+      	"lines": [
+            "Harro!",
+            "Hello friends!",
+            "Sorry-"
+      	]
+		},
+		{
+			"name": "acceptance",
+      	"lines": [
+            "Aww sorry. Thanks!",
+            "Yay I'm being useful! Sorry..."
+      	]
+		},      
+		{
+			"name": "rejection",
+      	"lines": [
+            "Yeah I know...sorry..."
+      	]
+		},
+		{
+			"name": "mirror",
+      	"lines": [
+            "SORRY I DON'T KNOW WHY YOU LOOK LIKE ME D:"
+      	]
+		},
+		{
+			"name": "field",
+      	"lines": [
+            "Sorry, there's so much trouble out there right now...",
+            "Every fight can be solved with intensive role-playing. Just make them pretend they are all postal workers at Starbucks who have intensive cancer."
+      
+      	]
+		},             
+		{
+			"name": "npc",
+      	"lines": [
+            "Aww I hope I'm not bothering you sorry...",
+            "Do you wanna play DDR? :) Sorry...",
+            "Do you want to play GirlTech? In GirlTech, you play as Miranda, a sassy yet unique individual on a quest to accessorize and show her strength as a strong and independent teenager.",
+            "Do you wanna go to D+B and play Pump It Up? I LOVE THAT GAME sorry"
+         ]
+		},
+		{
+			"name": "perkinite_EH",
+      	"lines": [
+            "Hi college roommate! Sorry..."
+      	]
+		},      
+		{
+			"name": "perkinite_CK",
+      	"lines": [
+            "Ew it's Kata.",
+            "Hey do you wanna hear my Kata impression? IT'S REALLY GOOD."
+      	]
+		},              
+		{
+			"name": "perkinite_HV",
+      	"lines": [
+            "HEY GURLLLLLLLL",
+            "Hey do you wanna hear my Huong impression? IT'S REALLY GOOD."
+      	]
+		}               	        	
+	]
+}

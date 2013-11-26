@@ -12,6 +12,8 @@
 		//var goalWait:int;	//how long it takes to update
 		//var maxGoalWait:int;
 		public function GameHUD() {
+			powerbar.visible = false;
+			APDisplay2.visible = false;
 			/*icons = new Array(4);
 			icon_conts = new Array(4);
 			for (var a = 0; a < 4; a++) {

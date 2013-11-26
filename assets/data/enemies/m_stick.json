@@ -12,14 +12,13 @@
       "type": "AttackSkillshot",
       "icon": "",
       "description": "",
-      "dmgBase": "12",
+      "dmgBase": "10",
       "dmgRatio": "0",
       "range": 70,
       "cd": 25,
       "stand": 20,
       "speed": 35,
-      "width": 20,
-      "penetrates": 9999
+      "width": 20
     }
   ]
 }

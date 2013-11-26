@@ -56,6 +56,17 @@
 			return teams;
 		}
 		
+		public function getAllCharacters():Array {
+			var charData = new Array();
+			for (var i = 0; i < teams.length; i++){
+				for (var j:String in teams[i]) {
+					charData.push(getCharacterData(teams[i][j]));
+				}
+			}
+			
+			return charData;
+		}
+		
 		public function getTeamCharacterData(id:int):Array {
 /*			trace(teamData.hasOwnProperty(0));
 			trace(teamData.hasOwnProperty(1));

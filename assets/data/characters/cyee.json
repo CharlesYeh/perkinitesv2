@@ -1,0 +1,38 @@
+{
+  "levelBonuses": {
+    "health": 0,
+    "attack": 0,
+    "speed": 0
+  },
+  "weapon": "The Friendly Roommate",
+  "name": "Claudine Y.",
+  "id": "CY2",
+  "sprite": "CY2",
+  "health": 0,
+  "defense": 0,
+  "speed": 0,
+  "abilities": [
+    {
+      "name": "Cupcake Launcher",
+      "type": "AttackSkillshot",
+      "icon": "Icon - Cupcake Launcher.png",
+      "description": "Create a barrage of hot cupcakes.\n",
+      "dmgBase": "",
+      "dmgRatio": "",
+      "range": 0,
+      "cd": 0,
+      "stand": 0
+    },
+    {
+      "name": "You\u0027re DEAD",
+      "type": "AttackPoint",
+      "icon": "Icon - You\u0027re Dead.png",
+      "description": "Points at an enemy and says \"you\u0027re dead\". Deals massive emotional damage.\n",
+      "dmgBase": "",
+      "dmgRatio": "",
+      "range": 0,
+      "cd": 0,
+      "stand": 0
+    }
+  ]
+}

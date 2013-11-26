@@ -61,13 +61,14 @@
 				}						
 			}			
 			
-			for(var j = 0; j < Game.playerProgress.createdUnits.length; j++){
-				if(Game.playerProgress.createdUnits[j].id == sprite){
-					Game.playerProgress.createdUnits.splice(j, 1);
+			var createdUnits = Game.playerProgress.getCreatedUnits();
+			for(var j = 0; j < createdUnits.length; j++){
+				if(createdUnits[j].id == sprite){
+					Game.playerProgress.deletedUnits.push(createdUnits[j]);
 					break;
 				}
 			}
-
+			Game.playerProgress.setCreatedUnits(createdUnits);
 			
 			complete();
 		}

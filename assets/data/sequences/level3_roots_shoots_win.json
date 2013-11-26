@@ -1,0 +1,12 @@
+{
+	"id": "level3_roots_shoots_win",
+	"actions": [
+		[
+			{
+				"type": "ConditionClearedArea",
+				"map": "ratty_roots_shoots",
+            "beat": 5
+			}
+		]
+	]
+}

@@ -1,0 +1,25 @@
+{
+  "ai": "BasicAIUnit",
+  "name": "Ice Cream",
+  "id": "icecream",
+  "sprite": "enemy_Ice-Cream",
+  "health": 10,
+  "defense": 0,
+  "speed": 100,
+  "abilities": [
+    {
+      "name": "Melted",
+      "type": "AttackSkillshot",
+      "icon": "",
+      "description": "",
+      "dmgBase": "3",
+      "dmgRatio": "",
+      "range": 100,
+      "cd": 0,
+      "stand": 24,
+      "speed": 20,
+      "width": 18,
+      "penetrates": 1
+    }
+  ]
+}

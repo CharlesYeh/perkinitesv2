@@ -1,0 +1,38 @@
+{
+  "levelBonuses": {
+    "health": 0,
+    "attack": 0,
+    "speed": 0
+  },
+  "weapon": "The PLME Bear",
+  "name": "Vivian H.",
+  "id": "VH",
+  "sprite": "VH",
+  "health": 0,
+  "defense": 0,
+  "speed": 0,
+  "abilities": [
+    {
+      "name": "Orgo Book Smash",
+      "type": "AttackCone",
+      "icon": "Icon - Orgo Book Smash.png",
+      "description": "Knockback nearby enemies with an Orgo textbook. More like WHORGO AMIRITE.\n",
+      "dmgBase": "",
+      "dmgRatio": "",
+      "range": 0,
+      "cd": 0,
+      "stand": 0
+    },
+    {
+      "name": "Cold Shoulder",
+      "type": "AttackCone",
+      "icon": "Icon - Cold Shoulder.png",
+      "description": "Stuns enemies behind her by socially rejecting them. :(\n",
+      "dmgBase": "",
+      "dmgRatio": "",
+      "range": 0,
+      "cd": 0,
+      "stand": 0
+    }
+  ]
+}

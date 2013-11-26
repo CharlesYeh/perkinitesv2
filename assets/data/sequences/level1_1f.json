@@ -62,7 +62,8 @@
 				"type": "ActionNotification",
 				"time": 240,
 				
-				"message": "Left-click to attack!\nRight-click to special attack!"
+				"title": "L-Click and R-Click!",
+				"longSubtitle": "Use these mouse buttons to attack enemies!"
 			}
 		],
 		[

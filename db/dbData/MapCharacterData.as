@@ -10,16 +10,16 @@
 		public var direction:String;
 		public var position:Point;
 		
-		public var actions:Dictionary;
+		public var actions:Dictionary = new Dictionary();
 		
 		public function parseData(obj:Object):void {
 			id	= obj.id;
 			direction	= obj.direction;
 			position	= new Point(obj.position.x, obj.position.y);
-			/*for (var lbl:String in obj.actions) {
-				var seq:Sequence = Game.dbSeq.getSequence(lbl);
-				actions[lbl] = seq;
-			}*/
+			for (var lbl:String in obj.sequences) {
+				var seq:Sequence = Game.dbSeq.getSequence(obj.sequences[lbl]);
+				actions[obj.sequences[lbl]] = seq;
+			}
 		}
 	}
 	

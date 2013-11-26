@@ -13,12 +13,14 @@
 				i--;
 			}
 			
-			for(var j = 0; j < Game.playerProgress.createdUnits.length; j++){
-				if(Game.playerProgress.createdUnits[j].subtype == "enemy"){
-					Game.playerProgress.createdUnits.splice(j, 1);
+			var createdUnits = Game.playerProgress.getCreatedUnits();
+			for(var j = 0; j < createdUnits.length; j++){
+				if(createdUnits[j].subtype == "enemy"){
+					createdUnits.splice(j, 1);
 					j--;
 				}
 			}
+			Game.playerProgress.setCreatedUnits(createdUnits);
 			
 			complete();
 		}

@@ -1,21 +1,21 @@
 ﻿package game.progress {
-	import game.Game;
-	import game.Controls;
-	import game.SoundManager;
-	
-	import tileMapper.TileMap;
-	
-	import units.AIUnit;
-	import units.StatUnit;
-	
 	import flash.net.SharedObject;
 	import flash.net.registerClassAlias;
 	import flash.utils.ByteArray;
 	import flash.utils.Dictionary;
-	import ui.GameOverlay;
+
+	import game.Game;
+	import game.Controls;
+	import game.SoundManager;
+
+	import tileMapper.TileMap;
 	
+	import ui.GameOverlay;
+
+	import units.AIUnit;
+	import units.StatUnit;
+
 	public class PlayerProgress {
-		
 		private var sharedObj:SharedObject;
 		
 		public var id:String;
@@ -30,9 +30,6 @@
 		
 		/** dictionary of "item name" -> "boolean" */
 		public var items:Dictionary = new Dictionary();
-		
-		/** character level ups achieved */
-		public var levelUps:int;
 		
 		/** chosen team */
 		public var chosenTeam:Array;
@@ -62,6 +59,10 @@
 		public var goal:String = "";
 		
 		public var createdUnits:Array = new Array();
+		public var deletedUnits:Array = new Array();
+		
+		/** prevent auto save of shared objects **/
+		public var tempItems:Dictionary = new Dictionary();
 		
 		public function PlayerProgress() {
 			registerClassAlias("pp", PlayerProgress);
@@ -73,9 +74,6 @@
 		
 		public function addCompletedSequence(id:String):void {
 			completedSequences.push(id);
-			
-			//----------------AUTO-SAVE----------------
-			save();
 		}
 		
 		public function hasCompletedSequence(id:String):Boolean {
@@ -83,11 +81,11 @@
 		}
 		
 		public function unlockItem(item:String):void {
-			items[item] = true;
+			tempItems[item] = true;		
 		}
 		
 		public function hasUnlockedItem(item:String):Boolean {
-			return items.hasOwnProperty(item);
+			return items.hasOwnProperty(item) || tempItems.hasOwnProperty(item);
 		}
 		
 		public function addClearedArea(id:String):void {
@@ -116,9 +114,9 @@
 			id = "PERKINITES";
 			flexPoints = 0;
 			
-			map = "jos_outer_corridor"; //perkins_2f
-			x = 5;
-			y = 26; //10
+			map = "ratty_entrance"; //"jos_outer_corridor"; //perkins_2f
+			x = 7; //5;
+			y =  4; //20; //10
 			
 			completedSequences = new Array();
 			items = new Dictionary();
@@ -190,9 +188,8 @@
 			flexPoints = prog.flexPoints;
 			
 			completedSequences = prog.completedSequences;
-			trace(completedSequences);
 			clearedAreas = prog.clearedAreas;
-			items	= prog.items;
+			items = prog.items;
 			
 			unlockedTeams = prog.unlockedTeams;
 			lockedTeams = prog.lockedTeams;
@@ -206,24 +203,27 @@
 			currentSong = prog.currentSong;
 			loadedSong = true;
 			hudVisible = prog.hudVisible;
-			ehudVisible = prog.ehudVisible;
-			//trace("Loaded enemy hud: " + ehudVisible);		
+			ehudVisible = prog.ehudVisible;	
 			goal = prog.goal;
 			
 			createdUnits = prog.createdUnits;
-				
-			/*trace("LOADED UNITS");
-			for(var i = 0; i < createdUnits.length; i++){
-				trace("Loaded Unit: " + createdUnits[i]);				
-			}
+
 			
-			trace("LOADED SEQUENCES");
+			trace("LOADED UNITS");
+
+			for(var i = 0; i < createdUnits.length; i++){
+				trace("Unit: " + createdUnits[i].id);				
+			}
+			/*trace("LOADED SEQUENCES");
 			for(var i = 0; i < completedSequences.length; i++){
 				trace("Loaded Unit: " + completedSequences[i]);				
 			}*/
 		}
 		
 		public function save():void {
+			if (Game.playerProgress.health <= 0) {
+				return;
+			}
 			var so:SharedObject = sharedObj;
 			sharedObj = null;
 			
@@ -241,13 +241,20 @@
 			hudVisible = Game.overlay.hud.visible;
 			ehudVisible = Game.overlay.ehud.visible;
 			
-			/*trace("CREATED UNITS:");
-			for(var i = 0; i < createdUnits.length; i++){
-				trace("Created Unit: " + createdUnits[i]);				
+			
+			for(var i = 0; i < deletedUnits.length; i++){
+				createdUnits.splice(createdUnits.indexOf(deletedUnits[i]), 1);
 			}
-			*/
+			trace("CREATED UNITS:");
+			for(var i = 0; i < createdUnits.length; i++){
+				trace("Created Unit: " + createdUnits[i].id);				
+			}
+			
 			goal = Game.overlay.journal.goal;
 			
+			for (var key:* in tempItems) {
+        		items[key] = true;
+    		}
 			// save this object without reference to SharedObject
 			so.data[id] = this.clone(this);
 			so.flush();
@@ -258,6 +265,9 @@
 		}
 		
 		public function takeDamage(dmg:int){
+			if(!AIUnit.m_enabled){
+				return;
+			}
 /*			if(progressData.health > 0){
 				progressData.health = Math.max(0, progressData.health - dmg);
 				drawHealthbar();
@@ -286,6 +296,22 @@
 				}
 				
 			}	
+		}
+		
+		public function getMaxHealth():int {
+			return Game.team[0].unitData.health;
+		}
+		
+		public function getCreatedUnits():Array {
+			return createdUnits;
+		}
+		
+		public function setCreatedUnits(units:Array):void {
+			createdUnits = units;
+		}
+		
+		public function addCreatedUnit(unit:Object):void {
+			createdUnits.push(unit);
 		}
 		
 		private function clone(obj:Object):Object {

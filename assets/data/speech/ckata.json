@@ -1,0 +1,62 @@
+{
+   "name": "C. Kata",
+   "id": "CK",
+	"speech": [
+		{
+			"name": "greetings",
+      	"lines": [
+            "Yo!",
+      	   "Allo allo :)",
+      		"Hey there ::waves hello::",
+            "Hey ;) ::bats eyelashes::"
+      	]
+		},
+		{
+			"name": "acceptance",
+      	"lines": [
+            "Bro we got this. ::pumps fist::",
+            "Kkays :D"
+      	]
+		},      
+		{
+			"name": "rejection",
+      	"lines": [
+            "Bastard! Pah!",
+            "Fine then. I don't need you. I DON'T NEED ANY OF YOU."
+      	]
+		},
+		{
+			"name": "mirror",
+      	"lines": [
+            "HOLYSHITSONOFABITCHYOUREME",
+            "Bro, have I gotten fat?"
+      	]
+		},
+		{
+			"name": "field",
+      	"lines": [
+            "::rolls up sleeves:: Lemme at 'em. I bet I can take all of them DOWN.",
+            "Erm, yeah, um, crap.",
+            "Sometimes I wonder if I'd look good with a unicorn horn on my head. Do you think I'd look good with a unicorn horn on my head?",
+            "You know what, I think I would look good with a unicorn horn on my head. Thank you."
+      	]
+		},
+		{
+			"name": "perkinite_NM",
+      	"lines": [
+            "Nate, I f**kin' swear if you steal my reading glasses again I will literally SHANK you."
+      	]
+		},         
+		{
+			"name": "npc",
+      	"lines": [
+            "I really need some coffee right about now.",
+            "Eh, how's about we grab a beer and chat about life?",
+            "Don't worry, girls still shit out rainbows and unicorns.",
+            "Bro, do you know if I have a dick or not?",
+            "Duuuuude, that was kinda messed up.",
+            "neenerneenerneenerneener neenerneenerneenerneener"
+      	]
+		}         	        	
+	]
+}

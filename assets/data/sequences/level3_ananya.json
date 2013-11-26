@@ -1,0 +1,111 @@
+{
+	"id": "level3_ananya",
+	"actions": [
+		[
+			{
+				"type": "ActionControls",
+				"enable": false
+			},		
+			{
+				"type": "ActionBlackout",
+				"subtype": "showAlpha",
+				"alpha": 1
+			},	
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},		
+			{
+				"type": "ActionJournal",
+				
+				"message": ""
+			},                    		
+			{
+				"type": "ActionNarrator",
+				"time": 24,
+				"toggle": true,
+				
+				"message": "Beginning transmission..."
+			}
+		],	
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
+			}		
+		],				
+		[		
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya",
+				"icon": "Face Icon - AA.png",
+				"message": "Greetings Perkinites. You have retrieved the Quesadilla for me, but I have a mission for you once more."
+			}	
+		],				
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya",
+				"icon": "Face Icon - AA.png",
+				"message": "Recent reports show that several freshmen have been sent to Health Services from brutality after going to the Ratty."
+			}	
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya",
+				"icon": "Face Icon - AA.png",
+				"message": "I do not know if this is because of the recent attacks from drunken frat people, or if it because of the recent hellspawn residing within the Ratty."
+			}	
+		],		
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya",
+				"icon": "Face Icon - AA.png",
+				"message": "Whatever it is, you must liberate the Ratty before it is too late. I am still on meal plan, and I fear the V-Dub is TOO far for me."
+			}	
+		],				
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya",
+				"icon": "Face Icon - AA.png",
+				"message": "Failure to complete this mission will bring forth MY WRATH."
+			}	
+		],				
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya",
+				"icon": "Face Icon - AA.png",
+				"message": "Good luck, Perkinites."
+			}	
+		],
+		[
+			{
+				"type": "ActionWait",
+				"time": 48
+			}			
+		],		
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "hide",
+				"time": 45
+			}
+		]
+	]
+}

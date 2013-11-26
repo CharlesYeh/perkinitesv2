@@ -4,7 +4,7 @@
     "attack": 1,
     "speed": 5
   },
-  "weapon": "Frying Pan",
+  "weapon": "The Sassy Girl",
   "name": "Huong V.",
   "id": "HV",
   "sprite": "HV",
@@ -28,7 +28,7 @@
       "name": "Ramen Boost",
       "type": "AttackSmartcast",
       "icon": "Icon - Ramen Boost.png",
-      "description": "Eat dat delicious ramen. Others be jelly they don\u0027t get any.",
+      "description": "Eat dat delicious ramen to get a ramen shield. Others be jelly they don\u0027t get any.",
       "dmgBase": "8",
       "dmgRatio": "0",
       "range": 64,

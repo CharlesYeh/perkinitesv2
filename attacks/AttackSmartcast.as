@@ -47,12 +47,13 @@
 					e.takeDamage(damage());
 /*						if(AIUnit.m_enabled){
 							SoundManager.playSound("hit");
-						}		*/					
-					if(e == Game.team[0]){
-						break;
-					}						
+						}		*/				
 				}
 			}
+		}
+		
+		override public function getAttackType():String {
+			return "Point Blank - This attack affects enemies within" + range + "units from this Perkinite."
 		}
 	}
 }

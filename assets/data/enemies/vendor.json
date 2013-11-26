@@ -1,0 +1,23 @@
+{
+  "ai": "VendorAI",
+  "name": "Vendor",
+  "id": "vendor",
+  "sprite": "enemy_Vendor",
+  "health": 500,
+  "defense": 0,
+  "speed": 0,
+  "abilities": [
+    {
+      "name": "Spawn Icecream",
+      "type": "AttackSmartcast",
+      "icon": "",
+      "description": "",
+      "dmgBase": "",
+      "dmgRatio": "",
+      "range": 0,
+      "cd": 0,
+      "stand": 40,
+      "goToCastPoint": false
+    }
+  ]
+}

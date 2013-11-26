@@ -61,17 +61,17 @@
 		],
 		[
 			{
+				"type": "ActionSkip",
+				"skip": false
+			}
+		],		
+		[
+			{
 				"type": "ActionSpeech",
 				"time": 10,
 				
 				"name": "???",
 				"message": "Hyuk hyuk hyuk..."
-			}
-		],
-		[
-			{
-				"type": "ActionSkip",
-				"skip": false
 			}
 		],
 		[
@@ -116,18 +116,18 @@
 		],
 		[
 			{
+				"type": "ActionSkip",
+				"skip": false
+			}
+		],			
+		[
+			{
 				"type": "ActionSpeech",
 				"time": 10,
 				
 				"name": "Masked Child",
 				"icon": "Face Icon - Ira.png",
 				"message": "Hyuk hyuk hyuk..."			
-			}
-		],	
-		[
-			{
-				"type": "ActionSkip",
-				"skip": false
 			}
 		],		
 		[

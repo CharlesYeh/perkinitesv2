@@ -1,0 +1,10 @@
+{
+  "ai": "WristonSpawnPoint",
+  "name": "Wriston Spawn Point",
+  "id": "wriston_spawnpoint",
+  "sprite": "enemy_Spawn_Point",
+  "health": 1,
+  "defense": 0,
+  "speed": 0,
+  "abilities": []
+}

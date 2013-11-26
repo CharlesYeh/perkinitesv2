@@ -1,0 +1,44 @@
+{
+	"id": "level3_miniboss_win",
+	"actions": [
+		[
+			{
+				"type": "ConditionBeatEnemy",
+				"map": "ratty_bistro",
+				"id": "vendor"
+			}
+		],
+		[
+			{
+				"type": "ActionMusic",
+				"time": 0,
+				
+				"enable": false
+			},				
+			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			},			
+			{
+				"type": "ActionWait",
+				"time": 19
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 72,
+				
+				"name": "Narrator",
+				"message": "Looks like that machine got its just deserts."
+			}
+		],
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
+			}
+		]
+	]
+}

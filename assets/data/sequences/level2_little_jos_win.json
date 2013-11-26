@@ -17,7 +17,23 @@
 				"enable": false
 			}		
 		],	
-		[	
+		[
+			{
+				"type": "ActionMove",
+				
+				"subtype": "npc",
+				"sprite": "npc_Generic",
+				"xpos": 9,
+				"ypos": 4
+			}		
+		],	
+		[
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Generic"
+			},			
 			{
 				"type": "ActionNarrator",
 				"time": 96,

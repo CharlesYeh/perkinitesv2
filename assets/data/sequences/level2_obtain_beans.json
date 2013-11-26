@@ -1,0 +1,44 @@
+{
+	"id": "level2_obtain_beans",
+	"saveable": false,
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level2_food_court_boss"
+			}
+		],
+		[
+			{
+				"type": "ConditionNearLocation",
+				"x": 26,
+				"y": 3,
+				"radius": 32
+			},
+			{
+				"type": "ConditionHasItem",
+				"item": "Beans",
+				"negation": true
+			}				
+		],
+		[
+			{
+				"type": "ActionItem",
+				"item": "Beans"
+			},
+			{
+				"type": "ActionNotification",
+				
+				"time": 48,
+				"title": "Item Get!",
+				"longSubtitle": "Unlocked Refried Beans!"
+			},			
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Quesadilla_Beans"
+			}
+		]
+	]
+}

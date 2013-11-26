@@ -4,7 +4,7 @@
     "attack": 1,
     "speed": 5
   },
-  "weapon": "Claws",
+  "weapon": "The Shadow\u0027s Prankster",
   "name": "Nate M.",
   "id": "NM",
   "sprite": "NM",
@@ -31,7 +31,7 @@
       "description": "Launches a shopping cart, damaging all enemies it comes into contact with.",
       "dmgBase": "5",
       "dmgRatio": "1",
-      "range": 2000,
+      "range": 230,
       "cd": 0,
       "stand": 8,
       "speed": 24,

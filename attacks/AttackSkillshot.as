@@ -14,6 +14,19 @@
 	import flash.utils.Dictionary;
 	
 	/**
+	 * TypeError: Error #1009: Cannot access a property or method of a null object reference.
+	 * at enemy_Ira_fla::ability3copy2_13/frame1()
+	 * at flash.display::MovieClip/gotoAndStop()
+	 * at attacks::AttackSkillshot/showGuide()
+	 * at attacks::Attack/updateGuide()
+	 * at units::StatUnit/showGuide()
+	 * at game::Controls$/showGuides()
+	 * at game::Controls$/handleGameInputs()
+	 * at game::Game$/update()
+	 * at perkinites_fla::MainTimeline/gameRunner()
+	 */
+	
+	/**
 	 * A skillshot attack which is cast in a line
 	 * Range is used as the end destination of projectiles
 	 */
@@ -95,7 +108,7 @@
 				var p:MovieClip = new projClass();
 				p.x = m_caster.x;
 				p.x += (m_caster.scaleX > 0) ? b.x : -b.x;
-				p.y = m_caster.y + b.y - bp/2;
+				p.y = m_caster.y + b.y; // - bp/2
 				//trace(m_caster.y + " " + p.y);
 				//get correct orientation
 				p.rotation = b.rotation;

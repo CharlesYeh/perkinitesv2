@@ -1,0 +1,65 @@
+{
+	"id": "level3_ratty_dining_court",
+	"actions": [		
+		[			
+			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			},
+			{
+				"type": "ActionControls",
+				"enable": false
+			},
+			{
+				"type": "ActionAI",
+				"enabled": false
+			}
+		],         				
+		[    
+			{
+				"type": "ActionNarrator",
+				"time": 150,
+				
+				"message": "Ah yes, the Ratty. Filled with gourmet buffet-style dining serving over 1500 students with its high quality meals."
+			}
+		],
+		[    
+			{
+				"type": "ActionNarrator",
+				"time": 90,
+				
+				"message": "Unfortunately everything's corrupted by darkness so everything tastes like shit at the moment."
+			}
+		],
+		[    
+			{
+				"type": "ActionNarrator",
+				"time": 90,
+				
+				"message": "It seems like there are four sources of darkness doing this, conveniently located in each food line."
+			}
+		],        
+		[
+			{
+				"type": "ActionSkip",
+				"skip": false
+			}		
+		],		
+		[
+			{
+				"type": "ActionJournal",
+				
+				"message": "Go take care of those sources of darkness. :|"
+			},
+			{
+				"type": "ActionControls",
+				"enable": true
+			},
+			{
+				"type": "ActionAI",
+				"enabled": true
+			}
+		]
+	]
+}

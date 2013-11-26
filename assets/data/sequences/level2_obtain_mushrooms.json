@@ -1,0 +1,44 @@
+{
+	"id": "level2_obtain_mushrooms",
+	"saveable": false,
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level2_food_court_boss"
+			}
+		],
+		[
+			{
+				"type": "ConditionNearLocation",
+				"x": 22,
+				"y": 6,
+				"radius": 32
+			},
+			{
+				"type": "ConditionHasItem",
+				"item": "Mushrooms",
+				"negation": true
+			}					
+		],
+		[
+			{
+				"type": "ActionItem",
+				"item": "Mushrooms"
+			},
+			{
+				"type": "ActionNotification",
+				
+				"time": 48,
+				"title": "Item Get!",
+				"longSubtitle": "Unlocked Mushrooms!"
+			},			
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Quesadilla_Mushrooms"
+			}
+		]
+	]
+}

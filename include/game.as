@@ -1,7 +1,8 @@
-﻿import game.Game;
+﻿import flash.display.MovieClip;
+
 import game.Controls;
-import ui.*;
-import flash.display.MovieClip;
+import game.Game;
+
 import util.KeyDown;
 
 stop();
@@ -15,10 +16,8 @@ function gameRunner(e:Event):void {
 }
 
 function setupGame():void {
-	
 	addEventListener(Event.ENTER_FRAME, gameRunner);
 	//stage.addEventListener(Event.DEACTIVATE, loseFocus);
-	
 }
 
 function clearGame():void {
@@ -35,14 +34,9 @@ function loseFocus(e:Event) {
 	f.addEventListener("rightMouseDown", regainFocus);
 	//Controls.enabled = false;
 	KeyDown.clearBindings();
-	
-	//pauseScreen.y = 0;
 }
 
 function regainFocus(e:MouseEvent):void {
 	Game.gamePause = false;
 	e.target.parent.removeChild(e.target);
-	//Controls.enabled = true;
-	//KeyDown.clearBindings();
-	//pauseScreen.y = 999;
 }

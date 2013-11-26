@@ -1,0 +1,33 @@
+{
+	"id": "npc",
+   "repeatable": true,
+   "saveable": false,
+	"actions": [
+		[ 		
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},     
+			{
+				"type": "ActionControls",
+				"enable": false
+			},
+			{
+				"type": "ActionSpeech",
+            "time": 10,
+				
+            "key": "npc"
+			}         
+		],
+		[
+			{
+				"type": "ActionControls",
+				"enable": true
+			},			
+			{
+				"type": "ActionAI",
+				"enabled": true
+			}
+  		]
+	]
+}

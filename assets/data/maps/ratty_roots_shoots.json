@@ -1,0 +1,104 @@
+{
+  "name": "Roots + Shoots",
+  "id": "ratty_roots_shoots",
+  "tileset": "ratty",
+  "height": 20,
+  "width": 20,
+  "code": "1111111111111111111111111333133333311111111113331333333111111111100010000001111111111000100000011111111110001000011111111111100010000111111111111000300001111111111110003000011111111111100000000111111111111000000001111111111110001000011111111111100010000111111111111000100003311111111110001000033111111111100010000001111111111000100000011111111111111111111111111111111111111111111111111111111111111111",
+  "teleports": [
+    {
+      "conditions": [],
+      "entry": {
+        "x": 14,
+        "y": 4
+      },
+      "exit": {
+        "map": "ratty_dining_court",
+        "x": 22,
+        "y": 18
+      }
+    },
+    {
+      "conditions": [],
+      "entry": {
+        "x": 14,
+        "y": 15
+      },
+      "exit": {
+        "map": "ratty_dining_court",
+        "x": 22,
+        "y": 22
+      }
+    }
+  ],
+  "enemies": [
+    {
+      "id": "icecream_shooter",
+      "direction": "up",
+      "position": {
+        "x": 5,
+        "y": 16
+      }
+    },
+    {
+      "id": "icecream_shooter",
+      "direction": "up",
+      "position": {
+        "x": 6,
+        "y": 16
+      }
+    },
+    {
+      "id": "icecream_shooter",
+      "direction": "up",
+      "position": {
+        "x": 7,
+        "y": 16
+      }
+    },
+    {
+      "id": "fries",
+      "direction": "down",
+      "position": {
+        "x": 5,
+        "y": 3
+      }
+    },
+    {
+      "id": "o_rings",
+      "direction": "down",
+      "position": {
+        "x": 6,
+        "y": 6
+      }
+    },
+    {
+      "id": "o_rings",
+      "direction": "down",
+      "position": {
+        "x": 8,
+        "y": 9
+      }
+    },
+    {
+      "id": "fries",
+      "direction": "down",
+      "position": {
+        "x": 7,
+        "y": 3
+      }
+    },
+    {
+      "id": "drunk_fratguy",
+      "direction": "down",
+      "position": {
+        "x": 10,
+        "y": 6
+      }
+    }
+  ],
+  "npcs": [],
+  "sequences": [
+    "level3_roots_shoots_win"
+  ]
+}
