@@ -17,7 +17,13 @@
       "range": 0,
       "cd": 0,
       "stand": 40,
-      "goToCastPoint": false
+      "goToCastPoint": false,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     }
   ]
 }

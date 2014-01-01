@@ -131,10 +131,7 @@
 				var dist:Number = Math.sqrt(dx * dx + dy * dy);
 				
 				if (dist < radius) {
-					e.takeDamage(damage());
-					if(e == Game.team[0]) {
-						return;
-					}		
+					dealTargetDamage(e);
 				}
 				
 			}

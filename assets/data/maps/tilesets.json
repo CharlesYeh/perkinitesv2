@@ -2,7 +2,7 @@
 	"tilesets": [
 		{
 			"id": "perkins",
-			"types": ["s", "s", "s", "w", "w", "w", "w", "s", "w", "w", "s"],
+			"types": ["s", "s", "s", "w", "w", "w", "w", "s", "w", "w", "s", "w", "w"],
 			"clings": [false, false, false, false, false, false, false, false, false, false, false]
 		},
 		{

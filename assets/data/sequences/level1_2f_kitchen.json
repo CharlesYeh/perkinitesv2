@@ -1,0 +1,298 @@
+{
+	"id": "level1_2f_kitchen",
+	"actions": [
+		[
+			{
+				"type": "ActionControls",
+				"enable": false
+			},
+			{
+				"type": "ActionHUD",
+				"enable": false
+			},
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},
+			{
+				"type": "ActionBlackout",
+				"subtype": "showAlpha",
+				"alpha": 1
+			},
+         {
+            "type": "ActionWait",
+            "time": 72
+         }
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 110,
+				
+				"message": "September xx, 201x..."
+			}
+		],
+      [
+			{
+				"type": "ActionWait",
+				"time": 12
+			}      
+      ],      
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 170,
+				
+				"message": "It might be very well your first week at Brown University and you have mostly settled down into your new home."
+			}
+		], 
+      [
+			{
+				"type": "ActionWait",
+				"time": 12
+			}      
+      ],           
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 144,
+				
+				"message": "You are a Perkinite, a freshman who lives on the far-away citadel known as Perkins Hall."
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 60,
+				
+				"message": "And you are very lonely."
+			}      
+		],
+      [
+			{
+				"type": "ActionWait",
+				"time": 12
+			}      
+      ],
+		[ 
+         {
+            "type": "ActionMove",
+            
+            "subtype": "player",
+            "position": {
+              "x": 14,
+              "y": 10
+            }
+         },	      
+			{
+				"type": "ActionBlackout",
+				"subtype": "hide",
+				"time": 45
+			},           
+			{
+				"type": "ActionNarrator",
+				"time": 120,
+				
+				"message": "You stumble into the kitchen in the hopes of friendship, but you are still so lonely..."
+			}      
+		],
+      [
+			{
+				"type": "ActionWait",
+				"time": 12
+			}      
+      ],            
+		[      
+			{
+				"type": "ActionNarrator",
+				"time": 72,
+				
+				"message": "So very very LONELY."
+			}      
+		],
+      [
+			{
+				"type": "ActionWait",
+				"time": 24
+			}      
+      ],
+		[   
+         {
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+            "chosen": true,
+    		   "direction": "down",
+            "animation": "standing",
+    			"position": {
+					"x": 16,
+        			"y": 3
+      		},
+            "sequences": [
+              "level1_npc"
+            ]
+			},
+			{
+				"type": "ActionMove",
+				
+				"subtype": "npc",
+            "chosen": true,
+            "position": {
+              "x": 16,
+              "y": 4
+            }        
+			},	                        
+			{
+				"type": "ActionNarrator",
+				"time": 120,
+				
+				"message": "Until a few seconds later, another one of your Perkinite kind walks in..."
+			}            
+		],
+      [
+			{
+				"type": "ActionMove",
+				
+				"subtype": "player",
+            "position": {
+              "x": 16,
+              "y": 8
+            },
+            "direction": "up"
+			}   
+      ],       
+		[       
+			{
+				"type": "ActionNarrator",
+				"time": 96,
+				
+				"message": "...who becomes your very first friend."
+			}      
+		],
+      [
+			{
+				"type": "ActionWait",
+				"time": 12
+			}      
+      ],      
+      [
+      	{
+				"type": "ActionSpeech",
+            "time": 10,
+				
+            "key": "greetings",
+            "chosen": true
+			} 
+      ],
+      [
+			{
+				"type": "ActionWait",
+				"time": 12
+			}      
+      ],
+		[           
+			{
+				"type": "ActionNarrator",
+				"time": 120,
+				
+				"message": "And from that point on, you finally achieved happiness through friendship."
+			}      
+		],
+		[           
+			{
+				"type": "ActionNarrator",
+				"time": 96,
+				
+				"message": "But that all changed when these guys dropped in."
+			}      
+		],
+      [
+         {
+				"type": "ActionCreate",
+				
+				"subtype": "enemy",
+				"id": "pset",
+				"direction": "right",
+    			"position": {
+					"x": 8,
+        			"y": 4
+      		}
+			},      
+         {
+				"type": "ActionCreate",
+				
+				"subtype": "enemy",
+				"id": "pset",
+				"direction": "left",
+    			"position": {
+					"x": 18,
+        			"y": 7
+      		}
+			},
+         {
+				"type": "ActionCreate",
+				
+				"subtype": "enemy",
+				"id": "pset",
+				"direction": "up",
+    			"position": {
+					"x": 14,
+        			"y": 11
+      		}
+			}         
+      ], 
+      [
+			{
+				"type": "ActionWait",
+				"time": 12
+			}      
+      ],
+      [
+      	{
+				"type": "ActionSpeech",
+            "time": 10,
+				
+            "key": "field",
+            "chosen": true
+			} 
+      ],
+		[           
+			{
+				"type": "ActionNarrator",
+				"time": 120,
+				
+				"message": "Without thinking why, you go ahead and fight against them, before your newly made friendship becomes short-lived."
+			}      
+		],
+		[	
+			{
+				"type": "ActionNotification",
+				"time": 72,
+				
+				"title": "Use Left Click",
+				"longSubtitle": "Attack those Problem Sets!"
+			},
+			{
+				"type": "ActionControls",
+				"enable": true,
+            
+            "leftEnabled": true,
+            "rightEnabled": false,
+            "teamEnabled": false
+			},
+			{
+				"type": "ActionAI",
+				"enabled": true
+			},
+         {
+            "type": "ActionHUD",
+            "enable": true
+         },
+         {
+				"type": "ActionJournal",
+				
+				"message": "The Problem Sets have become evil! Go destroy them!"
+			}                 
+		]                                 
+	]
+}

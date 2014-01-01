@@ -1,0 +1,70 @@
+{
+   "name": "Tevin J.",
+   "id": "TJ",
+	"speech": [
+		{
+			"name": "greetings",
+      	"lines": [
+            "How you you livin' pimpin'?",
+            "Just chillin' like a villan' lookin' at da ceilin'",
+            "Wazz gucci fam?",
+            "What's Louis ma killah?",
+            "heyyyy girrllll",
+            "hi"
+      	]
+		},
+		{
+			"name": "acceptance",
+      	"lines": [
+            "Let's fuck shit up.",
+            "Lezzdoit.",
+            "We Outchea.",
+            "We're in this bitch like a still born."
+      	]
+		},      
+		{
+			"name": "rejection",
+      	"lines": [
+            "Eat shit and die.",
+            "Sit on a screwdriver and twirl, bitch.",
+            "lolzwuteva, hoe.",
+            "Raise your hand if you've ever felt personally victimized by this guy."
+      	]
+		},
+		{
+			"name": "mirror",
+      	"lines": [
+            "Omg now I can finally get to figure out what it's like to have sex with me."
+      	]
+		},
+		{
+			"name": "field",
+      	"lines": [
+            "It's going down, basement."
+      	]
+		},     
+		{
+			"name": "npc",
+      	"lines": [
+            "Perkins is reddd hot Perkins is reddd hot.",
+            "Trillshit.",
+            "Fo' shizzle ma nizzle",
+            "heyyygirlll"
+      	]
+		},
+		{
+			"name": "perkinite_DS",
+      	"lines": [
+            "hey ;)",
+            "OMG I HATE YOU ALL!!!"
+      	]
+		},                  
+		{
+			"name": "perkinite_EL",
+      	"lines": [
+            "You ain't got SHIT on me hmmmm.",
+            "Have you SEEN me up in here? My jeans."
+      	]
+		}               	        	
+	]
+}

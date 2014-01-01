@@ -1,0 +1,84 @@
+{
+	"id": "level3_obtain_ratty_tray",
+	"actions": [
+		[ 		
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},     
+			{
+				"type": "ActionControls",
+				"enable": false
+			}
+      ],   
+		[
+			{
+				"type": "ActionEquip",
+				"item": "Ratty Tray"
+			},
+			{
+				"type": "ActionNotification",
+				
+				"time": 120,
+				"title": "Item Get!",
+				"longSubtitle": "Unlocked Ratty Tray!"
+			},
+         {
+            "type": "Control",
+            "conditions": [
+               {
+                  "type": "ConditionSequence",
+                  "name": "finish_level4"
+               }
+            ],
+            
+            "ifSequence": {
+               "actions": []
+            },
+            "elseSequence": {
+               "actions": [
+                  [
+                     {
+                        "type": "ActionPowerup",
+                        "subtype": "defense",
+                        "amount": 0.5
+                     }
+                  ]
+               ]
+            }
+         },
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Ratty_Tray"
+			}
+		],
+      [
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"message": "The team has received 0.5 Defense!"
+			}	   
+      ],
+      [
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"message": "Generic Perkinite now has a new R-Click ability! It might be useful for food and puking enemies (whatever that means)!"
+			}	   
+      ],
+		[ 		
+			{
+				"type": "ActionAI",
+				"enabled": true
+			},     
+			{
+				"type": "ActionControls",
+				"enable": true
+			}
+      ]            
+	]
+}

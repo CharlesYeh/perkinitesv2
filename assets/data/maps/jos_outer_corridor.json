@@ -44,6 +44,23 @@
   "enemies": [],
   "npcs": [
     {
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level2_outer_corridor"
+        },
+        {
+          "type": "ConditionCheckMode",
+          "gameMode": 1.0
+        },
+        {
+          "type": "ConditionNot",
+          "condition": {
+            "type": "ConditionCheckChosen",
+            "id": "CK"
+          }
+        }
+      ],
       "id": "CK",
       "direction": "down",
       "position": {
@@ -55,18 +72,24 @@
       ]
     },
     {
-      "id": "HV",
-      "direction": "down",
-      "position": {
-        "x": 5,
-        "y": 13
-      },
-      "sequences": [
-        "npc"
-      ]
-    },
-    {
-      "id": "NM",
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level2_outer_corridor"
+        },
+        {
+          "type": "ConditionCheckMode",
+          "gameMode": 1.0
+        },
+        {
+          "type": "ConditionNot",
+          "condition": {
+            "type": "ConditionCheckChosen",
+            "id": "JK"
+          }
+        }
+      ],
+      "id": "JK",
       "direction": "down",
       "position": {
         "x": 3,

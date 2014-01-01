@@ -7,6 +7,7 @@
 	
 	public class KeyDown{
 		public static const MOUSE:int = 999;
+		public static const MOUSEWHEEL:int = 998;
 		private static var keys:Object = new Object;
 		
 		private static var listeners:Object = new Object();
@@ -21,6 +22,7 @@
 			stage.addEventListener("rightMouseDown", mouseDownHandler);
 			stage.addEventListener("rightMouseUp", mouseUpHandler);
 			stage.addEventListener(MouseEvent.MOUSE_MOVE, mouseTracker);
+			stage.addEventListener(MouseEvent.MOUSE_WHEEL, mouseWheelHandler);
 			
 			mousePoint = new Point();
 		}
@@ -61,6 +63,16 @@
 		public static function mouseUpHandler(e:MouseEvent){
 			broadcast(e);
 			delete keys[MOUSE];
+		}
+		
+		public static function mouseWheelHandler(e:MouseEvent){
+			broadcast(e);
+			if(e.delta != 0) {
+				keys[MOUSEWHEEL] = true;
+			} else {
+				keys[MOUSEWHEEL] = false;
+				trace("falsified");
+			}
 		}
 		
 		public static function mouseTracker(e:MouseEvent) {

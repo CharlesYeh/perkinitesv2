@@ -16,6 +16,11 @@
 	import units.StatUnit;
 
 	public class PlayerProgress {
+		
+		// modes of gameplay, might be more but right now it's pretty binary
+		public static const FREETIME_MODE:int = 0;
+		public static const CAMPAIGN_MODE:int = 1;
+		
 		private var sharedObj:SharedObject;
 		
 		public var id:String;
@@ -40,6 +45,10 @@
 		
 		/** health of the team */
 		public var health;
+		public var maxHealth;
+		public var shield = 0;
+		
+		public var buffs:Dictionary = new Dictionary();
 		
 		/** map position of the player */
 		public var map:String;
@@ -48,6 +57,9 @@
 		
 		/** difficulty of the game */
 		public var difficulty:int;
+		
+		/** state of game */
+		public var gameMode:int = FREETIME_MODE;
 		
 		/** current information about game determined by actions */
 		public var controlsEnabled:Boolean;	//for Controls
@@ -92,7 +104,7 @@
 			clearedAreas.push(id);
 			
 			//----------------AUTO-SAVE----------------
-			save();
+			//save();
 		}
 		public function hasClearedArea(id:String):Boolean {
 			return clearedAreas.indexOf(id) != -1;
@@ -114,9 +126,14 @@
 			id = "PERKINITES";
 			flexPoints = 0;
 			
-			map = "ratty_entrance"; //"jos_outer_corridor"; //perkins_2f
-			x = 7; //5;
-			y =  4; //20; //10
+			map = "perkins_2f";
+			x = 67;
+			y = 20;
+			
+			//perkins_2f, 5, 10
+			//perkins_2f_kitchen, 16, 4
+			//ratty_entrance, 7, 4
+			//jos_outer_corridor, 5, 20
 			
 			completedSequences = new Array();
 			items = new Dictionary();
@@ -128,7 +145,8 @@
 			unlockedTeams["HV_HQ"] = true;			
 			lockedTeams = new Dictionary();
 			
-			health = -1;
+			health = 200;
+			maxHealth = 200;
 			
 			clearedAreas = new Array();
 			items = new Dictionary();
@@ -152,6 +170,8 @@
 			var player:StatUnit = Game.team[0];
 			player.x = xpos * TileMap.TILE_SIZE;
 			player.y = ypos * TileMap.TILE_SIZE;
+			x = xpos;
+			y = ypos;
 			
 			//disable the last team played
 			
@@ -165,15 +185,13 @@
 			ehudVisible = false;	
 			goal = "";	
 			
-						
 			Game.playerProgress = this;
-			lockedTeams[chosenTeam.join("_")] = true;
 			
 			save();
 			
 			
 			Game.container.gotoAndStop(1, "menu");
-			Game.container.gotoAndStop("char_select");
+			Game.container.gotoAndStop("char_select2");
 
 		}
 		
@@ -277,7 +295,18 @@
 					Game.overlay.gameover.enable();
 				}				
 			}		*/
-			if(health > 0){
+			
+			if(shield > 0 && dmg > 0) {
+				shield = Math.max(0, shield - dmg);
+				if(shield - dmg < 0) {
+					dmg = Math.abs(shield - dmg);
+				} else {
+					dmg = 0;
+				}
+			}
+			
+			Game.overlay.hud.HPDisplay2.text = Game.playerProgress.shield;
+			if(health > 0 && dmg != 0){
 				health = Math.max(0, health - dmg);
 				for (var i:String in Game.team) {
 					var u:StatUnit = Game.team[i];
@@ -288,18 +317,21 @@
 				Game.playerProgress.health = Game.team[0].progressData.health;
 				
 				Game.overlay.hud.HPDisplay1.text = Game.playerProgress.health;
-				Game.overlay.hud.healthbar.FP.width = Game.playerProgress.health/int(Game.overlay.hud.HPDisplay2.text) * 190;
+				Game.overlay.hud.healthbar.FP.width = Game.playerProgress.health/Game.playerProgress.maxHealth * 190;
 								
 				if(health <= 0){
 					Controls.enabled = false;
 					Game.overlay.gameover.enable();
 				}
 				
-			}	
+			}	else {
+				Game.overlay.hud.HPDisplay1.text = Game.playerProgress.health;
+				Game.overlay.hud.healthbar.FP.width = Game.playerProgress.health/Game.playerProgress.maxHealth * 190;
+			}
 		}
 		
 		public function getMaxHealth():int {
-			return Game.team[0].unitData.health;
+			return maxHealth;
 		}
 		
 		public function getCreatedUnits():Array {
@@ -319,6 +351,16 @@
 			temp.writeObject(obj);
 			temp.position = 0;
 			return temp.readObject();
-		}		
+		}	
+		
+		public function applyBuffs():void {
+			for (var i:String in buffs) {
+				buffs[i].applyBuff();
+				if(buffs[i].update()) {
+					buffs[i].reset();
+					delete buffs[i];
+				}
+			}
+		}
 	}
 }

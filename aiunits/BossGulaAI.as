@@ -77,11 +77,11 @@
 				Math.floor(BossGulaAI.HUNGER/100) + "." + (BossGulaAI.HUNGER % 100)+"%";
 		}
 		
-		override public function takeDamage(dmg:int):void {
+		override public function takeDamage(dmg:int, attackName:String):void {
 			if (!m_enabled) {
 				return;
 			}
-			super.takeDamage(dmg);
+			super.takeDamage(dmg, attackName);
 			
 			if(BossGulaAI.HUNGER <= 0 && threshold > 0) {
 				threshold -= dmg;

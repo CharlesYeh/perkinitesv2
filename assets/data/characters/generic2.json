@@ -1,0 +1,15 @@
+{
+  "levelBonuses": {
+    "health": 0,
+    "attack": 0,
+    "speed": 0
+  },
+  "weapon": "The Generic Roommate",
+  "name": "Generic Roommate",
+  "id": "GK2",
+  "sprite": "GK1",
+  "health": 200,
+  "defense": 0,
+  "speed": 0,
+  "abilities": []
+}

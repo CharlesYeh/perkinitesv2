@@ -14,22 +14,31 @@
 			},		
 			{
 				"type": "ActionNarrator",
-				"time": 96,
+				"time": 72,
 				"toggle": true,
 				
 				"name": "Narrator",
-				"message": "So normally, these two should be dead by now, but they're not."
+				"message": "So normally our heroes would be dead, but they're not unfortunately."
+			}
+		],              
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 96,
+				
+				"name": "Narrator",
+				"message": "Anyway, that demon child might be on the third floor making some evil lamps or something."
 			}
 		],
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 120,
+				"time": 48,
 				
 				"name": "Narrator",
-				"message": "So our two simpletons go to the third floor in the hopes of catching that evil demon child making evil household items or something."
+				"message": "Hopefully our heroes will die up there."
 			}
-		],
+		],      
 		[
 			{
 				"type": "ActionSkip",

@@ -1,0 +1,71 @@
+{
+	"id": "level2_go_to_jos",
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "start_jos"
+			},
+         {
+            "type": "ConditionCheckMode",
+            "gameMode": 1
+         },
+         {
+            "type": "ConditionCountTeam",
+            "size": 4,
+            
+            "greater": true,
+            "equal": true
+         }    
+		],
+		[
+			{
+				"type": "ActionWait",
+				"time": 12
+			}			
+		],	      
+      [
+			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			},         
+			{
+				"type": "ActionControls",
+				"enable": false
+			},		
+         {
+				"type": "ActionBlackout",
+				"subtype": "show",
+				"alpha": 1,
+            "time": 24
+			},
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya A.",
+				"icon": "Face Icon - AA.png",
+				"message": "GO TO JO'S NOWWWWWWWWW."
+			}	
+      ],
+		[
+			{
+				"type": "ActionWait",
+				"time": 24
+			}			
+		],			
+      [
+         {
+            "type": "ActionTeleport",
+            "map": "jos_outer_corridor",
+            "position": 
+               {
+                  "x": 5,
+                  "y": 20
+               },
+            "direction": "up"   
+         }
+      ]                                   
+	]
+}

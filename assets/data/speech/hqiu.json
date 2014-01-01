@@ -1,0 +1,42 @@
+{
+   "name": "Sophie Q.",
+   "id": "HQ",
+	"speech": [
+		{
+			"name": "greetings",
+      	"lines": [
+            "Pika! :D"
+      	]
+		},
+		{
+			"name": "acceptance",
+      	"lines": [
+            "Pika~ ^^"
+      	]
+		},      
+		{
+			"name": "rejection",
+      	"lines": [
+            "Pika!!!!! >:("
+      	]
+		},
+		{
+			"name": "mirror",
+      	"lines": [
+            "Pi...ka..... o.o"
+      	]
+		},
+		{
+			"name": "field",
+      	"lines": [
+            "Pi~ka~ :o"
+      	]
+		},                 
+		{
+			"name": "npc",
+      	"lines": [
+            "Pikakakakakakak"
+      	]
+		}         	        	
+	]
+}

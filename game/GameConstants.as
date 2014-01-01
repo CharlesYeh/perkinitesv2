@@ -9,5 +9,7 @@
 		
 		public static var PATH_SPRITES:String = "assets/sprites/";
 		public static var SPRITES_EXT:String = ".swf";
+		
+		public static var BEGIN_CHAR_SELECT = false; //true if you want new game -> char select
 	}
 }

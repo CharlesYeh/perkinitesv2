@@ -24,19 +24,43 @@
       "stand": 6,
       "speed": 15,
       "width": 50,
-      "penetrates": 2
+      "penetrates": 2,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
       "name": "Astral Arts",
       "type": "AttackSmartcast",
       "icon": "Icon - Astral Arts.png",
-      "description": "Uses ancient magic to become invulnerable for 1 second and increase your speed for 3 seconds.",
-      "dmgBase": "12",
+      "description": "Uses ancient magic to create a 50 HP shield for 0.75 seconds and increase your speed for 2 seconds.",
+      "dmgBase": "4",
       "dmgRatio": "0",
       "range": 64,
       "cd": 0,
       "stand": 12,
-      "goToCastPoint": false
+      "goToCastPoint": false,
+      "buffs": {
+        "self": [
+          {
+            "type": "BuffShield",
+            "base": 50,
+            "mod": 0.0,
+            "ratio": 0.0,
+            "duration": 18
+          },
+          {
+            "type": "BuffSpeed",
+            "base": 0,
+            "mod": 0.3,
+            "ratio": 0.0,
+            "duration": 48
+          }
+        ]
+      }
     }
   ]
 }

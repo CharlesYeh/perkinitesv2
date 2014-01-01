@@ -1,0 +1,122 @@
+{
+	"id": "level3_gail",
+   "repeatable": true,
+   "saveable": false,
+	"actions": [
+		[ 		
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},     
+			{
+				"type": "ActionControls",
+				"enable": false
+			}
+      ],
+      [
+      	{
+				"type": "Control",
+				
+            "conditions": [
+               {
+      				"type": "ConditionCheckMode",
+                  "gameMode": 1
+      			}
+            ],
+            
+            "ifSequence":
+            {
+            	"actions": [ 
+                  [
+                  	{
+            				"type": "ControlDecision",
+            				"name": "Gail",
+            				"icon": "Face Icon - Gail.png",
+                        "message": "HIIIIIIIIIIIIIIIII",
+                                    
+            				"decisions": [
+                           "Join our team!",
+                           "Get away from our team!",
+                           "Do nothing."
+                        ],
+                        "sequences": [
+                           {             
+               	         	"actions": [
+                                 [
+                                 	{
+                           				"type": "ActionSpeech",
+                                       "time": 10,
+                           				"name": "Gail",
+                           				"icon": "Face Icon - Gail.png",
+                                       "message": "Awww sorry, but I have to man the register. Students need to be let in."
+                           			} 
+                                 ],
+                                 [
+                                    {
+                                       "type": "ActionNarrator",
+                           				"time": 48,
+                           				
+                           				"message": "YOU GOT REJECTEDDDDDDDDDDDDDDDDDD"
+                                    }
+                                 ]                                                                 
+               	            ]
+                           },
+                           {
+               	         	"actions": [
+                                 [
+                                 	{
+                           				"type": "ActionSpeech",
+                                       "time": 10,
+                           				"name": "Gail",
+                           				"icon": "Face Icon - Gail.png",
+                                       "message": "...Okayyyyyyyyyy."
+                           			} 
+                                 ]                                                                  
+               	            ]
+                           },
+                           {
+               	         	"actions": [      
+                                 [
+                                 	{
+                           				"type": "ActionSpeech",
+                                       "time": 10,
+                           				"name": "Gail",
+                           				"icon": "Face Icon - Gail.png",
+                                       "message": "Thank you."
+                           			} 
+                                 ]                                              
+               	            ]
+                           }                                                 
+                        ]
+            			} 
+                  ]	                              
+            	]
+            },            
+            "elseSequence": 
+            {
+            	"actions": [             
+                  [
+                  	{
+            				"type": "ActionSpeech",
+                        "time": 10,
+            				"name": "Gail",
+            				"icon": "Face Icon - Gail.png",
+                        "message": "Thank you."
+            			}          
+            		]
+               ]
+            }
+			} 
+      ],   
+		[
+			{
+				"type": "ActionControls",
+				"enable": true
+			},			
+			{
+				"type": "ActionAI",
+				"enabled": true
+			}
+  		]
+	]
+}

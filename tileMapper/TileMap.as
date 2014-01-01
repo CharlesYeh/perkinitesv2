@@ -9,6 +9,8 @@
 	public class TileMap {
 
 		public static var map:Array;
+		
+		public static var passable:Array; 
 		public static var TILE_SIZE:Number;
 		public static var MAX_IN_2880:Number;
 		public static var MAX_BMP_SIZE:Number;
@@ -22,6 +24,8 @@
 
 		public static var theBitmaps:Array;
 		public static var theData:Array;
+		
+		public static var objectBitmaps:Array = new Array();
 
 		public static function createTileMap(m:String, rows:int, cols:int, tileSize:Number, types:Array, cling:Array, pref:String) {
 			TILE_SIZE = tileSize;
@@ -87,16 +91,19 @@
 			interTiles = new Array(ROWS);
 
 			map = new Array(ROWS);
+			passable = new Array(ROWS);
 
 			for (var a = 0; a < ROWS; a++) {
 				//row
 				interTiles[a] = new Array(COLS);
 
 				map[a] = new Array(COLS);
+				passable[a] = new Array(COLS);
 				for (var b = 0; b < COLS; b++) {
 					//column
 
 					updateTile(a, b, mapData);
+					passable[a][b] = true;
 				}
 			}
 		}
@@ -106,29 +113,25 @@
 					mc.addChild(theBitmaps[a][b]);
 				}
 			}
-			/*for (var a = 0; a < ROWS; a++) {
-			for (var b = 0; b < COLS; b++) {
-			//var t=tileSet[map[a][b]];
-			var ClassReference=getDefinitionByName("Tile"+map[a][b]) as Class;
-			var t = new ClassReference();
-			
-			t.gotoAndStop(1);
-			mc.addChild(t);
-			t.x = b*32;
-			t.y = a*32;
-			
-			var bitmapData:BitmapData=new BitmapData(32,32);
-			bitmapData.draw(t);
-			var bitmap:Bitmap=new Bitmap(bitmapData);
-			
-			mc.addChild(bitmap);
-			
-			bitmap.x=b*32;
-			bitmap.y=a*32;
-			
-			
+		}
+		
+		public static function addObjects(objects:Array, mc:MovieClip) {
+			if(objects == null) {
+				return;
 			}
-			}*/
+			for(var i = 0; i < objects.length; i++){
+				var ClassReference= getDefinitionByName(objects[i].id) as Class;
+				var o = new ClassReference();
+				
+				var bitmapData:BitmapData = new BitmapData(o.width + 4, o.height + 4, true, 0x00000000); 
+				bitmapData.draw(o); 
+				var bitmap:Bitmap = new Bitmap(bitmapData); 
+				mc.addChild(bitmap); 
+				bitmap.x = objects[i].position.x * TILE_SIZE;
+				bitmap.y = objects[i].position.y * TILE_SIZE;
+				
+				objectBitmaps.push(bitmap);
+			}
 		}
 		public static function removeTiles(mc:MovieClip) {
 			for (var a = 0; a < ROWS / MAX_IN_2880; a++) {
@@ -138,6 +141,14 @@
 					}
 				}
 			}
+		}
+		
+		public static function removeObjects(mc:MovieClip) {
+			for(var i = 0; i < objectBitmaps.length; i++) {
+				mc.removeChild(objectBitmaps[i]);
+			}
+			
+			objectBitmaps = new Array();
 		}
 		public static function changeTile(a, b, c) {
 			map[a][b] = c;

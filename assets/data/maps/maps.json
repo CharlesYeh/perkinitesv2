@@ -3,6 +3,7 @@
 		"perkins_gf",
 		"perkins_1f",
 		"perkins_2f",
+		"perkins_2f_kitchen",
 		"perkins_3f",
 		"perkins_lounge",
 		"perkins_3f_kitchen",
@@ -21,6 +22,8 @@
 		"ratty_chefs_corner",
 		"ratty_bistro",
 		"ratty_back_cave",
-		"ratty_back_cave_2"
+		"ratty_back_cave_2",
+		"perkins_2f_jos",
+		"perkins_2f_kitchen_jos"
 	]
 }

@@ -18,7 +18,13 @@
       "cd": 25,
       "stand": 36,
       "speed": 20,
-      "width": 15
+      "width": 15,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
       "name": "Spicy With",
@@ -31,7 +37,13 @@
       "cd": 0,
       "stand": 36,
       "speed": 20,
-      "width": 15
+      "width": 15,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
       "name": "Chicken Carb",
@@ -44,7 +56,13 @@
       "cd": 0,
       "stand": 36,
       "speed": 20,
-      "width": 15
+      "width": 15,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     }
   ]
 }

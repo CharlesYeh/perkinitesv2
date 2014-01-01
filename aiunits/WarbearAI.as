@@ -45,11 +45,15 @@
 			Game.overlay.ehud.ehpbar.HP.scaleX = 2;
 		}
 		
-		override public function takeDamage(dmg:int):void {
+		override public function takeDamage(dmg:int, attackName:String):void {
 			if (!m_enabled) {
 				return;
 			}
-			super.takeDamage(dmg);
+			
+			if(attackName == "PEACE<3BEAM") {
+				dmg = 100000000000;   
+			}
+			super.takeDamage(dmg, attackName);
 			Game.overlay.ehud.HPDisplay.text = progressData.health+"";
 			Game.overlay.ehud.ehpbar.HP.scaleX = progressData.health/unitData.health * 2;
 		}

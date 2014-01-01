@@ -7,6 +7,7 @@
 	
 	
 	import flash.filters.GlowFilter;
+	import db.dbData.DatabaseData;
 	
 	public class ActionSpeech extends Action{
 		
@@ -25,6 +26,12 @@
 		
 		public var message:String = "";
 		
+		public var playerIndex:int = -1;
+		
+		public var chosen:Boolean = false;
+		
+		public var mirror:Boolean = false;
+		
 		
 		override public function parseData(obj:Object):void {
 			super.parseData(obj);
@@ -33,6 +40,9 @@
 			icon = ImageDatabase.getIcon(obj.icon);				
 			name = (obj.name != null) ? obj.name : "";
 			message = (obj.message != null) ? obj.message : "";
+			playerIndex = (obj.playerIndex != null) ? obj.playerIndex : -1;
+			chosen = (obj.chosen != null) ? obj.chosen : false;
+			mirror = (obj.mirror != null) ? obj.mirror : false;
 		}
 		
 		override public function update():Boolean {	
@@ -52,21 +62,36 @@
 			b.x = 515;
 			b.y = 375;
 			
-			
-			if(key == "npc") {
-				var npc = Game.world.getActivatedNPC().mapCharacterData;
-				icon = ImageDatabase.getIcon("Face Icon - " + npc.id + ".png");
-				name = Game.dbSpch.getName(npc.id);
-				message = Game.dbSpch.getSpeech(npc.id, "perkinite_" + npc.id);
-				if(message == null) {
-					var type = "npc";
-					if(Game.team[0].unitData.id == npc.id) {
+			makeSpeech();
+	
+		}
+		
+		protected function makeSpeech():void {
+			var npcID:String;
+			if(chosen) {
+				npcID = Game.charID;
+			} else if(playerIndex >= 0) {
+				npcID = Game.team[playerIndex].unitData.id;
+			}
+			else if(key != null) {
+				npcID = Game.world.getActivatedNPC().mapCharacterData.id;
+			} 			
+			if(npcID != null) {
+				icon = ImageDatabase.getIcon("Face Icon - " + npcID + ".png");
+				name = Game.dbSpch.getName(npcID);
+			}
+			if(playerIndex >= 0 || key != null) {
+				message = Game.dbSpch.getSpeech(npcID, "perkinite_" + Game.perkinite.unitData.id);
+				if(key == "acceptance" || key == "rejection") {
+					message = Game.dbSpch.getSpeech(npcID, key);
+				} else if(message == null) {
+					var type = key;
+					if(Game.perkinite.unitData.id == npcID && mirror) {
 						type = "mirror";
 					}			
-					message = Game.dbSpch.getSpeech(npc.id, type);
-				}
+					message = Game.dbSpch.getSpeech(npcID, type);
+				}								
 			}
-			
 			Game.overlay.speech.showText(this, icon, name, message);
 		}
 		

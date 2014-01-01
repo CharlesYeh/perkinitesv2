@@ -11,14 +11,109 @@
 			{
 				"type": "ActionControls",
 				"enable": false
-			},
-			{
-				"type": "ActionSpeech",
-            "time": 10,
+			}
+      ],
+      [
+      	{
+				"type": "Control",
 				
-            "key": "npc"
-			}         
-		],
+            "conditions": [
+               {
+      				"type": "ConditionCheckMode",
+                  "gameMode": 1
+      			},
+               {
+                  "type": "ConditionNot",
+                  "condition": {
+                     "type": "ConditionCheckChosen",
+                     "npc": true
+                  }
+               }
+            ],
+            
+            "ifSequence":
+            {
+            	"actions": [ 
+                  [
+                  	{
+            				"type": "ControlDecision",
+                        "key": "greetings",
+                        "mirror": true,
+                                    
+            				"decisions": [
+                           "Join our team!",
+                           "Get away from our team!",
+                           "Do nothing."
+                        ],
+                        "sequences": [
+                           {             
+               	         	"actions": [
+                                 [
+                                 	{
+                           				"type": "ActionSpeech",
+                                       "time": 10,
+                                       "key": "acceptance"
+                           			} 
+                                 ],    
+                                 [
+                                 	{
+                           				"type": "ActionChangeTeam",
+                                       "subtype": "add",
+                                       "key": "npc"
+                           			} 
+                                 ]                                                                    
+               	            ]
+                           },
+                           {
+               	         	"actions": [
+                                 [
+                                 	{
+                           				"type": "ActionSpeech",
+                                       "time": 10,
+                                       "key": "rejection"
+                           			} 
+                                 ],
+                                 [
+                                 	{
+                           				"type": "ActionChangeTeam",
+                                       "subtype": "remove",
+                                       "key": "npc"
+                           			} 
+                                 ]                                                                   
+               	            ]
+                           },
+                           {
+               	         	"actions": [      
+                                 [
+                                 	{
+                           				"type": "ActionSpeech",
+                                       "time": 10,
+                                       "key": "npc"
+                           			} 
+                                 ]                                              
+               	            ]
+                           }                                                 
+                        ]
+            			} 
+                  ]	                              
+            	]
+            },            
+            "elseSequence": 
+            {
+            	"actions": [             
+                  [
+            			{
+            				"type": "ActionSpeech",
+                        "time": 10,
+            				
+                        "key": "npc",
+                        "mirror": true
+            			}         
+            		]
+               ]
+            }
+			} 
+      ],   
 		[
 			{
 				"type": "ActionControls",

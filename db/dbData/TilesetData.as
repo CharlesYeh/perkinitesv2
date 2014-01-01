@@ -5,6 +5,8 @@
 		public var types:Array;
 		public var clings:Array;
 		
+		//public var objectTypes:Array;
+		
 		public function parseData(obj:Object):void {
 			id		= obj.id;
 			types	= obj.types;

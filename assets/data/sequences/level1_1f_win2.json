@@ -1,0 +1,17 @@
+{
+	"id": "level1_1f_win2",
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level1_1f_win"
+			},
+         {
+            "type": "ConditionCountTeam",
+            "size": 3,
+            "equal": true,
+            "greater": true
+         }         
+		]
+	]
+}

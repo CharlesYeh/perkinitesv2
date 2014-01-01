@@ -17,7 +17,13 @@
       "range": 160,
       "cd": 20,
       "stand": 0,
-      "radius": 24
+      "radius": 24,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "ai": "BossIraAI",
-  "name": "Ira",
+  "name": "Ananyira",
   "id": "boss_ira",
   "sprite": "enemy_Ira",
   "health": 400,
@@ -17,7 +17,13 @@
       "range": 72,
       "cd": 0,
       "stand": 23,
-      "angle": 60
+      "angle": 60,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
       "name": "Negative Spike",
@@ -29,7 +35,13 @@
       "range": 1000,
       "cd": 0,
       "stand": 70,
-      "radius": 88
+      "radius": 88,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
       "name": "Detached Embers",
@@ -42,7 +54,13 @@
       "cd": 0,
       "stand": 27,
       "speed": 15,
-      "width": 30
+      "width": 30,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
       "name": "Shadowgazer",
@@ -54,7 +72,13 @@
       "range": 133,
       "cd": 0,
       "stand": 1000,
-      "goToCastPoint": false
+      "goToCastPoint": false,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
       "name": "Virus Altar",
@@ -68,7 +92,13 @@
       "stand": 1000,
       "speed": 40,
       "width": 20,
-      "penetrates": 2
+      "penetrates": 2,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     }
   ]
 }

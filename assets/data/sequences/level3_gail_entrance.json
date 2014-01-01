@@ -1,0 +1,192 @@
+{
+	"id": "level3_gail_entrance",
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level3_ratty_dining_court"
+			}        
+		],   
+		[     
+			{
+				"type": "ActionControls",
+				"enable": false
+			},
+			{
+				"type": "ActionHUD",
+				"enable": false
+			},
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},
+			{
+				"type": "ActionWait",
+				"time": 24
+			}           
+		],   
+      [  
+         {
+            "type": "ActionMove",
+            "subtype": "player",
+            "direction": "right"
+         },           
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Gail",
+				"icon": "Face Icon - Gail.png",
+				"message": "HIIIIIIIIIIIIIIIIII"
+			}	               
+      ],      
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Gail",
+				"icon": "Face Icon - Gail.png",
+				"message": "There's been a lot of demonic activity going on, and it's really bad."
+			}	               
+      ],
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Gail",
+				"icon": "Face Icon - Gail.png",
+				"message": "That's why everyone's allowed to eat here, free of charge, as long as they're a student!"
+			}	               
+      ],                 				
+		[    
+			{
+				"type": "ActionNarrator",
+				"time": 72,
+				
+				"message": "I'm surprised this place isn't on lockdown but okay, sure."
+			}
+		],
+		[    
+			{
+				"type": "ActionNarrator",
+				"time": 72,
+				
+				"message": "Brown Dining Services is WEIRD."
+			}
+		],             
+      [
+      	{
+				"type": "ControlDecision",
+            
+				"name": "Gail",
+				"icon": "Face Icon - Gail.png",
+            "message": "I just need to swipe your ID, and are you a student or a demon?",
+                        
+				"decisions": [
+               "Student",
+               "Demon"
+            ],
+            "sequences": [
+               {             
+   	         	"actions": [
+                     [
+                     	{
+               				"type": "ActionSpeech",
+                           "time": 10,
+               				
+                           "message": "*swipe*"
+               			} 
+                     ],                  
+                     [
+                     	{
+               				"type": "ActionSpeech",
+                           "time": 10,
+               				
+               				"name": "Gail",
+               				"icon": "Face Icon - Gail.png",
+                           "message": "You're all set. Thank you :)"
+               			} 
+                     ],
+               		[
+               			{
+               				"type": "ActionControls",
+               				"enable": true
+               			},			
+               			{
+               				"type": "ActionAI",
+               				"enabled": true
+               			}
+                 		]                                             
+   	            ]
+               },
+               {
+   	         	"actions": [
+                     [
+                     	{
+               				"type": "ActionSpeech",
+                           "time": 10,
+               				
+               				"name": "Gail",
+               				"icon": "Face Icon - Gail_angry.png",
+                           "message": "UGH. DISGUSTING!"
+               			} 
+                     ],
+                     [
+                     	{
+               				"type": "ActionSpeech",
+                           "time": 10,
+               				
+               				"name": "Gail",
+               				"icon": "Face Icon - Gail_angry.png",
+                           "message": "HOW DARE YOU TRY AND ENTER THIS FORSAKEN GROUND."
+               			} 
+                     ],
+                     [
+                     	{
+               				"type": "ActionSpeech",
+                           "time": 10,
+               				
+               				"name": "Gail",
+               				"icon": "Face Icon - Gail_angry.png",
+                           "message": "GO BACK TO WHERE YOU CAME FROM OR YOU SHALL SUFFER A FATE WORSE THAN HELL."
+               			} 
+                     ],
+                     [
+                     	{
+               				"type": "ActionSpeech",
+                           "time": 10,
+               				
+               				"name": "Gail",
+               				"icon": "Face Icon - Gail_angry.png",
+                           "message": "SOON YOU WILL BECOME NOTHING-"
+               			} 
+                     ],                                            
+               		[
+               			{
+               				"type": "ActionControls",
+               				"enable": true
+               			},			
+               			{
+               				"type": "ActionAI",
+               				"enabled": true
+               			},
+                        {
+                           "type": "ActionTeleport",
+                           "map": "ratty_entrance",
+                           "position": 
+                              {
+                                 "x": 16,
+                                 "y": 4
+                              },
+                           "direction": "down"   
+                        }
+                 		]                                                    
+   	            ]
+               }               
+            ]
+			} 
+      ]                                
+	]
+}

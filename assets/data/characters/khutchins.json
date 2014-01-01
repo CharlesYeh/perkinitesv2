@@ -8,32 +8,47 @@
   "name": "Kevin H.",
   "id": "KH",
   "sprite": "KH",
-  "health": 0,
+  "health": 200,
   "defense": 0,
-  "speed": 0,
+  "speed": 160,
   "abilities": [
     {
       "name": "Acidic Sarcasm",
       "type": "AttackSkillshot",
       "icon": "Icon - Acidic Sarcasm.png",
       "description": "Sends out biting sarcasm to nearby enemies.",
-      "dmgBase": "",
+      "dmgBase": "5",
       "dmgRatio": "",
-      "range": 0,
+      "range": 250,
       "cd": 0,
-      "stand": 0
+      "stand": 12,
+      "speed": 30,
+      "width": 30,
+      "penetrates": 999,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
       "name": "Rapid Hair Growth",
       "type": "AttackSmartcast",
       "icon": "Icon - Rapid Hair Growth.png",
       "description": "Stuns nearby enemies with the hair that ensnares.",
-      "dmgBase": "",
-      "dmgRatio": "",
-      "range": 0,
+      "dmgBase": "4",
+      "dmgRatio": "1",
+      "range": 48,
       "cd": 0,
-      "stand": 0,
-      "goToCastPoint": false
+      "stand": 30,
+      "goToCastPoint": false,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     }
   ]
 }

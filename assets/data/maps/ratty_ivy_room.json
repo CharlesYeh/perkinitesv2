@@ -61,7 +61,64 @@
       }
     }
   ],
-  "npcs": [],
+  "npcs": [
+    {
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level3_ivy_room_win"
+        },
+        {
+          "type": "ConditionCheckMode",
+          "gameMode": 1.0
+        },
+        {
+          "type": "ConditionNot",
+          "condition": {
+            "type": "ConditionCheckChosen",
+            "id": "CM"
+          }
+        }
+      ],
+      "id": "CM",
+      "direction": "down",
+      "position": {
+        "x": 4,
+        "y": 5
+      },
+      "sequences": [
+        "npc"
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level3_ivy_room_win"
+        },
+        {
+          "type": "ConditionCheckMode",
+          "gameMode": 1.0
+        },
+        {
+          "type": "ConditionNot",
+          "condition": {
+            "type": "ConditionCheckChosen",
+            "id": "VH"
+          }
+        }
+      ],
+      "id": "VH",
+      "direction": "left",
+      "position": {
+        "x": 14,
+        "y": 10
+      },
+      "sequences": [
+        "npc"
+      ]
+    }
+  ],
   "sequences": [
     "level3_ivy_room",
     "level3_ivy_room_win"

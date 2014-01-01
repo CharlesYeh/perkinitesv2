@@ -44,7 +44,7 @@
 				var e:StatUnit = targets[i];
 				
 				if (StatUnit.distance(m_caster, e) < range) {
-					e.takeDamage(damage());
+					dealTargetDamage(e);
 /*						if(AIUnit.m_enabled){
 							SoundManager.playSound("hit");
 						}		*/				

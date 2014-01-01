@@ -8,7 +8,7 @@
   "name": "Charles Y.",
   "id": "CY",
   "sprite": "CY",
-  "health": 100,
+  "health": 200,
   "defense": 20,
   "speed": 165,
   "abilities": [
@@ -22,7 +22,13 @@
       "range": 60,
       "cd": 0,
       "stand": 6,
-      "angle": 35
+      "angle": 35,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
       "name": "Ninjutsu",
@@ -35,7 +41,13 @@
       "cd": 0,
       "stand": 8,
       "speed": 30,
-      "width": 50
+      "width": 50,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     }
   ]
 }

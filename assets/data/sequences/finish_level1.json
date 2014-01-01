@@ -1,0 +1,109 @@
+{
+	"id": "finish_level1",
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level1_3f_boss_win"
+			}        
+		],   
+		[
+			{
+				"type": "ActionJournal",
+				
+				"message": ""
+			},      
+			{
+				"type": "ActionControls",
+				"enable": false
+			},
+			{
+				"type": "ActionHUD",
+				"enable": false
+			},
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},
+			{
+				"type": "ActionWait",
+				"time": 24
+			}           
+		],              
+		[  
+			{
+				"type": "ActionBlackout",
+				"subtype": "hide",
+				"time": 30
+			}      
+		],
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+				"message": "Hello, your counselors would like to make a short announcement."
+			}	               
+      ],      
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+				"message": "Congratulations on completing your suddenly-assigned liberation mission. I don't think there's any more bad stuff here."
+			}	               
+      ],
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya A.",
+				"icon": "Face Icon - AA.png",
+				"message": "But there are still other areas that need liberating, so please talk to me when you are ready."
+			}	               
+      ],      
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+				"message": "In the meantime, enjoy not dying by hanging out with various Perkinites."
+			}	               
+      ],
+      [   
+			{
+				"type": "ActionNotification",
+				"time": 72,
+            "freetime": true
+			}
+		],
+      [
+			{
+				"type": "ActionWait",
+            "time": 72
+			}        
+      ],
+        
+      [	
+			{
+				"type": "ActionControls",
+				"enable": true,
+            
+            "leftEnabled": false,
+            "rightEnabled": false,
+            "teamEnabled": false
+			},
+			{
+				"type": "ActionAI",
+				"enabled": true
+			}              
+		]                                 
+	]
+}

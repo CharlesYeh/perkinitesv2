@@ -15,7 +15,7 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 150,
+				"time": 96,
 				
 				"name": "Narrator",
 				"message": "Now normally, pieces of paper don't move on their own."
@@ -28,10 +28,10 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 96,
+				"time": 72,
 				
 				"name": "Narrator",
-				"message": "But as you might have realized, yes indeed! Some of the darkness has eventually reached over to Perkins."
+				"message": "But I bet that masked child was behind all of these evil shenanigans."
 			},
 			{
 				"type": "ActionSound",
@@ -44,16 +44,7 @@
 				"time": 96,
 				
 				"name": "Narrator",
-				"message": "It's not a whole lot of darkness, but you get what you get. Homicidal pieces of paper is pretty decent to me."
-			}
-		],
-		[
-			{
-				"type": "ActionNarrator",
-				"time": 120,
-				
-				"name": "Narrator",
-				"message": "Our raggamuffins realize people could die from this, so they postpone their trip to Keeney to save Perkins."
+				"message": "It's not a whole lot of evil, but you get what you get. Homicidal pieces of paper seem pretty decent to me."
 			}
 		]
 	]

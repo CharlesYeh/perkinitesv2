@@ -17,7 +17,13 @@
       "range": 165,
       "cd": 0,
       "stand": 0,
-      "goToCastPoint": false
+      "goToCastPoint": false,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
       "name": "Indigestion",
@@ -31,7 +37,13 @@
       "stand": 0,
       "speed": 20,
       "width": 20,
-      "penetrates": 1
+      "penetrates": 1,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
       "name": "Waste Artillery",
@@ -43,7 +55,13 @@
       "range": 400,
       "cd": 0,
       "stand": 0,
-      "radius": 50
+      "radius": 50,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
       "name": "Chain Reaction",
@@ -55,7 +73,13 @@
       "range": 0,
       "cd": 0,
       "stand": 0,
-      "goToCastPoint": false
+      "goToCastPoint": false,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     }
   ]
 }

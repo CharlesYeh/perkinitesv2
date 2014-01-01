@@ -11,7 +11,7 @@
       "conditions": [
         {
           "type": "ConditionSequence",
-          "name": "level1_1f_win"
+          "name": "level1_1f_win2"
         }
       ],
       "entry": {
@@ -28,7 +28,7 @@
       "conditions": [
         {
           "type": "ConditionSequence",
-          "name": "level1_1f_win"
+          "name": "level1_1f_win2"
         }
       ],
       "entry": {
@@ -45,7 +45,7 @@
       "conditions": [
         {
           "type": "ConditionSequence",
-          "name": "level1_1f_win"
+          "name": "level1_1f_win2"
         }
       ],
       "entry": {
@@ -62,7 +62,7 @@
       "conditions": [
         {
           "type": "ConditionSequence",
-          "name": "level1_1f_win"
+          "name": "level1_1f_win2"
         }
       ],
       "entry": {
@@ -142,10 +142,189 @@
       }
     }
   ],
-  "npcs": [],
+  "npcs": [
+    {
+      "conditions": [
+        {
+          "type": "ConditionCheckMode",
+          "gameMode": 1.0
+        },
+        {
+          "type": "ConditionClearedArea",
+          "map": "perkins_1f"
+        }
+      ],
+      "id": "npc_Generic2",
+      "direction": "down",
+      "position": {
+        "x": 7,
+        "y": 14
+      },
+      "sequences": [
+        "level1_npcA"
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "type": "ConditionCheckMode",
+          "gameMode": 1.0
+        },
+        {
+          "type": "ConditionClearedArea",
+          "map": "perkins_1f"
+        }
+      ],
+      "id": "npc_Generic2",
+      "direction": "down",
+      "position": {
+        "x": 48,
+        "y": 18
+      },
+      "sequences": [
+        "level1_npcB"
+      ]
+    }
+  ],
   "sequences": [
     "level1_1f",
     "level1_1f_mid",
-    "level1_1f_win"
+    "level1_1f_win",
+    "level1_1f_win2"
+  ],
+  "objects": [
+    {
+      "id": "perkins_door_1",
+      "position": {
+        "x": 4.0,
+        "y": 7.0
+      }
+    },
+    {
+      "id": "perkins_door_1a",
+      "position": {
+        "x": 6.0,
+        "y": 7.0
+      }
+    },
+    {
+      "id": "perkins_door_1a",
+      "position": {
+        "x": 11.0,
+        "y": 7.0
+      }
+    },
+    {
+      "id": "perkins_door_1a",
+      "position": {
+        "x": 16.0,
+        "y": 7.0
+      }
+    },
+    {
+      "id": "perkins_door_1a",
+      "position": {
+        "x": 21.0,
+        "y": 7.0
+      }
+    },
+    {
+      "id": "perkins_door_1a",
+      "position": {
+        "x": 26.0,
+        "y": 12.0
+      }
+    },
+    {
+      "id": "perkins_door_1a",
+      "position": {
+        "x": 31.0,
+        "y": 12.0
+      }
+    },
+    {
+      "id": "perkins_door_1",
+      "position": {
+        "x": 39.0,
+        "y": 12.0
+      }
+    },
+    {
+      "id": "perkins_door_1",
+      "position": {
+        "x": 44.0,
+        "y": 12.0
+      }
+    },
+    {
+      "id": "perkins_door_1",
+      "position": {
+        "x": 49.0,
+        "y": 7.0
+      }
+    },
+    {
+      "id": "perkins_door_1",
+      "position": {
+        "x": 54.0,
+        "y": 7.0
+      }
+    },
+    {
+      "id": "perkins_door_1",
+      "position": {
+        "x": 59.0,
+        "y": 7.0
+      }
+    },
+    {
+      "id": "perkins_door_1",
+      "position": {
+        "x": 64.0,
+        "y": 7.0
+      }
+    },
+    {
+      "id": "perkins_door_1a",
+      "position": {
+        "x": 66.0,
+        "y": 7.0
+      }
+    },
+    {
+      "id": "perkins_door_g",
+      "position": {
+        "x": 15.0,
+        "y": 18.0
+      }
+    },
+    {
+      "id": "perkins_door_b",
+      "position": {
+        "x": 20.0,
+        "y": 18.0
+      }
+    },
+    {
+      "id": "perkins_door_b",
+      "position": {
+        "x": 50.0,
+        "y": 18.0
+      }
+    },
+    {
+      "id": "perkins_door_g",
+      "position": {
+        "x": 55.0,
+        "y": 18.0
+      }
+    },
+    {
+      "id": "perkins_door_1a",
+      "position": {
+        "x": 66.0,
+        "y": 18.0
+      }
+    }
   ]
 }

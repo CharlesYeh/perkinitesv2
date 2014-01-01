@@ -47,11 +47,11 @@
 			addEventListener(Event.ENTER_FRAME, runnerAI);
 		}
 		
-		override public function takeDamage(dmg:int):void {
+		override public function takeDamage(dmg:int, attackName:String):void {
 			if (!m_enabled) {
 				return;
 			}
-			super.takeDamage(dmg);
+			super.takeDamage(dmg, attackName);
 			Game.overlay.ehud.HPDisplay.text = progressData.health+"";
 			Game.overlay.ehud.ehpbar.HP.scaleX = progressData.health/unitData.health * 2;
 		}
@@ -80,7 +80,7 @@
 				shotCooldown = shotTime;
 				enemyRef[current].castAbility(0, new Point(0, 0));
 				
-				if(progressData.health <= unitData.health ) {
+				if(progressData.health <= unitData.health / 2 ) {
 					enemyRef[icecreamCount - current - 1].castAbility(0, new Point(0, 0));
 					shotCooldown = shotTime/2;
 				}

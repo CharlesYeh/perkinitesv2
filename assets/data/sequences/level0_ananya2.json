@@ -1,0 +1,120 @@
+{
+	"id": "level0_ananya2",
+   "repeatable": true,
+   "saveable": false,
+	"actions": [
+      [
+         {
+				"type": "ConditionSequence",
+				"name": "finish_level1"
+         }
+      ],
+      [
+         {
+            "type": "ConditionNot",
+            "condition": {
+   				"type": "ConditionSequence",
+   				"name": "finish_level3"
+   			} 
+         }
+      ],         
+		[ 		
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},     
+			{
+				"type": "ActionControls",
+				"enable": false
+			}
+      ],   
+      [
+      	{
+				"type": "ActionSpeech",
+            "time": 10,
+				
+				"name": "Ananya A.",
+				"icon": "Face Icon - AA.png",
+            "message": "SAY SOMETHING NPC-y here."
+			} 
+      ],     
+      [
+      	{
+				"type": "ControlDecision",
+            
+				"name": "Ananya A.",
+				"icon": "Face Icon - AA.png",
+            "message": "Are you ready for this dangerous mission I wish to send you upon?",
+                        
+				"decisions": [
+               "Yeah sure.",
+               "Duhhhhhhhhhhh"
+            ],
+            "sequences": [
+               {             
+   	         	"actions": [
+                     [
+                     	{
+               				"type": "ActionSpeech",
+                           "time": 10,
+               				
+               				"name": "Ananya A.",
+               				"icon": "Face Icon - AA.png",
+                           "message": "I hope you don't die..."
+               			} 
+                     ],
+                     [
+                        {
+               				"type": "ActionBlackout",
+               				"subtype": "show",
+               				"alpha": 1,
+                           "time": 48
+               			}
+                     ],
+                     [
+                        {
+                           "type": "ActionWait",
+                           "time": 24
+                        }
+                     ],
+               		[
+               			{
+               				"type": "ActionNext",
+               				
+               				"map": "perkins_2f_jos",
+               				"x": 67,
+               				"y": 20,
+                           "menu": true
+               			}
+               		]                                 
+   	            ]
+               },
+               {
+   	         	"actions": [
+                     [
+                     	{
+               				"type": "ActionSpeech",
+                           "time": 10,
+               				
+               				"name": "Ananya A.",
+               				"icon": "Face Icon - AA.png",
+                           "message": "Then talk to me again when you are ready..."
+               			} 
+                     ],
+               		[
+               			{
+               				"type": "ActionControls",
+               				"enable": true
+               			},			
+               			{
+               				"type": "ActionAI",
+               				"enabled": true
+               			}
+                 		]                                                    
+   	            ]
+               }               
+            ]
+			} 
+      ]	                            
+	]
+}

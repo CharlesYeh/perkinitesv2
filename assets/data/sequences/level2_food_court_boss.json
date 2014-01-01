@@ -83,16 +83,20 @@
 				
 				"subtype": "npc",
 				"sprite": "npc_Generic",
-				"xpos": 1,
-				"ypos": 11
+            "position": {
+              "x": 1,
+              "y": 11
+            }
 			},		
 			{
 				"type": "ActionMove",
 				
 				"subtype": "npc",
 				"sprite": "npc_Generic2",
-				"xpos": 1,
-				"ypos": 11
+            "position": {
+              "x": 1,
+              "y": 11
+            }
 			}			
 		],					
 		[
@@ -342,6 +346,10 @@
 				"type": "ActionControls",
 				"enable": true
 			},	
+			{
+				"type": "ActionHUD",
+				"enable": true
+			},         
 			{
 				"type": "ActionHUD",
 				"enable": true,

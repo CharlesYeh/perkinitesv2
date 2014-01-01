@@ -1,0 +1,139 @@
+{
+  "name": "Perkins Hall 2F Kitchen",
+  "id": "perkins_2f_kitchen",
+  "tileset": "perkins",
+  "height": 15,
+  "width": 20,
+  "code": "33333333333333333333333399999999999999933333CCCCCCCCC99999933333BBBBBBBBB000000333330000000000000003333300000000000000033333CCCCCCCCC00000033333CCCCCCCCC000000333339999999990000003333300000000000000333333000000000000033333330000000000003333333300000000000333333333333333333333333333333333333333333333",
+  "teleports": [
+    {
+      "conditions": [
+        {
+          "type": "ConditionOr",
+          "conditions": [
+            {
+              "type": "ConditionCheckTeam",
+              "chosen": true
+            },
+            {
+              "type": "ConditionCheckMode",
+              "gameMode": 0.0
+            }
+          ]
+        }
+      ],
+      "entry": {
+        "x": 16,
+        "y": 3
+      },
+      "exit": {
+        "map": "perkins_2f",
+        "x": 39,
+        "y": 17
+      }
+    }
+  ],
+  "enemies": [],
+  "npcs": [
+    {
+      "conditions": [
+        {
+          "type": "ConditionNot",
+          "condition": {
+            "type": "ConditionOr",
+            "conditions": [
+              {
+                "type": "ConditionCheckChosen",
+                "id": "CY"
+              },
+              {
+                "type": "ConditionCheckChosen",
+                "id": "NM"
+              },
+              {
+                "type": "ConditionCheckChosen",
+                "id": "HV"
+              },
+              {
+                "type": "ConditionCheckChosen",
+                "id": "HQ"
+              }
+            ]
+          }
+        },
+        {
+          "type": "ConditionSequence",
+          "name": "level1_gf_win2"
+        },
+        {
+          "type": "ConditionCheckMode",
+          "gameMode": 1.0
+        }
+      ],
+      "id": "NM",
+      "direction": "down",
+      "position": {
+        "x": 7,
+        "y": 9
+      },
+      "sequences": [
+        "npc"
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "type": "ConditionOr",
+          "conditions": [
+            {
+              "type": "ConditionCheckChosen",
+              "id": "CY"
+            },
+            {
+              "type": "ConditionCheckChosen",
+              "id": "NM"
+            },
+            {
+              "type": "ConditionCheckChosen",
+              "id": "HV"
+            },
+            {
+              "type": "ConditionCheckChosen",
+              "id": "HQ"
+            }
+          ]
+        },
+        {
+          "type": "ConditionSequence",
+          "name": "level1_gf_win2"
+        },
+        {
+          "type": "ConditionCheckMode",
+          "gameMode": 1.0
+        }
+      ],
+      "id": "EH",
+      "direction": "left",
+      "position": {
+        "x": 11,
+        "y": 11
+      },
+      "sequences": [
+        "npc"
+      ]
+    }
+  ],
+  "sequences": [
+    "level1_2f_kitchen",
+    "level1_2f_kitchen_win"
+  ],
+  "objects": [
+    {
+      "id": "kitchen_table",
+      "position": {
+        "x": 5.0,
+        "y": 10.0
+      }
+    }
+  ]
+}

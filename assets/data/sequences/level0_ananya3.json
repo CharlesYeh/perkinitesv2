@@ -1,0 +1,111 @@
+{
+	"id": "level0_ananya3",
+   "repeatable": true,
+   "saveable": false,
+	"actions": [
+      [
+         {
+				"type": "ConditionSequence",
+				"name": "finish_level3"
+         }
+      ],   
+		[ 		
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},     
+			{
+				"type": "ActionControls",
+				"enable": false
+			}
+      ],   
+      [
+      	{
+				"type": "ActionSpeech",
+            "time": 10,
+				
+				"name": "Ananya A.",
+				"icon": "Face Icon - AA.png",
+            "message": "SAY SOMETHING NPC-y here."
+			} 
+      ],     
+      [
+      	{
+				"type": "ControlDecision",
+            
+				"name": "Ananya A.",
+				"icon": "Face Icon - AA.png",
+            "message": "I have another dangerous and life-threatening mission on our hands that I must send you on.",
+                        
+				"decisions": [
+               "I love the Ratty!",
+               "The Ratty is okay."
+            ],
+            "sequences": [
+               {             
+   	         	"actions": [
+                     [
+                     	{
+               				"type": "ActionSpeech",
+                           "time": 10,
+               				
+               				"name": "Ananya A.",
+               				"icon": "Face Icon - AA.png",
+                           "message": "You risk your life for the sake of the Ratty..."
+               			} 
+                     ],
+                     [
+                        {
+               				"type": "ActionBlackout",
+               				"subtype": "show",
+               				"alpha": 1,
+                           "time": 48
+               			}
+                     ],
+                     [
+                        {
+                           "type": "ActionWait",
+                           "time": 24
+                        }
+                     ],
+               		[
+               			{
+               				"type": "ActionNext",
+               				
+               				"map": "wriston_quad",
+               				"x": 21,
+               				"y": 13,
+                           "menu": true
+               			}
+               		]                                 
+   	            ]
+               },
+               {
+   	         	"actions": [
+                     [
+                     	{
+               				"type": "ActionSpeech",
+                           "time": 10,
+               				
+               				"name": "Ananya A.",
+               				"icon": "Face Icon - AA.png",
+                           "message": "I get that there are better options, but if you want to save the Ratty, you can't have a shitty 'tude like that, now."
+               			} 
+                     ],
+               		[
+               			{
+               				"type": "ActionControls",
+               				"enable": true
+               			},			
+               			{
+               				"type": "ActionAI",
+               				"enabled": true
+               			}
+                 		]                                                    
+   	            ]
+               }               
+            ]
+			} 
+      ]	                            
+	]
+}

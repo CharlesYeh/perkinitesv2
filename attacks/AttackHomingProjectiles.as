@@ -91,7 +91,7 @@
 				if (hardTarget) {
 					// hard target testing
 					if (StatUnit.distance(target, p) < width) {
-						target.takeDamage(damage());
+						dealTargetDamage(target);
 /*						if(AIUnit.m_enabled){
 							SoundManager.playSound("hit");
 						}		*/
@@ -181,7 +181,7 @@
 				
 				if (StatUnit.distance(en, skillshot) < width) {
 					//prevent multiple hits on the same enemy
-					en.takeDamage(damage());
+					dealTargetDamage(en);
 					// TODO: find actual closest to old position?
 /*						if(AIUnit.m_enabled){
 							SoundManager.playSound("hit");

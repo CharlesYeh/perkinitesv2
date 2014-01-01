@@ -31,6 +31,8 @@
 		/** cache of team id -> array of CharacterData */
 		public var teamData:Dictionary = new Dictionary();
 		
+		public var characterArray:Array = new Array();
+		
 		public function CharacterDatabase() {
 			loadData();
 		}
@@ -40,7 +42,7 @@
 		 */
 		public function loadData():void {
 			Database.loadData(PATH + BASE + EXTENSION, completeLoad);
-			Database.loadData(PATH + TEAMS_BASE + EXTENSION, completeTeamsLoad);
+			//Database.loadData(PATH + TEAMS_BASE + EXTENSION, completeTeamsLoad);
 		}
 		
 		function completeTeamsLoad(e:Event):void {
@@ -57,14 +59,7 @@
 		}
 		
 		public function getAllCharacters():Array {
-			var charData = new Array();
-			for (var i = 0; i < teams.length; i++){
-				for (var j:String in teams[i]) {
-					charData.push(getCharacterData(teams[i][j]));
-				}
-			}
-			
-			return charData;
+			return characterArray;
 		}
 		
 		public function getTeamCharacterData(id:int):Array {
@@ -102,6 +97,7 @@
 			cdat.parseData(obj);
 			
 			characters[cdat.id] = cdat;
+			characterArray.push(cdat);
 		}
 		
 		public function getAllCharacterData():Dictionary {

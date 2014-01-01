@@ -1,0 +1,43 @@
+{
+   "name": "Chloe C.",
+   "id": "CC",
+	"speech": [
+		{
+			"name": "greetings",
+      	"lines": [
+            "O hai! :D"
+      	]
+		},
+		{
+			"name": "acceptance",
+      	"lines": [
+            "Yay! Let's go!"
+      	]
+		},      
+		{
+			"name": "rejection",
+      	"lines": [
+            "Awwww, I'm hurt.",
+            "Don't you love me?"
+      	]
+		},
+		{
+			"name": "mirror",
+      	"lines": [
+            "Huh. You know, I heard that if you see your doppelganger, you're going to DIE. Some food for thought."
+      	]
+		},
+		{
+			"name": "field",
+      	"lines": [
+            "This sure is a questionable situation, isn't it?"
+      	]
+		},     
+		{
+			"name": "npc",
+      	"lines": [
+            "Fun times."
+      	]
+		}         	        	
+	]
+}

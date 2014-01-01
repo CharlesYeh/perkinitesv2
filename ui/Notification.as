@@ -7,8 +7,8 @@
 	
 	public class Notification extends MovieClip {
 		
-		private var duration:int;
-		private var maxDuration:int;
+		protected var duration:int;
+		protected var maxDuration:int;
 		
 		public function Notification(d:int) {
 			duration = d;

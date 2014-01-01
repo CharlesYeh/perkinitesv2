@@ -13,6 +13,12 @@
 		],
 		[
 			{
+				"type": "ActionControls",
+				"enable": false
+			}
+		],      
+		[
+			{
 				"type": "ActionNarrator",
 				"time": 48,
 				
@@ -23,12 +29,145 @@
 				"type": "ActionSound",
 				"sound": "1f_win"
 			}
-		],		
+		],
+      [
+      	{
+				"type": "Control",
+				
+            "conditions": [
+               {
+                  "type": "ConditionNot",
+                  "condition": 
+                     {
+      				      "type": "ConditionCheckTeam",
+                        "id": "CY"
+      			      }
+               }
+            ],
+            
+            "ifSequence":
+            {
+            	"actions": [  
+                  [
+                     {
+            				"type": "ActionCreate",
+            				
+            				"subtype": "npc",
+                        "id": "CY",
+                		   "direction": "up",
+                        "animation": "standing",
+                			"position": {
+            					"x": 39,
+                    			"y": 16
+                  		},
+                        "sequences": [
+                          "level1_npc2"
+                        ]
+            			}      
+                  ]                          
+            	]
+            },            
+            "elseSequence": 
+            {
+            	"actions": [  
+                  [
+                     {
+            				"type": "ActionCreate",
+            				
+            				"subtype": "npc",
+                        "id": "NM",
+                		   "direction": "up",
+                        "animation": "standing",
+                			"position": {
+            					"x": 39,
+                    			"y": 16
+                  		},
+                        "sequences": [
+                          "level1_npc2"
+                        ]
+            			}
+                  ]                                
+            	]
+            }
+			} 
+      ],          
 		[
+			{
+				"type": "ActionViewport",
+				"position": {
+               "x": 39,
+               "y": 16
+            }
+			},      
+			{
+				"type": "ActionNarrator",
+				"time": 60,
+				
+				"name": "Narrator",
+				"message": "Oh look a random person just popped up by the kitchen."
+			},
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "action_Emotion",
+    		   "direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 39,
+        			"y": 16
+      		}
+			},       
+			{
+				"type": "ActionSound",
+				"sound": "1f_win"
+			}
+		], 
+      [
+         {
+            "type": "ActionAnimate",
+				"time": 13,
+				
+				"sprite": "action_Emotion",
+				"animation": "sad"
+         },
+         {
+            "type": "ActionWait",
+            "time": 26
+         }
+      ],
+		[
+			{
+				"type": "ActionViewport",
+				"player": true
+			},          
+			{
+				"type": "ActionNarrator",
+				"time": 72,
+				
+				"name": "Narrator",
+				"message": "He doesn't look as generic as everyone else. Let's see what he has to say."
+			},
+			{
+				"type": "ActionSound",
+				"sound": "1f_win"
+			}
+		],                      		
+		[
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "action_Emotion"
+			},      
+			{
+				"type": "ActionControls",
+				"enable": true
+			},
 			{
 				"type": "ActionJournal",
 				
-				"message": "Go downstairs! :D"
+				"message": "Talk to that random person!"
 			}
 		]
 	]

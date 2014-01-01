@@ -3,10 +3,26 @@
 	"actions": [
 		[
 			{
-				"type": "ConditionSequence",
-				"name": "level1_miniboss_check"
-			}
+				"type": "ConditionBeatEnemy",
+				"map": "perkins_gf",
+				"id": "warbear"
+			},
+			{
+				"type": "ConditionClearedArea",
+				"map": "perkins_2f_kitchen"
+			}      
 		],
+		[
+			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			},
+			{
+				"type": "ActionControls",
+				"enable": false
+			}
+		],	      
 		[
 			{
 				"type": "ActionCreate",
@@ -18,7 +34,10 @@
     			"position": {
 					"x": 9,
         			"y": 5
-      		}
+      		},
+            "sequences": [
+              "level1_obtain_peacebear"
+            ]            
 			}		
 		],
 		[
@@ -28,11 +47,6 @@
 				
 				"enable": false
 			},				
-			{
-				"type": "ActionJournal",
-				
-				"completed": true
-			},			
 			{
 				"type": "ActionWait",
 				"time": 19
@@ -72,6 +86,16 @@
 				"type": "ActionSkip",
 				"skip": false
 			}
-		]
+		],
+		[
+			{
+				"type": "ActionAI",
+				"enabled": true
+			},	
+			{
+				"type": "ActionControls",
+				"enable": true
+			}
+		]	      
 	]
 }

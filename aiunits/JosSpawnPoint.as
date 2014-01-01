@@ -1,4 +1,4 @@
-package aiunits {
+﻿package aiunits {
 	import flash.events.Event;
 	import flash.geom.Point;
 	import flash.net.URLRequest;
@@ -74,7 +74,7 @@ package aiunits {
 			myUnits.splice(myUnits.indexOf(u), 1);
 		}
 		
-		override public function takeDamage(dmg:int):void {
+		override public function takeDamage(dmg:int, attackName:String):void {
 			return;
 		}
 		

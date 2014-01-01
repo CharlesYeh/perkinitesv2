@@ -17,25 +17,37 @@
       "type": "AttackSkillshot",
       "icon": "Icon - Sedated Needles.png",
       "description": "Throws a sedated knitting needle at an enemy.",
-      "dmgBase": "4",
+      "dmgBase": "3",
       "dmgRatio": "50",
       "range": 2000,
       "cd": 10,
       "stand": 8,
       "speed": 30,
-      "width": 40
+      "width": 40,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
-      "name": "Distortion",
+      "name": "CIA Later!",
       "type": "AttackPoint",
       "icon": "Icon - Graceful Dodge.png",
       "description": "Teleport self to a point, creating an angelic shockwave around you.",
       "dmgBase": "5",
       "dmgRatio": "",
-      "range": 250,
+      "range": 100,
       "cd": 20,
       "stand": 24,
-      "radius": 48
+      "radius": 48,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     }
   ]
 }

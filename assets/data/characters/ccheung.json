@@ -4,36 +4,54 @@
     "attack": 0,
     "speed": 0
   },
-  "weapon": "The True Healer",
+  "weapon": "The True Defender",
   "name": "Chloe C.",
   "id": "CC",
   "sprite": "CC",
-  "health": 0,
+  "health": 200,
   "defense": 0,
-  "speed": 0,
+  "speed": 165,
   "abilities": [
     {
       "name": "Healthy Exploder",
       "type": "AttackPoint",
       "icon": "Icon - Healthy Exploder.png",
       "description": "Creates a happy shield inside a target and makes it expand.\n",
-      "dmgBase": "",
+      "dmgBase": "3",
       "dmgRatio": "",
-      "range": 0,
+      "range": 200,
       "cd": 0,
-      "stand": 0
+      "stand": 5,
+      "radius": 20,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
       "name": "Shield",
       "type": "AttackSmartcast",
       "icon": "Icon - Shield.png",
-      "description": "Creates a 20 HP barrier around Chloe that lasts for five seconds.\n",
-      "dmgBase": "",
+      "description": "Creates a 50 HP barrier around Chloe that lasts for ten seconds.\n",
+      "dmgBase": "4",
       "dmgRatio": "",
-      "range": 0,
+      "range": 64,
       "cd": 0,
       "stand": 0,
-      "goToCastPoint": false
+      "goToCastPoint": false,
+      "buffs": {
+        "self": [
+          {
+            "type": "BuffShield",
+            "base": 50,
+            "mod": 0.0,
+            "ratio": 0.0,
+            "duration": 240
+          }
+        ]
+      }
     }
   ]
 }

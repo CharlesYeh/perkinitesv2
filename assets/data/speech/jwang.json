@@ -1,0 +1,48 @@
+{
+   "name": "Jixuan W.",
+   "id": "JW",
+	"speech": [
+		{
+			"name": "greetings",
+      	"lines": [
+            "Hello friend! How are you today?"
+      	]
+		},
+		{
+			"name": "acceptance",
+      	"lines": [
+            "Yay!"
+      	]
+		},      
+		{
+			"name": "rejection",
+      	"lines": [
+            "Are you sure you don't want my skillz?"
+      	]
+		},
+		{
+			"name": "mirror",
+      	"lines": [
+            "Imposter! There can only be one of me! <attack self>"
+      	]
+		},
+		{
+			"name": "field",
+      	"lines": [
+            "We're surrounded!"
+      	]
+		},     
+		{
+			"name": "npc",
+      	"lines": [
+            "Hey have you seen my angry birds process?"
+      	]
+		},
+		{
+			"name": "perkinite_RC",
+      	"lines": [
+            "Go pee!"
+      	]
+		}                 	        	
+	]
+}

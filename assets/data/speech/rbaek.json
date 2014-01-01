@@ -1,0 +1,83 @@
+{
+   "name": "Raymon B.",
+   "id": "RB",
+	"speech": [
+		{
+			"name": "greetings",
+      	"lines": [
+            "Hello.",
+            "Harrooo."
+      	]
+		},
+		{
+			"name": "acceptance",
+      	"lines": [
+            "Sweet.",
+            "Coolz."
+      	]
+		},      
+		{
+			"name": "rejection",
+      	"lines": [
+            "Uhhh... ok."
+      	]
+		},
+		{
+			"name": "mirror",
+      	"lines": [
+            "What in the flying fuck?"
+      	]
+		},
+		{
+			"name": "field",
+      	"lines": [
+            "YOLOOOOO-"
+      	]
+		},     
+		{
+			"name": "npc",
+      	"lines": [
+            "Yo.",
+            "I need a nap.",
+            "I'm sleepy.",
+            "LoL time!"
+      	]
+		},
+		{
+			"name": "perkinite_CK",
+      	"lines": [
+            "You still drinking coffee?"
+      	]
+		},        
+		{
+			"name": "perkinite_CY",
+      	"lines": [
+            "It's LoL time!"
+      	]
+		},        
+		{
+			"name": "perkinite_JT",
+      	"lines": [
+            "What, you again?"
+      	]
+		},        
+		{
+			"name": "perkinite_KH",
+      	"lines": [
+            "Let's play LoL!"
+      	]
+		},  
+		{
+			"name": "perkinite_MS",
+      	"lines": [
+            "Da, we must keep our cover a secret."
+      	]
+		},  
+		{
+			"name": "perkinite_NM",
+      	"lines": [
+            "4-9x."
+      	]
+		}          	        	
+	]
+}

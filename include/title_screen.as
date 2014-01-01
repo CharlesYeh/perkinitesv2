@@ -1,6 +1,8 @@
 ﻿import flash.display.MovieClip;
 
+import game.GameConstants;
 import game.SoundManager;
+import game.progress.PlayerProgress;
 
 //SoundManager.playSong("Exceed the Sky");
 
@@ -33,7 +35,16 @@ function newGame(e:Event):void {
 	
 	clearTitleScreen();
 	Game.playerProgress.newGame();
-	gotoAndStop("char_select2");
+	
+	if(GameConstants.BEGIN_CHAR_SELECT) {
+		gotoAndStop("char_select2"); //FIX TODO		
+	} else {
+		Game.charID = "GK1";
+		
+		Game.playerProgress.gameMode = PlayerProgress.FREETIME_MODE;
+		
+		gotoAndStop(1, "game");
+	}
 }
 
 function continueGame(e:Event):void {

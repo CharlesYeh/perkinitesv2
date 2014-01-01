@@ -21,8 +21,8 @@
 		}
 		
 		override public function update():Boolean {
-			var dx = tx - Game.team[0].x;
-			var dy = ty - Game.team[0].y;
+			var dx = tx - Game.perkinite.x;
+			var dy = ty - Game.perkinite.y;
 			var dist = Math.sqrt(dx * dx + dy * dy);
 			
 			if(dist <= radius){

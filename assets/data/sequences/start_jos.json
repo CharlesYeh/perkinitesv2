@@ -1,0 +1,109 @@
+{
+	"id": "start_jos",
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "finish_perkins"
+			},
+         {
+            "type": "ConditionCheckMode",
+            "gameMode": 1
+         }       
+		],
+      [
+			{
+				"type": "ActionControls",
+				"enable": false
+			},		
+			{
+				"type": "ActionBlackout",
+				"subtype": "showAlpha",
+				"alpha": 1
+			},		
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya A.",
+				"icon": "Face Icon - AA.png",
+				"message": "Ah yes, you would still be here since I didn't give you any instructions yet..."
+			}	
+      ],
+		[
+			{
+				"type": "ActionWait",
+				"time": 24
+			}			
+		],			
+		[
+			{
+				"type": "ActionBlackout",
+				"subtype": "hide",
+				"time": 24
+			}
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya A.",
+				"icon": "Face Icon - AA.png",
+				"message": "You will be conducting a Jo's run. Survey the 2nd floor to see if anyone wishes to go to Jo's."
+			}	
+		], 
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya A.",
+				"icon": "Face Icon - AA.png",
+				"message": "You have already chosen someone to aid you, I see."
+			}	
+		],              					      	
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya A.",
+				"icon": "Face Icon - AA.png",
+				"message": "Well...get two more people. Then deploy yourself to Jo's, in which I will call you and tell you more about this mission."
+			}	
+		], 
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya A.",
+				"icon": "Face Icon - AA.png",
+				"message": "Godspeed."
+			}	
+		],
+      [
+      	{
+				"type": "ActionChangeTeam",
+            "subtype": "add",
+            "key": "chosen"
+			},
+			{
+				"type": "ActionJournal",
+				
+				"message": "Gather people up for a Jo's run!"
+			}                        
+      ],               
+      [		
+			{
+				"type": "ActionControls",
+				"enable": true
+			},
+			{
+				"type": "ActionHUD",
+				"enable": true
+			}			
+		]                               
+	]
+}

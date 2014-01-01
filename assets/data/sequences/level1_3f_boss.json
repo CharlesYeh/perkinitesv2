@@ -18,7 +18,16 @@
 			{
 				"type": "ActionControls",
 				"enable": false
-			},					
+			},	
+         {
+            "type": "ActionMove",
+            
+            "subtype": "player",
+            "position": {
+              "x": 21,
+              "y": 6
+            }
+         },	          				
 			{
 				"type": "ActionNarrator",
 				"time": 96,
@@ -48,7 +57,13 @@
 				
 				"enable": true,
 				"song": "Junk Stereo Concept"
-			},
+			},	
+         {
+            "type": "ActionMove",
+            
+            "subtype": "player",
+            "direction": "left"
+         },	         
 			{
 				"type": "ActionCreate",
 				
@@ -58,9 +73,21 @@
 				"animation": "appearing",
     			"position": {
 					"x": 12,
-        			"y": 3
+        			"y": 6
       		}
 			},		
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "action_Darkness",
+    		   "direction": "down",
+				"animation": "casting",
+    			"position": {
+					"x": 10,
+        			"y": 6
+      		}
+			},	         
 			{
 				"type": "ActionWait",
 				"time": 52
@@ -75,6 +102,18 @@
 				"animation": "standing"
 			},	
 			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "AA",
+    		   "direction": "right",
+				"animation": "standing",
+    			"position": {
+					"x": 10,
+        			"y": 6
+      		}
+			},	         
+			{
 				"type": "ActionSpeech",
 				"time": 10,
 				
@@ -86,11 +125,40 @@
 		[
 			{
 				"type": "ActionNarrator",
-				"time": 128,
+				"time": 96,
 				
-				"message": "Our heroes are pretty peeved about all these monsters and stuff, so they prepare to attack."
+				"message": "Our heroes are relieved to see Ananya, but are troubled by the dark magic on her."
 			}
-		],				
+		],		
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya A.",
+				"icon": "Face Icon - AA.png",
+				"message": "Perkinites. You must stop him. He is preparing a transformation sequence, and I am PARALYZED by this darkness."
+			}		
+		],	      		
+		[	
+			{
+				"type": "ActionMove",
+				
+				"subtype": "npc",
+            "sprite": "npc_Ira",
+            "position": {
+              "x": 10,
+              "y": 6
+            },
+            "direction": "down"
+			},      	
+			{
+				"type": "ActionNarrator",
+				"time": 60,
+				
+				"message": "Our heroes just stand there idly, unsure of what to do."
+			}
+		],		
 		[
 			{
 				"type": "ActionSpeech",
@@ -101,14 +169,16 @@
 				"message": "..."
 			}		
 		],	
-		[		
+		[
 			{
-				"type": "ActionNarrator",
-				"time": 230,
+				"type": "ActionSpeech",
+				"time": 10,
 				
-				"message": "Fortunately for our evil demon child, he's pretty peeved that the heroes kept on ruining his hard efforts, and starts fuming with anger."
-			}
-		],		
+				"name": "Ananya A.",
+				"icon": "Face Icon - AA.png",
+				"message": "Dammit guys."
+			}		
+		],            
 		[
 			{
 				"type": "ActionSkip",
@@ -130,7 +200,19 @@
 				
 				"subtype": "npc",
 				"sprite": "npc_Ira"
-			},			
+			},	
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "action_Darkness"
+			},		
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "AA"
+			},	                  		
 			{
 				"type": "ActionCreate",
 				
@@ -138,8 +220,8 @@
 				"id": "boss_ira",
 				"direction": "down",
     			"position": {
-					"x": 12,
-        			"y": 3
+					"x": 10,
+        			"y": 6
       		}
 			},
 			{
@@ -150,7 +232,7 @@
 				"direction": "down",
     			"position": {
 					"x": 5,
-        			"y": 6
+        			"y": 9
       		}
 			},
 			{
@@ -161,7 +243,7 @@
 				"direction": "down",
     			"position": {
 					"x": 19,
-        			"y": 6
+        			"y": 9
       		}
 			}														
 		],
@@ -170,7 +252,7 @@
 				"type": "ActionNarrator",
 				"time": 120,
 				
-				"message": "YES! Here he is, IRA, in his true form!"
+				"message": "YES! Here phe is, IRA, in pers true form!"
 			},
 			{
 				"type": "ActionJournal",
@@ -178,6 +260,14 @@
 				"message": "The darkness has transformed! Defeat the evil to free Perkins!"
 			}		
 		],
+      [
+			{
+				"type": "ActionNarrator",
+				"time": 120,
+				
+				"message": "Or at least, a fused form with their MPC, but whatever, phe's really strong!"
+			}      
+      ],
 		[		
 			{
 				"type": "ActionNarrator",
@@ -191,12 +281,19 @@
 				"type": "ActionSpeech",
 				"time": 10,
 				
-				"name": "Ira",
+				"name": "Anany-Ira",
 				"icon": "Face Icon - Ira.png",
 				"message": "GRAAAAWWRRRRHHHHHHHHHHHHHH"
 			}		
 		],		
-		[		
+		[	
+			{
+				"type": "ActionMove",
+				
+				"subtype": "enemy",
+            "sprite": "enemy_Ira",
+            "direction": "right"
+			},       	
 			{
 				"type": "ActionNarrator",
 				"time": 100,

@@ -55,13 +55,27 @@
 			}		
 		],	
 		[
+         {
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "action_Emotion",
+    		   "direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 5,
+        			"y": 20
+      		}
+			}, 
 			{
 				"type": "ActionMove",
 				
 				"subtype": "npc",
 				"sprite": "npc_Socordia",
-				"xpos": 18,
-				"ypos": 14
+            "position": {
+              "x": 18,
+              "y": 14
+            }
 			}		
 		],					
 		[
@@ -70,16 +84,34 @@
 				
 				"subtype": "npc",
 				"sprite": "npc_Socordia"
-			},				
+			},
+         {
+            "type": "ActionAnimate",
+				"time": 13,
+				
+				"sprite": "action_Emotion",
+				"animation": "exclamation"
+         },        				
 			{
 				"type": "ActionSpeech",
 				"time": 10,
 				
 				"name": "???",
 				"message": "AHHHHHHHHHHHHHHHHHHHHHHHHHH-"			
-			}
+			},
+         {
+            "type": "ActionWait",
+            "time": 13
+         
+         } 
 		],	
 		[
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "action_Emotion"
+			},
 			{
 				"type": "ActionNarrator",
 				"time": 128,
@@ -91,7 +123,25 @@
 			{
 				"type": "ActionSkip",
 				"skip": false
-			},		
+			}
+      ],
+      [   
+			{
+				"type": "ActionNotification",
+				"time": 90,
+            "campaign": true,
+				
+				"title": "Episode 3",
+            "longSubtitle": "Holy shit the food is attacking you - your life is horrible - go get a quesadilla"
+			}
+		],
+      [
+			{
+				"type": "ActionWait",
+            "time": 90
+			}        
+      ],      
+      [		
 			{
 				"type": "ActionControls",
 				"enable": true

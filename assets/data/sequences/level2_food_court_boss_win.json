@@ -120,11 +120,10 @@
 			{
 				"type": "ActionNext",
 				
-				"map": "jos_outer_corridor",
-				"x": 5,
-				"y": 10,
-            "menu": true
+				"map": "perkins_2f",
+				"x": 39,
+				"y": 16
 			}
-		]	
+		]		
 	]
 }

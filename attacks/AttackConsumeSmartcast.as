@@ -24,7 +24,7 @@
 				e = targets[i];
 				
 				if (StatUnit.distance(m_caster, e) < range) {
-					e.takeDamage(damage());
+					e.takeDamage(damage(), name);
 					BossGulaAI.HUNGER -= (100 + Math.floor(Math.random() * 100));
 				}
 			}
@@ -35,10 +35,14 @@
 				e = targets[i];
 				
 				if (StatUnit.distance(m_caster, e) < range && e != m_caster && !(e is RattySpawnPoint)) {
-					e.takeDamage(damage() * 4);
+					dealTargetDamage(e);
 					BossGulaAI.HUNGER -= (100 + Math.floor(Math.random() * 100));
 				}
 			}			
+		}
+		
+		override public function damage():int {
+			return 4 * Math.floor(dmgBase * ratio);
 		}
 	}
 }

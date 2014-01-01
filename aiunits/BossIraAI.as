@@ -72,14 +72,26 @@
 			Game.overlay.ehud.speedDisplay.text = this.speed+"";
 		}
 		
-		override public function takeDamage(dmg:int):void {
+		override public function takeDamage(dmg:int, attackName:String):void {
 			if (!m_enabled) {
 				return;
 			}
-			super.takeDamage(dmg);
-			Game.overlay.ehud.HPDisplay.text = progressData.health+"";
-			Game.overlay.ehud.ehpbar.HP.scaleX = progressData.health/unitData.health * 2;
-			anger = Math.min(100, anger + 1);	
+			
+			if(attackName == "PEACE<3BEAM") {
+				super.takeDamage(dmg, attackName);
+				Game.overlay.ehud.HPDisplay.text = progressData.health+"";
+				Game.overlay.ehud.ehpbar.HP.scaleX = progressData.health/unitData.health * 2;
+				if(angry) {
+					anger = Math.max(anger - 10, 0);
+				}
+			} else {
+				if(!angry) {
+					super.takeDamage(dmg, attackName);
+					Game.overlay.ehud.HPDisplay.text = progressData.health+"";
+					Game.overlay.ehud.ehpbar.HP.scaleX = progressData.health/unitData.health * 2;
+				}
+				anger = Math.min(100, anger + 1);	
+			}
 		}
 		
 		override protected function runnerAI(e:Event) {
@@ -228,12 +240,12 @@
 				}
 			}
 			
-			angerDelay--;
+/*			angerDelay--;
 			if(angerDelay <= 0){
 				angerDelay = maxAngerDelay;
 				anger = Math.max(Math.min(100, anger - angerInc*2), 0);
 				
-			}						
+			}						*/
 			if(anger <= 0 && !usingAbility){
 				//when done
 				wait = 96;

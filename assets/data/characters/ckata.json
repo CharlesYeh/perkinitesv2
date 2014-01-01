@@ -17,13 +17,19 @@
       "type": "AttackSkillshot",
       "icon": "Icon - Shoe Throwing.png",
       "description": "Fire a shoe at a single target.",
-      "dmgBase": "3",
+      "dmgBase": "4",
       "dmgRatio": "1",
       "range": 2000,
       "cd": 10,
       "stand": 8,
       "speed": 30,
-      "width": 50
+      "width": 50,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
       "name": "Order UP!",
@@ -35,7 +41,13 @@
       "range": 250,
       "cd": 20,
       "stand": 24,
-      "radius": 48
+      "radius": 48,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     }
   ]
 }

@@ -19,20 +19,25 @@
       },
       "exit": {
         "map": "ratty_dining_court",
-        "x": 3,
-        "y": 30
+        "x": 5,
+        "y": 31
       }
     },
     {
-      "conditions": [],
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level3_ivy_room_win"
+        }
+      ],
       "entry": {
         "x": 16,
         "y": 3
       },
       "exit": {
         "map": "ratty_dining_court",
-        "x": 10,
-        "y": 30
+        "x": 9,
+        "y": 31
       }
     },
     {
@@ -122,7 +127,84 @@
     }
   ],
   "enemies": [],
-  "npcs": [],
+  "npcs": [
+    {
+      "conditions": [
+        {
+          "type": "ConditionCheckMode",
+          "gameMode": 1.0
+        },
+        {
+          "type": "ConditionNot",
+          "condition": {
+            "type": "ConditionCheckChosen",
+            "id": "CK"
+          }
+        }
+      ],
+      "id": "CK",
+      "direction": "down",
+      "position": {
+        "x": 3,
+        "y": 11
+      },
+      "sequences": [
+        "npc"
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "type": "ConditionCheckMode",
+          "gameMode": 1.0
+        },
+        {
+          "type": "ConditionNot",
+          "condition": {
+            "type": "ConditionCheckChosen",
+            "id": "KH"
+          }
+        }
+      ],
+      "id": "KH",
+      "direction": "down",
+      "position": {
+        "x": 10,
+        "y": 3
+      },
+      "sequences": [
+        "npc"
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "type": "ConditionSequence",
+          "name": "level3_ivy_room_win"
+        },
+        {
+          "type": "ConditionCheckMode",
+          "gameMode": 1.0
+        },
+        {
+          "type": "ConditionNot",
+          "condition": {
+            "type": "ConditionCheckChosen",
+            "id": "CY2"
+          }
+        }
+      ],
+      "id": "CY2",
+      "direction": "down",
+      "position": {
+        "x": 16,
+        "y": 13
+      },
+      "sequences": [
+        "npc"
+      ]
+    }
+  ],
   "sequences": [
     "level3_ratty_entrance"
   ]

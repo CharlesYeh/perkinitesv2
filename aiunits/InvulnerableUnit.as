@@ -19,7 +19,7 @@
 			healthbar.visible = false;
 		}
 		
-		override public function takeDamage(dmg:int):void {
+		override public function takeDamage(dmg:int, attackName:String):void {
 			return;
 		}
 		

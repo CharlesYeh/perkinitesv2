@@ -3,16 +3,6 @@
 	"actions": [
 		[
 			{
-				"type": "ConditionSequence",
-				"name": "level1_2f"
-			}
-		],
-		[
-			{
-				"type": "ActionControls",
-				"enable": false
-			},
-			{
 				"type": "ActionJournal",
 				
 				"completed": true
@@ -22,7 +12,7 @@
 				"time": 152,
 				"toggle": false,
 				
-				"message": "Yikes. It looks like they aren't the only ones here. Their trip to Keeney is cut short by a couple of evil PROBLEM SETS."
+				"message": "It looks like Ananya's not here, but some nasty PROBLEM SETS are."
 			},
 			{
 				"type": "ActionSound",
@@ -57,13 +47,6 @@
 			{
 				"type": "ActionAI",
 				"enabled": true
-			},
-			{
-				"type": "ActionNotification",
-				"time": 240,
-				
-				"title": "L-Click and R-Click!",
-				"longSubtitle": "Use these mouse buttons to attack enemies!"
 			}
 		],
 		[

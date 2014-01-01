@@ -15,14 +15,16 @@
 			{
 				"type": "ActionBlackout",
 				"subtype": "hide",
-				"time": 45
+				"time": 24
 			},
          {
             "type": "ActionMove",
             
             "subtype": "player",
-				"xpos": 12,
-				"ypos": 8
+            "position": {
+              "x": 12,
+              "y": 8
+            }
          }   
 		], 
 		[
@@ -30,8 +32,11 @@
             "type": "ActionMove",
             
             "subtype": "player",
-				"xpos": 12,
-				"ypos": 12
+            "position": {
+              "x": 12,
+              "y": 11
+            },
+            "direction": "up"
          },      
 			{
 				"type": "ActionCreate",
@@ -57,21 +62,14 @@
 				
 				"sprite": "enemy_JC",
 				"animation": "standing"
-			},
-         {
-            "type": "ActionMove",
-            
-            "subtype": "player",
-				"xpos": 12,
-				"ypos": 11
-         }
+			}
 		],	              				
 		[    
 			{
 				"type": "ActionNarrator",
-				"time": 120,
+				"time": 80,
 				
-				"message": "Oh hey look a mysterious guy. Must have popped up while I was ranting."
+				"message": "Oh hey look a mysterious guy. Let's see what they'll say."
 			}
 		],
 		[
@@ -127,7 +125,7 @@
 			},
 			{
 				"type": "ActionNarrator",
-				"time": 72,
+				"time": 48,
 				
 				"message": "Ooh I wonder if that was Ruth Simmons."
 			},         
@@ -140,9 +138,9 @@
 			{
 				"type": "ActionNext",
 				
-				"map": "sciences_quad",
-				"x": 5,
-				"y": 10
+				"map": "perkins_2f",
+				"x": 39,
+				"y": 16
 			}
 		]	            
 	]

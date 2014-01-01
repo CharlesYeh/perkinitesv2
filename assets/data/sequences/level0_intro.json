@@ -1,0 +1,115 @@
+{
+	"id": "level0_intro",
+	"actions": [
+		[
+			{
+				"type": "ActionControls",
+				"enable": false
+			},
+			{
+				"type": "ActionHUD",
+				"enable": false
+			},
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},
+			{
+				"type": "ActionBlackout",
+				"subtype": "showAlpha",
+				"alpha": 1
+			},
+         {
+            "type": "ActionWait",
+            "time": 24
+         }
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 24,
+				
+				"message": "HELLO"
+			}
+		],     
+		[      
+			{
+				"type": "ActionBlackout",
+				"subtype": "hide",
+				"time": 45
+			},  
+			{
+				"type": "ActionNarrator",
+				"time": 48,
+				
+				"message": "Welcome to Perkins 2nd Floor!"
+			}
+		],         
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 120,
+				
+				"message": "Right now, you are a generic freshman who has no redeemable qualities whatsoever."
+			}
+		],
+		[
+			{
+				"type": "ActionNarrator",
+				"time": 72,
+				
+				"message": "Do not worry! Soon you will be able to become any Perkinite you want to be!"
+			}      
+		],        
+		[      
+			{
+				"type": "ActionNarrator",
+				"time": 100,
+				
+				"message": "To unlock more areas of Brown, you have to fight back against the evil!"
+			}      
+		],
+		[                        
+			{
+				"type": "ActionNarrator",
+				"time": 120,
+				
+				"message": "Talk to Ananya, who is on the right side of this floor to start doing this!"
+			}            
+		],  
+      [
+      	{
+				"type": "ActionSpeech",
+            "time": 10,
+				
+            "message": "Move around with WASD. Press Space to talk to other people!"
+			} 
+      ],         
+  		[	
+			{
+				"type": "ActionNotification",
+				"time": 72,
+				
+				"title": "Use W, A, S, + D",
+				"longSubtitle": "Go move yo' FINE self ;)"
+			},
+			{
+				"type": "ActionControls",
+				"enable": true,
+            
+            "leftEnabled": true,
+            "rightEnabled": true,
+            "teamEnabled": true
+			},
+			{
+				"type": "ActionAI",
+				"enabled": true
+			},
+         {
+				"type": "ActionJournal",
+				
+				"message": "Have fun on Perkins 2nd Floor!"
+			}                 
+		]                                 
+	]
+}

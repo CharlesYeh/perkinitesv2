@@ -32,6 +32,9 @@
 		/** clip for gameover */
 		public var gameover:GameOverScreen;
 		
+		/** clip for deciding things */
+		public var decisionDisplay:DecisionDisplay;
+		
 		public function GameOverlay() {			
 			journal = new Journal();
 			journal.x = HUD_SPACING;
@@ -72,6 +75,11 @@
 			gameover = new GameOverScreen();
 			gameover.visible = false;
 			
+			decisionDisplay = new DecisionDisplay();
+			decisionDisplay.x = 320;
+			decisionDisplay.y = 240;
+			decisionDisplay.visible = false;
+			
 			addChild(hud);
 			addChild(ehud);
 			addChild(journal);
@@ -81,6 +89,7 @@
 			addChild(fader);
 			addChild(narrator);
 			addChild(speech);
+			addChild(decisionDisplay);
 			addChild(gameover);
 		}
 

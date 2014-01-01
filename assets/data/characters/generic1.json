@@ -1,0 +1,105 @@
+{
+  "levelBonuses": {
+    "health": 0,
+    "attack": 0,
+    "speed": 0
+  },
+  "weapon": "The Alchemist",
+  "name": "Generic 1",
+  "id": "GK1",
+  "sprite": "GK1",
+  "health": 200,
+  "defense": 0,
+  "speed": 150,
+  "abilities": [
+    {
+      "name": "Flail",
+      "type": "AttackCone",
+      "icon": "Icon - Flail.png",
+      "description": "",
+      "dmgBase": "1",
+      "dmgRatio": "",
+      "range": 60,
+      "cd": 0,
+      "stand": 4,
+      "angle": 45,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
+    },
+    {
+      "name": "Useless",
+      "type": "AttackPoint",
+      "icon": "Icon - Copycat.png",
+      "description": "This attack does nothing. Maybe you should get some items.",
+      "dmgBase": "0",
+      "dmgRatio": "0",
+      "range": 300,
+      "cd": 0,
+      "stand": 0,
+      "radius": 32,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
+    },
+    {
+      "name": "PEACE\u003c3BEAM",
+      "type": "AttackLaser",
+      "icon": "Icon - Happiness.png",
+      "description": "Shoot the best non-threatening pacifying beam ever!",
+      "dmgBase": "4",
+      "dmgRatio": "50",
+      "range": 1000,
+      "cd": 0,
+      "stand": 13,
+      "width": 64,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
+    },
+    {
+      "name": "Quesadilla Energy",
+      "type": "AttackPoint",
+      "icon": "Icon - Quesadilla.png",
+      "description": "Burn away at an enemy\u0027s apathy for ten seconds!",
+      "dmgBase": "",
+      "dmgRatio": "",
+      "range": 0,
+      "cd": 0,
+      "stand": 0,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
+    },
+    {
+      "name": "Ratty Parry",
+      "type": "AttackSmartcast",
+      "icon": "Icon - Shield.png",
+      "description": "Hold the Ratty tray in the right position to defend against all food and puke attacks!",
+      "dmgBase": "",
+      "dmgRatio": "",
+      "range": 0,
+      "cd": 0,
+      "stand": 0,
+      "goToCastPoint": false,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
+    }
+  ]
+}

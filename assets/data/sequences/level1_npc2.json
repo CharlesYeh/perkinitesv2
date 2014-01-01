@@ -1,0 +1,213 @@
+{
+	"id": "level1_npc2",
+   "repeatable": true,
+   "saveable": false,
+	"actions": [
+		[ 		
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},     
+			{
+				"type": "ActionControls",
+				"enable": false
+			}
+      ],
+      [
+      	{
+				"type": "Control",
+				
+            "conditions": [
+               {
+                  "type": "ConditionNot",
+                  "condition": 
+                     {
+      				      "type": "ConditionCheckTeam",
+                        "npc": true
+      			      }
+               }
+            ],
+            
+            "ifSequence":
+            {
+            	"actions": [ 
+                  [
+                  	{
+            				"type": "Control",
+            				
+                        "conditions": [
+                           {
+                              "type": "ConditionNot",
+                              "condition": 
+                                 {
+                  				      "type": "ConditionCheckTeam",
+                                    "id": "CY"
+                  			      }
+                           }
+                        ],
+                        
+                        "ifSequence":
+                        {
+                        	"actions": [  
+                              [
+                              	{
+                        				"type": "ActionSpeech",
+                                    "time": 10,
+                                    
+                        				"name": "Charles Y.",
+                        				"icon": "Face Icon - CY.png",
+                                    "message": "Woah, something's not right here..."
+                        			} 
+                              ]                      
+                        	]
+                        },            
+                        "elseSequence": 
+                        {
+                        	"actions": [  
+                              [
+                              	{
+                        				"type": "ActionSpeech",
+                                    "time": 10,
+                                    
+                        				"name": "Nate M.",
+                        				"icon": "Face Icon - NM.png",
+                                    "message": "I'm not sure what's going on here..."
+                        			} 
+                              ]                                
+                        	]
+                        }
+            			} 
+                  ],                 
+                  [
+             			{
+            				"type": "ActionNarrator",
+            				"time": 48,
+            				
+            				"message": "Yeah no shit, Sherlock."
+            			}                  
+                  ],
+                  [
+             			{
+            				"type": "ActionNarrator",
+            				"time": 72,
+            				
+            				"message": "You tell them all about how some masked child kidnapped your MPC."
+            			}                  
+                  ],                  
+                  [
+                  	{
+            				"type": "Control",
+            				
+                        "conditions": [
+                           {
+                              "type": "ConditionNot",
+                              "condition": 
+                                 {
+                  				      "type": "ConditionCheckTeam",
+                                    "id": "CY"
+                  			      }
+                           }
+                        ],
+                        
+                        "ifSequence":
+                        {
+                        	"actions": [  
+                              [
+                              	{
+                        				"type": "ActionSpeech",
+                                    "time": 10,
+                                    
+                        				"name": "Charles Y.",
+                        				"icon": "Face Icon - CY.png",
+                                    "message": "Ananya was kidnapped? We gotta save her!"
+                        			} 
+                              ]                      
+                        	]
+                        },            
+                        "elseSequence": 
+                        {
+                        	"actions": [  
+                              [
+                              	{
+                        				"type": "ActionSpeech",
+                                    "time": 10,
+                                    
+                        				"name": "Nate M.",
+                        				"icon": "Face Icon - NM.png",
+                                    "message": "Ananya's been kidnapped? I CAN STEAL HER PEACE BEAR."
+                        			} 
+                              ]                                
+                        	]
+                        }
+            			} 
+                  ],                       
+                  [
+                  	{
+            				"type": "ControlDecision",
+                        "message": "Do you want this ragtag Perkinite to tag along?",
+                                    
+            				"decisions": [
+                           "Join our team!",
+                           "I just can't say no."
+                        ],
+                        "sequences": [
+                           {             
+               	         	"actions": [                                                                  
+               	            ]
+                           },
+                           {
+               	         	"actions": [                                                                   
+               	            ]
+                           }                                               
+                        ]
+            			} 
+                  ],
+                  [
+                  	{
+            				"type": "ActionSpeech",
+                        "time": 10,
+                        "key": "acceptance"
+            			} 
+                  ],    
+                  [
+                  	{
+            				"type": "ActionChangeTeam",
+                        "subtype": "add",
+                        "key": "npc"
+            			},
+            			{
+            				"type": "ActionJournal",
+            				
+            				"completed": true
+            			}                        
+                  ]                   	                              
+            	]
+            },            
+            "elseSequence": 
+            {
+            	"actions": [             
+                  [
+            			{
+            				"type": "ActionSpeech",
+                        "time": 10,
+            				
+                        "key": "npc",
+                        "mirror": true
+            			}         
+            		]
+               ]
+            }
+			} 
+      ],          
+		[
+			{
+				"type": "ActionControls",
+				"enable": true
+			},			
+			{
+				"type": "ActionAI",
+				"enabled": true
+			}
+  		]
+	]
+}

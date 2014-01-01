@@ -1,0 +1,78 @@
+{
+   "name": "Kevin H.",
+   "id": "KH",
+	"speech": [
+		{
+			"name": "greetings",
+      	"lines": [
+            "Hey.",
+            "Sup?",
+            "Howdy.",
+            "Hiya."
+      	]
+		},
+		{
+			"name": "acceptance",
+      	"lines": [
+            "Let's do this!",  
+            "Teamwork makes the dream work!"
+      	]
+		},      
+		{
+			"name": "rejection",
+      	"lines": [
+            "Awwwwwwwwww, rats!  Next time!"
+      	]
+		},
+		{
+			"name": "mirror",
+      	"lines": [
+            "Dang, looking goooddddd!"
+      	]
+		},
+		{
+			"name": "field",
+      	"lines": [
+            "Goons at six o'clock!"
+      	]
+		},     
+		{
+			"name": "npc",
+      	"lines": [
+            "I gotta go to bed, I have a shift in the morning!",
+            "I really DON'T eat babies!",
+            "I LOVE MARIO!"
+      	]
+		},    
+		{
+			"name": "perkinite_EH",
+      	"lines": [
+            "When are we making our mixtape?!?!"
+      	]
+		},      
+		{
+			"name": "perkinite_PG",
+      	"lines": [
+            "Sup roomie?!"
+      	]
+		}, 
+		{
+			"name": "perkinite_MS",
+      	"lines": [
+            "<soviet accent> Hello comrade!!"
+      	]
+		},        
+		{
+			"name": "perkinite_RB",
+      	"lines": [
+            "<soviet accent> Hello comrade!!"
+      	]
+		},  
+		{
+			"name": "perkinite_RJ",
+      	"lines": [
+            "<soviet accent> Hello comrade!!"
+      	]
+		}                           	        	
+	]
+}

@@ -18,6 +18,9 @@
 		/** code for grid of tiles */
 		public var code:String;
 		
+		/** code for grid of objects */
+		public var objects:Array = new Array();
+		
 		/** array of teleport points on map */
 		public var teleports:Array = new Array();
 		
@@ -36,6 +39,7 @@
 			bgmusic	= obj.bgmusic;
 			
 			code	= obj.code;
+			objects = obj.objects;
 			
 			width	= obj.width;
 			height	= obj.height;

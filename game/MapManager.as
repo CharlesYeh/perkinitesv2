@@ -22,6 +22,7 @@
 	import units.Teleport;
 	
 	import util.KeyDown;
+	import units.Perkinite;
 	
 	public class MapManager {
 		public static var world:World;
@@ -31,9 +32,6 @@
 
 		public static var customClips:Array = new Array();
 
-		/**
-		 * @param	team	Array of StatUnits which are custom-added into the world
-		 */
 		public static function createWorld(mapName:String):World {
 			resetWorld();
 			
@@ -56,20 +54,23 @@
 			//make sure that on continue game, it doesn't start at the beginning
 			var avgX:Number = 0;
 			var avgY:Number = 0;
-			if(Game.team.length == 2) {
-				Game.team.splice(1, 1);				
-			}
-			for (var i:String in Game.team) {
+			
+			for(var i = 0; i < Game.team.length; i++){
 				world.addUnit(Game.team[i]);
 				Game.team[i].setAbilityTargets(world.getEnemies()); //make it so that enemies will take damage
-				var u:StatUnit = Game.team[i]; //allow to end dashing by changing gameunit -> statunit
+				Game.team[i].visible = (i == Game.playerIndex);
 				
-				avgX += u.x;
-				avgY += u.y;
+				if(i != Game.playerIndex) {
+					Game.team[i].x = -1000;
+					Game.team[i].y = -1000;
+				}
 			}
 			
-			avgX /= Game.team.length;
-			avgY /= Game.team.length;
+			var perkinite = Game.team[Game.playerIndex];
+			var u:StatUnit = perkinite; //allow to end dashing by changing gameunit -> statunit
+				
+			avgX += u.x;
+			avgY += u.y;
 			
 			var sx = avgX - GameConstants.WIDTH / 2;
 			var sy = avgY - GameConstants.HEIGHT / 2;
@@ -82,6 +83,9 @@
 			// render tiles into map
 			TileMap.addTiles(world.getTilesClip());
 			
+			//I have no idea what is going on
+			TileMap.addObjects(mdat.objects, world.getTilesClip());
+			
 			return world;
 		}
 		
@@ -89,13 +93,14 @@
 			if (world != null) {
 				world.clearWorld();
 				TileMap.removeTiles(world.getTilesClip());
+				TileMap.removeTiles(world.getTilesClip());
 			}
 			
 			InteractiveTile.resetTiles();
 		}
 		
 		public static function checkTeleports():void {
-			var su:GameUnit = Game.team[0];
+			var su:GameUnit = Game.perkinite;
 			
 			var map:TeleportData = world.checkTeleports(su);
 			if (map != null) {
@@ -111,25 +116,19 @@
 			var avgX:Number = 0;
 			var avgY:Number = 0;
 			
-			// move team to exit location
 			var START_SEPARATION:int = 15;
-			for (var i:int = 0; i < Game.team.length; i++) {
-				var u:StatUnit = Game.team[i]; //allow to end dashing by changing gameunit -> statunit
-				
-				u.x = tdat.exitX * GameConstants.TILE_SIZE + (GameConstants.TILE_SIZE >> 1) - i * START_SEPARATION;
-				u.y = tdat.exitY * GameConstants.TILE_SIZE + (GameConstants.TILE_SIZE >> 1);
-				//prevent any movement from the last map
-				u.clearPath();
-				
-				//prevent dashing
-				u.enableMovement();
-				u.endAbility();
-				avgX += u.x;
-				avgY += u.y;				
-			}
-
-			avgX /= Game.team.length;
-			avgY /= Game.team.length;
+			var u:StatUnit = Game.perkinite; //allow to end dashing by changing gameunit -> statunit
+			
+			u.x = tdat.exitX * GameConstants.TILE_SIZE + (GameConstants.TILE_SIZE >> 1);
+			u.y = tdat.exitY * GameConstants.TILE_SIZE + (GameConstants.TILE_SIZE >> 1);
+			//prevent any movement from the last map
+			u.clearPath();
+			
+			//prevent dashing
+			u.enableMovement();
+			u.endAbility();
+			avgX += u.x;
+			avgY += u.y;	
 			
 			var sx = avgX - GameConstants.WIDTH / 2;
 			var sy = avgY - GameConstants.HEIGHT / 2;
@@ -142,14 +141,14 @@
 			var avgX:Number = 0;
 			var avgY:Number = 0;
 			
-			for (var i:String in Game.team) {
-				var u:StatUnit = Game.team[i];
-				avgX += u.x;
-				avgY += u.y;
-			}
+			var u:StatUnit = Game.perkinite;
+			avgX = u.x;
+			avgY = u.y;
 			
-			avgX /= Game.team.length;
-			avgY /= Game.team.length;
+			if(Game.customViewport) {
+				avgX = Game.viewportPoint.x;
+				avgY = Game.viewportPoint.y;
+			}
 			
 			var sx = avgX - GameConstants.WIDTH / 2;
 			var sy = avgY - GameConstants.HEIGHT / 2;

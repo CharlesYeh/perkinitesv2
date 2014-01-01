@@ -6,9 +6,11 @@ import db.dbData.MapData;
 import game.Game;
 
 import game.SoundManager;
+import game.progress.PlayerProgress;
 
 import flash.display.MovieClip;
 import flash.display.Loader;
+import flash.display.Bitmap;
 
 var fIcon1:Loader = new Loader();
 faceIcon1.addChild(fIcon1);
@@ -47,23 +49,16 @@ showEntries();
 function showEntries() {
 	var allChars:Array = Game.dbChar.getAllCharacters();
 	
-	// must only show available Units, not all Units!
-	var counter = 0;
 	var select = false;
-	for (var i = 0; i < allChars.length; i++) {
+	for (var i = 0; i < allChars.length - 2; i++) {
 		var entry = new FaceIcon();
 		var loader = new Loader();
-		loader = allChars[i].icon;
+		loader = allChars[i+2].icon;
 		entry.glowF = glowEntry;
-		/*entry.playerName1.text = allChars[i].name;
-		entry.id = i;
-		entry.gotoAndStop(1);
-		*/
-		// GOTTA ADD
 		entry.addChild(loader);
 		playerList.addChild(entry);
 		entry.mouseChildren = false;
-		entry.id = allChars[i].id;
+		entry.id = allChars[i+2].id;
 		entry.x = (64 + 4) * (i % 6) + 8 ;
 		entry.y = (64 + 4) * Math.floor(i / 6) + 8;
 		entry.width = 64;
@@ -76,10 +71,9 @@ function showEntries() {
 		entries.push(entry);
 		
 		if(!select){
-			choose(allChars[i].id);
+			choose(allChars[i+2].id);
 			select = true;
 		}
-		counter++;
 	}
 }
 function choose(id) { //team
@@ -96,9 +90,9 @@ function choose(id) { //team
 		faceIcon1.removeChild(fIcon1);
 	}
 	
-	fIcon1 = dat.icon;
+	var clonedData = Bitmap(dat.icon.content).bitmapData.clone();
 	
-	faceIcon1.addChild(fIcon1);
+	faceIcon1.addChild(new Bitmap(clonedData));
 	
 	var frame = playerDisplay1.currentFrame - 1;
 	update(playerDisplay1, frame, dat);
@@ -114,12 +108,11 @@ function startLevel(e) {
 	//sound.play();
 	//SoundManager.playSound("start");
 	
+	Game.charID = chosenID;
+	
+	Game.playerProgress.gameMode = PlayerProgress.CAMPAIGN_MODE;
 
 	var dat:CharacterData = Game.dbChar.getCharacterData(chosenID);
-	
-	if(Game.playerProgress.health == -1){
-		Game.playerProgress.health = dat.health;
-	}
 	
 	clearCharSelect();
 	var mdat:MapData = Game.dbMap.getMapData(Game.playerProgress.map);
@@ -162,17 +155,6 @@ function update(display:MovieClip, page:Number, char:CharacterData) {
 	
 	display.gotoAndStop(page + 1);
 	
-	//display.setChildIndex(display["button" + page], display.numChildren - 1);
-	
-	// show correct page
-	//display.portrait.visible = (page == 0);
-	display.portrait.visible = false;
-	display.page4.visible = false;
-	display.page2.visible = (page == 0);
-	display.page3.visible = (page == 1);
-	//display.page4.visible = (page == 3);
-	
-	
 	display.page2.APCount.text = char.defense;
 	display.page2.DPCount.text = char.defense;		
 	display.page2.SPCount.text = char.speed;
@@ -206,17 +188,15 @@ function clickHandler(e) {
 	}
 	
 	entries = new Array();
-	
-	for (var i = 0; i < allChars.length; i++) {
+	for (var i = 0; i < allChars.length - 2; i++) {
 		var entry = new FaceIcon();
 		var loader = new Loader();
-		loader = allChars[i].icon;
+		loader = allChars[i+2].icon;
 		entry.glowF = glowEntry;
-		// GOTTA ADD
 		entry.addChild(loader);
 		playerList.addChild(entry);
 		entry.mouseChildren = false;
-		entry.id = allChars[i].id;
+		entry.id = allChars[i+2].id;
 		entry.x = (64 + 4) * (i % 6) + 8 ;
 		entry.y = (64 + 4) * Math.floor(i / 6) + 8;
 		entry.width = 64;

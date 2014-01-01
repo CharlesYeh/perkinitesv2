@@ -55,7 +55,7 @@
 						arg = -1;
 					}
 					if(Math.acos(arg) * 180 / Math.PI<= angle){
-						e.takeDamage(damage());				
+						dealTargetDamage(e);
 						
 /*						if(AIUnit.m_enabled){
 							SoundManager.playSound("hit");

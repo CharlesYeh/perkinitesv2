@@ -18,7 +18,13 @@
       "cd": 25,
       "stand": 24,
       "speed": 15,
-      "width": 30
+      "width": 30,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     }
   ]
 }

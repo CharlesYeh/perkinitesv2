@@ -1,0 +1,52 @@
+{
+  "levelBonuses": {
+    "health": 0,
+    "attack": 0,
+    "speed": 0
+  },
+  "weapon": "The Pimper",
+  "name": "Jen K.",
+  "id": "JK",
+  "sprite": "JK",
+  "health": 200,
+  "defense": 0,
+  "speed": 170,
+  "abilities": [
+    {
+      "name": "Electro-Slugger",
+      "type": "AttackCone",
+      "icon": "Icon - Electro-Slugger.png",
+      "description": "Strike enemies in an arc with a lightning-charged softball bat.\n",
+      "dmgBase": "8",
+      "dmgRatio": "1",
+      "range": 55,
+      "cd": 0,
+      "stand": 5,
+      "angle": 45,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
+    },
+    {
+      "name": "Surprise! PRANK",
+      "type": "AttackPoint",
+      "icon": "Icon - Surprise! PRANK.png",
+      "description": "SCREW EVERYTHING - Hit enemies with high energy pranks.",
+      "dmgBase": "20",
+      "dmgRatio": "0",
+      "range": 150,
+      "cd": 0,
+      "stand": 24,
+      "radius": 32,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
+    }
+  ]
+}

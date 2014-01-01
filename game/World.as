@@ -72,7 +72,10 @@
 			m_npcs = new Array();
 			for (i in mapData.npcs) {
 				var n:MapCharacterData = mapData.npcs[i];
-				createNPC(n);
+				n.resetConditions();
+				if(n.checkConditions()) {
+					createNPC(n);
+				}
 			}			
 			
 			var createdUnits = Game.playerProgress.getCreatedUnits();
@@ -95,7 +98,10 @@
 				else if(dat.subtype == "npc"){
 					cdat.parseData(dat);
 					
-					createNPC(cdat);	
+					cdat.resetConditions();
+					if(cdat.checkConditions()) {
+						createNPC(cdat);			
+					}
 					m_npcs[m_npcs.length-1].animLabel = dat.animation;
 					m_npcs[m_npcs.length-1].beginAnimation(dat.animation);
 				}
@@ -190,6 +196,29 @@
 					(clips[i] as StatUnit).destroy();
 				}
 			}
+		}
+		
+		public function checkNPCConditions():void {
+			for (var i in mapData.npcs) {
+				var n:MapCharacterData = mapData.npcs[i];
+				n.resetConditions();
+				
+				var idx:int = -1;
+				for(var j in m_npcs) {
+					if(n.id == m_npcs[j].mapCharacterData.id &&
+					   n.position == m_npcs[j].mapCharacterData.position) {
+						idx = j;
+						break;
+					}
+				}
+				
+				var conditionsMet:Boolean = n.checkConditions();
+				if(conditionsMet && idx == -1) {
+					createNPC(n);
+				} else if(!conditionsMet && idx != -1) {
+					clearNPC(m_npcs[idx]);
+				}
+			}			
 		}
 		
 		//-------------------------UNIT CREATE------------------------
@@ -347,25 +376,42 @@
 		}
 		
 		public function checkNPCs():void {
-			if(activatedNPC != null) {
+			// commenting this should prevent non-executable npcs from freezing other npcs
+			/*if(activatedNPC != null) {
 				return;
-			}
+			}*/
+			
 						
 			for (var i:String in m_npcs) {
 				var t:NPCUnit = m_npcs[i];
 				
-				var dx = t.x - Game.team[0].x;
-				var dy = t.y - Game.team[0].y;
+				var dx = t.x - Game.perkinite.x;
+				var dy = t.y - Game.perkinite.y;
 				var dist = Math.sqrt(dx * dx + dy * dy);
 				
+				var formerNPC = activatedNPC;
 				if(dist <= 64){
+					var size = 0;
 					activatedNPC = t;
-					activatedNPC.turnTo(new Point(Game.team[0].x, Game.team[0].y));
-					activatedNPC.updateDirection(activatedNPC.moveDir);
 					for (var i:String in activatedNPC.mapCharacterData.actions) {
 						var seq:Sequence = activatedNPC.mapCharacterData.actions[i];
 						seq.start();
+						size++;
 					}							
+					if(size != 0) {
+						activatedNPC.turnTo(new Point(Game.perkinite.x, Game.perkinite.y));
+						activatedNPC.updateDirection(activatedNPC.moveDir);
+
+						//also just helps reset logic that doesn't need to be used
+						if (formerNPC != null) {
+							for (var i:String in formerNPC.mapCharacterData.actions) {
+								var seq:Sequence = formerNPC.mapCharacterData.actions[i];
+								seq.reset();
+							}	
+						}						
+					} else {
+						activatedNPC = null;
+					}
 					break;
 				}
 			}
@@ -381,6 +427,7 @@
 						activatedNPC.resetDirection();
 						activatedNPC = null;
 						seq.reset();
+						break;
 					}
 				}		
 			} else {

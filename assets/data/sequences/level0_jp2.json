@@ -1,0 +1,129 @@
+{
+	"id": "level0_jp2",
+   "repeatable": true,
+   "saveable": false,
+	"actions": [
+      [
+         {
+            "type": "ConditionSequence",
+   			"name": "finish_level3"
+         },      
+         {
+            "type": "ConditionNot",
+            "condition": {
+   				"type": "ConditionSequence",
+   				"name": "finish_level3"
+   			} 
+         }
+      ],
+		[ 		
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},     
+			{
+				"type": "ActionControls",
+				"enable": false
+			}
+      ],   
+      [
+      	{
+				"type": "ActionSpeech",
+            "time": 10,
+				
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+            "message": "Sup yo."
+			} 
+      ],     
+      [
+      	{
+				"type": "ControlDecision",
+            
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+            "message": "Do you have any questions?",
+                        
+				"decisions": [
+               "When are Unit Wars?",
+               "Where's Jo's?",
+               "I almost died back there."
+            ],
+            "sequences": [
+               {             
+   	         	"actions": [
+                     [
+                     	{
+               				"type": "ActionSpeech",
+                           "time": 10,
+               				
+               				"name": "JP B.",
+               				"icon": "Face Icon - JB.png",
+                           "message": "Yeah, so that level's not finished yet. Wait a month or so maybe."
+               			} 
+                     ],
+                     [
+                     	{
+               				"type": "ActionSpeech",
+                           "time": 10,
+               				
+               				"name": "JP B.",
+               				"icon": "Face Icon - JB.png",
+                           "message": "That's going to be Level 2, but it was a last minute substitution for the CIT level, so it'll be here later."
+               			} 
+                     ],
+                     [
+                     	{
+               				"type": "ActionSpeech",
+                           "time": 10,
+               				
+               				"name": "JP B.",
+               				"icon": "Face Icon - JB.png",
+                           "message": "The original CIT level (Level 4) was way too long and story-driven."
+               			} 
+                     ]                    
+   	            ]
+               },
+               {
+   	         	"actions": [
+                     [
+                     	{
+               				"type": "ActionSpeech",
+                           "time": 10,
+               				
+               				"name": "JP B.",
+               				"icon": "Face Icon - JB.png",
+                           "message": "It's on Hope Street and it's pretty close by. It's a good place to grab some food at night."
+               			} 
+                     ]                                                  
+   	            ]
+               },
+               {
+   	         	"actions": [
+                     [
+                     	{
+               				"type": "ActionSpeech",
+                           "time": 10,
+               				
+               				"name": "JP B.",
+               				"icon": "Face Icon - JB.png",
+                           "message": "Yeah...this kind of stuff doesn't usually happen. This year is a strange year. Sorry about that."
+               			} 
+                     ]                                                    
+   	            ]
+               }               
+            ]
+			} 
+      ],
+		[
+			{
+				"type": "ActionControls",
+				"enable": true
+			},			
+			{
+				"type": "ActionAI",
+				"enabled": true
+			}
+  		]      	                            
+	]
+}

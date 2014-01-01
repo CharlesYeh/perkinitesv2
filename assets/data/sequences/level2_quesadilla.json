@@ -67,14 +67,7 @@
 			{
 				"type": "ActionItem",
 				"item": "Quesadilla"
-			},
-			{
-				"type": "ActionNotification",
-				
-				"time": 48,
-				"title": "Item Get!",
-				"longSubtitle": "Unlocked Quesadilla!"
-			},		
+			},	
 			{
 				"type": "ActionDelete",
 				
@@ -110,11 +103,86 @@
 				
 				"subtype": "npc",
 				"sprite": "npc_Quesadilla_Tortilla"
-			},						
+			}
+      ],
+      [ 		
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},     
+			{
+				"type": "ActionControls",
+				"enable": false
+			}
+      ],   
+		[
+			{
+				"type": "ActionEquip",
+				"item": "Quesadilla"
+			},
+			{
+				"type": "ActionNotification",
+				
+				"time": 48,
+				"title": "Item Get!",
+				"longSubtitle": "Unlocked Quesadilla!"
+			},
+         {
+            "type": "Control",
+            "conditions": [
+               {
+                  "type": "ConditionSequence",
+                  "name": "finish_level3"
+               }
+            ],
+            
+            "ifSequence": {
+               "actions": []
+            },
+            "elseSequence": {
+               "actions": [
+                  [
+                     {
+                        "type": "ActionPowerup",
+                        "subtype": "attack",
+                        "amount": 10
+                     }
+                  ]
+               ]
+            }
+         }
+		],
+      [
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"message": "The team has received 10 Attack Power!"
+			}	   
+      ],
+      [
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"message": "Generic Perkinite now has a new R-Click ability! It might be useful for the boss (whatever that means)!"
+			}	   
+      ],
+		[ 		
+			{
+				"type": "ActionAI",
+				"enabled": true
+			},     
+			{
+				"type": "ActionControls",
+				"enable": true
+			}
+      ],   
+      [         						
 			{
 				"type": "ActionJournal",
 				
-				"message": "Use your Quesadilla-augmented attacks to deal spicy damage to Socordia!"
+				"message": "Use your Quesadilla-augmented attack to deal spicy damage to Socordia!"
 			}			
 		]
 	]

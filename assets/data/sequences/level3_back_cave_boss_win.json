@@ -49,14 +49,55 @@
 				"message": "SON OF A-"
 			}
 		],	
-		[		
-			{
+      [
+         {
+				"type": "ActionBlackout",
+				"subtype": "show",
+				"alpha": 1,
+            "time": 48
+			},
+         {
 				"type": "ActionNarrator",
 				"time": 72,
 				"toggle": false,
 				
-				"message": "I'm sure starting on Level 4, these evil things will be a lot more competent. I'm just sure of it."
-			}
+				"message": "I'm sure starting on Episode 5, these evil things will be a lot more competent. I'm just sure of it."
+			}        
+      ],
+      [
+         {
+            "type": "ActionWait",
+            "time": 24
+         },       
+         {
+            "type": "ActionTeleport",
+            "map": "ratty_back_cave",
+            "position": 
+               {
+                  "x": 12,
+                  "y": 8
+               },
+            "direction": "up"   
+         },
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "JB",
+    		   "direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 12,
+        			"y": 4
+      		}
+			}           
+      ],                 
+		[  
+			{
+				"type": "ActionBlackout",
+				"subtype": "hide",
+				"time": 45
+			}     
 		],			
 		[
 			{
@@ -65,7 +106,17 @@
 				
 				"message": "Like damn, how hard is it for these things to kill these guys?"
 			}
-		],				
+		],
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+				"message": "Thank you for saving me, Perkinites. I am glad all of us are not dead."
+			}	               
+      ],	      				
 		[		
 			{
 				"type": "ActionNarrator",
@@ -73,7 +124,27 @@
 				
 				"message": "Hell, I don't even know what these guys are doing at the Ratty. Why weren't they killed by the drunk guys?"
 			}
-		],		
+		],
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+				"message": "As an RC, I must make sure this place remains safe...I think."
+			}	               
+      ],
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+				"message": "Feel free to leave before me. I'm going to check to make sure all the bad shit goes away."
+			}	               
+      ],	        		
 		[		
 			{
 				"type": "ActionNarrator",
@@ -83,6 +154,15 @@
 			}
 		],      		
 		[
+         {
+            "type": "ActionMove",
+            
+            "subtype": "player",
+            "position": {
+              "x": 8,
+              "y": 13
+            }
+         },	   
 			{
 				"type": "ActionBlackout",
 				"subtype": "editText",
@@ -122,7 +202,6 @@
 				"type": "ActionWait",
 				"time": 24
 			}
-		
 		],
 		[
 			{

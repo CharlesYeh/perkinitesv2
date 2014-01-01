@@ -76,11 +76,100 @@
     }
   ],
   "enemies": [],
-  "npcs": [],
+  "npcs": [
+    {
+      "conditions": [
+        {
+          "type": "ConditionNot",
+          "condition": {
+            "type": "ConditionCheckChosen",
+            "id": "HV"
+          }
+        },
+        {
+          "type": "ConditionSequence",
+          "name": "level1_obtain_peacebear"
+        },
+        {
+          "type": "ConditionCheckMode",
+          "gameMode": 1.0
+        }
+      ],
+      "id": "HV",
+      "direction": "down",
+      "position": {
+        "x": 6,
+        "y": 4
+      },
+      "sequences": [
+        "npc"
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "type": "ConditionNot",
+          "condition": {
+            "type": "ConditionCheckChosen",
+            "id": "HQ"
+          }
+        },
+        {
+          "type": "ConditionSequence",
+          "name": "level1_obtain_peacebear"
+        },
+        {
+          "type": "ConditionCheckMode",
+          "gameMode": 1.0
+        }
+      ],
+      "id": "HQ",
+      "direction": "down",
+      "position": {
+        "x": 11,
+        "y": 3
+      },
+      "sequences": [
+        "npc"
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "type": "ConditionOr",
+          "conditions": [
+            {
+              "type": "ConditionCheckChosen",
+              "id": "HV"
+            },
+            {
+              "type": "ConditionCheckChosen",
+              "id": "HQ"
+            }
+          ]
+        },
+        {
+          "type": "ConditionSequence",
+          "name": "level1_obtain_peacebear"
+        },
+        {
+          "type": "ConditionCheckMode",
+          "gameMode": 1.0
+        }
+      ],
+      "id": "NM",
+      "direction": "down",
+      "position": {
+        "x": 12,
+        "y": 10
+      },
+      "sequences": [
+        "npc"
+      ]
+    }
+  ],
   "sequences": [
     "level1_miniboss",
-    "level1_miniboss_check",
-    "level1_miniboss_win",
-    "level1_obtain_peacebear"
+    "level1_miniboss_win"
   ]
 }

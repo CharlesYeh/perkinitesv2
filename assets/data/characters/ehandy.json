@@ -22,7 +22,13 @@
       "range": 72,
       "cd": 0,
       "stand": 16,
-      "goToCastPoint": false
+      "goToCastPoint": false,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
       "name": "Awkward Stare",
@@ -34,7 +40,18 @@
       "range": 100,
       "cd": 0,
       "stand": 6,
-      "angle": 45
+      "angle": 45,
+      "buffs": {
+        "enemies": [
+          {
+            "type": "BuffStun",
+            "base": 0,
+            "mod": 0.0,
+            "ratio": 0.0,
+            "duration": 36
+          }
+        ]
+      }
     }
   ]
 }

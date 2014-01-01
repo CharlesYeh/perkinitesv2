@@ -18,6 +18,30 @@
 				"type": "ActionCreate",
 				
 				"subtype": "npc",
+				"id": "action_Darkness",
+    		   "direction": "down",
+				"animation": "casting",
+    			"position": {
+					"x": 12,
+        			"y": 3
+      		}
+			},
+         {
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "JB",
+    		   "direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 12,
+        			"y": 3
+      		}
+			},
+         {
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
 				"id": "npc_Gula",
     		   "direction": "down",
 				"animation": "eating",
@@ -25,15 +49,18 @@
 					"x": 12,
         			"y": 4
       		}
-			}
+			}                  
 		],
       [
          {
             "type": "ActionMove",
             
             "subtype": "player",
-				"xpos": 12,
-				"ypos": 9
+            "position": {
+              "x": 12,
+              "y": 8
+            },
+            "direction": "up"
          
          },				
 			{
@@ -44,20 +71,12 @@
 				"message": "You are now at the Back Cave of the Ratty."
 			}					
 		],
-		[
-         {
-            "type": "ActionMove",
-            
-            "subtype": "player",
-				"xpos": 12,
-				"ypos": 8
-         
-         },	      
+		[	      
 			{
 				"type": "ActionNarrator",
 				"time": 150,
 				
-				"message": "Oh look, it's that kid, now eating the quality dining featured at the Ratty. Let's hear what he has to say."
+				"message": "Oh look, it's that kid, now eating the quality dining featured at the Ratty. And JP is behind him."
 			}
 		],					
 		[
@@ -86,7 +105,51 @@
 				
 				"message": "That was more unintelligible than I thought."
 			}
-		],		
+		],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+				"message": "Don't worry Perkinites, step back. I've already called DPS and they should be here soon."
+			}		
+		],
+      [
+         {
+            "type": "ActionWait",
+            "time": 24
+         }
+      ],
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+				"message": "...Yes."
+			}		
+		],	  	
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+				"message": "Anyway, as your RC, your safety is more important. Escape the Ratty before it catches you."
+			}		
+		],	
+		[		
+			{
+				"type": "ActionNarrator",
+				"time": 48,
+				
+				"message": "Yeah he'll definitely catch them."
+			}
+		],	            	      		
 		[		
 			{
 				"type": "ActionNarrator",
@@ -110,7 +173,19 @@
 				"animation": "transforming"
 			}		
 		],	
-		[	
+		[	      
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "JB"
+			},
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "action_Darkness"
+			},	
 			{
 				"type": "ActionDelete",
 				
@@ -153,7 +228,7 @@
 				"type": "ActionNarrator",
 				"time": 120,
 				
-				"message": "YES! Here he is, GULA, in his true form!"
+				"message": "YES! Here he is, GULA, in his fused form!"
 			}			
 		],
 		[		
@@ -185,7 +260,7 @@
 				"type": "ActionNarrator",
 				"time": 100,
 				
-				"message": "With logic like that, I'm sure he's going to win!"
+				"message": "With logic like that, I'm sure he's going to win! Poor JP."
 			}
 		],
 		[

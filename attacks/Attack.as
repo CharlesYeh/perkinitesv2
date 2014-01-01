@@ -56,6 +56,12 @@
 		 */
 		public function castInProgress(caster:StatUnit):void {}
 		
+		public function dealTargetDamage(target:StatUnit) {
+			target.takeDamage(damage(), name);	
+			for(var i = 0; i < attackBuffs.enemies.length; i++) {
+				attackBuffs.enemies[i].startBuff(target);
+			}				
+		}
 		/**
 		 * calculate amount of damage to deal
 		 */
@@ -80,11 +86,15 @@
 		
 		public function applyBuffs():void {
 			if (attackBuffs) {
-				BuffUtil.applyBuffs(attackBuffs.self, m_caster);
-				BuffUtil.applyBuffsToArray(attackBuffs.enemies, m_caster.abilityTargets);
 				
-				attackBuffs.allies;
-				attackBuffs.team;
+				for(var i = 0; i < attackBuffs.self.length; i++) {
+					attackBuffs.self[i].startBuff(m_caster);
+				}
+				//BuffUtil.applyBuffs(attackBuffs.self, m_caster);
+				//BuffUtil.applyBuffsToArray(attackBuffs.enemies, m_caster.abilityTargets);
+				
+				//attackBuffs.allies;
+				//attackBuffs.team;
 			}
 		}
 		
@@ -126,7 +136,7 @@
 				u.clearPath();
 			}
 		}
-		
+
 		public function getAttackType():String {
 			return "";
 		}

@@ -98,9 +98,9 @@
 				var un:StatUnit = Game.team[i];
 				
 				// if not detector, ignore invisible units
-				if (un.frameBuff.vanish && !frameBuff.detect) {
+				/*if (un.frameBuff.vanish && !frameBuff.detect) {
 					continue;
-				}
+				}*/
 				
 				var dx = un.x - x;
 				var dy = un.y - y;
@@ -138,12 +138,12 @@
 			return tp;
 		}
 		
-		override public function takeDamage(dmg:int):void {
+		override public function takeDamage(dmg:int, attackName:String):void {
 			if (!m_enabled) {
 				return;
 			}
 			
-			super.takeDamage(dmg);
+			super.takeDamage(dmg, attackName);
 		}
 	}
 }

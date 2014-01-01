@@ -11,7 +11,11 @@
 				"name": "level3_ivy_room"
 			}
 		],
-		[		
+		[  
+         {
+            "type": "ActionControls",
+            "enable": false
+         },
 			{
 				"type": "ActionJournal",
 				
@@ -24,10 +28,23 @@
 				"time": 96,
 				
 				"name": "Narrator",
-				"message": "I bet the entrance to the dining hall is unlocked now. Our heroes should go check that out."
+				"message": "Well JP's not here. I bet the entrance to the dining hall is unlocked now though."
 			}
 		],
 		[
+			{
+				"type": "ActionNarrator",
+				"time": 60,
+				
+				"name": "Narrator",
+				"message": "I should know. I'm narrating this shit."
+			}
+		],      
+		[
+         {
+            "type": "ActionControls",
+            "enable": true
+         },
 			{
 				"type": "ActionJournal",
 				

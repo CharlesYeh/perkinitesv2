@@ -1,0 +1,107 @@
+{
+	"id": "level1_npc",
+   "repeatable": true,
+   "saveable": false,
+	"actions": [
+		[ 		
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},     
+			{
+				"type": "ActionControls",
+				"enable": false
+			}
+      ],
+      [
+      	{
+				"type": "Control",
+				
+            "conditions": [
+               {
+                  "type": "ConditionNot",
+                  "condition": 
+                     {
+      				      "type": "ConditionCheckTeam",
+                        "chosen": true
+      			      }
+               },
+               {
+                  "type": "ConditionSequence",
+				      "name": "level1_2f_kitchen_win"
+               }
+            ],
+            
+            "ifSequence":
+            {
+            	"actions": [ 
+                  [
+                  	{
+            				"type": "ControlDecision",
+                        "key": "npc",
+                                    
+            				"decisions": [
+                           "Join our team!",
+                           "LOL you can't reject people yet."
+                        ],
+                        "sequences": [
+                           {             
+               	         	"actions": [                                                                  
+               	            ]
+                           },
+                           {
+               	         	"actions": [                                                                   
+               	            ]
+                           }                                               
+                        ]
+            			} 
+                  ],
+                  [
+                  	{
+            				"type": "ActionSpeech",
+                        "time": 10,
+                        "key": "acceptance"
+            			} 
+                  ],    
+                  [
+                  	{
+            				"type": "ActionChangeTeam",
+                        "subtype": "add",
+                        "key": "chosen"
+            			},
+            			{
+            				"type": "ActionJournal",
+            				
+            				"completed": true
+            			}                        
+                  ]                   	                              
+            	]
+            },            
+            "elseSequence": 
+            {
+            	"actions": [             
+                  [
+            			{
+            				"type": "ActionSpeech",
+                        "time": 10,
+            				
+                        "key": "npc",
+                        "mirror": true
+            			}         
+            		]
+               ]
+            }
+			} 
+      ],          
+		[
+			{
+				"type": "ActionControls",
+				"enable": true
+			},			
+			{
+				"type": "ActionAI",
+				"enabled": true
+			}
+  		]
+	]
+}

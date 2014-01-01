@@ -8,32 +8,51 @@
   "name": "Tevin J.",
   "id": "TJ",
   "sprite": "TJ",
-  "health": 0,
+  "health": 200,
   "defense": 0,
-  "speed": 0,
+  "speed": 160,
   "abilities": [
     {
-      "name": "Lung Crusher",
+      "name": "Sonic Laugh",
       "type": "AttackCone",
-      "icon": "Icon - Lung Crusher.png",
-      "description": "Crushes the enemy through the power of hugging at close-range.",
-      "dmgBase": "",
+      "icon": "Icon - Sonic Laugh.png",
+      "description": "Launches a conical sound blast in front of him, damaging and slowing down enemies.\n",
+      "dmgBase": "5",
       "dmgRatio": "",
-      "range": 0,
+      "range": 100,
       "cd": 0,
-      "stand": 0
+      "stand": 6,
+      "angle": 35,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
-      "name": "Deep Sleep",
-      "type": "AttackSmartcast",
-      "icon": "Icon - Deep Sleep.png",
-      "description": "Hold down R-Click to let yo homebody sleep and make a dream shield for 7.5 seconds.\n",
-      "dmgBase": "",
+      "name": "Lung Crusher",
+      "type": "AttackDashSkillshot",
+      "icon": "Icon - Lung Crusher.png",
+      "description": "Crushes the enemy through the power of body slammin\u0027",
+      "dmgBase": "13",
       "dmgRatio": "",
-      "range": 0,
+      "range": 160,
       "cd": 0,
-      "stand": 0,
-      "goToCastPoint": false
+      "stand": 7,
+      "speed": 20,
+      "width": 20,
+      "buffs": {
+        "enemies": [
+          {
+            "type": "BuffKnockback",
+            "base": 32,
+            "mod": 0.0,
+            "ratio": 0.0,
+            "duration": 0
+          }
+        ]
+      }
     }
   ]
 }

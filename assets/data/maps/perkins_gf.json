@@ -184,7 +184,50 @@
       }
     }
   ],
-  "npcs": [],
+  "npcs": [
+    {
+      "conditions": [
+        {
+          "type": "ConditionCheckMode",
+          "gameMode": 1.0
+        },
+        {
+          "type": "ConditionClearedArea",
+          "map": "perkins_gf"
+        }
+      ],
+      "id": "npc_Generic2",
+      "direction": "down",
+      "position": {
+        "x": 36,
+        "y": 21
+      },
+      "sequences": [
+        "level1_npcC"
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "type": "ConditionCheckMode",
+          "gameMode": 1.0
+        },
+        {
+          "type": "ConditionClearedArea",
+          "map": "perkins_gf"
+        }
+      ],
+      "id": "npc_Generic2",
+      "direction": "down",
+      "position": {
+        "x": 62,
+        "y": 19
+      },
+      "sequences": [
+        "level1_npcD"
+      ]
+    }
+  ],
   "sequences": [
     "level1_gf",
     "level1_gf_win",

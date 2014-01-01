@@ -1,0 +1,56 @@
+{
+  "levelBonuses": {
+    "health": 0,
+    "attack": 0,
+    "speed": 0
+  },
+  "weapon": "The RC",
+  "name": "JP B.",
+  "id": "JB",
+  "sprite": "JB",
+  "health": 200,
+  "defense": 0,
+  "speed": 160,
+  "abilities": [
+    {
+      "name": "CC: Everyone",
+      "type": "AttackHomingProjectiles",
+      "icon": "Icon - CC Everyone.png",
+      "description": "Send out those email messages!",
+      "dmgBase": "2",
+      "dmgRatio": "1",
+      "range": 150,
+      "cd": 0,
+      "stand": 32,
+      "expires": 32,
+      "speed": 15,
+      "width": 15,
+      "quantity": 3,
+      "hardTarget": false,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
+    },
+    {
+      "name": "Direct DPS",
+      "type": "AttackPoint",
+      "icon": "Icon - Direct DPS.png",
+      "description": "Call DPS on some nasty people!",
+      "dmgBase": "5",
+      "dmgRatio": "1",
+      "range": 200,
+      "cd": 0,
+      "stand": 30,
+      "radius": 48,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
+    }
+  ]
+}

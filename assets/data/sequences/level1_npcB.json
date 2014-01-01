@@ -1,0 +1,36 @@
+{
+	"id": "level1_npcB",
+   "repeatable": true,
+   "saveable": false,
+	"actions": [
+		[ 		
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},     
+			{
+				"type": "ActionControls",
+				"enable": false
+			}
+      ],
+      [
+			{
+				"type": "ActionSpeech",
+            "time": 10,
+				
+            "name": "Random Freshman",
+            "message": "Like omg I was like talking to my long-distance boyfriend on the phone but then these pieces of paper showed up and I disappeared for like two hours LOL-"
+			}         
+		],
+		[
+			{
+				"type": "ActionControls",
+				"enable": true
+			},			
+			{
+				"type": "ActionAI",
+				"enabled": true
+			}
+  		]
+	]
+}

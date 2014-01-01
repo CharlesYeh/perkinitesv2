@@ -1,0 +1,146 @@
+{
+	"id": "finish_level4",
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level2_food_court_boss_win"
+			}        
+		],   
+		[
+			{
+				"type": "ActionJournal",
+				
+				"message": ""
+			},      
+			{
+				"type": "ActionControls",
+				"enable": false
+			},
+			{
+				"type": "ActionHUD",
+				"enable": false
+			},
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},
+			{
+				"type": "ActionWait",
+				"time": 48
+			}           
+		],              
+		[  
+			{
+				"type": "ActionBlackout",
+				"subtype": "hide",
+				"time": 30
+			}      
+		],
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+				"message": "Hello, your counselors would like to make a short announcement again."
+			}	               
+      ],      
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+				"message": "Thank you for saving my ass. Also thanks for making the Ratty a slightly safer place."
+			}	               
+      ],
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya A.",
+				"icon": "Face Icon - AA.png",
+				"message": "..."
+			}	               
+      ],      
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+				"message": "We probably shouldn't be assigning any more missions because they're death-inducing."
+			}	               
+      ],
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+				"message": "Please take this time to relax or study for your midterms."
+			}	               
+      ], 
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+				"message": "If you need to make time go faster, you can talk to me or Katie."
+			}	               
+      ], 
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+				"message": "You may be having PTSD after fighting these things, so we'll be here."
+			}	               
+      ],                 
+      [   
+			{
+				"type": "ActionNotification",
+				"time": 72,
+            "freetime": true
+			}
+		],
+      [
+			{
+				"type": "ActionWait",
+            "time": 72
+			}        
+      ],
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"message": "You can now go to the Ratty! To go to the Ratty, leave Perkins on either the 1st floor or ground floor. :)"
+			}	               
+      ],        
+      [	
+			{
+				"type": "ActionControls",
+				"enable": true,
+            
+            "leftEnabled": false,
+            "rightEnabled": false,
+            "teamEnabled": false
+			},
+			{
+				"type": "ActionAI",
+				"enabled": true
+			}              
+		]                                 
+	]
+}

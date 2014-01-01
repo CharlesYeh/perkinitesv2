@@ -5,7 +5,11 @@
 			{
 				"type": "ActionControls",
 				"enable": false
-			},		
+			},
+			{
+				"type": "ActionHUD",
+				"enable": false
+			},         	
 			{
 				"type": "ActionBlackout",
 				"subtype": "showAlpha",
@@ -30,9 +34,9 @@
 				"type": "ActionSpeech",
 				"time": 10,
 				
-				"name": "Ananya",
+				"name": "Ananya A.",
 				"icon": "Face Icon - AA.png",
-				"message": "Greetings, Perkinites. Here is your next mission."
+				"message": "Greetings again, Perkinites. Here is your next mission."
 			}	
 		],				
 		[
@@ -40,7 +44,7 @@
 				"type": "ActionSpeech",
 				"time": 10,
 				
-				"name": "Ananya",
+				"name": "Ananya A.",
 				"icon": "Face Icon - AA.png",
 				"message": "Two of our honorary Perkinites went into Jo's to get me a Quesadilla."
 			}	
@@ -50,7 +54,7 @@
 				"type": "ActionSpeech",
 				"time": 10,
 				
-				"name": "Ananya",
+				"name": "Ananya A.",
 				"icon": "Face Icon - AA.png",
 				"message": "It has been TWO HOURS since they have left …and I fear that this is the work of EVIL."
 			}	
@@ -60,7 +64,7 @@
 				"type": "ActionSpeech",
 				"time": 10,
 				
-				"name": "Ananya",
+				"name": "Ananya A.",
 				"icon": "Face Icon - AA.png",
 				"message": "Your mission is to get the prized Quesadilla and return it to me immediately."
 			}	
@@ -70,7 +74,7 @@
 				"type": "ActionSpeech",
 				"time": 10,
 				
-				"name": "Ananya",
+				"name": "Ananya A.",
 				"icon": "Face Icon - AA.png",
 				"message": "Failure to complete this mission will bring forth MY RAGE onto the world."
 			}	
@@ -80,7 +84,7 @@
 				"type": "ActionSpeech",
 				"time": 10,
 				
-				"name": "Ananya",
+				"name": "Ananya A.",
 				"icon": "Face Icon - AA.png",
 				"message": "Good luck, Perkinites."
 			}	
@@ -117,7 +121,7 @@
 				"type": "ActionNarrator",
 				"time": 144,
 				
-				"message": "It looks like the main door to Jo's is conveniently barricaded. Our two heroes manage to get access through the side door."
+				"message": "It looks like the main door to Jo's is conveniently barricaded. Our four heroes manage to get access through the side door."
 			}
 		],
 		[

@@ -1,0 +1,73 @@
+{
+   "name": "Charles Y.",
+   "id": "CY",
+	"speech": [
+		{
+			"name": "greetings",
+      	"lines": [
+            "Hello there.",
+            "Hi there.", 
+            "Why hello."
+      	]
+		},
+		{
+			"name": "acceptance",
+      	"lines": [
+            "Sure!", 
+            "Cool!", 
+            "Sounds good to me!"
+      	]
+		},      
+		{
+			"name": "rejection",
+      	"lines": [
+            "What, well okay...",
+            "D:"
+      	]
+		},
+		{
+			"name": "mirror",
+      	"lines": [
+            "Whoa, is that me?"
+      	]
+		},
+		{
+			"name": "field",
+      	"lines": [
+            "Whoa.",
+            "Huh...so now what?"
+      	]
+		},     
+		{
+			"name": "npc",
+      	"lines": [
+            "Want to play Assassins??",
+            "I made a list of all the courses I want to take in the next 4 years!"
+      	]
+		} ,          
+		{
+			"name": "perkinite_JT",
+      	"lines": [
+            "John Tran!"
+      	]
+		},		
+      {
+			"name": "perkinite_KH",
+      	"lines": [
+            "It's Dan Time!"
+      	]
+		},             
+		{
+			"name": "perkinite_KW",
+      	"lines": [
+            "I thought we were best friends..."
+      	]
+		},
+		{
+			"name": "perkinite_NM",
+      	"lines": [
+            "Let's take advanced logic!"
+      	]
+		}            	        	
+	]
+}

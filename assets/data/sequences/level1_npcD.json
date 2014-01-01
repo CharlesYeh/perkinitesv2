@@ -1,0 +1,36 @@
+{
+	"id": "level1_npcD",
+   "repeatable": true,
+   "saveable": false,
+	"actions": [
+		[ 		
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},     
+			{
+				"type": "ActionControls",
+				"enable": false
+			}
+      ],
+      [
+			{
+				"type": "ActionSpeech",
+            "time": 10,
+				
+            "name": "Random Freshman",
+            "message": "I HATE this place. It's so far away and a random DRUNK GUY puked on me. This place sucks."
+			}         
+		],
+		[
+			{
+				"type": "ActionControls",
+				"enable": true
+			},			
+			{
+				"type": "ActionAI",
+				"enabled": true
+			}
+  		]
+	]
+}

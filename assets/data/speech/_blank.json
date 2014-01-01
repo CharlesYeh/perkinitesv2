@@ -1,0 +1,36 @@
+{
+   "name": "Chloe C.",
+   "id": "CC",
+	"speech": [
+		{
+			"name": "greetings",
+      	"lines": [
+      	]
+		},
+		{
+			"name": "acceptance",
+      	"lines": [
+      	]
+		},      
+		{
+			"name": "rejection",
+      	"lines": [
+      	]
+		},
+		{
+			"name": "mirror",
+      	"lines": [
+      	]
+		},
+		{
+			"name": "field",
+      	"lines": [
+      	]
+		},     
+		{
+			"name": "npc",
+      	"lines": [
+      	]
+		}         	        	
+	]
+}

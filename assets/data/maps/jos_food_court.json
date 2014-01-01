@@ -42,7 +42,54 @@
     }
   ],
   "enemies": [],
-  "npcs": [],
+  "npcs": [
+    {
+      "conditions": [
+        {
+          "type": "ConditionOr",
+          "conditions": [
+            {
+              "type": "ConditionCheckChosen",
+              "id": "EH"
+            },
+            {
+              "type": "ConditionCheckChosen",
+              "id": "JT"
+            },
+            {
+              "type": "ConditionCheckChosen",
+              "id": "AG"
+            },
+            {
+              "type": "ConditionCheckChosen",
+              "id": "CC"
+            },
+            {
+              "type": "ConditionCheckChosen",
+              "id": "TJ"
+            }
+          ]
+        },
+        {
+          "type": "ConditionSequence",
+          "name": "level1_gf_win2"
+        },
+        {
+          "type": "ConditionCheckMode",
+          "gameMode": 1.0
+        }
+      ],
+      "id": "EH",
+      "direction": "left",
+      "position": {
+        "x": 11,
+        "y": 11
+      },
+      "sequences": [
+        "npc"
+      ]
+    }
+  ],
   "sequences": [
     "level2_food_court_boss",
     "level2_obtain_beans",

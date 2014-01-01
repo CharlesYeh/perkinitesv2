@@ -1,0 +1,36 @@
+{
+	"id": "level1_npcC",
+   "repeatable": true,
+   "saveable": false,
+	"actions": [
+		[ 		
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},     
+			{
+				"type": "ActionControls",
+				"enable": false
+			}
+      ],
+      [
+			{
+				"type": "ActionSpeech",
+            "time": 10,
+				
+            "name": "Random Freshman",
+            "message": "Perkins is so far away from EVERYTHING. I wish I was living in Keeney or Faunce or something."
+			}         
+		],
+		[
+			{
+				"type": "ActionControls",
+				"enable": true
+			},			
+			{
+				"type": "ActionAI",
+				"enabled": true
+			}
+  		]
+	]
+}

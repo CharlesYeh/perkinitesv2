@@ -19,6 +19,10 @@
 				"enable": false
 			},
 			{
+				"type": "ActionAI",
+				"enabled": false
+			},	
+			{
 				"type": "ActionSpeech",
 				"time": 10,
 				

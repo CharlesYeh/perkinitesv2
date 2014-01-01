@@ -4,7 +4,17 @@
 		[
 			{
 				"type": "ConditionSequence",
-				"name": "level1_intro"
+				"name": "level1_2f_kitchen_win"
+			},
+			{
+				"type": "ConditionSequence",
+				"name": "level0_intro"
+			}           
+		],    
+		[
+			{
+				"type": "ActionControls",
+				"enable": false
 			}
 		],
 		[	
@@ -13,72 +23,35 @@
 				"time": 146,
 				"toggle": true,
 				
-				"message": "We find two lost freshmen on the second floor, staring blankly to the right, doing nothing."
-			},
-			{
-				"type": "ActionSound",
-				"sound": "2f"
+				"message": "It seems like Perkins 2nd Floor is deserted. You should probably check out why."
 			}
 		],
-		[
-			{
-				"type": "ActionNarrator",
-				"time": 195,
-				
-				"message": "Realizing they are doing nothing, they decide to leave Perkins and go somewhere INFINITELY BETTER,"
-			}
-		],
-		[
-			{
-				"type": "ActionNarrator",
-				"time": 54,
-				
-				"message": "like the Main Green or Keeney."
-			}
-		],
-		[
-			{
-				"type": "ActionNarrator",
-				"time": 55,
-				
-				"message": "Let’s say Keeney. Keeney’s a pretty chill place." 
-			}
-		],
-		[
-			{
-				"type": "ActionNarrator",
-				"time": 71,
-				
-				"message": "Good people."
-			}
-		],
-		[
-			{
-				"type": "ActionSkip",
-				"skip": false
-			},		
+      [   
 			{
 				"type": "ActionNotification",
-				"time": 180,
+				"time": 72,
+            "campaign": true,
 				
-				"title": "Use W, A, S, + D",
-				"longSubtitle": "Go move yo' FINE self ;)"
-			},
+				"title": "Episode 1",
+            "longSubtitle": "Some bad things happen And It's up to you to fix them now"
+			}
+		],
+      [
+			{
+				"type": "ActionWait",
+            "time": 72
+			}        
+      ],
+      [
 			{
 				"type": "ActionControls",
 				"enable": true
-			},
-			{
-				"type": "ActionWait",
-				"time": 24
-			}
-		],
-		[
+			},   
 			{
 				"type": "ActionJournal",
 				
 				"message": "Go downstairs! :D"
-			}
-		]
+			}      
+      ]
 	]
 }

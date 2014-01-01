@@ -17,7 +17,13 @@
       "range": 64,
       "cd": 10,
       "stand": 23,
-      "angle": 45
+      "angle": 45,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
       "name": "Warmonger",
@@ -30,7 +36,13 @@
       "cd": 0,
       "stand": 48,
       "speed": 30,
-      "width": 30
+      "width": 30,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
       "name": "Ball Bearing",
@@ -39,14 +51,20 @@
       "description": "",
       "dmgBase": "10",
       "dmgRatio": "",
-      "range": 1000,
+      "range": 800,
       "cd": 0,
       "stand": 0,
       "expires": 100,
       "speed": 5,
       "width": 50,
       "quantity": 1,
-      "hardTarget": true
+      "hardTarget": true,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     }
   ]
 }

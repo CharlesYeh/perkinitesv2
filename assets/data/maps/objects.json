@@ -1,0 +1,64 @@
+{
+	"objects": [
+		{
+			"id": "perkins_door_2",
+			"passable": false,
+         "dimensions": {
+            "x": 1,
+            "y": 2
+         },
+         "offset": {
+            "x": 0,
+            "y": 0
+         }
+		},  
+      {
+			"id": "perkins_door_2a",
+			"passable": false,
+         "dimensions": {
+            "x": 1,
+            "y": 2
+         },
+         "offset": {
+            "x": 0,
+            "y": 0
+         }
+		},   
+      {
+			"id": "perkins_door_a",
+			"passable": false,
+         "dimensions": {
+            "x": 1,
+            "y": 2
+         },
+         "offset": {
+            "x": 0,
+            "y": 0
+         }
+		},  
+      {
+			"id": "perkins_door_b",
+			"passable": false,
+         "dimensions": {
+            "x": 1,
+            "y": 2
+         },
+         "offset": {
+            "x": 0,
+            "y": 0
+         }
+		},                    
+		{
+			"id": "kitchen_table",
+			"passable": false,
+         "dimensions": {
+            "x": 6,
+            "y": 2
+         },
+         "offset": {
+            "x": 0,
+            "y": 0
+         }
+		},
+   ]
+}

@@ -19,15 +19,21 @@
 				"type": "ActionJournal",
 				
 				"message": ""
-			},                    		
+			},
+         {
+            "type": "ActionWait",
+            "time": 48
+         }
+		],	
+      [              		
 			{
 				"type": "ActionNarrator",
 				"time": 24,
 				"toggle": true,
 				
 				"message": "Beginning transmission..."
-			}
-		],	
+			}      
+      ],      
 		[
 			{
 				"type": "ActionSkip",
@@ -39,7 +45,7 @@
 				"type": "ActionSpeech",
 				"time": 10,
 				
-				"name": "Ananya",
+				"name": "Ananya A.",
 				"icon": "Face Icon - AA.png",
 				"message": "Greetings Perkinites. You have retrieved the Quesadilla for me, but I have a mission for you once more."
 			}	
@@ -49,7 +55,7 @@
 				"type": "ActionSpeech",
 				"time": 10,
 				
-				"name": "Ananya",
+				"name": "Ananya A.",
 				"icon": "Face Icon - AA.png",
 				"message": "Recent reports show that several freshmen have been sent to Health Services from brutality after going to the Ratty."
 			}	
@@ -59,7 +65,7 @@
 				"type": "ActionSpeech",
 				"time": 10,
 				
-				"name": "Ananya",
+				"name": "Ananya A.",
 				"icon": "Face Icon - AA.png",
 				"message": "I do not know if this is because of the recent attacks from drunken frat people, or if it because of the recent hellspawn residing within the Ratty."
 			}	
@@ -69,27 +75,42 @@
 				"type": "ActionSpeech",
 				"time": 10,
 				
-				"name": "Ananya",
+				"name": "Ananya A.",
 				"icon": "Face Icon - AA.png",
 				"message": "Whatever it is, you must liberate the Ratty before it is too late. I am still on meal plan, and I fear the V-Dub is TOO far for me."
 			}	
-		],				
+		],	
 		[
 			{
 				"type": "ActionSpeech",
 				"time": 10,
 				
-				"name": "Ananya",
+				"name": "Ananya A.",
+				"icon": "Face Icon - AA.png",
+				"message": "Also I think JP went missing. Maybe he's here."
+			}	
+		],	      			
+		[
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya A.",
 				"icon": "Face Icon - AA.png",
 				"message": "Failure to complete this mission will bring forth MY WRATH."
 			}	
 		],				
 		[
+      	{
+				"type": "ActionChangeTeam",
+            "subtype": "add",
+            "key": "chosen"
+			},      
 			{
 				"type": "ActionSpeech",
 				"time": 10,
 				
-				"name": "Ananya",
+				"name": "Ananya A.",
 				"icon": "Face Icon - AA.png",
 				"message": "Good luck, Perkinites."
 			}	

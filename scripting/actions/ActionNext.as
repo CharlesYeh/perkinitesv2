@@ -1,6 +1,7 @@
 ﻿package scripting.actions {
 	
 	import game.Game;
+	import game.progress.PlayerProgress;
 	import game.MapManager;
 	import db.dbData.TeleportData;
 	
@@ -25,10 +26,16 @@
 			super.act();
 			
 			if (menu) {
+				Game.playerProgress.gameMode = PlayerProgress.CAMPAIGN_MODE;
 				Game.playerProgress.nextLevel(map, x, y);
 			} else {
 				complete();
+				Game.playerProgress.gameMode = PlayerProgress.FREETIME_MODE;
 				Game.world.updateSequences();
+				
+				Game.switchPlayers(0);
+				Game.team.splice(1); //remove all teammates except for GK1
+				
 				var tdata = new TeleportData();
 				tdata.exitMap = map;
 				tdata.exitX = x;

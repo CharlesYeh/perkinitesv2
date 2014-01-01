@@ -52,7 +52,7 @@
 				"type": "ActionNarrator",
 				"time": 128,
 				
-				"message": "Such a teddy bear could only be the one formerly known as 'Peace Bear', who belongs to their superior formerly known as 'Ananya.'"
+				"message": "Such a teddy bear could only be the one known as Ananya's 'Peace Bear,' which means their MPC might be here."
 			},
 			{
 				"type": "ActionSound",
@@ -111,7 +111,7 @@
 				"type": "ActionNarrator",
 				"time": 130,
 				
-				"message": "For some odd reason, a masked child pops out of nowhere. This is probably a bad thing."
+				"message": "For some odd reason, the masked child pops out of nowhere. This is probably a bad thing."
 			}
 		],
 		[

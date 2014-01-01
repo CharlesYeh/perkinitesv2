@@ -3,12 +3,6 @@
 	"actions": [
 		[
 			{
-				"type": "ConditionSequence",
-				"name": "level1_1f_win"
-			}
-		],
-		[
-			{
 				"type": "ActionJournal",
 				
 				"completed": true
@@ -36,7 +30,7 @@
 				"time": 72,
 				
 				"name": "Narrator",
-				"message": "This part is more difficult because there are some DRUNK GUYS to deal with!"
+				"message": "This part is more difficult because there are more ESSAYS and some DRUNK GUYS to deal with!"
 			}
 		]
 	]

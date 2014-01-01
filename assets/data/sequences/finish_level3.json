@@ -1,0 +1,116 @@
+{
+	"id": "finish_level3",
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level2_food_court_boss_win"
+			}        
+		],   
+		[
+			{
+				"type": "ActionJournal",
+				
+				"message": ""
+			},      
+			{
+				"type": "ActionControls",
+				"enable": false
+			},
+			{
+				"type": "ActionHUD",
+				"enable": false
+			},
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},
+			{
+				"type": "ActionWait",
+				"time": 24
+			}           
+		],              
+		[  
+			{
+				"type": "ActionBlackout",
+				"subtype": "hide",
+				"time": 30
+			}      
+		],
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+				"message": "Hello, your counselors would like to make a short announcement again."
+			}	               
+      ],      
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+				"message": "Congratulations on completing your randomly-assigned mission. You are now free to eat at Jo's as long as it's between 6 PM and 2 AM."
+			}	               
+      ],
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya A.",
+				"icon": "Face Icon - AA.png",
+				"message": "This quesadilla is ADEQUATE for me."
+			}	               
+      ],      
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+				"message": "If you wish to eat at the Ratty, you'll have to talk to Ananya for the mission specs."
+			}	               
+      ],
+      [   
+			{
+				"type": "ActionNotification",
+				"time": 72,
+            "freetime": true
+			}
+		],
+      [
+			{
+				"type": "ActionWait",
+            "time": 72
+			}        
+      ],
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"message": "You can now go to Jo's! To go to Jo's, leave Perkins on either the 1st floor or ground floor. :)"
+			}	               
+      ],        
+      [	
+			{
+				"type": "ActionControls",
+				"enable": true,
+            
+            "leftEnabled": false,
+            "rightEnabled": false,
+            "teamEnabled": false
+			},
+			{
+				"type": "ActionAI",
+				"enabled": true
+			}              
+		]                                 
+	]
+}

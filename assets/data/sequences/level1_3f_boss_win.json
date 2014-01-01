@@ -15,13 +15,13 @@
 				"type": "ActionJournal",
 				
 				"completed": true
-			},
+			},      
 			{
-				"type": "ActionHUD",
+				"type": "ActionControls",
 				"enable": false
 			},
 			{
-				"type": "ActionControls",
+				"type": "ActionHUD",
 				"enable": false
 			},
 			{
@@ -33,31 +33,128 @@
 				"time": 0,
 				
 				"enable": false
-			}			
-		],
-		[		
+			},
+			{
+				"type": "ActionWait",
+				"time": 12
+			}           
+		], 
+      [
+         {
+				"type": "ActionBlackout",
+				"subtype": "show",
+				"alpha": 1,
+            "time": 48
+			},
 			{
 				"type": "ActionNarrator",
-				"time": 128,
+				"time": 60,
 				"toggle": false,
 				
-				"message": "IRA was also the weakest of the evil lord's CARDINAL SERVANTS so this should not be considered a significant victory. It's a dumb victory."
-			}
-		],	
-		[
+				"message": "IRA was also the weakest of the evil lord's CARDINAL SERVANTS."
+			}         
+      ],
+      [
+         {
+            "type": "ActionWait",
+            "time": 24
+         },       
+         {
+            "type": "ActionTeleport",
+            "map": "perkins_3f_kitchen",
+            "position": 
+               {
+                  "x": 12,
+                  "y": 10
+               },
+            "direction": "up"   
+         },
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "AA",
+    		   "direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 12,
+        			"y": 7
+      		}
+			}           
+      ],                 
+		[  
+			{
+				"type": "ActionBlackout",
+				"subtype": "hide",
+				"time": 45
+			}     
+		],
+      [
+			{
+				"type": "ActionNarrator",
+				"time": 90,
+				
+				"message": "This should not be considered a significant victory. It's a dumb victory."
+			}       
+      ],
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya A.",
+				"icon": "Face Icon - AA.png",
+				"message": "My Perkinites. You have done well."
+			}	               
+      ],	
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya A.",
+				"icon": "Face Icon - AA.png",
+				"message": "Now, let us kindly get the fuck out of here before more shit happens."
+			}	               
+      ],	      
+		[               
 			{
 				"type": "ActionNarrator",
 				"time": 128,
 				
-				"message": "Nevertheless, this long and arduous battle ended with a victory by our heroes."
+				"message": "Nevertheless, this long and arduous battle ended with a victory by our heroes, and Perkins shall return to normality with time."
 			}
-		],				
-		[		
+		],      			
+		[	
+			{
+				"type": "ActionMove",
+				
+				"subtype": "npc",
+            "sprite": "AA",
+    			"position": {
+					"x": 21,
+        			"y": 3
+      		}            
+			},             
+			{
+				"type": "ActionMove",
+				
+				"subtype": "player",
+    			"position": {
+					"x": 21,
+        			"y": 4
+      		}            
+			},        
+			{
+				"type": "ActionBlackout",
+				"subtype": "show",
+				"time": 30
+			},         	
 			{
 				"type": "ActionNarrator",
 				"time": 72,
 				
-				"message": "Now they can tell this story to drunk people at parties and get laid or something."
+				"message": "In the meantime, they can tell this story to drunk people at parties and get laid or something."
 			}
 		],				
 		[
@@ -73,15 +170,10 @@
 				"subtype": "editText",
 				
 				"text": ""
-			},					
-			{
-				"type": "ActionBlackout",
-				"subtype": "show",
-				"time": 30
-			},
+			},	
 			{
 				"type": "ActionWait",
-				"time": 50
+				"time": 30
 			}
 		],
 		[			
@@ -89,7 +181,7 @@
 				"type": "ActionBlackout",
 				"subtype": "editText",
 				
-				"text": "Realizing their world is in danger, now these heroes set out to take back the world from the evil lord!"
+				"text": "Realizing their world is in danger, now these heroes set out to take back their college life from the evils that stand tall!"
 			},
 			{
 				"type": "ActionWait",
@@ -179,10 +271,9 @@
 			{
 				"type": "ActionNext",
 				
-				"map": "jos_outer_corridor",
-				"x": 5,
-				"y": 22,
-            "menu": true
+				"map": "perkins_2f",
+				"x": 39,
+				"y": 16
 			}
 		]	
 	]

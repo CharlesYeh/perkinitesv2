@@ -8,9 +8,9 @@
   "name": "Ariana G.",
   "id": "AG",
   "sprite": "AG",
-  "health": 0,
+  "health": 200,
   "defense": 0,
-  "speed": 0,
+  "speed": 165,
   "abilities": [
     {
       "name": "Mummy Curse",
@@ -21,7 +21,13 @@
       "dmgRatio": "",
       "range": 0,
       "cd": 0,
-      "stand": 0
+      "stand": 0,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
       "name": "Swap Attire",
@@ -33,7 +39,25 @@
       "range": 0,
       "cd": 0,
       "stand": 0,
-      "goToCastPoint": false
+      "goToCastPoint": false,
+      "buffs": {
+        "self": [
+          {
+            "type": "BuffShield",
+            "base": 30,
+            "mod": 0.0,
+            "ratio": 0.0,
+            "duration": 120
+          },
+          {
+            "type": "BuffSpeed",
+            "base": 0,
+            "mod": 0.2,
+            "ratio": 0.0,
+            "duration": 120
+          }
+        ]
+      }
     }
   ]
 }

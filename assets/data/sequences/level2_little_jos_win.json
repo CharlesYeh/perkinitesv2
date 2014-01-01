@@ -23,8 +23,10 @@
 				
 				"subtype": "npc",
 				"sprite": "npc_Generic",
-				"xpos": 9,
-				"ypos": 4
+            "position": {
+              "x": 9,
+              "y": 4
+            }
 			}		
 		],	
 		[

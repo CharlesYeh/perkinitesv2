@@ -72,14 +72,14 @@
 			Game.overlay.ehud.gotoAndStop("socordia_invulnerable");
 		}
 		
-		override public function takeDamage(dmg:int):void {
+		override public function takeDamage(dmg:int, attackName:String):void {
 			if (!m_enabled) {
 				return;
 			}
 			
 			if (quesadilla) {
 				var prevHealth = progressData.health;
-				super.takeDamage(dmg);
+				super.takeDamage(dmg, attackName);
 				if (prevHealth > 250) {
 					progressData.health = Math.max(250, progressData.health);
 					if(progressData.health == 250) {

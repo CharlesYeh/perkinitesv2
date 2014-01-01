@@ -1,0 +1,123 @@
+{
+	"id": "level0_jp",
+   "repeatable": true,
+   "saveable": false,
+	"actions": [
+      [
+         {
+            "type": "ConditionNot",
+            "condition": {
+   				"type": "ConditionSequence",
+   				"name": "finish_level1"
+   			} 
+         }
+      ],
+		[ 		
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},     
+			{
+				"type": "ActionControls",
+				"enable": false
+			}
+      ],   
+      [
+      	{
+				"type": "ActionSpeech",
+            "time": 10,
+				
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+            "message": "Hello, I'm your RC."
+			} 
+      ],     
+      [
+      	{
+				"type": "ControlDecision",
+            
+				"name": "JP B.",
+				"icon": "Face Icon - JB.png",
+            "message": "Do you have any questions?",
+                        
+				"decisions": [
+               "Where's Ananya?",
+               "LOL I DON'T KNOW WHAT TO PUT HERE",
+               "Can I go somewhere else?"
+            ],
+            "sequences": [
+               {             
+   	         	"actions": [
+                     [
+                        {
+                           "type": "ActionMove",
+                           "subtype": "npc",
+                           "sprite": "JB",
+                           "direction": "right"
+                        }
+                     ],
+                     [
+                     	{
+               				"type": "ActionSpeech",
+                           "time": 10,
+               				
+               				"name": "JP B.",
+               				"icon": "Face Icon - JB.png",
+                           "message": "Ananya's that way. Her room is the biggest one at the end."
+               			} 
+                     ],
+                     [
+                     	{
+               				"type": "ActionSpeech",
+                           "time": 10,
+               				
+               				"name": "JP B.",
+               				"icon": "Face Icon - JB.png",
+                           "message": "Her door should have the letters, MPC, on it."
+               			} 
+                     ]                    
+   	            ]
+               },
+               {
+   	         	"actions": [
+                     [
+                     	{
+               				"type": "ActionSpeech",
+                           "time": 10,
+               				
+               				"name": "JP B.",
+               				"icon": "Face Icon - JB.png",
+                           "message": "Okay."
+               			} 
+                     ]                                                  
+   	            ]
+               },
+               {
+   	         	"actions": [
+                     [
+                     	{
+               				"type": "ActionSpeech",
+                           "time": 10,
+               				
+               				"name": "JP B.",
+               				"icon": "Face Icon - JB.png",
+                           "message": "You probably will be able to..."
+               			} 
+                     ]                                                    
+   	            ]
+               }               
+            ]
+			} 
+      ],
+		[
+			{
+				"type": "ActionControls",
+				"enable": true
+			},			
+			{
+				"type": "ActionAI",
+				"enabled": true
+			}
+  		]      	                            
+	]
+}

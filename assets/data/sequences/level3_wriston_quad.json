@@ -33,7 +33,7 @@
 				"time": 10,
 				
 				"name": "???",
-				"message": "GRAWRRRRRRRRRR-."
+				"message": "GRAWRRRRRRRRRR-"
 			}	
 		],		
       [
@@ -88,7 +88,25 @@
 			{
 				"type": "ActionSkip",
 				"skip": false
-			},		
+			}
+      ],
+      [   
+			{
+				"type": "ActionNotification",
+				"time": 96,
+            "campaign": true,
+				
+				"title": "Episode 4",
+            "longSubtitle": "If more drunk guys and food are attacking you, surely your life must suck - they also captured JP"
+			}
+		],
+      [
+			{
+				"type": "ActionWait",
+            "time": 96
+			}        
+      ],       
+      [		
 			{
 				"type": "ActionControls",
 				"enable": true

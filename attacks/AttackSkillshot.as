@@ -277,7 +277,7 @@
 					if (n != 0) {
 						var keys:Array = distances.sort();
 						en = closest[keys[0]];
-						en.takeDamage(damage());
+						dealTargetDamage(en);
 /*						if(AIUnit.m_enabled){
 							SoundManager.playSound("hit");
 						}		*/			
@@ -290,7 +290,7 @@
 					// damage all closest units
 					for (var i:String in closest) {
 						en = closest[i];
-						en.takeDamage(damage());
+						dealTargetDamage(en);
 /*						if(AIUnit.m_enabled){
 							SoundManager.playSound("hit");
 						}		*/						

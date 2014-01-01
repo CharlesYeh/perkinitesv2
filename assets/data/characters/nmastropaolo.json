@@ -13,7 +13,7 @@
   "speed": 165,
   "abilities": [
     {
-      "name": "Claw Attack",
+      "name": "Creeper Claw",
       "type": "AttackSmartcast",
       "icon": "Icon - Claw Attack.png",
       "description": "Deals rapid multi-hit damage to all enemies in range with his claws.",
@@ -22,7 +22,13 @@
       "range": 72,
       "cd": 0,
       "stand": 6,
-      "goToCastPoint": false
+      "goToCastPoint": false,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     },
     {
       "name": "Shopping Spree",
@@ -36,7 +42,13 @@
       "stand": 8,
       "speed": 24,
       "width": 60,
-      "penetrates": 9999
+      "penetrates": 9999,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     }
   ]
 }

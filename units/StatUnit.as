@@ -5,6 +5,8 @@
 	import flash.display.MovieClip;
 	import flash.geom.Point;
 	
+	import flash.utils.Dictionary;
+	
 	import flash.filters.GlowFilter;
 	import tileMapper.TileMap;
 	import db.AbilityDatabase;
@@ -14,7 +16,6 @@
 	
 	import game.GameConstants;
 	import game.progress.CharacterProgress;
-	import game.progress.BuffProgress;
 
 	public class StatUnit extends GameUnit {
 		
@@ -34,7 +35,8 @@
 										"dealDamage", "applyBuffs", "shootSkillshot",
 										"teleport", "teleportPartner",
 										"shootDirectedSkillshot", "shootRelativeSkillshot",
-										"pointAttack", "prepareCastPoint", "prepareRandomPoint");
+										"pointAttack", "prepareCastPoint", "prepareRandomPoint",
+										"shootLaser");
 		
 		/** the swf sprite asset */
 		var swf;
@@ -54,8 +56,7 @@
 		public var attackQueue:Array;
 		public var healthbar:MovieClip;
 		
-		public var appliedBuffs:Array;
-		public var frameBuff:BuffProgress;
+		public var appliedBuffs:Dictionary;
 		//--------END STATS VARS-------
 		
 		var abilityId:int;
@@ -80,6 +81,7 @@
 		public function StatUnit(udat:UnitData) {
 			super();
 			
+			
 			if(udat != null){
 				unitData = udat;
 				progressData = new CharacterProgress();
@@ -96,16 +98,12 @@
 			cooldowns = new Array(10);
 			stands = new Array(10);
 			attackQueue = new Array();
-			appliedBuffs = new Array();
+			appliedBuffs = new Dictionary();
 			
 			guide = new AimGuide();
 			addChildAt(guide, 0);
 			guide.visible = false;
 			
-		}
-		
-		public function addBuff(bp:BuffProgress):void {
-			appliedBuffs.push(bp);
 		}
 		
 		public function setAbilityTargets(targets:Array):void {
@@ -132,16 +130,29 @@
 			}
 		}
 		
-		public function takeDamage(dmg:int):void {
+		public function takeDamage(dmg:int, attackName:String):void {
 			//this may cause problems - work on it
 			if (progressData == null || progressData.health <= 0) {
 				return;
 			}
-			if (frameBuff.invincibility || !visible) {
+			/*if (frameBuff != null && ( !visible)) { //frameBuff.invincibility ||
 				return;
+			}*/
+			
+			//var def:int = Math.floor(unitData.defense * frameBuff.defenseMult + frameBuff.defenseAdd);
+			var def:int = 0; //FIX
+			
+			if(progressData.shield > 0 && dmg > 0) {
+				progressData.shield = Math.max(0, progressData.shield - dmg);
+				if(progressData.shield - dmg < 0) {
+					dmg = Math.abs(progressData.shield - dmg);
+				} else {
+					dmg = 0;
+				}
 			}
 			
-			var def:int = Math.floor(unitData.defense * frameBuff.defenseMult + frameBuff.defenseAdd);
+			
+			
 			var adjustedDmg:int = Math.max(1, dmg - def);
 			
 			progressData.health = Math.max(0, progressData.health - adjustedDmg);
@@ -244,6 +255,10 @@
 				return false;
 			}
 			
+			if(appliedBuffs.hasOwnProperty("stun")) {
+				return false;
+			}
+			
 			if(stands[abID] <= 0 && usingAbility){
 				endAbility();
 			}
@@ -298,7 +313,7 @@
 		}
 		
 		public function updateBuffs():void {
-			frameBuff = BuffUtil.updateBuffs(appliedBuffs);
+			/*frameBuff = BuffUtil.updateBuffs(appliedBuffs);
 			
 			if (frameBuff == null) {
 				frameBuff = new BuffProgress();
@@ -312,13 +327,25 @@
 				}
 				
 				// poison
-				var dmg:int = Math.floor(frameBuff.poisonMult * unitData.health) + frameBuff.poisonAdd;
+				//var dmg:int = Math.floor(frameBuff.poisonMult * unitData.health) + frameBuff.poisonAdd;
 				takeDamage(dmg);
+			} */
+			for (var i:String in appliedBuffs) {
+				appliedBuffs[i].applyBuff();
+				if(appliedBuffs[i].update()) {
+					appliedBuffs[i].reset();
+					delete appliedBuffs[i];
+				}
 			}
 		}
 		
 		override protected function getSpeed():Number {
-			return super.getSpeed() * frameBuff.moveMult + frameBuff.moveAdd;
+			var buff = appliedBuffs["speed"];
+			var mod:Number = super.getSpeed();
+			if(buff != null) {
+				mod = mod * (1 + buff.mod) + buff.base;
+			}
+			return mod;			
 		}
 		
 		/**
@@ -327,7 +354,6 @@
 		 * @param e - Event.ENTER_FRAME
 		 */
 		override public function moveHandler(e:Event):void {
-			
 			//adjust filter
 			glowHit.alpha-=0.1;
 			if(this.swf != null) {
@@ -351,10 +377,6 @@
 				}
 			}
 			
-			if (frameBuff.stun) {
-				return;
-			}
-			
 			// update ability if animation is playing
 			if(usingAnimation){
 				return;
@@ -365,10 +387,17 @@
 				return;
 			}
 			
-			super.moveHandler(e);
+			if(!appliedBuffs.hasOwnProperty("knockback") && !appliedBuffs.hasOwnProperty("stun")) {
+				super.moveHandler(e);
+			}
+			
 			if (usingAbility) {
 				var atk:Attack = unitData.abilities[abilityId];
 				atk.castInProgress(this);
+				
+				if(appliedBuffs.hasOwnProperty("stun")) {
+					endAbility();
+				}
 				
 				return;
 			}

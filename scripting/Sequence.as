@@ -6,6 +6,7 @@
 	
 	import scripting.actions.*;
 	import scripting.conditions.*;
+	import scripting.controls.*;
 	
 	import game.Game;
 	
@@ -22,8 +23,22 @@
 		private var m_completed:Boolean = false;
 		
 		private function compileClasses():void {
-			var actionTypes:Array = new Array(ActionControls, ActionBlackout, ActionSpeech, ActionWait, ActionNarrator, ActionMusic, ActionAI, ActionUnlockCharacters, ActionAnimate, ActionDelete, ActionSound, ActionCreate, ActionItem, ActionHUD, ActionJournal, ActionNotification, ActionSkip, ActionTeleport, ActionClearEnemies, ActionNext, ActionMove);
-			var condTypes:Array = new Array(ConditionSequence, ConditionNearLocation, ConditionBeatEnemy, ConditionClearedArea, ConditionNPC, ConditionHasItem);
+			var actionTypes:Array = new Array(ActionControls, ActionBlackout, ActionSpeech, 
+											  ActionWait, ActionNarrator, ActionMusic, 
+											  ActionAI, ActionUnlockCharacters, 
+											  ActionAnimate, ActionDelete, ActionSound, 
+											  ActionCreate, ActionItem, ActionHUD, 
+											  ActionJournal, ActionNotification, ActionSkip,
+											  ActionTeleport, ActionClearEnemies, ActionNext,
+											  ActionMove, ActionChangeTeam, ActionSequence,
+											  ActionViewport, ActionPowerup, ActionEquip);
+			var condTypes:Array = new Array(ConditionSequence, ConditionNearLocation, 
+											ConditionBeatEnemy, ConditionClearedArea, ConditionNPC, 
+											ConditionHasItem, ConditionCheckMode,
+											ConditionCheckTeam, ConditionCountTeam,
+											ConditionCheckChosen,
+											ConditionAnd, ConditionOr, ConditionNot);
+			var controlTypes:Array = new Array(Control, ControlDecision);
 		}
 		
 		public function parseData(obj:Object):void {
@@ -55,6 +70,9 @@
 			}
 			else if (type.indexOf("Condition") == 0) {
 				pkg = "scripting.conditions.";
+			} 
+			else if (type.indexOf("Control") == 0) {
+				pkg = "scripting.controls.";
 			}
 			
 			var ActionClass:Class = getDefinitionByName(pkg + type) as Class;
@@ -68,7 +86,7 @@
 			m_completed = false;
 			
 			// test whether this sequence has been done before
-			if (actions.length == 0 || Game.playerProgress.hasCompletedSequence(id)) {
+			if (actions.length == 0 || (id != null && Game.playerProgress.hasCompletedSequence(id))) {
 				m_completed = true;
 			} 
 			
@@ -130,13 +148,14 @@
 		}
 		
 		public function complete():void {
-			if (!repeatable) {
+			if (!repeatable && id != null) {
 				Game.playerProgress.addCompletedSequence(id);
 			}
-			if (saveable) {
+			if (saveable && id != null) {
 				//----------------AUTO-SAVE----------------					
-				Game.playerProgress.save();
+				//Game.playerProgress.save();
 			}			
+			Game.world.checkNPCConditions();
 			m_completed = true;
 		}
 		

@@ -19,7 +19,13 @@
       "stand": 20,
       "speed": 15,
       "width": 30,
-      "penetrates": 4
+      "penetrates": 4,
+      "buffs": {
+        "self": [],
+        "team": [],
+        "allies": [],
+        "enemies": []
+      }
     }
   ]
 }

@@ -1,0 +1,437 @@
+{
+	"id": "level1_2f_kitchen_win",
+	"actions": [
+		[
+			{
+				"type": "ConditionSequence",
+				"name": "level1_2f_kitchen"
+			},
+			{
+				"type": "ConditionClearedArea",
+				"map": "perkins_2f_kitchen"
+			}         
+		],   
+		[
+			{
+				"type": "ActionJournal",
+				
+				"completed": true
+			},      
+			{
+				"type": "ActionControls",
+				"enable": false
+			},
+			{
+				"type": "ActionHUD",
+				"enable": false
+			},
+			{
+				"type": "ActionAI",
+				"enabled": false
+			},
+			{
+				"type": "ActionWait",
+				"time": 12
+			}           
+		], 
+      [
+         {
+				"type": "ActionBlackout",
+				"subtype": "show",
+				"alpha": 1,
+            "time": 48
+			}
+      ],
+      [
+         {
+            "type": "ActionWait",
+            "time": 24
+         },
+         {
+            "type": "ActionTeleport",
+            "map": "perkins_2f_kitchen",
+            "position": 
+               {
+                  "x": 16,
+                  "y": 9
+               },
+            "direction": "up"   
+         }
+      ],                 
+		[  
+			{
+				"type": "ActionBlackout",
+				"subtype": "hide",
+				"time": 45
+			}, 
+			{
+				"type": "ActionNarrator",
+				"time": 120,
+				
+				"message": "It looks like our main character has managed to rid away the problem sets through well-timed flailing."
+			}      
+		],
+      [
+			{
+				"type": "ActionWait",
+				"time": 12
+			}      
+      ],
+      [       
+         {
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "AA",
+    		   "direction": "down",
+            "animation": "standing",
+    			"position": {
+					"x": 16,
+        			"y": 3
+      		}
+			}      
+      ],
+      [
+			{
+				"type": "ActionMove",
+				
+				"subtype": "npc",
+            "sprite": "AA",
+            "position": {
+              "x": 16,
+              "y": 4
+            }
+			},	 
+			{
+				"type": "ActionMove",
+				
+				"subtype": "npc",
+            "chosen": true,
+            "position": {
+              "x": 16,
+              "y": 6
+            },
+            "direction": "up"
+			}
+      ],
+      [            
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya A.",
+				"icon": "Face Icon - AA.png",
+				"message": "Perkinites. I have bad news. Perkins has been taken under siege by evil forces. We must-"
+			}	               
+      ],
+		[
+			{
+				"type": "ActionMusic",
+				"time": 0,
+				
+				"enable": true,
+				"song": "Junk Stereo Concept"
+			},
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "npc_Ira",
+    		   "direction": "down",
+				"animation": "appearing",
+    			"position": {
+					"x": 12,
+        			"y": 4
+      		}
+			},
+			{
+				"type": "ActionMove",
+				
+				"subtype": "player",
+            "direction": "left"
+			}, 
+			{
+				"type": "ActionMove",
+				
+				"subtype": "npc",
+            "sprite": "AA",
+            "direction": "left"
+			},  
+			{
+				"type": "ActionMove",
+				
+				"subtype": "npc",
+            "chosen": true,   
+            "direction": "left"
+			},     
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "action_Emotion",
+    		   "direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 16,
+        			"y": 4
+      		}
+			},    
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "action_Emotion",
+    		   "direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 16,
+        			"y": 6
+      		}
+			},
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "action_Emotion",
+    		   "direction": "down",
+				"animation": "standing",
+    			"position": {
+					"x": 16,
+        			"y": 9
+      		}
+			},                    		
+			{
+				"type": "ActionWait",
+				"time": 52
+			}
+		],
+		[
+			{
+				"type": "ActionAnimate",
+				"time": 0,
+				
+				"sprite": "npc_Ira",
+				"animation": "standing"
+			},	
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Masked Child",
+				"icon": "Face Icon - Ira.png",
+				"message": "Hyuk hyuk hyuk..."
+			}	
+		],
+      [
+         {
+            "type": "ActionAnimate",
+				"time": 13,
+				
+				"sprite": "action_Emotion",
+				"animation": "exclamation"
+         },
+         {
+            "type": "ActionWait",
+            "time": 13
+         
+         }
+      ],
+		[
+			{
+				"type": "ActionAnimate",
+				"time": 18,
+				
+				"sprite": "npc_Ira",
+				"animation": "begin_casting"
+			}
+		],
+      [
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "action_Emotion"
+			},      
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "action_Emotion"
+			},      
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "action_Emotion"
+			}         
+      ],      			
+		[
+			{
+				"type": "ActionAnimate",
+				"time": -1,
+				
+				"sprite": "npc_Ira",
+				"animation": "casting"
+			},
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "action_Darkness",
+    		   "direction": "down",
+				"animation": "casting",
+    			"position": {
+					"x": 16,
+        			"y": 4
+      		}
+			},
+         {
+            "type": "ActionWait",
+            "time": 24
+         },
+			{
+				"type": "ActionMove",
+				
+				"subtype": "player",
+            "direction": "up"
+			}, 
+			{
+				"type": "ActionMove",
+				
+				"subtype": "npc",
+            "chosen": true,   
+            "direction": "up"
+			}                   
+		],
+      [
+			{
+				"type": "ActionSpeech",
+				"time": 10,
+				
+				"name": "Ananya A.",
+				"icon": "Face Icon - AA.png",
+				"message": "OH HELL NO - YOU DO NOT DO THAT SHIT ON ME"
+			}	               
+      ],  
+		[					
+			{
+				"type": "ActionAnimate",
+				"time": 52,
+				
+				"sprite": "npc_Ira",
+				"animation": "disappearing"
+			},
+			{
+				"type": "ActionAnimate",
+				"time": 52,
+				
+				"sprite": "action_Darkness",
+				"animation": "disappearing"
+			}         		
+		],			
+		[	
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "npc_Ira"
+			},	
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "action_Darkness"
+			},         
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "AA"
+			},
+			{
+				"type": "ActionNarrator",
+				"time": 24,
+				
+				"message": "Well."
+			}           
+		],
+      [
+			{
+				"type": "ActionCreate",
+				
+				"subtype": "npc",
+				"id": "action_Emotion",
+    		   "direction": "down",
+				"animation": "sad",
+    			"position": {
+					"x": 16,
+        			"y": 6
+      		}
+			}
+      ],      
+      [
+			{
+				"type": "ActionWait",
+				"time": 13
+			}      
+      ],                
+		[  
+			{
+				"type": "ActionDelete",
+				
+				"subtype": "npc",
+				"sprite": "action_Emotion"
+			},	          
+			{
+				"type": "ActionNarrator",
+				"time": 120,
+				
+				"message": "Looks like you have an MPC to save."
+			}      
+		],            		      
+		[      
+			{
+				"type": "ActionNarrator",
+				"time": 120,
+				
+				"message": "But well-timed flailing will not be enough."
+			}      
+		],      
+      [
+			{
+				"type": "ActionWait",
+				"time": 12
+			}      
+      ], 
+      [           
+			{
+				"type": "ActionNarrator",
+				"time": 120,
+				
+				"message": "Our main character should probably team up with this newfound friend if they ever hope to accomplish something."
+			}      
+		],
+      [	
+			{
+				"type": "ActionControls",
+				"enable": true,
+            
+            "rightEnabled": true,
+            "teamEnabled": true
+			},
+			{
+				"type": "ActionAI",
+				"enabled": true
+			},
+         {
+            "type": "ActionHUD",
+            "enable": true
+         },
+         {
+				"type": "ActionJournal",
+				
+				"message": "Talk to your friend and team up!"
+			}                 
+		]                                 
+	]
+}

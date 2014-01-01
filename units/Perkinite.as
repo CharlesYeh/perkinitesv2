@@ -1,6 +1,8 @@
 ﻿package units {
 	import flash.events.Event;
+	import flash.geom.Point;
 	import flash.net.URLRequest;
+	
 	
 	import db.dbData.CharacterData;
 	
@@ -21,7 +23,7 @@
 			loadSwf();
 		}
 		
-		override public function takeDamage(dmg:int):void {
+		override public function takeDamage(dmg:int, attackName:String):void {
 			Game.playerProgress.takeDamage(dmg);
 			
 			if(dmg > 0 && visible){
@@ -30,12 +32,29 @@
 			}
 		}
 		
+		override protected function getSpeed():Number {
+			var buff = Game.playerProgress.buffs["speed"];
+			var mod:Number = super.getSpeed();
+			if(buff != null) {
+				mod = mod * (1 + buff.mod) + buff.base;
+			}
+			return mod;
+		}
+		
 		override public function moveHandler(e:Event):void {
-			var lead:StatUnit = Game.team[0];
+			var lead:StatUnit = Game.perkinite;
 			if(!usingAbility && lead != this && StatUnit.distance(lead, this) <= 40){
 				path = new Array();
 			}
 			super.moveHandler(e);		
+		}
+		
+		override public function castAbility(abID:int, mousePos:Point):Boolean {
+			if(Game.playerProgress.buffs.hasOwnProperty("stun")) {
+				return false;
+			}
+			return super.castAbility(abID, mousePos);
+			
 		}
 		
 	}
